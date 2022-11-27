@@ -2,12 +2,9 @@ import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { useState, useEffect, useMemo } from 'react';
 import {
-  Alert, Card, Col, Container, Row, Button, Badge, DataTable, CardView,
+  DataTable, CardView,
 } from '@edx/paragon';
-import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { Input } from '@avidkit/input';
-import Hero from '../hero/Hero';
-import messages from '../hero/Hero.messages';
+import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import CourseCard from '../../courseCard/CourseCard';
 
 const buildLmsUrl = (absoluteUrl) => `${getConfig().LMS_BASE_URL}${absoluteUrl}`;
