@@ -35,7 +35,7 @@
     "url": "https://github.com/openedx/frontend-template-application/issues"
   },
   "dependencies": {
-    "@edx/brand": "npm:@edx/brand-openedx@1.1.0",
+    "@edx/brand": "https://github.com/Edspirit/brand-openedx",
     "@edx/frontend-platform": "2.6.2",
     "@edx/paragon": "20.20.0",
     "axios": "^0.21.4",
