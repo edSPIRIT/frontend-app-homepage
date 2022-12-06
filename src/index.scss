@@ -1,48 +1,14 @@
-@import "@edx/brand/paragon/fonts.scss";
-@import "@edx/brand/paragon/variables.scss";
-@import "@edx/paragon/scss/core/core.scss";
-@import "@edx/brand/paragon/overrides.scss";
-
-@import './components/homePage/index.scss';
-
-@import "~@edx/frontend-component-header/dist/index";
-@import "~@edx/frontend-component-footer/dist/footer";
+@import '@edx/brand/paragon/fonts.scss';
+@import '@edx/brand/paragon/variables.scss';
+@import '@edx/paragon/scss/core/core.scss';
+@import '@edx/brand/paragon/overrides.scss';
 
 // Variables and mixins must come before other styles
 @import './styles/variables';
 @import './styles/mixins';
 
 @import './styles/site_header';
-// @import './components/catalogs/styles';
-@import './components/hero/Hero.scss';
-// @import 'components/catalogSearchResults/associatedComponents/downloadCsvButton/DownloadCsvButton';
-@import 'components/catalogSelectionDeck/CatalogSelectionDeck';
+@import 'components/header-edspirit/header.scss';
+@import 'components/baner/banner.scss';
+@import 'components/explorer-courses/explorer-courses.scss';
 
-.page-width {
-  max-width: 1350px;
-}
-
-.padded-catalog.badge {
-  margin: 4px;
-}
-
-.bright.badge {
-  color: $black;
-}
-
-.program.badge {
-  font-family: $font-family-monospace;
-}
-.card-footer{
-    padding: 1rem 1rem !important;
-}
-.view-course{
-    cursor: pointer;
-}
-.container-search {
-    width: 100%;
-    padding-right: 12px;
-    padding-left: 12px;
-    margin-right: auto;
-    margin-left: auto;
-}
