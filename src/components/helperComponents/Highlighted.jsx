@@ -5,11 +5,10 @@ import classNames from 'classnames';
 
 const Highlighted = ({ text, highlight, highlightClass }) => {
   if (!highlight.trim()) {
-    return <span className="hero-text">{text}</span>;
+    return <span>{text}</span>;
   }
   const regex = new RegExp(`(${escapeRegExp(highlight)})`, 'gi');
   const parts = text.split(regex);
-
   return (
     <>
       {parts
