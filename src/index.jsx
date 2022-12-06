@@ -22,7 +22,9 @@ subscribe(APP_READY, () => {
     <AppProvider>
       <HeaderED />
       <Switch>
+        <Route exact path="/" component={HomePage} />
         <Route exact path="/home" component={HomePage} />
+
       </Switch>
     </AppProvider>,
 

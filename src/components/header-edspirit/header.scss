@@ -110,10 +110,12 @@
   }
 }
 .nav-item-link-header {
-  @extend .font-weight-bold,.mx-2;
+  @extend .font-weight-bold, .mx-2;
   text-decoration: none;
   color: $gray-700;
   &:hover {
     text-decoration: none;
   }
 }
+
+

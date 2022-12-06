@@ -212,3 +212,77 @@ export const PROGRAMS_ITEMS_NAV = [
   //   description: 'Series of courses for a deep understanding of a topic',
   // },
 ];
+export const SUBJECTS_ITEMS = [
+  {
+    title: 'Architecture',
+    cover:
+      'https://www.edx.org/static/53f4b92a0dc6d9e7d5d25a9e420d82e2/architecture.jpg',
+  },
+  {
+    title: 'Biology & Life Sciences',
+    cover:
+      'https://www.edx.org/static/36336bb6683dfa449f23c41ed891f301/biology.jpg',
+  },
+  {
+    title: 'Business & Management',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/6774d438-134f-4d20-95a2-ea763f59ff23-985bdf6b8a01.small.png',
+  },
+  {
+    title: 'Chemistry',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/0f1d712c-db22-4ae5-9d85-72109b0a5e3e-87cc52911021.small.jpg',
+  },
+  {
+    title: 'Communication',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/28053d3b-64cc-4a7f-bcb6-247c4152bd6d-ee421a12f68e.small.jpeg',
+  },
+  {
+    title: 'Computer Science',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/62ed92c9-22b6-43a6-a755-0f296d0f64ce-8b3c8aa8f0af.small.jpeg',
+  },
+  {
+    title: 'Data Analysis & Statistics Courses',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/fa4317f9-e35c-4c7a-b5ef-a14afa1b356d-564b2787e478.small.jpeg',
+  },
+  {
+    title: 'Food & Nutrition',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/01860b7e-23b1-4392-9f4c-91ea623d435a-874e0ca4929e.small.jpg',
+  },
+  {
+    title: 'Health & Safety',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/ffbec579-96a8-46aa-8631-d4f4cefb6d40-ed33d7ddc355.small.png',
+  },
+  {
+    title: 'History',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/fe3bf07f-bc54-49db-b8ff-28eb54692ac6-62ef926a0655.small.jpg',
+  },
+];
+export const PARTNERS_LOGO = [
+  {
+    title: 'New york University',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dc6d25de-0dac-43e6-a915-e362bf8b4403-917c4e000b69.png',
+  },
+  {
+    title: 'IBM',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/87b07564-d569-4cfd-bee6-8b0a407acb73-dc33e4b5f353.png',
+  },
+  {
+    title: 'Michigan University',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/ebf3ff9d-a40b-4cbe-84a1-ef7fe4f35beb-61ffe82bb9c2.png',
+  },
+  {
+    title: 'UPValenciaX',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/518a47f2-66fb-4529-8902-a4f7ca3002ef-78d294b01e63.png',
+  },
+  {
+    title: 'codio',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dd7e4312-e4df-4d81-a126-5885865ab0d5-8c68a40ac0f3.png',
+  },
+];
