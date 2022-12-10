@@ -6,8 +6,6 @@
 
 .hero__content {
   @include center-vertically;
-  font-family: Inter;
-  //   min-height: $banner-min-height;
   max-height: $hero-max-height;
 
   .display-1 {
@@ -16,7 +14,6 @@
     max-width: 70%;
   }
   div {
-    // min-height: $banner-min-height;
     max-height: $hero-max-height;
     height: 100%;
   }
@@ -42,7 +39,7 @@
 }
 .hero-desc {
   @extend .text-light-300, .mb-4;
-  font-size:1.125rem ;
+  font-size: 1.125rem;
   width: 728px;
 }
 .hero-link,
@@ -50,18 +47,41 @@
 .hero-link-icon {
   color: $accent-a;
   text-decoration: none;
-  font-size:1.125rem ;
+  font-size: 1.125rem;
 }
 .hero-link-container {
   cursor: pointer;
 }
 .hero-search {
-  width: 354px;
+  height: 44px;
+  .pgn__searchfield_wrapper {
+    border: 1px solid $primary-700;
+    border-radius: 4px;
+    width: 354px;
+    &:hover {
+      border-color: $primary-700;
+    }
+  }
   .pgn__searchfield__button {
+    width: 92px;
+    font-size: 1.125rem;
+    text-transform: capitalize;
     background-color: $brand !important;
     border-radius: 4px !important;
   }
-  .pgn__searchfield_wrapper {
-    border-radius: 4px;
+  .form-control {
+    height: 100%;
+    font-size: 1.125rem;
   }
+}
+.banner-link {
+  color: $accent-a !important;
+}
+
+.html,
+.body {
+  color: red !important;
+  //   * {
+  font-family: IRANSans, FontAwesome !important ;
+  //   }
 }

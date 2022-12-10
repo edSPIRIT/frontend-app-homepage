@@ -2,7 +2,7 @@ import React from 'react';
 import { PARTNERS_LOGO } from '../../constants';
 
 const Partners = () => (
-  <section className="mb-6">
+  <section id="partners" className="mb-6">
     <div className="container">
       <h2 className="d-flex justify-content-center mb-4">Partners</h2>
       <span className="d-flex justify-content-center mb-5 text-gray-500">

@@ -35,7 +35,14 @@ const Banner = () => {
             />
           </h1>
           <p className="hero-desc">
-            Founded by <a href="#Harvard">Harvard</a> and <a href="#MIT">MIT</a>
+            Founded by{' '}
+            <a className="banner-link" href="#Harvard">
+              Harvard
+            </a>{' '}
+            and{' '}
+            <a className="banner-link" href="#MIT">
+              MIT
+            </a>
             , edX is home to more than 20 million learners, the majority of
             top-ranked universities in the world and industry-leading companies.
           </p>
@@ -49,22 +56,22 @@ const Banner = () => {
             <a className="hero-link mr-2" href="#explor">
               Explore New Courses
             </a>
-            <ArrowForward className="hero-link-icon" width="20px" height="20x" />
+            <ArrowForward
+              className="hero-link-icon"
+              width="20px"
+              height="20x"
+            />
           </div>
         </div>
         <div>
           <Desktop>
             <Image
               className="hero__image mt-6"
-              // srcSet={`${LargeHeroImageLoRes} 1000w, ${LargeHeroImageHiRes} 2000w`}
               src={bannerImage}
               alt={alt}
               sizes="33vw"
             />
           </Desktop>
-          {/* <Tablet>
-            <LargeImage alt={alt} />
-          </Tablet> */}
         </div>
       </Container>
     </section>

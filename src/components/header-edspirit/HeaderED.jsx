@@ -1,9 +1,5 @@
-import {
-  Button, SearchField,
-} from '@edx/paragon';
-import {
-  ArrowForward,
-} from '@edx/paragon/icons';
+import { Button, SearchField } from '@edx/paragon';
+import { ArrowForward } from '@edx/paragon/icons';
 import React from 'react';
 import { PROGRAMS_ITEMS_NAV, SUBJECTS_ITEMS_NAV } from '../../constants';
 
@@ -19,13 +15,15 @@ const HeaderED = () => (
           height="32px"
         />
         <div className="dropdown-container">
-          <div className="dropdown">
+          <div className="dropdown-nav-header">
             <div className="nav-item-header">
-              <span className="nav-item-text d-flex align-items-center">Subjects</span>
+              <span className="nav-item-text d-flex align-items-center">
+                Subjects
+              </span>
             </div>
             <div className="dropdown-content">
               <div className="menu-tab">
-                <ul className="col-ul disco-hack-main-nav-ul">
+                <ul className="col-ul disco-hack-main-nav-ul mb-4">
                   {SUBJECTS_ITEMS_NAV.map((item) => (
                     <li className="col-li">
                       <a className="custom-link" href="/learn/architecture">
@@ -36,9 +34,7 @@ const HeaderED = () => (
                 </ul>
                 <div className="tab-header d-flex justify-content-between">
                   <div>
-                    <span className="text-gray-500 mr-1">
-                      Total Course:
-                    </span>
+                    <span className="text-gray-500 mr-1">Total Course:</span>
                     <span className="font-weight-bold">203.439</span>
                   </div>
                   <Button
@@ -52,9 +48,11 @@ const HeaderED = () => (
               </div>
             </div>
           </div>
-          <div className="dropdown">
+          <div className="dropdown-nav-header">
             <div className="nav-item-header">
-              <span className="nav-item-text d-flex align-items-center">Programs</span>
+              <span className="nav-item-text d-flex align-items-center">
+                Programs
+              </span>
             </div>
             <div className="dropdown-content">
               <div className="menu-tab">
@@ -95,15 +93,19 @@ const HeaderED = () => (
       </div>
       <div className="d-flex">
         <SearchField
-          className="my-3"
+          className="search-header"
           onSubmit={(value) => console.log(`search submitted: ${value}`)}
           placeholder="What do you want to learn?"
         />
         <div className="d-flex align-items-center">
-          <Button variant="tertiary" className="mx-1 mb-2 mb-sm-0">Help</Button>
+          <Button variant="tertiary" className="mx-1 mb-2 mb-sm-0">
+            Help
+          </Button>
         </div>
         <div className="sign-in-container">
-          <Button variant="tertiary" className="mx-1 mb-2 mb-sm-0">Sign in</Button>
+          <Button variant="tertiary" className="mx-1 mb-2 mb-sm-0">
+            Sign in
+          </Button>
 
           <Button variant="primary" className="mb-2 mb-sm-0 mr-4">
             join for free

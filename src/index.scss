@@ -12,6 +12,8 @@
 @import 'components/baner/banner.scss';
 @import 'components/explorer-courses/explorer-courses.scss';
 @import 'components/popular-subjects/popular-subjects.scss';
+@import 'components/footer/footer.scss';
 
-
-
+html * {
+  font-family: Inter;
+}

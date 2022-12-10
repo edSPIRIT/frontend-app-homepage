@@ -1,13 +1,13 @@
-.subject-img{
+.subject-img {
   @extend .mr-2;
-width: 66px;
-height: 66px;
-object-fit: cover;
-border-radius: 4px;
+  width: 66px;
+  height: 66px;
+  object-fit: cover;
+  border-radius: 4px;
 }
-.subject-container{
-    @extend .d-flex,.align-items-center,.mr-4;
-    cursor: pointer;
+.subject-container {
+  @extend .d-flex, .align-items-center, .mr-4;
+  cursor: pointer;
 }
 .subject-title {
   @extend .text-primary-500;
@@ -17,6 +17,6 @@ border-radius: 4px;
   color: $gray-500;
   width: 17px;
 }
-.popular-container{
-    margin-bottom: 160px;
+.popular-container {
+  margin-bottom: 160px;
 }

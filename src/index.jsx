@@ -16,6 +16,7 @@ import appMessages from './i18n';
 import './index.scss';
 import HeaderED from './components/header-edspirit/HeaderED';
 import HomePage from './components/homePage/HomePage';
+import Footer from './components/footer/Footer';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
@@ -26,6 +27,7 @@ subscribe(APP_READY, () => {
         <Route exact path="/home" component={HomePage} />
 
       </Switch>
+      <Footer />
     </AppProvider>,
 
     document.getElementById('root'),

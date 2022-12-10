@@ -286,3 +286,14 @@ export const PARTNERS_LOGO = [
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dd7e4312-e4df-4d81-a126-5885865ab0d5-8c68a40ac0f3.png',
   },
 ];
+export const KNOW_US_FOOTER = [
+  { title: 'About Us', link: '#About Us' },
+  { title: 'Privacy', link: '#Privacy' },
+  { title: 'Term and conditions', link: '#Term&conditions' },
+];
+export const USEFUL_LINKS_FOOTER = [
+  { title: 'Help Center', link: '#HelpCenter' },
+  { title: 'Resources', link: '#Resources' },
+  { title: 'Contact Us', link: '#Contact' },
+  { title: 'Blogs', link: '#Blogs' },
+];

@@ -1,0 +1,74 @@
+.language-btn-container {
+  @extend .d-flex;
+  .dropdown {
+    &:hover {
+      background-color: unset;
+    }
+  }
+  .dropdown-menu {
+    min-width: 8rem;
+  }
+  .dropdown-item {
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  .btn {
+    width: 129px;
+    height: 36px;
+    &::before {
+      content: '';
+      display: block;
+      background: url('../../assets/globe-icon.svg') no-repeat;
+      width: 20px;
+      height: 20px;
+      float: left;
+      margin: 0 6px 0 0;
+    }
+    &::after {
+      margin-left: 12px;
+    }
+  }
+  .btn-outline-primary {
+    border-color: $light-300;
+    &:hover {
+      border-color: $primary-500;
+    }
+    &:active {
+      background-color: unset !important;
+    }
+    &:focus {
+      &::before {
+        position: unset !important;
+        top: unset !important;
+        right: unset !important;
+        bottom: unset !important;
+        left: unset !important;
+        border: unset !important;
+        border-radius: unset !important;
+      }
+    }
+  }
+  .btn-outline-primary.dropdown-toggle {
+    background-color: unset;
+  }
+}
+
+.footer-logo {
+  filter: grayscale(100%);
+}
+.footer-desc {
+  @extend .text-gray-500;
+  font-size: 0.75rem;
+}
+.list-unstyled {
+  list-style: none;
+  a {
+    font-size: 0.875rem;
+    color: $primary-700;
+  }
+}
+.social-container {
+  @extend .d-flex;
+  gap: 10px;
+}
