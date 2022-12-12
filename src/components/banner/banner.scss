@@ -1,46 +1,26 @@
 .hero {
   background-color: $primary-700;
   white-space: pre-line;
-  height: 480px;
 }
 
-.hero__content {
-  @include center-vertically;
-  max-height: $hero-max-height;
-
   .display-1 {
-    @extend .mt-6, .mb-4;
+    @extend  .mb-4;
     color: $white;
-    max-width: 70%;
   }
-  div {
-    max-height: $hero-max-height;
-    height: 100%;
-  }
-  .hero__image {
-    min-height: $banner-min-height;
-    max-height: $hero-max-height;
-    height: 100%;
-  }
+
   .highlighted {
     color: $brand;
   }
-}
 
-@include media-breakpoint-down(md) {
-  .hero {
-    min-height: 200px;
-    max-height: 331px;
-
-    .display-1 {
-      max-width: 100%;
-    }
-  }
-}
 .hero-desc {
   @extend .text-light-300, .mb-4;
   font-size: 1.125rem;
   width: 728px;
+}
+.hero-image{
+  object-fit: contain;
+  width: 100%;
+  max-height: 318px;
 }
 .hero-link,
 .hero-link:hover,
@@ -78,10 +58,3 @@
   color: $accent-a !important;
 }
 
-.html,
-.body {
-  color: red !important;
-  //   * {
-  font-family: IRANSans, FontAwesome !important ;
-  //   }
-}

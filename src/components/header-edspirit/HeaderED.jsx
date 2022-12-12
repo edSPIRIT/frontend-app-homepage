@@ -5,8 +5,8 @@ import { PROGRAMS_ITEMS_NAV, SUBJECTS_ITEMS_NAV } from '../../constants';
 
 const HeaderED = () => (
   <header>
-    <div className="d-flex flex-row justify-content-between align-items-center ml-3">
-      <div className="d-flex flex-row align-items-center">
+    <div className="d-flex flex-row justify-content-between align-items-center">
+      <div className="left-side-container">
         <img
           className="mr-4"
           src="https://edx-orgs-test.s3.eu-central-1.amazonaws.com/moody-toy/admin_console/images/logo.png/download.png?57"
@@ -17,7 +17,7 @@ const HeaderED = () => (
         <div className="dropdown-container">
           <div className="dropdown-nav-header">
             <div className="nav-item-header">
-              <span className="nav-item-text d-flex align-items-center">
+              <span className="nav-item-text">
                 Subjects
               </span>
             </div>
@@ -50,7 +50,7 @@ const HeaderED = () => (
           </div>
           <div className="dropdown-nav-header">
             <div className="nav-item-header">
-              <span className="nav-item-text d-flex align-items-center">
+              <span className="nav-item-text">
                 Programs
               </span>
             </div>
@@ -98,16 +98,15 @@ const HeaderED = () => (
           placeholder="What do you want to learn?"
         />
         <div className="d-flex align-items-center">
-          <Button variant="tertiary" className="mx-1 mb-2 mb-sm-0">
+          <Button variant="tertiary" className="mx-1">
             Help
           </Button>
         </div>
         <div className="sign-in-container">
-          <Button variant="tertiary" className="mx-1 mb-2 mb-sm-0">
+          <Button variant="tertiary" className="mx-1">
             Sign in
           </Button>
-
-          <Button variant="primary" className="mb-2 mb-sm-0 mr-4">
+          <Button variant="primary">
             join for free
           </Button>
         </div>

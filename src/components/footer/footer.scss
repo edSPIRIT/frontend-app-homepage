@@ -16,6 +16,7 @@
   .btn {
     width: 129px;
     height: 36px;
+    padding: 0;
     &::before {
       content: '';
       display: block;
@@ -23,10 +24,11 @@
       width: 20px;
       height: 20px;
       float: left;
-      margin: 0 6px 0 0;
+      margin: 0px 8px 0px 1px;
     }
     &::after {
-      margin-left: 12px;
+      margin-left: 18px;
+      margin-right: 10px;
     }
   }
   .btn-outline-primary {
@@ -71,4 +73,12 @@
 .social-container {
   @extend .d-flex;
   gap: 10px;
+}
+.social-icon-footer {
+  cursor: pointer;
+}
+.footer-copy-right{
+  @extend .bg-light-300,.d-flex;
+  height: 52px;
+
 }

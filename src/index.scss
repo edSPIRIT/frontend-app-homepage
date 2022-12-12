@@ -9,7 +9,7 @@
 
 @import './styles/site_header';
 @import 'components/header-edspirit/header.scss';
-@import 'components/baner/banner.scss';
+@import 'components/banner/banner.scss';
 @import 'components/explorer-courses/explorer-courses.scss';
 @import 'components/popular-subjects/popular-subjects.scss';
 @import 'components/footer/footer.scss';
@@ -17,3 +17,13 @@
 html * {
   font-family: Inter;
 }
+
+.custom-container {
+  width: 100%;
+  padding-right: 36px;
+  padding-left: 36px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1440px;
+}
+

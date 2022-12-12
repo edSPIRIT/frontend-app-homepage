@@ -8,7 +8,7 @@ import { KNOW_US_FOOTER, USEFUL_LINKS_FOOTER } from '../../constants';
 
 const Footer = () => (
   <footer>
-    <div className="container mb-4 ">
+    <div className="custom-container mb-4 pt-5">
       <div className="row">
         <div className="col col-6">
           <div className="d-flex flex-column">
@@ -67,15 +67,15 @@ const Footer = () => (
             </DropdownButton>
           </div>
           <div className="social-container">
-            <img src={linkedin} alt="" />
-            <img src={facebook} alt="" />
-            <img src={reddit} alt="" />
+            <img className="social-icon-footer" src={linkedin} alt="" />
+            <img className="social-icon-footer" src={facebook} alt="" />
+            <img className="social-icon-footer" src={reddit} alt="" />
           </div>
         </div>
       </div>
     </div>
-    <div className="w-100 bg-light-300 py-2">
-      <div className="container d-flex justify-content-between align-items-center ">
+    <div className="footer-copy-right ">
+      <div className="custom-container d-flex justify-content-between align-items-center ">
         <div className="d-flex align-items-center">
           <img
             className="footer-logo  mr-2"

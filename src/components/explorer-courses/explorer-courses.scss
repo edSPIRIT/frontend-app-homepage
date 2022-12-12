@@ -1,3 +1,7 @@
+.explore-courses-container {
+  @extend .py-6;
+  background-color: $light-200;
+}
 .highlight-title {
   color: $brand;
 }
@@ -7,6 +11,15 @@
   color: $gray-500;
 }
 .pgn__card {
+  width: 324px;
+  height: 416px;
+  box-shadow: unset;
+  .pgn__card-image-cap {
+    height: 92px;
+  }
+  .pgn__card-section {
+    padding: 1.25rem 1.25rem 0 1.25rem;
+  }
   .btn-primary {
     width: 100%;
     color: $primary;
@@ -26,4 +39,25 @@
   .nav-link {
     border-bottom: 2px solid #e9e6e4;
   }
+  .active {
+    color: $gray-700 !important;
+  }
+}
+.nav-item {
+  background-color: unset !important;
+  color: $gray-500;
+}
+.text-black {
+  color: $black;
+}
+.btn-card-container {
+  .btn {
+    width: 276px;
+    height: 44px;
+  }
+}
+.course-container {
+  @extend .d-flex, .justify-content-center;
+  flex-wrap: wrap;
+  gap: 24px;
 }

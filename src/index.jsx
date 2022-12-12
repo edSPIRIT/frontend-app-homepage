@@ -25,7 +25,6 @@ subscribe(APP_READY, () => {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/home" component={HomePage} />
-
       </Switch>
       <Footer />
     </AppProvider>,

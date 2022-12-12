@@ -1,0 +1,41 @@
+.chip-btn-container {
+  @extend .d-flex, .justify-content-center, .mb-5;
+  .chip-btn {
+    height: 28px;
+    font-size: 0.75rem;
+  }
+  .btn-outline-primary {
+    border-color: $gray-200 !important;
+  }
+}
+.programs-container {
+  @extend .d-flex;
+  gap: 24px;
+  .pgn__card {
+    background-color: $primary-700;
+    height: 288px;
+  }
+}
+.program-title {
+  @extend .mb-1;
+  color: $white;
+}
+.program-link{
+ color:$light-300;
+  &:hover {
+    color: $light-300;
+  }
+}
+.program-desc{
+  font-size: 0.75rem;
+    color: $white;
+
+}
+.program-card-container{
+  .btn{
+    width: 58px;
+    height: 28px;
+    color:$light-300;
+    border-color: $light-300;
+  }
+}
