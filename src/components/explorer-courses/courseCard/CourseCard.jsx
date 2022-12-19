@@ -14,17 +14,18 @@ const CourseCard = ({ info }) => {
   return (
     <Card>
       <Card.ImageCap src={cover} logoSrc={logo} variant="top" alt="" />
-      <div className="mt-4.5 ml-4">
-        <h4 className="mb-1 font-weight-bold">{title}</h4>
+      <div className="mt-4.5 px-4">
+        <h4 className="mb-1 course-title">{title}</h4>
         <a href="#institution">{institution}</a>
       </div>
       <span className="cards-spacing" />
-
       <Card.Section>
-        <div className="d-flex flex-column mb-3">
+        <div className="d-flex flex-column mb-3 mt-auto">
           <div className="d-flex flex-row align-items-center mb-2">
             <Icon className="card-icon" src={Person} />
-            <a className="text-black" href="#instructor">{instructor}</a>
+            <a className="text-black" href="#instructor">
+              {instructor}
+            </a>
           </div>
           <div className="d-flex flex-row align-items-center mb-2">
             <Icon className="card-icon" src={BookOpen} />
@@ -37,7 +38,6 @@ const CourseCard = ({ info }) => {
           <span className="text-gray-500">$100 . Available Now</span>
         </div>
       </Card.Section>
-
       <Card.Footer>
         <div className="btn-card-container">
           <Button variant="primary" size="lg" href="#course">

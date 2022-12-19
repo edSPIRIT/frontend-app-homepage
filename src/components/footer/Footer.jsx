@@ -5,6 +5,7 @@ import linkedin from '../../assets/linkedin.svg';
 import facebook from '../../assets/facebook.svg';
 import reddit from '../../assets/reddit.svg';
 import { KNOW_US_FOOTER, USEFUL_LINKS_FOOTER } from '../../constants';
+import moodyLogo from '../../assets/Moody-logo.svg';
 
 const Footer = () => (
   <footer>
@@ -12,14 +13,13 @@ const Footer = () => (
       <div className="row">
         <div className="col col-6">
           <div className="d-flex flex-column">
-            <img
-              className="mb-4 footer-logo"
-              src="https://edx-orgs-test.s3.eu-central-1.amazonaws.com/moody-toy/admin_console/images/logo.png/download.png?57"
-              alt="edspirit-logo"
-              width="112px"
-              height="32px"
-            />
-
+            <div className="logo-container mb-4">
+              <img
+                className="footer-logo h-100"
+                src={moodyLogo}
+                alt=""
+              />
+            </div>
             <span>
               EDspirit is a hosted Open edX learning managment system wich can
               be acquired and lunched within minutes.
@@ -77,13 +77,13 @@ const Footer = () => (
     <div className="footer-copy-right ">
       <div className="custom-container d-flex justify-content-between align-items-center ">
         <div className="d-flex align-items-center">
-          <img
-            className="footer-logo  mr-2"
-            src={edLogo}
-            alt=""
-            width="112px"
-            height="32px"
-          />
+          <div className="logo-container">
+            <img
+              className="footer-logo  mr-2 h-100"
+              src={edLogo}
+              alt=""
+            />
+          </div>
           <span className="footer-desc">© Copyright Notion Wave, 2022.</span>
         </div>
         <span className="footer-desc">

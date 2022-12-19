@@ -3,3 +3,11 @@
   align-items: center;
   justify-content: space-between;
 }
+
+@mixin line-break($line-clamp) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line-clamp;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

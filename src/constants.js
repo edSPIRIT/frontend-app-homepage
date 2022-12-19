@@ -339,24 +339,18 @@ export const USEFUL_LINKS_FOOTER = [
 ];
 export const TOP_PROGRAM = [
   {
-    title: 'C++ Programming: Basic',
+    title: 'Computer Science',
     institution: 'Codio',
     cover:
       'https://prod-discovery.edx-cdn.org/media/course/image/59dd2022-3076-4677-ae8b-58b521077ca1-c9ad40423ed7.small.png',
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dd7e4312-e4df-4d81-a126-5885865ab0d5-8c68a40ac0f3.png',
-    instructor: 'David Joyner',
-    lessons: '8 Lessons',
-    time: '5 Hours',
   },
   {
-    title: 'Computing in Python II',
+    title: 'Computer Science for  Web Programming',
     institution: 'GTx',
     cover:
       'https://prod-discovery.edx-cdn.org/media/course/image/f30fbd27-46af-4ce3-935a-104fe2c6b9c8-1c4459a85331.small.jpg',
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/8537d31f-01b4-40fd-b652-e17b38eefe41-7956b2a3cd04.png',
-    instructor: 'Rav Ahuja',
-    lessons: '9 Lessons',
-    time: '7 Hours',
   },
   {
     title: 'Advanced Programming',
@@ -364,19 +358,13 @@ export const TOP_PROGRAM = [
     cover:
       'https://prod-discovery.edx-cdn.org/media/programs/card_images/865bbad4-6643-4d59-85d3-936cf3a7acf4-3720dd824793.jpg',
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dc6d25de-0dac-43e6-a915-e362bf8b4403-917c4e000b69.png',
-    instructor: 'Michel Buffa',
-    lessons: '5 Lessons',
-    time: '3 Hours',
   },
   {
-    title: 'Statistics and R',
+    title: 'Big Data for Education',
     institution: 'UPValenciaX',
     cover:
       'https://prod-discovery.edx-cdn.org/media/programs/card_images/0de98c3a-0a5a-4cf2-b0a0-634862d47e11-27353a61855f.jpg',
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/518a47f2-66fb-4529-8902-a4f7ca3002ef-78d294b01e63.png',
-    instructor: 'Upkar Lidder',
-    lessons: '13 Lessons',
-    time: '10 Hours',
   },
   {
     title: 'Advanced Programming',
@@ -384,8 +372,5 @@ export const TOP_PROGRAM = [
     cover:
       'https://prod-discovery.edx-cdn.org/media/programs/card_images/865bbad4-6643-4d59-85d3-936cf3a7acf4-3720dd824793.jpg',
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dc6d25de-0dac-43e6-a915-e362bf8b4403-917c4e000b69.png',
-    instructor: 'Michel Buffa',
-    lessons: '5 Lessons',
-    time: '3 Hours',
   },
 ];

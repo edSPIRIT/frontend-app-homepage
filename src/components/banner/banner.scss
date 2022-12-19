@@ -3,21 +3,22 @@
   white-space: pre-line;
 }
 
-  .display-1 {
-    @extend  .mb-4;
-    color: $white;
-  }
+.display-1 {
+  @extend .mb-4;
+  color: $white;
+  width: 512px;
+}
 
-  .highlighted {
-    color: $brand;
-  }
+.highlighted {
+  color: $brand;
+}
 
 .hero-desc {
   @extend .text-light-300, .mb-4;
   font-size: 1.125rem;
   width: 728px;
 }
-.hero-image{
+.hero-image {
   object-fit: contain;
   width: 100%;
   max-height: 318px;
@@ -50,11 +51,6 @@
     border-radius: 4px !important;
   }
   .form-control {
-    height: 100%;
     font-size: 1.125rem;
   }
 }
-.banner-link {
-  color: $accent-a !important;
-}
-
