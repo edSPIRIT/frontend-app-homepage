@@ -13,6 +13,7 @@
 @import 'components/explorer-courses/explorer-courses.scss';
 @import 'components/popular-subjects/popular-subjects.scss';
 @import 'components/footer/footer.scss';
+@import 'components/top-programs/top-programs.scss';
 
 html * {
   font-family: Inter;
@@ -27,3 +28,9 @@ html * {
   max-width: 1440px;
 }
 
+@media (max-width: 1280px) {
+  .custom-container {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
