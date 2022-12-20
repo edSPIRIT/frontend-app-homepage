@@ -1,6 +1,6 @@
 import { Tab, Tabs } from '@edx/paragon';
 import { useState } from 'react';
-import { COURSES_INFO, COURSES_INFO_TOP } from '../../constants';
+import { COURSES_INFO, COURSES_INFO_TOP } from '../../../constants';
 import CourseCard from './courseCard/CourseCard';
 
 const ExplorerCourses = () => {

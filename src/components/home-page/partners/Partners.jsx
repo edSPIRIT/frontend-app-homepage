@@ -1,5 +1,5 @@
 import React from 'react';
-import { PARTNERS_LOGO } from '../../constants';
+import { PARTNERS_LOGO } from '../../../constants';
 
 const Partners = () => (
   <section id="partners" className="py-6">

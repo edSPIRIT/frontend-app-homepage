@@ -7,13 +7,13 @@
 @import './styles/variables';
 @import './styles/mixins';
 
-@import './styles/site_header';
-@import 'components/header-edspirit/header.scss';
-@import 'components/banner/banner.scss';
-@import 'components/explorer-courses/explorer-courses.scss';
-@import 'components/popular-subjects/popular-subjects.scss';
-@import 'components/footer/footer.scss';
-@import 'components/top-programs/top-programs.scss';
+@import 'components/shared/header-home/header.scss';
+@import 'components/shared/footer/footer.scss';
+@import 'components/home-page/banner/banner.scss';
+@import 'components/home-page/explorer-courses/explorer-courses.scss';
+@import 'components/home-page/popular-subjects/popular-subjects.scss';
+@import 'components/home-page/top-programs/top-programs.scss';
+@import 'components/shared/header-dashboard/header-dashboard.scss';
 
 html * {
   font-family: Inter;

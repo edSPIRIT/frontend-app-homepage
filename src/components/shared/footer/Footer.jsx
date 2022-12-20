@@ -1,11 +1,11 @@
 import { Dropdown, DropdownButton } from '@edx/paragon';
 import React from 'react';
-import edLogo from '../../assets/edspirit-logo.png';
-import linkedin from '../../assets/linkedin.svg';
-import facebook from '../../assets/facebook.svg';
-import reddit from '../../assets/reddit.svg';
-import { KNOW_US_FOOTER, USEFUL_LINKS_FOOTER } from '../../constants';
-import moodyLogo from '../../assets/Moody-logo.svg';
+import edLogo from '../../../assets/edspirit-logo.png';
+import linkedin from '../../../assets/linkedin.svg';
+import facebook from '../../../assets/facebook.svg';
+import reddit from '../../../assets/reddit.svg';
+import { KNOW_US_FOOTER, USEFUL_LINKS_FOOTER } from '../../../constants';
+import moodyLogo from '../../../assets/Moody-logo.svg';
 
 const Footer = () => (
   <footer>

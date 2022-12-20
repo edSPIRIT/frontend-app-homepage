@@ -2,8 +2,8 @@ import { Button, SearchField } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import React, { useEffect, useState } from 'react';
 import { getConfig } from '@edx/frontend-platform';
-import { PROGRAMS_ITEMS_NAV } from '../../constants';
-import moodyLogo from '../../assets/Moody-logo.svg';
+import moodyLogo from '../../../assets/Moody-logo.svg';
+import { PROGRAMS_ITEMS_NAV } from '../../../constants';
 
 const HeaderED = () => {
   const [SubjectData, setSubjectData] = useState();
@@ -119,10 +119,10 @@ const HeaderED = () => {
             </Button>
           </div>
           <div className="sign-in-container">
-            <Button variant="tertiary" className="mx-1">
+            <Button variant="tertiary" className="mx-1" href={`${getConfig().LMS_BASE_URL}/login`}>
               Sign in
             </Button>
-            <Button variant="primary">
+            <Button variant="primary" href={`${getConfig().LMS_BASE_URL}/register`}>
               Join
             </Button>
           </div>

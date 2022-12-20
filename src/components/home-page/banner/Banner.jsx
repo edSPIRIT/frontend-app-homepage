@@ -49,7 +49,7 @@ const Banner = () => {
         </div>
 
         <div className="col col-5 d-flex align-items-center justify-content-center">
-          <Image className="hero-image" src={`${getConfig().LMS_BASE_URL}${BannerData?.image}`} alt="banner_image" />
+          <Image className="hero-image" src={BannerData?.image} alt="banner_image" />
         </div>
       </div>
     </section>

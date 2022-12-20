@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowForwardIos } from '@edx/paragon/icons';
 import { Icon } from '@edx/paragon';
-import { SUBJECTS_ITEMS } from '../../constants';
+import { SUBJECTS_ITEMS } from '../../../constants';
 
 const PopularSubjects = () => (
   <section className="py-6">
