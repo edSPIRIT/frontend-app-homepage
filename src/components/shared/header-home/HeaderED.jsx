@@ -6,7 +6,7 @@ import moodyLogo from '../../../assets/Moody-logo.svg';
 import { PROGRAMS_ITEMS_NAV } from '../../../constants';
 
 const HeaderED = () => {
-  const [SubjectData, setSubjectData] = useState();
+  const [SubjectData, setSubjectData] = useState({});
   const getSubjectData = async () => {
     try {
       const Res = await fetch(`${getConfig().LMS_BASE_URL}/admin-console/api/subject-list/`);
@@ -30,7 +30,7 @@ const HeaderED = () => {
               alt="edspirit-logo"
             />
           </div>
-          <div className="dropdown-container">
+          <nav className="dropdown-container">
             <div className="dropdown-nav-header">
               <div className="mx-2">
                 <span className="nav-item-text">
@@ -40,10 +40,10 @@ const HeaderED = () => {
               <div className="dropdown-content">
                 <div className="menu-tab">
                   <ul className="col-ul disco-hack-main-nav-ul mb-4">
-                    {SubjectData?.map((item) => (
+                    {SubjectData.items?.map((item) => (
                       <li className="col-li">
                         <a className="custom-link" href="/learn/architecture">
-                          {item.name}
+                          {item.title}
                         </a>
                       </li>
                     ))}
@@ -51,7 +51,7 @@ const HeaderED = () => {
                   <div className="tab-header d-flex justify-content-between">
                     <div>
                       <span className="text-gray-500 mr-1">Total Course:</span>
-                      <span className="font-weight-bold">203.439</span>
+                      <span className="font-weight-bold">{SubjectData?.course_counter}</span>
                     </div>
                     <Button
                       variant="outline-primary"
@@ -105,7 +105,7 @@ const HeaderED = () => {
                 Partners
               </a>
             </div>
-          </div>
+          </nav>
         </div>
         <div className="d-flex">
           <SearchField

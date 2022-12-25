@@ -20,10 +20,10 @@ const Footer = () => (
                 alt=""
               />
             </div>
-            <span>
+            <p>
               EDspirit is a hosted Open edX learning managment system wich can
               be acquired and lunched within minutes.
-            </span>
+            </p>
           </div>
         </div>
 
@@ -84,11 +84,11 @@ const Footer = () => (
               alt=""
             />
           </div>
-          <span className="footer-desc">© Copyright Notion Wave, 2022.</span>
+          <p className="footer-desc">© Copyright Notion Wave, 2022.</p>
         </div>
-        <span className="footer-desc">
+        <p className="footer-desc">
           edX and Open edX are trademarks of edX LLC. All Rights Reserved
-        </span>
+        </p>
       </div>
     </div>
   </footer>

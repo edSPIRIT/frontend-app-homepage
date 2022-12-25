@@ -7,16 +7,17 @@
 @import './styles/variables';
 @import './styles/mixins';
 
-@import 'components/shared/header-home/header.scss';
-@import 'components/shared/footer/footer.scss';
+
 @import 'components/home-page/banner/banner.scss';
 @import 'components/home-page/explorer-courses/explorer-courses.scss';
 @import 'components/home-page/popular-subjects/popular-subjects.scss';
 @import 'components/home-page/top-programs/top-programs.scss';
-@import 'components/shared/header-dashboard/header-dashboard.scss';
+@import 'components/shared/shared.scss';
+@import 'components/overview-page/overview.scss';
+@import 'components/inProgress-page/inProgress.scss';
 
-html * {
-  font-family: Inter;
+body {
+  // font-family: $font-family-sans-serif;
 }
 
 .custom-container {

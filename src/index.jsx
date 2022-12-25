@@ -17,9 +17,9 @@ import './index.scss';
 import Home from './components/home-page/Home';
 import Layout from './components/shared/Layout';
 import Search from './pages/Search';
-import InProgress from './pages/InProgress';
 import Completed from './pages/Completed';
-import DashboardPage from './components/dashboard-page/DashboardPage';
+import OverviewPage from './components/overview-page/OverviewPage';
+import InProgress from './components/inProgress-page/InProgress';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
@@ -27,7 +27,8 @@ subscribe(APP_READY, () => {
       <Layout>
         <Switch>
           <Route exact path="/home" component={Home} />
-          <Route exact path="/overview" component={DashboardPage} />
+          <Route exact path="/overview" component={OverviewPage} />
+          <Route exact path="/dashboard" component={OverviewPage} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/inProgress" component={InProgress} />
           <Route exact path="/complete" component={Completed} />

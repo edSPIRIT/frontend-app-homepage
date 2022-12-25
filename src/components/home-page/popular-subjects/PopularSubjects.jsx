@@ -1,25 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowForwardIos } from '@edx/paragon/icons';
 import { Icon } from '@edx/paragon';
-import { SUBJECTS_ITEMS } from '../../../constants';
+import { getConfig } from '@edx/frontend-platform';
 
-const PopularSubjects = () => (
-  <section className="py-6">
-    <div className="custom-container">
-      <h2 className="d-flex justify-content-center mb-5">
-        Popular<span className="highlight-title ml-2">Subjects</span>
-      </h2>
-      <div className="d-flex  justify-content-center flex-wrap">
-        {SUBJECTS_ITEMS.map((subject) => (
-          <div className="subject-container">
-            <img className="subject-img" src={subject.cover} alt="" />
-            <h4 className="subject-title mr-2">{subject.title}</h4>
-            <Icon className="subject-icon" src={ArrowForwardIos} />
-          </div>
-        ))}
+const PopularSubjects = () => {
+  const [popularSubjectData, setPopularSubjectData] = useState({});
+  const getBannerData = async () => {
+    try {
+      const Res = await fetch(`${getConfig().LMS_BASE_URL}/admin-console/api/subject-list/?popular=true`);
+      const Data = await Res.json();
+      setPopularSubjectData(Data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  useEffect(() => {
+    getBannerData();
+  }, []);
+  return (
+    <section className="py-6">
+      <div className="custom-container">
+        <h2 className="d-flex justify-content-center mb-5">
+          Popular<span className="highlight-title ml-2">Subjects</span>
+        </h2>
+        <div className="d-flex  justify-content-center flex-wrap">
+          {popularSubjectData.items?.map((subject) => (
+            <div className="subject-container">
+              <img className="subject-img" src={subject.image} alt="" />
+              <h4 className="subject-title mr-2">{subject.title}</h4>
+              <Icon className="subject-icon" src={ArrowForwardIos} />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default PopularSubjects;

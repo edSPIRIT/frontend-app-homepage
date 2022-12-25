@@ -10,7 +10,7 @@ const Banner = () => {
   const [BannerData, setBannerData] = useState();
   const getBannerData = async () => {
     try {
-      const Res = await fetch(`${getConfig().LMS_BASE_URL}/admin-console/api/banner/`);
+      const Res = await fetch(`${getConfig().LMS_BASE_URL}/admin-console/api/welcome-section/`);
       const Data = await Res.json();
       setBannerData(Data);
     } catch (e) {

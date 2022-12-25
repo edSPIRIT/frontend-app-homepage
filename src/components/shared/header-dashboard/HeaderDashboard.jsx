@@ -14,29 +14,22 @@ const HeaderDashboard = () => {
             <img className="h-100" src={moodyLogo} alt="edspirit-logo" />
           </div>
           <nav>
-            <ul className="d-flex align-items-center nav-list">
-              <li>
-                <a
-                  className="dashboard-header-link mr-4"
-                  to="/dashboard"
-                >
-                  Overview
-                </a>
+            <ul className="nav-wrapper">
+              <li className="active">
+                <div className="border-bottom" />
+                <a to="/dashboard">Overview</a>
               </li>
-              <li>
-                <a className="dashboard-header-link mr-4" to="/inProgress">
-                  In Progress
-                </a>
+              <li className="">
+                <div className="border-bottom" />
+                <a to="/inProgress">In Progress</a>
               </li>
-              <li>
-                <a className="dashboard-header-link mr-4" to="/completed">
-                  Completed
-                </a>
+              <li className="">
+                <div className="border-bottom" />
+                <a to="/completed">Completed</a>
               </li>
-              <li>
-                <a className="dashboard-header-link mr-4" to="/search">
-                  Discover
-                </a>
+              <li className="">
+                <div className="border-bottom" />
+                <a to="/search">Discover</a>
               </li>
             </ul>
           </nav>
