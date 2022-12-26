@@ -16,10 +16,10 @@ import appMessages from './i18n';
 import './index.scss';
 import Home from './components/home-page/Home';
 import Layout from './components/shared/Layout';
-import Search from './pages/Search';
-import Completed from './pages/Completed';
 import OverviewPage from './components/overview-page/OverviewPage';
 import InProgress from './components/inProgress-page/InProgress';
+import Completed from './components/completed-page/Completed';
+import Discover from './components/discover-page/Discover';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
@@ -29,9 +29,10 @@ subscribe(APP_READY, () => {
           <Route exact path="/home" component={Home} />
           <Route exact path="/overview" component={OverviewPage} />
           <Route exact path="/dashboard" component={OverviewPage} />
-          <Route exact path="/search" component={Search} />
+          <Route exact path="/search" component={Discover} />
+          <Route exact path="/discover" component={Discover} />
           <Route exact path="/inProgress" component={InProgress} />
-          <Route exact path="/complete" component={Completed} />
+          <Route exact path="/completed" component={Completed} />
           <Route exact path="/" component={Home} />
         </Switch>
       </Layout>

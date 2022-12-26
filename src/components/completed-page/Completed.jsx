@@ -1,30 +1,21 @@
-import { Pagination } from '@edx/paragon';
 import AdCard from '../shared/ad-card/adCard';
 import HeaderDashboard from '../shared/header-dashboard/HeaderDashboard';
 import HorizontalCard from '../shared/horizontal-card/HorizontalCard';
 import TotalCourseWrapper from '../shared/total-course-wrapper/TotalCourseWrapper';
 
-const InProgress = () => (
+const Completed = () => (
   <main>
     <HeaderDashboard />
     <div className="d-flex custom-container py-5">
       <div className="mr-4">
         <TotalCourseWrapper />
         <div>
-          <HorizontalCard progressValue="30" />
-          <HorizontalCard />
-          <HorizontalCard isProgram />
-          <HorizontalCard isProgram progressValue="40" />
+          <HorizontalCard isCompleted />
+          <HorizontalCard isProgram isCompleted />
         </div>
-        <Pagination
-          className="d-flex justify-content-center"
-          paginationLabel="pagination navigation"
-          pageCount={20}
-          onPageSelect={() => console.log('page selected')}
-        />
       </div>
       <AdCard />
     </div>
   </main>
 );
-export default InProgress;
+export default Completed;

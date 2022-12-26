@@ -2,7 +2,7 @@ import { Button } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import { useState } from 'react';
 import HeaderDashboard from '../shared/header-dashboard/HeaderDashboard';
-import HorizontalCourseCard from '../shared/horizontal-course-card/HorizontalCourseCard';
+import HorizontalCard from '../shared/horizontal-card/HorizontalCard';
 import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
 import RecommendationCourse from './recommendation-course/RecommendationCourse';
@@ -38,8 +38,8 @@ const OverviewPage = () => {
                     View All
                   </Button>
                 </div>
-                <HorizontalCourseCard />
-                <HorizontalCourseCard isProgram />
+                <HorizontalCard progressValue={33} showButtons={false} />
+                <HorizontalCard isProgram progressValue={60} showButtons={false} />
               </div>
               <div className="recommended-program-wrapper">
                 <RecommendationProgram />

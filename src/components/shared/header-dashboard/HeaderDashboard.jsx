@@ -1,11 +1,12 @@
 import {
   AvatarButton, Button, Dropdown, SearchField,
 } from '@edx/paragon';
+import classNames from 'classnames';
 import React from 'react';
 import moodyLogo from '../../../assets/Moody-logo.svg';
 
 const HeaderDashboard = () => {
-  console.log(window.location);
+  const route = window.location.pathname.replace('/', '');
   return (
     <header>
       <div className="d-flex flex-row justify-content-between align-items-center dashboard-header-container">
@@ -15,19 +16,35 @@ const HeaderDashboard = () => {
           </div>
           <nav>
             <ul className="nav-wrapper">
-              <li className="active">
+              <li
+                className={classNames({
+                  active: route === 'overview',
+                })}
+              >
                 <div className="border-bottom" />
                 <a to="/dashboard">Overview</a>
               </li>
-              <li className="">
+              <li
+                className={classNames({
+                  active: route === 'inProgress',
+                })}
+              >
                 <div className="border-bottom" />
-                <a to="/inProgress">In Progress</a>
+                <a to="/inprogress">In Progress</a>
               </li>
-              <li className="">
+              <li
+                className={classNames({
+                  active: route === 'completed',
+                })}
+              >
                 <div className="border-bottom" />
                 <a to="/completed">Completed</a>
               </li>
-              <li className="">
+              <li
+                className={classNames({
+                  active: route === 'search' || route === 'discover',
+                })}
+              >
                 <div className="border-bottom" />
                 <a to="/search">Discover</a>
               </li>
@@ -41,7 +58,7 @@ const HeaderDashboard = () => {
             placeholder="What do you want to learn?"
           />
           <div className="d-flex align-items-center">
-            <Button variant="tertiary" className="mx-1">
+            <Button variant="tertiary" className="mx-1" size="sm">
               Help
             </Button>
           </div>

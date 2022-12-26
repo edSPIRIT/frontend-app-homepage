@@ -114,15 +114,15 @@ const HeaderED = () => {
             placeholder="What do you want to learn?"
           />
           <div className="d-flex align-items-center">
-            <Button variant="tertiary" className="mx-1">
+            <Button variant="tertiary" size="sm" className="mx-1">
               Help
             </Button>
           </div>
           <div className="sign-in-container">
-            <Button variant="tertiary" className="mx-1" href={`${getConfig().LMS_BASE_URL}/login`}>
+            <Button variant="tertiary" className="mx-1" size="sm" href={`${getConfig().LMS_BASE_URL}/login`}>
               Sign in
             </Button>
-            <Button variant="primary" href={`${getConfig().LMS_BASE_URL}/register`}>
+            <Button variant="primary" size="sm" href={`${getConfig().LMS_BASE_URL}/register`}>
               Join
             </Button>
           </div>

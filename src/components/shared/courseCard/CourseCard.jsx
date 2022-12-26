@@ -40,7 +40,7 @@ const CourseCard = ({ info }) => {
       </Card.Section>
       <Card.Footer>
         <div className="btn-card-container">
-          <Button variant="primary" size="lg" href="#course">
+          <Button variant="primary" href="#course">
             Learn more
           </Button>
         </div>

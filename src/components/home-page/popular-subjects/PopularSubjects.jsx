@@ -7,7 +7,11 @@ const PopularSubjects = () => {
   const [popularSubjectData, setPopularSubjectData] = useState({});
   const getBannerData = async () => {
     try {
-      const Res = await fetch(`${getConfig().LMS_BASE_URL}/admin-console/api/subject-list/?popular=true`);
+      const Res = await fetch(
+        `${
+          getConfig().LMS_BASE_URL
+        }/admin-console/api/subject-list/?popular=true`,
+      );
       const Data = await Res.json();
       setPopularSubjectData(Data);
     } catch (e) {
@@ -24,13 +28,15 @@ const PopularSubjects = () => {
           Popular<span className="highlight-title ml-2">Subjects</span>
         </h2>
         <div className="d-flex  justify-content-center flex-wrap">
-          {popularSubjectData.items?.map((subject) => (
-            <div className="subject-container">
-              <img className="subject-img" src={subject.image} alt="" />
-              <h4 className="subject-title mr-2">{subject.title}</h4>
-              <Icon className="subject-icon" src={ArrowForwardIos} />
-            </div>
-          ))}
+          {popularSubjectData.items
+            ?.filter((item) => item.popular)
+            .map((item) => (
+              <div className="subject-container">
+                <img className="subject-img" src={item.image} alt="" />
+                <h4 className="subject-title mr-2">{item.title}</h4>
+                <Icon className="subject-icon" src={ArrowForwardIos} />
+              </div>
+            ))}
         </div>
       </div>
     </section>
