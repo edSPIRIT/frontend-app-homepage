@@ -1,50 +1,39 @@
-import { getConfig } from '@edx/frontend-platform';
-import classNames from 'classnames';
 import React from 'react';
-import { useLocation } from 'react-router';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const NavHeader = () => {
-  const location = useLocation();
-
-  return (
-    <nav>
-      <ul className="nav-wrapper">
-        <li
-          className={classNames({
-            active: location.pathname === '/overview' || location.pathname === '/dashboard',
-          })}
-        >
+const NavHeader = () => (
+  <nav>
+    <ul className="nav-wrapper">
+      <li>
+        <div className="border-bottom" />
+        <NavLink to="/overview" activeClassName="active">
           <div className="border-bottom" />
-          <Link to="/dashboard">Overview</Link>
-        </li>
-        <li
-          className={classNames({
-            active: location.pathname === '/inprogress',
-          })}
-        >
+          Overview
+        </NavLink>
+      </li>
+      <li>
+        <div className="border-bottom" />
+        <NavLink to="/inprogress" activeClassName="active">
           <div className="border-bottom" />
-          <Link to="/inprogress">In Progress</Link>
-        </li>
-        <li
-          className={classNames({
-            active: location.pathname === '/completed',
-          })}
-        >
+          In Progress
+        </NavLink>
+      </li>
+      <li>
+        <div className="border-bottom" />
+        <NavLink to="/completed" activeClassName="active">
           <div className="border-bottom" />
-          <a href="/completed">Completed</a>
-        </li>
-        <li
-          className={classNames({
-            active: location.pathname === '/search' || location.pathname === '/discover',
-          })}
-        >
+          Completed
+        </NavLink>
+      </li>
+      <li>
+        <div className="border-bottom" />
+        <NavLink to="/search" activeClassName="active">
           <div className="border-bottom" />
-          <Link to={`${getConfig().LMS_BASE_URL}/search`}>Discover</Link>
-        </li>
-      </ul>
-    </nav>
-  );
-};
+          Discover
+        </NavLink>
+      </li>
+    </ul>
+  </nav>
+);
 
 export default NavHeader;

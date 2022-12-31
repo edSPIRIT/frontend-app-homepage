@@ -1,7 +1,8 @@
 .dropdown-container {
-  @extend .d-flex;
+  display: grid;
   height: 76px;
   gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 4fr));
   .dropdown-nav-header {
     @extend .d-flex, .align-items-center, .position-relative;
     &:hover {
@@ -9,13 +10,14 @@
       background-color: $gray-300;
       .nav-item-text {
         color: $white;
+        font-weight: bold;
       }
       .dropdown-content {
         display: block;
       }
     }
     .nav-item-text {
-      @extend .d-flex, .align-items-center, .font-weight-bold;
+      @extend .d-flex, .align-items-center;
       &::after {
         content: '';
         width: 0.5rem;
@@ -76,10 +78,11 @@
     background-color: $gray-300;
     a {
       color: $white;
+      font-weight: bold;
     }
   }
   a {
-    @extend .font-weight-bold, .mx-2;
+    @extend .mx-2;
     text-decoration: none;
     color: $gray-700;
     &:hover {

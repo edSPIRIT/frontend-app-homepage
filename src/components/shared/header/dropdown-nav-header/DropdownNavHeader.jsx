@@ -10,7 +10,7 @@ const DropdownNavHeader = () => {
   return (
     <nav className="dropdown-container">
       <div className="dropdown-nav-header">
-        <span className="nav-item-text mx-2">Subjects</span>
+        <span className="nav-item-text mx-2" title="Subjects">Subjects</span>
         <div className="dropdown-content">
           <div className="menu-tab">
             <ul className="mb-4">
@@ -39,7 +39,7 @@ const DropdownNavHeader = () => {
         </div>
       </div>
       <div className="dropdown-nav-header">
-        <span className="nav-item-text mx-2">Programs</span>
+        <span className="nav-item-text mx-2" title="Programs">Programs</span>
         <div className="dropdown-content">
           <div className="menu-tab">
             <ul className="list-group">

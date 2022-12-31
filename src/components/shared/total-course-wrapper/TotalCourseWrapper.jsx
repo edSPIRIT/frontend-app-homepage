@@ -15,7 +15,7 @@ const TotalCourseWrapper = () => {
       </p>
       <Dropdown
         onToggle={(isOpen) => setIsOpenDropDown(isOpen)}
-        className="mb-3 sort-wrapper"
+        className="sort-wrapper"
         onSelect={(e) => setValue(e)}
       >
         <Dropdown.Toggle id="dropdown-basic-4">

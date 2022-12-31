@@ -4,6 +4,7 @@ import {
 import { getConfig } from '@edx/frontend-platform';
 import { useLocation } from 'react-router';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import moodyLogo from '../../../assets/Moody-logo.svg';
 import DropdownNavHeader from './dropdown-nav-header/DropdownNavHeader';
 import NavHeader from './nav-header/NavHeader';
@@ -18,7 +19,9 @@ const HeaderED = () => {
       <div className="d-flex flex-row justify-content-between align-items-center header-wrapper">
         <div className="left-side-container">
           <div className="logo-container mr-4">
-            <img className="h-100" src={moodyLogo} alt="edspirit-logo" />
+            <Link to="/">
+              <img className="h-100" src={moodyLogo} alt="edspirit-logo" />
+            </Link>
           </div>
           {location.pathname === '/' || location.pathname === '/home' ? (
             <DropdownNavHeader />
