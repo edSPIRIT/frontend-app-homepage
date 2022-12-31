@@ -1,0 +1,17 @@
+.card-icon {
+  @extend .mr-2;
+  width: 20px;
+  color: $gray-500;
+}
+.course-title {
+  @include line-break(2);
+}
+.text-black {
+  color: $black;
+}
+.btn-card-container {
+  width: 100%;
+  .btn {
+    height: 44px;
+  }
+}

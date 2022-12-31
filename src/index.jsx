@@ -31,7 +31,7 @@ subscribe(APP_READY, () => {
           <Route exact path="/dashboard" component={OverviewPage} />
           <Route exact path="/search" component={Discover} />
           <Route exact path="/discover" component={Discover} />
-          <Route exact path="/inProgress" component={InProgress} />
+          <Route exact path="/inprogress" component={InProgress} />
           <Route exact path="/completed" component={Completed} />
           <Route exact path="/" component={Home} />
         </Switch>

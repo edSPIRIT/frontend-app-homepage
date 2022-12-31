@@ -353,7 +353,7 @@ export const TOP_PROGRAM = [
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/8537d31f-01b4-40fd-b652-e17b38eefe41-7956b2a3cd04.png',
   },
   {
-    title: 'Advanced Programming',
+    title: 'Advanced Programming I',
     institution: 'New york University',
     cover:
       'https://prod-discovery.edx-cdn.org/media/programs/card_images/865bbad4-6643-4d59-85d3-936cf3a7acf4-3720dd824793.jpg',
@@ -367,7 +367,7 @@ export const TOP_PROGRAM = [
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/518a47f2-66fb-4529-8902-a4f7ca3002ef-78d294b01e63.png',
   },
   {
-    title: 'Advanced Programming',
+    title: 'Advanced Programming II',
     institution: 'New york University',
     cover:
       'https://prod-discovery.edx-cdn.org/media/programs/card_images/865bbad4-6643-4d59-85d3-936cf3a7acf4-3720dd824793.jpg',

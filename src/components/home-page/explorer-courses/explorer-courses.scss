@@ -2,15 +2,6 @@
   @extend .py-6;
   background-color: $light-200;
 }
-.highlight-title {
-  color: $brand;
-}
-.card-icon {
-  @extend .mr-2;
-  width: 20px;
-  color: $gray-500;
-}
-
 .nav-tabs {
   border-bottom: unset;
   .nav-link {
@@ -19,21 +10,12 @@
   .active {
     color: $gray-700 !important;
   }
-}
-.nav-item {
-  background-color: unset !important;
-  color: $gray-500;
-}
-.text-black {
-  color: $black;
-}
-.btn-card-container {
-  width: 100%;
-  .btn {
-    width: 276px;
-    height: 44px;
+  .nav-item {
+    background-color: unset !important;
+    color: $gray-500;
   }
 }
+
 .course-container {
   display: grid;
   grid-template-columns: repeat(4, minmax(0px, 1fr));
@@ -63,10 +45,6 @@
     }
   }
 }
-.course-title {
-  @include line-break(2);
-}
-
 
 @media (max-width: 1350px) {
   .course-container {

@@ -1,16 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import Footer from './footer/Footer';
-import HeaderED from './header-home/HeaderED';
-import HeaderDashboard from './header-dashboard/HeaderDashboard';
+import Header from './header/Header';
 
 const Layout = ({ children }) => (
   <>
-    {/* <HeaderED />
-    <HeaderDashboard /> */}
+    <Header />
     {children}
     <Footer />
-
   </>
 );
 export default Layout;

@@ -11,7 +11,7 @@ const Partners = () => (
         industry-leading companies
       </span>
       <div className="d-flex justify-content-center ">
-        {PARTNERS_LOGO.map((partner) => <img className="mr-5" src={partner.logo} alt="" />)}
+        {PARTNERS_LOGO.map((partner) => <img key={partner.title} className="mr-5" src={partner.logo} alt="" />)}
       </div>
     </div>
   </section>

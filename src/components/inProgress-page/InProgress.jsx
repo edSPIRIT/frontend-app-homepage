@@ -1,12 +1,10 @@
 import { Pagination } from '@edx/paragon';
 import AdCard from '../shared/ad-card/adCard';
-import HeaderDashboard from '../shared/header-dashboard/HeaderDashboard';
 import HorizontalCard from '../shared/horizontal-card/HorizontalCard';
 import TotalCourseWrapper from '../shared/total-course-wrapper/TotalCourseWrapper';
 
 const InProgress = () => (
   <main>
-    <HeaderDashboard />
     <div className="d-flex custom-container py-5">
       <div className="mr-4">
         <TotalCourseWrapper />

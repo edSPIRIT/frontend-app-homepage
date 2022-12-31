@@ -1,0 +1,47 @@
+@import 'components/shared/header/nav-header/nav-header.scss';
+@import 'components/shared/header/dropdown-nav-header/dropdown-nav-header.scss';
+
+.header-wrapper {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15), 0px 1px 4px rgba(0, 0, 0, 0.15);
+}
+.search-header {
+  @extend .my-3;
+  width: 280px;
+}
+.left-side-container {
+  @extend .d-flex, .flex-row, .align-items-center;
+  padding-left: 36px;
+}
+.logo-container {
+  height: 32px;
+}
+.sign-in-container {
+  @extend .d-flex, .align-items-center;
+  background-color: #f2f0ef;
+  padding-right: 36px;
+  .btn {
+    .pgn__avatar {
+      margin-right: 11px;
+    }
+  }
+  .dropdown-menu {
+    border: unset;
+    min-width: 200px;
+    padding: unset;
+    box-shadow: 0px 2px 4px rgb(0 0 0 / 15%), 0px 2px 8px rgb(0 0 0 / 15%);
+    border-radius: 4px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .dropdown-item {
+    padding: 0.625rem 1rem;
+    color: $gray-700;
+    &:hover {
+      color: $black;
+    }
+    &:last-child {
+      color: $gray-500;
+    }
+  }
+}
+

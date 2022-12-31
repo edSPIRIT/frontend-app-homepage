@@ -1,18 +1,16 @@
 import { Button } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import { useState } from 'react';
-import HeaderDashboard from '../shared/header-dashboard/HeaderDashboard';
 import HorizontalCard from '../shared/horizontal-card/HorizontalCard';
 import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
-import RecommendationCourse from './recommendation-course/RecommendationCourse';
-import RecommendationProgram from './recommendation-program/RecommendationProgram';
+import RecommendedCourses from './recommended-courses/RecommendedCourses';
+import RecommendedPrograms from './recommended-programs/RecommendedPrograms';
 
 const OverviewPage = () => {
   const [notEnrolled, setNotEnrolled] = useState(false);
   return (
     <main>
-      <HeaderDashboard />
       {notEnrolled
         ? (
           <div className="custom-container d-flex flex-column mt-6">
@@ -42,10 +40,10 @@ const OverviewPage = () => {
                 <HorizontalCard isProgram progressValue={60} showButtons={false} />
               </div>
               <div className="recommended-program-wrapper">
-                <RecommendationProgram />
+                <RecommendedPrograms />
               </div>
             </div>
-            <RecommendationCourse />
+            <RecommendedCourses />
           </div>
         )}
 

@@ -16,22 +16,5 @@
 @import 'components/overview-page/overview.scss';
 @import 'components/inProgress-page/inProgress.scss';
 
-body {
-  // font-family: $font-family-sans-serif;
-}
 
-.custom-container {
-  width: 100%;
-  padding-right: 36px;
-  padding-left: 36px;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 1440px;
-}
 
-@media (max-width: 1280px) {
-  .custom-container {
-    padding-right: 24px;
-    padding-left: 24px;
-  }
-}

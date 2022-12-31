@@ -9,10 +9,6 @@
   width: 512px;
 }
 
-.highlighted {
-  color: $brand;
-}
-
 .hero-desc {
   @extend .text-light-300, .mb-4;
   font-size: 1.125rem;

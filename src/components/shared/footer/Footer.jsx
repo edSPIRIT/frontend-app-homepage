@@ -31,7 +31,7 @@ const Footer = () => (
           <h5 className="mb-2.5">Know Us</h5>
           <ul className="list-unstyled">
             {KNOW_US_FOOTER.map((nav) => (
-              <li className="mb-2 ">
+              <li className="mb-2" key={nav.title}>
                 <a className="custom-link" href={nav.link}>
                   {nav.title}
                 </a>
@@ -44,7 +44,7 @@ const Footer = () => (
           <h5 className="mb-2.5">Useful Links</h5>
           <ul className="list-unstyled">
             {USEFUL_LINKS_FOOTER.map((nav) => (
-              <li className="mb-2 ">
+              <li className="mb-2" key={nav.title}>
                 <a className="custom-link" href={nav.link}>
                   {nav.title}
                 </a>

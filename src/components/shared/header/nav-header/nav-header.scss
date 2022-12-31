@@ -1,0 +1,35 @@
+.nav-wrapper {
+  @extend .d-flex, .align-items-center;
+  position: relative;
+  margin-bottom: 0;
+  list-style: none;
+  gap: 1.5rem;
+  .active {
+    .border-bottom {
+      display: block;
+    }
+    a {
+      color: $black;
+      font-weight: 700;
+      &:hover {
+        color: $black;
+      }
+    }
+  }
+  .border-bottom {
+    display: none;
+    border-bottom: 4px solid $brand-500 !important;
+    width: 36px;
+    position: absolute;
+    bottom: -106%;
+  }
+  a {
+    color: $gray-700;
+    &:hover {
+      color: $gray-700;
+    }
+  }
+  li {
+    cursor: pointer;
+  }
+}

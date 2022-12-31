@@ -1,7 +1,50 @@
-@import 'components/shared/header-dashboard/header-dashboard.scss';
-@import 'components/shared/header-home/header.scss';
+@import 'components/shared/header/header.scss';
 @import 'components/shared/footer/footer.scss';
 @import 'components/shared/horizontal-card/horizontal-card.scss';
 @import 'components/shared/total-course-wrapper/total-course-wrapper.scss';
 @import 'components/shared/ad-card/ad-card.scss';
+@import 'components/shared/courseCard/course-card.scss';
 
+//search field
+.pgn__searchfield {
+  border-radius: 4px;
+}
+
+.has-focus {
+  box-shadow: 0px 0px 2px 3px $gray-200;
+}
+
+//
+.highlighted {
+  color: $brand;
+}
+
+//
+.custom-link {
+  color: $primary-700;
+  display: inline;
+  padding: 0;
+  text-decoration: none;
+  text-transform: none;
+
+  &:hover {
+    color: #00688d;
+    text-decoration: none;
+  }
+}
+
+.custom-container {
+  width: 100%;
+  padding-right: 36px;
+  padding-left: 36px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1440px;
+}
+
+@media (max-width: 1280px) {
+  .custom-container {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}

@@ -72,8 +72,8 @@ const HorizontalCard = ({
             )}
           </div>
           <p className="mb-3.5 org-title">Michigan X • Audit</p>
-          <p className="second-title">Access expired on 22 Jul 2022</p>
-          <div className="d-flex align-items-center justify-content-between  mt-4.5">
+          <p className="second-title mb-3.5">Access expired on 22 Jul 2022</p>
+          <div className="d-flex align-items-center justify-content-between">
             {progressValue ? <ProgressBar now={progressValue} label={`${progressValue}%`} /> : courseStatus()}
             { showButtons && (
             <div className="d-flex">
