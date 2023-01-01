@@ -20,6 +20,7 @@ import OverviewPage from './components/overview-page/OverviewPage';
 import InProgress from './components/inProgress-page/InProgress';
 import Completed from './components/completed-page/Completed';
 import Discover from './components/discover-page/Discover';
+import Instructor from './components/bio-page/Instructor';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
@@ -33,6 +34,9 @@ subscribe(APP_READY, () => {
           <Route exact path="/discover" component={Discover} />
           <Route exact path="/inprogress" component={InProgress} />
           <Route exact path="/completed" component={Completed} />
+          <Route exact path="/bio/:slug">
+            <Instructor />
+          </Route>
           <Route exact path="/" component={Home} />
         </Switch>
       </Layout>

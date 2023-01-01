@@ -1,0 +1,91 @@
+.instructor-header {
+  background: linear-gradient(270deg, #131628 0%, $primary-500 100%);
+  padding: 2rem 2.25rem 4rem 2.25rem;
+  h1 {
+    color: $white;
+  }
+  .short-bio {
+    color: $light-500;
+    font-size: 1.25rem;
+  }
+  .long-bio-break {
+    @include line-break(4);
+    color: $light-300;
+    font-size: 1.125rem;
+  }
+  .long-bio{
+    color: $light-300;
+    font-size: 1.125rem;
+  }
+  .btn-tertiary{
+    color:$accent-a;
+    padding: 0;
+    &:hover{
+      background-color: unset;
+    }
+    &:focus{
+      &::before{
+        border: unset !important;
+      }
+    }
+     &:active{
+      color: $accent-a !important;
+      background-color: unset !important;
+    }
+  }
+  .instructor-share-icon {
+    cursor: pointer;
+    color: $light-500;
+  }
+
+  .instructor-icons-wrapper {
+    @extend .d-flex, .justify-content-between, .align-items-center;
+    color: $light-500;
+  }
+  .pgn__breadcrumb {
+    color: $light-300;
+  }
+  .link-muted {
+    color: $light-500 !important;
+  }
+}
+.instructor-img-wrapper {
+  height: 256px;
+  width: 256px;
+  margin-right: 5.75rem;
+}
+.img-instructor {
+  height: 100%;
+  border-radius: 1.5rem;
+}
+.view-all-course-btn {
+  margin-top: 40px;
+  background-color: $light-300;
+  color: $primary-500;
+  padding: 10px 53px;
+  border: 1px solid $light-300;
+  .btn-icon-after {
+    width: 1rem;
+    margin-left: 1rem;
+  }
+}
+.breadcrumb {
+  background-color: unset;
+  .active {
+    color: $light-500;
+  }
+  .breadcrumb-item {
+    a {
+      color: $light-300;
+    }
+    &:first-child {
+      &::before {
+        content: '' !important;
+      }
+    }
+    &::before {
+      content: '>' !important;
+      color: $light-300;
+    }
+  }
+}

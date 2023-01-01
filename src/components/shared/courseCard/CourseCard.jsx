@@ -5,10 +5,11 @@ import React from 'react';
 
 import { Button, Card, Icon } from '@edx/paragon';
 import { Person, BookOpen, WatchFilled } from '@edx/paragon/icons';
+import { Link } from 'react-router-dom';
 
 const CourseCard = ({ info }) => {
   const {
-    title, institution, cover, logo, instructor, lessons, time,
+    title, institution, cover, logo, instructor, instructorLink, lessons, time,
   } = info;
 
   return (
@@ -23,9 +24,9 @@ const CourseCard = ({ info }) => {
         <div className="d-flex flex-column mb-3 mt-auto">
           <div className="d-flex flex-row align-items-center mb-2">
             <Icon className="card-icon" src={Person} />
-            <a className="text-black" href="#instructor">
+            <Link className="text-black" to={`/bio/${instructorLink}`}>
               {instructor}
-            </a>
+            </Link>
           </div>
           <div className="d-flex flex-row align-items-center mb-2">
             <Icon className="card-icon" src={BookOpen} />
