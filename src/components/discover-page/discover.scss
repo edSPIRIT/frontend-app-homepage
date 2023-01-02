@@ -1,0 +1,23 @@
+.search-header {
+  font-size: 3.75rem;
+  font-weight: 700;
+  color: $white;
+}
+.search-header-wrapper {
+  background: linear-gradient(270deg, #131628 0%, $primary-500 100%);
+  padding: 4rem 2.25rem;
+}
+.trending-title {
+  font-size: $font-size-base-sm;
+  color: $light-500;
+}
+.chip-trend {
+  background-color: $primary-300 !important;
+  .pgn__chip__label {
+    color: $white;
+    font-size: $font-size-base-xs;
+  }
+}
+.discover-search-field {
+  @include custome-search-field(573px);
+}

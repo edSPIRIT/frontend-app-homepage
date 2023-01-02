@@ -11,3 +11,23 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@mixin custome-search-field($width) {
+  .pgn__searchfield_wrapper {
+    border: 1px solid $primary-700;
+    border-radius: 4px;
+    width: $width;
+    &:hover {
+      border-color: $primary-700;
+    }
+  }
+  .pgn__searchfield__button {
+    text-transform: capitalize;
+    background-color: $brand !important;
+    border-radius: 4px !important;
+  }
+  .form-control {
+    font-size: $font-size-base-sm;
+    height: 44px;
+  }
+}

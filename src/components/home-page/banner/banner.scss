@@ -30,21 +30,5 @@
   cursor: pointer;
 }
 .hero-search {
-  height: 44px;
-  .pgn__searchfield_wrapper {
-    border: 1px solid $primary-700;
-    border-radius: 4px;
-    width: 354px;
-    &:hover {
-      border-color: $primary-700;
-    }
-  }
-  .pgn__searchfield__button {
-    text-transform: capitalize;
-    background-color: $brand !important;
-    border-radius: 4px !important;
-  }
-  .form-control {
-    font-size: 1.125rem;
-  }
+  @include custome-search-field(354px);
 }

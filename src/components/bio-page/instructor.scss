@@ -84,7 +84,7 @@
       }
     }
     &::before {
-      content: '>' !important;
+      content: url('../../assets/forward-arrow.svg') !important;
       color: $light-300;
     }
   }

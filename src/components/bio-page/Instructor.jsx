@@ -1,16 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Button, Icon } from '@edx/paragon';
 import {
   Share, People, BookOpen, ArrowForwardIos,
 } from '@edx/paragon/icons';
-import React, {
-  useEffect, useRef, useState,
-} from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { getConfig } from '@edx/frontend-platform';
 import classNames from 'classnames';
 import linkedin from '../../assets/linkedin.svg';
 import facebook from '../../assets/facebook.svg';
-import globe from '../../assets/globe-icon.svg';
+// import globe from '../../assets/globe-icon.svg';
+import { ReactComponent as Globe } from '../../assets/globe-icon.svg';
 import reddit from '../../assets/reddit.svg';
 import { COURSES_INFO } from '../../constants';
 import CourseCard from '../shared/courseCard/CourseCard';
@@ -20,6 +20,7 @@ const Instructor = () => {
   const [showShowMoreButton, setShowMoreButton] = useState(false);
   const [InstructorData, setInstructorData] = useState({});
   const pElement = useRef(null);
+  const { slug } = useParams();
   useEffect(() => {
     if (pElement.current?.offsetHeight >= 112) {
       setShowMoreButton(true);
@@ -29,9 +30,7 @@ const Instructor = () => {
   const getInstructorData = async () => {
     try {
       const Res = await fetch(
-        `${
-          getConfig().LMS_BASE_URL
-        }/admin-console/api/instructor/jose-portilla/`,
+        `${getConfig().LMS_BASE_URL}/admin-console/api/instructor/${slug}`,
       );
       const Data = await Res.json();
       setInstructorData(Data);
@@ -41,7 +40,7 @@ const Instructor = () => {
   };
   useEffect(() => {
     getInstructorData();
-  }, []);
+  }, [slug]);
   return (
     <div>
       <div className="d-flex instructor-header flex-column">
@@ -55,7 +54,7 @@ const Instructor = () => {
                 <Link to="/bio">Partners</Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
-                Jose Portilla
+                {InstructorData?.name}
               </li>
             </ol>
           </nav>
@@ -63,14 +62,14 @@ const Instructor = () => {
             <div className="instructor-img-wrapper">
               <img
                 className="img-instructor"
-                src="http://studio.local.overhang.io:8000/media/images/DSC_web_Jose_Portilla.png"
+                src={InstructorData?.image}
                 alt="instructor-img"
               />
             </div>
             <div className="d-flex flex-column">
               <div className="d-flex justify-content-between align-items-center">
                 <h1>{InstructorData?.name}</h1>
-                <Icon src={Share} className="mr-3 instructor-share-icon" />
+                <Icon src={Share} className="instructor-share-icon" />
               </div>
               <span className="short-bio mb-3">
                 {InstructorData?.short_bio}
@@ -151,7 +150,7 @@ const Instructor = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img className="social-icon-footer" src={globe} alt="" />
+                      <Globe className="social-icon-footer" />
                     </a>
                   )}
                 </div>

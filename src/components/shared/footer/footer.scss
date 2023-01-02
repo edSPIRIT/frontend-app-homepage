@@ -77,9 +77,9 @@
 }
 .social-icon-footer {
   cursor: pointer;
+  color:$light-500;
 }
 .footer-copy-right{
   @extend .bg-light-300,.d-flex;
   height: 52px;
-
 }
