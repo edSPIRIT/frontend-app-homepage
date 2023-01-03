@@ -3,15 +3,7 @@
 @import 'components/overview-page/recommended-courses/recommended-courses.scss';
 @import 'components/overview-page/avatar-info/avatar-info.scss';
 
-.view-all-btn {
-  border: unset;
-  color: $info-500;
-  font-size: 1.125rem;
-  padding: 0;
-  &:hover {
-    background-color: unset;
-  }
-}
+
 
 .overview-container {
   display: grid;

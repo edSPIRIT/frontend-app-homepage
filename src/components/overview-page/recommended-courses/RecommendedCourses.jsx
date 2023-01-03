@@ -2,7 +2,7 @@ import React from 'react';
 import { ChevronLeft, ChevronRight } from '@edx/paragon/icons';
 import { Icon } from '@edx/paragon';
 import { COURSES_INFO_TOP } from '../../../constants';
-import CourseCard from '../../shared/courseCard/CourseCard';
+import CourseCard from '../../shared/course-card/CourseCard';
 
 const RecommendedCourses = () => (
   <section className="recommendationCourse-wrapper mt-6">

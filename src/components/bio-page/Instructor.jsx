@@ -9,11 +9,11 @@ import { getConfig } from '@edx/frontend-platform';
 import classNames from 'classnames';
 import linkedin from '../../assets/linkedin.svg';
 import facebook from '../../assets/facebook.svg';
-// import globe from '../../assets/globe-icon.svg';
 import { ReactComponent as Globe } from '../../assets/globe-icon.svg';
 import reddit from '../../assets/reddit.svg';
 import { COURSES_INFO } from '../../constants';
-import CourseCard from '../shared/courseCard/CourseCard';
+import CourseCard from '../shared/course-card/CourseCard';
+import { ReactComponent as ForwardArrow } from '../../assets/forward-arrow.svg';
 
 const Instructor = () => {
   const [showMore, setShowMore] = useState(false);
@@ -30,7 +30,7 @@ const Instructor = () => {
   const getInstructorData = async () => {
     try {
       const Res = await fetch(
-        `${getConfig().LMS_BASE_URL}/admin-console/api/instructor/${slug}`,
+        `${getConfig().LMS_BASE_URL}/admin-console/api/instructor/${slug}/`,
       );
       const Data = await Res.json();
       setInstructorData(Data);
@@ -50,8 +50,18 @@ const Instructor = () => {
               <li className="breadcrumb-item">
                 <Link to="/home">Home</Link>
               </li>
+              <li className="px-1" role="presentation">
+                <span className="pgn__icon">
+                  <ForwardArrow />
+                </span>
+              </li>
               <li className="breadcrumb-item">
                 <Link to="/bio">Partners</Link>
+              </li>
+              <li className="px-1" role="presentation">
+                <span className="pgn__icon">
+                  <ForwardArrow />
+                </span>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 {InstructorData?.name}

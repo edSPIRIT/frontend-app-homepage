@@ -8,7 +8,7 @@ const AdCard = () => (
     <div className="banner-wrap position-relative">
       <div className="text-wrapper">
         <div className="highlight-wrapper py-3 pl-3.5">
-          <h2 className="highlight">
+          <h2 className="highlightd-ad">
             <Highlighted
               text="Join the millions learning on edX"
               highlight="Join the millions"

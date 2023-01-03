@@ -3,7 +3,8 @@
 @import 'components/shared/horizontal-card/horizontal-card.scss';
 @import 'components/shared/total-course-wrapper/total-course-wrapper.scss';
 @import 'components/shared/ad-card/ad-card.scss';
-@import 'components/shared/courseCard/course-card.scss';
+@import 'components/shared/course-card/course-card.scss';
+@import 'components/shared/popular-subjects/popular-subjects.scss';
 
 //search field
 .pgn__searchfield {
@@ -36,6 +37,18 @@
   }
 }
 
+.view-all-btn {
+  border: unset;
+  color: $info-500;
+  font-size: 1.125rem;
+  padding: 0;
+  &:hover {
+    background-color: unset;
+  }
+}
+.color-light-500{
+  color:$light-500;
+}
 .custom-container {
   width: 100%;
   padding-right: 36px;

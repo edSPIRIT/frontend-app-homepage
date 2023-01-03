@@ -1,7 +1,7 @@
 import { Tab, Tabs } from '@edx/paragon';
 import { useState } from 'react';
 import { COURSES_INFO, COURSES_INFO_TOP } from '../../../constants';
-import CourseCard from '../../shared/courseCard/CourseCard';
+import CourseCard from '../../shared/course-card/CourseCard';
 
 const ExplorerCourses = () => {
   const [key, setKey] = useState('home');

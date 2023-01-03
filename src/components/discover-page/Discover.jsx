@@ -1,83 +1,78 @@
-import { Chip, SearchField } from '@edx/paragon';
-import classNames from 'classnames';
+import { Button } from '@edx/paragon';
+import { ArrowForward } from '@edx/paragon/icons';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { ReactComponent as ForwardArrow } from '../../assets/forward-arrow.svg';
+import PopularSubjects from '../shared/popular-subjects/PopularSubjects';
+import { COURSES_INFO_TOP, TOP_PROGRAM } from '../../constants';
+import CourseCard from '../shared/course-card/CourseCard';
+import ProgramCard from '../shared/program-card/ProgramCard';
+import DiscoverBanner from '../shared/discover-banner/DiscoverBanner';
 
-const Discover = () => {
-  const trendingChips = ['Python', 'Exel', 'Data Sciences', 'Marketing'];
-  const showSuggestions = true;
-  return (
-    <main>
-      <div className="search-header-wrapper">
-        <div className="custom-container">
-          <span className="search-header mb-4.5">
-            Search our Catalog
-          </span>
-          <SearchField
-            className="discover-search-field mb-4"
-            submitButtonLocation="external"
-            onSubmit={(value) => console.log(`search submitted: ${value}`)}
-            placeholder="What do you want to learn?"
-          />
-          <div>
-
-            /* eslint-disable-next-line jsx-a11y/label-has-associated-control */
-            <label id="search-input-box" className="fe__searchfield-input-box text-brand-primary">
-              'headerTitlesearchText'
-            </label>
-
-            <SearchField.Advanced
-              className={classNames('fe__searchfield')}
-              // value={defaultRefinement}
-              // onSubmit={handleSubmit}
-              // onClear={handleClear}
-              // onChange={(query) => {
-              //   setSearchQuery(query);
-              // }}
-            >
-              <SearchField.Input
-                className="form-control-lg"
-                aria-labelledby="search-input-box"
-                data-nr-synth-id="catalog-search-input-field"
-                data-hj-whitelist
-                autoComplete="off"
-              />
-              <SearchField.ClearButton data-nr-synth-id="catalog-search-clear-button" />
-              <SearchField.SubmitButton data-nr-synth-id="catalog-search-submit-button" />
-            </SearchField.Advanced>
-            { showSuggestions && (
-            <div className="suggestions" data-testid="suggestions">
-              <div>
-                <div className="mb-2 ml-2 mt-1 font-weight-bold suggestions-section">
-                  Courses
-                </div>
-                <a className="suggestion-item" href="//course/edx+368"><div><div>Big wow and Much <em>sa</em>ds</div><div className="badge badge-light ml-3 font-weight-light authoring-org-badge">edx</div></div></a>
-                <a className="suggestion-item" href="//course/edX+DemoX"><div><div>edX Demo Course <em>Sa</em>ndbox</div><div className="badge badge-light ml-3 font-weight-light authoring-org-badge">edX</div></div></a>
-                <a className="suggestion-item" href="//course/MattX+SAP1"><div><div><em>SA</em>PTestCourse</div><div className="badge badge-light ml-3 font-weight-light authoring-org-badge">MattX</div></div></a>
-              </div>
-              <div>
-                <div className="mb-2 mt-5 ml-2 font-weight-bold suggestions-section">
-                  Programs
-                </div>
-                <a className="suggestion-item" href="//course/edx+368"><div><div>Big wow and Much <em>sa</em>ds</div><div className="badge badge-light ml-3 font-weight-light authoring-org-badge">edx</div></div></a>
-              </div>
-              <button type="button" className="btn btn-light w-100 view-all-btn">
-                View all results
-              </button>
-            </div>
-            )}
-          </div>
-          <div className="d-flex align-items-center">
-            <span className="trending-title mr-4">
-              Trending:
+const Discover = () => (
+  <main>
+    <DiscoverBanner />
+    <div className="discover-body-wrapper custom-container">
+      <nav aria-label="breadcrumb" className="py-5">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <Link to="/home">Home</Link>
+          </li>
+          <li className="px-1" role="presentation">
+            <span className="pgn__icon">
+              <ForwardArrow />
             </span>
-            <div>
-              {trendingChips.map((chip) => <Chip key={chip} className="chip-trend mr-2">{chip}</Chip>)}
-            </div>
-          </div>
+          </li>
+          <li className="breadcrumb-item active">
+            <Link to="/bio">Discover</Link>
+          </li>
+        </ol>
+      </nav>
+      <section className="pb-6">
+        <h2 className="d-flex  mb-5">
+          Filter by popular subjects
+        </h2>
+        <PopularSubjects />
+      </section>
+      <section className="d-flex flex-column pb-6">
+        <div className="d-flex align-items-center justify-content-between mb-2">
+          <h2>Explore Courses</h2>
+          <Button
+            variant="outline-primary"
+            iconAfter={ArrowForward}
+            className="view-all-btn"
+          >
+            View All
+          </Button>
         </div>
-      </div>
-    </main>
-  );
-};
+        <h4 className="text-gray-500 font-weight-normal mb-4">Most popular course</h4>
+        <div className="course-container">
+          {COURSES_INFO_TOP.map((course) => (
+            <CourseCard info={course} key={course.title} />
+          ))}
+        </div>
+      </section>
+      <section className="d-flex flex-column pb-6">
+        <div className="d-flex align-items-center justify-content-between mb-2">
+          <h2>Explore Programs</h2>
+          <Button
+            variant="outline-primary"
+            iconAfter={ArrowForward}
+            className="view-all-btn"
+          >
+            View All
+          </Button>
+        </div>
+        <h4 className="text-gray-500 font-weight-normal mb-4">Most popular program</h4>
+        <div className="programs-container">
+          {TOP_PROGRAM.map((course) => (
+            <ProgramCard info={course} key={course.title} />
+          ))}
+        </div>
+      </section>
+    </div>
+
+  </main>
+);
 
 export default Discover;

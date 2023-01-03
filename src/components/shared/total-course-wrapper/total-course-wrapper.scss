@@ -1,8 +1,7 @@
-.dropdown-title {
-  font-size: $font-size-base-sm;
-}
-
-.sort-wrapper {
+.dropdown-wrapper {
+  .dropdown-title {
+    font-size: $font-size-base-sm;
+  }
   .btn {
     min-width: 159px;
     height: 36px;

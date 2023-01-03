@@ -27,7 +27,7 @@ const NavHeader = () => (
       </li>
       <li>
         <div className="border-bottom" />
-        <NavLink to="/search" activeClassName="active">
+        <NavLink to="/discover" activeClassName="active">
           <div className="border-bottom" />
           Discover
         </NavLink>

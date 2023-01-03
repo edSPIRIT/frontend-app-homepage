@@ -2,17 +2,16 @@
   width: 324px !important;
   height: 325px;
   box-shadow: unset;
-  .highlight {
-  }
+
   .highlight-wrapper {
     grid-column: 1/2;
     grid-row: 1/2;
     width: 225px;
-    .highlighted {
-      color: $accent-b;
-    }
-    span{
-      color:$white;
+    .highlightd-ad {
+      .highlighted-banner{
+        color: $accent-b !important;
+      }
+        color: $white;
     }
   }
   .img-wrapper {
