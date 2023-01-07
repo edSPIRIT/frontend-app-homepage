@@ -1,10 +1,11 @@
 import { Dropdown } from '@edx/paragon';
-import { KeyboardArrowDown, KeyboardArrowUp } from '@edx/paragon/icons';
 import React, { useState } from 'react';
+import { ReactComponent as KeyboardArrowUp } from '../../assets/KeyboardArrowUp.svg';
+import { ReactComponent as KeyboardArrowDown } from '../../assets/KeyboardArrowDown.svg';
 
 const CustomeDropdown = ({ dropdownItems, title, beforeIcon }) => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
-  const [value, setValue] = useState('All');
+  const [value, setValue] = useState(dropdownItems[0]);
   return (
     <Dropdown
       onToggle={(isOpen) => setIsOpenDropDown(isOpen)}
@@ -16,9 +17,9 @@ const CustomeDropdown = ({ dropdownItems, title, beforeIcon }) => {
           {beforeIcon}
           <span className="pl-2 pr-2 text-primary-500 dropdown-title">
             {title}
-            <span className="font-weight-bold"> {value}</span>
+            <span className="text-primary-500 font-weight-bold"> {value}</span>
           </span>
-          {isOpenDropDown ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+          {isOpenDropDown ? <KeyboardArrowUp /> : <KeyboardArrowDown className="color-primary-500" />}
         </>
       </Dropdown.Toggle>
       <Dropdown.Menu>

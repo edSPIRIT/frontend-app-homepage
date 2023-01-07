@@ -4,34 +4,28 @@ import { NavLink } from 'react-router-dom';
 const NavHeader = () => (
   <nav>
     <ul className="nav-wrapper">
-      <li>
+      <NavLink to="/overview" activeClassName="active">
         <div className="border-bottom" />
-        <NavLink to="/overview" activeClassName="active">
-          <div className="border-bottom" />
-          Overview
-        </NavLink>
-      </li>
-      <li>
-        <div className="border-bottom" />
-        <NavLink to="/inprogress" activeClassName="active">
+        <li>Overview</li>
+      </NavLink>
+      <NavLink to="/inprogress" activeClassName="active">
+        <li>
           <div className="border-bottom" />
           In Progress
-        </NavLink>
-      </li>
-      <li>
-        <div className="border-bottom" />
-        <NavLink to="/completed" activeClassName="active">
+        </li>
+      </NavLink>
+      <NavLink to="/completed" activeClassName="active">
+        <li>
           <div className="border-bottom" />
           Completed
-        </NavLink>
-      </li>
-      <li>
-        <div className="border-bottom" />
-        <NavLink to="/discover" activeClassName="active">
+        </li>
+      </NavLink>
+      <NavLink exact to="/discover" activeClassName="active">
+        <li>
           <div className="border-bottom" />
           Discover
-        </NavLink>
-      </li>
+        </li>
+      </NavLink>
     </ul>
   </nav>
 );

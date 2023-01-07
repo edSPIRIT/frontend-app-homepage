@@ -1,7 +1,22 @@
 .search-header-wrapper {
   background: linear-gradient(270deg, #131628 0%, $primary-500 100%);
-  padding: 4rem 2.25rem;
+  // padding: 4rem 2.25rem;
+  // min-height: 304px;
+  .search-value-wrapper{
+    // height: 124px;
+  }
   .search-header {
+    line-height: 1;
+    width: auto;
+    font-size: 3.75rem;
+    font-weight: 700;
+    color: $white;
+  }
+  .search-header-withSearch {
+    font-size: 2.5rem;
+  }
+  .search-value {
+    line-height: 1;
     font-size: 3.75rem;
     font-weight: 700;
     color: $white;

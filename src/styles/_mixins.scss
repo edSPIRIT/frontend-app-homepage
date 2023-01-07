@@ -17,8 +17,16 @@
     border: 1px solid $primary-700;
     border-radius: 4px;
     width: $width;
+    background-color: $white;
     &:hover {
       border-color: $primary-700;
+    }
+    .btn {
+      background-color: $white;
+      padding: 0 1rem;
+    }
+    .pgn__icon {
+      color: $gray-500;
     }
   }
   .pgn__searchfield__button {

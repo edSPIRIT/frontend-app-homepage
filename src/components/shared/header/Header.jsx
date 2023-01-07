@@ -1,19 +1,19 @@
 import {
-  AvatarButton, Button, Dropdown, SearchField,
+  AvatarButton, Button, Dropdown, Icon, SearchField,
 } from '@edx/paragon';
 import { getConfig } from '@edx/frontend-platform';
-import { useLocation } from 'react-router';
-import { useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
+import { ArrowDropDown, ArrowDropUp } from '@edx/paragon/icons';
+import { useState } from 'react';
 import moodyLogo from '../../../assets/Moody-logo.svg';
 import DropdownNavHeader from './dropdown-nav-header/DropdownNavHeader';
 import NavHeader from './nav-header/NavHeader';
 
 const HeaderED = () => {
+  const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const location = useLocation();
-  useEffect(() => {
-    console.log('location', location.pathname);
-  }, [location.pathname]);
+  const history = useHistory();
   return (
     <header>
       <div className="d-flex flex-row justify-content-between align-items-center header-wrapper">
@@ -29,10 +29,9 @@ const HeaderED = () => {
             <NavHeader />
           )}
         </div>
-        <div className="d-flex">
+        <div className="d-flex right-side-wrapper">
           <SearchField
-            className="search-header"
-            onSubmit={(value) => console.log(`search submitted: ${value}`)}
+            onSubmit={(value) => history.push('/discover/search')}
             placeholder="What do you want to learn?"
           />
           <div className="d-flex align-items-center">
@@ -60,20 +59,28 @@ const HeaderED = () => {
                 </Button>
               </>
             ) : (
-              <Dropdown className="ml-4">
-                <Dropdown.Toggle showLabel={false} as={AvatarButton} src="" />
+              <Dropdown
+                onToggle={(isOpen) => setIsOpenDropDown(isOpen)}
+                className="ml-3 avatar-wrapper"
+              >
+                <Dropdown.Toggle as={AvatarButton} src="">
+                  <Icon className={isOpenDropDown ? 'color-gray-500' : 'color-primary-500'} src={isOpenDropDown ? ArrowDropUp : ArrowDropDown} />
+                </Dropdown.Toggle>
                 <Dropdown.Menu alignRight>
-                  <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/profile`}>Profile</Dropdown.Item>
-                  <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/account`}>Account</Dropdown.Item>
-                  <Dropdown.Item href="dashboard">Dashboard</Dropdown.Item>
-                  <Dropdown.Item href="/orders">
-                    Order History
+                  <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/profile`}>
+                    Profile
                   </Dropdown.Item>
-                  <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/logout`}>Sign out</Dropdown.Item>
+                  <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/account`}>
+                    Account
+                  </Dropdown.Item>
+                  <Dropdown.Item href="dashboard">Dashboard</Dropdown.Item>
+                  <Dropdown.Item href="/orders">Order History</Dropdown.Item>
+                  <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/logout`}>
+                    Sign out
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             )}
-
           </div>
         </div>
       </div>

@@ -1,53 +1,4 @@
 export const SHOW_ALL_NAME = 'showAll';
-
-export const SEARCH_FACET_FILTERS = [
-  {
-    attribute: 'skill_names',
-    title: 'Skills',
-    typeaheadOptions: {
-      placeholder: 'Find a skill...',
-      ariaLabel: 'Type to find a skill',
-      minLength: 3,
-    },
-  },
-  {
-    attribute: 'subjects',
-    title: 'Subject',
-    typeaheadOptions: {
-      placeholder: 'Find a subject...',
-      ariaLabel: 'Type to find a subject',
-      minLength: 3,
-    },
-  },
-  {
-    attribute: 'partners.name',
-    title: 'Partner',
-    isSortedAlphabetical: true,
-    typeaheadOptions: {
-      placeholder: 'Find a partner...',
-      ariaLabel: 'Type to find a partner',
-      minLength: 3,
-    },
-  },
-  {
-    attribute: 'programs',
-    title: 'Program',
-    isSortedAlphabetical: true,
-    typeaheadOptions: {
-      placeholder: 'Find a program...',
-      ariaLabel: 'Type to find a program',
-      minLength: 3,
-    },
-  },
-  {
-    attribute: 'level_type',
-    title: 'Level',
-  },
-  {
-    attribute: 'availability',
-    title: 'Availability',
-  },
-];
 export const NO_OPTIONS_FOUND = 'No options found.';
 export const REFINEMENT = [
   {
@@ -78,6 +29,7 @@ export const COURSES_INFO = [
     instructorLink: 'jose-portilla',
     lessons: '11 Lessons',
     time: '6 Hours',
+    isProgram: false,
   },
   {
     title: 'Python Programming',
@@ -89,6 +41,7 @@ export const COURSES_INFO = [
     instructorLink: 'rav-ahuja',
     lessons: '10 Lessons',
     time: '7 Hours',
+    isProgram: false,
   },
   {
     title: 'Programming for Everybody',
@@ -100,6 +53,7 @@ export const COURSES_INFO = [
     instructorLink: 'upkar-lidder',
     lessons: '13 Lessons',
     time: '10 Hours',
+    isProgram: false,
   },
   {
     title: 'introduction to java',
@@ -111,6 +65,7 @@ export const COURSES_INFO = [
     instructorLink: 'michel-buffa',
     lessons: '5 Lessons',
     time: '3 Hours',
+    isProgram: false,
   },
   {
     title: 'C++ Programming: Basic',
@@ -122,6 +77,7 @@ export const COURSES_INFO = [
     instructorLink: 'david-joyner',
     lessons: '8 Lessons',
     time: '5 Hours',
+    isProgram: false,
   },
   {
     title: 'Computing in Python II',
@@ -133,6 +89,7 @@ export const COURSES_INFO = [
     instructorLink: 'rav-ahuja',
     lessons: '9 Lessons',
     time: '7 Hours',
+    isProgram: false,
   },
   {
     title: 'Advanced Programming',
@@ -144,6 +101,7 @@ export const COURSES_INFO = [
     instructorLink: 'michel-buffa',
     lessons: '5 Lessons',
     time: '3 Hours',
+    isProgram: false,
   },
   {
     title: 'Statistics and R',
@@ -155,6 +113,7 @@ export const COURSES_INFO = [
     instructorLink: 'upkar-lidder',
     lessons: '13 Lessons',
     time: '10 Hours',
+    isProgram: false,
   },
 ];
 export const COURSES_INFO_TOP = [
@@ -393,6 +352,7 @@ export const COURSES_SEARCH = [
     instructorLink: 'jose-portilla',
     lessons: '11 Lessons',
     time: '6 Hours',
+    isProgram: false,
   },
   {
     title: 'Python Programming',
@@ -404,6 +364,7 @@ export const COURSES_SEARCH = [
     instructorLink: 'rav-ahuja',
     lessons: '10 Lessons',
     time: '7 Hours',
+    isProgram: false,
   },
   {
     title: 'Programming for Everybody',
@@ -415,6 +376,7 @@ export const COURSES_SEARCH = [
     instructorLink: 'upkar-lidder',
     lessons: '13 Lessons',
     time: '10 Hours',
+    isProgram: false,
   },
   {
     title: 'introduction to java',
@@ -426,6 +388,7 @@ export const COURSES_SEARCH = [
     instructorLink: 'michel-buffa',
     lessons: '5 Lessons',
     time: '3 Hours',
+    isProgram: false,
   },
   {
     title: 'C++ Programming: Basic',
@@ -437,9 +400,10 @@ export const COURSES_SEARCH = [
     instructorLink: 'david-joyner',
     lessons: '8 Lessons',
     time: '5 Hours',
+    isProgram: false,
   },
   {
-    title: 'Computing in Python II',
+    title: 'Computing in Python III',
     institution: 'GTx',
     cover:
       'https://prod-discovery.edx-cdn.org/media/course/image/f30fbd27-46af-4ce3-935a-104fe2c6b9c8-1c4459a85331.small.jpg',
@@ -448,6 +412,7 @@ export const COURSES_SEARCH = [
     instructorLink: 'rav-ahuja',
     lessons: '9 Lessons',
     time: '7 Hours',
+    isProgram: false,
   },
   {
     title: 'Advanced Programming',
@@ -459,6 +424,7 @@ export const COURSES_SEARCH = [
     instructorLink: 'michel-buffa',
     lessons: '5 Lessons',
     time: '3 Hours',
+    isProgram: false,
   },
   {
     title: 'Statistics and R',
@@ -470,9 +436,10 @@ export const COURSES_SEARCH = [
     instructorLink: 'upkar-lidder',
     lessons: '13 Lessons',
     time: '10 Hours',
+    isProgram: false,
   },
   {
-    title: 'Robotics',
+    title: 'Robotics I',
     institution: 'IBM',
     cover:
       'https://prod-discovery.edx-cdn.org/media/programs/card_images/90f4789c-2549-4670-ade7-12cc8b590f5c-06374e02670f.jpg',
@@ -481,9 +448,10 @@ export const COURSES_SEARCH = [
     instructorLink: 'jose-portilla',
     lessons: '11 Lessons',
     time: '6 Hours',
+    isProgram: false,
   },
   {
-    title: 'Python Programming',
+    title: 'Python Programming I',
     institution: 'Harvard University',
     cover:
       'https://prod-discovery.edx-cdn.org/media/course/image/2cc794d0-316d-42f7-bbfd-25c34e4cd5df-033e46d516c0.small.png',
@@ -492,9 +460,10 @@ export const COURSES_SEARCH = [
     instructorLink: 'rav-ahuja',
     lessons: '10 Lessons',
     time: '7 Hours',
+    isProgram: false,
   },
   {
-    title: 'Programming for Everybody',
+    title: 'Programming for Everybody I',
     institution: 'Michigan University',
     cover:
       'https://prod-discovery.edx-cdn.org/media/programs/card_images/0de98c3a-0a5a-4cf2-b0a0-634862d47e11-27353a61855f.jpg',
@@ -503,9 +472,10 @@ export const COURSES_SEARCH = [
     instructorLink: 'upkar-lidder',
     lessons: '13 Lessons',
     time: '10 Hours',
+    isProgram: false,
   },
   {
-    title: 'introduction to java',
+    title: 'introduction to java I',
     institution: 'New york University',
     cover:
       'https://prod-discovery.edx-cdn.org/media/programs/card_images/865bbad4-6643-4d59-85d3-936cf3a7acf4-3720dd824793.jpg',
@@ -514,9 +484,10 @@ export const COURSES_SEARCH = [
     instructorLink: 'michel-buffa',
     lessons: '5 Lessons',
     time: '3 Hours',
+    isProgram: false,
   },
   {
-    title: 'C++ Programming: Basic',
+    title: 'C++ Programming: Basic I',
     institution: 'Codio',
     cover:
       'https://prod-discovery.edx-cdn.org/media/course/image/59dd2022-3076-4677-ae8b-58b521077ca1-c9ad40423ed7.small.png',
@@ -525,6 +496,7 @@ export const COURSES_SEARCH = [
     instructorLink: 'david-joyner',
     lessons: '8 Lessons',
     time: '5 Hours',
+    isProgram: false,
   },
   {
     title: 'Computing in Python II',
@@ -532,13 +504,17 @@ export const COURSES_SEARCH = [
     cover:
       'https://prod-discovery.edx-cdn.org/media/course/image/f30fbd27-46af-4ce3-935a-104fe2c6b9c8-1c4459a85331.small.jpg',
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/8537d31f-01b4-40fd-b652-e17b38eefe41-7956b2a3cd04.png',
-    instructor: 'Rav Ahuja',
-    instructorLink: 'rav-ahuja',
+    instructor: [
+      { title: 'Michel Buffa', link: 'michel-buffa' },
+      { title: 'David Joyner', link: 'david-joyner' },
+      { title: 'Rav Ahuja', link: 'rav-ahuja' },
+    ],
     lessons: '9 Lessons',
     time: '7 Hours',
+    isProgram: true,
   },
   {
-    title: 'Advanced Programming',
+    title: 'Advanced Programming I',
     institution: 'New york University',
     cover:
       'https://prod-discovery.edx-cdn.org/media/programs/card_images/865bbad4-6643-4d59-85d3-936cf3a7acf4-3720dd824793.jpg',
@@ -547,16 +523,77 @@ export const COURSES_SEARCH = [
     instructorLink: 'michel-buffa',
     lessons: '5 Lessons',
     time: '3 Hours',
+    isProgram: false,
   },
   {
-    title: 'Statistics and R',
+    title: 'Statistics and R I',
     institution: 'UPValenciaX',
     cover:
       'https://prod-discovery.edx-cdn.org/media/programs/card_images/0de98c3a-0a5a-4cf2-b0a0-634862d47e11-27353a61855f.jpg',
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/518a47f2-66fb-4529-8902-a4f7ca3002ef-78d294b01e63.png',
-    instructor: 'Upkar Lidder',
-    instructorLink: 'upkar-lidder',
+    instructor: [
+      { title: 'Michel Buffa', link: 'michel-buffa' },
+      { title: 'David Joyner', link: 'david-joyner' },
+    ],
     lessons: '13 Lessons',
     time: '10 Hours',
+    isProgram: true,
+  },
+];
+export const SEARCH_FACET_FILTERS = [
+
+  {
+    attribute: 'subjects',
+    title: 'Subject',
+    typeaheadOptions: {
+      placeholder: 'Find a subject...',
+      ariaLabel: 'Type to find a subject',
+      minLength: 3,
+    },
+  },
+  {
+    attribute: 'partners.name',
+    title: 'Partner',
+    isSortedAlphabetical: true,
+    typeaheadOptions: {
+      placeholder: 'Find a partner...',
+      ariaLabel: 'Type to find a partner',
+      minLength: 3,
+    },
+  },
+  {
+    attribute: 'instructors_names',
+    title: 'Instructors',
+    typeaheadOptions: {
+      placeholder: 'Find a skill...',
+      ariaLabel: 'Type to find a skill',
+      minLength: 3,
+    },
+  },
+  {
+    attribute: 'programs',
+    title: 'Program',
+    isSortedAlphabetical: true,
+    typeaheadOptions: {
+      placeholder: 'Find a program...',
+      ariaLabel: 'Type to find a program',
+      minLength: 3,
+    },
+  },
+  {
+    attribute: 'level_type',
+    title: 'Level',
+  },
+  {
+    attribute: 'language',
+    title: 'Language',
+  },
+  {
+    attribute: 'availability',
+    title: 'Availability',
+  },
+  {
+    attribute: 'learning_type',
+    title: 'Learning type',
   },
 ];

@@ -7,8 +7,11 @@ const TotalCourseWrapper = () => (
       <span className="total-title">Total Course:</span>
       <span className="font-weight-bold"> 2</span>
     </p>
-    <CustomeDropdown dropdownItems={['All', 'Course', 'Program']} title="View by:" beforeIcon={<EyeIcon />} />
-
+    <CustomeDropdown
+      dropdownItems={['All', 'Course', 'Program']}
+      title="View by:"
+      beforeIcon={<EyeIcon />}
+    />
   </div>
 );
 

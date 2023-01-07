@@ -9,7 +9,7 @@
     border-bottom: 4px solid $brand-500 !important;
     width: 36px;
     position: absolute;
-    bottom: -109%;
+    bottom: 0%;
   }
   a {
     color: $gray-700;
@@ -17,14 +17,17 @@
       color: $gray-700;
     }
   }
+  .active {
+    color: $black;
+    font-weight: 700;
+    .border-bottom {
+      display: block;
+    }
+  }
   li {
     cursor: pointer;
-    .active {
-      color: $black;
-      font-weight: 700;
-      .border-bottom {
-        display: block;
-      }
-    }
+    display: flex;
+    height: 76px;
+    align-items: center;
   }
 }

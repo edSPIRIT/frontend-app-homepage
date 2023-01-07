@@ -1,16 +1,34 @@
 import { Chip, SearchField } from '@edx/paragon';
-import React from 'react';
+import classNames from 'classnames';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const DiscoverBanner = () => {
-  const trendingChips = ['Python', 'Exel', 'Data Sciences', 'Marketing'];
+  const [searchValue, setSearchValue] = useState('');
+  console.log('searchValue', searchValue);
+  const trendingChips = ['Python', 'Excel', 'Data Sciences', 'Marketing'];
+  const history = useHistory();
   return (
     <div className="search-header-wrapper">
-      <div className="custom-container">
-        <span className="search-header mb-4.5">Search our Catalog</span>
+      <div className="custom-container py-5.5 ">
+        <div className="mb-4.5 search-value-wrapper">
+          <span className={classNames('search-header mr-1', {
+            'search-header-withSearch': searchValue,
+          })}
+          >Search our Catalog
+          </span>
+          {searchValue && (
+          <span className="search-value">{`“${searchValue}”`}</span>
+          )}
+        </div>
         <SearchField
           className="discover-search-field mb-4"
           submitButtonLocation="external"
-          onSubmit={(value) => console.log(`search submitted: ${value}`)}
+          onSubmit={(value) => {
+            setSearchValue(value);
+            history.push('/discover/search');
+          }}
+          onClear={() => setSearchValue('')}
           placeholder="What do you want to learn?"
         />
         <div className="d-flex align-items-center">

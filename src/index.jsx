@@ -22,6 +22,7 @@ import Completed from './components/completed-page/Completed';
 import Discover from './components/discover-page/Discover';
 import Instructor from './components/bio-page/Instructor';
 import Search from './components/search-page/Search';
+import NotFound from './components/notFount-page/NotFound';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
@@ -31,14 +32,15 @@ subscribe(APP_READY, () => {
           <Route exact path="/home" component={Home} />
           <Route exact path="/overview" component={OverviewPage} />
           <Route exact path="/dashboard" component={OverviewPage} />
-          <Route exact path="/search" component={Search} />
           <Route exact path="/discover" component={Discover} />
+          <Route exact path="/discover/search" component={Search} />
           <Route exact path="/inprogress" component={InProgress} />
           <Route exact path="/completed" component={Completed} />
           <Route exact path="/bio/:slug">
             <Instructor />
           </Route>
           <Route exact path="/" component={Home} />
+          <Route path="/*" component={NotFound} />
         </Switch>
       </Layout>
     </AppProvider>,

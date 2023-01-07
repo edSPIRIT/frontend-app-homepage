@@ -1,60 +1,60 @@
 .language-btn-container {
   @extend .d-flex;
-  .dropdown {
-    &:hover {
-      background-color: unset;
-    }
-  }
-  .dropdown-menu {
-    min-width: 8rem;
-  }
-  .dropdown-item {
-    justify-content: center;
-    font-size: $font-size-base-sm;
-    font-weight: 500;
-  }
-  .btn {
-    width: 129px;
-    height: 36px;
-    padding: 0;
-    font-size:$font-size-base-sm;
-    &::before {
-      content: '';
-      display: block;
-      background: url('../../../assets/globe-icon.svg') no-repeat;
-      width: 20px;
-      height: 20px;
-      float: left;
-      margin: 0px 8px 0px 1px;
-    }
-    &::after {
-      margin-left: 18px;
-      margin-right: 10px;
-    }
-  }
-  .btn-outline-primary {
-    border-color: $light-300;
-    &:hover {
-      border-color: $primary-500;
-    }
-    &:active {
-      background-color: unset !important;
-    }
-    &:focus {
-      &::before {
-        position: unset !important;
-        top: unset !important;
-        right: unset !important;
-        bottom: unset !important;
-        left: unset !important;
-        border: unset !important;
-        border-radius: unset !important;
-      }
-    }
-  }
-  .btn-outline-primary.dropdown-toggle {
-    background-color: unset;
-  }
+  // .dropdown {
+  //   &:hover {
+  //     background-color: unset;
+  //   }
+  // }
+  // .dropdown-menu {
+  //   min-width: 8rem;
+  // }
+  // .dropdown-item {
+  //   justify-content: center;
+  //   font-size: $font-size-base-sm;
+  //   font-weight: 500;
+  // }
+  // .btn {
+  //   width: 129px;
+  //   height: 36px;
+  //   padding: 0;
+  //   font-size:$font-size-base-sm;
+  //   &::before {
+  //     content: '';
+  //     display: block;
+  //     background: url('../../../assets/globe-icon.svg') no-repeat;
+  //     width: 20px;
+  //     height: 20px;
+  //     float: left;
+  //     margin: 0px 8px 0px 1px;
+  //   }
+  //   &::after {
+  //     margin-left: 18px;
+  //     margin-right: 10px;
+  //   }
+  // }
+  // .btn-outline-primary {
+  //   border-color: $light-300;
+  //   &:hover {
+  //     border-color: $primary-500;
+  //   }
+  //   &:active {
+  //     background-color: unset !important;
+  //   }
+  //   &:focus {
+  //     &::before {
+  //       position: unset !important;
+  //       top: unset !important;
+  //       right: unset !important;
+  //       bottom: unset !important;
+  //       left: unset !important;
+  //       border: unset !important;
+  //       border-radius: unset !important;
+  //     }
+  //   }
+  // }
+  // .btn-outline-primary.dropdown-toggle {
+  //   background-color: unset;
+  // }
 }
 
 .footer-logo {

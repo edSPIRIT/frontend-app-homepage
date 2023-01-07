@@ -3,6 +3,7 @@ import { ArrowForward } from '@edx/paragon/icons';
 import React from 'react';
 import { PROGRAMS_ITEMS_NAV } from '../../../../constants';
 import useGetSubjects from '../../../../hooks/useGetSubjects';
+import { ReactComponent as ArrowDown } from '../../../../assets/KeyboardArrowDown.svg';
 
 const DropdownNavHeader = () => {
   const { subjects, coursesCounter } = useGetSubjects();
@@ -10,7 +11,10 @@ const DropdownNavHeader = () => {
   return (
     <nav className="dropdown-container">
       <div className="dropdown-nav-header">
-        <span className="nav-item-text mx-2" title="Subjects">Subjects</span>
+        <div className="nav-item-wrapper nav-item-subjects">
+          <span className="nav-item-text mx-2">Subjects</span>
+          <ArrowDown />
+        </div>
         <div className="dropdown-content">
           <div className="menu-tab">
             <ul className="mb-4">
@@ -39,14 +43,20 @@ const DropdownNavHeader = () => {
         </div>
       </div>
       <div className="dropdown-nav-header">
-        <span className="nav-item-text mx-2" title="Programs">Programs</span>
+        <div className="nav-item-wrapper nav-item-programs">
+          <span className="nav-item-text mx-2">Programs</span>
+          <ArrowDown />
+        </div>
         <div className="dropdown-content">
           <div className="menu-tab">
             <ul className="list-group">
               {PROGRAMS_ITEMS_NAV.map((item) => (
                 <li className="list-group-item" key={item.title}>
                   <div>
-                    <a className="custom-link" href="/executive-education?linked_from=sitenav">
+                    <a
+                      className="custom-link"
+                      href="/executive-education?linked_from=sitenav"
+                    >
                       {item.title}
                     </a>
                     <p className="program-description">{item.description}</p>
@@ -66,9 +76,7 @@ const DropdownNavHeader = () => {
         </div>
       </div>
       <div className="nav-item-link-wrapper">
-        <a href="#partners">
-          Partners
-        </a>
+        <a href="#partners">Partners</a>
       </div>
     </nav>
   );

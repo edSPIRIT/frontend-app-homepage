@@ -42,7 +42,7 @@ const Instructor = () => {
     getInstructorData();
   }, [slug]);
   return (
-    <div>
+    <main>
       <div className="d-flex instructor-header flex-column">
         <div className="custom-container">
           <nav aria-label="breadcrumb">
@@ -186,7 +186,7 @@ const Instructor = () => {
           </Button>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

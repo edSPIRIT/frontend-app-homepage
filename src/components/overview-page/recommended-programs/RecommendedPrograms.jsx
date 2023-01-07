@@ -3,7 +3,7 @@ import React from 'react';
 import { TOP_PROGRAM } from '../../../constants';
 
 const RecommendationProgram = () => (
-  <div className="recommendation-container">
+  <aside className="recommendation-container">
     <h4 className="px-3 py-3">Recommended Programs</h4>
     <div className="d-flex flex-column px-3">
       {TOP_PROGRAM.map((program) => (
@@ -16,7 +16,7 @@ const RecommendationProgram = () => (
     <Button variant="tertiary" className="mx-3 mb-3 mt-2">
       Explore Programs
     </Button>
-  </div>
+  </aside>
 );
 
 export default RecommendationProgram;

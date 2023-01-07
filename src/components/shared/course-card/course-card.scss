@@ -1,17 +1,73 @@
-.card-icon {
-  @extend .mr-2;
-  width: 20px;
-  color: $gray-500;
+.cards-wrapper {
+  .card-icon {
+    @extend .mr-2;
+    width: 20px;
+    color: $gray-500;
+  }
+  .course-title {
+    @include line-break(2);
+  }
+  .btn-card-container {
+    width: 100%;
+    .btn {
+      height: 44px;
+    }
+  }
+  .pgn__icon {
+    height: unset;
+  }
+  .price-title {
+    color: $gray-500;
+  }
+  .instructors-wrapper {
+    width: 276px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    a {
+      &::after {
+        content: ', ';
+      }
+      &:last-child {
+        &::after {
+          content: '';
+        }
+      }
+    }
+  }
+  .course-text {
+    color: $black;
+  }
 }
-.course-title {
-  @include line-break(2);
-}
-.text-black {
-  color: $black;
-}
-.btn-card-container {
-  width: 100%;
-  .btn {
-    height: 44px;
+.programs-background {
+  background-color: $primary-700;
+  &:hover {
+    .btn-primary {
+      background-color: $primary-300 !important;
+      border-color: $primary-300 !important;
+    }
+  }
+  .course-title {
+    color: $white;
+  }
+  .institution-title {
+    color: $accent-a;
+  }
+  .course-text {
+    color: $white !important;
+  }
+  .card-icon {
+    color: $light-500;
+  }
+  .price-title {
+    color: $light-500;
+  }
+  .btn-primary {
+    background-color: $primary-700 !important;
+    color: $white !important;
+    &:hover {
+      background-color: $primary-300 !important;
+      border-color: $primary-300 !important;
+    }
   }
 }
