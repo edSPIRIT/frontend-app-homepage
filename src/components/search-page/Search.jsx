@@ -5,13 +5,11 @@ import {
   FilterList,
   KeyboardArrowDown,
 } from '@edx/paragon/icons';
-import classNames from 'classnames';
 import DiscoverBanner from '../shared/discover-banner/DiscoverBanner';
 import { COURSES_SEARCH, SEARCH_FACET_FILTERS } from '../../constants';
 import CourseCard from '../shared/course-card/CourseCard';
 
 const Search = () => {
-  const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const [value, setValue] = useState('Recent');
   return (
     <main>
@@ -23,7 +21,6 @@ const Search = () => {
               autoClose="outside"
               className="mb-0 mr-md-3"
               key={facet.attribute}
-              onToggle={(isOpen) => setIsOpenDropDown(isOpen)}
             >
               <Dropdown.Toggle
                 id="{title}-{variant}"
@@ -57,14 +54,10 @@ const Search = () => {
             <span className="font-weight-bold"> 2</span>
           </p>
           <Dropdown
-            onToggle={(isOpen) => setIsOpenDropDown(isOpen)}
             className="dropdown-wrapper"
             onSelect={(e) => setValue(e)}
           >
             <Dropdown.Toggle
-              className={classNames({
-                'is-open-dropdown': isOpenDropDown,
-              })}
               id="dropdown-basic-4"
               iconAfter={KeyboardArrowDown}
               iconBefore={FilterList}

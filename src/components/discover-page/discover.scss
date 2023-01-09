@@ -32,6 +32,8 @@
   @include custom-search-field(573px);
 }
 .search-suggestion-wrapper {
+  position: absolute;
+  z-index: 10;
   width: 718px;
   background-color: $white;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15), 0px 2px 8px rgba(0, 0, 0, 0.15);

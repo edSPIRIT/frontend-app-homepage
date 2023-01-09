@@ -10,11 +10,17 @@ const DropdownNavHeader = () => {
   return (
     <nav className="dropdown-container">
       <div className="dropdown-nav-header">
-        <div className="nav-item-wrapper nav-item-subjects mx-2">
-          <span className="nav-item-text mr-2">Subjects</span>
+        <div
+          className="d-flex mx-2 align-items-center"
+        >
+          <span
+            className=" mr-2"
+          >Subjects
+          </span>
           <Icon
             src={KeyboardArrowDown}
             style={{ height: '20px', width: '20px' }}
+            className="arrow-down"
           />
         </div>
         <div className="dropdown-content">
@@ -45,11 +51,17 @@ const DropdownNavHeader = () => {
         </div>
       </div>
       <div className="dropdown-nav-header">
-        <div className="nav-item-wrapper nav-item-programs mx-2">
-          <span className="nav-item-text mr-2">Programs</span>
+        <div
+          className="d-flex align-items-center mx-2"
+        >
+          <span
+            className=" mr-2"
+          >Programs
+          </span>
           <Icon
             src={KeyboardArrowDown}
             style={{ height: '20px', width: '20px' }}
+            className="arrow-down"
           />
         </div>
         <div className="dropdown-content">
@@ -80,7 +92,7 @@ const DropdownNavHeader = () => {
           </div>
         </div>
       </div>
-      <div className="nav-item-link-wrapper">
+      <div className="nav-link-wrapper">
         <a className="mx-2" href="#partners">Partners</a>
       </div>
     </nav>
