@@ -1,10 +1,5 @@
 .search-header-wrapper {
   background: linear-gradient(270deg, #131628 0%, $primary-500 100%);
-  // padding: 4rem 2.25rem;
-  // min-height: 304px;
-  .search-value-wrapper{
-    // height: 124px;
-  }
   .search-header {
     line-height: 1;
     width: auto;
@@ -36,6 +31,33 @@
 .discover-search-field {
   @include custom-search-field(573px);
 }
-.discover-body-wrapper {
-  @include custom-breadcrumb($primary-500, $gray-500);
+.search-suggestion-wrapper {
+  width: 718px;
+  background-color: $white;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15), 0px 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  .search-result-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  .first-title {
+    font-size: $font-size-base-xl;
+    line-height: 1.5rem;
+  }
+  .second-title-wrapper {
+    line-height: 1.25rem;
+        font-size: $font-size-base-xs;
+    color: $gray-500;
+  }
+  .btn-wrapper {
+    .span {
+      color: $info-500;
+      font-size: $font-size-base-sm;
+      font-weight: 700;
+    }
+    border-radius: 4px;
+    padding: 0.875rem 1rem;
+  }
 }

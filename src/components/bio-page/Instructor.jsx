@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Button, Icon } from '@edx/paragon';
+import { Breadcrumb, Button, Icon } from '@edx/paragon';
 import {
   Share, People, BookOpen, ArrowForwardIos,
 } from '@edx/paragon/icons';
@@ -7,13 +7,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getConfig } from '@edx/frontend-platform';
 import classNames from 'classnames';
-import linkedin from '../../assets/linkedin.svg';
-import facebook from '../../assets/facebook.svg';
-import { ReactComponent as Globe } from '../../assets/globe-icon.svg';
-import reddit from '../../assets/reddit.svg';
+import { ReactComponent as Linkedin } from '../../assets/linkedin.svg';
+import { ReactComponent as Facebook } from '../../assets/facebook.svg';
+import { ReactComponent as Globe } from '../../assets/language-filled.svg';
+import { ReactComponent as Twitter } from '../../assets/twitter.svg';
 import { COURSES_INFO } from '../../constants';
 import CourseCard from '../shared/course-card/CourseCard';
-import { ReactComponent as ForwardArrow } from '../../assets/forward-arrow.svg';
 
 const Instructor = () => {
   const [showMore, setShowMore] = useState(false);
@@ -45,29 +44,15 @@ const Instructor = () => {
     <main>
       <div className="d-flex instructor-header flex-column">
         <div className="custom-container">
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <Link to="/home">Home</Link>
-              </li>
-              <li className="px-1" role="presentation">
-                <span className="pgn__icon">
-                  <ForwardArrow />
-                </span>
-              </li>
-              <li className="breadcrumb-item">
-                <Link to="/bio">Partners</Link>
-              </li>
-              <li className="px-1" role="presentation">
-                <span className="pgn__icon">
-                  <ForwardArrow />
-                </span>
-              </li>
-              <li className="breadcrumb-item active" aria-current="page">
-                {InstructorData?.name}
-              </li>
-            </ol>
-          </nav>
+          <Breadcrumb
+            ariaLabel="Breadcrumb basic"
+            links={[
+              { label: 'Home', to: '/home' },
+              { label: 'Partners', to: '/bio' },
+            ]}
+            linkAs={Link}
+            activeLabel={InstructorData?.name}
+          />
           <div className="d-flex mt-5.5">
             <div className="instructor-img-wrapper">
               <img
@@ -125,7 +110,7 @@ const Instructor = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img className="social-icon-footer" src={reddit} alt="" />
+                      <Icon className="social-icon-footer" src={Twitter} />
                     </a>
                   )}
                   {InstructorData?.linkedin && (
@@ -134,11 +119,7 @@ const Instructor = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img
-                        className="social-icon-footer"
-                        src={linkedin}
-                        alt=""
-                      />
+                      <Icon className="social-icon-footer" src={Linkedin} />
                     </a>
                   )}
                   {InstructorData?.facebook && (
@@ -147,11 +128,7 @@ const Instructor = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img
-                        className="social-icon-footer"
-                        src={facebook}
-                        alt=""
-                      />
+                      <Icon className="social-icon-footer" src={Facebook} />
                     </a>
                   )}
                   {InstructorData?.website && (
@@ -160,7 +137,7 @@ const Instructor = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <Globe className="social-icon-footer" />
+                      <Icon src={Globe} className="social-icon-footer" />
                     </a>
                   )}
                 </div>

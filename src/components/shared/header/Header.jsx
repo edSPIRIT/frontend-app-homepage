@@ -1,17 +1,18 @@
 import {
-  AvatarButton, Button, Dropdown, Icon, SearchField,
+  AvatarButton,
+  Button,
+  Dropdown,
+  SearchField,
 } from '@edx/paragon';
 import { getConfig } from '@edx/frontend-platform';
 import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
-import { ArrowDropDown, ArrowDropUp } from '@edx/paragon/icons';
-import { useState } from 'react';
+import { ArrowDropDown } from '@edx/paragon/icons';
 import moodyLogo from '../../../assets/Moody-logo.svg';
 import DropdownNavHeader from './dropdown-nav-header/DropdownNavHeader';
 import NavHeader from './nav-header/NavHeader';
 
 const HeaderED = () => {
-  const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const location = useLocation();
   const history = useHistory();
   return (
@@ -31,7 +32,7 @@ const HeaderED = () => {
         </div>
         <div className="d-flex right-side-wrapper">
           <SearchField
-            onSubmit={(value) => history.push('/discover/search')}
+            onSubmit={() => history.push('/discover/search')}
             placeholder="What do you want to learn?"
           />
           <div className="d-flex align-items-center">
@@ -55,17 +56,14 @@ const HeaderED = () => {
                   size="sm"
                   href={`${getConfig().LMS_BASE_URL}/register`}
                 >
-                  Join
+                  Register
                 </Button>
               </>
             ) : (
               <Dropdown
-                onToggle={(isOpen) => setIsOpenDropDown(isOpen)}
-                className="ml-3 avatar-wrapper"
+                className="ml-3 avatar-dropdown-wrapper"
               >
-                <Dropdown.Toggle as={AvatarButton} src="">
-                  <Icon className={isOpenDropDown ? 'color-gray-500' : 'color-primary-500'} src={isOpenDropDown ? ArrowDropUp : ArrowDropDown} />
-                </Dropdown.Toggle>
+                <Dropdown.Toggle as={AvatarButton} iconAfter={ArrowDropDown} />
                 <Dropdown.Menu alignRight>
                   <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/profile`}>
                     Profile

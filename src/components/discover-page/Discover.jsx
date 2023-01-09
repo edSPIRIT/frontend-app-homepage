@@ -1,8 +1,7 @@
-import { Button } from '@edx/paragon';
+import { Breadcrumb, Button } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as ForwardArrow } from '../../assets/forward-arrow.svg';
 import PopularSubjects from '../shared/popular-subjects/PopularSubjects';
 import { COURSES_INFO_TOP, TOP_PROGRAM } from '../../constants';
 import CourseCard from '../shared/course-card/CourseCard';
@@ -12,23 +11,16 @@ import DiscoverBanner from '../shared/discover-banner/DiscoverBanner';
 const Discover = () => (
   <main>
     <DiscoverBanner />
-    <div className="discover-body-wrapper custom-container">
-      <nav aria-label="breadcrumb" className="py-5">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <Link to="/home">Home</Link>
-          </li>
-          <li className="px-1" role="presentation">
-            <span className="pgn__icon">
-              <ForwardArrow />
-            </span>
-          </li>
-          <li className="breadcrumb-item active">
-            <Link to="/bio">Discover</Link>
-          </li>
-        </ol>
-      </nav>
-      <section className="pb-6">
+    <div className="custom-container pt-5">
+      <Breadcrumb
+        ariaLabel="Breadcrumb basic"
+        links={[
+          { label: 'Home', to: '/home' },
+        ]}
+        linkAs={Link}
+        activeLabel="Discover"
+      />
+      <section className="pb-6 pt-4.5">
         <h2 className="d-flex  mb-5">
           Filter by popular subjects
         </h2>

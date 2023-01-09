@@ -27,7 +27,7 @@
   .second-title {
     color: $gray-500;
   }
-  .btn-wrapper{
+  .btn-wrapper {
     height: 28px;
   }
   .btn {
@@ -38,11 +38,27 @@
     color: $gray-500;
   }
   //dropdown icon
-  .pgn__icon{
+  .pgn__icon {
     color: $gray-500;
   }
   .dropdown-menu {
     min-width: unset;
+    transform: translate(-60px, 46px) !important;
+  }
+  .dropdown-item {
+    font-size: $font-size-base-xl;
+    padding: 0.375rem 1rem;
+    color: $gray-700;
+  }
+  .dropdown-icon {
+    .btn-icon-primary {
+      &:hover {
+        background-color: unset;
+      }
+      &:focus {
+        box-shadow: unset;
+      }
+    }
   }
 }
 .dark-background {

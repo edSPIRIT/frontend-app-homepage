@@ -39,35 +39,16 @@
     height: 44px;
   }
 }
-@mixin custom-breadcrumb($color: $light-300, $active-color: $light-500) {
-  .breadcrumb {
-    background-color: unset;
-    padding: 0;
-    margin-bottom: 0;
+@mixin custom-breadcrumb($color: $primary-500, $active-color: $gray-500) {
+  .pgn__breadcrumb {
+    .link-muted {
+      color: $color !important;
+    }
     .pgn__icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      svg {
-        width: unset;
-        height: unset;
-        color: $color;
-      }
+      color: $color;
     }
     .active {
-      a {
-        color: $active-color !important;
-      }
-    }
-    .breadcrumb-item {
-      font-size: $font-size-base-xl;
-      a {
-        color: $color;
-      }
-      &::before {
-        content: '' !important;
-        color: $color;
-      }
+      color: $active-color;
     }
   }
 }

@@ -1,17 +1,18 @@
-import { Dropdown } from '@edx/paragon';
+import { Dropdown, Icon } from '@edx/paragon';
 import React, { useState } from 'react';
+import {
+  Language,
+  KeyboardArrowDown,
+} from '@edx/paragon/icons';
 import edLogo from '../../../assets/edspirit-logo.png';
-import linkedin from '../../../assets/linkedin.svg';
-import facebook from '../../../assets/facebook.svg';
-import reddit from '../../../assets/reddit.svg';
+import { ReactComponent as Linkedin } from '../../../assets/linkedin.svg';
+import { ReactComponent as Facebook } from '../../../assets/facebook.svg';
+import { ReactComponent as Twitter } from '../../../assets/twitter.svg';
+import { ReactComponent as Reddit } from '../../../assets/reddit.svg';
 import { KNOW_US_FOOTER, USEFUL_LINKS_FOOTER } from '../../../constants';
 import moodyLogo from '../../../assets/Moody-logo.svg';
-import { ReactComponent as Globe } from '../../../assets/globe-icon.svg';
-import { ReactComponent as KeyboardArrowUp } from '../../../assets/KeyboardArrowUp.svg';
-import { ReactComponent as KeyboardArrowDown } from '../../../assets/KeyboardArrowDown.svg';
 
 const Footer = () => {
-  const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const [value, setValue] = useState('English');
   return (
     <footer>
@@ -23,8 +24,8 @@ const Footer = () => {
                 <img className="footer-logo h-100" src={moodyLogo} alt="" />
               </div>
               <p>
-                EDspirit is a hosted Open edX learning management system which can
-                be acquired and lunched within minutes.
+                EDspirit is a hosted Open edX learning management system which
+                can be acquired and lunched within minutes.
               </p>
             </div>
           </div>
@@ -57,24 +58,19 @@ const Footer = () => {
 
           <div className="col">
             <h5 className="mb-2.5">Choose Language</h5>
-            <div className="language-btn-container mb-5.5">
+            <div className=" d-flex mb-5.5">
               <Dropdown
-                onToggle={(isOpen) => setIsOpenDropDown(isOpen)}
                 className="dropdown-wrapper"
                 onSelect={(e) => setValue(e)}
               >
-                <Dropdown.Toggle id="dropdown-basic-4">
-                  <>
-                    <Globe className="color-light-500" />
-                    <span className="text-primary-500 px-2 dropdown-title">
-                      {value}
-                    </span>
-                    {isOpenDropDown ? (
-                      <KeyboardArrowUp />
-                    ) : (
-                      <KeyboardArrowDown className="color-primary-500" />
-                    )}
-                  </>
+                <Dropdown.Toggle
+                  id="dropdown-basic-4"
+                  iconAfter={KeyboardArrowDown}
+                  iconBefore={Language}
+                >
+                  <span className="text-primary-500 dropdown-title">
+                    {value}
+                  </span>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item
@@ -105,9 +101,13 @@ const Footer = () => {
               </Dropdown>
             </div>
             <div className="social-container">
-              <img className="social-icon-footer" src={linkedin} alt="" />
-              <img className="social-icon-footer" src={facebook} alt="" />
-              <img className="social-icon-footer" src={reddit} alt="" />
+              <Icon
+                className="social-icon-footer custom-height"
+                src={Linkedin}
+              />
+              <Icon className="social-icon-footer" src={Facebook} />
+              <Icon className="social-icon-footer" src={Twitter} />
+              <Icon className="social-icon-footer" src={Reddit} />
             </div>
           </div>
         </div>

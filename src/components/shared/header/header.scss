@@ -24,26 +24,23 @@
   @extend .d-flex, .align-items-center;
   background-color: #f2f0ef;
   padding-right: 36px;
-  .avatar-wrapper {
+  .avatar-dropdown-wrapper {
     .dropdown-toggle::after {
       content: none;
     }
     .btn {
       padding: 4px;
     }
-    .pgn__avatar-button-avatar {
-      // padding-left: unset;
-    }
     .pgn__avatar {
       margin: unset !important;
       margin-inline-end: unset;
       margin-right: 5px !important;
     }
-      .dropdown-menu {
-      border: unset;
+    .pgn__icon{
+      margin-left: 0;
+    }
+    .dropdown-menu {
       min-width: 200px;
-      padding: unset;
-      box-shadow: 0px 2px 4px rgb(0 0 0 / 15%), 0px 2px 8px rgb(0 0 0 / 15%);
       border-radius: 4px;
       font-size: 18px;
       line-height: 28px;

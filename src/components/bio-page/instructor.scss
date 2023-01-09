@@ -43,12 +43,7 @@
     @extend .d-flex, .justify-content-between, .align-items-center;
     color: $light-500;
   }
-  .pgn__breadcrumb {
-    color: $light-300;
-  }
-  .link-muted {
-    color: $light-500 !important;
-  }
+
 }
 .instructor-img-wrapper {
   height: 256px;
@@ -71,23 +66,3 @@
   }
 }
 
-.breadcrumb {
-  background-color: unset;
-  .active {
-    color: $light-500;
-  }
-  .breadcrumb-item {
-    a {
-      color: $light-300;
-    }
-    &:first-child {
-      &::before {
-        content: '' !important;
-      }
-    }
-    &::before {
-      content: url('../../assets/forward-arrow.svg') !important;
-      color: $light-300;
-    }
-  }
-}

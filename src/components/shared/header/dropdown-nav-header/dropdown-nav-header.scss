@@ -1,13 +1,9 @@
 .dropdown-container {
   @extend .d-flex;
   height: 76px;
-  gap: 1rem;
   .dropdown-nav-header {
     min-width: 113px;
-    @extend .d-flex,
-      .align-items-center,
-      .justify-content-between,
-      .position-relative;
+    @extend .d-flex, .align-items-center, .position-relative;
     &:hover {
       cursor: pointer;
       background-color: $gray-300;
@@ -29,12 +25,15 @@
       margin: 0 auto;
     }
     .nav-item-subjects {
-      min-width: 95px;
+      span {
+        width: 69px;
+      }
     }
     .nav-item-programs {
-      min-width: 102px;
+      span {
+        width: 76px;
+      }
     }
-
     .nav-item-text {
       @extend .d-flex, .align-items-center;
     }
@@ -91,7 +90,6 @@
     }
   }
   a {
-    @extend .mx-2;
     text-decoration: none;
     color: $gray-700;
     &:hover {

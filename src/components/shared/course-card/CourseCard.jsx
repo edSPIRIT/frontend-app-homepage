@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable camelcase */
-// variables taken from algolia not in camelcase
 import React from 'react';
 
 import { Button, Card, Icon } from '@edx/paragon';
-import { Person, BookOpen, WatchFilled } from '@edx/paragon/icons';
+import {
+  Person, BookOpen, WatchFilled, Groups,
+} from '@edx/paragon/icons';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { ReactComponent as Groups } from '../../../assets/groups-icon.svg';
 
 const CourseCard = ({ info }) => {
   const {

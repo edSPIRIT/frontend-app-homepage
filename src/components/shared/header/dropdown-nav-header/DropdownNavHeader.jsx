@@ -1,9 +1,8 @@
-import { Button } from '@edx/paragon';
-import { ArrowForward } from '@edx/paragon/icons';
+import { Button, Icon } from '@edx/paragon';
+import { ArrowForward, KeyboardArrowDown } from '@edx/paragon/icons';
 import React from 'react';
 import { PROGRAMS_ITEMS_NAV } from '../../../../constants';
 import useGetSubjects from '../../../../hooks/useGetSubjects';
-import { ReactComponent as ArrowDown } from '../../../../assets/KeyboardArrowDown.svg';
 
 const DropdownNavHeader = () => {
   const { subjects, coursesCounter } = useGetSubjects();
@@ -11,9 +10,12 @@ const DropdownNavHeader = () => {
   return (
     <nav className="dropdown-container">
       <div className="dropdown-nav-header">
-        <div className="nav-item-wrapper nav-item-subjects">
-          <span className="nav-item-text mx-2">Subjects</span>
-          <ArrowDown />
+        <div className="nav-item-wrapper nav-item-subjects mx-2">
+          <span className="nav-item-text mr-2">Subjects</span>
+          <Icon
+            src={KeyboardArrowDown}
+            style={{ height: '20px', width: '20px' }}
+          />
         </div>
         <div className="dropdown-content">
           <div className="menu-tab">
@@ -43,9 +45,12 @@ const DropdownNavHeader = () => {
         </div>
       </div>
       <div className="dropdown-nav-header">
-        <div className="nav-item-wrapper nav-item-programs">
-          <span className="nav-item-text mx-2">Programs</span>
-          <ArrowDown />
+        <div className="nav-item-wrapper nav-item-programs mx-2">
+          <span className="nav-item-text mr-2">Programs</span>
+          <Icon
+            src={KeyboardArrowDown}
+            style={{ height: '20px', width: '20px' }}
+          />
         </div>
         <div className="dropdown-content">
           <div className="menu-tab">
@@ -76,7 +81,7 @@ const DropdownNavHeader = () => {
         </div>
       </div>
       <div className="nav-item-link-wrapper">
-        <a href="#partners">Partners</a>
+        <a className="mx-2" href="#partners">Partners</a>
       </div>
     </nav>
   );

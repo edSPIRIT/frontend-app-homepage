@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Dropdown, Pagination } from '@edx/paragon';
+import { Breadcrumb, Dropdown, Pagination } from '@edx/paragon';
+import {
+  FilterList,
+  KeyboardArrowDown,
+} from '@edx/paragon/icons';
+import classNames from 'classnames';
 import DiscoverBanner from '../shared/discover-banner/DiscoverBanner';
-import { ReactComponent as ForwardArrow } from '../../assets/forward-arrow.svg';
-import CustomeDropdown from '../shared/CustomeDropdown';
-import { ReactComponent as FilterList } from '../../assets/filter-list.svg';
 import { COURSES_SEARCH, SEARCH_FACET_FILTERS } from '../../constants';
 import CourseCard from '../shared/course-card/CourseCard';
-import { ReactComponent as KeyboardArrowUp } from '../../assets/KeyboardArrowUp.svg';
-import { ReactComponent as KeyboardArrowDown } from '../../assets/KeyboardArrowDown.svg';
 
 const Search = () => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
+  const [value, setValue] = useState('Recent');
   return (
     <main>
       <DiscoverBanner />
@@ -28,14 +29,9 @@ const Search = () => {
                 id="{title}-{variant}"
                 variant="outline-primary"
                 className="font-weight-bold"
+                iconAfter={KeyboardArrowDown}
               >
-                <>
-                  <span className="mr-2">
-                    {facet.title}
-                  </span>
-                  <KeyboardArrowDown className="color-primary-500" />
-                  {/* {isOpenDropDown ? <KeyboardArrowUp /> : <KeyboardArrowDown />} */}
-                </>
+                <span className="mr-2">{facet.title}</span>
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <span className="p-2 d-block">test</span>
@@ -45,45 +41,77 @@ const Search = () => {
         </div>
       </div>
 
-      <div className="search-body-wrapper custom-container">
-        <nav aria-label="breadcrumb" className="py-5">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <Link to="/home">Home</Link>
-            </li>
-            <li className="px-1" role="presentation">
-              <span className="pgn__icon">
-                <ForwardArrow />
-              </span>
-            </li>
-            <li className="breadcrumb-item">
-              <Link to="/discover">Discover</Link>
-            </li>
-            <li className="px-1" role="presentation">
-              <span className="pgn__icon">
-                <ForwardArrow />
-              </span>
-            </li>
-            <li className="breadcrumb-item active">
-              <Link to="/discover/search">Search</Link>
-            </li>
-          </ol>
-        </nav>
-        <div className="d-flex justify-content-between align-items-center mb-4">
+      <div className="custom-container pt-4.5">
+        <Breadcrumb
+          ariaLabel="Breadcrumb basic"
+          links={[
+            { label: 'Home', to: '/home' },
+            { label: 'Discover', to: '/discover' },
+          ]}
+          linkAs={Link}
+          activeLabel="Search"
+        />
+        <div className="d-flex justify-content-between align-items-center my-4">
           <p>
             <span className="total-title">Total Course:</span>
             <span className="font-weight-bold"> 2</span>
           </p>
-          <CustomeDropdown
-            dropdownItems={[
-              'Recent',
-              'Popular',
-              'Title A to Z',
-              'Title Z to A',
-            ]}
-            title="Sort by:"
-            beforeIcon={<FilterList />}
-          />
+          <Dropdown
+            onToggle={(isOpen) => setIsOpenDropDown(isOpen)}
+            className="dropdown-wrapper"
+            onSelect={(e) => setValue(e)}
+          >
+            <Dropdown.Toggle
+              className={classNames({
+                'is-open-dropdown': isOpenDropDown,
+              })}
+              id="dropdown-basic-4"
+              iconAfter={KeyboardArrowDown}
+              iconBefore={FilterList}
+            >
+              <span className="text-primary-500 dropdown-title">
+                Sort by:
+                <span className="text-primary-500 font-weight-bold">
+                  {' '}
+                  {value}
+                </span>
+              </span>
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item
+                key="Recent"
+                active={value === 'Recent'}
+                href="#/action-1"
+                eventKey="Recent"
+              >
+                Recent
+              </Dropdown.Item>
+              <Dropdown.Item
+                key="Popular"
+                active={value === 'Popular'}
+                href="#/action-2"
+                eventKey="Popular"
+              >
+                Popular
+              </Dropdown.Item>
+              <Dropdown.Item
+                key="Title A to Z"
+                active={value === 'Title A to Z'}
+                href="#/action-1"
+                eventKey="Title A to Z"
+              >
+                Title A to Z
+              </Dropdown.Item>
+              <Dropdown.Item
+                key="Title Z to A"
+                active={value === 'Title Z to A'}
+                href="#/action-1"
+                eventKey="Title Z to A"
+              >
+                Title Z to A
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
         <div className="course-container">
           {COURSES_SEARCH.map((course) => (
