@@ -1,4 +1,4 @@
-.dropdown-container {
+.nav-items-wrapper {
   @extend .d-flex;
   height: 76px;
   .dropdown-nav-header {
@@ -54,18 +54,11 @@
       }
     }
   }
-}
-
-.nav-link-wrapper {
-  @extend .d-flex, .align-items-center;
-  &:hover {
-    cursor: pointer;
-  }
-  a {
-    text-decoration: none;
+  .nav-link-header {
+    @extend .d-flex, .align-items-center;
     color: $gray-700;
     &:hover {
-      text-decoration: none;
+      color: $gray-700;
     }
   }
 }

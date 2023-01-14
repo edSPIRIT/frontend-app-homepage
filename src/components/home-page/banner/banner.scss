@@ -1,5 +1,5 @@
 .hero {
-  background-color: $primary-700;
+  background: $background-dark-blue;
   white-space: pre-line;
 }
 
@@ -8,23 +8,10 @@
   color: $white;
   width: 512px;
 }
-
-.hero-desc {
-  @extend .text-light-300, .mb-4;
-  font-size: $font-size-base-xl;
-  width: 728px;
-}
 .hero-image {
   object-fit: contain;
   width: 100%;
   max-height: 318px;
-}
-.hero-link-wrapper {
-  color: $accent-a;
-  font-size: $font-size-base-xl;
-  &:hover {
-    color: $accent-a;
-  }
 }
 .hero-search {
   @include custom-search-field(354px);

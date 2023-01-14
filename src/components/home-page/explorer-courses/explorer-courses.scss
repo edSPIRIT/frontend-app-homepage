@@ -21,7 +21,6 @@
   grid-template-columns: repeat(4, minmax(0px, 1fr));
   gap: 24px;
   .pgn__card {
-    box-shadow: unset;
     .pgn__card-image-cap {
       height: 92px;
     }
@@ -36,8 +35,6 @@
       border-color: $light;
     }
     &:hover {
-      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15),
-        0px 0px 8px rgba(0, 0, 0, 0.15);
       .btn-primary {
         background-color: $primary;
         color: $white;

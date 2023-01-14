@@ -15,7 +15,7 @@ const Banner = () => {
           <h1 className="display-1">
             <Highlighted text={title} highlight={highlightedWord} />
           </h1>
-          <p className="hero-desc">{description}</p>
+          <p className="banner-desc">{description}</p>
           <SearchField
             className="hero-search mb-4"
             submitButtonLocation="external"
@@ -23,7 +23,7 @@ const Banner = () => {
             placeholder="What do you want to learn?"
           />
           <Link
-            className="d-flex align-items-center hero-link-wrapper"
+            className="banner-link"
             to="/discover"
           >
             <span className="mr-2">Explore New Courses</span>

@@ -69,6 +69,9 @@
 .color-gray-500 {
   color: $gray-500;
 }
+.font-size-xl {
+  font-size: $font-size-base-xl;
+}
 
 .dropdown-wrapper {
   .dropdown-title {
@@ -143,6 +146,10 @@
 
 .pgn__card {
   border: 1px solid $light-400;
+  box-shadow: unset;
+  &:hover {
+    box-shadow: $card-box-shadow;
+  }
 }
 .dropdown-menu {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15), 0px 2px 8px rgba(0, 0, 0, 0.15);
@@ -157,8 +164,31 @@
   }
 }
 //
-.pgn__dropdown{
+.pgn__dropdown {
   .pgn__icon {
     width: 20px;
+  }
+}
+.banner-desc {
+  @extend .text-light-300, .mb-4;
+  font-size: $font-size-base-xl;
+  width: 728px;
+}
+.banner-link {
+  @extend .d-flex, .align-items-center;
+  color: $accent-a;
+  font-size: $font-size-base-xl;
+  &:hover {
+    color: $accent-a;
+  }
+}
+
+.pagination-default {
+  .page-link {
+    color: $gray-700;
+    min-width: 44px;
+    min-height: 44px;
+    margin-right: 0.4rem;
+    font-weight: 500;
   }
 }

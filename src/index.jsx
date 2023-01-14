@@ -23,6 +23,7 @@ import Discover from './components/discover-page/Discover';
 import Instructor from './components/bio-page/Instructor';
 import Search from './components/search-page/Search';
 import NotFound from './components/notFount-page/NotFound';
+import PartnersList from './components/partners-list-page/PartnersList';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
@@ -36,6 +37,7 @@ subscribe(APP_READY, () => {
           <Route exact path="/discover/search" component={Search} />
           <Route exact path="/inprogress" component={InProgress} />
           <Route exact path="/completed" component={Completed} />
+          <Route exact path="/partners" component={PartnersList} />
           <Route exact path="/bio/:slug">
             <Instructor />
           </Route>

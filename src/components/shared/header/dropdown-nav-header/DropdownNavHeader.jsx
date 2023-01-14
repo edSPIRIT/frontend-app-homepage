@@ -1,6 +1,7 @@
 import { Button, Icon } from '@edx/paragon';
 import { ArrowForward, KeyboardArrowDown } from '@edx/paragon/icons';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PROGRAMS_ITEMS_NAV } from '../../../../constants';
 import useGetSubjects from '../../../../hooks/useGetSubjects';
 
@@ -8,15 +9,10 @@ const DropdownNavHeader = () => {
   const { subjects, coursesCounter } = useGetSubjects();
 
   return (
-    <nav className="dropdown-container">
+    <nav className="nav-items-wrapper">
       <div className="dropdown-nav-header">
-        <div
-          className="d-flex mx-2 align-items-center"
-        >
-          <span
-            className=" mr-2"
-          >Subjects
-          </span>
+        <div className="d-flex mx-2 align-items-center">
+          <span className=" mr-2">Subjects</span>
           <Icon
             src={KeyboardArrowDown}
             style={{ height: '20px', width: '20px' }}
@@ -51,13 +47,8 @@ const DropdownNavHeader = () => {
         </div>
       </div>
       <div className="dropdown-nav-header">
-        <div
-          className="d-flex align-items-center mx-2"
-        >
-          <span
-            className=" mr-2"
-          >Programs
-          </span>
+        <div className="d-flex align-items-center mx-2">
+          <span className=" mr-2">Programs</span>
           <Icon
             src={KeyboardArrowDown}
             style={{ height: '20px', width: '20px' }}
@@ -92,9 +83,9 @@ const DropdownNavHeader = () => {
           </div>
         </div>
       </div>
-      <div className="nav-link-wrapper">
-        <a className="mx-2" href="#partners">Partners</a>
-      </div>
+      <Link className="nav-link-header mx-2" to="/partners">
+        Partners
+      </Link>
     </nav>
   );
 };
