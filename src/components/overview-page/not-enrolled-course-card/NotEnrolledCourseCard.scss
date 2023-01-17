@@ -1,0 +1,21 @@
+.not-enrolled-wrapper {
+  margin-bottom: 300px;
+  .pgn__card-image-cap {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: unset;
+    min-width: unset;
+  }
+  .pgn__card-footer {
+    width: unset;
+  }
+  p {
+    font-size: 1.125rem;
+  }
+  .btn-brand {
+    width: 216px;
+    font-size: 1.125rem;
+    background-color: $brand-600;
+  }
+}

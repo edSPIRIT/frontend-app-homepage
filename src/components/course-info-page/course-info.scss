@@ -1,0 +1,6 @@
+.course-info-header {
+  @include custom-breadcrumb($gray-700, $gray-500);
+}
+.course-nav-wrapper{
+    background-color: $light-300;
+}

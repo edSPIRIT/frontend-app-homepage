@@ -1,0 +1,26 @@
+.facets-wrapper {
+  .btn {
+    border-color: $light-300;
+    background-color: $white;
+    color: $gray-700;
+    font-size: $font-size-base-sm;
+    font-weight: 500 !important;
+    &:active {
+      background-color: $white !important;
+      border-color: $light-300 !important;
+    }
+    &::before {
+      border: unset;
+    }
+  }
+  .show {
+    .btn-outline-primary.dropdown-toggle {
+      color: #454545;
+      background-color: $white;
+      border-color: $light-300;
+    }
+  }
+  .dropdown-toggle::after {
+    content: none;
+  }
+}
