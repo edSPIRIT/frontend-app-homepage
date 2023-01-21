@@ -1,6 +1,113 @@
-.course-info-header {
+.course-info-top-container {
+  background-color: $light-200;
+  margin-inline: -100%;
+  .course-info-top-wrapper {
+    position: relative;
+    padding-right: calc(320px + 72px);
+  }
+}
+.course-info-breadcrumb {
   @include custom-breadcrumb($gray-700, $gray-500);
 }
-.course-nav-wrapper{
-    background-color: $light-300;
+.course-nav-wrapper {
+  margin-inline: -100%;
+  background-color: $light-300;
+  position: sticky;
+  top: 0;
+  button {
+    border: transparent;
+    padding: 8px 4px;
+  }
+}
+
+.course-info-side-wrapper {
+  position: sticky;
+  width: 324px;
+  top: 128px;
+  right: 0;
+  align-self: flex-end;
+  z-index: 10;
+  height: 0;
+  .cards-wrapper {
+    .card-icon {
+      @extend .mr-2;
+      width: 20px;
+      color: $gray-500;
+    }
+    .btn-card-container {
+      .btn {
+        height: 44px;
+        width: 100%;
+      }
+    }
+    .pgn__icon {
+      height: unset;
+    }
+    .pgn__card-image-cap {
+      height: 204px;
+    }
+
+    .program-instructors-wrapper {
+      width: 276px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      a {
+        color: black;
+        text-decoration: none;
+        &:hover {
+          text-decoration: none;
+        }
+        &::after {
+          content: ', ';
+        }
+        &:last-child {
+          &::after {
+            content: '';
+          }
+        }
+      }
+    }
+  }
+}
+
+.about-wrapper {
+  margin-top: 42px;
+  width: 1008px;
+
+  .long-about-break {
+    @include line-break(5);
+  }
+  .btn {
+    color: $info-500;
+  }
+}
+.what-learn-wrapper {
+  width: 1008px;
+  background-color: $light-200;
+  border-radius: 6px;
+  padding: 32px;
+  .items-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    gap: 1rem;
+  }
+  p {
+    font-size: $font-size-base-std;
+  }
+  .pgn__icon {
+    color: $gray-500;
+  }
+}
+.requirements-wrapper {
+  width: 1008px;
+  .attention-wrapper {
+    @extend .d-flex, .flex-column;
+    padding: 24px;
+    background-color: $warning-100;
+    border-radius: 6px;
+    .pgn__icon {
+      color: $warning-300;
+    }
+  }
 }

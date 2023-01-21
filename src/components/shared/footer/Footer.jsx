@@ -13,7 +13,7 @@ const Footer = () => {
   const { footerData } = useGetFooters();
   return (
     <footer>
-      <div className="custom-container mb-4 pt-5">
+      <div className="custom-container mb-4 mt-6 pt-6">
         <div className="row">
           <div className="col col-6">
             <div className="d-flex flex-column">

@@ -24,6 +24,7 @@ const PartnerPage = () => {
   const [showMore, setShowMore] = useState(false);
   const [showShowMoreButton, setShowMoreButton] = useState(false);
   const pElement = useRef(null);
+  console.log('pElement', pElement);
   useEffect(() => {
     if (pElement.current?.offsetHeight >= 112) {
       setShowMoreButton(true);
@@ -77,7 +78,7 @@ const PartnerPage = () => {
             </Button>
           )}
         </div>
-        <div className="d-flex justify-content-center partner-snapshot-wrapper">
+        <div className="d-flex justify-content-center partner-snapshot-wrapper mt-2">
           <a className="icon-wrapper" href="#courses">
             <Icon clas src={BookOpen} style={{ width: '36px' }} />
             <span className="partner-title">Courses</span>

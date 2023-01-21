@@ -7,7 +7,6 @@
 @import './styles/variables';
 @import './styles/mixins';
 
-
 @import 'components/home-page/banner/banner.scss';
 @import 'components/home-page/explorer-courses/explorer-courses.scss';
 @import 'components/home-page/top-programs/top-programs.scss';
@@ -21,6 +20,6 @@
 @import 'components/partner-page/partner.scss';
 @import 'components/course-info-page/course-info.scss';
 
-
-
-
+body {
+  overflow-x: hidden;
+}
