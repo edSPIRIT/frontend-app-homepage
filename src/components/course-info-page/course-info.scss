@@ -4,20 +4,13 @@
   .course-info-top-wrapper {
     position: relative;
     padding-right: calc(320px + 72px);
+    P{
+      width: 940px;
+    }
   }
 }
 .course-info-breadcrumb {
   @include custom-breadcrumb($gray-700, $gray-500);
-}
-.course-nav-wrapper {
-  margin-inline: -100%;
-  background-color: $light-300;
-  position: sticky;
-  top: 0;
-  button {
-    border: transparent;
-    padding: 8px 4px;
-  }
 }
 
 .course-info-side-wrapper {
@@ -108,6 +101,35 @@
     border-radius: 6px;
     .pgn__icon {
       color: $warning-300;
+    }
+  }
+}
+
+.sticky-nav-wrapper {
+  background-color: $light-300;
+  position: sticky;
+  top: 0;
+  margin-inline: -100%;
+  font-size: $font-size-base-xl;
+  z-index: 9;
+  ul {
+    display: flex;
+    margin-bottom: unset;
+    list-style: none;
+    padding-left: 0;
+    li {
+      margin-right: 32px;
+      padding: 8px 0;
+      a {
+        color: $gray-500;
+      }
+    }
+  }
+  .active-item {
+    border-bottom: 2px solid $brand-500;
+    a {
+      font-weight: 500;
+      color: $primary-500;
     }
   }
 }

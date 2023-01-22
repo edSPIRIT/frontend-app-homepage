@@ -69,10 +69,10 @@
 .color-gray-500 {
   color: $gray-500;
 }
-.color-black{
-  color:black;
+.color-black {
+  color: black;
 }
-.font-sm{
+.font-sm {
   font-size: $font-size-base-sm;
 }
 
@@ -190,10 +190,6 @@
     font-weight: 500;
   }
 }
-
-.long-bio-break {
-  @include line-break(4);
-}
 .showMore-btn {
   padding: 0;
   &:hover {
@@ -217,7 +213,7 @@
   border: 1px solid $light-300;
   &:hover {
     color: $gray-500 !important;
-  background-color: transparent !important;
+    background-color: transparent !important;
   }
   .pgn__icon {
     height: unset !important;

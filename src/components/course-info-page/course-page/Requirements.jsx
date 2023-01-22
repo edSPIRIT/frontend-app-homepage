@@ -2,7 +2,7 @@ import { Icon } from '@edx/paragon';
 import { WarningAmber } from '@edx/paragon/icons';
 
 const Requirements = () => (
-  <div className="requirements-wrapper mb-5">
+  <div className="requirements-wrapper mb-5" id="requirement">
     <h2 className="mb-3">Requirements</h2>
     <ul className="pl-3.5 mb-4.5">
       <li>

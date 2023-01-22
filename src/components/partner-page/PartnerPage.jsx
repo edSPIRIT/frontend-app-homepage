@@ -24,7 +24,6 @@ const PartnerPage = () => {
   const [showMore, setShowMore] = useState(false);
   const [showShowMoreButton, setShowMoreButton] = useState(false);
   const pElement = useRef(null);
-  console.log('pElement', pElement);
   useEffect(() => {
     if (pElement.current?.offsetHeight >= 112) {
       setShowMoreButton(true);
@@ -63,7 +62,7 @@ const PartnerPage = () => {
           <p
             ref={pElement}
             className={classNames('mb-2', {
-              'long-bio-break': !showMore,
+              'long-desc-break': !showMore,
             })}
           >
             { partnerData.organization.description}

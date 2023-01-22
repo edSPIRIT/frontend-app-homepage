@@ -16,12 +16,12 @@ const PartnersCardList = ({ partnersData }) => (
         >
           <Card orientation="horizontal">
             <Card.ImageCap
-              src={partner.organization.logo}
+              src="https://edx-orgs-test.s3.eu-central-1.amazonaws.com/thinkpad/organization_logos/BATOAM_COVER_ART.jpg"
               srcAlt="Card image"
             />
             <Card.Body>
               <Card.Section>
-                <div className="partner-name-wrapper mb-2.5">
+                <div className="partner-name-wrapper mb-2">
                   <h3 className="mr-5">{partner.organization.name}</h3>
                   <IconButton
                     className="arrow-forward-btn"

@@ -25,7 +25,7 @@ import Search from './components/search-page/Search';
 import NotFound from './components/notFount-page/NotFound';
 import PartnersList from './components/partners-list-page/PartnersList';
 import PartnerPage from './components/partner-page/PartnerPage';
-import CourseInfoPage from './components/course-info-page/CourseInfoPage';
+import CoursePage from './components/course-info-page/CoursePage';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
@@ -41,7 +41,7 @@ subscribe(APP_READY, () => {
           <Route exact path="/completed" component={Completed} />
           <Route exact path="/partners" component={PartnersList} />
           <Route exact path="/course/:slug/">
-            <CourseInfoPage />
+            <CoursePage />
           </Route>
           <Route exact path="/partners/:slug">
             <PartnerPage />

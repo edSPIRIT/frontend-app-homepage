@@ -3,7 +3,7 @@ import { Check } from '@edx/paragon/icons';
 import { WHAT_YOU_LEARN } from '../../../constants';
 
 const WhatYouLearn = () => (
-  <div className="what-learn-wrapper mb-5">
+  <div className="what-learn-wrapper mb-5" id="what-you-learn">
     <h2 className="mb-3">What you&apos;ll learn</h2>
     <div className="items-wrapper">
       {WHAT_YOU_LEARN.map((item) => (

@@ -47,7 +47,7 @@ const Instructor = () => {
                 alt="instructor-img"
               />
             </div>
-            <div className="d-flex flex-column">
+            <div className="d-flex flex-column w-100">
               <div className="d-flex justify-content-between align-items-center">
                 <h1>{InstructorData?.name}</h1>
                 <Icon src={Share} className="instructor-share-icon" />
@@ -59,7 +59,7 @@ const Instructor = () => {
                 <p
                   ref={pElement}
                   className={classNames('mb-2', {
-                    'long-bio-break': !showMore,
+                    'long-bio-instructor': !showMore,
                   })}
                 >
                   {InstructorData?.bio}
