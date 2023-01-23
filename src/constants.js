@@ -671,3 +671,59 @@ export const WHAT_YOU_LEARN = [
     id: '7',
   },
 ];
+export const PREREQUISITE_COURSES = [
+  {
+    id: 'Robotics',
+    title: 'Robotics',
+    institution: 'IBM',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/programs/card_images/0de98c3a-0a5a-4cf2-b0a0-634862d47e11-27353a61855f.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/518a47f2-66fb-4529-8902-a4f7ca3002ef-78d294b01e63.png',
+  },
+  {
+    id: 'Advanced Programming',
+    title: 'Advanced Programming',
+    institution: 'UPValenciaX',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/programs/card_images/865bbad4-6643-4d59-85d3-936cf3a7acf4-3720dd824793.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dc6d25de-0dac-43e6-a915-e362bf8b4403-917c4e000b69.png',
+  },
+  {
+    id: 'introduction to java',
+    title: 'introduction to java',
+    institution: 'Codio',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/59dd2022-3076-4677-ae8b-58b521077ca1-c9ad40423ed7.small.png',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dd7e4312-e4df-4d81-a126-5885865ab0d5-8c68a40ac0f3.png',
+  },
+];
+export const SYLLABUS = [
+  {
+    id: '1',
+    title: 'Introduction: Get on the Balcony',
+  },
+  {
+    id: '2',
+    title: 'Identify the Work to Be Done',
+  },
+  {
+    id: '3',
+    title: 'Lead With, Beyond, and Without Authority',
+  },
+  {
+    id: '4',
+    title: 'Take Action: Think Politically',
+  },
+  {
+    id: '5',
+    title: 'Take Action: Build Trust',
+  },
+  {
+    id: '6',
+    title: 'Take Action: Orchestrate Conflict',
+  },
+  {
+    id: '7',
+    title: 'Conclusion: Staying Alive',
+  },
+];

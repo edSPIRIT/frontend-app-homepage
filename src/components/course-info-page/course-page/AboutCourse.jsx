@@ -2,7 +2,7 @@ import { Button } from '@edx/paragon';
 import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 
-const AboutCourse = () => {
+const AboutCourse = ({ Ref }) => {
   const [showMore, setShowMore] = useState(false);
   const [showShowMoreButton, setShowMoreButton] = useState(false);
   const pElement = useRef(null);
@@ -12,7 +12,7 @@ const AboutCourse = () => {
     }
   }, [pElement.current?.offsetHeight]);
   return (
-    <div className="about-wrapper mb-5" id="about-course">
+    <div className="about-wrapper" id="about-course" ref={Ref}>
       <h2 className="mb-3">About this course</h2>
       <div>
         <p

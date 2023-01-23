@@ -16,9 +16,7 @@ const CourseInfoSideBar = () => (
       />
       <div className="mt-4.5 px-4">
         <h2 className="mb-1">$ 225</h2>
-        <span className="text-gray-500 font-sm">
-          Lifetime access
-        </span>
+        <span className="text-gray-500 font-sm">Lifetime access</span>
       </div>
       <Card.Section>
         <div className="d-flex flex-column  mt-auto font-sm">
@@ -38,15 +36,24 @@ const CourseInfoSideBar = () => (
           </div>
           <div className="d-flex flex-row align-items-center mb-2">
             <Icon className="card-icon" src={Event} />
-            <p><span className="color-black">Starting</span> <span>(6 January 2022)</span></p>
+            <p>
+              <span className="color-black">Starting</span>{' '}
+              <span>(6 January 2022)</span>
+            </p>
           </div>
           <div className="d-flex flex-row align-items-center mb-2">
             <Icon className="card-icon" src={Event} />
-            <p><span className="color-black">Ending</span> <span>(3 August 2022)</span></p>
+            <p>
+              <span className="color-black">Ending</span>{' '}
+              <span>(3 August 2022)</span>
+            </p>
           </div>
           <div className="d-flex flex-row align-items-center mb-3.5">
             <Icon className="card-icon" src={WatchFilled} />
-            <p><span className="color-black">2 weeks</span> <span>(1-3 hours per week)</span></p>
+            <p>
+              <span className="color-black">2 weeks</span>{' '}
+              <span>(1-3 hours per week)</span>
+            </p>
           </div>
         </div>
       </Card.Section>
@@ -55,12 +62,16 @@ const CourseInfoSideBar = () => (
           <Button variant="brand" href="#course" className="mb-3">
             Enroll now
           </Button>
-          <p><span>53,367</span><span className="font-sm">{' '}already enrolled!</span> </p>
+          <p>
+            <span>53,367</span>
+            <span className="font-sm"> already enrolled!</span>{' '}
+          </p>
         </div>
       </Card.Footer>
     </Card>
-    <p className="font-sm pt-4 pb-6 text-align-center">Last update on 23 Jun 2022</p>
-    <div className="test" />
+    <p className="font-sm d-flex justify-content-center py-4">
+      Last update on 23 Jun 2022
+    </p>
   </div>
 );
 
