@@ -16,7 +16,7 @@ const PartnersCardList = ({ partnersData }) => (
         >
           <Card orientation="horizontal">
             <Card.ImageCap
-              src="https://edx-orgs-test.s3.eu-central-1.amazonaws.com/thinkpad/organization_logos/BATOAM_COVER_ART.jpg"
+              src={partner.organization.logo}
               srcAlt="Card image"
             />
             <Card.Body>

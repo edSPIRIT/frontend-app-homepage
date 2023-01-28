@@ -1,0 +1,11 @@
+
+.similar-courses-wrapper {
+  span {
+    font-size: $font-size-base-sm;
+  }
+  .icon-chevron-wrapper {
+    @extend .d-flex;
+    gap: 1rem;
+    color: $gray-500;
+  }
+}

@@ -727,3 +727,92 @@ export const SYLLABUS = [
     title: 'Conclusion: Staying Alive',
   },
 ];
+export const COURSE_TOC = {
+  name: 'vahid course',
+  lms_url:
+    'https://thinkpad.nightly.edspirit.com/courses/course-v1:vahid-org+cs101+2020_lt/jump_to/block-v1:vahid-org+cs101+2020_lt+type@course+block@course',
+  sections: [
+    {
+      name: 'Section 1',
+      lms_url:
+        'https://thinkpad.nightly.edspirit.com/courses/course-v1:vahid-org+cs101+2020_lt/jump_to/block-v1:vahid-org+cs101+2020_lt+type@chapter+block@5b66178889774e45a876250fc87eeb4b',
+      subsections: [
+        {
+          name: 'Subsection 1',
+          lms_url:
+            'https://thinkpad.nightly.edspirit.com/courses/course-v1:vahid-org+cs101+2020_lt/jump_to/block-v1:vahid-org+cs101+2020_lt+type@sequential+block@25f88e57dacc4042ab5b1af962a2d3f4',
+          units: [
+            {
+              name: 'Unit',
+              lms_url:
+                'https://thinkpad.nightly.edspirit.com/courses/course-v1:vahid-org+cs101+2020_lt/jump_to/block-v1:vahid-org+cs101+2020_lt+type@vertical+block@9f53db0d175842e19ddc16c8f71c09cd',
+              type: 'other',
+            },
+            {
+              name: 'Unit',
+              lms_url:
+                'https://thinkpad.nightly.edspirit.com/courses/course-v1:vahid-org+cs101+2020_lt/jump_to/block-v1:vahid-org+cs101+2020_lt+type@vertical+block@682b3755b5744453a162220928786ee6',
+              type: 'other',
+            },
+            {
+              name: 'Unit',
+              lms_url:
+                'https://thinkpad.nightly.edspirit.com/courses/course-v1:vahid-org+cs101+2020_lt/jump_to/block-v1:vahid-org+cs101+2020_lt+type@vertical+block@0f0cd793a8e041df876ad300522e3c71',
+              type: 'video',
+            },
+            {
+              name: 'Unit',
+              lms_url:
+                'https://thinkpad.nightly.edspirit.com/courses/course-v1:vahid-org+cs101+2020_lt/jump_to/block-v1:vahid-org+cs101+2020_lt+type@vertical+block@5f224d037a7d40b79b5e720d0ec78132',
+              type: 'other',
+            },
+            {
+              name: 'Unit',
+              lms_url:
+                'https://thinkpad.nightly.edspirit.com/courses/course-v1:vahid-org+cs101+2020_lt/jump_to/block-v1:vahid-org+cs101+2020_lt+type@vertical+block@3df0671724284b9ba0f1e4df0292576b',
+              type: 'other',
+            },
+            {
+              name: 'Unit 15',
+              lms_url:
+                'https://thinkpad.nightly.edspirit.com/courses/course-v1:vahid-org+cs101+2020_lt/jump_to/block-v1:vahid-org+cs101+2020_lt+type@vertical+block@b1001d0dbb7c46fc81b9abb48694a270',
+              type: 'video',
+            },
+          ],
+        },
+        {
+          name: 'custom Subsection',
+          lms_url:
+            'https://thinkpad.nightly.edspirit.com/courses/course-v1:vahid-org+cs101+2020_lt/jump_to/block-v1:vahid-org+cs101+2020_lt+type@sequential+block@8429e1db04c74592bb3194f4541a737a',
+          units: [
+            {
+              name: 'atom',
+              lms_url:
+                'https://thinkpad.nightly.edspirit.com/courses/course-v1:vahid-org+cs101+2020_lt/jump_to/block-v1:vahid-org+cs101+2020_lt+type@vertical+block@e14b7841b68147a398d4a41aa9e8f7b8',
+              type: 'other',
+            },
+            {
+              name: 'Bor',
+              lms_url:
+                'https://thinkpad.nightly.edspirit.com/courses/course-v1:vahid-org+cs101+2020_lt/jump_to/block-v1:vahid-org+cs101+2020_lt+type@vertical+block@7e5090a8b74e451398dc563f7b8636b7',
+              type: 'other',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'Section 2 vahid',
+      lms_url:
+        'https://thinkpad.nightly.edspirit.com/courses/course-v1:vahid-org+cs101+2020_lt/jump_to/block-v1:vahid-org+cs101+2020_lt+type@chapter+block@00c0a89064db489ead8c02120095e961',
+      subsections: [
+        {
+          name: 'Subsection 2: chernobyl',
+          lms_url:
+            'https://thinkpad.nightly.edspirit.com/courses/course-v1:vahid-org+cs101+2020_lt/jump_to/block-v1:vahid-org+cs101+2020_lt+type@sequential+block@e227aff951b44509b017d1a189efe849',
+          units: [],
+        },
+      ],
+    },
+  ],
+};

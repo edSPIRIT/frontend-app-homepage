@@ -1,6 +1,5 @@
 @import 'components/overview-page/not-enrolled-course-card/NotEnrolledCourseCard.scss';
 @import 'components/overview-page/recommended-programs/recommended-programs.scss';
-@import 'components/overview-page/recommended-courses/recommended-courses.scss';
 @import 'components/overview-page/avatar-info/avatar-info.scss';
 
 
@@ -23,4 +22,7 @@
 }
 .recommended-courses-wrapper {
   grid-area: recommended-courses-area;
+}
+.recommendationCourse-wrapper {
+  background-color: $light-200;
 }

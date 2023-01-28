@@ -8,10 +8,11 @@ import {
   HowToReg,
   Verified,
 } from '@edx/paragon/icons';
+import PropTypes from 'prop-types';
 
 const CourseInfoTopDesc = () => (
   <div className="course-info-top-container">
-    <div className="custom-container  course-info-top-wrapper ">
+    <div className=" course-info-top-wrapper ">
       <div className="course-info-breadcrumb py-4.5">
         {/* TODO: REPLACE BUSINESS WITH ACTUAL SUBJECT */}
         <Breadcrumb
@@ -25,13 +26,15 @@ const CourseInfoTopDesc = () => (
           activeLabel="Course info"
         />
       </div>
-      <div className="d-flex justify-content-between mb-1">
-        <h1 className="mr-4.5">
-          Anatomy: Musculoskeletal and Integumentary Systems
-        </h1>
-        <Icon className="color-gray-500" src={Share} />
+      <div className="d-flex flex-column">
+        <div className="d-flex justify-content-between mb-1">
+          <h1 className="mr-4.5">
+            Anatomy: Musculoskeletal and Integumentary Systems
+          </h1>
+          <Icon className="color-gray-500" src={Share} />
+        </div>
+        <Link to="/partners/" className="course-institution">Michigan X</Link>
       </div>
-      <Link to="/partners/" className="course-institution">Michigan X</Link>
       <p className="pt-3.5">
         Get the most out of your course! Upgrade to get unlimited access to the
         course material, unlock both graded and non-graded assignments, and earn

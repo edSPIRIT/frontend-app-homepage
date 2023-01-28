@@ -4,7 +4,7 @@ import { useState } from 'react';
 import HorizontalCard from '../shared/horizontal-card/HorizontalCard';
 import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
-import RecommendedCourses from './recommended-courses/RecommendedCourses';
+import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import RecommendedPrograms from './recommended-programs/RecommendedPrograms';
 
 const OverviewPage = () => {
@@ -43,7 +43,9 @@ const OverviewPage = () => {
                 <RecommendedPrograms />
               </div>
             </div>
-            <RecommendedCourses />
+            <div className="recommendationCourse-wrapper mt-6 py-6">
+              <SimilarCourses />
+            </div>
           </div>
         )}
 

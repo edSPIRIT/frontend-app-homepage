@@ -1,9 +1,10 @@
 .course-info-top-container {
-  background-color: $light-200;
-  margin-inline: -100%;
+  position: relative;
+  @include infinite-background-container($light-200);
   .course-info-top-wrapper {
     position: relative;
     padding-right: calc(320px + 72px);
+    background-color: $light-200;
     .course-institution {
       color: $gray-700;
       :hover {
@@ -18,6 +19,21 @@
       width: 940px;
     }
   }
+}
+.sticky-trigger {
+  @include infinite-background-container($light-200);
+  h3 {
+    @include line-break(1);
+  }
+  display: flex !important;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  z-index: 11;
+}
+.sticky-nav {
+  top: 107px !important;
+  z-index: 11;
 }
 .course-info-breadcrumb {
   @include custom-breadcrumb($gray-700, $gray-500);
@@ -75,14 +91,14 @@
     }
   }
 }
-
+.nav-container-top-trigger {
+  height: 1px;
+}
 .sticky-nav-wrapper {
-  background-color: $light-300;
   position: sticky;
   top: 0;
-  margin-inline: -100%;
   font-size: $font-size-base-xl;
-  z-index: 9;
+  @include infinite-background-container($light-300);
   ul {
     display: flex;
     margin-bottom: unset;
@@ -91,24 +107,17 @@
     li {
       margin-right: 32px;
       padding: 8px 0;
-      button {
-        border: unset;
-        color: $gray-500;
-      }
+      color: $gray-500;
     }
   }
   .active-item {
     border-bottom: 2px solid $brand-500;
-    button {
-      font-weight: 500;
-      color: $primary-500;
-    }
+    font-weight: 500;
+    color: $primary-500;
   }
 }
 .about-wrapper {
-  padding-top: 54px;
-  margin-top: -14px;
-  width: 1008px;
+  padding-top: 40px;
   .long-about-break {
     @include line-break(5);
   }
@@ -117,29 +126,23 @@
   }
 }
 .what-learn-wrapper {
-  margin-top: -32px;
-  .what-learn-inside-wrapper {
-    width: 1008px;
-    background-color: $light-200;
-    border-radius: 6px;
-    padding: 32px;
-    .items-wrapper {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0px, 1fr));
-      gap: 1rem;
-    }
-    p {
-      font-size: $font-size-base-std;
-    }
-    .pgn__icon {
-      color: $gray-500;
-    }
+  background-color: $light-200;
+  border-radius: 6px;
+  padding: 32px;
+  .items-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    gap: 1rem;
+  }
+  p {
+    font-size: $font-size-base-std;
+  }
+  .pgn__icon {
+    color: $gray-500;
   }
 }
 .requirements-wrapper {
-  padding-top: 58px;
-  margin-top: -10px;
-  width: 1008px;
+  margin-bottom: 40px;
   .attention-wrapper {
     @extend .d-flex, .flex-column;
     padding: 24px;
@@ -159,5 +162,93 @@
     .btn {
       width: 100%;
     }
+  }
+}
+.course-content-wrapper {
+  .collapsible-btn {
+    width: 36px;
+    height: 36px;
+    background-color: $white;
+    border-radius: 4px;
+    border: 1px solid $light-300;
+    .pgn__icon {
+      color: $gray-500;
+    }
+    &:focus {
+      box-shadow: unset;
+      background-color: unset;
+    }
+    &:hover {
+      background-color: unset;
+    }
+  }
+  .collapsible-btn-open {
+    background-color: $light-200 !important;
+  }
+  .collapsible-open {
+    display: none !important;
+  }
+  .is-open {
+    .pgn__icon {
+      color: $black;
+    }
+  }
+  .collapsible-wrapper {
+    margin-left: 52px;
+    .collapsible-icon {
+      margin-left: 18px;
+    }
+    .count-title {
+      font-size: $font-size-base-std;
+      color: $gray-500;
+    }
+    .collapsible-card {
+      border: 1px solid $light-400;
+      border-radius: 4px;
+      .collapsible-trigger {
+        font-weight: 500;
+        padding: 1rem;
+      }
+      .collapsible-body {
+        font-size: $font-size-base-std;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        display: flex;
+        .pgn__icon {
+          color: $gray-500;
+        }
+      }
+    }
+  }
+}
+.course-content-container {
+  max-width: 1008px;
+}
+.course-info-instructors {
+  .instructor-img-wrapper {
+    width: 96px;
+    height: 96px;
+  }
+  .instructor-wrapper {
+    background-color: $white;
+    border: 1px solid $light-300;
+    padding: 23px;
+    &:hover {
+      border: 1px solid $light-400;
+      .instructor-title{
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+    .instructor-short-bio{
+      max-width: 267px;
+    }
+  }
+  .btn-outline-primary{
+    width: 100%;
+    height: 60px;
+    color: $gray-500;
+    border:1px solid $light-400
   }
 }

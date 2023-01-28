@@ -52,3 +52,25 @@
     }
   }
 }
+@mixin infinite-background-container($color){
+  &::before {
+    background: $color;
+    bottom: 0;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 500%;
+    z-index: -1;
+  }
+  &::after {
+    background: $color;
+    bottom: 0;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 500%;
+    z-index: -1;
+  }
+}

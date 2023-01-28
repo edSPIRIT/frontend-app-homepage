@@ -4,6 +4,8 @@
 @import 'components/shared/ad-card/ad-card.scss';
 @import 'components/shared/course-card/course-card.scss';
 @import 'components/shared/popular-subjects/popular-subjects.scss';
+@import 'components/shared/similar-courses/similar-courses.scss';
+
 
 .custom-container {
   width: 100%;
@@ -67,7 +69,7 @@
   color: $primary-500;
 }
 .color-gray-500 {
-  color: $gray-500;
+  color: $gray-500 ;
 }
 .color-black {
   color: black;

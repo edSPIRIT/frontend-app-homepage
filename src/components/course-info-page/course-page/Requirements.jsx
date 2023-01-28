@@ -3,8 +3,8 @@ import { WarningAmber } from '@edx/paragon/icons';
 import { Link } from 'react-router-dom';
 import { PREREQUISITE_COURSES } from '../../../constants';
 
-const Requirements = ({ Ref }) => (
-  <div className="requirements-wrapper" id="requirement" ref={Ref}>
+const Requirements = () => (
+  <div className="requirements-wrapper pt-5" id="requirement">
     <h2 className="mb-3">Requirements</h2>
     <ul className="pl-3.5 mb-4.5">
       <li>

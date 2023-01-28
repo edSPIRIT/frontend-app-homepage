@@ -1,72 +1,99 @@
 import Scrollspy from 'react-scrollspy';
 import { useRef } from 'react';
+import classNames from 'classnames';
+import { Link } from 'react-scroll';
 import AboutCourse from './course-page/AboutCourse';
 import CourseInfoSideBar from './course-page/CourseInfoSideBar';
 import CourseInfoTopDesc from './course-page/CourseInfoTopDesc';
 import Requirements from './course-page/Requirements';
 import WhatYouLearn from './course-page/WhatYouLearn';
+import useOnScreen from '../../hooks/useOnScreen';
+import CourseContent from './course-page/CourseContent';
+import CourseInstructors from './course-page/course-content/CourseInstructors';
+import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 
 const CoursePage = () => {
-  const aboutRef = useRef(null);
-  const whatLearnRef = useRef(null);
-  const requirementRef = useRef(null);
+  const navTopRef = useRef(null);
+  const isTopOnScreen = useOnScreen(navTopRef);
   return (
-    <section className="custom-container  pb-6 mb-6">
-      <CourseInfoSideBar />
-      <CourseInfoTopDesc />
-      <div className="sticky-nav-wrapper">
-        <div className="custom-container">
+    <>
+      <section className="custom-container  pb-6">
+        <CourseInfoSideBar />
+        <CourseInfoTopDesc />
+        <div className={classNames(' d-none ', { 'sticky-trigger py-4': !isTopOnScreen })}>
+          <div className="d-flex justify-content-between mb-1">
+            <h3>
+              Anatomy: Musculoskeletal and Integumentary Systems
+            </h3>
+          </div>
+          <Link to="/partners/" className="course-institution">Michigan X</Link>
+        </div>
+        <div id="sticky-trigger" ref={navTopRef} />
+        <div className={classNames('sticky-nav-wrapper', { 'sticky-nav': !isTopOnScreen })}>
           <Scrollspy
             items={[
               'about-course',
               'what-you-learn',
               'requirement',
-              'Course content',
-              'Instructors',
+              'course-content',
+              'instructors',
             ]}
             className=""
             currentClassName="active-item"
           >
             <li>
-              <button
-                type="button"
-                onClick={() => aboutRef.current.scrollIntoView({ behavior: 'smooth' })}
+              <Link
+                to="about-course"
+                smooth
               >
                 About
-              </button>
+              </Link>
             </li>
             <li>
-              <button
-                type="button"
-                onClick={() => whatLearnRef.current.scrollIntoView({ behavior: 'smooth', top: whatLearnRef.current.offsetTop })}
+              <Link
+                to="what-you-learn"
+                smooth
               >
                 What you&apos;ll learn
-              </button>
+              </Link>
             </li>
 
             <li>
-              <button
-                type="button"
-                onClick={() => requirementRef.current.scrollIntoView({ behavior: 'smooth', top: requirementRef.current.offsetTop })}
+              <Link
+                to="requirement"
+                smooth
               >
                 Requirements
-              </button>
+              </Link>
             </li>
 
             <li>
-              <button type="button">Course content</button>
+              <Link
+                to="course-content"
+                smooth
+              >Course content
+              </Link>
             </li>
             <li>
-              <button type="button">Instructors</button>
+              <Link
+                to="instructors"
+                smooth
+                offset={-50}
+              >Instructors
+              </Link>
             </li>
           </Scrollspy>
         </div>
-      </div>
-
-      <AboutCourse Ref={aboutRef} />
-      <WhatYouLearn Ref={whatLearnRef} />
-      <Requirements Ref={requirementRef} />
-    </section>
+        <div className="course-content-container">
+          <AboutCourse />
+          <WhatYouLearn />
+          <Requirements />
+          <CourseContent />
+          <CourseInstructors />
+        </div>
+      </section>
+      <SimilarCourses />
+    </>
   );
 };
 
