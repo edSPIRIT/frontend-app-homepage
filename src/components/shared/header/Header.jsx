@@ -32,7 +32,7 @@ const HeaderED = () => {
         </div>
         <div className="d-flex right-side-wrapper">
           <SearchField
-            onSubmit={() => history.push('/discover/search')}
+            onSubmit={() => history.push('/search')}
             placeholder="What do you want to learn?"
           />
           <div className="d-flex align-items-center">

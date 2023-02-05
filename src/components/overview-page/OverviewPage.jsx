@@ -6,9 +6,12 @@ import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
 import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import RecommendedPrograms from './recommended-programs/RecommendedPrograms';
+import useGetSimilarCourses from '../../hooks/useGetSimilarCourses';
 
 const OverviewPage = () => {
   const [notEnrolled, setNotEnrolled] = useState(false);
+  const { token } = useGetSimilarCourses();
+  console.log('token', token);
   return (
     <main>
       {notEnrolled

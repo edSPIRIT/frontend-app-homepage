@@ -154,7 +154,7 @@
   }
 }
 .dropdown-menu {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15), 0px 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: $box-shadow-custom;
   border: unset;
   padding: unset;
 }

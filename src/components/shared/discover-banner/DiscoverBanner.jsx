@@ -36,7 +36,7 @@ const DiscoverBanner = () => {
           onSubmit={(value) => {
             setSearchValue(value);
             setSearchSuggestion('');
-            history.push('/discover/search');
+            history.push('/search');
           }}
           onClear={() => setSearchValue('')}
           placeholder="What do you want to learn?"

@@ -1,7 +1,10 @@
 import { Collapsible, Icon, IconButton } from '@edx/paragon';
 import { useState } from 'react';
-import { Minus, Plus, PlayCircle } from '@edx/paragon/icons';
+import {
+  Minus, Plus, PlayCircle, Article,
+} from '@edx/paragon/icons';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 const ChapterCourse = ({ section }) => {
   const [open, setOpen] = useState(false);
@@ -41,7 +44,7 @@ const ChapterCourse = ({ section }) => {
           >
             {subsection.units.map((unit) => (
               <div key={unit.name} className="d-flex">
-                <Icon src={PlayCircle} className="mr-1.5" />
+                <Icon src={unit.type === 'video' ? PlayCircle : Article} className="mr-1.5" />
                 <span>{unit.name}</span>
               </div>
             ))}
@@ -50,6 +53,35 @@ const ChapterCourse = ({ section }) => {
       </div>
     </div>
   );
+};
+ChapterCourse.defaultProps = {
+  section: PropTypes.shape({
+    name: PropTypes.string,
+    lms_url: PropTypes.string,
+    sections: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        lms_url: PropTypes.string,
+        subsections: PropTypes.arrayOf(
+          PropTypes.shape({
+            name: PropTypes.string,
+            lms_url: PropTypes.string,
+            units: PropTypes.arrayOf(
+              PropTypes.shape({
+                name: PropTypes.string,
+                lms_url: PropTypes.string,
+                type: PropTypes.string,
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+  }),
+};
+
+ChapterCourse.propTypes = {
+  section: [],
 };
 
 export default ChapterCourse;

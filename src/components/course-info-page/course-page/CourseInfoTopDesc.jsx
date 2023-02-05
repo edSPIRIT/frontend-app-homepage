@@ -8,7 +8,6 @@ import {
   HowToReg,
   Verified,
 } from '@edx/paragon/icons';
-import PropTypes from 'prop-types';
 
 const CourseInfoTopDesc = () => (
   <div className="course-info-top-container">
@@ -31,9 +30,11 @@ const CourseInfoTopDesc = () => (
           <h1 className="mr-4.5">
             Anatomy: Musculoskeletal and Integumentary Systems
           </h1>
-          <Icon className="color-gray-500" src={Share} />
+          <Icon className="share-icon" src={Share} />
         </div>
-        <Link to="/partners/" className="course-institution">Michigan X</Link>
+        <Link to="/partners/" className="course-institution">
+          Michigan X
+        </Link>
       </div>
       <p className="pt-3.5">
         Get the most out of your course! Upgrade to get unlimited access to the

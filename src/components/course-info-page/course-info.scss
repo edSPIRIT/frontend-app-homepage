@@ -5,6 +5,16 @@
     position: relative;
     padding-right: calc(320px + 72px);
     background-color: $light-200;
+    .course-info-breadcrumb {
+      @include custom-breadcrumb($gray-700, $gray-500);
+      .list-inline {
+        margin-bottom: unset;
+      }
+    }
+    .share-icon {
+      color: $gray-500;
+      opacity: 0.5;
+    }
     .course-institution {
       color: $gray-700;
       :hover {
@@ -17,6 +27,11 @@
     }
     P {
       width: 940px;
+    }
+    .icons-wrapper {
+      .pgn__icon {
+        opacity: 0.5;
+      }
     }
   }
 }
@@ -35,12 +50,6 @@
   top: 107px !important;
   z-index: 11;
 }
-.course-info-breadcrumb {
-  @include custom-breadcrumb($gray-700, $gray-500);
-  .list-inline {
-    margin-bottom: unset;
-  }
-}
 
 .course-info-side-wrapper {
   position: sticky;
@@ -49,7 +58,14 @@
   margin-top: 170px;
   z-index: 10;
   float: right;
+
   .cards-wrapper {
+    border: unset;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15), 0px 1px 4px rgba(0, 0, 0, 0.15);
+    &:hover {
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15),
+        0px 1px 4px rgba(0, 0, 0, 0.15);
+    }
     .card-icon {
       @extend .mr-2;
       width: 20px;
@@ -63,6 +79,7 @@
     }
     .pgn__icon {
       height: unset;
+      opacity: 0.5;
     }
     .pgn__card-image-cap {
       height: 204px;
@@ -217,6 +234,7 @@
         display: flex;
         .pgn__icon {
           color: $gray-500;
+          opacity: 0.5;
         }
       }
     }
@@ -236,19 +254,42 @@
     padding: 23px;
     &:hover {
       border: 1px solid $light-400;
-      .instructor-title{
+      .instructor-title {
         text-decoration: underline;
         text-underline-offset: 4px;
       }
     }
-    .instructor-short-bio{
+    .instructor-short-bio {
       max-width: 267px;
     }
   }
-  .btn-outline-primary{
+  .btn-outline-primary {
     width: 100%;
     height: 60px;
     color: $gray-500;
-    border:1px solid $light-400
+    border: 1px solid $light-400;
+  }
+}
+
+.carousel-control-prev {
+  color: $gray-500 !important;
+  display: flex;
+  align-items: unset;
+  width: unset;
+  margin-top: -60px;
+  left: unset;
+  right: 52px;
+  &:hover {
+    opacity: 1;
+  }
+}
+.carousel-control-next {
+  color: $gray-500 !important;
+  display: flex;
+  align-items: unset;
+  width: unset;
+  margin-top: -60px;
+  &:hover {
+    opacity: 1;
   }
 }

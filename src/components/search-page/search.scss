@@ -1,26 +1,84 @@
 .facets-wrapper {
-  .btn {
-    border-color: $light-300;
-    background-color: $white;
-    color: $gray-700;
-    font-size: $font-size-base-sm;
-    font-weight: 500 !important;
-    &:active {
-      background-color: $white !important;
-      border-color: $light-300 !important;
-    }
-    &::before {
-      border: unset;
-    }
-  }
-  .show {
-    .btn-outline-primary.dropdown-toggle {
-      color: #454545;
-      background-color: $white;
+  .facet-btn {
+    .btn {
       border-color: $light-300;
+      background-color: $white;
+      color: $gray-700;
+      font-size: $font-size-base-sm;
+      font-weight: 500 !important;
+      &:active {
+        background-color: $white !important;
+        border-color: $light-300 !important;
+      }
+      &::before {
+        border: unset;
+      }
+    }
+    .show {
+      .btn-outline-primary.dropdown-toggle {
+        color: #454545;
+        background-color: $white;
+        border-color: $light-300;
+      }
+    }
+    .dropdown-toggle::after {
+      content: none;
     }
   }
-  .dropdown-toggle::after {
-    content: none;
+  .dropdown-menu {
+    box-shadow: $box-shadow-custom;
+  }
+  .pgn__searchfield {
+    border-radius: 0;
+    border: unset;
+    border-bottom: 1px solid $light-500;
+    .btn {
+      border-color: transparent;
+      .pgn__icon {
+        width: 24px;
+        color: $gray-500;
+      }
+    }
+  }
+  .pgn__form-group {
+    margin-bottom: 0;
+    .pgn__menu {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      box-shadow: unset;
+      .item-wrapper {
+          font-size: $font-size-base-sm;
+        span {
+          color: $gray-500;
+        }
+        &:hover {
+          background-color: $light-200;
+        }
+        .pgn__menu-item {
+          &:hover {
+            background-color: $light-200;
+          }
+        }
+        .pgn__form-label {
+          font-size: $font-size-base-sm;
+          color: $gray-700;
+        }
+        .pgn__form-checkbox-input {
+          border-color: $gray-500;
+          border-radius: 3px;
+          width: 18px;
+          height: 18px;
+          &:focus {
+            &::before {
+              content: none;
+            }
+          }
+          &:checked {
+            background-image: url(../../assets/Form.Checkbox.png);
+            border-color: transparent;
+          }
+        }
+      }
+    }
   }
 }

@@ -1,10 +1,9 @@
-import React from 'react';
-import { ChevronLeft, ChevronRight } from '@edx/paragon/icons';
 import { Carousel, Icon } from '@edx/paragon';
-import { COURSES_INFO_TOP, SIMILAR_COURSES } from '../../../constants';
-import CourseCard from '../course-card/CourseCard';
+import { ChevronLeft, ChevronRight } from '@edx/paragon/icons';
+import { SIMILAR_COURSES } from '../../constants';
+import CourseCard from '../shared/course-card/CourseCard';
 
-const SimilarCourses = () => {
+const Slides = () => {
   const chunkedArray = [];
   const chunkSize = () => {
     for (let i = 0; i < SIMILAR_COURSES.length; i += 4) {
@@ -12,6 +11,7 @@ const SimilarCourses = () => {
     }
   };
   chunkSize();
+
   return (
     <section className="custom-container similar-courses-wrapper">
       <h3>Similar Courses</h3>
@@ -24,13 +24,13 @@ const SimilarCourses = () => {
             style={{ height: '38px', width: '38px' }}
             src={ChevronRight}
           />
-      )}
+            )}
         prevIcon={(
           <Icon
             style={{ height: '38px', width: '38px' }}
             src={ChevronLeft}
           />
-      )}
+            )}
       >
         {chunkedArray.map((chunkCourses, i) => (
           <Carousel.Item key={i}>
@@ -46,4 +46,4 @@ const SimilarCourses = () => {
   );
 };
 
-export default SimilarCourses;
+export default Slides;

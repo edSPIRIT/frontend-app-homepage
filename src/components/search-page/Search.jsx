@@ -6,38 +6,16 @@ import {
   KeyboardArrowDown,
 } from '@edx/paragon/icons';
 import DiscoverBanner from '../shared/discover-banner/DiscoverBanner';
-import { COURSES_SEARCH, SEARCH_FACET_FILTERS } from '../../constants';
 import CourseCard from '../shared/course-card/CourseCard';
+import SearchFacets from './search-facets/SearchFacets';
+import { COURSES_SEARCH } from '../../constants';
 
 const Search = () => {
   const [value, setValue] = useState('Recent');
   return (
     <main>
       <DiscoverBanner />
-      <div className="bg-light-300">
-        <div className="d-flex py-4 align-items-center custom-container facets-wrapper">
-          {SEARCH_FACET_FILTERS.map((facet) => (
-            <Dropdown
-              autoClose="outside"
-              className="mb-0 mr-md-3"
-              key={facet.attribute}
-            >
-              <Dropdown.Toggle
-                id="{title}-{variant}"
-                variant="outline-primary"
-                className="font-weight-bold"
-                iconAfter={KeyboardArrowDown}
-              >
-                <span className="mr-2">{facet.title}</span>
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <span className="p-2 d-block">test</span>
-              </Dropdown.Menu>
-            </Dropdown>
-          ))}
-        </div>
-      </div>
-
+      <SearchFacets />
       <div className="custom-container pt-4.5">
         <Breadcrumb
           ariaLabel="Breadcrumb basic"

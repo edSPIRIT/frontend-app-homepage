@@ -26,6 +26,7 @@ import NotFound from './components/notFount-page/NotFound';
 import PartnersList from './components/partners-list-page/PartnersList';
 import PartnerPage from './components/partner-page/PartnerPage';
 import CoursePage from './components/course-info-page/CoursePage';
+import ProgramPage from './components/program-info-page/ProgramPage';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
@@ -36,12 +37,15 @@ subscribe(APP_READY, () => {
           <Route exact path="/overview" component={OverviewPage} />
           <Route exact path="/dashboard" component={OverviewPage} />
           <Route exact path="/discover" component={Discover} />
-          <Route exact path="/discover/search" component={Search} />
+          <Route exact path="/search" component={Search} />
           <Route exact path="/inprogress" component={InProgress} />
           <Route exact path="/completed" component={Completed} />
           <Route exact path="/partners" component={PartnersList} />
           <Route exact path="/course/:slug/">
             <CoursePage />
+          </Route>
+          <Route exact path="/program/:slug/">
+            <ProgramPage />
           </Route>
           <Route exact path="/partners/:slug">
             <PartnerPage />
@@ -68,4 +72,20 @@ subscribe(APP_INIT_ERROR, (error) => {
 
 initialize({
   messages: [appMessages],
+  // requireAuthenticatedUser: true,
+  // hydrateAuthenticatedUser: true,
+  // handlers: {
+  //   config: () => {
+  //     mergeConfig({
+  //       SUPPORT_URL: process.env.SUPPORT_URL,
+  //       COACHING_ENABLED: (process.env.COACHING_ENABLED || false),
+  //       ENABLE_DEMOGRAPHICS_COLLECTION: (process.env.ENABLE_DEMOGRAPHICS_COLLECTION || false),
+  //       DEMOGRAPHICS_BASE_URL: process.env.DEMOGRAPHICS_BASE_URL,
+  //       ENABLE_COPPA_COMPLIANCE: (process.env.ENABLE_COPPA_COMPLIANCE || false),
+  //       MARKETING_EMAILS_OPT_IN: (process.env.MARKETING_EMAILS_OPT_IN || false),
+  //       AC_LANGUAGES_API_URL: process.env.AC_LANGUAGES_API_URL,
+  //       AC_INSTANCE_CONFIG_API_URL: process.env.AC_INSTANCE_CONFIG_API_URL,
+  //     }, 'App loadConfig override handler');
+  //   },
+  // },
 });

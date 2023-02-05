@@ -1,9 +1,9 @@
 import { Button, Card, Icon } from '@edx/paragon';
 import { WarningAmber } from '@edx/paragon/icons';
 import { Link } from 'react-router-dom';
-import { PREREQUISITE_COURSES } from '../../../constants';
+import PropTypes, { string } from 'prop-types';
 
-const Requirements = () => (
+const Requirements = ({ PrerequisiteCourses }) => (
   <div className="requirements-wrapper pt-5" id="requirement">
     <h2 className="mb-3">Requirements</h2>
     <ul className="pl-3.5 mb-4.5">
@@ -16,44 +16,61 @@ const Requirements = () => (
         <p>Professional Certificate in Blockchain Essentials</p>
       </li>
     </ul>
-    <h3 className="mb-3">Prerequisite Courses</h3>
-    <div className="attention-wrapper mb-4">
-      <div className="d-flex align-items-center mb-2">
-        <Icon className="mr-1" src={WarningAmber} />
-        <h4>Attention!</h4>
+    {PrerequisiteCourses.length > 0 && (
+      <div>
+        <h3 className="mb-3">Prerequisite Courses</h3>
+        <div className="attention-wrapper mb-4">
+          <div className="d-flex align-items-center mb-2">
+            <Icon className="mr-1" src={WarningAmber} />
+            <h4>Attention!</h4>
+          </div>
+          <p className="font-sm">
+            Lorem Ipsum er ganske enkelt fyldtekst fra print- og
+            typografiindustrien. Lorem Ipsum har været standard fyldtekst siden
+            1500-tallet.
+          </p>
+        </div>
+        <div className="prerequisite-courses-wrapper">
+          {PrerequisiteCourses?.map((course) => (
+            <Link to="/course/" key={course.id}>
+              <Card className="cards-wrapper">
+                <Card.ImageCap
+                  src={course.cover}
+                  logoSrc={course.logo}
+                  variant="top"
+                  alt=""
+                />
+                <div className="my-4.5 px-4">
+                  <h4 className="mb-1 course-title">{course.title}</h4>
+                  <a className="institution-title font-sm" href="#institution">
+                    {course.institution}
+                  </a>
+                </div>
+                <Card.Footer>
+                  <Button variant="primary" href="#course">
+                    Learn more
+                  </Button>
+                </Card.Footer>
+              </Card>
+            </Link>
+          ))}
+        </div>
       </div>
-      <p className="font-sm">
-        Lorem Ipsum er ganske enkelt fyldtekst fra print- og
-        typografiindustrien. Lorem Ipsum har været standard fyldtekst siden
-        1500-tallet.
-      </p>
-    </div>
-    <div className="prerequisite-courses-wrapper">
-      {PREREQUISITE_COURSES.map((course) => (
-        <Link to="/course/" key={course.id}>
-          <Card className="cards-wrapper">
-            <Card.ImageCap
-              src={course.cover}
-              logoSrc={course.logo}
-              variant="top"
-              alt=""
-            />
-            <div className="my-4.5 px-4">
-              <h4 className="mb-1 course-title">{course.title}</h4>
-              <a className="institution-title font-sm" href="#institution">
-                {course.institution}
-              </a>
-            </div>
-            <Card.Footer>
-              <Button variant="primary" href="#course">
-                Learn more
-              </Button>
-            </Card.Footer>
-          </Card>
-        </Link>
-      ))}
-    </div>
+    )}
   </div>
 );
-
+Requirements.propTypes = {
+  PrerequisiteCourses: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: string,
+      title: string,
+      institution: string,
+      cover: string,
+      logo: string,
+    }),
+  ),
+};
+Requirements.defaultProps = {
+  PrerequisiteCourses: [],
+};
 export default Requirements;

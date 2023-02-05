@@ -10,7 +10,8 @@ import WhatYouLearn from './course-page/WhatYouLearn';
 import useOnScreen from '../../hooks/useOnScreen';
 import CourseContent from './course-page/CourseContent';
 import CourseInstructors from './course-page/course-content/CourseInstructors';
-import SimilarCourses from '../shared/similar-courses/SimilarCourses';
+import Slides from './Slides';
+import { PREREQUISITE_COURSES } from '../../constants';
 
 const CoursePage = () => {
   const navTopRef = useRef(null);
@@ -87,12 +88,12 @@ const CoursePage = () => {
         <div className="course-content-container">
           <AboutCourse />
           <WhatYouLearn />
-          <Requirements />
+          <Requirements PrerequisiteCourses={PREREQUISITE_COURSES} />
           <CourseContent />
           <CourseInstructors />
         </div>
       </section>
-      <SimilarCourses />
+      <Slides />
     </>
   );
 };

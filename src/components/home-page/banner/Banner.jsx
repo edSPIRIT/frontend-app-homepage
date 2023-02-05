@@ -1,10 +1,11 @@
 import { Icon, Image, SearchField } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import useGetBanner from '../../../hooks/useGetBanner';
 import Highlighted from './Highlighted';
 
 const Banner = () => {
+  const history = useHistory();
   const {
     title, highlightedWord, description, image,
   } = useGetBanner();
@@ -21,6 +22,7 @@ const Banner = () => {
             submitButtonLocation="external"
             onSubmit={(value) => console.log(`search submitted: ${value}`)}
             placeholder="What do you want to learn?"
+            onSubmit={() => history.push('/search')}
           />
           <Link
             className="banner-link"

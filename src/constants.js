@@ -315,6 +315,7 @@ export const TOP_PROGRAM = [
     cover:
       'https://prod-discovery.edx-cdn.org/media/course/image/59dd2022-3076-4677-ae8b-58b521077ca1-c9ad40423ed7.small.png',
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dd7e4312-e4df-4d81-a126-5885865ab0d5-8c68a40ac0f3.png',
+    slug: 'computer-science',
   },
   {
     title: 'Computer Science for  Web Programming',
@@ -322,6 +323,7 @@ export const TOP_PROGRAM = [
     cover:
       'https://prod-discovery.edx-cdn.org/media/course/image/f30fbd27-46af-4ce3-935a-104fe2c6b9c8-1c4459a85331.small.jpg',
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/8537d31f-01b4-40fd-b652-e17b38eefe41-7956b2a3cd04.png',
+    slug: 'computer-science-web',
   },
   {
     title: 'Advanced Programming I',
@@ -329,6 +331,7 @@ export const TOP_PROGRAM = [
     cover:
       'https://prod-discovery.edx-cdn.org/media/programs/card_images/865bbad4-6643-4d59-85d3-936cf3a7acf4-3720dd824793.jpg',
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dc6d25de-0dac-43e6-a915-e362bf8b4403-917c4e000b69.png',
+    slug: 'advanced-programming',
   },
   {
     title: 'Big Data for Education',
@@ -336,6 +339,7 @@ export const TOP_PROGRAM = [
     cover:
       'https://prod-discovery.edx-cdn.org/media/programs/card_images/0de98c3a-0a5a-4cf2-b0a0-634862d47e11-27353a61855f.jpg',
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/518a47f2-66fb-4529-8902-a4f7ca3002ef-78d294b01e63.png',
+    slug: 'big-data',
   },
   {
     title: 'Advanced Programming II',
@@ -343,6 +347,7 @@ export const TOP_PROGRAM = [
     cover:
       'https://prod-discovery.edx-cdn.org/media/programs/card_images/865bbad4-6643-4d59-85d3-936cf3a7acf4-3720dd824793.jpg',
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dc6d25de-0dac-43e6-a915-e362bf8b4403-917c4e000b69.png',
+    slug: 'advanced-programmingII',
   },
 ];
 export const COURSES_SEARCH = [
@@ -816,3 +821,252 @@ export const COURSE_TOC = {
     },
   ],
 };
+export const SIMILAR_COURSES = [
+  {
+    id: '1',
+    title: 'Robotics',
+    institution: 'IBM',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/programs/card_images/90f4789c-2549-4670-ade7-12cc8b590f5c-06374e02670f.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/87b07564-d569-4cfd-bee6-8b0a407acb73-dc33e4b5f353.png',
+    instructor: 'Jose Portilla',
+    instructorLink: 'jose-portilla',
+    lessons: '11 Lessons',
+    time: '6 Hours',
+    isProgram: false,
+  },
+  {
+    id: '2',
+
+    title: 'Python Programming',
+    institution: 'Harvard University',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/2cc794d0-316d-42f7-bbfd-25c34e4cd5df-033e46d516c0.small.png',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/44022f13-20df-4666-9111-cede3e5dc5b6-2cc39992c67a.png',
+    instructor: 'Rav Ahuja',
+    instructorLink: 'rav-ahuja',
+    lessons: '10 Lessons',
+    time: '7 Hours',
+    isProgram: false,
+  },
+  {
+    id: '3',
+
+    title: 'Programming for Everybody',
+    institution: 'Michigan University',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/programs/card_images/0de98c3a-0a5a-4cf2-b0a0-634862d47e11-27353a61855f.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/ebf3ff9d-a40b-4cbe-84a1-ef7fe4f35beb-61ffe82bb9c2.png',
+    instructor: 'Upkar Lidder',
+    instructorLink: 'upkar-lidder',
+    lessons: '13 Lessons',
+    time: '10 Hours',
+    isProgram: false,
+  },
+  {
+    id: '4',
+    title: 'introduction to java',
+    institution: 'New york University',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/programs/card_images/865bbad4-6643-4d59-85d3-936cf3a7acf4-3720dd824793.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dc6d25de-0dac-43e6-a915-e362bf8b4403-917c4e000b69.png',
+    instructor: 'Michel Buffa',
+    instructorLink: 'michel-buffa',
+    lessons: '5 Lessons',
+    time: '3 Hours',
+    isProgram: false,
+  },
+  {
+    id: '5',
+    title: 'C++ Programming: Basic',
+    institution: 'Codio',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/59dd2022-3076-4677-ae8b-58b521077ca1-c9ad40423ed7.small.png',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dd7e4312-e4df-4d81-a126-5885865ab0d5-8c68a40ac0f3.png',
+    instructor: 'David Joyner',
+    instructorLink: 'david-joyner',
+    lessons: '8 Lessons',
+    time: '5 Hours',
+    isProgram: false,
+  },
+  {
+    id: '6',
+    title: 'Computing in Python III',
+    institution: 'GTx',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/f30fbd27-46af-4ce3-935a-104fe2c6b9c8-1c4459a85331.small.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/8537d31f-01b4-40fd-b652-e17b38eefe41-7956b2a3cd04.png',
+    instructor: 'Rav Ahuja',
+    instructorLink: 'rav-ahuja',
+    lessons: '9 Lessons',
+    time: '7 Hours',
+    isProgram: false,
+  },
+  {
+    id: '7',
+    title: 'Advanced Programming',
+    institution: 'New york University',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/programs/card_images/865bbad4-6643-4d59-85d3-936cf3a7acf4-3720dd824793.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dc6d25de-0dac-43e6-a915-e362bf8b4403-917c4e000b69.png',
+    instructor: 'Michel Buffa',
+    instructorLink: 'michel-buffa',
+    lessons: '5 Lessons',
+    time: '3 Hours',
+    isProgram: false,
+  },
+  {
+    id: '8',
+    title: 'Statistics and R',
+    institution: 'UPValenciaX',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/programs/card_images/0de98c3a-0a5a-4cf2-b0a0-634862d47e11-27353a61855f.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/518a47f2-66fb-4529-8902-a4f7ca3002ef-78d294b01e63.png',
+    instructor: 'Upkar Lidder',
+    instructorLink: 'upkar-lidder',
+    lessons: '13 Lessons',
+    time: '10 Hours',
+    isProgram: false,
+  },
+  {
+    id: '9',
+    title: 'Robotics I',
+    institution: 'IBM',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/programs/card_images/90f4789c-2549-4670-ade7-12cc8b590f5c-06374e02670f.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/87b07564-d569-4cfd-bee6-8b0a407acb73-dc33e4b5f353.png',
+    instructor: 'Jose Portilla',
+    instructorLink: 'jose-portilla',
+    lessons: '11 Lessons',
+    time: '6 Hours',
+    isProgram: false,
+  },
+  {
+    id: '10',
+    title: 'Python Programming I',
+    institution: 'Harvard University',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/2cc794d0-316d-42f7-bbfd-25c34e4cd5df-033e46d516c0.small.png',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/44022f13-20df-4666-9111-cede3e5dc5b6-2cc39992c67a.png',
+    instructor: 'Rav Ahuja',
+    instructorLink: 'rav-ahuja',
+    lessons: '10 Lessons',
+    time: '7 Hours',
+    isProgram: false,
+  },
+  {
+    id: '11',
+    title: 'Programming for Everybody I',
+    institution: 'Michigan University',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/programs/card_images/0de98c3a-0a5a-4cf2-b0a0-634862d47e11-27353a61855f.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/ebf3ff9d-a40b-4cbe-84a1-ef7fe4f35beb-61ffe82bb9c2.png',
+    instructor: 'Upkar Lidder',
+    instructorLink: 'upkar-lidder',
+    lessons: '13 Lessons',
+    time: '10 Hours',
+    isProgram: false,
+  },
+  {
+    id: '12',
+    title: 'introduction to java I',
+    institution: 'New york University',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/programs/card_images/865bbad4-6643-4d59-85d3-936cf3a7acf4-3720dd824793.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dc6d25de-0dac-43e6-a915-e362bf8b4403-917c4e000b69.png',
+    instructor: 'Michel Buffa',
+    instructorLink: 'michel-buffa',
+    lessons: '5 Lessons',
+    time: '3 Hours',
+    isProgram: false,
+  },
+  {
+    id: '13',
+    title: 'C++ Programming: Basic I',
+    institution: 'Codio',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/59dd2022-3076-4677-ae8b-58b521077ca1-c9ad40423ed7.small.png',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dd7e4312-e4df-4d81-a126-5885865ab0d5-8c68a40ac0f3.png',
+    instructor: 'David Joyner',
+    instructorLink: 'david-joyner',
+    lessons: '8 Lessons',
+    time: '5 Hours',
+    isProgram: false,
+  },
+  {
+    id: '14',
+    title: 'Computing in Python II',
+    institution: 'GTx',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/f30fbd27-46af-4ce3-935a-104fe2c6b9c8-1c4459a85331.small.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/8537d31f-01b4-40fd-b652-e17b38eefe41-7956b2a3cd04.png',
+    instructor: 'Michel Buffa',
+    lessons: '9 Lessons',
+    time: '7 Hours',
+    isProgram: false,
+  },
+  {
+    id: '15',
+    title: 'Advanced Programming I',
+    institution: 'New york University',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/programs/card_images/865bbad4-6643-4d59-85d3-936cf3a7acf4-3720dd824793.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dc6d25de-0dac-43e6-a915-e362bf8b4403-917c4e000b69.png',
+    instructor: 'Michel Buffa',
+    instructorLink: 'michel-buffa',
+    lessons: '5 Lessons',
+    time: '3 Hours',
+    isProgram: false,
+  },
+  {
+    id: '16',
+    title: 'Statistics and R I',
+    institution: 'UPValenciaX',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/programs/card_images/0de98c3a-0a5a-4cf2-b0a0-634862d47e11-27353a61855f.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/518a47f2-66fb-4529-8902-a4f7ca3002ef-78d294b01e63.png',
+    instructor: 'Michel Buffa',
+    lessons: '13 Lessons',
+    time: '10 Hours',
+    isProgram: false,
+  },
+  {
+    id: '17',
+    title: 'Statistics',
+    institution: 'New york University',
+    cover:
+      'https://prod-discovery.edx-cdn.org/media/course/image/f30fbd27-46af-4ce3-935a-104fe2c6b9c8-1c4459a85331.small.jpg',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/8537d31f-01b4-40fd-b652-e17b38eefe41-7956b2a3cd04.png',
+    instructor: 'Michel Buffa',
+    lessons: '3 Lessons',
+    time: '11 Hours',
+    isProgram: false,
+  },
+];
+export const SUBJECTS_ITEMS_FACET = [
+  {
+    id: '1',
+    title: 'Art',
+    count: '97',
+  },
+  {
+    id: '2',
+    title: 'Architecture',
+    count: '45',
+  },
+  {
+    id: '3',
+    title: 'Business',
+    count: '220',
+  },
+  {
+    id: '4',
+    title: 'Engineering',
+    count: '64',
+  },
+  {
+    id: '5',
+    title: 'History',
+    count: '32',
+  },
+];

@@ -42,6 +42,8 @@
   .pgn__card {
     background-color: $primary-700;
     border: unset;
+    display: flex;
+    height: 100%;
     .pgn__card-image-cap {
       height: 92px;
     }

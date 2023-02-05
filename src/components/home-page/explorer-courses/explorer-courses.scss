@@ -21,6 +21,8 @@
   grid-template-columns: repeat(4, minmax(0px, 1fr));
   gap: 24px;
   .pgn__card {
+    display: flex;
+    height: 100%;
     .pgn__card-image-cap {
       height: 92px;
     }
