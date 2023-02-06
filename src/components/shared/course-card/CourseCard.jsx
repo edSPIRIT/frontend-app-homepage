@@ -67,7 +67,7 @@ const CourseCard = ({ info }) => {
               <Icon className="card-icon" src={BookOpen} />
               <span className="course-text">{lessons}</span>
             </div>
-            <div className="d-flex flex-row align-items-center mb-3.5">
+            <div className="d-flex flex-row align-items-center mb-3">
               <Icon className="card-icon" src={WatchFilled} />
               <span className="course-text">{time}</span>
             </div>

@@ -13,7 +13,7 @@ const ProgramCourses = () => {
   chunkSize();
 
   return (
-    <section className=" program-courses-wrapper pt-3">
+    <section className=" program-courses-wrapper pt-3" id="courses">
       <h3>Courses</h3>
       <span>It includes the following 5 courses</span>
       <Carousel

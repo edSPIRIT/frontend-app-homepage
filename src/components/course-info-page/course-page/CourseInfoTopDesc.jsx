@@ -1,4 +1,9 @@
-import { Breadcrumb, Icon } from '@edx/paragon';
+import {
+  Breadcrumb,
+  Icon,
+  OverlayTrigger,
+  Tooltip,
+} from '@edx/paragon';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -46,10 +51,19 @@ const CourseInfoTopDesc = () => (
           <Icon className="mr-2" src={Language} />
           <span>English</span>
         </div>
-        <div className="d-flex justify-content-center align-items-center mr-4.5">
-          <Icon className="mr-2" src={PostOutline} />
-          <span>Arabic</span>
-        </div>
+        <OverlayTrigger
+          placement="top"
+          overlay={(
+            <Tooltip variant="light" id="tooltip-top">
+              English, Arabic, Persian, France, Germany
+            </Tooltip>
+          )}
+        >
+          <div className="d-flex justify-content-center align-items-center mr-4.5">
+            <Icon className="mr-2" src={PostOutline} />
+            <span>English, Arabic, +3</span>
+          </div>
+        </OverlayTrigger>
         <div className="d-flex justify-content-center align-items-center mr-4.5">
           <Icon className="mr-2" src={HowToReg} />
           <span>Self Paced</span>

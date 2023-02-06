@@ -7,7 +7,7 @@ import {
 } from '@edx/paragon/icons';
 import DiscoverBanner from '../shared/discover-banner/DiscoverBanner';
 import CourseCard from '../shared/course-card/CourseCard';
-import SearchFacets from './search-facets/SearchFacets';
+import SearchFacets from './search/SearchFacets';
 import { COURSES_SEARCH } from '../../constants';
 
 const Search = () => {

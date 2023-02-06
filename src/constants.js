@@ -551,58 +551,216 @@ export const COURSES_SEARCH = [
 ];
 export const SEARCH_FACET_FILTERS = [
   {
+    id: '1',
     attribute: 'subjects',
     title: 'Subject',
-    typeaheadOptions: {
-      placeholder: 'Find a subject...',
-      ariaLabel: 'Type to find a subject',
-      minLength: 3,
-    },
+    items: [
+      {
+        id: '1',
+        title: 'Art',
+        count: '97',
+      },
+      {
+        id: '2',
+        title: 'Architecture',
+        count: '45',
+      },
+      {
+        id: '3',
+        title: 'Business',
+        count: '220',
+      },
+      {
+        id: '4',
+        title: 'Engineering',
+        count: '64',
+      },
+      {
+        id: '5',
+        title: 'History',
+        count: '32',
+      },
+    ],
   },
   {
+    id: '2',
     attribute: 'partners.name',
     title: 'Partner',
-    isSortedAlphabetical: true,
-    typeaheadOptions: {
-      placeholder: 'Find a partner...',
-      ariaLabel: 'Type to find a partner',
-      minLength: 3,
-    },
+    items: [
+      {
+        id: '1',
+        title: 'Codio',
+        count: '97',
+      },
+      {
+        id: '2',
+        title: 'UPValenciaX',
+        count: '45',
+      },
+      {
+        id: '3',
+        title: 'New york University',
+        count: '220',
+      },
+      {
+        id: '4',
+        title: 'GTx',
+        count: '64',
+      },
+      {
+        id: '5',
+        title: 'IBM',
+        count: '32',
+      },
+    ],
   },
   {
+    id: '3',
     attribute: 'instructors_names',
     title: 'Instructors',
-    typeaheadOptions: {
-      placeholder: 'Find a skill...',
-      ariaLabel: 'Type to find a skill',
-      minLength: 3,
-    },
+    items: [
+      {
+        id: '1',
+        title: 'David Joyner',
+        count: '97',
+      },
+      {
+        id: '2',
+        title: 'Michel Buffa',
+        count: '45',
+      },
+      {
+        id: '3',
+        title: 'Rav Ahuja',
+        count: '220',
+      },
+    ],
   },
   {
     attribute: 'programs',
     title: 'Program',
-    isSortedAlphabetical: true,
-    typeaheadOptions: {
-      placeholder: 'Find a program...',
-      ariaLabel: 'Type to find a program',
-      minLength: 3,
-    },
+    items: [
+      {
+        id: '1',
+        title: 'Professional Certificate',
+        count: '17',
+      },
+      {
+        id: '2',
+        title: 'Masters Degree',
+        count: '45',
+      },
+      {
+        id: '3',
+        title: 'XSeries Program',
+        count: '20',
+      },
+    ],
   },
   {
+    id: '4',
     attribute: 'level_type',
     title: 'Level',
+    items: [
+      {
+        id: '1',
+        title: 'Introductory',
+        count: '7',
+      },
+      {
+        id: '2',
+        title: 'Intermediate',
+        count: '5',
+      },
+      {
+        id: '3',
+        title: 'Advanced',
+        count: '20',
+      },
+    ],
   },
   {
+    id: '5',
     attribute: 'language',
     title: 'Language',
+    items: [
+      {
+        id: '1',
+        title: 'English',
+        count: '7',
+      },
+      {
+        id: '2',
+        title: 'Arabic',
+        count: '5',
+      },
+      {
+        id: '3',
+        title: 'Persian',
+        count: '20',
+      },
+    ],
   },
   {
+    id: '6',
     attribute: 'availability',
     title: 'Availability',
+    items: [
+      {
+        id: '1',
+        title: 'Available now',
+        count: '7',
+      },
+      {
+        id: '2',
+        title: 'Upcoming',
+        count: '5',
+      },
+    ],
+  },
+  // {
+  //   id: '7',
+  //   attribute: 'learning_type',
+  //   title: 'Learning type',
+  //   items: [
+  //     {
+  //       id: '1',
+  //       title: 'Courses',
+  //       count: '7',
+  //     },
+  //     {
+  //       id: '2',
+  //       title: 'Programs',
+  //       count: '5',
+  //     },
+  //   ],
+  // },
+];
+export const SUBJECTS_ITEMS_FACET = [
+  {
+    id: '1',
+    title: 'Art',
+    count: '97',
   },
   {
-    attribute: 'learning_type',
-    title: 'Learning type',
+    id: '2',
+    title: 'Architecture',
+    count: '45',
+  },
+  {
+    id: '3',
+    title: 'Business',
+    count: '220',
+  },
+  {
+    id: '4',
+    title: 'Engineering',
+    count: '64',
+  },
+  {
+    id: '5',
+    title: 'History',
+    count: '32',
   },
 ];
 export const INSTRUCTORS = [
@@ -1041,32 +1199,5 @@ export const SIMILAR_COURSES = [
     lessons: '3 Lessons',
     time: '11 Hours',
     isProgram: false,
-  },
-];
-export const SUBJECTS_ITEMS_FACET = [
-  {
-    id: '1',
-    title: 'Art',
-    count: '97',
-  },
-  {
-    id: '2',
-    title: 'Architecture',
-    count: '45',
-  },
-  {
-    id: '3',
-    title: 'Business',
-    count: '220',
-  },
-  {
-    id: '4',
-    title: 'Engineering',
-    count: '64',
-  },
-  {
-    id: '5',
-    title: 'History',
-    count: '32',
   },
 ];

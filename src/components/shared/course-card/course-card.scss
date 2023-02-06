@@ -1,4 +1,8 @@
 .cards-wrapper {
+  .pgn__card-footer {
+    padding: 1.5rem;
+    padding-top: 0;
+  }
   .card-icon {
     @extend .mr-2;
     width: 20px;
@@ -19,6 +23,7 @@
   }
   .price-title {
     color: $gray-500;
+    padding:6px 0;
   }
   .program-instructors-wrapper {
     width: 276px;

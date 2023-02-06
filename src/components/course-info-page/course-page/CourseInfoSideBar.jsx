@@ -48,7 +48,7 @@ const CourseInfoSideBar = () => (
               <span>(3 August 2022)</span>
             </p>
           </div>
-          <div className="d-flex flex-row align-items-center mb-3.5">
+          <div className="d-flex flex-row align-items-center mb-2">
             <Icon className="card-icon" src={WatchFilled} />
             <p>
               <span className="color-black">2 weeks</span>{' '}
