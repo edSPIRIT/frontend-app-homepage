@@ -44,6 +44,13 @@
     }
   }
 }
+.skeleton-wrapper {
+  border-radius: 6px;
+  border: 1px solid $light-400;
+  .react-loading-skeleton {
+    line-height: unset;
+  }
+}
 
 @media (max-width: 1350px) {
   .course-container {

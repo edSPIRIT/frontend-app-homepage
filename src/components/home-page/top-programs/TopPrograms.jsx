@@ -1,9 +1,10 @@
-import { Button } from '@edx/paragon';
+import { Button, Skeleton } from '@edx/paragon';
 import { useState } from 'react';
 import { TOP_PROGRAM } from '../../../constants';
 import ProgramCard from '../../shared/program-card/ProgramCard';
 
 const TopPrograms = () => {
+  const loading = false;
   const programNames = [
     'History',
     'Business',
@@ -35,9 +36,31 @@ const TopPrograms = () => {
           ))}
         </div>
         <div className="programs-container">
-          {TOP_PROGRAM.map((course) => (
-            <ProgramCard info={course} key={course.title} />
-          ))}
+          {loading
+            ? Array(5)
+              .fill(1)
+              .map((item, i) => (
+                <div
+                  className="d-flex flex-column skeleton-wrapper"
+                      // eslint-disable-next-line react/no-array-index-key
+                  key={i}
+                >
+                  <Skeleton className="mb-2" height={92} />
+                  <div className="p-4">
+                    <Skeleton className="mb-2" height={24} />
+                    <Skeleton width="40%" height={24} />
+                    <Skeleton className="mt-3" width="40%" height={24} />
+                    <Skeleton
+                      className="mt-3"
+                      borderRadius={4}
+                      height={44}
+                    />
+                  </div>
+                </div>
+              ))
+            : TOP_PROGRAM.map((course) => (
+              <ProgramCard info={course} key={course.title} />
+            ))}
         </div>
       </div>
     </section>

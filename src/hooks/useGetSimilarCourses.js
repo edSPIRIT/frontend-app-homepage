@@ -6,13 +6,11 @@ import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
 const useGetSimilarCourses = () => {
   const [TokenData, setTokenData] = useState('');
   const [similarCourses, setSimilarCourses] = useState([]);
-  let cookies = document.cookie;
-  // console.log('cookies', getCsrfToken());
-  console.log('document.cookie', document.cookie);
+  console.log('getConfig().LMS_BASE_URL', getConfig().LMS_BASE_URL);
   const getTokenData = async () => {
     try {
       const Res = await fetch(
-        `${getConfig().LMS_BASE_URL}${getConfig().CSRF_TOKEN_API_PATH}`
+        `${getConfig().LMS_BASE_URL}${getConfig().CSRF_TOKEN_API_PATH}`,
       );
       const Data = await Res.json();
       setTokenData(Data);
@@ -46,6 +44,8 @@ const useGetSimilarCourses = () => {
       //   requestConfig
       // );
       // sendTrackingLogEvent('edx.profile.viewed');
+      // document.cookie = `csrftoken=${newToken};domain=local.overhang.io;path=/`;
+      document.cookie = `csrftoken=${TokenData.csrfToken};domain=${getConfig().LMS_BASE_URL};path=/`;
       const Res = await fetch(
         `${getConfig().LMS_BASE_URL}/search/course_discovery/`,
         {
@@ -53,14 +53,12 @@ const useGetSimilarCourses = () => {
           headers: {
             // 'Content-Type': 'application/json',
             'x-csrftoken': TokenData.csrfToken,
-            // Cookie:
-            //   'csrftoken=iXhAwECMD4tEusA8shK619JbU4cm7V89KF7Tus2iObAO5ZoUNC4k0uVGuYCKC9HW',
           },
-          // credentials: 'include',
+          credentials: 'include',
           body: JSON.stringify({
             search_string: 'course',
           }),
-        }
+        },
       );
       const Data = await Res.json();
       setSimilarCourses(Data);

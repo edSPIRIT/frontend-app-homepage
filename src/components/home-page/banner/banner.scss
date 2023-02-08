@@ -1,18 +1,21 @@
 .hero {
   background: $background-dark-blue;
   white-space: pre-line;
+  .display-1 {
+    @extend .mb-4;
+    color: $white;
+    width: 512px;
+  }
+  .hero-image {
+    object-fit: contain;
+    width: 100%;
+    max-height: 318px;
+  }
+  .hero-search {
+    @include custom-search-field(354px);
+  }
+  .col{
+    padding: unset;
+  }
 }
 
-.display-1 {
-  @extend .mb-4;
-  color: $white;
-  width: 512px;
-}
-.hero-image {
-  object-fit: contain;
-  width: 100%;
-  max-height: 318px;
-}
-.hero-search {
-  @include custom-search-field(354px);
-}

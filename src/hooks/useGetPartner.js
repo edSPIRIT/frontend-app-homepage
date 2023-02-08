@@ -20,15 +20,19 @@ const useGetPartner = (partner) => {
     created: '',
   };
   const [partnerData, setPartnerData] = useState(initialPartner);
+  const [loading, setLoading] = useState(false);
   const getPartnerData = async () => {
     try {
+      setLoading(true);
       const Res = await fetch(
         `${getConfig().LMS_BASE_URL}/admin-console/api/partner/${partner}/`,
       );
       const Data = await Res.json();
       setPartnerData(Data);
+      setLoading(false);
     } catch (e) {
       console.error(e);
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -36,6 +40,7 @@ const useGetPartner = (partner) => {
   }, [partner]);
   return {
     partnerData,
+    loading,
   };
 };
 export default useGetPartner;

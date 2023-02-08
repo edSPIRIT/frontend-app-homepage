@@ -2,6 +2,7 @@ import { Dropdown, Icon } from '@edx/paragon';
 import React, { useState } from 'react';
 import { Language, KeyboardArrowDown } from '@edx/paragon/icons';
 import edLogo from '../../../assets/edspirit-logo.png';
+import edxLogo from '../../../assets/Edx.svg';
 import { ReactComponent as Linkedin } from '../../../assets/linkedin.svg';
 import { ReactComponent as Facebook } from '../../../assets/facebook.svg';
 import { ReactComponent as Twitter } from '../../../assets/twitter.svg';
@@ -127,8 +128,9 @@ const Footer = () => {
             </div>
             <p className="footer-desc">© Copyright Notion Wave, 2022.</p>
           </div>
-          <p className="footer-desc">
+          <p className="footer-desc d-flex align-items-center">
             edX and Open edX are trademarks of edX LLC. All Rights Reserved
+            <img className="ml-2" src={edxLogo} alt="edx" />
           </p>
         </div>
       </div>

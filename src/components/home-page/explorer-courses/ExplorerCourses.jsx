@@ -1,10 +1,11 @@
-import { Tab, Tabs } from '@edx/paragon';
+import { Skeleton, Tab, Tabs } from '@edx/paragon';
 import { useState } from 'react';
 import { COURSES_INFO, COURSES_INFO_TOP } from '../../../constants';
 import CourseCard from '../../shared/course-card/CourseCard';
 
 const ExplorerCourses = () => {
   const [key, setKey] = useState('home');
+  const loading = false;
   return (
     <section id="explore-courses" className="explore-courses-container">
       <div className="custom-container d-flex flex-column">
@@ -19,9 +20,32 @@ const ExplorerCourses = () => {
         >
           <Tab eventKey="home" title="Top Courses">
             <div className="course-container">
-              {COURSES_INFO.map((course) => (
-                <CourseCard info={course} key={course.title} />
-              ))}
+              {/* TO DO: Do not use Array index in keys */}
+              {loading
+                ? Array(8)
+                  .fill(1)
+                  .map((item, i) => (
+                    <div
+                      className="d-flex flex-column skeleton-wrapper"
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={i}
+                    >
+                      <Skeleton className="mb-2 " height={92} />
+                      <div className="p-4">
+                        <Skeleton className="mb-2" width="60%" height={24} />
+                        <Skeleton count={3} height={24} />
+                        <Skeleton className="mt-2" width="60%" height={24} />
+                        <Skeleton
+                          className="mt-3"
+                          borderRadius={4}
+                          height={44}
+                        />
+                      </div>
+                    </div>
+                  ))
+                : COURSES_INFO.map((course) => (
+                  <CourseCard info={course} key={course.title} />
+                ))}
             </div>
           </Tab>
           <Tab eventKey="profile" title="Recently Added">

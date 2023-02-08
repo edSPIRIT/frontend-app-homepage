@@ -26,7 +26,9 @@ const ProgramCourses = () => {
           <Icon style={{ height: '38px', width: '38px' }} src={ChevronLeft} />
         }
       >
+        {/* TO DO: Do not use Array index in keys */}
         {chunkedArray.map((chunkCourses, i) => (
+          // eslint-disable-next-line react/no-array-index-key
           <Carousel.Item key={i}>
             <div className="course-container mt-4.5">
               {chunkCourses.map((course) => (
