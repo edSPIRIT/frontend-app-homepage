@@ -87,11 +87,6 @@ const HorizontalCard = ({
             )}
             {showButtons && (
               <div className="d-flex">
-                {!isCompleted && (
-                  <Button className="mr-1.5" variant="outline-primary">
-                    Upgrade
-                  </Button>
-                )}
                 <Button>View {isProgram ? 'Program' : 'Course'}</Button>
               </div>
             )}

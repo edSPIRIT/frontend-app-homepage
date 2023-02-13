@@ -1,4 +1,6 @@
-import { Collapsible, Icon, IconButton } from '@edx/paragon';
+import {
+  Collapsible, Icon, IconButton, Skeleton,
+} from '@edx/paragon';
 import { useState } from 'react';
 import {
   Minus, Plus, PlayCircle, Article,
@@ -6,7 +8,7 @@ import {
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-const ChapterCourse = ({ section }) => {
+const ChapterCourse = ({ section, loading }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -22,34 +24,48 @@ const ChapterCourse = ({ section }) => {
           alt="Minus"
           variant="light"
         />
-        <h3>{section.name}</h3>
+        {loading ? <Skeleton width={120} height={24} /> : <h3>{section.name}</h3>}
       </div>
       <div
         className={classNames('d-flex flex-column collapsible-wrapper', {
           'collapsible-open': !open,
         })}
       >
-        {section.subsections.map((subsection) => (
+        {loading ? (
           <Collapsible
-            key={subsection.name}
-            className="mb-1"
             title={(
               <p className="d-flex justify-content-between w-100">
-                <span>{subsection.name}</span>{' '}
-                <p className="count-title">
-                  <span>{subsection.units.length}</span> <span>lectures</span>
-                </p>
+                <Skeleton width={120} height={24} />
+                <Skeleton width={120} height={24} />
               </p>
             )}
-          >
-            {subsection.units.map((unit) => (
-              <div key={unit.name} className="d-flex">
-                <Icon src={unit.type === 'video' ? PlayCircle : Article} className="mr-1.5" />
-                <span>{unit.name}</span>
-              </div>
-            ))}
-          </Collapsible>
-        ))}
+          />
+        ) : (
+          section.subsections.map((subsection) => (
+            <Collapsible
+              key={subsection.name}
+              className="mb-1"
+              title={(
+                <p className="d-flex justify-content-between w-100">
+                  <span>{subsection.name}</span>{' '}
+                  <p className="count-title">
+                    <span>{subsection.units.length}</span> <span>lectures</span>
+                  </p>
+                </p>
+              )}
+            >
+              {subsection.units.map((unit) => (
+                <div key={unit.name} className="d-flex">
+                  <Icon
+                    src={unit.type === 'video' ? PlayCircle : Article}
+                    className="mr-1.5"
+                  />
+                  <span>{unit.name}</span>
+                </div>
+              ))}
+            </Collapsible>
+          ))
+        )}
       </div>
     </div>
   );
@@ -78,10 +94,12 @@ ChapterCourse.defaultProps = {
       }),
     ),
   }),
+  loading: PropTypes.bool,
 };
 
 ChapterCourse.propTypes = {
   section: [],
+  loading: false,
 };
 
 export default ChapterCourse;

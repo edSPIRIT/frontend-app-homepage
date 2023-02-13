@@ -9,9 +9,9 @@ import Requirements from './course-page/Requirements';
 import WhatYouLearn from './course-page/WhatYouLearn';
 import useOnScreen from '../../hooks/useOnScreen';
 import CourseContent from './course-page/CourseContent';
-import CourseInstructors from './course-page/course-content/CourseInstructors';
-import Slides from './Slides';
+import CourseInstructors from './course-page/CourseInstructors';
 import { PREREQUISITE_COURSES } from '../../constants';
+import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 
 const CoursePage = () => {
   const navTopRef = useRef(null);
@@ -21,16 +21,24 @@ const CoursePage = () => {
       <section className="custom-container  pb-6">
         <CourseInfoSideBar />
         <CourseInfoTopDesc />
-        <div className={classNames(' d-none ', { 'sticky-trigger py-4': !isTopOnScreen })}>
+        <div
+          className={classNames(' d-none ', {
+            'sticky-trigger py-4': !isTopOnScreen,
+          })}
+        >
           <div className="d-flex justify-content-between mb-1">
-            <h3>
-              Anatomy: Musculoskeletal and Integumentary Systems
-            </h3>
+            <h3>Anatomy: Musculoskeletal and Integumentary Systems</h3>
           </div>
-          <Link to="/partners/" className="course-institution">Michigan X</Link>
+          <Link to="/partners/" className="course-institution">
+            Michigan X
+          </Link>
         </div>
         <div id="sticky-trigger" ref={navTopRef} />
-        <div className={classNames('sticky-nav-wrapper', { 'sticky-nav': !isTopOnScreen })}>
+        <div
+          className={classNames('sticky-nav-wrapper', {
+            'sticky-nav': !isTopOnScreen,
+          })}
+        >
           <Scrollspy
             items={[
               'about-course',
@@ -43,44 +51,30 @@ const CoursePage = () => {
             currentClassName="active-item"
           >
             <li>
-              <Link
-                to="about-course"
-                smooth
-              >
+              <Link to="about-course" smooth>
                 About
               </Link>
             </li>
             <li>
-              <Link
-                to="what-you-learn"
-                smooth
-              >
+              <Link to="what-you-learn" smooth>
                 What you&apos;ll learn
               </Link>
             </li>
 
             <li>
-              <Link
-                to="requirement"
-                smooth
-              >
+              <Link to="requirement" smooth>
                 Requirements
               </Link>
             </li>
 
             <li>
-              <Link
-                to="course-content"
-                smooth
-              >Course content
+              <Link to="course-content" smooth>
+                Course content
               </Link>
             </li>
             <li>
-              <Link
-                to="instructors"
-                smooth
-                offset={-50}
-              >Instructors
+              <Link to="instructors" smooth offset={-50}>
+                Instructors
               </Link>
             </li>
           </Scrollspy>
@@ -93,7 +87,7 @@ const CoursePage = () => {
           <CourseInstructors />
         </div>
       </section>
-      <Slides />
+      <SimilarCourses />
     </>
   );
 };

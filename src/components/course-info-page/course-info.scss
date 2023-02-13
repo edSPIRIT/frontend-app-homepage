@@ -5,6 +5,14 @@
     position: relative;
     padding-right: calc(320px + 72px);
     background-color: $light-200;
+    .icons-skeleton-wrapper {
+      display: flex;
+      gap: 32px;
+      width: 70%;
+      span {
+        width: 100%;
+      }
+    }
     .course-info-breadcrumb {
       @include custom-breadcrumb($gray-700, $gray-500);
       .list-inline {
@@ -58,13 +66,14 @@
   margin-top: 170px;
   z-index: 10;
   float: right;
-
+  .skeleton-logo {
+    top: 154px;
+  }
   .cards-wrapper {
     border: unset;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15), 0px 1px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: $card-ing-shadow;
     &:hover {
-      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15),
-        0px 1px 4px rgba(0, 0, 0, 0.15);
+      box-shadow: $card-ing-shadow;
     }
     .card-icon {
       @extend .mr-2;
@@ -81,7 +90,7 @@
       height: unset;
       opacity: 0.5;
     }
-    .pgn__card-wrapper-image-cap{
+    .pgn__card-wrapper-image-cap {
       max-height: unset;
     }
     .pgn__card-image-cap {
@@ -150,9 +159,10 @@
   border-radius: 6px;
   padding: 32px;
   .items-wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0px, 1fr));
-    gap: 1rem;
+    line-height: 28px;
+    ul {
+      margin-bottom: unset;
+    }
   }
   p {
     font-size: $font-size-base-std;

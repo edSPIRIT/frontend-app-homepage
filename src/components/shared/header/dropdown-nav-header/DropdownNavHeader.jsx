@@ -2,7 +2,6 @@ import { Button, Icon } from '@edx/paragon';
 import { ArrowForward, KeyboardArrowDown } from '@edx/paragon/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { PROGRAMS_ITEMS_NAV } from '../../../../constants';
 import useGetSubjects from '../../../../hooks/useGetSubjects';
 
 const DropdownNavHeader = () => {
@@ -46,7 +45,7 @@ const DropdownNavHeader = () => {
           </div>
         </div>
       </div>
-      <div className="dropdown-nav-header">
+      {/* <div className="dropdown-nav-header">
         <div className="d-flex align-items-center mx-2">
           <span className=" mr-2">Programs</span>
           <Icon
@@ -82,7 +81,7 @@ const DropdownNavHeader = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <Link className="nav-link-header mx-2" to="/partners">
         Partners
       </Link>

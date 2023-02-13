@@ -21,19 +21,30 @@ const TopPrograms = () => {
           Top<span className="highlighted ml-2">Programs</span>
         </h2>
         <div className="chip-btn-container ">
-          {programNames.map((program) => (
-            <Button
-              key={program}
-              className="chip-btn mr-2.5"
-              variant={program === selectedProgram ? 'primary' : 'outline-primary'}
-              size="sm"
-              onClick={(e) => {
-                setSelectedProgram(e.target.textContent);
-              }}
-            >
-              {program}
-            </Button>
-          ))}
+          {loading ? (
+            <div className="btn-skeleton-wrapper">
+              <Skeleton height={28} className="mb-1" />
+              <Skeleton height={28} className="mb-1" />
+              <Skeleton height={28} className="mb-1" />
+              <Skeleton height={28} className="mb-1" />
+            </div>
+          ) : (
+            programNames.map((program) => (
+              <Button
+                key={program}
+                className="chip-btn mr-2.5"
+                variant={
+                  program === selectedProgram ? 'primary' : 'outline-primary'
+                }
+                size="sm"
+                onClick={(e) => {
+                  setSelectedProgram(e.target.textContent);
+                }}
+              >
+                {program}
+              </Button>
+            ))
+          )}
         </div>
         <div className="programs-container">
           {loading
@@ -42,19 +53,16 @@ const TopPrograms = () => {
               .map((item, i) => (
                 <div
                   className="d-flex flex-column skeleton-wrapper"
-                      // eslint-disable-next-line react/no-array-index-key
+                    // eslint-disable-next-line react/no-array-index-key
                   key={i}
                 >
                   <Skeleton className="mb-2" height={92} />
+                  <div className="skeleton-logo" />
                   <div className="p-4">
                     <Skeleton className="mb-2" height={24} />
                     <Skeleton width="40%" height={24} />
                     <Skeleton className="mt-3" width="40%" height={24} />
-                    <Skeleton
-                      className="mt-3"
-                      borderRadius={4}
-                      height={44}
-                    />
+                    <Skeleton className="mt-3" borderRadius={4} height={36} />
                   </div>
                 </div>
               ))

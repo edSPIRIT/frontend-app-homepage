@@ -1,7 +1,8 @@
-import { Skeleton, Tab, Tabs } from '@edx/paragon';
+import { Tab, Tabs } from '@edx/paragon';
 import { useState } from 'react';
 import { COURSES_INFO, COURSES_INFO_TOP } from '../../../constants';
 import CourseCard from '../../shared/course-card/CourseCard';
+import CourseCardSkeleton from '../../shared/skeleton/CourseCardSkeleton';
 
 const ExplorerCourses = () => {
   const [key, setKey] = useState('home');
@@ -25,23 +26,8 @@ const ExplorerCourses = () => {
                 ? Array(8)
                   .fill(1)
                   .map((item, i) => (
-                    <div
-                      className="d-flex flex-column skeleton-wrapper"
-                      // eslint-disable-next-line react/no-array-index-key
-                      key={i}
-                    >
-                      <Skeleton className="mb-2 " height={92} />
-                      <div className="p-4">
-                        <Skeleton className="mb-2" width="60%" height={24} />
-                        <Skeleton count={3} height={24} />
-                        <Skeleton className="mt-2" width="60%" height={24} />
-                        <Skeleton
-                          className="mt-3"
-                          borderRadius={4}
-                          height={44}
-                        />
-                      </div>
-                    </div>
+                    // eslint-disable-next-line react/no-array-index-key
+                    <CourseCardSkeleton key={i} />
                   ))
                 : COURSES_INFO.map((course) => (
                   <CourseCard info={course} key={course.title} />

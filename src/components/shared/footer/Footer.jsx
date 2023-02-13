@@ -31,10 +31,10 @@ const Footer = () => {
 
           <div className="col">
             <h5 className="mb-2.5">
-              {footerData.links.sections[0]?.section_title}
+              {footerData.links?.sections[0]?.section_title}
             </h5>
             <ul className="list-unstyled">
-              {footerData.links.sections[0]?.section_links.map((nav) => (
+              {footerData.links?.sections[0]?.section_links.map((nav) => (
                 <li className="mb-2" key={nav.title}>
                   <a className="custom-link" href={nav.link}>
                     {nav.title}
@@ -46,10 +46,10 @@ const Footer = () => {
 
           <div className="col">
             <h5 className="mb-2.5">
-              {footerData.links.sections[1]?.section_title}
+              {footerData.links?.sections[1]?.section_title}
             </h5>
             <ul className="list-unstyled">
-              {footerData.links.sections[1]?.section_links.map((nav) => (
+              {footerData.links?.sections[1]?.section_links.map((nav) => (
                 <li className="mb-2" key={nav.title}>
                   <a className="custom-link" href={nav.link}>
                     {nav.title}
@@ -126,7 +126,7 @@ const Footer = () => {
             <div className="logo-container">
               <img className="footer-logo  mr-2 h-100" src={edLogo} alt="" />
             </div>
-            <p className="footer-desc">© Copyright Notion Wave, 2022.</p>
+            <p className="footer-desc">© Copyright Notion Wave, {new Date().getFullYear()}.</p>
           </div>
           <p className="footer-desc d-flex align-items-center">
             edX and Open edX are trademarks of edX LLC. All Rights Reserved

@@ -58,14 +58,6 @@ const Search = () => {
                 Recent
               </Dropdown.Item>
               <Dropdown.Item
-                key="Popular"
-                active={value === 'Popular'}
-                href="#/action-2"
-                eventKey="Popular"
-              >
-                Popular
-              </Dropdown.Item>
-              <Dropdown.Item
                 key="Title A to Z"
                 active={value === 'Title A to Z'}
                 href="#/action-1"

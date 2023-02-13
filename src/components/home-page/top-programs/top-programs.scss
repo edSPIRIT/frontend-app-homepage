@@ -7,6 +7,14 @@
   .btn-outline-primary {
     border-color: $gray-200 !important;
   }
+  .btn-skeleton-wrapper {
+    display: flex;
+    gap: 32px;
+    width: 70%;
+    span {
+      width: 100%;
+    }
+  }
 }
 
 .program-title {

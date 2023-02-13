@@ -41,12 +41,12 @@ const TotalPartnersWrapper = ({ view, setView, count }) => {
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item
-              key="Popular"
-              active={value === 'Popular'}
+              key="Recent"
+              active={value === 'Recent'}
               href="#/action-1"
-              eventKey="Popular"
+              eventKey="Recent"
             >
-              Popular
+              Recent
             </Dropdown.Item>
             <Dropdown.Item
               key="Title A to Z"

@@ -35,12 +35,12 @@ const HeaderED = () => {
             onSubmit={() => history.push('/search')}
             placeholder="What do you want to learn?"
           />
-          <div className="d-flex align-items-center">
+          {/* <div className="d-flex align-items-center">
             <Button variant="tertiary" size="sm" className="mx-1">
               Help
             </Button>
-          </div>
-          <div className="sign-in-container">
+          </div> */}
+          <div className="sign-in-container ml-3">
             {location.pathname === '/' || location.pathname === '/home' ? (
               <>
                 <Button

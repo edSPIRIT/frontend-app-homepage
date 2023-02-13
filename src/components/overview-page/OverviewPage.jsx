@@ -1,17 +1,14 @@
 import { Button } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
-import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import HorizontalCard from '../shared/horizontal-card/HorizontalCard';
 import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
 import SimilarCourses from '../shared/similar-courses/SimilarCourses';
-import RecommendedPrograms from './recommended-programs/RecommendedPrograms';
-import useGetSimilarCourses from '../../hooks/useGetSimilarCourses';
 
 const OverviewPage = () => {
-  const [notEnrolled, setNotEnrolled] = useState(false);
-  const { token } = useGetSimilarCourses();
-  console.log('token', token);
+  const history = useHistory();
+  const notEnrolled = false;
   return (
     <main>
       {notEnrolled
@@ -23,7 +20,7 @@ const OverviewPage = () => {
         )
         : (
           <div className="d-flex flex-column">
-            <div className="overview-container mt-5 custom-container">
+            <div className=" mt-5 custom-container">
               <AvatarInfo />
               <div className="overview-courses-wrapper">
                 <div className="d-flex align-items-center justify-content-between mb-3">
@@ -34,7 +31,7 @@ const OverviewPage = () => {
                     variant="outline-primary"
                     iconAfter={ArrowForward}
                     className="view-all-btn"
-                    onClick={() => setNotEnrolled(true)}
+                    onClick={() => history.push('/inprogress')}
                   >
                     View All
                   </Button>
@@ -42,9 +39,9 @@ const OverviewPage = () => {
                 <HorizontalCard progressValue={33} showButtons={false} />
                 <HorizontalCard isProgram progressValue={60} showButtons={false} />
               </div>
-              <div className="recommended-program-wrapper">
+              {/* <div className="recommended-program-wrapper">
                 <RecommendedPrograms />
-              </div>
+              </div> */}
             </div>
             <div className="recommendationCourse-wrapper mt-6 py-6">
               <SimilarCourses />

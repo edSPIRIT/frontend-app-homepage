@@ -45,10 +45,21 @@
   }
 }
 .skeleton-wrapper {
+  position: relative;
   border-radius: 6px;
   border: 1px solid $light-400;
   .react-loading-skeleton {
     line-height: unset;
+  }
+  .skeleton-logo {
+    position: absolute;
+    top: 42px;
+    left: 24px;
+    width: 116px;
+    height: 66px;
+    background-color: $white;
+    box-shadow: $card-ing-shadow;
+    border-radius: 4px;
   }
 }
 
