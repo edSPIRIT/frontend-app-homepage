@@ -41,9 +41,8 @@ const Search = () => {
               iconBefore={FilterList}
             >
               <span className="text-primary-500 dropdown-title">
-                Sort by:
+                Sort by:{' '}
                 <span className="text-primary-500 font-weight-bold">
-                  {' '}
                   {value}
                 </span>
               </span>

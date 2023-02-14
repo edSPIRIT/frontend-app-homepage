@@ -1,7 +1,6 @@
 import { getConfig } from '@edx/frontend-platform';
 
 import { useEffect, useState } from 'react';
-import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
 
 const useGetSimilarCourses = () => {
   const [TokenData, setTokenData] = useState('');
@@ -45,7 +44,7 @@ const useGetSimilarCourses = () => {
       // );
       // sendTrackingLogEvent('edx.profile.viewed');
       // document.cookie = `csrftoken=${newToken};domain=local.overhang.io;path=/`;
-      document.cookie = `csrftoken=${TokenData.csrfToken};domain=${getConfig().LMS_BASE_URL};path=/`;
+      document.cookie = `csrftoken=${TokenData.csrfToken};domain=${getConfig().LMS_BASE_URL.replace('https://', '')};path=/`;
       const Res = await fetch(
         `${getConfig().LMS_BASE_URL}/search/course_discovery/`,
         {
@@ -78,6 +77,7 @@ const useGetSimilarCourses = () => {
 
   return {
     token: TokenData.csrfToken,
+    similarCourses,
   };
 };
 export default useGetSimilarCourses;

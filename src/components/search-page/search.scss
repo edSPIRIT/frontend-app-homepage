@@ -82,6 +82,27 @@
       }
     }
   }
+  .pgn__form-control-set {
+    .pgn__form-radio {
+      width: 100%;
+      padding: 14px 16px;
+      div {
+        width: 100%;
+        span {
+          font-size: $font-size-base-sm;
+        }
+        .count {
+          margin-left: auto;
+          font-size: $font-size-base-xs;
+          color: $gray-500;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+  .pgn__form-control-set > * + * {
+    margin: 0;
+  }
 }
 .badge-wrapper {
   .badge-btn {
@@ -94,27 +115,5 @@
   }
   .clear-btn {
     height: 28px;
-  }
-}
-.learning-type-radio {
-  div {
-    font-size: $font-size-base-sm;
-    display: flex;
-    align-items: center;
-    padding: 13.5px 16px;
-    input {
-      margin-right: 8px;
-      width: 20px;
-      height: 20px;
-    }
-    .labels-wrapper {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      .count {
-        color: $gray-500;
-        opacity: 0.5;
-      }
-    }
   }
 }

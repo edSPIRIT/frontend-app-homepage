@@ -15,7 +15,7 @@ const SearchFacetItem = ({ facet, facetItems, setFacetItems }) => {
   return (
     <Dropdown
       autoClose="outside"
-      className="facet-btn pt-4 mr-3"
+      className="facet-btn  mr-3"
       key={facet.attribute}
     >
       <Dropdown.Toggle

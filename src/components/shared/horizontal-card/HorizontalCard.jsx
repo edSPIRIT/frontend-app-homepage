@@ -13,6 +13,7 @@ import React, { useState } from 'react';
 import {
   Info, MoreVert, Share, Check, Close,
 } from '@edx/paragon/icons';
+import cardPlaceholder from '../../../assets/card-placeholder.png';
 
 const HorizontalCard = ({
   isProgram,
@@ -20,6 +21,7 @@ const HorizontalCard = ({
   isStarted = true,
   isCompleted,
   showButtons = true,
+  course,
 }) => {
   const isSmall = false;
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
@@ -49,12 +51,12 @@ const HorizontalCard = ({
       })}
       orientation={isSmall ? 'vertical' : 'horizontal'}
     >
-      <Card.ImageCap src="https://picsum.photos/360/200/" srcAlt="Card image" />
+      <Card.ImageCap src={course?.media?.image?.small ?? cardPlaceholder} srcAlt="Card image" />
       <Card.Body>
         <Card.Section>
           <div className="d-flex justify-content-between align-items-center mb-1">
             <h3 className="mr-5">
-              Anatomy: Musculoskeletal and Integumentary Systems
+              {course?.name}
             </h3>
             {!isCompleted && showButtons && (
               <div className="d-flex align-items-center btn-wrapper">
@@ -77,8 +79,7 @@ const HorizontalCard = ({
               </div>
             )}
           </div>
-          <p className="mb-3.5 org-title">Michigan X • Audit</p>
-          <p className="second-title mb-3.5">Access expired on 22 Jul 2022</p>
+          <p className="mb-3.5 org-title">Michigan X</p>
           <div className="d-flex align-items-center justify-content-between">
             {progressValue ? (
               <ProgressBar now={progressValue} label={`${progressValue}%`} />

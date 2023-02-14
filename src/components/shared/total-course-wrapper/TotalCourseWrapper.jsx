@@ -29,28 +29,28 @@ const TotalCourseWrapper = () => {
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item
-            key="All"
-            active={value === 'All'}
+            key="Recent"
+            active={value === 'Recent'}
             href="#/action-1"
-            eventKey="All"
+            eventKey="Recent"
           >
-            All
+            Recent
           </Dropdown.Item>
           <Dropdown.Item
-            key="Course"
-            active={value === 'Course'}
+            key="Title A to Z"
+            active={value === 'Title A to Z'}
             href="#/action-2"
-            eventKey="Course"
+            eventKey="Title A to Z"
           >
-            Course
+            Title A to Z
           </Dropdown.Item>
           <Dropdown.Item
-            key="Program"
-            active={value === 'Program'}
+            key="Title Z to A"
+            active={value === 'Title Z to A'}
             href="#/action-1"
-            eventKey="Program"
+            eventKey="Title Z to A"
           >
-            Program
+            Title Z to A
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>

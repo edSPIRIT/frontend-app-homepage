@@ -513,14 +513,10 @@ export const COURSES_SEARCH = [
     cover:
       'https://prod-discovery.edx-cdn.org/media/course/image/f30fbd27-46af-4ce3-935a-104fe2c6b9c8-1c4459a85331.small.jpg',
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/8537d31f-01b4-40fd-b652-e17b38eefe41-7956b2a3cd04.png',
-    instructor: [
-      { title: 'Michel Buffa', link: 'michel-buffa' },
-      { title: 'David Joyner', link: 'david-joyner' },
-      { title: 'Rav Ahuja', link: 'rav-ahuja' },
-    ],
+    instructor: 'David Joyner',
     lessons: '9 Lessons',
     time: '7 Hours',
-    isProgram: true,
+    isProgram: false,
   },
   {
     title: 'Advanced Programming I',
@@ -540,13 +536,10 @@ export const COURSES_SEARCH = [
     cover:
       'https://prod-discovery.edx-cdn.org/media/programs/card_images/0de98c3a-0a5a-4cf2-b0a0-634862d47e11-27353a61855f.jpg',
     logo: 'https://prod-discovery.edx-cdn.org/organization/logos/518a47f2-66fb-4529-8902-a4f7ca3002ef-78d294b01e63.png',
-    instructor: [
-      { title: 'Michel Buffa', link: 'michel-buffa' },
-      { title: 'David Joyner', link: 'david-joyner' },
-    ],
+    instructor: 'David Joyner',
     lessons: '13 Lessons',
     time: '10 Hours',
-    isProgram: true,
+    isProgram: false,
   },
 ];
 export const SEARCH_FACET_FILTERS = [
@@ -636,49 +629,7 @@ export const SEARCH_FACET_FILTERS = [
       },
     ],
   },
-  {
-    attribute: 'programs',
-    title: 'Program',
-    items: [
-      {
-        id: '1',
-        title: 'Professional Certificate',
-        count: '17',
-      },
-      {
-        id: '2',
-        title: 'Masters Degree',
-        count: '45',
-      },
-      {
-        id: '3',
-        title: 'XSeries Program',
-        count: '20',
-      },
-    ],
-  },
-  {
-    id: '4',
-    attribute: 'level_type',
-    title: 'Level',
-    items: [
-      {
-        id: '1',
-        title: 'Introductory',
-        count: '7',
-      },
-      {
-        id: '2',
-        title: 'Intermediate',
-        count: '5',
-      },
-      {
-        id: '3',
-        title: 'Advanced',
-        count: '20',
-      },
-    ],
-  },
+
   {
     id: '5',
     attribute: 'language',
