@@ -1,4 +1,5 @@
 import { Skeleton } from '@edx/paragon';
+import { Link } from 'react-router-dom';
 import useGetPartners from '../../../hooks/useGetPartners';
 
 const Partners = () => {
@@ -22,12 +23,13 @@ const Partners = () => {
               ))
           ) : (
             topPartners.map((partner) => (
-              <div
+              <Link
+                to={`/partners/${partner.organization.short_name}`}
                 className="mr-4 partners-img-wrapper"
                 key={partner.organization.id}
               >
                 <img src={partner.organization.logo} alt="" />
-              </div>
+              </Link>
             ))
           )}
         </div>

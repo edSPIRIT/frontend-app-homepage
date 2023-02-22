@@ -51,16 +51,23 @@ const HorizontalCard = ({
       })}
       orientation={isSmall ? 'vertical' : 'horizontal'}
     >
-      <Card.ImageCap src={course?.media?.image?.small ?? cardPlaceholder} srcAlt="Card image" />
+      <Card.ImageCap
+        src={course?.media?.image?.small ?? cardPlaceholder}
+        srcAlt="Card image"
+      />
       <Card.Body>
         <Card.Section>
           <div className="d-flex justify-content-between align-items-center mb-1">
-            <h3 className="mr-5">
-              {course?.name}
-            </h3>
+            <h3 className="mr-5">{course?.name}</h3>
             {!isCompleted && showButtons && (
               <div className="d-flex align-items-center btn-wrapper">
-                <Icon src={Share} className="mr-3 share-icon" />
+                <Icon
+                  src={Share}
+                  className="mr-3 share-icon"
+                  onClick={() => {
+                    navigator.clipboard.writeText(window.location.href);
+                  }}
+                />
                 <Dropdown
                   className="dropdown-icon"
                   onToggle={(isOpen) => setIsOpenDropDown(isOpen)}

@@ -31,10 +31,7 @@
   .btn {
     font-size: 1.125rem;
   }
-  .share-icon {
-    cursor: pointer;
-    color: $gray-500;
-  }
+
   //dropdown icon
   .pgn__icon {
     color: $gray-500;
@@ -58,6 +55,11 @@
     }
   }
 }
+  .share-icon {
+    cursor: pointer;
+    color: $gray-500;
+    opacity: 0.5;
+  }
 .dark-background {
   background-color: $primary-700;
   h3 {

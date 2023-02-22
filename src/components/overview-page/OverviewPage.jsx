@@ -8,15 +8,19 @@ import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseC
 import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import useGetSimilarCourses from '../../hooks/useGetSimilarCourses';
 import useGetCourses from '../../hooks/useGetCourses';
+import useGetSimilarCoursesNew from '../../hooks/useGetSimilarCoursesNew';
 
 const OverviewPage = () => {
   const history = useHistory();
   const notEnrolled = false;
   const { similarCourses } = useGetSimilarCourses();
-  const { courses, loading } = useGetCourses();
+  const { similarCourses2 } = useGetSimilarCoursesNew();
+  const { courses, loading, coursesTitles } = useGetCourses();
   console.log('getConfig().LMS_BASE_URL', getConfig().LMS_BASE_URL);
   console.log('similarCourses', similarCourses);
+  console.log('similarCourses2', similarCourses2);
   console.log('courses', courses);
+  console.log('coursesTitles', coursesTitles);
   return (
     <main>
       {notEnrolled ? (

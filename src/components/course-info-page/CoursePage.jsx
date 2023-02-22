@@ -2,6 +2,7 @@ import Scrollspy from 'react-scrollspy';
 import { useRef } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-scroll';
+import { useParams } from 'react-router';
 import AboutCourse from './course-page/AboutCourse';
 import CourseInfoSideBar from './course-page/CourseInfoSideBar';
 import CourseInfoTopDesc from './course-page/CourseInfoTopDesc';
@@ -12,15 +13,20 @@ import CourseContent from './course-page/CourseContent';
 import CourseInstructors from './course-page/CourseInstructors';
 import { PREREQUISITE_COURSES } from '../../constants';
 import SimilarCourses from '../shared/similar-courses/SimilarCourses';
+import useGetCourseMetaData from '../../hooks/useGetCourseMetaData';
 
 const CoursePage = () => {
   const navTopRef = useRef(null);
   const isTopOnScreen = useOnScreen(navTopRef);
+  const { slug } = useParams();
+  const { courseMetaData, loading } = useGetCourseMetaData(slug);
+  console.log('useGetCourseMetaData', courseMetaData);
+
   return (
     <>
       <section className="custom-container  pb-6">
-        <CourseInfoSideBar />
-        <CourseInfoTopDesc />
+        <CourseInfoSideBar courseMetaData={courseMetaData} loading={loading} />
+        <CourseInfoTopDesc courseMetaData={courseMetaData} loading={loading} />
         <div
           className={classNames(' d-none ', {
             'sticky-trigger py-4': !isTopOnScreen,
@@ -83,7 +89,7 @@ const CoursePage = () => {
           <AboutCourse />
           <WhatYouLearn />
           <Requirements PrerequisiteCourses={PREREQUISITE_COURSES} />
-          <CourseContent />
+          <CourseContent courseId={courseMetaData.course_id} loading={loading} />
           <CourseInstructors />
         </div>
       </section>

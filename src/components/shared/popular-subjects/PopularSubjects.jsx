@@ -1,5 +1,5 @@
 import { ArrowForwardIos } from '@edx/paragon/icons';
-import { Button, Icon, Skeleton } from '@edx/paragon';
+import { Icon, Skeleton } from '@edx/paragon';
 import { useHistory } from 'react-router';
 import useGetSubjects from '../../../hooks/useGetSubjects';
 

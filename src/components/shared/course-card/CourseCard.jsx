@@ -85,5 +85,18 @@ const CourseCard = ({ info }) => {
     </Link>
   );
 };
-
+// CourseCard.propTypes = {
+//   PrerequisiteCourses: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: string,
+//       title: string,
+//       institution: string,
+//       cover: string,
+//       logo: string,
+//     }),
+//   ),
+// };
+// Requirements.defaultProps = {
+//   PrerequisiteCourses: [],
+// };
 export default CourseCard;

@@ -1,10 +1,13 @@
 import { getConfig } from '@edx/frontend-platform';
 
 import { useEffect, useState } from 'react';
+import useGetCourses from './useGetCourses';
 
-const useGetSimilarCourses = () => {
+const useGetSimilarCoursesNew = () => {
   const [TokenData, setTokenData] = useState('');
   const [similarCourses, setSimilarCourses] = useState([]);
+  const { coursesTitles } = useGetCourses();
+
   console.log('getConfig().LMS_BASE_URL', getConfig().LMS_BASE_URL);
   const getTokenData = async () => {
     try {
@@ -32,7 +35,7 @@ const useGetSimilarCourses = () => {
           },
           credentials: 'include',
           body: JSON.stringify({
-            search_string: 'course',
+            search_string: coursesTitles,
           }),
         },
       );
@@ -50,11 +53,11 @@ const useGetSimilarCourses = () => {
     if (TokenData.csrfToken) {
       getSimilarCoursesData();
     }
-  }, [TokenData.csrfToken]);
+  }, [TokenData.csrfToken, coursesTitles]);
 
   return {
     token: TokenData.csrfToken,
     similarCourses,
   };
 };
-export default useGetSimilarCourses;
+export default useGetSimilarCoursesNew;

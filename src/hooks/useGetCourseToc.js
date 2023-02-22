@@ -1,29 +1,32 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { getConfig } from '@edx/frontend-platform';
 import { useEffect, useState } from 'react';
 
 const useGetCourseToc = (courseId) => {
   const initialCourseToc = {
-    name: null,
-    lms_url: null,
-    sections: [
-      {
-        name: null,
-        lms_url: null,
-        subsections: [
-          {
-            name: null,
-            lms_url: null,
-            units: [
-              {
-                name: null,
-                lms_url: null,
-                type: null,
-              },
-            ],
-          },
-        ],
-      },
-    ],
+    toc: {
+      name: null,
+      lms_url: null,
+      sections: [
+        {
+          name: null,
+          lms_url: null,
+          subsections: [
+            {
+              name: null,
+              lms_url: null,
+              units: [
+                {
+                  name: null,
+                  lms_url: null,
+                  type: null,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
   };
   const [courseTocData, setCourseTocData] = useState(initialCourseToc);
   const [loading, setLoading] = useState(false);
@@ -43,10 +46,12 @@ const useGetCourseToc = (courseId) => {
     }
   };
   useEffect(() => {
-    getCourseTocData();
-  }, []);
+    if (courseId) {
+      getCourseTocData();
+    }
+  }, [courseId]);
   return {
-    sections: courseTocData?.sections,
+    sections: courseTocData?.toc?.sections,
     loading,
   };
 };

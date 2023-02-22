@@ -25,7 +25,6 @@ const Instructor = () => {
       setShowMoreButton(true);
     }
   }, [pElement.current?.offsetHeight]);
-
   return (
     <main>
       <div className="d-flex instructor-header flex-column">
@@ -50,7 +49,13 @@ const Instructor = () => {
             <div className="d-flex flex-column w-100">
               <div className="d-flex justify-content-between align-items-center">
                 <h1>{InstructorData?.name}</h1>
-                <Icon src={Share} className="instructor-share-icon" />
+                <Icon
+                  src={Share}
+                  className="instructor-share-icon"
+                  onClick={() => {
+                    navigator.clipboard.writeText(window.location.href);
+                  }}
+                />
               </div>
               <span className="short-bio mb-3">
                 {InstructorData?.short_bio}

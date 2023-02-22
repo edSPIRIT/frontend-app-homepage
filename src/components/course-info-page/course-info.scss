@@ -22,6 +22,7 @@
     .share-icon {
       color: $gray-500;
       opacity: 0.5;
+      cursor: pointer;
     }
     .course-institution {
       color: $gray-700;
@@ -104,7 +105,7 @@
       white-space: nowrap;
       a {
         color: black;
-        text-decoration: none;
+        text-decoration: none !important;
         &:hover {
           text-decoration: none;
         }
@@ -118,6 +119,9 @@
         }
       }
     }
+  }
+  .date-text {
+    opacity: 0.5;
   }
 }
 .nav-container-top-trigger {
@@ -304,5 +308,17 @@
   margin-top: -60px;
   &:hover {
     opacity: 1;
+  }
+}
+.course-tooltip {
+  span {
+    &::after {
+      content: ', ';
+    }
+    &:last-child {
+      &::after {
+        content: '';
+      }
+    }
   }
 }

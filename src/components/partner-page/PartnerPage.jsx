@@ -1,7 +1,5 @@
-import {
-  Breadcrumb, Button, Icon,
-} from '@edx/paragon';
-import { Link, useParams } from 'react-router-dom';
+import { Breadcrumb, Button, Icon } from '@edx/paragon';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import {
   ArrowForwardIos,
   BookOpen,
@@ -13,8 +11,7 @@ import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import partnerBanner from '../../assets/card-image-cap-partner.png';
 import CourseCard from '../shared/course-card/CourseCard';
-import { COURSES_INFO, TOP_PROGRAM } from '../../constants';
-import ProgramCard from '../shared/program-card/ProgramCard';
+import { COURSES_INFO } from '../../constants';
 import Instructors from './partner-page/Instructors';
 import useGetPartner from '../../hooks/useGetPartner';
 
@@ -24,6 +21,8 @@ const PartnerPage = () => {
   const [showMore, setShowMore] = useState(false);
   const [showShowMoreButton, setShowMoreButton] = useState(false);
   const pElement = useRef(null);
+  const history = useHistory();
+
   useEffect(() => {
     if (pElement.current?.offsetHeight >= 112) {
       setShowMoreButton(true);
@@ -44,19 +43,25 @@ const PartnerPage = () => {
       </div>
       <div className="banner-container">
         <div className="partner-img-wrapper">
-          <img src={partnerData.header ? partnerData.header : partnerBanner} alt="partnerBanner" />
+          <img
+            src={partnerData.header ? partnerData.header : partnerBanner}
+            alt="partnerBanner"
+          />
         </div>
         <div className="partner-logo-wrapper">
-          <img
-            src={partnerData.organization.logo}
-            alt="partnerLogo"
-          />
+          <img src={partnerData.organization.logo} alt="partnerLogo" />
         </div>
       </div>
       <div className="custom-container desc-partner-wrapper">
         <div className="d-flex justify-content-between align-items-center mb-3">
-          <h1>{ partnerData.organization.name}</h1>
-          <Icon className="color-gray-500" src={Share} />
+          <h1>{partnerData.organization.name}</h1>
+          <Icon
+            className="color-gray-500 share-icon"
+            src={Share}
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href);
+            }}
+          />
         </div>
         <div>
           <p
@@ -65,7 +70,7 @@ const PartnerPage = () => {
               'long-desc-break': !showMore,
             })}
           >
-            { partnerData.organization.description}
+            {partnerData.organization.description}
           </p>
           {showShowMoreButton && (
             <Button
@@ -81,14 +86,14 @@ const PartnerPage = () => {
           <a className="icon-wrapper" href="#courses">
             <Icon clas src={BookOpen} style={{ width: '36px' }} />
             <span className="partner-title">Courses</span>
-            <span className="partner-count">{ partnerData.courses_count}</span>
+            <span className="partner-count">{partnerData.courses_count}</span>
           </a>
           <div className="vertical-line" />
-          <a className="icon-wrapper" href="#programs">
+          <div className="icon-wrapper" href="#">
             <Icon src={DrawShapes} />
-            <span className="partner-title">Programs</span>
+            <span className="partner-title">Learners</span>
             <span className="partner-count">0</span>
-          </a>
+          </div>
           <div className="vertical-line" />
           <a className="icon-wrapper" href="#instructors">
             <Icon src={Groups} />
@@ -112,12 +117,16 @@ const PartnerPage = () => {
           ))}
         </div>
         <div className="d-flex justify-content-center">
-          <Button className="view-all-course-btn" iconAfter={ArrowForwardIos}>
+          <Button
+            className="view-all-course-btn"
+            iconAfter={ArrowForwardIos}
+            onClick={() => history.push('/search')}
+          >
             View all Courses
           </Button>
         </div>
       </div>
-      <div className="custom-container d-flex flex-column pb-6" id="programs">
+      {/* <div className="custom-container d-flex flex-column pb-6" id="programs">
         <h2 className="d-flex justify-content-center mb-4">
           <h2 className="d-flex justify-content-center mb-4">
             Popular<span className="highlighted ml-2">Programs</span>
@@ -133,7 +142,7 @@ const PartnerPage = () => {
             View all Courses
           </Button>
         </div>
-      </div>
+      </div> */}
       <Instructors />
     </section>
   );
