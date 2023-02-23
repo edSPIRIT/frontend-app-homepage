@@ -2,19 +2,23 @@ import { getConfig } from '@edx/frontend-platform';
 
 import { useEffect, useState } from 'react';
 
-const useGetSimilarCourses = () => {
+const useGetSimilarCourses = (searchQuery) => {
   const [TokenData, setTokenData] = useState('');
   const [similarCourses, setSimilarCourses] = useState([]);
-  console.log('getConfig().LMS_BASE_URL', getConfig().LMS_BASE_URL);
+  const [loading, setLoading] = useState(false);
+
   const getTokenData = async () => {
     try {
+      setLoading(true);
       const Res = await fetch(
         `${getConfig().LMS_BASE_URL}${getConfig().CSRF_TOKEN_API_PATH}`,
       );
       const Data = await Res.json();
       setTokenData(Data);
+      setLoading(false);
     } catch (e) {
       console.error(e);
+      setLoading(false);
     }
   };
   const getSimilarCoursesData = async () => {
@@ -32,7 +36,7 @@ const useGetSimilarCourses = () => {
           },
           credentials: 'include',
           body: JSON.stringify({
-            search_string: 'course',
+            search_string: searchQuery,
           }),
         },
       );
@@ -47,14 +51,15 @@ const useGetSimilarCourses = () => {
     getTokenData();
   }, []);
   useEffect(() => {
-    if (TokenData.csrfToken) {
+    if (TokenData.csrfToken && searchQuery) {
       getSimilarCoursesData();
     }
-  }, [TokenData.csrfToken]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [TokenData.csrfToken, searchQuery]);
 
   return {
-    token: TokenData.csrfToken,
-    similarCourses,
+    similarCourses: similarCourses.results,
+    loading,
   };
 };
 export default useGetSimilarCourses;

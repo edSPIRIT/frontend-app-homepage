@@ -8,19 +8,16 @@ import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseC
 import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import useGetSimilarCourses from '../../hooks/useGetSimilarCourses';
 import useGetCourses from '../../hooks/useGetCourses';
-import useGetSimilarCoursesNew from '../../hooks/useGetSimilarCoursesNew';
 
 const OverviewPage = () => {
   const history = useHistory();
   const notEnrolled = false;
-  const { similarCourses } = useGetSimilarCourses();
-  const { similarCourses2 } = useGetSimilarCoursesNew();
-  const { courses, loading, coursesTitles } = useGetCourses();
+  const { courses, courseTitles } = useGetCourses();
+  const { similarCourses, loading } = useGetSimilarCourses(courseTitles);
   console.log('getConfig().LMS_BASE_URL', getConfig().LMS_BASE_URL);
   console.log('similarCourses', similarCourses);
-  console.log('similarCourses2', similarCourses2);
   console.log('courses', courses);
-  console.log('coursesTitles', coursesTitles);
+  console.log('coursesTitles', courseTitles);
   return (
     <main>
       {notEnrolled ? (
@@ -54,7 +51,7 @@ const OverviewPage = () => {
               </div> */}
           </div>
           <div className="recommendationCourse-wrapper mt-6 py-6">
-            <SimilarCourses />
+            <SimilarCourses courses={courses} loading={loading} />
           </div>
         </div>
       )}

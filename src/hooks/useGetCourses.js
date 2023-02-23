@@ -24,7 +24,7 @@ const useGetCourses = () => {
   return {
     courses,
     loading,
-    coursesTitles: `"${courses.reduce((acc, current) => `${acc}${current.name} `, '')}"`,
+    courseTitles: `${courses.reduce((acc, current) => `${acc}${current.name} `, '')}`,
   };
 };
 export default useGetCourses;

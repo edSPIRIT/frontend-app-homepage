@@ -11,6 +11,7 @@ import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
 import ReactDOM from 'react-dom';
 
 import { Route, Switch } from 'react-router';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import appMessages from './i18n';
 
 import './index.scss';
@@ -28,35 +29,45 @@ import PartnerPage from './components/partner-page/PartnerPage';
 import CoursePage from './components/course-info-page/CoursePage';
 import ProgramPage from './components/program-info-page/ProgramPage';
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      cacheTime: Infinity,
+    },
+  },
+});
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider>
-      <Layout>
-        <Switch>
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/overview" component={OverviewPage} />
-          <Route exact path="/dashboard" component={OverviewPage} />
-          <Route exact path="/discover" component={Discover} />
-          <Route exact path="/search" component={Search} />
-          <Route exact path="/inprogress" component={InProgress} />
-          <Route exact path="/completed" component={Completed} />
-          <Route exact path="/partners" component={PartnersList} />
-          <Route exact path="/course/:slug/">
-            <CoursePage />
-          </Route>
-          <Route exact path="/program/:slug/">
-            <ProgramPage />
-          </Route>
-          <Route exact path="/partners/:slug">
-            <PartnerPage />
-          </Route>
-          <Route exact path="/bio/:slug">
-            <Instructor />
-          </Route>
-          <Route exact path="/" component={Home} />
-          <Route path="/*" component={NotFound} />
-        </Switch>
-      </Layout>
+      <QueryClientProvider client={queryClient}>
+        <Layout>
+          <Switch>
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/overview" component={OverviewPage} />
+            <Route exact path="/dashboard" component={OverviewPage} />
+            <Route exact path="/discover" component={Discover} />
+            <Route exact path="/search" component={Search} />
+            <Route exact path="/inprogress" component={InProgress} />
+            <Route exact path="/completed" component={Completed} />
+            <Route exact path="/partners" component={PartnersList} />
+            <Route exact path="/course/:slug/">
+              <CoursePage />
+            </Route>
+            <Route exact path="/program/:slug/">
+              <ProgramPage />
+            </Route>
+            <Route exact path="/partners/:slug">
+              <PartnerPage />
+            </Route>
+            <Route exact path="/bio/:slug">
+              <Instructor />
+            </Route>
+            <Route exact path="/" component={Home} />
+            <Route path="/*" component={NotFound} />
+          </Switch>
+        </Layout>
+      </QueryClientProvider>
     </AppProvider>,
 
     document.getElementById('root'),

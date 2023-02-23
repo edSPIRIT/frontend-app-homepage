@@ -9,20 +9,20 @@ import Highlighted from './Highlighted';
 const Banner = () => {
   const history = useHistory();
   const {
-    title, highlightedWord, description, image, loading,
+    title, highlightedWord, description, image, isLoading,
   } = useGetBanner();
   return (
     <section className="hero">
       <div className="row custom-container py-6">
         <div className="col col-7">
           <h1 className="display-1">
-            {loading ? (
+            {isLoading ? (
               <Skeleton />
             ) : (
               <Highlighted text={title} highlight={highlightedWord} />
             )}
           </h1>
-          {loading ? (
+          {isLoading ? (
             <Skeleton count={2} />
           ) : (
             <p className="banner-desc">{description}</p>
@@ -40,7 +40,7 @@ const Banner = () => {
         </div>
 
         <div className="col col-5 d-flex align-items-center justify-content-center">
-          {loading ? (
+          {isLoading ? (
             <Skeleton width={300} height={200} />
           ) : (
             <Image className="hero-image" src={image} alt="banner_image" />

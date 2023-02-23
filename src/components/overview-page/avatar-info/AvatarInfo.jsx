@@ -1,10 +1,10 @@
 import { Avatar } from '@edx/paragon';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { AppContext } from '@edx/frontend-platform/react';
 
 const AvatarInfo = () => {
   const { authenticatedUser } = useContext(AppContext);
-
+  console.log('authenticatedUser', authenticatedUser);
   return (
     <div className="d-flex align-items-center pb-5.5 pt-2.5 avatar-wrapper">
       <Avatar className="mr-3 flex-shrink-0" size="xl" />

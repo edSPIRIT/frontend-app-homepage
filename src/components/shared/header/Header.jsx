@@ -1,20 +1,20 @@
 import {
-  AvatarButton,
-  Button,
-  Dropdown,
-  SearchField,
+  AvatarButton, Button, Dropdown, SearchField,
 } from '@edx/paragon';
 import { getConfig } from '@edx/frontend-platform';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { ArrowDropDown } from '@edx/paragon/icons';
+import { useContext } from 'react';
+import { AppContext } from '@edx/frontend-platform/react';
 import moodyLogo from '../../../assets/Moody-logo.svg';
 import DropdownNavHeader from './dropdown-nav-header/DropdownNavHeader';
 import NavHeader from './nav-header/NavHeader';
 
 const HeaderED = () => {
-  const location = useLocation();
   const history = useHistory();
+  const { authenticatedUser } = useContext(AppContext);
+  console.log('authenticatedUser', authenticatedUser);
   return (
     <header>
       <div className="d-flex flex-row justify-content-between align-items-center header-wrapper">
@@ -24,11 +24,7 @@ const HeaderED = () => {
               <img className="h-100" src={moodyLogo} alt="edspirit-logo" />
             </Link>
           </div>
-          {location.pathname === '/' || location.pathname === '/home' ? (
-            <DropdownNavHeader />
-          ) : (
-            <NavHeader />
-          )}
+          {authenticatedUser ? <NavHeader /> : <DropdownNavHeader />}
         </div>
         <div className="d-flex right-side-wrapper">
           <SearchField
@@ -41,28 +37,8 @@ const HeaderED = () => {
             </Button>
           </div> */}
           <div className="sign-in-container ml-3">
-            {location.pathname === '/' || location.pathname === '/home' ? (
-              <>
-                <Button
-                  variant="tertiary"
-                  className="mx-1"
-                  size="sm"
-                  href={`${getConfig().LMS_BASE_URL}/login`}
-                >
-                  Sign in
-                </Button>
-                <Button
-                  variant="primary"
-                  size="sm"
-                  href={`${getConfig().LMS_BASE_URL}/register`}
-                >
-                  Register
-                </Button>
-              </>
-            ) : (
-              <Dropdown
-                className="ml-3 avatar-dropdown-wrapper"
-              >
+            {authenticatedUser ? (
+              <Dropdown className="ml-3 avatar-dropdown-wrapper">
                 <Dropdown.Toggle as={AvatarButton} iconAfter={ArrowDropDown} />
                 <Dropdown.Menu alignRight>
                   <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/profile`}>
@@ -78,6 +54,24 @@ const HeaderED = () => {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
+            ) : (
+              <>
+                <Button
+                  variant="tertiary"
+                  className="mx-1"
+                  size="sm"
+                  href={`${getConfig().LOGIN_URL}`}
+                >
+                  Sign in
+                </Button>
+                <Button
+                  variant="primary"
+                  size="sm"
+                  href={`${getConfig().LMS_BASE_URL}/register`}
+                >
+                  Register
+                </Button>
+              </>
             )}
           </div>
         </div>
