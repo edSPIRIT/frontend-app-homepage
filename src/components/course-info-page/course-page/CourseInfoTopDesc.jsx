@@ -81,7 +81,7 @@ const CourseInfoTopDesc = ({ courseMetaData, loading }) => (
                   id="tooltip-top"
                   className="course-tooltip"
                 >
-                  {courseMetaData.transcript_langs?.map((transLang, i) => (
+                  {courseMetaData?.transcript_langs?.map((transLang, i) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <span key={i}>{transLang}</span>
                   ))}
@@ -91,7 +91,7 @@ const CourseInfoTopDesc = ({ courseMetaData, loading }) => (
               <div className="d-flex justify-content-center align-items-center mr-4.5">
                 <Icon className="mr-2" src={PostOutline} />
                 <span className="course-tooltip">
-                  {courseMetaData.transcript_langs?.map((transLang, i) => (
+                  {courseMetaData?.transcript_langs?.map((transLang, i) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <span key={i}>{transLang}</span>
                   ))}

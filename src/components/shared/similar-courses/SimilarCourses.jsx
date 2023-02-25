@@ -3,16 +3,19 @@ import { Carousel, Icon } from '@edx/paragon';
 import PropTypes from 'prop-types';
 import CourseCardSkeleton from '../skeleton/CourseCardSkeleton';
 import CourseCardNew from '../course-card/CourseCardNew';
+import useGetTopRecentCourses from '../../../hooks/useGetTopRecentCourses';
 
-const SimilarCourses = ({ courses, loading }) => {
+const SimilarCourses = ({ courses, loading: load }) => {
+  const { recentCourses, loading } = useGetTopRecentCourses();
+
   const chunkedArray = [];
   const chunkSize = () => {
-    for (let i = 0; i < courses.length; i += 4) {
-      chunkedArray.push(courses.slice(i, i + 4));
+    for (let i = 0; i < recentCourses?.length; i += 4) {
+      chunkedArray.push(recentCourses?.slice(i, i + 4));
     }
   };
   chunkSize();
-
+  console.log('chunkedArray', chunkedArray);
   return (
     <section className="custom-container similar-courses-wrapper">
       <h3>Similar Courses</h3>
@@ -40,7 +43,7 @@ const SimilarCourses = ({ courses, loading }) => {
             <Icon style={{ height: '38px', width: '38px' }} src={ChevronLeft} />
           }
         >
-          {chunkedArray.map((chunkCourses, i) => (
+          {chunkedArray?.map((chunkCourses, i) => (
             // eslint-disable-next-line react/no-array-index-key
             <Carousel.Item key={i}>
               <div className="course-container mt-4.5">
