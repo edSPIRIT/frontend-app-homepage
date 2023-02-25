@@ -1,13 +1,12 @@
 import { Button, Skeleton } from '@edx/paragon';
 import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 
-const AboutCourse = () => {
+const AboutCourse = ({ aboutCourse, loading }) => {
   const [showMore, setShowMore] = useState(false);
   const [showShowMoreButton, setShowMoreButton] = useState(false);
   const pElement = useRef(null);
-  const loading = false;
-
   useEffect(() => {
     if (pElement.current?.offsetHeight >= 139) {
       setShowMoreButton(true);
@@ -26,35 +25,28 @@ const AboutCourse = () => {
               'long-about-break': !showMore,
             })}
           >
-            Blockchain is a constantly evolving technology. Essentially, it is
-            a decentralized, distributed, digital ledger consisting of records
-            called blocks that are used to record transactions across many
-            computers that enhances reliability and security of transactions.
-            Blockchain technology has improved supply chains and other
-            transaction networks making it easier to interact and safely
-            transact with others in the digital world. It allows us to rethink
-            how to store, move and update data on a network. As the first step
-            in IBM’s Blockchain Essentials Professional Certificate
-            curriculum, this course will guide students through the basics of
-            blockchain technology and covers the technical and functional
-            components required to construct any blockchain solution using
-            state-of-the-art tools and practices. In this course, you will
-            learn how to design smart contracts, bitcoin wallets,
-            transactions, fabricode, chain SDKs, and more.
+            {aboutCourse}
           </p>
           {showShowMoreButton && (
-          <Button
-            variant="tertiary"
-            className="showMore-btn"
-            onClick={() => setShowMore(!showMore)}
-          >
-            {showMore ? 'Show less' : 'Show more'}
-          </Button>
+            <Button
+              variant="tertiary"
+              className="showMore-btn"
+              onClick={() => setShowMore(!showMore)}
+            >
+              {showMore ? 'Show less' : 'Show more'}
+            </Button>
           )}
         </div>
       )}
     </div>
   );
 };
-
+AboutCourse.propTypes = {
+  aboutCourse: PropTypes.string,
+  loading: PropTypes.bool,
+};
+AboutCourse.defaultProps = {
+  aboutCourse: '',
+  loading: false,
+};
 export default AboutCourse;

@@ -1,30 +1,29 @@
 import { Skeleton } from '@edx/paragon';
-import { WHAT_YOU_LEARN } from '../../../constants';
+import PropTypes from 'prop-types';
 
-const WhatYouLearn = () => {
-  const loading = false;
-
-  return (
-    <div className="what-learn-wrapper mt-5" id="what-you-learn">
-      <h2 className="mb-3">What you&apos;ll learn</h2>
-      {loading ? (
-        <Skeleton count={5} height={24} />
-      ) : (
-        <div className="items-wrapper">
-          <p>
-            In this short introductory course, you will discover a
-            diagnostic-and-action process for exercising leadership that
-            explores the following foundational principles and strategies
-          </p>
-          {WHAT_YOU_LEARN.map((item) => (
-            <ul key={item.id}>
-              <li>{item.title}</li>
-            </ul>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+const WhatYouLearn = ({ learningItems, loading }) => (
+  <div className="what-learn-wrapper mt-5" id="what-you-learn">
+    <h2 className="mb-3">What you&apos;ll learn</h2>
+    {loading ? (
+      <Skeleton count={5} height={24} />
+    ) : (
+      <div className="items-wrapper">
+        {learningItems.map((item, i) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <ul key={i}>
+            <li>{item}</li>
+          </ul>
+        ))}
+      </div>
+    )}
+  </div>
+);
+WhatYouLearn.propTypes = {
+  learningItems: PropTypes.arrayOf(PropTypes.string),
+  loading: PropTypes.bool,
 };
-
+WhatYouLearn.defaultProps = {
+  learningItems: [],
+  loading: false,
+};
 export default WhatYouLearn;

@@ -28,6 +28,7 @@ import PartnersList from './components/partners-list-page/PartnersList';
 import PartnerPage from './components/partner-page/PartnerPage';
 import CoursePage from './components/course-info-page/CoursePage';
 import ProgramPage from './components/program-info-page/ProgramPage';
+import ProtectedRoute from './ProtectedRoute';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,14 +44,42 @@ subscribe(APP_READY, () => {
       <QueryClientProvider client={queryClient}>
         <Layout>
           <Switch>
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/overview" component={OverviewPage} />
-            <Route exact path="/dashboard" component={OverviewPage} />
-            <Route exact path="/discover" component={Discover} />
-            <Route exact path="/search" component={Search} />
-            <Route exact path="/inprogress" component={InProgress} />
-            <Route exact path="/completed" component={Completed} />
-            <Route exact path="/partners" component={PartnersList} />
+            <Route exact path="/home">
+              <Home />
+            </Route>
+            <Route exact path="/overview">
+              <ProtectedRoute>
+                <OverviewPage />
+              </ProtectedRoute>
+            </Route>
+            <Route exact path="/dashboard">
+              <ProtectedRoute>
+                <OverviewPage />
+              </ProtectedRoute>
+            </Route>
+            <Route exact path="/discover">
+              <ProtectedRoute>
+                <Discover />
+              </ProtectedRoute>
+            </Route>
+            <Route exact path="/search">
+              <ProtectedRoute>
+                <Search />
+              </ProtectedRoute>
+            </Route>
+            <Route exact path="/inprogress">
+              <ProtectedRoute>
+                <InProgress />
+              </ProtectedRoute>
+            </Route>
+            <Route exact path="/completed">
+              <ProtectedRoute>
+                <Completed />
+              </ProtectedRoute>
+            </Route>
+            <Route exact path="/partners">
+              <PartnersList />
+            </Route>
             <Route exact path="/course/:slug/">
               <CoursePage />
             </Route>
@@ -63,8 +92,12 @@ subscribe(APP_READY, () => {
             <Route exact path="/bio/:slug">
               <Instructor />
             </Route>
-            <Route exact path="/" component={Home} />
-            <Route path="/*" component={NotFound} />
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/*">
+              <NotFound />
+            </Route>
           </Switch>
         </Layout>
       </QueryClientProvider>

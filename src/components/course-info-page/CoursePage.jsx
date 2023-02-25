@@ -11,7 +11,6 @@ import WhatYouLearn from './course-page/WhatYouLearn';
 import useOnScreen from '../../hooks/useOnScreen';
 import CourseContent from './course-page/CourseContent';
 import CourseInstructors from './course-page/CourseInstructors';
-import { PREREQUISITE_COURSES } from '../../constants';
 import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import useGetCourseMetaData from '../../hooks/useGetCourseMetaData';
 
@@ -20,7 +19,6 @@ const CoursePage = () => {
   const isTopOnScreen = useOnScreen(navTopRef);
   const { slug } = useParams();
   const { courseMetaData, loading } = useGetCourseMetaData(slug);
-  console.log('useGetCourseMetaData', courseMetaData);
 
   return (
     <>
@@ -33,10 +31,10 @@ const CoursePage = () => {
           })}
         >
           <div className="d-flex justify-content-between mb-1">
-            <h3>Anatomy: Musculoskeletal and Integumentary Systems</h3>
+            <h3>{courseMetaData.additional_metadata?.display_name}</h3>
           </div>
           <Link to="/partners/" className="course-institution">
-            Michigan X
+            {courseMetaData.additional_metadata?.org}
           </Link>
         </div>
         <div id="sticky-trigger" ref={navTopRef} />
@@ -86,10 +84,16 @@ const CoursePage = () => {
           </Scrollspy>
         </div>
         <div className="course-content-container">
-          <AboutCourse />
-          <WhatYouLearn />
-          <Requirements PrerequisiteCourses={PREREQUISITE_COURSES} />
-          <CourseContent courseId={courseMetaData.course_id} loading={loading} />
+          <AboutCourse aboutCourse={courseMetaData?.about} loading={loading} />
+          <WhatYouLearn
+            learningItems={courseMetaData?.what_you_will_learn}
+            loading={loading}
+          />
+          <Requirements courseMetaData={courseMetaData} loading={loading} />
+          <CourseContent
+            courseId={courseMetaData.course_id}
+            loading={loading}
+          />
           <CourseInstructors />
         </div>
       </section>

@@ -7,6 +7,7 @@ import {
 } from '@edx/paragon/icons';
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { getConfig } from '@edx/frontend-platform';
 
 const CourseCardNew = ({ course }) => {
   const isProgram = false;
@@ -16,8 +17,12 @@ const CourseCardNew = ({ course }) => {
     <Link to={`/course/${course.course_slug}`}>
       <Card className="cards-wrapper">
         <Card.ImageCap
-          src={course.additional_metadata?.banner_image_url}
-          logoSrc={course.additional_metadata?.course_image_url}
+          src={`${getConfig().LMS_BASE_URL}${
+            course.additional_metadata?.banner_image_url
+          }`}
+          logoSrc={`${getConfig().LMS_BASE_URL}${
+            course.additional_metadata?.course_image_url
+          }`}
           variant="top"
           alt=""
         />
@@ -48,7 +53,14 @@ const CourseCardNew = ({ course }) => {
             </div>
             <div className="d-flex flex-row align-items-center mb-2">
               <Icon className="card-icon" src={BookOpen} />
-              <span className="color-black">lessons</span>
+              <p className="color-black">
+                <span className="mr-1">
+                  {course?.additional_metadata?.units_count}
+                </span>
+                <span>
+                  lessons
+                </span>
+              </p>
             </div>
             {course?.total_weeks_of_effort > 0 && (
               <div className="d-flex flex-row align-items-center mb-3">
@@ -90,18 +102,24 @@ const CourseCardNew = ({ course }) => {
 CourseCardNew.propTypes = {
   course: {
     additional_metadata: PropTypes.shape({
-      banner_image_url: PropTypes.string,
-      certificate_enabled: PropTypes.bool,
-      course_created_at: PropTypes.string,
-      course_image_url: PropTypes.string,
-      enrollment_end: PropTypes.string,
-      enrollment_start: PropTypes.string,
-      language: PropTypes.string,
-      last_modification_date: PropTypes.string,
-      org: PropTypes.string,
       self_paced: PropTypes.bool,
-      short_description: PropTypes.string,
       total_enrollments: PropTypes.number,
+      last_modification_date: PropTypes.string,
+      course_created_at: PropTypes.string,
+      enrollment_start: PropTypes.string,
+      enrollment_end: PropTypes.string,
+      banner_image_url: PropTypes.string,
+      course_image_url: PropTypes.string,
+      language: PropTypes.string,
+      certificate_enabled: PropTypes.bool,
+      short_description: PropTypes.string,
+      org: PropTypes.string,
+      display_name: PropTypes.string,
+      effort: PropTypes.string,
+      // eslint-disable-next-line react/forbid-prop-types
+      pre_req_courses: PropTypes.array,
+      sections_count: PropTypes.number,
+      units_count: PropTypes.number,
     }),
     course_id: PropTypes.string,
     course_slug: PropTypes.string,
