@@ -1,12 +1,12 @@
 import { Tab, Tabs } from '@edx/paragon';
 import { useState } from 'react';
-import useGetTopCourses from '../../../hooks/useGetTopCourses';
+import useGetTopRecentCourses from '../../../hooks/useGetTopRecentCourses';
 import CourseCardNew from '../../shared/course-card/CourseCardNew';
 import CourseCardSkeleton from '../../shared/skeleton/CourseCardSkeleton';
 
 const ExplorerCourses = () => {
   const [key, setKey] = useState('home');
-  const { recentCourses, topCourses, loading } = useGetTopCourses();
+  const { recentCourses, topCourses, loading } = useGetTopRecentCourses();
   return (
     <section id="explore-courses" className="explore-courses-container">
       <div className="custom-container d-flex flex-column">

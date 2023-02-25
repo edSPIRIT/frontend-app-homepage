@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import {
   Icon, Image, SearchField, Skeleton,
 } from '@edx/paragon';

@@ -8,7 +8,7 @@ const useGetTopRecentCourses = () => {
     try {
       setLoading(true);
       const Res = await fetch(
-        `${getConfig().LMS_BASE_URL}/admin-console/api/top-recent-courses`,
+        `${getConfig().LMS_BASE_URL}/admin-console/api/top-recent-courses/`,
       );
       const Data = await Res.json();
       setTopRecentCoursesData(Data);

@@ -10,6 +10,7 @@
     font-size: 1.25rem;
   }
   .long-bio-instructor {
+
     max-width: 912px;
     @include line-break(4);
   }
@@ -20,7 +21,9 @@
   .instructor-icons-wrapper {
     @extend .d-flex, .justify-content-between, .align-items-center;
     max-width: 912px;
-    color: $light-500;
+    color: $light-500 !important;
+    opacity: 0.5;
+    font-size: $font-size-base-sm;
   }
   p {
     color: $light-300;
@@ -51,5 +54,14 @@
   .btn-icon-after {
     width: 1rem;
     margin-left: 1rem;
+  }
+}
+.social-icon-skeleton-wrapper {
+  span {
+    display: flex;
+    flex-direction: row;
+  }
+  .social-icon-skeleton {
+    border-radius: 50%;
   }
 }
