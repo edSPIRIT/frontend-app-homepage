@@ -29,7 +29,7 @@ const CourseInfoTopDesc = ({ courseMetaData, loading }) => (
             { label: '‌Business', to: '/‌Business' },
           ]}
           linkAs={Link}
-          activeLabel={courseMetaData.additional_metadata?.display_namne}
+          activeLabel={courseMetaData.additional_metadata?.display_name}
         />
       </div>
       {loading ? (
@@ -49,7 +49,7 @@ const CourseInfoTopDesc = ({ courseMetaData, loading }) => (
           <div className="d-flex flex-column">
             <div className="d-flex justify-content-between mb-1">
               <h1 className="mr-4.5">
-                {courseMetaData.additional_metadata?.display_namne}
+                {courseMetaData.additional_metadata?.display_name}
               </h1>
               <Icon
                 className="share-icon"
@@ -73,6 +73,7 @@ const CourseInfoTopDesc = ({ courseMetaData, loading }) => (
               <Icon className="mr-2" src={Language} />
               <span>English</span>
             </div>
+            {courseMetaData?.transcript_langs && (
             <OverlayTrigger
               placement="top"
               overlay={(
@@ -98,6 +99,7 @@ const CourseInfoTopDesc = ({ courseMetaData, loading }) => (
                 </span>
               </div>
             </OverlayTrigger>
+            )}
             {courseMetaData?.additional_metadata?.self_paced && (
               <div className="d-flex justify-content-center align-items-center mr-4.5">
                 <Icon className="mr-2" src={HowToReg} />
@@ -119,18 +121,24 @@ const CourseInfoTopDesc = ({ courseMetaData, loading }) => (
 CourseInfoTopDesc.propTypes = {
   courseMetaData: {
     additional_metadata: PropTypes.shape({
-      banner_image_url: PropTypes.string,
-      certificate_enabled: PropTypes.bool,
-      course_created_at: PropTypes.string,
-      course_image_url: PropTypes.string,
-      enrollment_end: PropTypes.string,
-      enrollment_start: PropTypes.string,
-      language: PropTypes.string,
-      last_modification_date: PropTypes.string,
-      org: PropTypes.string,
       self_paced: PropTypes.bool,
-      short_description: PropTypes.string,
       total_enrollments: PropTypes.number,
+      last_modification_date: PropTypes.string,
+      course_created_at: PropTypes.string,
+      enrollment_start: PropTypes.string,
+      enrollment_end: PropTypes.string,
+      banner_image_url: PropTypes.string,
+      course_image_url: PropTypes.string,
+      language: PropTypes.string,
+      certificate_enabled: PropTypes.bool,
+      short_description: PropTypes.string,
+      org: PropTypes.string,
+      display_name: PropTypes.string,
+      effort: PropTypes.string,
+      // eslint-disable-next-line react/forbid-prop-types
+      pre_req_courses: PropTypes.array,
+      sections_count: PropTypes.number,
+      units_count: PropTypes.number,
     }),
     course_id: PropTypes.string,
     course_slug: PropTypes.string,
