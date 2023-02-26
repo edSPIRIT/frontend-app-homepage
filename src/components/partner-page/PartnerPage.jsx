@@ -1,4 +1,6 @@
-import { Breadcrumb, Button, Icon } from '@edx/paragon';
+import {
+  Breadcrumb, Button, Icon, Skeleton,
+} from '@edx/paragon';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import {
   ArrowForwardIos,
@@ -14,10 +16,11 @@ import CourseCard from '../shared/course-card/CourseCard';
 import { COURSES_INFO } from '../../constants';
 import Instructors from './partner-page/Instructors';
 import useGetPartner from '../../hooks/useGetPartner';
+import logoPlaceholder from '../../assets/card-placeholder.png';
 
 const PartnerPage = () => {
   const { slug } = useParams();
-  const { partnerData } = useGetPartner(slug);
+  const { partnerData, loading } = useGetPartner(slug);
   const [showMore, setShowMore] = useState(false);
   const [showShowMoreButton, setShowMoreButton] = useState(false);
   const pElement = useRef(null);
@@ -49,12 +52,21 @@ const PartnerPage = () => {
           />
         </div>
         <div className="partner-logo-wrapper">
-          <img src={partnerData.organization.logo} alt="partnerLogo" />
+          <img
+            src={partnerData.organization.logo ?? logoPlaceholder}
+            alt="partnerLogo"
+          />
         </div>
       </div>
       <div className="custom-container desc-partner-wrapper">
         <div className="d-flex justify-content-between align-items-center mb-3">
-          <h1>{partnerData.organization.name}</h1>
+          {loading ? (
+            <div className="w-100">
+              <Skeleton width="30%" height={44} />
+            </div>
+          ) : (
+            <h1>{partnerData.organization.name}</h1>
+          )}
           <Icon
             className="color-gray-500 share-icon"
             src={Share}
@@ -70,7 +82,11 @@ const PartnerPage = () => {
               'long-desc-break': !showMore,
             })}
           >
-            {partnerData.organization.description}
+            {loading ? (
+              <Skeleton count={4} width="100%" height={24} />
+            ) : (
+              partnerData.organization.description
+            )}
           </p>
           {showShowMoreButton && (
             <Button
