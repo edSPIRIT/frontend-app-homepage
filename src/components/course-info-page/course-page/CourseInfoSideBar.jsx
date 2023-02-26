@@ -40,14 +40,10 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
           <Card.ImageCap
             src={
               `${getConfig().LMS_BASE_URL}${
-                courseMetaData.additional_metadata?.banner_image_url
+                courseMetaData.additional_metadata?.course_image_url
               }` ?? imageCap
             }
-            logoSrc={
-              `${getConfig().LMS_BASE_URL}${
-                courseMetaData.additional_metadata?.course_image_url
-              }` ?? logoPlaceholder
-            }
+            logoSrc={logoPlaceholder}
             variant="top"
             alt=""
           />

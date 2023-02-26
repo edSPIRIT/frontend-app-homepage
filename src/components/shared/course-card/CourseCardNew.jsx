@@ -8,6 +8,7 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
+import logoPlaceholder from '../../../assets/card-placeholder.png';
 
 const CourseCardNew = ({ course }) => {
   const isProgram = false;
@@ -18,17 +19,15 @@ const CourseCardNew = ({ course }) => {
       <Card className="cards-wrapper">
         <Card.ImageCap
           src={`${getConfig().LMS_BASE_URL}${
-            course.additional_metadata?.banner_image_url
-          }`}
-          logoSrc={`${getConfig().LMS_BASE_URL}${
             course.additional_metadata?.course_image_url
           }`}
+          logoSrc={logoPlaceholder}
           variant="top"
           alt=""
         />
         <div className="mt-4.5 px-4">
           <h4 className="mb-1 course-title">
-            {course.additional_metadata?.display_namne}
+            {course.additional_metadata?.display_name}
           </h4>
           <a className="institution-title font-sm" href="#institution">
             {course.additional_metadata?.org}

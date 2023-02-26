@@ -7,7 +7,9 @@ const Partners = () => {
   return (
     <section id="partners" className="pt-6 partners">
       <div className="custom-container">
-        <h2 className="d-flex justify-content-center mb-4">Partners</h2>
+        <Link to="/partners">
+          <h2 className="d-flex justify-content-center mb-4">Partners</h2>
+        </Link>
         <span className="d-flex justify-content-center mb-5 text-gray-500">
           Founded by Harvard and MIT, edX is home to more than 20 million
           learners, the majority of top-ranked universities in the world and

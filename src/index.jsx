@@ -58,14 +58,10 @@ subscribe(APP_READY, () => {
               </ProtectedRoute>
             </Route>
             <Route exact path="/discover">
-              <ProtectedRoute>
-                <Discover />
-              </ProtectedRoute>
+              <Discover />
             </Route>
             <Route exact path="/search">
-              <ProtectedRoute>
-                <Search />
-              </ProtectedRoute>
+              <Search />
             </Route>
             <Route exact path="/inprogress">
               <ProtectedRoute>
