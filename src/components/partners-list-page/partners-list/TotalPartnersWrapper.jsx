@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Dropdown, Icon } from '@edx/paragon';
+import { Dropdown, Icon, Skeleton } from '@edx/paragon';
 import PropTypes from 'prop-types';
 
 import {
@@ -12,14 +12,20 @@ import {
 import classNames from 'classnames';
 import React, { useState } from 'react';
 
-const TotalPartnersWrapper = ({ view, setView, count }) => {
-  const [value, setValue] = useState('Popular');
+const TotalPartnersWrapper = ({
+  view, setView, count, loading,
+}) => {
+  const [value, setValue] = useState('Recent');
 
   return (
     <div className="d-flex justify-content-between align-items-center mb-4 mt-4.5">
       <p>
         <span className="total-title">Total partners:</span>
-        <span className="font-weight-bold"> {count}</span>
+        {loading ? (
+          <Skeleton height={20} width={20} className="ml-1" />
+        ) : (
+          <span className="font-weight-bold"> {count}</span>
+        )}
       </p>
       <div className="d-flex align-items-center">
         <Dropdown
@@ -92,10 +98,12 @@ TotalPartnersWrapper.propTypes = {
   view: PropTypes.string,
   setView: PropTypes.func,
   count: PropTypes.number,
+  loading: PropTypes.bool,
 };
 TotalPartnersWrapper.defaultProps = {
   view: 'grid',
-  setView: () => { },
+  setView: () => {},
   count: 0,
+  loading: false,
 };
 export default TotalPartnersWrapper;

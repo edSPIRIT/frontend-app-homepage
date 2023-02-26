@@ -1,7 +1,5 @@
 /* eslint-disable max-len */
-import {
-  SearchField, Icon, Breadcrumb,
-} from '@edx/paragon';
+import { SearchField, Icon, Breadcrumb } from '@edx/paragon';
 import {
   ArrowForward, BookOpen, DrawShapes, Groups,
 } from '@edx/paragon/icons';
@@ -14,7 +12,7 @@ import TotalPartnersWrapper from './partners-list/TotalPartnersWrapper';
 
 const PartnersList = () => {
   const [view, setView] = useState('grid');
-  const { count, partnersData } = useGetPartners();
+  const { count, partnersData, loading } = useGetPartners();
 
   return (
     <section>
@@ -63,8 +61,17 @@ const PartnersList = () => {
           linkAs={Link}
           activeLabel="Our-Partners"
         />
-        <TotalPartnersWrapper view={view} setView={setView} count={count} />
-        {view === 'grid' ? <PartnersCardGrid partnersData={partnersData} /> : <PartnersCardList partnersData={partnersData} />}
+        <TotalPartnersWrapper
+          view={view}
+          setView={setView}
+          count={count}
+          loading={loading}
+        />
+        {view === 'grid' ? (
+          <PartnersCardGrid partnersData={partnersData} loading={loading} />
+        ) : (
+          <PartnersCardList partnersData={partnersData} loading={loading} />
+        )}
       </div>
     </section>
   );
