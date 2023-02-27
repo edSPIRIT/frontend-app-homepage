@@ -100,7 +100,7 @@ const PartnerPage = () => {
         </div>
         <div className="d-flex justify-content-center partner-snapshot-wrapper mt-2">
           <a className="icon-wrapper" href="#courses">
-            <Icon clas src={BookOpen} style={{ width: '36px' }} />
+            <Icon src={BookOpen} style={{ width: '36px' }} />
             <span className="partner-title">Courses</span>
             <span className="partner-count">{partnerData.courses_count}</span>
           </a>

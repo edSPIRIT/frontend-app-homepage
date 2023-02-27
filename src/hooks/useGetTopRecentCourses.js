@@ -21,9 +21,18 @@ const useGetTopRecentCourses = () => {
   useEffect(() => {
     getTopCoursesData();
   }, []);
+  const customCount = (data) => {
+    if (data?.length >= 4 && data?.length < 8) {
+      return data?.slice(0, 4);
+    }
+    if (data?.length >= 8) {
+      return data?.slice(0, 8);
+    }
+    return data;
+  };
   return {
-    recentCourses: topRecentCoursesData.recent_courses,
-    topCourses: topRecentCoursesData.top_courses,
+    recentCourses: customCount(topRecentCoursesData?.recent_courses),
+    topCourses: customCount(topRecentCoursesData?.top_courses),
     loading,
   };
 };

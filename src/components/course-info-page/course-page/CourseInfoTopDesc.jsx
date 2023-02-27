@@ -74,31 +74,33 @@ const CourseInfoTopDesc = ({ courseMetaData, loading }) => (
               <span>English</span>
             </div>
             {courseMetaData?.transcript_langs && (
-            <OverlayTrigger
-              placement="top"
-              overlay={(
-                <Tooltip
-                  variant="light"
-                  id="tooltip-top"
-                  className="course-tooltip"
-                >
-                  {courseMetaData?.transcript_langs?.map((transLang, i) => (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <span key={i}>{transLang}</span>
-                  ))}
-                </Tooltip>
-              )}
-            >
-              <div className="d-flex justify-content-center align-items-center mr-4.5">
-                <Icon className="mr-2" src={PostOutline} />
-                <span className="course-tooltip">
-                  {courseMetaData?.transcript_langs?.map((transLang, i) => (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <span key={i}>{transLang}</span>
-                  ))}
-                </span>
-              </div>
-            </OverlayTrigger>
+              <OverlayTrigger
+                placement="top"
+                overlay={(
+                  <Tooltip
+                    variant="light"
+                    id="tooltip-top"
+                    className="course-tooltip"
+                  >
+                    {courseMetaData?.transcript_langs
+                      && courseMetaData?.transcript_langs?.map((transLang, i) => (
+                        // eslint-disable-next-line react/no-array-index-key
+                        <span key={i}>{transLang}</span>
+                      ))}
+                  </Tooltip>
+                )}
+              >
+                <div className="d-flex justify-content-center align-items-center mr-4.5">
+                  <Icon className="mr-2" src={PostOutline} />
+                  <span className="course-tooltip">
+                    {courseMetaData?.transcript_langs
+                      && courseMetaData?.transcript_langs?.map((transLang, i) => (
+                        // eslint-disable-next-line react/no-array-index-key
+                        <span key={i}>{transLang}</span>
+                      ))}
+                  </span>
+                </div>
+              </OverlayTrigger>
             )}
             {courseMetaData?.additional_metadata?.self_paced && (
               <div className="d-flex justify-content-center align-items-center mr-4.5">

@@ -48,7 +48,14 @@ const HeaderED = () => {
                     Account
                   </Dropdown.Item>
                   <Dropdown.Item href="dashboard">Dashboard</Dropdown.Item>
-                  <Dropdown.Item href="/orders">Order History</Dropdown.Item>
+                  <Dropdown.Item
+                    href={`https://billing.${getConfig().LMS_BASE_URL.replace(
+                      'https://',
+                      '',
+                    )}`}
+                  >
+                    Order History
+                  </Dropdown.Item>
                   <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/logout`}>
                     Sign out
                   </Dropdown.Item>

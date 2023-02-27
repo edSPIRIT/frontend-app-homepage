@@ -8,12 +8,13 @@ const WhatYouLearn = ({ learningItems, loading }) => (
       <Skeleton count={5} height={24} />
     ) : (
       <div className="items-wrapper">
-        {learningItems.map((item, i) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <ul key={i}>
-            <li>{item}</li>
-          </ul>
-        ))}
+        {learningItems
+          && learningItems?.map((item, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <ul key={i}>
+              <li>{item}</li>
+            </ul>
+          ))}
       </div>
     )}
   </div>
