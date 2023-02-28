@@ -55,33 +55,34 @@ const CoursePage = () => {
             currentClassName="active-item"
           >
             <li>
-              <Link to="about-course" smooth>
+              <Link to="about-course" smooth offset={-100}>
                 About
               </Link>
             </li>
             <li>
-              <Link to="what-you-learn" smooth>
+              <Link to="what-you-learn" smooth offset={-100}>
                 What you&apos;ll learn
               </Link>
             </li>
 
             <li>
-              <Link to="requirement" smooth>
+              <Link to="requirement" smooth offset={-100}>
                 Requirements
               </Link>
             </li>
 
             <li>
-              <Link to="course-content" smooth>
+              <Link to="course-content" smooth offset={-100}>
                 Course content
               </Link>
             </li>
             <li>
-              <Link to="instructors" smooth offset={-50}>
+              <Link to="instructors" smooth offset={-100}>
                 Instructors
               </Link>
             </li>
           </Scrollspy>
+
         </div>
         <div className="course-content-container">
           <AboutCourse aboutCourse={courseMetaData?.about} loading={loading} />
@@ -94,7 +95,7 @@ const CoursePage = () => {
             courseId={courseMetaData.course_id}
             loading={loading}
           />
-          <CourseInstructors />
+          <CourseInstructors instructors={courseMetaData?.instructors} loading={loading} />
         </div>
       </section>
       <SimilarCourses />

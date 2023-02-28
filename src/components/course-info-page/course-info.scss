@@ -87,6 +87,10 @@
         width: 100%;
       }
     }
+    .pgn__card-image-cap {
+      border-top-left-radius: 0.375rem;
+      border-top-right-radius: 0.375rem;
+    }
     .pgn__icon {
       height: unset;
       opacity: 0.5;
@@ -141,6 +145,7 @@
       margin-right: 32px;
       padding: 8px 0;
       color: $gray-500;
+      cursor: pointer;
     }
   }
   .active-item {

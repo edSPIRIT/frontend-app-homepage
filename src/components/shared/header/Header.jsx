@@ -41,10 +41,20 @@ const HeaderED = () => {
               <Dropdown className="ml-3 avatar-dropdown-wrapper">
                 <Dropdown.Toggle as={AvatarButton} iconAfter={ArrowDropDown} />
                 <Dropdown.Menu alignRight>
-                  <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/profile`}>
+                  <Dropdown.Item
+                    href={`https://apps.${getConfig().LMS_BASE_URL.replace(
+                      'https://',
+                      '',
+                    )}/u/${authenticatedUser?.username}`}
+                  >
                     Profile
                   </Dropdown.Item>
-                  <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/account`}>
+                  <Dropdown.Item
+                    href={`https://apps.${getConfig().LMS_BASE_URL.replace(
+                      'https://',
+                      '',
+                    )}/account`}
+                  >
                     Account
                   </Dropdown.Item>
                   <Dropdown.Item href="dashboard">Dashboard</Dropdown.Item>

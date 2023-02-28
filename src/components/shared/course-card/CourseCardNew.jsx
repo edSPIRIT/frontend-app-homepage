@@ -21,7 +21,7 @@ const CourseCardNew = ({ course }) => {
           src={`${getConfig().LMS_BASE_URL}${
             course.additional_metadata?.course_image_url
           }`}
-          logoSrc={logoPlaceholder}
+          logoSrc={course.partner?.header ?? logoPlaceholder}
           variant="top"
           alt=""
         />
@@ -29,9 +29,13 @@ const CourseCardNew = ({ course }) => {
           <h4 className="mb-1 course-title">
             {course.additional_metadata?.display_name}
           </h4>
-          <a className="institution-title font-sm" href="#institution">
+          <Link
+            to={`/partners/${course?.partner?.organization?.short_name}`}
+            className="institution-title font-sm"
+            href="#institution"
+          >
             {course.additional_metadata?.org}
-          </a>
+          </Link>
         </div>
         <Card.Section>
           <div className="d-flex flex-column mb-3 font-sm">
@@ -56,9 +60,7 @@ const CourseCardNew = ({ course }) => {
                 <span className="mr-1">
                   {course?.additional_metadata?.units_count}
                 </span>
-                <span>
-                  lessons
-                </span>
+                <span>lessons</span>
               </p>
             </div>
             {course?.total_weeks_of_effort > 0 && (
@@ -149,9 +151,25 @@ CourseCardNew.propTypes = {
     total_weeks_of_effort: PropTypes.any,
     transcript_langs: PropTypes.shape({}),
     what_you_will_learn: PropTypes.shape({}),
+    partner: PropTypes.shape({
+      organization: PropTypes.shape({
+        id: PropTypes.number,
+        created: PropTypes.string,
+        modified: PropTypes.string,
+        name: PropTypes.string,
+        short_name: PropTypes.string,
+        description: PropTypes.string,
+        logo: PropTypes.string,
+        active: PropTypes.bool,
+      }),
+      header: PropTypes.string,
+      featured: PropTypes.bool,
+      courses_count: PropTypes.number,
+      created: PropTypes.string,
+    }),
   },
 };
 CourseCardNew.defaultProps = {
-  course: [],
+  course: undefined,
 };
 export default CourseCardNew;

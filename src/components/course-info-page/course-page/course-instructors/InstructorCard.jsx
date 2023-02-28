@@ -1,9 +1,10 @@
 import { Icon, IconButton } from '@edx/paragon';
 import { ArrowForward, BookOpen, People } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const InstructorCard = ({ instructor }) => (
-  <div className="instructor-wrapper d-flex">
+  <Link to={`/bio/${instructor.slug}`} className="instructor-wrapper d-flex">
     <div className="instructor-img-wrapper mr-4">
       <img src={instructor.image} alt="instructor-avator" />
     </div>
@@ -12,7 +13,7 @@ const InstructorCard = ({ instructor }) => (
         <div>
           <span className="instructor-title mr-5 mb-1">{instructor.name}</span>
           <span className="instructor-short-bio mr-3.5">
-            {instructor.shortBio}
+            {instructor.short_bio}
           </span>
         </div>
         <IconButton
@@ -27,32 +28,34 @@ const InstructorCard = ({ instructor }) => (
         <div className="d-flex mr-4.5">
           <Icon src={People} className="mr-2" />
           <p>
-            <span>{instructor.students} Students</span>
+            <span>0 Students</span>
           </p>
         </div>
         <div className="d-flex">
           <Icon src={BookOpen} className="mr-2" />
           <p>
-            <span>{instructor.courses} Courses</span>
+            <span>{instructor?.courses.length} Courses</span>
           </p>
         </div>
       </div>
     </div>
-  </div>
+  </Link>
 );
 InstructorCard.defaultProps = {
-  instructor: PropTypes.shape({
+  instructor: {
     name: PropTypes.string,
     slug: PropTypes.string,
-    shortBio: PropTypes.string,
+    short_bio: PropTypes.string,
     bio: PropTypes.string,
-    students: PropTypes.string,
-    courses: PropTypes.string,
     image: PropTypes.string,
-  }),
+    website: PropTypes.string,
+    linkedin: PropTypes.string,
+    facebook: PropTypes.string,
+    twitter: PropTypes.string,
+    courses: PropTypes.array,
+  },
 };
-
 InstructorCard.propTypes = {
-  instructor: [],
+  instructor: undefined,
 };
 export default InstructorCard;

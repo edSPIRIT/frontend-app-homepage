@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 const useGetCourses = () => {
   const [loading, setLoading] = useState(false);
   const [courses, setCourses] = useState([]);
+  console.log('loading', loading);
   const getCourses = async () => {
     try {
       setLoading(true);

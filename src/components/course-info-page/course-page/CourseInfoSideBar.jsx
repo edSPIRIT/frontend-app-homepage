@@ -85,19 +85,21 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
                   <span>(3 August 2022)</span>
                 </p>
               </div>
-              <div className="d-flex flex-row align-items-center mb-2">
-                <Icon className="card-icon" src={WatchFilled} />
-                <p className="course-text">
-                  {`${courseMetaData?.total_weeks_of_effort} weeks `}
-                  {courseMetaData?.hours_effort_per_week_min
-                    && courseMetaData?.hours_effort_per_week_max && (
-                      <span className="color-gray-700">
-                        {`(${courseMetaData?.hours_effort_per_week_min}
+              {courseMetaData?.total_weeks_of_effort && (
+                <div className="d-flex flex-row align-items-center mb-2">
+                  <Icon className="card-icon" src={WatchFilled} />
+                  <p className="course-text">
+                    {`${courseMetaData?.total_weeks_of_effort} weeks `}
+                    {courseMetaData?.hours_effort_per_week_min
+                      && courseMetaData?.hours_effort_per_week_max && (
+                        <span className="color-gray-700">
+                          {`(${courseMetaData?.hours_effort_per_week_min}
                         -${courseMetaData?.hours_effort_per_week_max} hours per week)`}
-                      </span>
-                  )}
-                </p>
-              </div>
+                        </span>
+                    )}
+                  </p>
+                </div>
+              )}
             </div>
           </Card.Section>
           <Card.Footer>
@@ -105,12 +107,14 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
               <Button variant="brand" href="#course" className="mb-3">
                 Enroll now
               </Button>
-              <p>
-                <span>
-                  {courseMetaData.additional_metadata?.total_enrollments}
-                </span>
-                <span className="font-sm"> already enrolled!</span>{' '}
-              </p>
+              {courseMetaData.additional_metadata?.total_enrollments && (
+                <p>
+                  <span>
+                    {courseMetaData.additional_metadata?.total_enrollments}
+                  </span>
+                  <span className="font-sm"> already enrolled!</span>{' '}
+                </p>
+              )}
             </div>
           </Card.Footer>
         </Card>
@@ -120,12 +124,14 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
           <Skeleton width="100%" height={24} />
         </div>
       ) : (
-        <p className="font-sm d-flex justify-content-center py-4 date-text">
-          <span className="mr-1">Last update on</span>
-          <span>
-            {courseMetaData.additional_metadata?.last_modification_date}
-          </span>
-        </p>
+        courseMetaData.additional_metadata?.last_modification_date && (
+          <p className="font-sm d-flex justify-content-center py-4 date-text">
+            <span className="mr-1">Last update on</span>
+            <span>
+              {courseMetaData.additional_metadata?.last_modification_date}
+            </span>
+          </p>
+        )
       )}
     </div>
   );

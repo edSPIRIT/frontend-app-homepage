@@ -1,22 +1,21 @@
-import { Dropdown } from '@edx/paragon';
-import {
-  KeyboardArrowDown,
-  RemoveRedEye,
-} from '@edx/paragon/icons';
+import { Dropdown, Skeleton } from '@edx/paragon';
+import { KeyboardArrowDown, RemoveRedEye } from '@edx/paragon/icons';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const TotalCourseWrapper = () => {
-  const [value, setValue] = useState('All');
+const TotalCourseWrapper = ({ coursesCount, loading }) => {
+  const [value, setValue] = useState('Recent');
   return (
     <div className="d-flex justify-content-between align-items-center mb-4">
       <p>
         <span className="total-title">Total Course:</span>
-        <span className="font-weight-bold"> 2</span>
+        {loading ? (
+          <Skeleton width={20} height={20} className="ml-1" />
+        ) : (
+          <span className="font-weight-bold"> {coursesCount}</span>
+        )}
       </p>
-      <Dropdown
-        className="dropdown-wrapper"
-        onSelect={(e) => setValue(e)}
-      >
+      <Dropdown className="dropdown-wrapper" onSelect={(e) => setValue(e)}>
         <Dropdown.Toggle
           id="dropdown-basic-4"
           iconAfter={KeyboardArrowDown}
@@ -57,5 +56,12 @@ const TotalCourseWrapper = () => {
     </div>
   );
 };
-
+TotalCourseWrapper.defaultProps = {
+  coursesCount: PropTypes.number,
+  loading: PropTypes.bool,
+};
+TotalCourseWrapper.propTypes = {
+  coursesCount: undefined,
+  loading: undefined,
+};
 export default TotalCourseWrapper;
