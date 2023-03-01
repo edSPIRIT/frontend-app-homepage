@@ -11,11 +11,11 @@
     width: unset;
   }
   p {
-    font-size: 1.125rem;
+    font-size: $font-size-base-xl;
   }
   .btn-brand {
     width: 216px;
-    font-size: 1.125rem;
+    font-size: $font-size-base-xl;
     background-color: $brand-600;
   }
 }

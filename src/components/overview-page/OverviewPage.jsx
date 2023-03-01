@@ -1,4 +1,5 @@
-import { Button } from '@edx/paragon';
+/* eslint-disable no-nested-ternary */
+import { Button, Skeleton } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import { useHistory } from 'react-router-dom';
 import HorizontalCard from '../shared/horizontal-card/HorizontalCard';
@@ -8,26 +9,37 @@ import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import useGetSimilarCourses from '../../hooks/useGetSimilarCourses';
 import useGetCourses from '../../hooks/useGetCourses';
 import HorizontalCardSkeleton from '../shared/horizontal-card/HorizontalCardSkeleton';
+import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
 
 const OverviewPage = () => {
   const history = useHistory();
-  const notEnrolled = false;
   const { courses, courseTitles, loading: coursesLoading } = useGetCourses();
   const { similarCourses, loading } = useGetSimilarCourses(courseTitles);
+  const { coursesEnrollment, loading: coursesEnrollLoading } = useGetEnrollmentList();
   console.log('similarCourses', similarCourses);
   console.log('courses', courses);
-  console.log('coursesTitles', courseTitles);
+  console.log('coursesEnrollment', coursesEnrollment, coursesEnrollLoading);
   return (
     <main>
-      {notEnrolled ? (
-        <div className="custom-container d-flex flex-column mt-6">
+      <div className="d-flex flex-column">
+        <div className=" mt-5 custom-container">
           <AvatarInfo />
-          <NotEnrolledCardCourse />
-        </div>
-      ) : (
-        <div className="d-flex flex-column">
-          <div className=" mt-5 custom-container">
-            <AvatarInfo />
+          {coursesEnrollLoading ? (
+            <>
+              <div className="d-flex align-items-center justify-content-between mb-3">
+                <Skeleton width={300} height={24} />
+                <Skeleton width={100} height={24} />
+              </div>
+              {Array(4)
+                .fill(1)
+                .map((item, i) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <HorizontalCardSkeleton key={i} />
+                ))}
+            </>
+          ) : coursesEnrollment.length === 0 ? (
+            <NotEnrolledCardCourse />
+          ) : (
             <div className="overview-courses-wrapper">
               <div className="d-flex align-items-center justify-content-between mb-3">
                 <h3 className="text-gray-500">Recent In-Progress Courses</h3>
@@ -40,31 +52,24 @@ const OverviewPage = () => {
                   View All
                 </Button>
               </div>
-              {coursesLoading
-                ? Array(4)
-                  .fill(1)
-                  .map((item, i) => (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <HorizontalCardSkeleton key={i} />
-                  ))
-                : courses.map((course) => (
-                  <HorizontalCard
-                    key={course.course_id}
-                    progressValue={33}
-                    showButtons={false}
-                    course={course}
-                  />
-                ))}
+              {coursesEnrollment?.map((course) => (
+                <HorizontalCard
+                  key={course.course_id}
+                  progressValue={33}
+                  showButtons={false}
+                  course={course.course_details}
+                />
+              ))}
             </div>
-            {/* <div className="recommended-program-wrapper">
+          )}
+          {/* <div className="recommended-program-wrapper">
                 <RecommendedPrograms />
               </div> */}
-          </div>
-          <div className="recommendationCourse-wrapper mt-6 py-6">
-            <SimilarCourses courses={courses} loading={loading} />
-          </div>
         </div>
-      )}
+        <div className="recommendationCourse-wrapper mt-6 py-6">
+          <SimilarCourses courses={courses} loading={loading} />
+        </div>
+      </div>
     </main>
   );
 };

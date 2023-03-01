@@ -16,6 +16,9 @@
 }
 .overview-courses-wrapper {
   grid-area: overview-courses-area;
+  h3{
+    opacity: 0.5;
+  }
 }
 .recommended-program-wrapper {
   grid-area: recommended-program-area;

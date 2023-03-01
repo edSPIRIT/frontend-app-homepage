@@ -14,7 +14,6 @@ import NavHeader from './nav-header/NavHeader';
 const HeaderED = () => {
   const history = useHistory();
   const { authenticatedUser } = useContext(AppContext);
-  console.log('authenticatedUser', authenticatedUser);
   return (
     <header>
       <div className="d-flex flex-row justify-content-between align-items-center header-wrapper">
@@ -45,7 +44,7 @@ const HeaderED = () => {
                     href={`https://apps.${getConfig().LMS_BASE_URL.replace(
                       'https://',
                       '',
-                    )}/u/${authenticatedUser?.username}`}
+                    )}/profile/u/${authenticatedUser?.username}`}
                   >
                     Profile
                   </Dropdown.Item>

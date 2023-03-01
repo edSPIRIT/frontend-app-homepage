@@ -29,6 +29,7 @@ import PartnerPage from './components/partner-page/PartnerPage';
 import CoursePage from './components/course-info-page/CoursePage';
 import ProgramPage from './components/program-info-page/ProgramPage';
 import ProtectedRoute from './ProtectedRoute';
+import ScrollToTop from './ScroollToTop';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,6 +44,7 @@ subscribe(APP_READY, () => {
     <AppProvider>
       <QueryClientProvider client={queryClient}>
         <Layout>
+          <ScrollToTop />
           <Switch>
             <Route exact path="/home">
               <Home />

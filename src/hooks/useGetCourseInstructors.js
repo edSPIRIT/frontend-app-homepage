@@ -1,13 +1,15 @@
 import { getConfig } from '@edx/frontend-platform';
 import { useEffect, useState } from 'react';
 
-const useGetCourseInstructors = () => {
+const useGetCourseInstructors = (courseId) => {
   const [loading, setLoading] = useState(false);
   const [coursesInstructors, setCoursesInstructors] = useState([]);
   const getCoursesInstructors = async () => {
     try {
       const Res = await fetch(
-        `${getConfig().LMS_BASE_URL}/admin-console/api/instructor-list/?page=1&course_id=course-v1%3Aavi%2Bcs103%2B2021_T1`,
+        `${
+          getConfig().LMS_BASE_URL
+        }/admin-console/api/instructor-list/?page=1&course_id=${encodeURI(courseId)}`,
       );
       const Data = await Res.json();
       setCoursesInstructors(Data);
@@ -18,8 +20,10 @@ const useGetCourseInstructors = () => {
     }
   };
   useEffect(() => {
-    getCoursesInstructors();
-  }, []);
+    if (courseId) {
+      getCoursesInstructors();
+    }
+  }, [courseId]);
   return {
     coursesInstructors,
     loading,

@@ -6,15 +6,15 @@ import {
   Share, People, BookOpen, ArrowForwardIos,
 } from '@edx/paragon/icons';
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { ReactComponent as Linkedin } from '../../assets/linkedin.svg';
 import { ReactComponent as Facebook } from '../../assets/facebook.svg';
 import { ReactComponent as Globe } from '../../assets/language-filled.svg';
 import { ReactComponent as Twitter } from '../../assets/twitter.svg';
-import { COURSES_INFO } from '../../constants';
-import CourseCard from '../shared/course-card/CourseCard';
 import useGetInstructor from '../../hooks/useGetInstructor';
+import CourseCardNew from '../shared/course-card/CourseCardNew';
+import CourseCardSkeleton from '../shared/skeleton/CourseCardSkeleton';
 
 const Instructor = () => {
   const [showMore, setShowMore] = useState(false);
@@ -22,6 +22,7 @@ const Instructor = () => {
   const pElement = useRef(null);
   const { slug } = useParams();
   const { InstructorData, loading } = useGetInstructor(slug);
+  const history = useHistory();
   useEffect(() => {
     if (pElement.current?.offsetHeight >= 112) {
       setShowMoreButton(true);
@@ -117,7 +118,7 @@ const Instructor = () => {
                       <div className="d-flex">
                         <Icon src={BookOpen} className="mr-2" />
                         <p>
-                          <span>0 Courses</span>
+                          <span>{InstructorData?.courses?.length} Courses</span>
                         </p>
                       </div>
                     </div>
@@ -173,14 +174,29 @@ const Instructor = () => {
           </h2>
         </h2>
         <div className="course-container">
-          {COURSES_INFO.map((course) => (
-            <CourseCard info={course} key={course.title} />
-          ))}
+          {loading
+            ? Array(4)
+              .fill(1)
+              .map((item, i) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <CourseCardSkeleton key={i} />
+              ))
+            : InstructorData?.courses?.map((course) => (
+              <CourseCardNew course={course} key={course.slug} />
+            ))}
         </div>
         <div className="d-flex justify-content-center">
-          <Button className="view-all-course-btn" iconAfter={ArrowForwardIos}>
-            View all Courses
-          </Button>
+          {loading ? (
+            <Skeleton width={276} height={44} className="view-all-course-btn" />
+          ) : (
+            <Button
+              className="view-all-course-btn"
+              iconAfter={ArrowForwardIos}
+              onClick={() => history.push('/discover')}
+            >
+              View all Courses
+            </Button>
+          )}
         </div>
       </div>
     </main>
