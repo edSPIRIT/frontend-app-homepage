@@ -2,8 +2,6 @@
 @import 'components/overview-page/recommended-programs/recommended-programs.scss';
 @import 'components/overview-page/avatar-info/avatar-info.scss';
 
-
-
 .overview-container {
   display: grid;
   grid-template-areas:
@@ -16,8 +14,9 @@
 }
 .overview-courses-wrapper {
   grid-area: overview-courses-area;
-  h3{
+  .recent-title {
     opacity: 0.5;
+    color: $gray-500;
   }
 }
 .recommended-program-wrapper {

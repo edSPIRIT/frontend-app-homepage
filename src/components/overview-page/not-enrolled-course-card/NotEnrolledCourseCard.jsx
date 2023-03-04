@@ -8,7 +8,7 @@ const NotEnrolledCardCourse = () => {
   const history = useHistory();
   const isSmall = useMediaQuery({ maxWidth: '800px' });
   return (
-    <div className="not-enrolled-wrapper">
+    <div className="not-enrolled-wrapper mt-6">
       <Card orientation={isSmall ? 'vertical' : 'horizontal'}>
         <Card.ImageCap src={cardImageCap} srcAlt="Card image" />
         <Card.Body>

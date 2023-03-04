@@ -26,7 +26,7 @@ const OverviewPage = () => {
           <AvatarInfo />
           {coursesEnrollLoading ? (
             <>
-              <div className="d-flex align-items-center justify-content-between mb-3">
+              <div className="d-flex align-items-center justify-content-between mb-3 mt-5.5">
                 <Skeleton width={300} height={24} />
                 <Skeleton width={100} height={24} />
               </div>
@@ -41,8 +41,8 @@ const OverviewPage = () => {
             <NotEnrolledCardCourse />
           ) : (
             <div className="overview-courses-wrapper">
-              <div className="d-flex align-items-center justify-content-between mb-3">
-                <h3 className="text-gray-500">Recent In-Progress Courses</h3>
+              <div className="d-flex align-items-center justify-content-between mb-3 mt-5.5">
+                <h3 className="recent-title">Recent In-Progress Courses</h3>
                 <Button
                   variant="outline-primary"
                   iconAfter={ArrowForward}
@@ -52,12 +52,11 @@ const OverviewPage = () => {
                   View All
                 </Button>
               </div>
-              {coursesEnrollment?.map((course) => (
+              {coursesEnrollment?.map((courseInfo) => (
                 <HorizontalCard
-                  key={course.course_id}
-                  progressValue={33}
-                  showButtons={false}
-                  course={course.course_details}
+                  key={courseInfo?.course_details
+                    ?.course_id}
+                  courseInfo={courseInfo}
                 />
               ))}
             </div>

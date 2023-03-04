@@ -6,7 +6,7 @@ const AvatarInfo = () => {
   const { authenticatedUser } = useContext(AppContext);
   console.log('authenticatedUser', authenticatedUser);
   return (
-    <div className="d-flex align-items-center pb-5.5 pt-2.5 avatar-wrapper">
+    <div className="d-flex align-items-center pt-2.5 avatar-wrapper">
       <Avatar className="mr-3 flex-shrink-0" size="xl" />
       <div className="d-flex flex-column w-100">
         <div className="d-flex justify-content-between mb-2">

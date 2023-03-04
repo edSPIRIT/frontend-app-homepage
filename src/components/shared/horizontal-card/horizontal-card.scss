@@ -1,5 +1,13 @@
 .horizontal-card-course {
   border-color: $light-400;
+  &:hover {
+    .icons-wrapper {
+      display: flex !important;
+    }
+  }
+  .pgn__card {
+    display: flex;
+  }
   .pgn__card-wrapper-image-cap {
     display: flex;
     flex-shrink: 0;
@@ -14,6 +22,7 @@
 
   .pgn__card-section {
     padding: 1.5rem;
+    height: 100%;
   }
   .progress {
     background: $light-200;
@@ -28,14 +37,18 @@
   }
   .second-title {
     color: $gray-500;
+    font-size: $font-size-base-sm;
   }
-  .btn-wrapper {
+  .icons-wrapper {
     height: 28px;
+    display: none !important;
   }
   .btn {
     font-size: $font-size-base-xl;
   }
-
+  .title-wrapper {
+    height: 28px;
+  }
   //dropdown icon
   .pgn__icon {
     color: $gray-500;
@@ -58,11 +71,20 @@
       }
     }
   }
+  .view-btn{
+    width: 142px;
+    height: 44px;
+    background-color: $primary-500;
+    color: $white;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .share-icon {
   cursor: pointer;
   color: $gray-500;
-  opacity: 0.5;
 }
 .dark-background {
   background-color: $primary-700;
@@ -90,5 +112,5 @@
 }
 .info-icon {
   color: $light-700;
-  margin-right: 14px;
+  opacity: 0.5;
 }
