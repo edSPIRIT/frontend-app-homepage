@@ -6,12 +6,12 @@ import useGetCourseInstructors from '../../../hooks/useGetCourseInstructors';
 import useGetEnrollmentList from '../../../hooks/useGetEnrollmentList';
 import InstructorCard from './course-instructors/InstructorCard';
 
-const CourseInstructors = ({ instructors, loading }) => {
-  console.log('instructors', instructors);
-  // const { coursesInstructors } = useGetCourseInstructors();
-  // const { courseEnrollment } = useGetEnrollmentList();
-  // async function deleteEnroll() {
-  //   return getAuthenticatedHttpClient().post(
+const CourseInstructors = ({ instructors, loading }) =>
+// const { InstructorCourses } = useGetInstructorCourses();
+// console.log('InstructorCourses', InstructorCourses);
+// const { courseEnrollment } = useGetEnrollmentList();
+// async function deleteEnroll() {
+//   return getAuthenticatedHttpClient().post(
 
   //     `${
   //       getConfig().LMS_BASE_URL
@@ -22,7 +22,7 @@ const CourseInstructors = ({ instructors, loading }) => {
   //   );
   // }
   // deleteEnroll();
-  return (
+  (
     <div className="course-info-instructors mt-5" id="instructors">
       <h2 className="mb-3">Instructors</h2>
       <div className="instructors-wrapper ">
@@ -30,7 +30,7 @@ const CourseInstructors = ({ instructors, loading }) => {
           ? Array(4)
             .fill(1)
             .map((item, i) => (
-            // eslint-disable-next-line react/no-array-index-key
+              // eslint-disable-next-line react/no-array-index-key
               <div className="instructor-wrapper d-flex" key={i}>
                 <Skeleton className="mr-4" width={96} height={96} />
                 <div className="d-flex flex-column w-100 ">
@@ -47,12 +47,11 @@ const CourseInstructors = ({ instructors, loading }) => {
             <InstructorCard instructor={instructor} key={instructor.name} />
           ))}
       </div>
-      <Button variant="outline-primary" className="my-4">
+      {/* <Button variant="outline-primary" className="my-4">
         Show more Instructors
-      </Button>
+      </Button> */}
     </div>
   );
-};
 CourseInstructors.propTypes = {
   instructors: PropTypes.arrayOf(PropTypes.string),
   loading: PropTypes.bool,

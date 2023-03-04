@@ -1,5 +1,5 @@
 import { getConfig } from '@edx/frontend-platform';
-import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 
 const useGetPartners = () => {
   const initialPartners = {
@@ -13,31 +13,24 @@ const useGetPartners = () => {
     total_courses: null,
     total_enrollments: null,
   };
-  const [partnersData, setPartnersData] = useState(initialPartners);
-  const [loading, setLoading] = useState(false);
-  const getPartnersData = async () => {
-    try {
-      setLoading(true);
-      const Res = await fetch(
-        `${getConfig().LMS_BASE_URL}/admin-console/api/partner-list/`,
-      );
-      const Data = await Res.json();
-      setPartnersData(Data);
-      setLoading(false);
-    } catch (e) {
-      console.error(e);
-      setLoading(false);
+  const fetchPartners = async () => {
+    const apiRes = await fetch(
+      `${getConfig().LMS_BASE_URL}/admin-console/api/partner-list/`,
+    );
+
+    if (!apiRes.ok) {
+      throw new Error('fetch not ok');
     }
+
+    return apiRes.json();
   };
-  useEffect(() => {
-    getPartnersData();
-  }, []);
+  const { data, isLoading } = useQuery('Partners', fetchPartners);
   return {
-    count: partnersData.count,
-    partnersData: partnersData.results,
-    num_pages: partnersData.num_pages,
-    topPartners: partnersData.results.filter((org) => org.featured).slice(0, 4),
-    loading,
+    count: data?.count,
+    partnersData: data?.results,
+    num_pages: data?.num_pages,
+    topPartners: data?.results.filter((org) => org.featured).slice(0, 4),
+    loading: isLoading,
   };
 };
 export default useGetPartners;

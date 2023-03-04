@@ -24,13 +24,13 @@ const Partners = () => {
                 <Skeleton className="mr-4" width={208} height={112} key={i} />
               ))
           ) : (
-            topPartners.map((partner) => (
+            topPartners?.map((partner) => (
               <Link
-                to={`/partners/${partner.organization.short_name}`}
+                to={`/partners/${partner?.organization.short_name}`}
                 className="mr-4 partners-img-wrapper"
-                key={partner.organization.id}
+                key={partner?.organization.id}
               >
-                <img src={partner.organization.logo} alt="" />
+                <img src={partner?.organization.logo} alt="" />
               </Link>
             ))
           )}

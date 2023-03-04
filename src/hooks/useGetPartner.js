@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { getConfig } from '@edx/frontend-platform';
-import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 
 const useGetPartner = (partner) => {
   const initialPartner = {
@@ -19,28 +19,25 @@ const useGetPartner = (partner) => {
     courses_count: 0,
     created: '',
   };
-  const [partnerData, setPartnerData] = useState(initialPartner);
-  const [loading, setLoading] = useState(false);
-  const getPartnerData = async () => {
-    try {
-      setLoading(true);
-      const Res = await fetch(
-        `${getConfig().LMS_BASE_URL}/admin-console/api/partner/${partner}/`,
-      );
-      const Data = await Res.json();
-      setPartnerData(Data);
-      setLoading(false);
-    } catch (e) {
-      console.error(e);
-      setLoading(false);
+
+  const fetchPartner = async () => {
+    const apiRes = await fetch(
+      `${getConfig().LMS_BASE_URL}/admin-console/api/partner/${partner}/`,
+    );
+
+    if (!apiRes.ok) {
+      throw new Error('fetch not ok');
     }
+
+    return apiRes.json();
   };
-  useEffect(() => {
-    getPartnerData();
-  }, [partner]);
+  const { data, isLoading } = useQuery('Partner', fetchPartner, {
+    enabled: !!partner,
+  });
+
   return {
-    partnerData,
-    loading,
+    partnerData: data,
+    loading: isLoading,
   };
 };
 export default useGetPartner;

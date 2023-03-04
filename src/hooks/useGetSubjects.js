@@ -1,32 +1,24 @@
 import { getConfig } from '@edx/frontend-platform';
-import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 
 const useGetSubjects = () => {
-  const [subjectsData, setSubjectsData] = useState({});
-  const [loading, setLoading] = useState(false);
+  const fetchSubjects = async () => {
+    const apiRes = await fetch(
+      `${getConfig().LMS_BASE_URL}/admin-console/api/subject-list/`,
+    );
 
-  const getSubjectsData = async () => {
-    try {
-      setLoading(true);
-      const Res = await fetch(
-        `${getConfig().LMS_BASE_URL}/admin-console/api/subject-list/`,
-      );
-      const Data = await Res.json();
-      setSubjectsData(Data);
-      setLoading(false);
-    } catch (e) {
-      setLoading(false);
-      console.error(e);
+    if (!apiRes.ok) {
+      throw new Error('fetch not ok');
     }
+
+    return apiRes.json();
   };
-  useEffect(() => {
-    getSubjectsData();
-  }, []);
+  const { data, isLoading } = useQuery('Subjects', fetchSubjects);
   return {
-    subjects: subjectsData?.items,
-    coursesCounter: subjectsData?.course_counter,
-    popularSubjects: subjectsData.items?.filter((item) => item.popular),
-    loading,
+    subjects: data?.items,
+    coursesCounter: data?.course_counter,
+    popularSubjects: data?.items?.filter((item) => item.popular),
+    loading: isLoading,
   };
 };
 export default useGetSubjects;

@@ -1,31 +1,24 @@
 import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
-import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 
 const useGetCourses = () => {
-  const [loading, setLoading] = useState(false);
-  const [courses, setCourses] = useState([]);
-  console.log('loading', loading);
-  const getCourses = async () => {
-    try {
-      setLoading(true);
-      const client = getAuthenticatedHttpClient();
-      const baseUrl = getConfig().LMS_BASE_URL;
-      const response = await client.get(`${baseUrl}/api/courses/v1/courses/`);
-      setCourses(response.data.results);
-      setLoading(false);
-    } catch (e) {
-      console.error(e);
-      setLoading(false);
-    }
+  const fetchCourses = async () => {
+    const client = getAuthenticatedHttpClient();
+    const baseUrl = getConfig().LMS_BASE_URL;
+    const response = await client.get(`${baseUrl}/api/courses/v1/courses/`);
+
+    return response.data.results;
   };
-  useEffect(() => {
-    getCourses();
-  }, []);
+  const { data, isLoading } = useQuery('Courses', fetchCourses);
+
   return {
-    courses,
-    loading,
-    courseTitles: `${courses.reduce((acc, current) => `${acc}${current.name} `, '')}`,
+    courses: data,
+    loading: isLoading,
+    courseTitles: `${data?.reduce(
+      (acc, current) => `${acc}${current.name} `,
+      '',
+    )}`,
   };
 };
 export default useGetCourses;

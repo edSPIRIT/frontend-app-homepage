@@ -1,33 +1,33 @@
 import { getConfig } from '@edx/frontend-platform';
-import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 
-const useGetCourseInstructors = (courseId) => {
-  const [loading, setLoading] = useState(false);
-  const [coursesInstructors, setCoursesInstructors] = useState([]);
-  const getCoursesInstructors = async () => {
-    try {
-      const Res = await fetch(
-        `${
-          getConfig().LMS_BASE_URL
-        }/admin-console/api/instructor-list/?page=1&course_id=${encodeURI(courseId)}`,
-      );
-      const Data = await Res.json();
-      setCoursesInstructors(Data);
-      setLoading(false);
-    } catch (e) {
-      console.error(e);
-      setLoading(false);
+const useGetInstructorCourses = (courseId) => {
+  console.log('courseId', courseId);
+
+  const fetchInstructorCourses = async () => {
+    const apiRes = await fetch(
+      `${
+        getConfig().LMS_BASE_URL
+      }/admin-console/api/instructor-list/?page=1&course_id=${courseId}`,
+      {
+        enabled: !!courseId,
+      },
+    );
+
+    if (!apiRes.ok) {
+      throw new Error('fetch not ok');
     }
+
+    return apiRes.json();
   };
-  useEffect(() => {
-    if (courseId) {
-      getCoursesInstructors();
-    }
-  }, [courseId]);
+  const { data, isLoading } = useQuery(
+    'InstructorCourses',
+    fetchInstructorCourses,
+  );
   return {
-    coursesInstructors,
-    loading,
+    InstructorCourses: data,
+    loading: isLoading,
   };
 };
 
-export default useGetCourseInstructors;
+export default useGetInstructorCourses;

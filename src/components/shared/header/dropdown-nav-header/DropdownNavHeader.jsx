@@ -1,11 +1,12 @@
 import { Button, Icon } from '@edx/paragon';
 import { ArrowForward, KeyboardArrowDown } from '@edx/paragon/icons';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import useGetSubjects from '../../../../hooks/useGetSubjects';
 
 const DropdownNavHeader = () => {
   const { subjects, coursesCounter } = useGetSubjects();
+  const history = useHistory();
 
   return (
     <nav className="nav-items-wrapper">
@@ -38,6 +39,7 @@ const DropdownNavHeader = () => {
                 variant="outline-primary"
                 iconAfter={ArrowForward}
                 className="mb-2 mb-sm-0"
+                onClick={() => history.push('/discover')}
               >
                 View All Courses
               </Button>

@@ -26,7 +26,7 @@ const CourseInfoTopDesc = ({ courseMetaData, loading }) => (
           links={[
             { label: 'Home', to: '/home' },
             { label: 'Discover', to: '/Discover' },
-            { label: '‌Business', to: '/‌Business' },
+            { label: `${courseMetaData?.subject?.title}`, to: '/Discover' },
           ]}
           linkAs={Link}
           activeLabel={courseMetaData.additional_metadata?.display_name}
@@ -73,34 +73,39 @@ const CourseInfoTopDesc = ({ courseMetaData, loading }) => (
               <Icon className="mr-2" src={Language} />
               <span>English</span>
             </div>
-            {courseMetaData?.transcript_langs && (
-              <OverlayTrigger
-                placement="top"
-                overlay={(
-                  <Tooltip
-                    variant="light"
-                    id="tooltip-top"
-                    className="course-tooltip"
-                  >
-                    {courseMetaData?.transcript_langs
-                      && courseMetaData?.transcript_langs?.map((transLang, i) => (
-                        // eslint-disable-next-line react/no-array-index-key
-                        <span key={i}>{transLang}</span>
-                      ))}
-                  </Tooltip>
-                )}
-              >
-                <div className="d-flex justify-content-center align-items-center mr-4.5">
-                  <Icon className="mr-2" src={PostOutline} />
-                  <span className="course-tooltip">
-                    {courseMetaData?.transcript_langs
-                      && courseMetaData?.transcript_langs?.map((transLang, i) => (
-                        // eslint-disable-next-line react/no-array-index-key
-                        <span key={i}>{transLang}</span>
-                      ))}
-                  </span>
-                </div>
-              </OverlayTrigger>
+            {courseMetaData?.transcript_langs
+              && courseMetaData?.transcript_langs.length > 0 && (
+                <OverlayTrigger
+                  placement="top"
+                  overlay={(
+                    <Tooltip
+                      variant="light"
+                      id="tooltip-top"
+                      className="course-tooltip"
+                    >
+                      {courseMetaData?.transcript_langs
+                        && courseMetaData?.transcript_langs?.map(
+                          (transLang, i) => (
+                            // eslint-disable-next-line react/no-array-index-key
+                            <span key={i}>{transLang}</span>
+                          ),
+                        )}
+                    </Tooltip>
+                  )}
+                >
+                  <div className="d-flex justify-content-center align-items-center mr-4.5">
+                    <Icon className="mr-2" src={PostOutline} />
+                    <span className="course-tooltip">
+                      {courseMetaData?.transcript_langs
+                        && courseMetaData?.transcript_langs?.map(
+                          (transLang, i) => (
+                            // eslint-disable-next-line react/no-array-index-key
+                            <span key={i}>{transLang}</span>
+                          ),
+                        )}
+                    </span>
+                  </div>
+                </OverlayTrigger>
             )}
             {courseMetaData?.additional_metadata?.self_paced && (
               <div className="d-flex justify-content-center align-items-center mr-4.5">
@@ -141,6 +146,12 @@ CourseInfoTopDesc.propTypes = {
       pre_req_courses: PropTypes.array,
       sections_count: PropTypes.number,
       units_count: PropTypes.number,
+      subject: PropTypes.shape({
+        image: PropTypes.string,
+        popular: PropTypes.string,
+        slug: PropTypes.string,
+        title: PropTypes.string,
+      }),
     }),
     course_id: PropTypes.string,
     course_slug: PropTypes.string,

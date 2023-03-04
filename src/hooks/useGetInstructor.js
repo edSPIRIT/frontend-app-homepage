@@ -1,31 +1,25 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { getConfig } from '@edx/frontend-platform';
-import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 
 const useGetInstructor = (slug) => {
-  const [InstructorData, setInstructorData] = useState();
-  const [loading, setLoading] = useState(false);
+  const fetchInstructor = async () => {
+    const apiRes = await fetch(
+      `${getConfig().LMS_BASE_URL}/admin-console/api/instructor/${slug}/`,
+    );
 
-  const getInstructorData = async () => {
-    try {
-      setLoading(true);
-      const Res = await fetch(
-        `${getConfig().LMS_BASE_URL}/admin-console/api/instructor/${slug}/`,
-      );
-      const Data = await Res.json();
-      setInstructorData(Data);
-      setLoading(false);
-    } catch (e) {
-      console.error(e);
-      setLoading(false);
+    if (!apiRes.ok) {
+      throw new Error('fetch not ok');
     }
+
+    return apiRes.json();
   };
-  useEffect(() => {
-    getInstructorData();
-  }, [slug]);
+  const { data, isLoading } = useQuery('Instructor', fetchInstructor, {
+    enabled: !!slug,
+  });
+
   return {
-    InstructorData,
-    loading,
+    InstructorData: data,
+    loading: isLoading,
   };
 };
 export default useGetInstructor;

@@ -21,20 +21,20 @@ const Footer = () => {
               <div className="logo-container mb-4">
                 <img
                   className="footer-logo h-100"
-                  src={`${footerData.logo}`}
-                  alt=""
+                  src={footerData?.logo}
+                  alt="footer-logo"
                 />
               </div>
-              <p>{footerData.description}</p>
+              <p>{footerData?.description}</p>
             </div>
           </div>
 
           <div className="col">
             <h5 className="mb-2.5">
-              {footerData.links?.sections[0]?.section_title}
+              {footerData?.links?.sections[0]?.section_title}
             </h5>
             <ul className="list-unstyled">
-              {footerData.links?.sections[0]?.section_links.map((nav) => (
+              {footerData?.links?.sections[0]?.section_links?.map((nav) => (
                 <li className="mb-2" key={nav.title}>
                   <a className="custom-link" href={nav.link}>
                     {nav.title}
@@ -46,10 +46,10 @@ const Footer = () => {
 
           <div className="col">
             <h5 className="mb-2.5">
-              {footerData.links?.sections[1]?.section_title}
+              {footerData?.links?.sections[1]?.section_title}
             </h5>
             <ul className="list-unstyled">
-              {footerData.links?.sections[1]?.section_links.map((nav) => (
+              {footerData?.links?.sections[1]?.section_links?.map((nav) => (
                 <li className="mb-2" key={nav.title}>
                   <a className="custom-link" href={nav.link}>
                     {nav.title}
@@ -104,16 +104,16 @@ const Footer = () => {
               </Dropdown>
             </div>
             <div className="social-container">
-              {footerData.links.socials.linkedin && (
+              {footerData?.links?.socials.linkedin && (
                 <Icon className="social-icon-footer" src={Linkedin} />
               )}
-              {footerData.links.socials.facebook && (
+              {footerData?.links?.socials.facebook && (
                 <Icon className="social-icon-footer" src={Facebook} />
               )}
-              {footerData.links.socials.twitter && (
+              {footerData?.links?.socials.twitter && (
                 <Icon className="social-icon-footer" src={Twitter} />
               )}
-              {footerData.links.socials.instagram && (
+              {footerData?.links?.socials.instagram && (
                 <Icon className="social-icon-footer" src={Reddit} />
               )}
             </div>
@@ -126,7 +126,9 @@ const Footer = () => {
             <div className="logo-container">
               <img className="footer-logo  mr-2 h-100" src={edLogo} alt="" />
             </div>
-            <p className="footer-desc">© Copyright Notion Wave, {new Date().getFullYear()}.</p>
+            <p className="footer-desc">
+              © Copyright Notion Wave, {new Date().getFullYear()}.
+            </p>
           </div>
           <p className="footer-desc d-flex align-items-center">
             edX and Open edX are trademarks of edX LLC. All Rights Reserved

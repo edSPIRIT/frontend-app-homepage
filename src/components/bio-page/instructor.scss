@@ -10,13 +10,13 @@
     font-size: 1.25rem;
   }
   .long-bio-instructor {
-
     max-width: 912px;
     @include line-break(4);
   }
   .instructor-share-icon {
     cursor: pointer;
     color: $light-500;
+    opacity: 0.5;
   }
   .instructor-icons-wrapper {
     @extend .d-flex, .justify-content-between, .align-items-center;

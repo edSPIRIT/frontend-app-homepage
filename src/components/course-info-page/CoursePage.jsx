@@ -13,12 +13,16 @@ import CourseContent from './course-page/CourseContent';
 import CourseInstructors from './course-page/CourseInstructors';
 import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import useGetCourseMetaData from '../../hooks/useGetCourseMetaData';
+import useGetInstructorCourses from '../../hooks/useGetCourseInstructors';
 
 const CoursePage = () => {
   const navTopRef = useRef(null);
   const isTopOnScreen = useOnScreen(navTopRef);
   const { slug } = useParams();
   const { courseMetaData, loading } = useGetCourseMetaData(slug);
+  const { InstructorCourses } = useGetInstructorCourses(encodeURI(courseMetaData?.course_id));
+  console.log('InstructorCourses', InstructorCourses);
+  console.log('encodeURI', encodeURIComponent(courseMetaData?.course_id));
 
   return (
     <>
@@ -31,10 +35,10 @@ const CoursePage = () => {
           })}
         >
           <div className="d-flex justify-content-between mb-1">
-            <h3>{courseMetaData.additional_metadata?.display_name}</h3>
+            <h3>{courseMetaData?.additional_metadata?.display_name}</h3>
           </div>
           <Link to="/partners/" className="course-institution">
-            {courseMetaData.additional_metadata?.org}
+            {courseMetaData?.additional_metadata?.org}
           </Link>
         </div>
         <div id="sticky-trigger" ref={navTopRef} />
@@ -92,7 +96,7 @@ const CoursePage = () => {
           />
           <Requirements courseMetaData={courseMetaData} loading={loading} />
           <CourseContent
-            courseId={courseMetaData.course_id}
+            courseId={courseMetaData?.course_id}
             loading={loading}
           />
           <CourseInstructors instructors={courseMetaData?.instructors} loading={loading} />

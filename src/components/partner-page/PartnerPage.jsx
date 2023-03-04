@@ -47,13 +47,13 @@ const PartnerPage = () => {
       <div className="banner-container">
         <div className="partner-img-wrapper">
           <img
-            src={partnerData.header ? partnerData.header : partnerBanner}
+            src={partnerData?.header ? partnerData?.header : partnerBanner}
             alt="partnerBanner"
           />
         </div>
         <div className="partner-logo-wrapper">
           <img
-            src={partnerData.organization.logo ?? logoPlaceholder}
+            src={partnerData?.organization.logo ?? logoPlaceholder}
             alt="partnerLogo"
           />
         </div>
@@ -65,7 +65,7 @@ const PartnerPage = () => {
               <Skeleton width="30%" height={44} />
             </div>
           ) : (
-            <h1>{partnerData.organization.name}</h1>
+            <h1>{partnerData?.organization.name}</h1>
           )}
           <Icon
             className="color-gray-500 share-icon"
@@ -85,7 +85,7 @@ const PartnerPage = () => {
             {loading ? (
               <Skeleton count={4} width="100%" height={24} />
             ) : (
-              partnerData.organization.description
+              partnerData?.organization?.description
             )}
           </p>
           {showShowMoreButton && (
@@ -102,7 +102,7 @@ const PartnerPage = () => {
           <a className="icon-wrapper" href="#courses">
             <Icon src={BookOpen} style={{ width: '36px' }} />
             <span className="partner-title">Courses</span>
-            <span className="partner-count">{partnerData.courses_count}</span>
+            <span className="partner-count">{partnerData?.courses_count}</span>
           </a>
           <div className="vertical-line" />
           <div className="icon-wrapper" href="#">

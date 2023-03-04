@@ -1,31 +1,25 @@
 import { getConfig } from '@edx/frontend-platform';
-import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 
 const useGetCourseMetaData = (courseId) => {
-  const [courseMetaData, setCourseMetaData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const getCourseMetaData = async () => {
-    try {
-      setLoading(true);
-      const Res = await fetch(
-        `${
-          getConfig().LMS_BASE_URL
-        }/admin-console/api/course-metadata/${courseId}/`,
-      );
-      const Data = await Res.json();
-      setCourseMetaData(Data);
-      setLoading(false);
-    } catch (e) {
-      setLoading(false);
-      console.error(e);
+  const fetchCourseMetaData = async () => {
+    const apiRes = await fetch(
+      `${
+        getConfig().LMS_BASE_URL
+      }/admin-console/api/course-metadata/${courseId}/`,
+    );
+
+    if (!apiRes.ok) {
+      throw new Error('fetch not ok');
     }
+
+    return apiRes.json();
   };
-  useEffect(() => {
-    getCourseMetaData();
-  }, []);
+  const { data, isLoading } = useQuery('CourseMetaData', fetchCourseMetaData);
+
   return {
-    courseMetaData,
-    loading,
+    courseMetaData: data,
+    loading: isLoading,
   };
 };
 export default useGetCourseMetaData;
