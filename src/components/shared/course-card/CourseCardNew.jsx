@@ -41,7 +41,6 @@ const CourseCardNew = ({ course }) => {
           <div className="d-flex flex-column mb-3 font-sm">
             <div className="d-flex flex-row align-items-center mb-2">
               <Icon className="card-icon" src={isProgram ? Groups : Person} />
-              {/* {isProgram ? ( */}
               <p className="program-instructors-wrapper">
                 {course.instructors?.map((ins) => (
                   <Link

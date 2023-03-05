@@ -1,8 +1,7 @@
 import classNames from 'classnames';
-import { useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-scroll';
 import Scrollspy from 'react-scrollspy';
-import useOnScreen from '../../hooks/useOnScreen';
 import AboutCourse from '../course-info-page/course-page/AboutCourse';
 import CourseInfoSideBar from '../course-info-page/course-page/CourseInfoSideBar';
 import CourseInfoTopDesc from '../course-info-page/course-page/CourseInfoTopDesc';
@@ -11,8 +10,8 @@ import WhatYouLearn from '../course-info-page/course-page/WhatYouLearn';
 import ProgramCourses from './program-page/ProgramCourses';
 
 const ProgramPage = () => {
-  const navTopRef = useRef(null);
-  const isTopOnScreen = useOnScreen(navTopRef);
+  const { ref: navTopRef, inView: isTopOnScreen } = useInView();
+
   return (
     <section className="custom-container program-container pb-6">
       <CourseInfoSideBar />

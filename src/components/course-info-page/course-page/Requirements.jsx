@@ -1,31 +1,33 @@
 import {
   Button, Card, Icon, Skeleton,
 } from '@edx/paragon';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ReactComponent as Warning } from '../../../assets/warning.svg';
-import { PREREQUISITE_COURSES } from '../../../constants';
+import logoPlaceholder from '../../../assets/card-placeholder.png';
 
-const Requirements = ({ courseMetaData, loading }) => (
-  <div className="requirements-wrapper pt-5" id="requirement">
-    <h2 className="mb-3">Requirements</h2>
-    {loading ? (
-      <div className="mb-4.5">
-        <Skeleton count={2} height={24} />
-      </div>
-    ) : (
-      <ul className="pl-3.5 mb-4.5">
-        {courseMetaData?.requirements
+const Requirements = ({ courseMetaData, loading }) => {
+  const history = useHistory();
+  return (
+    <div className="requirements-wrapper pt-5" id="requirement">
+      <h2 className="mb-3">Requirements</h2>
+      {loading ? (
+        <div className="mb-4.5">
+          <Skeleton count={2} height={24} />
+        </div>
+      ) : (
+        <ul className="pl-3.5 mb-4.5">
+          {courseMetaData?.requirements
           && courseMetaData?.requirements?.map((req, i) => (
             // eslint-disable-next-line react/no-array-index-key
             <li key={i}>
               <p>{req}</p>
             </li>
           ))}
-      </ul>
-    )}
+        </ul>
+      )}
 
-    {PREREQUISITE_COURSES.length > 0 && (
+      {courseMetaData?.additional_metadata?.pre_req_courses.length > 0 && (
       <div>
         <h3 className="mb-3">Prerequisite Courses</h3>
         <div className="attention-wrapper mb-4">
@@ -50,7 +52,7 @@ const Requirements = ({ courseMetaData, loading }) => (
               .map((item, i) => (
                 <div
                   className="d-flex flex-column skeleton-wrapper"
-                    // eslint-disable-next-line react/no-array-index-key
+                  // eslint-disable-next-line react/no-array-index-key
                   key={i}
                 >
                   <Skeleton className="mb-2" height={92} />
@@ -66,37 +68,51 @@ const Requirements = ({ courseMetaData, loading }) => (
                   </div>
                 </div>
               ))
-            : PREREQUISITE_COURSES?.map((course) => (
-              <Link to="/course/" key={course.id}>
-                <Card className="cards-wrapper">
-                  <Card.ImageCap
-                    src={course.cover}
-                    logoSrc={course.logo}
-                    variant="top"
-                    alt=""
-                  />
-                  <div className="my-4.5 px-4">
-                    <h4 className="mb-1 course-title">{course.title}</h4>
-                    <a
-                      className="institution-title font-sm"
-                      href="#institution"
-                    >
-                      {course.institution}
-                    </a>
-                  </div>
-                  <Card.Footer>
-                    <Button variant="primary" href="#course">
-                      Learn more
-                    </Button>
-                  </Card.Footer>
-                </Card>
-              </Link>
-            ))}
+            : courseMetaData?.additional_metadata?.pre_req_courses?.map(
+              (preCourse) => (
+                <Link
+                  to={`/course/${preCourse?.course_slug}`}
+                  key={preCourse.id}
+                >
+                  <Card className="cards-wrapper">
+                    <Card.ImageCap
+                      src={preCourse.cover}
+                      logoSrc={
+                        preCourse?.partner?.organization?.logo
+                        ?? logoPlaceholder
+                      }
+                      variant="top"
+                      alt=""
+                    />
+                    <div className="my-4.5 px-4">
+                      <h4 className="mb-1 course-title">
+                        {preCourse?.display_name}
+                      </h4>
+                      <Link
+                        className="institution-title font-sm"
+                        to={`/partners/${preCourse?.partner?.organization?.short_name}`}
+                      >
+                        {preCourse?.partner?.organization?.name}
+                      </Link>
+                    </div>
+                    <Card.Footer>
+                      <Button
+                        variant="primary"
+                        onClick={() => history.push(preCourse?.course_slug)}
+                      >
+                        Learn more
+                      </Button>
+                    </Card.Footer>
+                  </Card>
+                </Link>
+              ),
+            )}
         </div>
       </div>
-    )}
-  </div>
-);
+      )}
+    </div>
+  );
+};
 Requirements.propTypes = {
   courseMetaData: {
     additional_metadata: PropTypes.shape({

@@ -2,7 +2,7 @@ import { Skeleton } from '@edx/paragon';
 import PropTypes from 'prop-types';
 
 const WhatYouLearn = ({ learningItems, loading }) => (
-  <div className="what-learn-wrapper mt-5" id="what-you-learn">
+  <div className="what-learn-wrapper " id="what-you-learn">
     <h2 className="mb-3">What you&apos;ll learn</h2>
     {loading ? (
       <Skeleton count={5} height={24} />

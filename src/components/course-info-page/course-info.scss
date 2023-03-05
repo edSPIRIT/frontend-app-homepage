@@ -24,13 +24,7 @@
       opacity: 0.5;
       cursor: pointer;
     }
-    .course-institution {
-      color: $gray-700;
-      :hover {
-        color: $gray-900 !important;
-        text-decoration: underline !important;
-      }
-    }
+
     h1 {
       line-height: 44px;
     }
@@ -44,6 +38,13 @@
     }
   }
 }
+.course-institution {
+  color: $gray-700 !important;
+  :hover {
+    color: $gray-900 !important;
+    text-decoration: underline !important;
+  }
+}
 .sticky-trigger {
   @include infinite-background-container($light-200);
   h3 {
@@ -53,11 +54,11 @@
   flex-direction: column;
   position: sticky;
   top: 0;
-  z-index: 11;
+  z-index: 9;
 }
 .sticky-nav {
   top: 107px !important;
-  z-index: 11;
+  z-index: 9;
 }
 
 .course-info-side-wrapper {
@@ -65,7 +66,7 @@
   width: 324px;
   top: 160px;
   margin-top: 170px;
-  z-index: 10;
+  z-index: 8;
   float: right;
   .skeleton-logo {
     top: 154px;

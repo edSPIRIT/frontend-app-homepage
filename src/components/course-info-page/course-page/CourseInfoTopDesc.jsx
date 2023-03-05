@@ -16,7 +16,7 @@ import {
 } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
 
-const CourseInfoTopDesc = ({ courseMetaData, loading }) => (
+const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => (
   <div className="course-info-top-container">
     <div className=" course-info-top-wrapper ">
       <div className="course-info-breadcrumb py-4.5">
@@ -59,16 +59,20 @@ const CourseInfoTopDesc = ({ courseMetaData, loading }) => (
                 }}
               />
             </div>
-            <Link to="/partners/" className="course-institution">
+            <Link
+              to={`/partners/${courseMetaData?.partner?.organization?.short_name}`}
+              className="course-institution"
+            >
               {courseMetaData.additional_metadata?.org}
             </Link>
           </div>
           <p className="pt-3.5">
-            Get the most out of your course! Upgrade to get unlimited access to
-            the course material, unlock both graded and non-graded assignments,
-            and earn a verified certificate to showcase on your resume.
+            {courseMetaData?.additional_metadata?.short_description}
           </p>
-          <div className="icons-wrapper d-flex color-gray-500 mt-3 pb-4.5 font-sm">
+          <div
+            className="icons-wrapper d-flex color-gray-500 mt-3 pb-4.5 font-sm"
+            ref={navTopRef}
+          >
             <div className="d-flex justify-content-center align-items-center mr-4.5">
               <Icon className="mr-2" src={Language} />
               <span>English</span>
@@ -184,9 +188,11 @@ CourseInfoTopDesc.propTypes = {
     what_you_will_learn: PropTypes.shape({}),
   },
   loading: PropTypes.bool,
+  navTopRef: PropTypes.element,
 };
 CourseInfoTopDesc.defaultProps = {
   courseMetaData: [],
   loading: false,
+  navTopRef: undefined,
 };
 export default CourseInfoTopDesc;

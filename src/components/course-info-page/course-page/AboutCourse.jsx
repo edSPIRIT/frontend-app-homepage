@@ -13,7 +13,7 @@ const AboutCourse = ({ aboutCourse, loading }) => {
     }
   }, [pElement.current?.offsetHeight]);
   return (
-    <div className="about-wrapper" id="about-course">
+    <div className="about-wrapper mb-5" id="about-course">
       <h2 className="mb-3">About this course</h2>
       {loading ? (
         <Skeleton count={4} height={24} />

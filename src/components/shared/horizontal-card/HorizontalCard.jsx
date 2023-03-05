@@ -99,9 +99,10 @@ const HorizontalCard = ({ courseInfo }) => {
                   className="mr-3 share-icon"
                   onClick={() => {
                     navigator.clipboard.writeText(
-                      `${getConfig().LMS_BASE_URL}/course/${
-                        courseInfo?.course_metadata?.slug
-                      }`,
+                      `https://apps.${getConfig().LMS_BASE_URL.replace(
+                        'https://',
+                        '',
+                      )}/course/${courseInfo?.course_metadata?.slug}`,
                     );
                   }}
                 />
@@ -149,13 +150,12 @@ const HorizontalCard = ({ courseInfo }) => {
               <div className="d-flex">
                 <a
                   target="_blank"
-                  href={
-                    `https://apps.${getConfig().LMS_BASE_URL.replace(
-                      'https://',
-                      '',
-                    )}/learning/course/${courseInfo?.course_details?.course_id
-                    }/home`
-                  }
+                  href={`https://apps.${getConfig().LMS_BASE_URL.replace(
+                    'https://',
+                    '',
+                  )}/learning/course/${
+                    courseInfo?.course_details?.course_id
+                  }/home`}
                   rel="noreferrer"
                   className="view-btn"
                 >
