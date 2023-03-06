@@ -1,0 +1,30 @@
+.subject-img {
+  @extend .mr-2;
+  width: 66px;
+  height: 66px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.subject-container {
+  @extend .d-flex, .align-items-center, .mr-4, .mb-4;
+  cursor: pointer;
+  &:hover {
+    .subject-img {
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15),
+        0px 0px 8px rgba(0, 0, 0, 0.15);
+    }
+    .subject-icon {
+      color: $gray-700;
+    }
+  }
+}
+.subject-title {
+  @extend .text-primary-500;
+  width: 150px;
+  font-size: 1rem !important;
+}
+.subject-icon {
+  color: $gray-500;
+  width: 17px;
+}
+

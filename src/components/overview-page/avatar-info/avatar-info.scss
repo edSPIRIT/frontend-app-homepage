@@ -1,0 +1,11 @@
+.overview-email-title {
+  font-size: $font-size-base-xl;
+  color:$gray-500;
+}
+.avatar-wrapper{
+    .badge{
+      @extend .d-flex, .align-items-center;
+        line-height: unset;
+        background-color: $primary-400;
+    }
+}
