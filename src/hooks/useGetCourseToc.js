@@ -27,9 +27,10 @@ const useGetCourseToc = (courseId) => {
       ],
     },
   };
-  const fetchCourseToc = async () => {
+  const fetchCourseToc = async ({ queryKey }) => {
+    const id = queryKey[1];
     const apiRes = await fetch(
-      `${getConfig().LMS_BASE_URL}/admin-console/api/course-toc/${courseId}/`,
+      `${getConfig().LMS_BASE_URL}/admin-console/api/course-toc/${id}/`,
     );
 
     if (!apiRes.ok) {
@@ -38,9 +39,13 @@ const useGetCourseToc = (courseId) => {
 
     return apiRes.json();
   };
-  const { data, isLoading } = useQuery('CourseToc', fetchCourseToc, {
-    enabled: !!courseId,
-  });
+  const { data, isLoading } = useQuery(
+    ['CourseToc', courseId],
+    fetchCourseToc,
+    {
+      enabled: !!courseId,
+    },
+  );
   return {
     sections: data?.toc?.sections,
     loading: isLoading,

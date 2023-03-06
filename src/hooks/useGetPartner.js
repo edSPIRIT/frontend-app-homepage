@@ -20,9 +20,10 @@ const useGetPartner = (partner) => {
     created: '',
   };
 
-  const fetchPartner = async () => {
+  const fetchPartner = async ({ queryKey }) => {
+    const id = queryKey[1];
     const apiRes = await fetch(
-      `${getConfig().LMS_BASE_URL}/admin-console/api/partner/${partner}/`,
+      `${getConfig().LMS_BASE_URL}/admin-console/api/partner/${id}/`,
     );
 
     if (!apiRes.ok) {
@@ -31,7 +32,7 @@ const useGetPartner = (partner) => {
 
     return apiRes.json();
   };
-  const { data, isLoading } = useQuery('Partner', fetchPartner, {
+  const { data, isLoading } = useQuery(['Partner', partner], fetchPartner, {
     enabled: !!partner,
   });
 

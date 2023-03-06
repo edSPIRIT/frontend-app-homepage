@@ -2,9 +2,10 @@ import { getConfig } from '@edx/frontend-platform';
 import { useQuery } from 'react-query';
 
 const useGetInstructor = (slug) => {
-  const fetchInstructor = async () => {
+  const fetchInstructor = async ({ queryKey }) => {
+    const id = queryKey[1];
     const apiRes = await fetch(
-      `${getConfig().LMS_BASE_URL}/admin-console/api/instructor/${slug}/`,
+      `${getConfig().LMS_BASE_URL}/admin-console/api/instructor/${id}/`,
     );
 
     if (!apiRes.ok) {
@@ -13,7 +14,7 @@ const useGetInstructor = (slug) => {
 
     return apiRes.json();
   };
-  const { data, isLoading } = useQuery('Instructor', fetchInstructor, {
+  const { data, isLoading } = useQuery(['Instructor', slug], fetchInstructor, {
     enabled: !!slug,
   });
 
