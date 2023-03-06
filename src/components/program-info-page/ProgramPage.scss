@@ -1,0 +1,34 @@
+.program-container {
+  .course-info-top-container {
+    @include infinite-background-container($primary-500);
+    .course-info-top-wrapper {
+      background-color: $primary-500;
+      .share-icon {
+        color: $light-500;
+      }
+      .course-info-breadcrumb {
+        @include custom-breadcrumb($light-300, $light-500);
+        .list-inline {
+          margin-bottom: unset;
+        }
+      }
+      h1 {
+        color: $white;
+      }
+      .course-institution {
+        color: $light-300;
+      }
+      p {
+        color: $light-300;
+      }
+      .icons-wrapper {
+        color: $light-500;
+      }
+    }
+  }
+}
+.program-courses-wrapper {
+  .course-container {
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
+  }
+}

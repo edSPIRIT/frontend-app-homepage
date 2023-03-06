@@ -1,0 +1,36 @@
+.recommendation-container {
+  @extend .d-flex, .flex-column;
+  width: 356px;
+  background: $light-200;
+  border-radius: 6px;
+  margin-left: 36px;
+  .btn{
+    color:$gray-500;
+  }
+}
+.recommendation-card-container {
+  @extend .d-flex, .align-items-center, .bg-white, .mb-2;
+  border-radius: 4px;
+  border: 1px solid $light-300;
+
+}
+
+.recommendation-logo {
+  @extend .mr-3, .m-2;
+  object-fit: contain;
+  background-color: #fff;
+  padding: 0.5rem;
+  width: 84px;
+  height: 48px;
+  min-width: 84px;
+  min-height: 48px;
+  border-radius: 4px;
+  border: 1px solid $light-300;
+}
+.recommendation-title {
+   @include line-break(1);
+  font-size: $font-size-base-sm;
+  font-weight: 700;
+  color: $black;
+}
+
