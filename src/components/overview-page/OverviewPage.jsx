@@ -7,6 +7,7 @@ import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
 import HorizontalCardSkeleton from '../shared/horizontal-card/HorizontalCardSkeleton';
 import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
+import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 
 const OverviewPage = () => {
   const history = useHistory();
@@ -57,9 +58,9 @@ const OverviewPage = () => {
                 <RecommendedPrograms />
               </div> */}
         </div>
-        {/* <div className="recommendationCourse-wrapper mt-6 py-6">
-          <SimilarCourses courses={courses} loading={loading} />
-        </div> */}
+        <div className="recommendationCourse-wrapper mt-6 py-6">
+          <SimilarCourses />
+        </div>
       </div>
     </main>
   );
