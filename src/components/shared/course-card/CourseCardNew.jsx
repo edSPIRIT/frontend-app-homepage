@@ -78,7 +78,7 @@ const CourseCardNew = ({ course }) => {
             )}
             {course.paid_course?.price > 0 ? (
               <span className="price-title mt-auto">
-                ${course.paid_course?.price}
+                {course.paid_course?.price_human}
               </span>
             ) : (
               <span className="price-title mt-auto">Free</span>
