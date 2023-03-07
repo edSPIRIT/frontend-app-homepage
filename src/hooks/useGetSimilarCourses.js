@@ -23,18 +23,19 @@ const useGetSimilarCourses = (searchQuery) => {
   };
   const getSimilarCoursesData = async () => {
     try {
-      document.cookie = `csrftoken=${
-        TokenData.csrfToken
-      };domain=${getConfig().LMS_BASE_URL.replace('https://', '')};path=/`;
+      // document.cookie = `csrftoken=${
+      //   TokenData.csrfToken
+      // };domain=${getConfig().LMS_BASE_URL.replace('https://', '')};path=/`;
       const Res = await fetch(
-        `${getConfig().LMS_BASE_URL}/search/course_discovery/`,
+        // `${getConfig().LMS_BASE_URL}/search/course_discovery/`,
+        `${getConfig().LMS_BASE_URL}/admin-console/api/full-course-discovery/`,
         {
           method: 'POST',
           headers: {
-            // 'Content-Type': 'application/json',
-            'x-csrftoken': TokenData.csrfToken,
+            'Content-Type': 'application/json',
+            // 'x-csrftoken': TokenData.csrfToken,
           },
-          credentials: 'include',
+          // credentials: 'include',
           body: JSON.stringify({
             search_string: searchQuery,
           }),
@@ -51,11 +52,11 @@ const useGetSimilarCourses = (searchQuery) => {
     getTokenData();
   }, []);
   useEffect(() => {
-    if (TokenData.csrfToken && searchQuery) {
+    if (searchQuery) {
       getSimilarCoursesData();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [TokenData.csrfToken, searchQuery]);
+  }, [searchQuery]);
 
   return {
     similarCourses: similarCourses.results,

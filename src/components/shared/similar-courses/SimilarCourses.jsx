@@ -4,18 +4,22 @@ import PropTypes from 'prop-types';
 import CourseCardSkeleton from '../skeleton/CourseCardSkeleton';
 import CourseCardNew from '../course-card/CourseCardNew';
 import useGetTopRecentCourses from '../../../hooks/useGetTopRecentCourses';
+import useGetCourses from '../../../hooks/useGetCourses';
+import useGetSimilarCourses from '../../../hooks/useGetSimilarCourses';
 
-const SimilarCourses = ({ courses, loading: load }) => {
-  const { recentCourses, loading } = useGetTopRecentCourses();
-
+const SimilarCourses = () => {
+  // const { recentCourses, loading } = useGetTopRecentCourses();
+  const { courseTitles } = useGetCourses();
+  const { similarCourses, loading } = useGetSimilarCourses(courseTitles);
   const chunkedArray = [];
   const chunkSize = () => {
-    for (let i = 0; i < recentCourses?.length; i += 4) {
-      chunkedArray.push(recentCourses?.slice(i, i + 4));
+    for (let i = 0; i < similarCourses?.length; i += 4) {
+      chunkedArray.push(similarCourses?.slice(i, i + 4));
     }
   };
   chunkSize();
   console.log('chunkedArray', chunkedArray);
+  console.log('similarCourses', similarCourses);
   return (
     <section className="custom-container similar-courses-wrapper">
       <h3>Similar Courses</h3>
@@ -48,7 +52,7 @@ const SimilarCourses = ({ courses, loading: load }) => {
             <Carousel.Item key={i}>
               <div className="course-container mt-4.5">
                 {chunkCourses.map((course) => (
-                  <CourseCardNew course={course} key={course.id} />
+                  <CourseCardNew course={course?.data} key={course?.data?.id} />
                 ))}
               </div>
             </Carousel.Item>
@@ -58,48 +62,48 @@ const SimilarCourses = ({ courses, loading: load }) => {
     </section>
   );
 };
-SimilarCourses.propTypes = {
-  courses: {
-    blocks_url: PropTypes.string,
-    effort: PropTypes.any,
-    end: PropTypes.any,
-    enrollment_start: PropTypes.any,
-    enrollment_end: PropTypes.any,
-    id: PropTypes.string,
-    media: PropTypes.shape({
-      banner_image: PropTypes.shape({
-        uri: PropTypes.string,
-        uri_absolute: PropTypes.string,
-      }),
-      course_image: PropTypes.shape({
-        uri: PropTypes.string,
-      }),
-      course_video: PropTypes.shape({
-        uri: PropTypes.string,
-      }),
-      image: PropTypes.shape({
-        raw: PropTypes.string,
-        small: PropTypes.string,
-        large: PropTypes.string,
-      }),
-    }),
-    name: PropTypes.string,
-    number: PropTypes.string,
-    org: PropTypes.string,
-    short_description: PropTypes.string,
-    start: PropTypes.string,
-    start_display: PropTypes.string,
-    start_type: PropTypes.string,
-    pacing: PropTypes.string,
-    mobile_available: PropTypes.bool,
-    hidden: PropTypes.bool,
-    invitation_only: PropTypes.bool,
-    course_id: PropTypes.string,
-  },
-  loading: PropTypes.bool,
-};
-SimilarCourses.defaultProps = {
-  courses: [],
-  loading: false,
-};
+// SimilarCourses.propTypes = {
+//   courses: {
+//     blocks_url: PropTypes.string,
+//     effort: PropTypes.any,
+//     end: PropTypes.any,
+//     enrollment_start: PropTypes.any,
+//     enrollment_end: PropTypes.any,
+//     id: PropTypes.string,
+//     media: PropTypes.shape({
+//       banner_image: PropTypes.shape({
+//         uri: PropTypes.string,
+//         uri_absolute: PropTypes.string,
+//       }),
+//       course_image: PropTypes.shape({
+//         uri: PropTypes.string,
+//       }),
+//       course_video: PropTypes.shape({
+//         uri: PropTypes.string,
+//       }),
+//       image: PropTypes.shape({
+//         raw: PropTypes.string,
+//         small: PropTypes.string,
+//         large: PropTypes.string,
+//       }),
+//     }),
+//     name: PropTypes.string,
+//     number: PropTypes.string,
+//     org: PropTypes.string,
+//     short_description: PropTypes.string,
+//     start: PropTypes.string,
+//     start_display: PropTypes.string,
+//     start_type: PropTypes.string,
+//     pacing: PropTypes.string,
+//     mobile_available: PropTypes.bool,
+//     hidden: PropTypes.bool,
+//     invitation_only: PropTypes.bool,
+//     course_id: PropTypes.string,
+//   },
+//   loading: PropTypes.bool,
+// };
+// SimilarCourses.defaultProps = {
+//   courses: [],
+//   loading: false,
+// };
 export default SimilarCourses;

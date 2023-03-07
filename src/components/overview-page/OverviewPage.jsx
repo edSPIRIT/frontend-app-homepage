@@ -5,20 +5,12 @@ import { useHistory } from 'react-router-dom';
 import HorizontalCard from '../shared/horizontal-card/HorizontalCard';
 import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
-import SimilarCourses from '../shared/similar-courses/SimilarCourses';
-import useGetSimilarCourses from '../../hooks/useGetSimilarCourses';
-import useGetCourses from '../../hooks/useGetCourses';
 import HorizontalCardSkeleton from '../shared/horizontal-card/HorizontalCardSkeleton';
 import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
 
 const OverviewPage = () => {
   const history = useHistory();
-  const { courses, courseTitles, loading: coursesLoading } = useGetCourses();
-  const { similarCourses, loading } = useGetSimilarCourses(courseTitles);
   const { coursesEnrollment, loading: coursesEnrollLoading } = useGetEnrollmentList();
-  console.log('similarCourses', similarCourses);
-  console.log('courses', courses);
-  console.log('coursesEnrollment', coursesEnrollment, coursesEnrollLoading);
   return (
     <main>
       <div className="d-flex flex-column">
@@ -65,9 +57,9 @@ const OverviewPage = () => {
                 <RecommendedPrograms />
               </div> */}
         </div>
-        <div className="recommendationCourse-wrapper mt-6 py-6">
+        {/* <div className="recommendationCourse-wrapper mt-6 py-6">
           <SimilarCourses courses={courses} loading={loading} />
-        </div>
+        </div> */}
       </div>
     </main>
   );
