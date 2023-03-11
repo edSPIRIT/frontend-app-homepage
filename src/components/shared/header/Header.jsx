@@ -1,18 +1,26 @@
 import {
-  AvatarButton, Button, Dropdown, SearchField,
+  AvatarButton,
+  Button,
+  Dropdown,
+  IconButton,
+  SearchField,
+  Icon,
+  useToggle,
 } from '@edx/paragon';
 import { getConfig } from '@edx/frontend-platform';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
-import { ArrowDropDown } from '@edx/paragon/icons';
+import { ArrowDropDown, Menu, Search } from '@edx/paragon/icons';
 import { useContext } from 'react';
 import { AppContext } from '@edx/frontend-platform/react';
 import moodyLogo from '../../../assets/Moody-logo.svg';
 import DropdownNavHeader from './dropdown-nav-header/DropdownNavHeader';
 import NavHeader from './nav-header/NavHeader';
+import FullscreenModalMenu from './full-screen-modal/FullscreenModalMenu';
 
 const HeaderED = () => {
   const history = useHistory();
+  const [isOpen, open, close] = useToggle(false);
   const { authenticatedUser } = useContext(AppContext);
   return (
     <header>
@@ -92,6 +100,16 @@ const HeaderED = () => {
           </div>
         </div>
       </div>
+      <div className="py-3 d-flex justify-content-around align-items-center mobile-header">
+        <IconButton src={Menu} iconAs={Icon} alt="Menu" onClick={open} />
+        <div className="logo-container mr-4">
+          <Link to="/">
+            <img className="h-100" src={moodyLogo} alt="edspirit-logo" />
+          </Link>
+        </div>
+        <IconButton src={Search} iconAs={Icon} alt="Search" />
+      </div>
+      <FullscreenModalMenu isOpen={isOpen} close={close} />
     </header>
   );
 };
