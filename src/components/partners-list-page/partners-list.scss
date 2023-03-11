@@ -1,0 +1,135 @@
+.partners-header {
+  background: $background-dark-blue;
+  h2 {
+    color: $white;
+  }
+  .partners-search {
+    @include custom-search-field(354px);
+  }
+  .banner-icons-wrapper {
+    gap: 172px;
+    padding-bottom: 40px;
+    .pgn__icon {
+      height: unset;
+      width: 36px;
+    }
+    .icon-wrapper {
+      @extend .d-flex,
+        .flex-column,
+        .justify-content-center,
+        .align-items-center;
+      color: $light-500;
+    }
+    span {
+      font-weight: bold;
+    }
+    p {
+      font-size: $font-size-base-sm;
+      text-align: center;
+      width: 300px;
+      color: $light-500;
+      min-height: 48px;
+      line-height: 24px;
+    }
+  }
+}
+.icons-view-wrapper {
+  .icon-view {
+    .active {
+      background: $brand-500;
+      svg {
+        color: $white;
+      }
+    }
+    .pgn__icon {
+      cursor: pointer;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      color: $gray-500;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+.partners-grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0px, 1fr));
+  gap: 24px;
+  .partner-grid-name {
+    @include line-break(1);
+  }
+  .pgn__card-wrapper-image-cap {
+    width: 254.4px;
+    height: 145px;
+    padding: 8px;
+  }
+  .pgn__card-image-cap {
+    width: 100%;
+    height: 100%;
+  }
+  .pgn__card-section {
+    padding: 1rem 1.5rem;
+    background-color: $light-200;
+  }
+}
+.icons-partner-wrapper {
+  color: $gray-500;
+  font-size: $font-size-base-sm;
+  line-height: 27px;
+  .pgn__icon {
+    height: unset;
+    width: 16px;
+  }
+}
+.partners-list-wrapper {
+  border: 1px solid transparent;
+  display: grid;
+  gap: 16px;
+  .pgn__card-wrapper-image-cap {
+    width: 304px;
+    height: 192px;
+    padding: 1rem;
+    flex-shrink: 0;
+  }
+  .pgn__card-image-cap {
+    width: 100% !important;
+    height: 100%;
+    border-top-left-radius: unset !important;
+    border-bottom-left-radius: unset !important;
+  }
+  .pgn__card-wrapper-image-cap.horizontal {
+    max-width: unset;
+  }
+  .pgn__card-section {
+    height: 100%;
+  }
+  .partner-name-wrapper {
+    @extend .d-flex, .justify-content-between, .align-items-center;
+    height: 36px;
+  }
+  .pgn__card-section {
+    padding: 24px 24px 20px 24px;
+    background-color: $light-200;
+  }
+  p {
+    @include line-break(2);
+  }
+  .pgn__card {
+    display: flex;
+    border: 1px solid $light-300;
+    &:hover {
+      box-shadow: unset;
+      cursor: pointer;
+      border: 1px solid $light-400;
+      .arrow-forward-btn {
+        display: flex;
+      }
+    }
+  }
+}

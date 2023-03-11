@@ -1,0 +1,38 @@
+.language-btn-container {
+  @extend .d-flex;
+}
+
+.footer-logo {
+  filter: grayscale(100%);
+}
+.footer-desc {
+  @extend .text-gray-500;
+  font-size: $font-size-base-xs;
+}
+.list-unstyled {
+  list-style: none;
+  a {
+    font-size: $font-size-base-sm;
+    color: $primary-700;
+  }
+}
+.social-container {
+  @extend .d-flex;
+  gap: 5px;
+  align-items: center;
+  .pgn__icon {
+      height: unset;
+      width: unset;
+  }
+  .social-icon-footer {
+    cursor: pointer;
+    color: $light-500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.footer-copy-right {
+  @extend .bg-light-300, .d-flex;
+  height: 52px;
+}

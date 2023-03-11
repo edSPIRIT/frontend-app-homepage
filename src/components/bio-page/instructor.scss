@@ -1,0 +1,67 @@
+.instructor-header {
+  @include custom-breadcrumb($light-300, $light-500);
+  background: $background-dark-blue;
+  padding: 2rem 2.25rem 4rem 2.25rem;
+  h1 {
+    color: $white;
+  }
+  .short-bio {
+    color: $light-500;
+    font-size: 1.25rem;
+  }
+  .long-bio-instructor {
+    max-width: 912px;
+    @include line-break(4);
+  }
+  .instructor-share-icon {
+    cursor: pointer;
+    color: $light-500;
+    opacity: 0.5;
+  }
+  .instructor-icons-wrapper {
+    @extend .d-flex, .justify-content-between, .align-items-center;
+    max-width: 912px;
+    color: $light-500 !important;
+    opacity: 0.5;
+    font-size: $font-size-base-sm;
+  }
+  p {
+    color: $light-300;
+  }
+  .btn {
+    color: $accent-a;
+    &:active {
+      color: $accent-a !important;
+    }
+  }
+  .instructor-img-wrapper {
+    height: 256px;
+    width: 256px;
+    margin-right: 5.75rem;
+  }
+  .img-instructor {
+    height: 100%;
+    border-radius: 1.5rem;
+  }
+}
+
+.view-all-course-btn {
+  margin-top: 40px;
+  background-color: $light-300;
+  color: $primary-500;
+  padding: 10px 53px;
+  border: 1px solid $light-300;
+  .btn-icon-after {
+    width: 1rem;
+    margin-left: 1rem;
+  }
+}
+.social-icon-skeleton-wrapper {
+  span {
+    display: flex;
+    flex-direction: row;
+  }
+  .social-icon-skeleton {
+    border-radius: 50%;
+  }
+}

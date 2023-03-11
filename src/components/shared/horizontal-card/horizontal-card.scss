@@ -1,0 +1,116 @@
+.horizontal-card-course {
+  border-color: $light-400;
+  &:hover {
+    .icons-wrapper {
+      display: flex !important;
+    }
+  }
+  .pgn__card {
+    display: flex;
+  }
+  .pgn__card-wrapper-image-cap {
+    display: flex;
+    flex-shrink: 0;
+    width: 248px;
+    height: 216px;
+    max-width: unset;
+    min-width: unset;
+  }
+  .pgn__card-image-cap {
+    width: 100% !important;
+  }
+
+  .pgn__card-section {
+    padding: 1.5rem;
+    height: 100%;
+  }
+  .progress {
+    background: $light-200;
+    border: 1px solid $light-700;
+    width: 282px;
+  }
+  .progress-bar {
+    background-color: $info-300;
+  }
+  .org-title {
+    color: $gray-700;
+  }
+  .second-title {
+    color: $gray-500;
+    font-size: $font-size-base-sm;
+  }
+  .icons-wrapper {
+    height: 28px;
+    display: none !important;
+  }
+  .btn {
+    font-size: $font-size-base-xl;
+  }
+  .title-wrapper {
+    height: 28px;
+  }
+  //dropdown icon
+  .pgn__icon {
+    color: $gray-500;
+  }
+  .dropdown-menu {
+    min-width: unset;
+    transform: translate(-60px, 46px) !important;
+  }
+  .dropdown-item {
+    padding: 0.375rem 1rem;
+    color: $gray-700;
+  }
+  .dropdown-icon {
+    .btn-icon-primary {
+      &:hover {
+        background-color: unset;
+      }
+      &:focus {
+        box-shadow: unset;
+      }
+    }
+  }
+  .view-btn{
+    width: 142px;
+    height: 44px;
+    background-color: $primary-500;
+    color: $white;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.share-icon {
+  cursor: pointer;
+  color: $gray-500;
+}
+.dark-background {
+  background-color: $primary-700;
+  h3 {
+    color: $white;
+  }
+  .org-title {
+    color: $light-300;
+  }
+  .second-title {
+    color: $light-500;
+  }
+  .progress {
+    background-color: $primary-700;
+    border-color: $gray-500;
+  }
+  .btn-outline-primary {
+    border-color: $light-400;
+    color: $white;
+  }
+  .btn-primary {
+    background-color: $white;
+    color: $primary-700;
+  }
+}
+.info-icon {
+  color: $light-700;
+  opacity: 0.5;
+}
