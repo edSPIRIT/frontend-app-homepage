@@ -14,7 +14,7 @@ import { AppContext } from '@edx/frontend-platform/react';
 import { MoreVert } from '@edx/paragon/icons';
 import { NavLink } from 'react-router-dom';
 
-const FullscreenModalMenu = ({ isOpen: isOp, close: cl }) => {
+const FullscreenModalMenu = ({ isOpen: isOpenMenu, close: closeMenu }) => {
   const { authenticatedUser } = useContext(AppContext);
   const [isOpen, open, close] = useToggle(false);
 
@@ -22,8 +22,8 @@ const FullscreenModalMenu = ({ isOpen: isOp, close: cl }) => {
     <>
       <FullscreenModal
         title="My dialog"
-        isOpen={isOp}
-        onClose={cl}
+        isOpen={isOpenMenu}
+        onClose={closeMenu}
         className="mobile-menu-modal"
       >
         <div className="d-flex py-3.5 px-4 btn-wrapper justify-content-center">
@@ -57,7 +57,11 @@ const FullscreenModalMenu = ({ isOpen: isOp, close: cl }) => {
         {authenticatedUser ? (
           <ul className="nav-items">
             <li className="mb-2.5">
-              <NavLink to="/overview" activeClassName="active">
+              <NavLink
+                to="/overview"
+                activeClassName="active"
+                onClick={close}
+              >
                 Overview
               </NavLink>
             </li>

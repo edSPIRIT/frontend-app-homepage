@@ -30,7 +30,7 @@ const OverviewPage = () => {
                   <HorizontalCardSkeleton key={i} />
                 ))}
             </>
-          ) : coursesEnrollment.length === 0 ? (
+          ) : coursesEnrollment?.length === 0 ? (
             <NotEnrolledCardCourse />
           ) : (
             <div className="overview-courses-wrapper">
