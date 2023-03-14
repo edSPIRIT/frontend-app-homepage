@@ -47,8 +47,7 @@ const OverviewPage = () => {
               </div>
               {coursesEnrollment?.map((courseInfo) => (
                 <HorizontalCard
-                  key={courseInfo?.course_details
-                    ?.course_id}
+                  key={courseInfo?.course_details?.course_id}
                   courseInfo={courseInfo}
                 />
               ))}
@@ -58,9 +57,7 @@ const OverviewPage = () => {
                 <RecommendedPrograms />
               </div> */}
         </div>
-        <div className="recommendationCourse-wrapper mt-6 py-6">
-          <SimilarCourses />
-        </div>
+        <SimilarCourses />
       </div>
     </main>
   );

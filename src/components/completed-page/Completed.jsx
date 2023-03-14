@@ -19,7 +19,8 @@ const Completed = () => {
               <HorizontalCardSkeleton key={i} />
             ))
         ) : coursesEnrollment?.filter(
-          (courseInfo) => courseInfo?.progress?.complete_count === 100,
+          (courseInfo) => courseInfo?.progress?.complete_count > 0
+              && courseInfo?.progress?.incomplete_count === 0,
         )?.length === 0 ? (
           <div className="w-100">
             <NotEnrolledCardCourse />
@@ -29,7 +30,8 @@ const Completed = () => {
               <TotalCourseWrapper
                 coursesCount={
                 coursesEnrollment?.filter(
-                  (courseInfo) => courseInfo?.progress?.complete_count === 100,
+                  (courseInfo) => courseInfo?.progress?.complete_count > 0
+                    && courseInfo?.progress?.incomplete_count === 0,
                 )?.length
               }
                 loading={loading}
@@ -43,7 +45,8 @@ const Completed = () => {
                   ))
                 : coursesEnrollment
                   ?.filter(
-                    (courseInfo) => courseInfo?.progress?.complete_count === 100,
+                    (courseInfo) => courseInfo?.progress?.complete_count > 0
+                      && courseInfo?.progress?.incomplete_count === 0,
                   )
                   ?.map((courseInfo) => (
                     <HorizontalCard

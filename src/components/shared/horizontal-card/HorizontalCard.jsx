@@ -147,7 +147,7 @@ const HorizontalCard = ({ courseInfo }) => {
               {courseInfo?.organization?.name}
             </Link>
             <p className="my-3.5 second-title">
-              <span>Started - </span>
+              <span>Course Started - </span>
               <span>
                 {new Date(
                   courseInfo?.course_details?.course_start,
