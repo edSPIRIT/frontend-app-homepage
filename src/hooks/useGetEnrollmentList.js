@@ -17,6 +17,10 @@ const useGetEnrollmentList = () => {
   const { data, isLoading } = useQuery('EnrollmentList', fetchEnrollmentList);
   return {
     coursesEnrollment: data,
+    courseTitles: `${data?.reduce(
+      (acc, current) => `${acc}${current?.course_details?.course_name} `,
+      '',
+    )}`,
     loading: isLoading,
   };
 };

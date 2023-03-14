@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/prop-types */
 import {
@@ -36,9 +37,22 @@ const HorizontalCard = ({ courseInfo }) => {
       setShowToast(true);
     },
   });
-
+  const calcProgress = () => {
+    if (courseInfo?.progress?.complete_count > 0) {
+      const progress = (courseInfo?.progress?.complete_count
+          / (courseInfo?.progress?.complete_count
+            + courseInfo?.progress?.incomplete_count))
+        * 100;
+      console.log('progress', progress);
+      return Math.round(progress);
+    }
+    return 0;
+  };
   const courseStatus = () => {
-    if (courseInfo?.progress?.complete_count === 100) {
+    if (
+      courseInfo?.progress?.complete_count > 0
+      && courseInfo?.progress?.incomplete_count === 0
+    ) {
       return (
         <div className="d-flex align-items-center">
           <Icon className="info-icon mr-2.5" src={Check} />
@@ -54,12 +68,7 @@ const HorizontalCard = ({ courseInfo }) => {
         </div>
       );
     }
-    return (
-      <ProgressBar
-        now={courseInfo?.progress?.complete_count}
-        label={`${courseInfo?.progress?.complete_count}%`}
-      />
-    );
+    return <ProgressBar now={calcProgress()} label={`${calcProgress()}%`} />;
   };
   return (
     <>

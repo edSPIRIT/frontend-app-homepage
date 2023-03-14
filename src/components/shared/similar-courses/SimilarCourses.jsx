@@ -2,11 +2,11 @@ import { ChevronLeft, ChevronRight } from '@edx/paragon/icons';
 import { Carousel, Icon } from '@edx/paragon';
 import CourseCardSkeleton from '../skeleton/CourseCardSkeleton';
 import CourseCardNew from '../course-card/CourseCardNew';
-import useGetCourses from '../../../hooks/useGetCourses';
 import useGetSimilarCourses from '../../../hooks/useGetSimilarCourses';
+import useGetEnrollmentList from '../../../hooks/useGetEnrollmentList';
 
 const SimilarCourses = () => {
-  const { courseTitles } = useGetCourses();
+  const { courseTitles } = useGetEnrollmentList();
   const { similarCourses, loading } = useGetSimilarCourses(courseTitles);
   const chunkedArray = [];
   const chunkSize = () => {
@@ -16,6 +16,7 @@ const SimilarCourses = () => {
   };
   chunkSize();
   console.log('chunkedArray', chunkedArray);
+  console.log('courseTitles', courseTitles);
   console.log('similarCourses', similarCourses);
   return (
     <section className="custom-container similar-courses-wrapper">
