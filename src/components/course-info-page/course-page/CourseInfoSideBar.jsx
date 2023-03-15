@@ -42,7 +42,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => (
         <div className="mt-4.5 px-4">
           <h2 className="mb-1">
             {courseMetaData?.paid_course?.price > 0
-              ? `$ ${courseMetaData?.paid_course?.price_human}`
+              ? `${courseMetaData?.paid_course?.price_human}`
               : 'Free'}
           </h2>
           <span className="text-gray-500 font-sm">Lifetime access</span>
