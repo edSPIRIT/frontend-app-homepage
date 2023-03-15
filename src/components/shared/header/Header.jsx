@@ -6,6 +6,7 @@ import {
   SearchField,
   Icon,
   useToggle,
+  Skeleton,
 } from '@edx/paragon';
 import { getConfig } from '@edx/frontend-platform';
 import { useHistory } from 'react-router';
@@ -17,19 +18,30 @@ import moodyLogo from '../../../assets/Moody-logo.svg';
 import DropdownNavHeader from './dropdown-nav-header/DropdownNavHeader';
 import NavHeader from './nav-header/NavHeader';
 import FullscreenModalMenu from './full-screen-modal/FullscreenModalMenu';
+import useGetFooters from '../../../hooks/useGetFooters';
 
 const HeaderED = () => {
   const history = useHistory();
   const [isOpen, open, close] = useToggle(false);
   const { authenticatedUser } = useContext(AppContext);
+  const { footerData, loading } = useGetFooters();
+
   return (
     <header>
       <div className="d-flex flex-row justify-content-between align-items-center header-wrapper">
         <div className="left-side-container">
           <div className="logo-container mr-4">
-            <Link to="/">
-              <img className="h-100" src={moodyLogo} alt="edspirit-logo" />
-            </Link>
+            {loading ? (
+              <Skeleton height={32} width={112} className="mb-1" />
+            ) : (
+              <Link to="/">
+                <img
+                  className="h-100"
+                  src={footerData?.logo}
+                  alt="edspirit-logo"
+                />
+              </Link>
+            )}
           </div>
           {authenticatedUser ? <NavHeader /> : <DropdownNavHeader />}
         </div>

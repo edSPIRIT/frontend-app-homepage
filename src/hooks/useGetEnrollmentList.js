@@ -21,6 +21,7 @@ const useGetEnrollmentList = () => {
       (acc, current) => `${acc}${current?.course_details?.course_name} `,
       '',
     )}`,
+    courseIds: data?.map((course) => course?.course_details?.course_id),
     loading: isLoading,
   };
 };

@@ -2,7 +2,7 @@ import { getConfig } from '@edx/frontend-platform';
 
 import { useEffect, useState } from 'react';
 
-const useGetSimilarCourses = (searchQuery) => {
+const useGetSimilarCourses = (searchQuery, courseIds) => {
   const [TokenData, setTokenData] = useState('');
   const [similarCourses, setSimilarCourses] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -52,14 +52,16 @@ const useGetSimilarCourses = (searchQuery) => {
     getTokenData();
   }, []);
   useEffect(() => {
-    if (searchQuery) {
+    if (searchQuery && courseIds) {
       getSimilarCoursesData();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery]);
+  }, [searchQuery, courseIds]);
 
   return {
-    similarCourses: similarCourses.results,
+    similarCourses: similarCourses.results.filter(
+      (course) => !courseIds.includes(course?.data?.id),
+    ),
     loading,
   };
 };
