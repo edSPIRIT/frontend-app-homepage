@@ -46,7 +46,7 @@ const CourseCardNew = ({ course }) => {
                   <Link
                     key={ins.slug}
                     className="course-text"
-                    to={`/bio/${ins.slug}`}
+                    to={`/instructor/${ins.slug}`}
                   >
                     {ins.name}
                   </Link>

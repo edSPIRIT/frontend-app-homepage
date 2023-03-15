@@ -56,7 +56,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => (
                   <Link
                     key={ins.name}
                     className="color-black"
-                    to={`/bio/${ins.slug}`}
+                    to={`/instructor/${ins.slug}`}
                   >
                     {ins.name}
                   </Link>

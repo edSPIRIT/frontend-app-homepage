@@ -87,7 +87,7 @@ subscribe(APP_READY, () => {
             <Route exact path="/partners/:slug">
               <PartnerPage />
             </Route>
-            <Route exact path="/bio/:slug">
+            <Route exact path="/instructor/:slug">
               <Instructor />
             </Route>
             <Route exact path="/">

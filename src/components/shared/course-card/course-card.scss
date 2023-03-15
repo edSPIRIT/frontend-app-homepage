@@ -1,4 +1,7 @@
 .cards-wrapper {
+  .pgn__card-logo-cap{
+    object-fit: contain;
+  }
   .pgn__card-footer {
     padding: 1.5rem;
     padding-top: 0;

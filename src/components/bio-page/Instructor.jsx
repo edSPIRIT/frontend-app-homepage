@@ -36,7 +36,6 @@ const Instructor = () => {
             ariaLabel="Breadcrumb basic"
             links={[
               { label: 'Home', to: '/home' },
-              { label: 'Partners', to: '/bio' },
             ]}
             linkAs={Link}
             activeLabel={InstructorData?.name}

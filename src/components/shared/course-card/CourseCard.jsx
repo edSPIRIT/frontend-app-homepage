@@ -46,18 +46,18 @@ const CourseCard = ({ info }) => {
                     <Link
                       key={ins.title}
                       className="course-text"
-                      to={`/bio/${ins.link}`}
+                      to={`/instructor/${ins.link}`}
                     >
                       {ins.title}
                     </Link>
                   ))}
                 </p>
               ) : (
-                <Link className="course-text" to={`/bio/${instructorLink}`}>
+                <Link className="course-text" to={`/instructor/${instructorLink}`}>
                   {instructor}
                 </Link>
               )}
-              {/* <Link className="course-text" to={`/bio/${instructorLink}`}>
+              {/* <Link className="course-text" to={`/instructor/${instructorLink}`}>
               {isProgram
                 ? instructor.map((ins) => <span className="ins-title" key={instructor}>{ins}</span>)
                 : instructor}

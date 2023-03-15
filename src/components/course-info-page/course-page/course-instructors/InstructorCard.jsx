@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const InstructorCard = ({ instructor }) => (
-  <Link to={`/bio/${instructor.slug}`} className="instructor-wrapper d-flex">
+  <Link to={`/instructor/${instructor.slug}`} className="instructor-wrapper d-flex">
     <div className="instructor-img-wrapper mr-4">
       <img src={instructor.image} alt="instructor-avator" />
     </div>
