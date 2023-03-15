@@ -142,7 +142,8 @@ const HorizontalCard = ({ courseInfo }) => {
             </div>
             <Link
               className="mb-3.5 org-title"
-              to={courseInfo?.organization?.short_name}
+              to={`/partners/${courseInfo?.organization?.short_name}`}
+
             >
               {courseInfo?.organization?.name}
             </Link>

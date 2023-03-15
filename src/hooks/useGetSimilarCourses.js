@@ -52,11 +52,11 @@ const useGetSimilarCourses = (searchQuery, courseIds) => {
     getTokenData();
   }, []);
   useEffect(() => {
-    if (searchQuery && courseIds) {
+    if (searchQuery) {
       getSimilarCoursesData();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery, courseIds]);
+  }, [searchQuery]);
 
   return {
     similarCourses: similarCourses?.results?.filter(
