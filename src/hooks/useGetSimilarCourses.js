@@ -59,8 +59,8 @@ const useGetSimilarCourses = (searchQuery, courseIds) => {
   }, [searchQuery, courseIds]);
 
   return {
-    similarCourses: similarCourses.results.filter(
-      (course) => !courseIds.includes(course?.data?.id),
+    similarCourses: similarCourses?.results?.filter(
+      (course) => !courseIds?.includes(course?.data?.id),
     ),
     loading,
   };
