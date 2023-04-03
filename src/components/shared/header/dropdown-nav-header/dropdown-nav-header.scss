@@ -35,6 +35,9 @@
       .tab-header {
         align-items: center;
         margin: 0;
+        .btn-outline-primary  {
+          border-color: $light-300 !important;
+        }
       }
       ul {
         column-count: 4;

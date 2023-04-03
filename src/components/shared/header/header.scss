@@ -61,16 +61,36 @@
 }
 .mobile-menu-modal {
   .pgn__modal-body {
+    overflow-x: hidden;
+  }
+  .btn-wrapper {
+    .btn {
+      width: 154px;
+    }
+  }
+  .pgn__modal-body {
     padding: unset;
+    .pgn__modal-body-content {
+      height: calc(100% - 22px);
+      .nav-wrapper {
+        height: calc(100% - 22px);
+      }
+    }
   }
   .pgn__modal-header {
-    background-color: unset;
-    border-bottom: unset;
+    display: none;
   }
-  .btn-icon-inverse-primary {
+  .btn-icon-primary {
     color: unset;
     &:focus {
       color: unset;
+    }
+    &:hover {
+      background-color: unset;
+      color: unset;
+    }
+    &:active {
+      box-shadow: unset;
     }
   }
   ul {
@@ -87,19 +107,51 @@
     }
   }
   .btn-wrapper {
+    .email-title {
+      max-width: 259px;
+      @include line-break(1);
+      display: unset;
+      font-weight: 700;
+    }
     background-color: $light-200;
+    .btn {
+      font-weight: 500;
+    }
+    .icon-forward {
+      svg {
+        padding: 4px 0;
+        color: $primary-500;
+      }
+    }
   }
-    .nav-items{
-    li{
-      padding:8px 0px;
-      a{
-        color:$gray-700;
+  .mobile-nav-items {
+        height: calc(100% - 50px);
+    justify-content: space-between;
+    span {
+      color: $gray-700 !important;
+    }
+    font-weight: 500;
+    .collapsible-body {
+      padding: 0 16px;
+      .btn-outline-primary {
+        border-color: $light-300;
+        color: $gray-500;
+      }
+    }
+    .subject-items {
+      padding: 0;
+      li {
+        padding: 8px 0px;
+      }
+    }
+    li {
+      a {
+        color: $gray-700;
       }
     }
   }
 }
 .mobile-header {
-  display: none !important;
   .btn-icon-primary {
     &:hover {
       background-color: transparent;
@@ -109,17 +161,8 @@
       box-shadow: unset;
     }
   }
-  .pgn__modal-backdrop{
+  .pgn__modal-backdrop {
     opacity: 0.7;
-  }
-
-}
-@media (max-width: 530px) {
-  .header-wrapper {
-    display: none !important;
-  }
-  .mobile-header {
-    display: flex !important;
   }
 }
 
