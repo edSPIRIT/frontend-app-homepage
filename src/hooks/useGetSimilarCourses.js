@@ -6,6 +6,7 @@ const useGetSimilarCourses = (searchQuery, courseIds) => {
   const [TokenData, setTokenData] = useState('');
   const [similarCourses, setSimilarCourses] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [filterSimilarCourses, setFilterSimilarCourses] = useState([]);
 
   const getTokenData = async () => {
     try {
@@ -52,16 +53,23 @@ const useGetSimilarCourses = (searchQuery, courseIds) => {
     getTokenData();
   }, []);
   useEffect(() => {
-    if (searchQuery) {
-      getSimilarCoursesData();
+    getSimilarCoursesData();
+  }, []);
+  useEffect(() => {
+    if (searchQuery && courseIds && similarCourses?.results) {
+      console.log('searchQuery & courseIds inuseeffect', searchQuery, courseIds, similarCourses?.results);
+      const filteredCourses = similarCourses?.results?.filter(
+        (course) => {
+          console.log('courseIds in filter', course?.data?.id, !courseIds?.includes(course?.data?.id));
+          return !courseIds?.includes(course?.data?.id);
+        },
+      );
+      setFilterSimilarCourses(filteredCourses);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery]);
+  }, [searchQuery, courseIds, similarCourses?.results]);
 
   return {
-    similarCourses: similarCourses?.results?.filter(
-      (course) => !courseIds?.includes(course?.data?.id),
-    ),
+    similarCourses: filterSimilarCourses,
     loading,
   };
 };
