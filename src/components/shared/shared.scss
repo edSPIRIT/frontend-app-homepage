@@ -76,6 +76,9 @@
 .color-gray-700 {
   color: $gray-700;
 }
+.color-brand-600 {
+  color: $brand-600;
+}
 .color-black {
   color: black;
 }
@@ -178,7 +181,7 @@
 }
 .banner-desc {
   @extend .text-light-300, .mb-4;
-  width: 728px;
+  max-width: 728px;
 }
 .banner-link {
   @extend .d-flex, .align-items-center;

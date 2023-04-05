@@ -4,7 +4,19 @@
   .display-1 {
     @extend .mb-4;
     color: $white;
-    width: 512px;
+    max-width: 512px;
+  }
+  .banner-wrapper {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+  }
+  .text-container {
+    grid-column: 1/7;
+    grid-row: 1/2;
+  }
+  .img-container {
+    grid-column: 7/11;
+    grid-row: 1/2;
   }
   .hero-image {
     object-fit: contain;
@@ -14,8 +26,32 @@
   .hero-search {
     @include custom-search-field(354px);
   }
-  .col{
+  .col {
     padding: unset;
   }
 }
 
+@media (max-width: 600px) {
+  .text-container {
+    grid-column: 1/11 !important;
+    .display-1 {
+      font-size: 36px;
+      line-height: 40px;
+    }
+  }
+  .img-container {
+    display: none;
+  }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .text-container {
+    grid-column: 1/8 !important;
+    .display-1 {
+      font-size: 36px;
+      line-height: 40px;
+    }
+  }
+  .img-container {
+    grid-column: 8/11 !important;
+  }
+}

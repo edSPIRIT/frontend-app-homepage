@@ -5,6 +5,9 @@
 .footer-logo {
   filter: grayscale(100%);
 }
+.mobile-footer-logo {
+  display: none;
+}
 .footer-desc {
   @extend .text-gray-500;
   font-size: $font-size-base-xs;
@@ -21,8 +24,8 @@
   gap: 5px;
   align-items: center;
   .pgn__icon {
-      height: unset;
-      width: unset;
+    height: unset;
+    width: unset;
   }
   .social-icon-footer {
     cursor: pointer;
@@ -32,7 +35,95 @@
     align-items: center;
   }
 }
-.footer-copy-right {
-  @extend .bg-light-300, .d-flex;
-  height: 52px;
+.footer-copy-right-container {
+  background-color: $light-300;
+  .footer-copy-right {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+.footer-wrapper {
+  display: grid;
+  grid-template-columns: repeat(26, 1fr);
+  .footer-desc-wrapper {
+    grid-column: 1/10;
+    grid-row: 1/2;
+    p {
+      font-size: $font-size-base-sm;
+    }
+  }
+  .footer-col1-wrapper {
+    grid-column: 13/17;
+    grid-row: 1/2;
+  }
+  .footer-col2-wrapper {
+    grid-column: 17/21;
+    grid-row: 1/2;
+  }
+  .footer-col3-wrapper {
+    grid-column: 22/27;
+    grid-row: 1/2;
+  }
+}
+@media (max-width: 600px) {
+  .footer-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-desc-wrapper {
+    border-bottom: 1px solid $light-300;
+    padding-bottom: 24px;
+  }
+  .footer-col1-wrapper {
+    // padding: 24px 0;
+    padding-top: 24px;
+    border-bottom: 1px solid $light-300;
+  }
+  .footer-col2-wrapper {
+    padding-top: 24px;
+    border-bottom: 1px solid $light-300;
+  }
+  .footer-col3-wrapper {
+    padding-top: 24px;
+    h5 {
+      display: none;
+    }
+    .dropdown-wrapper {
+      width: 100%;
+      margin-bottom: 24px !important;
+      .btn {
+        width: 100%;
+      }
+    }
+    .social-container {
+      justify-content: center;
+      gap: 16px;
+    }
+  }
+  .footer-copy-right {
+    flex-direction: column;
+    align-items: unset !important;
+    background-color: $light-200;
+    .logo-container {
+      width: 32px;
+      padding: 4px;
+      background-color: $light-300;
+      border-radius: 4px;
+    }
+    .footer-logo {
+      display: none;
+    }
+    .mobile-footer-logo {
+      display: flex;
+      width: 100%;
+    }
+    .desktop-view-edx {
+      display: none;
+    }
+    .edx-wrapper {
+      margin-top: 20px;
+    }
+  }
 }

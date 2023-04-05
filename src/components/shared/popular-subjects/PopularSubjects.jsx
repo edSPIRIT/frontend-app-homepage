@@ -6,8 +6,9 @@ import useGetSubjects from '../../../hooks/useGetSubjects';
 const PopularSubjects = () => {
   const { popularSubjects, loading } = useGetSubjects();
   const history = useHistory();
+
   return (
-    <div className="d-flex  justify-content-center flex-wrap">
+    <div className="d-flex flex-wrap">
       {/* TO DO: Do not use Array index in keys */}
       {loading
         ? Array(10)
@@ -22,7 +23,6 @@ const PopularSubjects = () => {
         : popularSubjects?.map((subject) => (
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
           <div
-            as
             className="subject-container"
             key={subject.slug}
             onClick={() => history.push('/search')}

@@ -29,7 +29,7 @@ const useGetPartners = () => {
     count: data?.count,
     partnersData: data?.results,
     num_pages: data?.num_pages,
-    topPartners: data?.results.filter((org) => org.featured).slice(0, 4),
+    topPartners: data?.results.filter((org) => org.featured).slice(0, 5),
     loading: isLoading,
   };
 };

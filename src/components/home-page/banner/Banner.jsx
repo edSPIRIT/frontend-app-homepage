@@ -15,8 +15,8 @@ const Banner = () => {
   } = useGetBanner();
   return (
     <section className="hero">
-      <div className="row custom-container py-6">
-        <div className="col col-7">
+      <div className=" custom-container py-6  banner-wrapper">
+        <div className="text-container">
           <h1 className="display-1">
             {isLoading ? (
               <Skeleton />
@@ -40,8 +40,7 @@ const Banner = () => {
             <Icon src={ArrowForward} />
           </Link>
         </div>
-
-        <div className="col col-5 d-flex align-items-center justify-content-center">
+        <div className="img-container ml-4">
           {isLoading ? (
             <Skeleton width={300} height={200} />
           ) : (
