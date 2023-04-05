@@ -11,7 +11,10 @@ import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 
 const OverviewPage = () => {
   const history = useHistory();
-  const { coursesEnrollment, loading: coursesEnrollLoading } = useGetEnrollmentList();
+  const {
+    coursesEnrollment, loading: coursesEnrollLoading, courseTitles, courseIds,
+  } = useGetEnrollmentList();
+
   return (
     <main>
       <div className="d-flex flex-column">
@@ -57,9 +60,10 @@ const OverviewPage = () => {
                 <RecommendedPrograms />
               </div> */}
         </div>
-        <SimilarCourses />
+        <SimilarCourses courseTitles={courseTitles} courseIds={courseIds} />
       </div>
     </main>
   );
 };
+
 export default OverviewPage;

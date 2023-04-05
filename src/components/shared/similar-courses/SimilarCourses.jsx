@@ -1,12 +1,11 @@
 import { ChevronLeft, ChevronRight } from '@edx/paragon/icons';
 import { Carousel, Icon } from '@edx/paragon';
+import PropTypes from 'prop-types';
 import CourseCardSkeleton from '../skeleton/CourseCardSkeleton';
 import CourseCardNew from '../course-card/CourseCardNew';
 import useGetSimilarCourses from '../../../hooks/useGetSimilarCourses';
-import useGetEnrollmentList from '../../../hooks/useGetEnrollmentList';
 
-const SimilarCourses = () => {
-  const { courseTitles, courseIds } = useGetEnrollmentList();
+const SimilarCourses = ({ courseTitles, courseIds }) => {
   const { similarCourses, loading } = useGetSimilarCourses(courseTitles, courseIds);
   const chunkedArray = [];
   const chunkSize = () => {
@@ -70,5 +69,13 @@ const SimilarCourses = () => {
       </div>
     )
   );
+};
+SimilarCourses.propTypes = {
+  courseTitles: PropTypes.string,
+  courseIds: PropTypes.arrayOf(PropTypes.string),
+};
+SimilarCourses.defaultProps = {
+  courseTitles: '',
+  courseIds: [],
 };
 export default SimilarCourses;
