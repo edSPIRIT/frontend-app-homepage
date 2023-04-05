@@ -7,6 +7,7 @@ import useGetSimilarCourses from '../../../hooks/useGetSimilarCourses';
 
 const SimilarCourses = ({ courseTitles, courseIds }) => {
   const { similarCourses, loading } = useGetSimilarCourses(courseTitles, courseIds);
+  console.log('courseIdscourseIds', courseIds);
   const chunkedArray = [];
   const chunkSize = () => {
     for (let i = 0; i < similarCourses?.length; i += 4) {

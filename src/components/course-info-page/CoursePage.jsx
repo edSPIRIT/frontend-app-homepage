@@ -107,7 +107,7 @@ const CoursePage = () => {
       </section>
       <SimilarCourses
         courseTitles={courseMetaData?.additional_metadata?.display_name}
-        courseIds={courseMetaData?.course_id}
+        courseIds={[`${courseMetaData?.course_id}`]}
       />
     </>
   );
