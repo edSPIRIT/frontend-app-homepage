@@ -53,8 +53,11 @@ const useGetSimilarCourses = (searchQuery, courseIds) => {
     getTokenData();
   }, []);
   useEffect(() => {
-    getSimilarCoursesData();
-  }, []);
+    if (searchQuery) {
+      getSimilarCoursesData();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery]);
   useEffect(() => {
     if (searchQuery && courseIds && similarCourses?.results) {
       console.log('searchQuery & courseIds inuseeffect', searchQuery, courseIds, similarCourses?.results);
