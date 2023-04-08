@@ -15,19 +15,19 @@ const CourseCardNew = ({ course }) => {
   const history = useHistory();
 
   return (
-    <Link to={`/course/${course.course_slug}`}>
+    <Link to={`/course/${course?.course_slug}`}>
       <Card className="cards-wrapper">
         <Card.ImageCap
           src={`${getConfig().LMS_BASE_URL}${
-            course.additional_metadata?.course_image_url
+            course?.additional_metadata?.course_image_url
           }`}
-          logoSrc={course.partner?.organization?.logo ?? logoPlaceholder}
+          logoSrc={course?.partner?.organization?.logo ?? logoPlaceholder}
           variant="top"
           alt=""
         />
         <div className="mt-4.5 px-4">
           <h4 className="mb-1 course-title">
-            {course.additional_metadata?.display_name}
+            {course?.additional_metadata?.display_name}
           </h4>
           <Link
             to={`/partners/${course?.partner?.organization?.short_name}`}
@@ -42,7 +42,7 @@ const CourseCardNew = ({ course }) => {
             <div className="d-flex flex-row align-items-center mb-2">
               <Icon className="card-icon" src={isProgram ? Groups : Person} />
               <p className="program-instructors-wrapper">
-                {course.instructors?.map((ins) => (
+                {course?.instructors?.map((ins) => (
                   <Link
                     key={ins.slug}
                     className="course-text"
