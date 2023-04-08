@@ -1,0 +1,120 @@
+.explore-courses-container {
+  @extend .py-6;
+  background-color: $light-200;
+  .explorer-title {
+    justify-content: center;
+  }
+  .pgn__card {
+    display: flex;
+    height: 100%;
+    .pgn__card-image-cap {
+      height: 92px;
+    }
+    .pgn__card-section {
+      display: flex;
+      padding: 1.25rem 1.25rem 0 1.25rem;
+    }
+    .btn-primary {
+      width: 100%;
+      color: $primary;
+      background-color: $white;
+      border-color: $light;
+    }
+    &:hover {
+      .btn-primary {
+        background-color: $primary;
+        color: $white;
+      }
+    }
+  }
+}
+.nav-tabs {
+  font-size: 14px;
+  border-bottom: unset;
+  justify-content: center;
+  .nav-link {
+    border-bottom: 2px solid #e9e6e4;
+  }
+  .active {
+    color: $gray-700 !important;
+  }
+  .nav-item {
+    background-color: unset !important;
+    color: $gray-500;
+  }
+  .dropdown {
+    visibility: hidden;
+  }
+  .pgn__tab_invisible {
+    visibility: unset;
+    left: unset;
+  }
+  .pgn__tab_more {
+    display: none;
+  }
+}
+
+.course-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0px, 1fr));
+  gap: 24px;
+}
+.scroll-courses-container {
+  .scroll-wrapper {
+    gap: 16px;
+    .pgn__card {
+      margin-right: unset;
+    }
+  }
+}
+.skeleton-wrapper {
+  z-index: 20;
+  position: relative;
+  border-radius: 6px;
+  border: 1px solid $light-400;
+  .react-loading-skeleton {
+    line-height: unset;
+  }
+  .skeleton-logo {
+    position: absolute;
+    top: 42px;
+    left: 24px;
+    width: 116px;
+    height: 66px;
+    background-color: $white;
+    box-shadow: $card-ing-shadow;
+    border-radius: 4px;
+  }
+}
+
+// @media (max-width: 1350px) {
+//   .course-container {
+//     grid-template-columns: repeat(3, minmax(0px, 1fr));
+//   }
+// }
+
+@media (min-width: 768px) and (max-width: 1350px) {
+  .course-container {
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  .scroll-wrapper {
+    .pgn__card {
+      width: 300px;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .nav-tabs {
+    justify-content: unset;
+  }
+  .explorer-title {
+    justify-content: unset !important;
+  }
+  .scroll-wrapper {
+    .pgn__card {
+      width: 286px;
+    }
+  }
+}

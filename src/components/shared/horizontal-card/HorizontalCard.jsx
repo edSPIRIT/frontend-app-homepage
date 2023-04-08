@@ -111,7 +111,7 @@ const HorizontalCard = ({ courseInfo }) => {
                       `https://apps.${getConfig().LMS_BASE_URL.replace(
                         'https://',
                         '',
-                      )}/course/${courseInfo?.course_metadata?.slug}`,
+                      )}homepage/course/${courseInfo?.course_metadata?.slug}`,
                     );
                   }}
                 />
