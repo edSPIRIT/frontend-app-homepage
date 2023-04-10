@@ -108,14 +108,12 @@
   }
   .pgn__card-section {
     height: 100%;
+    padding: 24px 24px 20px 24px;
+    background-color: $light-200;
   }
   .partner-name-wrapper {
     @extend .d-flex, .justify-content-between, .align-items-center;
     height: 36px;
-  }
-  .pgn__card-section {
-    padding: 24px 24px 20px 24px;
-    background-color: $light-200;
   }
   p {
     @include line-break(2);

@@ -1,5 +1,9 @@
-import { Tab, Tabs, useMediaQuery } from '@edx/paragon';
+import {
+  Button, Tab, Tabs, useMediaQuery,
+} from '@edx/paragon';
 import { useState } from 'react';
+import { ArrowForwardIos } from '@edx/paragon/icons';
+import { useHistory } from 'react-router';
 import useGetTopRecentCourses from '../../../hooks/useGetTopRecentCourses';
 import CourseCardNew from '../../shared/course-card/CourseCardNew';
 import CourseCardSkeleton from '../../shared/skeleton/CourseCardSkeleton';
@@ -8,16 +12,16 @@ import ScrollableExplorerCourses from './explorer-courses/ScrollableExplorerCour
 const ExplorerCourses = () => {
   const [key, setKey] = useState('home');
   const { recentCourses, topCourses, loading } = useGetTopRecentCourses();
-  const isMobile = useMediaQuery({ maxWidth: '768px' });
+  const isMobile = useMediaQuery({ maxWidth: '1024px' });
+  const history = useHistory();
 
   return (
     <section id="explore-courses" className="explore-courses-container">
-      <div className="custom-container d-flex flex-column">
+      <div className="custom-container d-flex flex-column explore-course-wrapper">
         <h2 className="d-flex explorer-title mb-4">
           Explore<span className="highlighted ml-2">Courses</span>
         </h2>
         <Tabs
-          className="mb-5"
           id="controlled-tab-example"
           activeKey={key}
           onSelect={(k) => setKey(k)}
@@ -37,8 +41,8 @@ const ExplorerCourses = () => {
                     ))
                   : topCourses?.map((course) => (
                     <CourseCardNew
-                      course={course.course_metadata}
-                      key={course.title}
+                      course={course}
+                      key={course.course_slug}
                     />
                   ))}
               </div>
@@ -50,12 +54,21 @@ const ExplorerCourses = () => {
             ) : (
               <div className="course-container">
                 {recentCourses?.map((course) => (
-                  <CourseCardNew course={course} key={course.title} />
+                  <CourseCardNew course={course} key={course.course_slug} />
                 ))}
               </div>
             )}
           </Tab>
         </Tabs>
+        <div className="d-flex justify-content-center">
+          <Button
+            className="view-all-courses-btn mt-4"
+            iconAfter={ArrowForwardIos}
+            onClick={() => history.push('/search')}
+          >
+            View all Courses
+          </Button>
+        </div>
       </div>
     </section>
   );

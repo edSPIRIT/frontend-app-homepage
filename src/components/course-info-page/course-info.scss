@@ -62,6 +62,7 @@
 }
 
 .course-info-side-wrapper {
+  @include card-styles;
   position: sticky;
   width: 324px;
   top: 160px;
@@ -71,58 +72,28 @@
   .skeleton-logo {
     top: 154px;
   }
-  .cards-wrapper {
+  .cards-info-wrapper {
     border: unset;
     box-shadow: $card-ing-shadow;
     &:hover {
       box-shadow: $card-ing-shadow;
     }
-    .card-icon {
-      @extend .mr-2;
-      width: 20px;
-      color: $gray-500;
-    }
-    .btn-card-container {
-      .btn {
+    .btn-card-info-container {
+      width: 100%;
+      .enroll-btn {
         height: 44px;
         width: 100%;
+        color: $white;
       }
     }
     .pgn__card-image-cap {
       border-top-left-radius: 0.375rem;
       border-top-right-radius: 0.375rem;
-    }
-    .pgn__icon {
-      height: unset;
-      opacity: 0.5;
-    }
-    .pgn__card-wrapper-image-cap {
-      max-height: unset;
-    }
-    .pgn__card-image-cap {
       height: 204px;
     }
 
-    .program-instructors-wrapper {
-      width: 276px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      a {
-        color: black;
-        text-decoration: none !important;
-        &:hover {
-          text-decoration: none;
-        }
-        &::after {
-          content: ', ';
-        }
-        &:last-child {
-          &::after {
-            content: '';
-          }
-        }
-      }
+    .pgn__card-wrapper-image-cap {
+      max-height: unset;
     }
   }
   .date-text {

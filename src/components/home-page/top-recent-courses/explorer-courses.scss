@@ -1,30 +1,18 @@
 .explore-courses-container {
-  @extend .py-6;
   background-color: $light-200;
+  padding-top: 80px;
+  padding-bottom: 80px;
   .explorer-title {
     justify-content: center;
   }
-  .pgn__card {
-    display: flex;
-    height: 100%;
-    .pgn__card-image-cap {
-      height: 92px;
-    }
-    .pgn__card-section {
-      display: flex;
-      padding: 1.25rem 1.25rem 0 1.25rem;
-    }
-    .btn-primary {
-      width: 100%;
-      color: $primary;
-      background-color: $white;
-      border-color: $light;
-    }
-    &:hover {
-      .btn-primary {
-        background-color: $primary;
-        color: $white;
-      }
+  .view-all-courses-btn {
+    display: none;
+    height: 44px;
+    color: $gray-500;
+    background-color: transparent;
+    border-color: $light-400;
+    svg {
+      padding: 4px;
     }
   }
 }
@@ -32,6 +20,7 @@
   font-size: 14px;
   border-bottom: unset;
   justify-content: center;
+  margin-bottom: 48px;
   .nav-link {
     border-bottom: 2px solid #e9e6e4;
   }
@@ -68,6 +57,7 @@
   }
 }
 .skeleton-wrapper {
+  min-width: 300px;
   z-index: 20;
   position: relative;
   border-radius: 6px;
@@ -92,19 +82,26 @@
 //     grid-template-columns: repeat(3, minmax(0px, 1fr));
 //   }
 // }
-
+@media (max-width: 1024px) {
+  .explore-courses-container {
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+  .nav-tabs {
+    margin-bottom: 24px !important;
+  }
+  .view-all-courses-btn {
+    display: flex !important;
+  }
+}
 @media (min-width: 768px) and (max-width: 1350px) {
   .course-container {
     grid-template-columns: repeat(3, minmax(0px, 1fr));
   }
 }
-@media (max-width: 768px) {
-  .scroll-wrapper {
-    .pgn__card {
-      width: 300px;
-    }
-  }
-}
+// @media (max-width: 768px) {
+
+// }
 @media (max-width: 600px) {
   .nav-tabs {
     justify-content: unset;
@@ -112,9 +109,9 @@
   .explorer-title {
     justify-content: unset !important;
   }
-  .scroll-wrapper {
-    .pgn__card {
-      width: 286px;
-    }
+}
+@media (max-width: 400px) {
+  .view-all-courses-btn {
+    width: 100%;
   }
 }

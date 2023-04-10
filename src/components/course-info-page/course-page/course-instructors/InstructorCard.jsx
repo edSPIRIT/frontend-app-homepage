@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const InstructorCard = ({ instructor }) => (
-  <Link to={`/instructor/${instructor.slug}`} className="instructor-wrapper d-flex">
+  <Link to={`/instructor/${instructor?.slug}`} className="instructor-wrapper d-flex">
     <div className="instructor-img-wrapper mr-4">
-      <img src={instructor.image} alt="instructor-avator" />
+      <img src={instructor?.image} alt="instructor-avator" />
     </div>
     <div className="d-flex flex-column w-100">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <div>
-          <span className="instructor-title mr-5 mb-1">{instructor.name}</span>
+          <span className="instructor-title mr-5 mb-1">{instructor?.name}</span>
           <span className="instructor-short-bio mr-3.5">
-            {instructor.short_bio}
+            {instructor?.short_bio}
           </span>
         </div>
         <IconButton
@@ -34,7 +34,7 @@ const InstructorCard = ({ instructor }) => (
         <div className="d-flex">
           <Icon src={BookOpen} className="mr-2" />
           <p>
-            <span>{instructor?.courses.length} Courses</span>
+            <span>{instructor?.courses?.length} Courses</span>
           </p>
         </div>
       </div>

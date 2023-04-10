@@ -21,7 +21,7 @@ const CourseCardNew = ({ course }) => {
           src={`${getConfig().LMS_BASE_URL}${
             course?.additional_metadata?.course_image_url
           }`}
-          logoSrc={course?.partner?.organization?.logo ?? logoPlaceholder}
+          // logoSrc={course?.partner?.organization?.logo ?? logoPlaceholder}
           variant="top"
           alt=""
         />
@@ -34,7 +34,9 @@ const CourseCardNew = ({ course }) => {
             className="institution-title font-sm"
             href="#institution"
           >
-            {course.additional_metadata?.org}
+            <p className="institution-title font-sm">
+              {course?.additional_metadata?.org}
+            </p>
           </Link>
         </div>
         <Card.Section>
@@ -45,7 +47,7 @@ const CourseCardNew = ({ course }) => {
                 {course?.instructors?.map((ins) => (
                   <Link
                     key={ins.slug}
-                    className="course-text"
+                    className="instructor-title"
                     to={`/instructor/${ins.slug}`}
                   >
                     {ins.name}
@@ -76,9 +78,9 @@ const CourseCardNew = ({ course }) => {
                 </p>
               </div>
             )}
-            {course.paid_course?.price > 0 ? (
+            {course?.paid_course?.price > 0 ? (
               <span className="price-title mt-auto">
-                {course.paid_course?.price_human}
+                {course?.paid_course?.price_human}
               </span>
             ) : (
               <span className="price-title mt-auto">Free</span>
@@ -89,6 +91,7 @@ const CourseCardNew = ({ course }) => {
           <div className="btn-card-container">
             <Button
               variant="primary"
+              className="learn-btn"
               onClick={() => history.push(course?.course_slug)}
             >
               Learn more

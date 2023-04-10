@@ -16,7 +16,7 @@ const Footer = () => {
   const { footerData } = useGetFooters();
   return (
     <footer>
-      <div className="custom-container mb-4 mt-6 pt-6">
+      <div className="custom-container mb-4 pt-5">
         <div className=" footer-wrapper">
           <div className=" footer-desc-wrapper">
             <div className="d-flex flex-column">
@@ -128,7 +128,7 @@ const Footer = () => {
               <img className="mobile-footer-logo  h-100" src={mobileFooterLogo} alt="footer-logo" />
             </div>
             <p className="footer-desc">
-              © Copyright Notion Wave, {new Date().getFullYear()}.
+              Powered by <u>edSPIRIT</u>
             </p>
           </div>
           <div className="d-flex edx-wrapper">

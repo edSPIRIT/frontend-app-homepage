@@ -18,7 +18,7 @@ const CourseCard = ({ info }) => {
     instructorLink,
     lessons,
     time,
-    isProgram,
+    isProgram = false,
     slug,
   } = info;
 
@@ -76,7 +76,10 @@ const CourseCard = ({ info }) => {
         </Card.Section>
         <Card.Footer>
           <div className="btn-card-container">
-            <Button variant="primary" href="#course">
+            <Button
+              variant="primary"
+              className="learn-btn"
+            >
               Learn more
             </Button>
           </div>

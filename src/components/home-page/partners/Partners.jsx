@@ -5,8 +5,8 @@ import useGetPartners from '../../../hooks/useGetPartners';
 const Partners = () => {
   const { topPartners, loading } = useGetPartners();
   return (
-    <section id="partners" className="pt-6 partners">
-      <div className="custom-container">
+    <section id="partners" className="partners-container">
+      <div className="custom-container ">
         <Link to="/partners">
           <h2 className="d-flex justify-content-center mb-4">Partners</h2>
         </Link>

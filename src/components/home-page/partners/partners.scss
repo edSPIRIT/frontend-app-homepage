@@ -1,4 +1,7 @@
-.partners {
+.partners-container {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid $light-400;
   .partners-img-wrapper {
     width: 208px;
     height: 112px;
@@ -9,4 +12,11 @@
     padding: 8px;
     object-fit: contain;
   }
+}
+
+@media (max-width: 1024px) {
+.partners-container {
+  padding-top: 32px !important;
+  padding-bottom: 32px !important;
+}
 }

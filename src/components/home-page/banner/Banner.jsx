@@ -15,7 +15,7 @@ const Banner = () => {
   } = useGetBanner();
   return (
     <section className="hero">
-      <div className=" custom-container py-6  banner-wrapper">
+      <div className=" custom-container banner-wrapper">
         <div className="text-container">
           <h1 className="display-1">
             {isLoading ? (

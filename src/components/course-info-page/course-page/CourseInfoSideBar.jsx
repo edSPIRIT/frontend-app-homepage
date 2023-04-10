@@ -26,7 +26,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => (
         </div>
       </div>
     ) : (
-      <Card className="cards-wrapper">
+      <Card className="cards-info-wrapper ">
         <Card.ImageCap
           src={
             `${getConfig().LMS_BASE_URL}${
@@ -55,7 +55,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => (
                 {courseMetaData?.instructors?.map((ins) => (
                   <Link
                     key={ins.name}
-                    className="color-black"
+                    className="instructor-title"
                     to={`/instructor/${ins.slug}`}
                   >
                     {ins.name}
@@ -95,8 +95,8 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => (
           </div>
         </Card.Section>
         <Card.Footer>
-          <div className="btn-card-container d-flex flex-column justify-content-center align-items-center">
-            <Button variant="brand" href="#course" className="mb-3">
+          <div className="btn-card-info-container d-flex flex-column justify-content-center align-items-center">
+            <Button variant="brand" href="#course" className="mb-3 enroll-btn">
               Enroll now
             </Button>
             {courseMetaData?.additional_metadata?.total_enrollments && (

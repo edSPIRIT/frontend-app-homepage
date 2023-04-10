@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 const PartnersCardGrid = ({ partnersData, loading }) => (
   <>
-    <div className="partners-grid-wrapper">
+    <div className="partners-grid-wrapper mb-5.5">
       {loading
         ? Array(5)
           .fill(1)

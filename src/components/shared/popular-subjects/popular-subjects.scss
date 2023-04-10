@@ -28,3 +28,28 @@
   width: 17px;
 }
 
+.popular-subject-container {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  .popular-title {
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .popular-subject-container {
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .popular-subject-container {
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+  .popular-title {
+    justify-content: unset !important;
+    margin-bottom: 24px !important;
+  }
+}

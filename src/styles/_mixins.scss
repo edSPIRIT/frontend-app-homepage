@@ -52,7 +52,7 @@
     }
   }
 }
-@mixin infinite-background-container($color){
+@mixin infinite-background-container($color) {
   &::before {
     background: $color;
     bottom: 0;
@@ -72,5 +72,39 @@
     top: 0;
     width: 500%;
     z-index: -1;
+  }
+}
+@mixin card-styles {
+  .card-icon {
+    @extend .mr-2;
+    width: 20px;
+    color: $gray-500;
+  }
+  .pgn__icon {
+    height: unset;
+    opacity: 0.5;
+  }
+  .instructor-title {
+    text-decoration: none !important;
+    color: $black !important;
+    &:hover {
+      color: $info-500 !important;
+    }
+  }
+  .program-instructors-wrapper {
+    max-width: 244px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    a {
+      &::after {
+        content: ', ';
+      }
+      &:last-child {
+        &::after {
+          content: '';
+        }
+      }
+    }
   }
 }

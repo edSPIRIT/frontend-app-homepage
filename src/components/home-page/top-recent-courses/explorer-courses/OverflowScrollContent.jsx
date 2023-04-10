@@ -24,8 +24,8 @@ const OverflowScrollContent = () => {
               ))
             : topCourses?.map((course) => (
               <CourseCardNew
-                course={course.course_metadata}
-                key={course.title}
+                course={course}
+                key={course.course_slug}
               />
             ))}
         </div>
