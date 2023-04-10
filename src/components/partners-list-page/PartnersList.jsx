@@ -29,10 +29,11 @@ const PartnersList = () => {
             onSubmit={(value) => console.log(`search submitted: ${value}`)}
             placeholder="Who are you looking for?"
           />
-          <Link className="banner-link pb-5" to="/">
+          {/* temporary remove from ui */}
+          {/* <Link className="banner-link pb-5" to="/">
             <span className="mr-2">How to become a partner</span>
             <Icon src={ArrowForward} />
-          </Link>
+          </Link> */}
         </div>
         <div className="d-flex justify-content-center banner-icons-wrapper">
           <div className="icon-wrapper">

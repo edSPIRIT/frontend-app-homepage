@@ -21,7 +21,7 @@ const CourseCardNew = ({ course }) => {
           src={`${getConfig().LMS_BASE_URL}${
             course?.additional_metadata?.course_image_url
           }`}
-          // logoSrc={course?.partner?.organization?.logo ?? logoPlaceholder}
+          logoSrc={course?.partner?.organization?.logo ?? logoPlaceholder}
           variant="top"
           alt=""
         />

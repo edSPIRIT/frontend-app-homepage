@@ -72,9 +72,7 @@ const Footer = () => {
                 iconAfter={KeyboardArrowDown}
                 iconBefore={Language}
               >
-                <span className="text-primary-500 dropdown-title">
-                  {value}
-                </span>
+                <span className="text-primary-500 dropdown-title">{value}</span>
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item
@@ -105,16 +103,40 @@ const Footer = () => {
             </Dropdown>
             <div className="social-container">
               {footerData?.links?.socials.linkedin && (
-                <Icon className="social-icon-footer" src={Linkedin} />
+                <a
+                  href={footerData?.links?.socials.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icon className="social-icon-footer" src={Linkedin} />
+                </a>
               )}
               {footerData?.links?.socials.facebook && (
-                <Icon className="social-icon-footer" src={Facebook} />
+                <a
+                  href={footerData?.links?.socials.facebook}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icon className="social-icon-footer" src={Facebook} />
+                </a>
               )}
               {footerData?.links?.socials.twitter && (
-                <Icon className="social-icon-footer" src={Twitter} />
+                <a
+                  href={footerData?.links?.socials.twitter}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icon className="social-icon-footer" src={Twitter} />
+                </a>
               )}
               {footerData?.links?.socials.instagram && (
-                <Icon className="social-icon-footer" src={Reddit} />
+                <a
+                  href={footerData?.links?.socials.instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icon className="social-icon-footer" src={Reddit} />
+                </a>
               )}
             </div>
           </div>
@@ -124,16 +146,31 @@ const Footer = () => {
         <div className="footer-copy-right custom-container d-flex justify-content-between align-items-center ">
           <div className="d-flex align-items-center">
             <div className="logo-container mr-2">
-              <img className="footer-logo  h-100" src={edLogo} alt="footer-logo" />
-              <img className="mobile-footer-logo  h-100" src={mobileFooterLogo} alt="footer-logo" />
+              <img
+                className="footer-logo  h-100"
+                src={edLogo}
+                alt="footer-logo"
+              />
+              <img
+                className="mobile-footer-logo  h-100"
+                src={mobileFooterLogo}
+                alt="footer-logo"
+              />
             </div>
             <p className="footer-desc">
-              Powered by <u>edSPIRIT</u>
+              Powered by{' '}
+              <a className="footer-desc" href="https://edspirit.com/">
+                edSPIRIT
+              </a>
             </p>
           </div>
           <div className="d-flex edx-wrapper">
             <div className="logo-container mr-2">
-              <img className="mobile-footer-logo  h-100" src={mobileEdxLogo} alt="footer-logo-edx" />
+              <img
+                className="mobile-footer-logo  h-100"
+                src={mobileEdxLogo}
+                alt="footer-logo-edx"
+              />
             </div>
             <p className="footer-desc d-flex align-items-center">
               edX and Open edX are trademarks of edX LLC. All Rights Reserved

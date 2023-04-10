@@ -143,7 +143,6 @@ const HorizontalCard = ({ courseInfo }) => {
             <Link
               className="mb-3.5 org-title"
               to={`/partners/${courseInfo?.organization?.short_name}`}
-
             >
               {courseInfo?.organization?.name}
             </Link>

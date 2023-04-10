@@ -48,12 +48,15 @@ const OverviewPage = () => {
                   View All
                 </Button>
               </div>
-              {coursesEnrollment?.map((courseInfo) => (
-                <HorizontalCard
-                  key={courseInfo?.course_details?.course_id}
-                  courseInfo={courseInfo}
-                />
-              ))}
+              {coursesEnrollment
+                ?.filter(
+                  (courseInfo) => courseInfo?.progress?.incomplete_count > 0,
+                )?.map((courseInfo) => (
+                  <HorizontalCard
+                    key={courseInfo?.course_details?.course_id}
+                    courseInfo={courseInfo}
+                  />
+                ))}
             </div>
           )}
           {/* <div className="recommended-program-wrapper">
