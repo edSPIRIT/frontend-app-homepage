@@ -8,14 +8,14 @@ const PopularSubjects = () => {
   const history = useHistory();
 
   return (
-    <div className="d-flex flex-wrap">
+    <div className="subject-container">
       {/* TO DO: Do not use Array index in keys */}
       {loading
         ? Array(10)
           .fill(1)
           .map((item, i) => (
             // eslint-disable-next-line react/no-array-index-key
-            <div className="subject-container" key={i}>
+            <div className="subject-wrapper" key={i}>
               <Skeleton className="mr-1" width={66} height={66} />
               <Skeleton width={175} height={20} />
             </div>
@@ -23,11 +23,11 @@ const PopularSubjects = () => {
         : popularSubjects?.map((subject) => (
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
           <div
-            className="subject-container"
+            className="subject-wrapper d-flex"
             key={subject.slug}
             onClick={() => history.push('/search')}
           >
-            <img className="subject-img" src={subject.image} alt="" />
+            <img className="subject-img" src={subject.image} alt="subject" />
             <h4 className="subject-title mr-2">{subject.title}</h4>
             <Icon className="subject-icon" src={ArrowForwardIos} />
           </div>

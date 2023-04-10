@@ -23,7 +23,8 @@ const CourseCardNew = ({ course }) => {
           }`}
           logoSrc={course?.partner?.organization?.logo ?? logoPlaceholder}
           variant="top"
-          alt=""
+          srcAlt="course-header"
+          logoAlt="partner-logo"
         />
         <div className="mt-4.5 px-4">
           <h4 className="mb-1 course-title">

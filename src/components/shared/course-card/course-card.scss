@@ -13,7 +13,7 @@
 }
 .cards-wrapper {
   @include card-styles;
-  min-width: 324px;
+  min-width: 272px;
   height: 100%;
   .pgn__card-logo-cap {
     object-fit: contain;

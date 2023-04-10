@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { SearchField, Icon, Breadcrumb } from '@edx/paragon';
 import {
-  ArrowForward, BookOpen, DrawShapes, Groups,
+  BookOpen, DrawShapes, Groups,
 } from '@edx/paragon/icons';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
