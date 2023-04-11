@@ -1,0 +1,127 @@
+.instructor-header {
+  background: $background-dark-blue;
+  padding-top: 32px;
+  padding-bottom: 64px;
+  h1 {
+    color: $white;
+  }
+  .short-bio {
+    color: $light-500;
+    font-size: 1.25rem;
+  }
+  .long-bio-instructor {
+    max-width: 912px;
+    @include line-break(4);
+  }
+  .instructor-share-icon {
+    cursor: pointer;
+    color: $light-500;
+    opacity: 0.5;
+  }
+  .instructor-icons-wrapper {
+    @extend .d-flex, .justify-content-between;
+    align-items: center;
+    max-width: 912px;
+    color: $light-500 !important;
+    opacity: 0.5;
+    font-size: $font-size-base-sm;
+  }
+  p {
+    color: $light-300;
+  }
+  .btn {
+    color: $accent-a;
+    &:active {
+      color: $accent-a !important;
+    }
+  }
+  .instructor-img-wrapper {
+    height: 256px;
+    width: 256px;
+    margin-right: 5.75rem;
+  }
+  .img-instructor {
+    height: 100%;
+    border-radius: 1.5rem;
+  }
+}
+.breadcrumb-container {
+  @include custom-breadcrumb($light-300, $light-500);
+  background: $background-dark-blue;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  .list-inline {
+    margin-bottom: unset;
+  }
+}
+.social-icon-skeleton-wrapper {
+  span {
+    display: flex;
+    flex-direction: row;
+  }
+  .social-icon-skeleton {
+    border-radius: 50%;
+  }
+}
+.popular-courses-wrapper {
+  margin-top: 48px;
+  margin-bottom: 32px;
+  justify-content: center;
+}
+
+@media (max-width: 1440px) {
+  .instructor-img-wrapper {
+    margin-right: unset !important;
+  }
+}
+@media (max-width: 768px) {
+  .instructor-header {
+    padding-bottom: 32px;
+    h1 {
+      font-size: 36px;
+    }
+  }
+  .breadcrumb-container {
+    @include custom-breadcrumb($primary-500, $gray-500);
+    background: $white !important;
+    padding-top: 0;
+    padding-bottom: 16px;
+  }
+  .popular-courses-wrapper {
+    margin-top: 32px;
+    margin-bottom: 24px;
+  }
+  .instructor-share-icon-mobile {
+    display: block !important;
+    color: #e1dddb;
+    opacity: 0.5;
+  }
+  .instructor-share-icon {
+    display: none;
+  }
+  .header-container {
+    flex-direction: column;
+  }
+  .img-container {
+    margin-bottom: 24px;
+  }
+  .instructor-img-wrapper {
+    height: 60px !important;
+    width: 60px !important;
+    .img-instructor {
+      border-radius: 6px;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .popular-courses-wrapper {
+    justify-content: unset;
+  }
+  .instructor-icons-wrapper {
+    flex-direction: column;
+    align-items: unset !important;
+  }
+  .social-container {
+    margin-top: 24px;
+  }
+}

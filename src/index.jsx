@@ -21,7 +21,6 @@ import OverviewPage from './components/overview-page/OverviewPage';
 import InProgress from './components/inProgress-page/InProgress';
 import Completed from './components/completed-page/Completed';
 import Discover from './components/discover-page/Discover';
-import Instructor from './components/bio-page/Instructor';
 import Search from './components/search-page/Search';
 import NotFound from './components/notFount-page/NotFound';
 import PartnersList from './components/partners-list-page/PartnersList';
@@ -30,6 +29,7 @@ import CoursePage from './components/course-info-page/CoursePage';
 import ProgramPage from './components/program-info-page/ProgramPage';
 import ProtectedRoute from './ProtectedRoute';
 import ScrollToTop from './ScroollToTop';
+import Instructor from './components/instructor-page/Instructor';
 
 const queryClient = new QueryClient({
   defaultOptions: {

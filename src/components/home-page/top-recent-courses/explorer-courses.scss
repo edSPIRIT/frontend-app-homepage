@@ -5,15 +5,15 @@
   .explorer-title {
     justify-content: center;
   }
-  .view-all-courses-btn {
-    display: none;
-    height: 44px;
-    color: $gray-500;
-    background-color: transparent;
-    border-color: $light-400;
-    svg {
-      padding: 4px;
-    }
+}
+.view-all-courses-btn {
+  // display: none;
+  height: 44px;
+  color: $gray-500;
+  background-color: transparent;
+  border-color: $light-400;
+  svg {
+    padding: 4px;
   }
 }
 .nav-tabs {
@@ -50,8 +50,8 @@
 }
 .scroll-courses-container {
   .scroll-wrapper {
-        display: grid;
-    grid-template-columns: repeat(4,1fr);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     .pgn__card {
       margin-right: unset;
@@ -79,12 +79,15 @@
   }
 }
 
-// @media (max-width: 1350px) {
-//   .course-container {
-//     grid-template-columns: repeat(3, minmax(0px, 1fr));
-//   }
-// }
+@media (min-width: 1024px) and (max-width: 1350px) {
+  .course-container {
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
+  }
+}
 @media (max-width: 1024px) {
+  .course-container {
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+  }
   .explore-courses-container {
     padding-top: 32px !important;
     padding-bottom: 32px !important;
@@ -92,19 +95,15 @@
   .nav-tabs {
     margin-bottom: 24px !important;
   }
-  .view-all-courses-btn {
-    display: flex !important;
-  }
+  // .view-all-courses-btn {
+  //   display: flex !important;
+  // }
 }
-@media (min-width: 768px) and (max-width: 1350px) {
-  .course-container {
-    grid-template-columns: repeat(3, minmax(0px, 1fr));
-  }
-}
-// @media (max-width: 768px) {
 
-// }
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .course-container {
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+  }
   .nav-tabs {
     justify-content: unset;
   }
@@ -112,7 +111,10 @@
     justify-content: unset !important;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
+  .course-container {
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+  }
   .view-all-courses-btn {
     width: 100%;
   }

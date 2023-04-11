@@ -61,6 +61,7 @@
   }
 }
 .mobile-header {
+   box-shadow: 0px 2px 8px 0px #00000026;
   .tablet-search {
     width: 256px;
     height: 44px;
@@ -177,5 +178,10 @@
       border-color: $light-300;
       color: $gray-500;
     }
+  }
+}
+@media (max-width: 768px) {
+  .mobile-header {
+  margin-bottom: 1rem;
   }
 }

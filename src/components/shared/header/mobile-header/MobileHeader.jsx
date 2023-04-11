@@ -37,7 +37,7 @@ const MobileHeader = ({ isOpen: isOpenMenu, close: closeMenu, openMenu }) => {
   });
   return (
     <>
-      <div className="py-3 d-flex justify-content-between align-items-center mobile-header px-4">
+      <div className="py-3 d-flex justify-content-between align-items-center mobile-header px-4 ">
         <IconButton
           src={Menu}
           iconAs={Icon}

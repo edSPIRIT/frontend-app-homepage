@@ -127,14 +127,14 @@ const PartnerPage = () => {
             Popular<span className="highlighted ml-2">Courses</span>
           </h2>
         </h2>
-        <div className="course-container">
+        <div className="course-container mb-4">
           {COURSES_INFO.map((course) => (
             <CourseCard info={course} key={course.title} />
           ))}
         </div>
         <div className="d-flex justify-content-center">
           <Button
-            className="view-all-course-btn"
+            className="view-all-courses-btn"
             iconAfter={ArrowForwardIos}
             onClick={() => history.push('/search')}
           >

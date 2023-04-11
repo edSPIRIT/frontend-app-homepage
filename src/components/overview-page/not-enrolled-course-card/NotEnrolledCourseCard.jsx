@@ -25,7 +25,7 @@ const NotEnrolledCardCourse = () => {
             iconAfter={Search}
             onClick={() => history.push('/search')}
           >
-            Explore programs
+            Explore Courses
           </Button>
         </Card.Footer>
       </Card>

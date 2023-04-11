@@ -22,7 +22,7 @@ const OverviewPage = () => {
           <AvatarInfo />
           {coursesEnrollLoading ? (
             <>
-              <div className="d-flex align-items-center justify-content-between mb-3 mt-5.5">
+              <div className="d-flex align-items-center justify-content-between mb-4 mt-5.5">
                 <Skeleton width={300} height={24} />
                 <Skeleton width={100} height={24} />
               </div>
@@ -37,7 +37,7 @@ const OverviewPage = () => {
             <NotEnrolledCardCourse />
           ) : (
             <div className="overview-courses-wrapper">
-              <div className="d-flex align-items-center justify-content-between mb-3 mt-5.5">
+              <div className="d-flex align-items-center justify-content-between mb-4 mt-5.5">
                 <h3 className="recent-title">Recent In-Progress Courses</h3>
                 <Button
                   variant="outline-primary"

@@ -38,15 +38,8 @@ const Requirements = ({ courseMetaData, loading }) => {
               <Skeleton height={24} />
             ) : (
               <p className="font-sm">
-                <span>This course has</span>
-                {courseMetaData?.additional_metadata?.pre_req_courses.length
-                === 1 ? (
-                  <span className="mx-1">a</span>
-                  ) : (
-                    <span className="mx-1">some</span>
-                  )}
-                <span>prerequisite that must be successfully</span>
-                completed before a you enroll.
+                This course has a prerequisite that must be successfully
+                completed before you enroll.
               </p>
             )}
           </div>

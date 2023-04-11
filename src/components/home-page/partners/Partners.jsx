@@ -13,7 +13,7 @@ const Partners = () => {
         <span className="d-flex justify-content-center mb-5 text-gray-500">
           Founded by Harvard and MIT, edX is home to more than 20 million
           learners, the majority of top-ranked universities in the world and
-          industry-leading companies
+          industry-leading companies.
         </span>
         <div className="d-flex justify-content-center ">
           {loading ? (

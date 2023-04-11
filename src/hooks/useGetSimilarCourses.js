@@ -49,9 +49,9 @@ const useGetSimilarCourses = (searchQuery, courseIds) => {
     }
   };
 
-  useEffect(() => {
-    getTokenData();
-  }, []);
+  // useEffect(() => {
+  //   getTokenData();
+  // }, []);
   useEffect(() => {
     if (searchQuery) {
       getSimilarCoursesData();
