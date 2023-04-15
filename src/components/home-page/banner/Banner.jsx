@@ -5,10 +5,12 @@ import {
 } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import { Link, useHistory } from 'react-router-dom';
+import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import useGetBanner from '../../../hooks/useGetBanner';
 import Highlighted from './Highlighted';
+import messages from '../../../messages';
 
-const Banner = () => {
+const Banner = ({ intl }) => {
   const history = useHistory();
   const {
     title, highlightedWord, description, image, isLoading,
@@ -32,11 +34,17 @@ const Banner = () => {
           <SearchField
             className="hero-search my-4"
             submitButtonLocation="external"
-            placeholder="What do you want to learn?"
+            placeholder={intl.formatMessage(messages.bannerSearchPlaceholder)}
             onSubmit={() => history.push('/search')}
           />
           <Link className="banner-link" to="/discover">
-            <span className="mr-2">Explore New Courses</span>
+            <span className="mr-2">
+              <FormattedMessage
+                id="bannerExploreNewCourses"
+                defaultMessage="Explore New Courses"
+                description="link title to discover page on banner"
+              />
+            </span>
             <Icon src={ArrowForward} />
           </Link>
         </div>
@@ -52,4 +60,8 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+Banner.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(Banner);
