@@ -7,7 +7,6 @@ import useGetSimilarCourses from '../../../hooks/useGetSimilarCourses';
 
 const SimilarCourses = ({ courseTitles, courseIds }) => {
   const { similarCourses, loading } = useGetSimilarCourses(courseTitles, courseIds);
-  console.log('courseIdscourseIds', courseIds);
   const chunkedArray = [];
   const chunkSize = () => {
     for (let i = 0; i < similarCourses?.length; i += 4) {
@@ -15,10 +14,6 @@ const SimilarCourses = ({ courseTitles, courseIds }) => {
     }
   };
   chunkSize();
-  console.log('chunkedArray', chunkedArray);
-  console.log('courseTitles', courseTitles);
-  console.log('similarCourses', similarCourses);
-  console.log('courseIds', courseIds);
   return (
     chunkedArray?.length > 0 && (
       <div className="recommendationCourse-wrapper mt-6 py-6">

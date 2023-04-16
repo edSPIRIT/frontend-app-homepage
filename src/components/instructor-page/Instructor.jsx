@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Breadcrumb, Button, Skeleton } from '@edx/paragon';
+import { Button, Skeleton } from '@edx/paragon';
 import { ArrowForwardIos } from '@edx/paragon/icons';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import useGetInstructor from '../../hooks/useGetInstructor';
 import CourseCardNew from '../shared/course-card/CourseCardNew';
@@ -15,16 +15,6 @@ const Instructor = () => {
 
   return (
     <main>
-      <div className="breadcrumb-container">
-        <div className="custom-container">
-          <Breadcrumb
-            ariaLabel="Breadcrumb basic"
-            links={[{ label: 'Home', to: '/home' }]}
-            linkAs={Link}
-            activeLabel={InstructorData?.name}
-          />
-        </div>
-      </div>
       <InstructorHeader InstructorData={InstructorData} loading={loading} />
       <div className="custom-container d-flex flex-column pb-5">
         <h2 className="d-flex popular-courses-wrapper">
@@ -44,7 +34,11 @@ const Instructor = () => {
         </div>
         <div className="d-flex justify-content-center">
           {loading ? (
-            <Skeleton width={276} height={44} className="view-all-courses-btn" />
+            <Skeleton
+              width={276}
+              height={44}
+              className="view-all-courses-btn"
+            />
           ) : (
             <Button
               className="view-all-courses-btn"

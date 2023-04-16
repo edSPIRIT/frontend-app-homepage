@@ -1,4 +1,3 @@
-
 .similar-courses-wrapper {
   span {
     font-size: $font-size-base-sm;
@@ -7,5 +6,15 @@
     @extend .d-flex;
     gap: 1rem;
     color: $gray-500;
+  }
+}
+@media (max-width: 600px) {
+  .similar-courses-wrapper {
+    .carousel-control-prev {
+      display: none;
+    }
+    .carousel-control-next {
+      display: none;
+    }
   }
 }

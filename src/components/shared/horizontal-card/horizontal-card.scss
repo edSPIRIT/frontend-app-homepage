@@ -24,6 +24,15 @@
     padding: 1.5rem;
     height: 100%;
   }
+  .course-title {
+    color: black;
+    max-width: 604px;
+    @include line-break(2);
+  }
+  .second-title {
+    color: $gray-500;
+    font-size: $font-size-base-sm;
+  }
   .progress {
     background: $light-200;
     border: 1px solid $light-700;
@@ -35,9 +44,10 @@
   .org-title {
     color: $gray-700;
   }
-  .second-title {
+  .course-date-title {
     color: $gray-500;
     font-size: $font-size-base-sm;
+    padding: 20px 0;
   }
   .icons-wrapper {
     height: 28px;
@@ -71,7 +81,7 @@
       }
     }
   }
-  .view-btn{
+  .view-btn {
     width: 142px;
     height: 44px;
     background-color: $primary-500;
@@ -94,7 +104,7 @@
   .org-title {
     color: $light-300;
   }
-  .second-title {
+  .course-date-title {
     color: $light-500;
   }
   .progress {
@@ -113,4 +123,61 @@
 .info-icon {
   color: $light-700;
   opacity: 0.5;
+}
+.check-icon {
+  color: $success-300 !important;
+}
+.more-vert-wrapper {
+  display: none;
+  background-color: $white;
+  border-radius: 6px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.close-wrapper {
+  color: $gray-500;
+  border-bottom: 1px solid $light-300;
+  .pgn__icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+.more-modal-items {
+  position: absolute !important;
+  bottom: 0;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .horizontal-card-course {
+    &:hover {
+      .icons-wrapper {
+        display: none !important;
+      }
+    }
+    .more-vert-wrapper {
+      display: unset;
+    }
+
+    .pgn__card-wrapper-image-cap {
+      width: unset;
+      height: 216px;
+    }
+    .title-wrapper {
+      height: unset;
+    }
+    .course-title {
+      max-width: 279px;
+      @include line-break(3);
+    }
+    .course-date-title {
+      padding: 16px 0;
+    }
+    .view-course-btn {
+      display: none !important;
+    }
+    .progress {
+      width: 100%;
+    }
+  }
 }

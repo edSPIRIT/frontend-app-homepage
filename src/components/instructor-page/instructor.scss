@@ -1,4 +1,5 @@
 .instructor-header {
+  @include custom-breadcrumb($light-300, $light-500);
   background: $background-dark-blue;
   padding-top: 32px;
   padding-bottom: 64px;
@@ -45,15 +46,15 @@
     border-radius: 1.5rem;
   }
 }
-.breadcrumb-container {
-  @include custom-breadcrumb($light-300, $light-500);
-  background: $background-dark-blue;
-  padding-top: 32px;
-  padding-bottom: 32px;
-  .list-inline {
-    margin-bottom: unset;
-  }
-}
+// .breadcrumb-container {
+//   @include custom-breadcrumb($light-300, $light-500);
+//   background: $background-dark-blue;
+//   padding-top: 32px;
+//   padding-bottom: 32px;
+//   .list-inline {
+//     margin-bottom: unset;
+//   }
+// }
 .social-icon-skeleton-wrapper {
   span {
     display: flex;
@@ -68,6 +69,9 @@
   margin-bottom: 32px;
   justify-content: center;
 }
+.back-btn-wrapper {
+  display: none !important;
+}
 
 @media (max-width: 1440px) {
   .instructor-img-wrapper {
@@ -75,17 +79,25 @@
   }
 }
 @media (max-width: 768px) {
+  .skeleton-container {
+    flex-direction: column;
+    .img {
+      width: 60px !important;
+      height: 60px !important;
+      margin-bottom: 24px;
+    }
+  }
+  .back-btn-wrapper {
+    display: flex !important;
+  }
   .instructor-header {
     padding-bottom: 32px;
     h1 {
       font-size: 36px;
     }
   }
-  .breadcrumb-container {
-    @include custom-breadcrumb($primary-500, $gray-500);
-    background: $white !important;
-    padding-top: 0;
-    padding-bottom: 16px;
+  .breadcrumb-wrapper {
+    display: none;
   }
   .popular-courses-wrapper {
     margin-top: 32px;
@@ -114,6 +126,14 @@
   }
 }
 @media (max-width: 600px) {
+  .skeleton-container {
+    .social-instructor-container {
+      flex-direction: column;
+      .social-icon-skeleton-wrapper{
+        margin-top: 24px;
+      }
+    }
+  }
   .popular-courses-wrapper {
     justify-content: unset;
   }

@@ -218,7 +218,7 @@ const MobileHeader = ({ isOpen: isOpenMenu, close: closeMenu, openMenu }) => {
           </div>
         </div>
         <div className=" p-4">
-          <ul className="subject-items">
+          <ul className="subject-items-list">
             {subjects?.map((subject) => (
               <li key={subject.slug}>
                 <Link

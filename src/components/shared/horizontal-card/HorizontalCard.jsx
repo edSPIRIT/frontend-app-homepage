@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/prop-types */
@@ -6,12 +9,15 @@ import {
   Dropdown,
   Icon,
   IconButton,
+  ModalLayer,
   ProgressBar,
   Toast,
+  useMediaQuery,
+  useToggle,
 } from '@edx/paragon';
 import React, { useState } from 'react';
 import {
-  Info, MoreVert, Share, Check, Close,
+  Info, MoreVert, Share, Close, Delete, CheckCircle,
 } from '@edx/paragon/icons';
 import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
@@ -23,8 +29,10 @@ import cardPlaceholder from '../../../assets/card-placeholder.png';
 const HorizontalCard = ({ courseInfo }) => {
   const [showToast, setShowToast] = useState(false);
   const queryClient = useQueryClient();
-  const isSmall = false;
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
+  const [isOpen, open, close] = useToggle(false);
+  const isMobile = useMediaQuery({ maxWidth: '768px' });
+
   const deleteEnrollCourse = useMutation({
     mutationFn: (courseId) => getAuthenticatedHttpClient().post(
       `${getConfig().LMS_BASE_URL}/admin-console/api/openedx/api/unenroll/`,
@@ -43,7 +51,6 @@ const HorizontalCard = ({ courseInfo }) => {
           / (courseInfo?.progress?.complete_count
             + courseInfo?.progress?.incomplete_count))
         * 100;
-      console.log('progress', progress);
       return Math.round(progress);
     }
     return 0;
@@ -55,7 +62,7 @@ const HorizontalCard = ({ courseInfo }) => {
     ) {
       return (
         <div className="d-flex align-items-center">
-          <Icon className="info-icon mr-2.5" src={Check} />
+          <Icon className="check-icon mr-2.5" src={CheckCircle} />
           <span className="second-title">Completed</span>
         </div>
       );
@@ -75,6 +82,53 @@ const HorizontalCard = ({ courseInfo }) => {
       <Toast onClose={() => setShowToast(false)} show={showToast}>
         Course Deleted
       </Toast>
+      <ModalLayer isOpen={isOpen} onClose={close}>
+        <div
+          role="dialog"
+          aria-label="My dialog"
+          className="  bg-white more-modal-items "
+        >
+          <div className="d-flex close-wrapper justify-content-end py-2 px-4">
+            <Icon
+              src={Close}
+              className=" share-icon"
+              onClick={close}
+            />
+          </div>
+          <div className="d-flex flex-column mx-4 color-black">
+            <div className="d-flex align-items-center py-2 ">
+              <Icon
+                src={Share}
+                className="mr-2"
+                onClick={() => {
+                  navigator.clipboard.writeText(
+                    `https://apps.${getConfig().LMS_BASE_URL.replace(
+                      'https://',
+                      '',
+                    )}homepage/course/${courseInfo?.course_metadata?.slug}`,
+                  );
+                }}
+              />
+              <span>Share</span>
+            </div>
+            <div className="d-flex align-items-center py-2 ">
+              <Icon
+                src={Delete}
+                className="mr-2"
+                onClick={() => {
+                  navigator.clipboard.writeText(
+                    `https://apps.${getConfig().LMS_BASE_URL.replace(
+                      'https://',
+                      '',
+                    )}homepage/course/${courseInfo?.course_metadata?.slug}`,
+                  );
+                }}
+              />
+              <span>Unroll</span>
+            </div>
+          </div>
+        </div>
+      </ModalLayer>
       {/* <a
         href={`https://apps.${getConfig().LMS_BASE_URL.replace(
           'https://',
@@ -86,7 +140,7 @@ const HorizontalCard = ({ courseInfo }) => {
       > */}
       <Card
         className="mb-4 horizontal-card-course"
-        orientation={isSmall ? 'vertical' : 'horizontal'}
+        orientation={isMobile ? 'vertical' : 'horizontal'}
       >
         <Card.ImageCap
           src={
@@ -99,9 +153,12 @@ const HorizontalCard = ({ courseInfo }) => {
         <Card.Body>
           <Card.Section>
             <div className="d-flex justify-content-between align-items-center mb-1 title-wrapper">
-              <h3 className="mr-5 color-black">
+              <h3 className="mr-5 course-title">
                 {courseInfo?.course_details?.course_name}
               </h3>
+              <div className="more-vert-wrapper m-3" onClick={open}>
+                <Icon className="" src={MoreVert} />
+              </div>
               <div className="d-flex align-items-center icons-wrapper">
                 <Icon
                   src={Share}
@@ -117,7 +174,7 @@ const HorizontalCard = ({ courseInfo }) => {
                 />
                 <Dropdown
                   className="dropdown-icon"
-                  onToggle={(isOpen) => setIsOpenDropDown(isOpen)}
+                  onToggle={(isOpenMore) => setIsOpenDropDown(isOpenMore)}
                 >
                   <Dropdown.Toggle
                     id="dropdown-toggle-with-iconbutton"
@@ -134,7 +191,7 @@ const HorizontalCard = ({ courseInfo }) => {
                         );
                       }}
                     >
-                      Unrolled
+                      Unroll
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
@@ -146,7 +203,7 @@ const HorizontalCard = ({ courseInfo }) => {
             >
               {courseInfo?.organization?.name}
             </Link>
-            <p className="my-3.5 second-title">
+            <p className="course-date-title">
               <span>Course Start - </span>
               <span>
                 {new Date(
@@ -156,7 +213,7 @@ const HorizontalCard = ({ courseInfo }) => {
             </p>
             <div className="d-flex align-items-center justify-content-between">
               {courseStatus()}
-              <div className="d-flex">
+              <div className="d-flex view-course-btn">
                 <a
                   target="_blank"
                   href={`https://apps.${getConfig().LMS_BASE_URL.replace(
