@@ -1,4 +1,4 @@
-.horizontal-card-course {
+.user-card-course {
   border-color: $light-400;
   &:hover {
     .icons-wrapper {
@@ -57,7 +57,7 @@
     font-size: $font-size-base-xl;
   }
   .title-wrapper {
-    height: 28px;
+    min-height: 28px;
   }
   //dropdown icon
   .pgn__icon {
@@ -82,8 +82,8 @@
     }
   }
   .view-btn {
-    width: 142px;
-    height: 44px;
+    padding: 8px 12px;
+    // height: 44px;
     background-color: $primary-500;
     color: $white;
     border-radius: 4px;
@@ -148,23 +148,79 @@
   bottom: 0;
   width: 100%;
 }
+.complete-wrapper {
+  margin-top: 36px;
+}
+
+@media (max-width: 1024px) {
+  .user-card-course {
+    .course-title {
+      max-width: 310px;
+      @include line-break(2);
+      margin-right: 20px !important;
+      font-size: $font-size-base-xl;
+    }
+    .org-title {
+      font-size: $font-size-base-sm;
+    }
+    .view-course-btn {
+      font-size: $font-size-base-sm;
+    }
+    .complete-wrapper {
+      flex-direction: column;
+      align-items: unset !important;
+      gap: 10px;
+      margin-top: unset;
+    }
+    .title-wrapper {
+      height: unset;
+    }
+  }
+}
 @media (max-width: 768px) {
-  .horizontal-card-course {
+  .user-card-course {
     &:hover {
       .icons-wrapper {
         display: none !important;
       }
     }
+    .title-wrapper {
+      justify-content: space-between;
+    }
+    .course-title {
+      max-width: 248px;
+      @include line-break(2);
+      margin-right: 20px !important;
+      font-size: $font-size-base-xl;
+    }
+    .view-course-btn {
+      display: none;
+    }
+    .course-date-title {
+      padding: 12px 0;
+    }
+    .pgn__card-section {
+      padding-top: 16px;
+      padding-bottom: 12px;
+    }
+    .pgn__card-wrapper-image-cap {
+      width: 218px;
+      height: 190px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .user-card-course {
     .more-vert-wrapper {
       display: unset;
     }
-
     .pgn__card-wrapper-image-cap {
       width: unset;
-      height: 216px;
-    }
-    .title-wrapper {
-      height: unset;
+      min-height: 216px;
+      .pgn__card-image-cap {
+        max-height: unset;
+      }
     }
     .course-title {
       max-width: 279px;
@@ -173,11 +229,16 @@
     .course-date-title {
       padding: 16px 0;
     }
-    .view-course-btn {
-      display: none !important;
+    .more-vert-tablet-wrapper {
+      display: none;
     }
     .progress {
       width: 100%;
+    }
+    .view-course-btn {
+      a {
+        width: 100%;
+      }
     }
   }
 }

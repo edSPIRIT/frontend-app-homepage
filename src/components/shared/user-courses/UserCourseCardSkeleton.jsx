@@ -1,7 +1,7 @@
 import { Card, Skeleton } from '@edx/paragon';
 
-const HorizontalCardSkeleton = () => (
-  <Card className="mb-4 horizontal-card-course" orientation="horizontal">
+const UserCourseCardSkeleton = () => (
+  <Card className="mb-4 user-card-course" orientation="horizontal">
     <Card.ImageCap src="" srcAlt="Card image" />
     <Card.Body>
       <Card.Section>
@@ -17,4 +17,4 @@ const HorizontalCardSkeleton = () => (
   </Card>
 );
 
-export default HorizontalCardSkeleton;
+export default UserCourseCardSkeleton;

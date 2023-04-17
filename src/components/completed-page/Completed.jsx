@@ -3,8 +3,8 @@ import { useMediaQuery } from '@edx/paragon';
 import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
 import NotEnrolledCardCourse from '../overview-page/not-enrolled-course-card/NotEnrolledCourseCard';
 import NavHeader from '../shared/header/nav-header/NavHeader';
-import HorizontalCard from '../shared/horizontal-card/HorizontalCard';
-import HorizontalCardSkeleton from '../shared/horizontal-card/HorizontalCardSkeleton';
+import UserCourseCard from '../shared/user-courses/UserCourseCard';
+import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleton';
 import TotalCourseWrapper from '../shared/total-course-wrapper/TotalCourseWrapper';
 
 const Completed = () => {
@@ -21,7 +21,7 @@ const Completed = () => {
               .fill(1)
               .map((item, i) => (
                 // eslint-disable-next-line react/no-array-index-key
-                <HorizontalCardSkeleton key={i} />
+                <UserCourseCardSkeleton key={i} />
               ))
           ) : coursesEnrollment?.filter(
             (courseInfo) => courseInfo?.progress?.complete_count > 0
@@ -46,7 +46,7 @@ const Completed = () => {
                     .fill(1)
                     .map((item, i) => (
                     // eslint-disable-next-line react/no-array-index-key
-                      <HorizontalCardSkeleton key={i} />
+                      <UserCourseCardSkeleton key={i} />
                     ))
                   : coursesEnrollment
                     ?.filter(
@@ -54,7 +54,7 @@ const Completed = () => {
                         && courseInfo?.progress?.incomplete_count === 0,
                     )
                     ?.map((courseInfo) => (
-                      <HorizontalCard
+                      <UserCourseCard
                         courseInfo={courseInfo}
                         key={courseInfo?.course_details?.course_id}
                       />

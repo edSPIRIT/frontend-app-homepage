@@ -1,17 +1,14 @@
 /* eslint-disable no-nested-ternary */
-import { Button, Skeleton, useMediaQuery } from '@edx/paragon';
-import { ArrowForward } from '@edx/paragon/icons';
-import { useHistory } from 'react-router-dom';
-import HorizontalCard from '../shared/horizontal-card/HorizontalCard';
+import { Skeleton, useMediaQuery } from '@edx/paragon';
+import UserCourseCard from '../shared/user-courses/UserCourseCard';
 import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
-import HorizontalCardSkeleton from '../shared/horizontal-card/HorizontalCardSkeleton';
+import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleton';
 import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
 import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import NavHeader from '../shared/header/nav-header/NavHeader';
 
 const OverviewPage = () => {
-  const history = useHistory();
   const {
     coursesEnrollment,
     loading: coursesEnrollLoading,
@@ -29,38 +26,25 @@ const OverviewPage = () => {
             <AvatarInfo />
             {coursesEnrollLoading ? (
               <>
-                <div className="d-flex align-items-center justify-content-between mb-4 mt-5.5">
-                  <Skeleton width={300} height={24} />
-                  <Skeleton width={100} height={24} />
-                </div>
+                <Skeleton width={100} height={24} className="mb-4 mt-5.5" />
                 {Array(4)
                   .fill(1)
                   .map((item, i) => (
-                  // eslint-disable-next-line react/no-array-index-key
-                    <HorizontalCardSkeleton key={i} />
+                    // eslint-disable-next-line react/no-array-index-key
+                    <UserCourseCardSkeleton key={i} />
                   ))}
               </>
             ) : coursesEnrollment?.length === 0 ? (
               <NotEnrolledCardCourse />
             ) : (
               <div className="overview-courses-wrapper">
-                <div className="d-flex align-items-center justify-content-between mb-4 mt-5.5">
-                  <h3 className="recent-title">Recent Activity</h3>
-                  <Button
-                    variant="outline-primary"
-                    iconAfter={ArrowForward}
-                    className="view-all-btn"
-                    onClick={() => history.push('/inprogress')}
-                  >
-                    View All
-                  </Button>
-                </div>
+                <h3 className="recent-title mb-4 mt-5.5">Recent Activity</h3>
                 {coursesEnrollment
                   ?.filter(
                     (courseInfo) => courseInfo?.progress?.incomplete_count > 0,
                   )
                   ?.map((courseInfo) => (
-                    <HorizontalCard
+                    <UserCourseCard
                       key={courseInfo?.course_details?.course_id}
                       courseInfo={courseInfo}
                     />
