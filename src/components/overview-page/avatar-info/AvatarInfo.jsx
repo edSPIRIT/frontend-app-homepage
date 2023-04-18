@@ -4,7 +4,6 @@ import { AppContext } from '@edx/frontend-platform/react';
 
 const AvatarInfo = () => {
   const { authenticatedUser } = useContext(AppContext);
-  console.log('authenticatedUser', authenticatedUser);
   return (
     <div className="d-flex align-items-center avatar-wrapper ">
       <Avatar className="mr-3 flex-shrink-0" size="xl" />

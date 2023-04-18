@@ -13,6 +13,7 @@ import { getConfig } from '@edx/frontend-platform';
 import NavHeader from '../nav-header/NavHeader';
 import DropdownNavHeader from '../dropdown-nav-header/DropdownNavHeader';
 import useGetFooters from '../../../../hooks/useGetFooters';
+import edLogo from '../../../../assets/edspirit-logo.png';
 
 const DesktopHeader = () => {
   const history = useHistory();
@@ -28,7 +29,7 @@ const DesktopHeader = () => {
             <Link to="/">
               <img
                 className="h-100"
-                src={footerData?.logo}
+                src={footerData?.logo ?? edLogo}
                 alt="edspirit-logo"
               />
             </Link>

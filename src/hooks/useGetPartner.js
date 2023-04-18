@@ -1,36 +1,25 @@
+/* eslint-disable consistent-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { getConfig } from '@edx/frontend-platform';
+import axios from 'axios';
 import { useQuery } from 'react-query';
+import { useHistory } from 'react-router';
 
 const useGetPartner = (partner) => {
-  const initialPartner = {
-    organization: {
-      id: 0,
-      created: '',
-      modified: '',
-      name: '',
-      short_name: '',
-      description: '',
-      logo: '',
-      active: false,
-    },
-    header: '',
-    featured: false,
-    courses_count: 0,
-    created: '',
-  };
-
+  const history = useHistory();
   const fetchPartner = async ({ queryKey }) => {
     const id = queryKey[1];
-    const apiRes = await fetch(
-      `${getConfig().LMS_BASE_URL}/admin-console/api/partner/${id}/`,
-    );
-
-    if (!apiRes.ok) {
-      throw new Error('fetch not ok');
+    try {
+      const apiRes = await axios.get(
+        `${getConfig().LMS_BASE_URL}/admin-console/api/partner/${id}/`,
+      );
+      return apiRes.data;
+    } catch (err) {
+      console.error(err);
+      if (err.response.status === 404) {
+        history.push('/404');
+      }
     }
-
-    return apiRes.json();
   };
   const { data, isLoading } = useQuery(['Partner', partner], fetchPartner, {
     enabled: !!partner,

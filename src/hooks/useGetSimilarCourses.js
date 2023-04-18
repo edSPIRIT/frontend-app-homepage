@@ -60,12 +60,8 @@ const useGetSimilarCourses = (searchQuery, courseIds) => {
   }, [searchQuery]);
   useEffect(() => {
     if (searchQuery && courseIds && similarCourses?.results) {
-      console.log('searchQuery & courseIds inuseeffect', searchQuery, courseIds, similarCourses?.results);
       const filteredCourses = similarCourses?.results?.filter(
-        (course) => {
-          console.log('courseIds in filter', course?.data?.id, !courseIds?.includes(course?.data?.id));
-          return !courseIds?.includes(course?.data?.id);
-        },
+        (course) => !courseIds?.includes(course?.data?.id),
       );
       setFilterSimilarCourses(filteredCourses);
     }

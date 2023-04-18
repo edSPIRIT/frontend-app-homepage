@@ -8,6 +8,7 @@ import {
   Icon,
   IconButton,
   SearchField,
+  Skeleton,
   useMediaQuery,
   useToggle,
 } from '@edx/paragon';
@@ -25,11 +26,14 @@ import {
 import { Link, NavLink, useHistory } from 'react-router-dom';
 import moodyLogo from '../../../../assets/Moody-logo.svg';
 import useGetSubjects from '../../../../hooks/useGetSubjects';
+import edLogo from '../../../../assets/edspirit-logo.png';
+import useGetFooters from '../../../../hooks/useGetFooters';
 
 const MobileHeader = ({ isOpen: isOpenMenu, close: closeMenu, openMenu }) => {
   const { authenticatedUser } = useContext(AppContext);
   const [isOpen, open, close] = useToggle(false);
   const { subjects, coursesCounter } = useGetSubjects();
+  const { footerData, loading } = useGetFooters();
   const history = useHistory();
   const isTablet = useMediaQuery({
     minWidth: '768px',
@@ -45,10 +49,18 @@ const MobileHeader = ({ isOpen: isOpenMenu, close: closeMenu, openMenu }) => {
           onClick={openMenu}
           className=""
         />
-        <div className="logo-container">
-          <Link to="/">
-            <img className="h-100" src={moodyLogo} alt="edspirit-logo" />
-          </Link>
+        <div className="logo-container mr-4">
+          {loading ? (
+            <Skeleton height={32} width={112} className="mb-1" />
+          ) : (
+            <Link to="/">
+              <img
+                className="h-100"
+                src={footerData?.logo ?? edLogo}
+                alt="edspirit-logo"
+              />
+            </Link>
+          )}
         </div>
         {isTablet ? (
           <SearchField
@@ -82,7 +94,6 @@ const MobileHeader = ({ isOpen: isOpenMenu, close: closeMenu, openMenu }) => {
         onClose={closeMenu}
         className="mobile-menu-modal"
       >
-
         <div className="d-flex py-3.5 px-4 btn-wrapper justify-content-center">
           {authenticatedUser ? (
             <div
@@ -95,9 +106,7 @@ const MobileHeader = ({ isOpen: isOpenMenu, close: closeMenu, openMenu }) => {
               }}
             >
               <Avatar className="mr-3 flex-shrink-0" size="sm" />
-              <h5 className="email-title mr-1">
-                {authenticatedUser?.email}
-              </h5>
+              <h5 className="email-title mr-1">{authenticatedUser?.email}</h5>
               <Icon
                 className="ml-1 icon-forward"
                 src={ArrowForwardIos}
@@ -177,7 +186,10 @@ const MobileHeader = ({ isOpen: isOpenMenu, close: closeMenu, openMenu }) => {
         ) : (
           <ul className="mobile-nav-items">
             <li className="mb-2.5">
-              <div className="d-flex justify-content-between py-2" onClick={open}>
+              <div
+                className="d-flex justify-content-between py-2"
+                onClick={open}
+              >
                 <span className="mr-1">Subjects</span>
                 <Icon
                   className="ml-1 icon-forward"
@@ -202,7 +214,6 @@ const MobileHeader = ({ isOpen: isOpenMenu, close: closeMenu, openMenu }) => {
             </li>
           </ul>
         )}
-
       </FullscreenModal>
       <FullscreenModal
         title="My dialog"
@@ -211,7 +222,6 @@ const MobileHeader = ({ isOpen: isOpenMenu, close: closeMenu, openMenu }) => {
         className="subject-modal"
       >
         <div className="subject-header-wrapper">
-
           <div className="d-flex py-3 my-1.5 mx-3 ">
             <Icon src={ArrowBack} onClick={close} className="mr-1.5" />
             <h4 className="ml-3.5"> Subjects</h4>
@@ -254,7 +264,6 @@ const MobileHeader = ({ isOpen: isOpenMenu, close: closeMenu, openMenu }) => {
             </Button>
           </div>
         </div>
-
       </FullscreenModal>
     </>
   );

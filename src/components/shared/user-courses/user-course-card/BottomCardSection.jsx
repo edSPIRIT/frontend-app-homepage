@@ -1,8 +1,8 @@
 /* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable react/prop-types */
-import { getConfig } from '@edx/frontend-platform';
 import { Icon, ProgressBar } from '@edx/paragon';
 import { CheckCircle, Info } from '@edx/paragon/icons';
+import { Link } from 'react-router-dom';
 
 const BottomCardSection = ({ courseInfo }) => {
   const courseCompleted = courseInfo?.progress?.complete_count > 0
@@ -50,17 +50,12 @@ const BottomCardSection = ({ courseInfo }) => {
             <span className="second-title">Not started yet</span>
           </div>
         )}
-        <a
-          target="_blank"
-          href={`https://apps.${getConfig().LMS_BASE_URL.replace(
-            'https://',
-            '',
-          )}/learning/course/${courseInfo?.course_details?.course_id}/home`}
-          rel="noreferrer"
+        <Link
           className="view-btn view-course-btn"
+          to={`/course/${courseInfo?.course_metadata?.slug}`}
         >
           View Course
-        </a>
+        </Link>
       </>
     );
   };
