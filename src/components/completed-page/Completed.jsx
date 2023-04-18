@@ -28,7 +28,10 @@ const Completed = () => {
                 && courseInfo?.progress?.incomplete_count === 0,
           )?.length === 0 ? (
             <div className="w-100">
-              <NotEnrolledCardCourse />
+              <NotEnrolledCardCourse
+                title="You will find your finished courses here."
+                description="You are not enrolled in any courses yet."
+              />
             </div>
             ) : (
               <div className="w-100">

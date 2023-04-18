@@ -134,6 +134,12 @@
     width: 100%;
     min-width: 7rem;
   }
+  //in mobile view we have modal
+  @media (max-width: 768px) {
+    .dropdown-menu {
+      display: none;
+    }
+  }
   .dropdown-item {
     font-size: $font-size-base-xl;
     padding: 0.375rem 1rem;

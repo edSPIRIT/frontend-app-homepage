@@ -36,54 +36,69 @@ const TopCardSection = ({ courseInfo, openMoreBtn }) => {
         <h3 className="course-title">
           {courseInfo?.course_details?.course_name}
         </h3>
-        <div className="more-vert-wrapper m-3" onClick={openMoreBtn}>
+        <div
+          className="more-vert-wrapper m-3"
+          onClick={(e) => {
+            e.preventDefault();
+            openMoreBtn();
+          }}
+        >
           <Icon className="" src={MoreVert} />
         </div>
-        {isTablet
-          ? (
-            <div className="more-vert-tablet-wrapper " onClick={openMoreBtn}>
-              <Icon className="" src={MoreVert} />
-            </div>
-          )
-          : (
-            <div className="d-flex align-items-center icons-wrapper">
-              <Icon
-                src={Share}
-                className="mr-3 share-icon"
-                onClick={() => {
-                  navigator.clipboard.writeText(
-                    `https://apps.${getConfig().LMS_BASE_URL.replace(
-                      'https://',
-                      '',
-                    )}homepage/course/${courseInfo?.course_metadata?.slug}`,
-                  );
-                }}
+        {isTablet ? (
+          <div
+            className="more-vert-tablet-wrapper "
+            onClick={(e) => {
+              e.preventDefault();
+              openMoreBtn();
+            }}
+          >
+            <Icon className="" src={MoreVert} />
+          </div>
+        ) : (
+          <div className="d-flex align-items-center icons-wrapper">
+            <Icon
+              src={Share}
+              className="mr-3 share-icon"
+              onClick={(e) => {
+                e.preventDefault();
+                navigator.clipboard.writeText(
+                  `https://apps.${getConfig().LMS_BASE_URL.replace(
+                    'https://',
+                    '',
+                  )}homepage/course/${courseInfo?.course_metadata?.slug}`,
+                );
+              }}
+            />
+            <Dropdown
+              className="dropdown-icon"
+              onToggle={(isOpenMore) => setIsOpenDropDown(isOpenMore)}
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <Dropdown.Toggle
+                id="dropdown-toggle-with-iconbutton"
+                as={IconButton}
+                src={isOpenDropDown ? Close : MoreVert}
+                iconAs={Icon}
+                variant="primary"
               />
-              <Dropdown
-                className="dropdown-icon"
-                onToggle={(isOpenMore) => setIsOpenDropDown(isOpenMore)}
-              >
-                <Dropdown.Toggle
-                  id="dropdown-toggle-with-iconbutton"
-                  as={IconButton}
-                  src={isOpenDropDown ? Close : MoreVert}
-                  iconAs={Icon}
-                  variant="primary"
-                />
-                <Dropdown.Menu>
-                  <Dropdown.Item
-                    onClick={() => {
-                      deleteEnrollCourse.mutate(
-                        courseInfo?.course_details?.course_id,
-                      );
-                    }}
-                  >
-                    Unroll
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
-          )}
+              <Dropdown.Menu>
+                <Dropdown.Item
+                  onClick={(e) => {
+                    e.preventDefault();
+                    deleteEnrollCourse.mutate(
+                      courseInfo?.course_details?.course_id,
+                    );
+                  }}
+                >
+                  Unroll
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+        )}
       </div>
       <Link
         className="mb-3.5 org-title"
@@ -92,14 +107,14 @@ const TopCardSection = ({ courseInfo, openMoreBtn }) => {
         {courseInfo?.organization?.name}
       </Link>
       {!courseCompleted && (
-      <p className="course-date-title">
-        <span>Course Start - </span>
-        <span>
-          {new Date(
-            courseInfo?.course_details?.course_start,
-          ).toLocaleString('en-US')}
-        </span>
-      </p>
+        <p className="course-date-title">
+          <span>Course Start - </span>
+          <span>
+            {new Date(courseInfo?.course_details?.course_start).toLocaleString(
+              'en-US',
+            )}
+          </span>
+        </p>
       )}
     </>
   );

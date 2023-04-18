@@ -1,8 +1,16 @@
 import {
-  Dropdown, Icon, ModalLayer, Skeleton, useToggle,
+  Dropdown,
+  Icon,
+  ModalLayer,
+  Skeleton,
+  useToggle,
+  useMediaQuery,
 } from '@edx/paragon';
 import {
-  Check, Close, KeyboardArrowDown, RemoveRedEye,
+  Check,
+  Close,
+  KeyboardArrowDown,
+  RemoveRedEye,
 } from '@edx/paragon/icons';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -10,6 +18,7 @@ import PropTypes from 'prop-types';
 const TotalCourseWrapper = ({ coursesCount, loading }) => {
   const [value, setValue] = useState('Recent');
   const [isOpen, open, close] = useToggle(false);
+  const isMobile = useMediaQuery({ maxWidth: '768px' });
 
   return (
     <>
@@ -21,11 +30,7 @@ const TotalCourseWrapper = ({ coursesCount, loading }) => {
         >
           <div className="d-flex close-wrapper justify-content-between align-items-center py-2 px-4">
             <span className="font-sm">view options</span>
-            <Icon
-              src={Close}
-              className=" share-icon"
-              onClick={close}
-            />
+            <Icon src={Close} className=" share-icon" onClick={close} />
           </div>
           <ul className="subject-items-list px-4 font-xl">
             <li className="d-flex justify-content-between my-2.5">
@@ -55,7 +60,7 @@ const TotalCourseWrapper = ({ coursesCount, loading }) => {
         <Dropdown
           className="dropdown-wrapper"
           onSelect={(e) => setValue(e)}
-          onClick={open}
+          onClick={isMobile ? open : null}
         >
           <Dropdown.Toggle
             id="dropdown-basic-4"

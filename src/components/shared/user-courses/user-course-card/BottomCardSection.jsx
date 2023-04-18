@@ -32,24 +32,24 @@ const BottomCardSection = ({ courseInfo }) => {
               href="#/certificate"
               rel="noreferrer"
               className="view-btn"
+              onClick={(e) => e.preventDefault}
             >
               View certificate
             </a>
           </div>
         </div>
-
       );
     }
     return (
       <>
-        {courseInprogress
-          ? <ProgressBar now={calcProgress()} label={`${calcProgress()}%`} />
-          : (
-            <div className="d-flex align-items-center">
-              <Icon className="info-icon mr-2.5" src={Info} />
-              <span className="second-title">Not started yet</span>
-            </div>
-          )}
+        {courseInprogress ? (
+          <ProgressBar now={calcProgress()} label={`${calcProgress()}%`} />
+        ) : (
+          <div className="d-flex align-items-center">
+            <Icon className="info-icon mr-2.5" src={Info} />
+            <span className="second-title">Not started yet</span>
+          </div>
+        )}
         <a
           target="_blank"
           href={`https://apps.${getConfig().LMS_BASE_URL.replace(

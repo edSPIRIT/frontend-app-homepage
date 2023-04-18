@@ -19,29 +19,32 @@ const InProgress = () => {
           Array(4)
             .fill(1)
             .map((item, i) => (
-            // eslint-disable-next-line react/no-array-index-key
+              // eslint-disable-next-line react/no-array-index-key
               <UserCourseCardSkeleton key={i} />
             ))
         ) : coursesEnrollment?.filter(
           (courseInfo) => courseInfo?.progress?.incomplete_count > 0,
         )?.length === 0 ? (
-          <NotEnrolledCardCourse />
+          <NotEnrolledCardCourse
+            title="Earn a certificate Advance your career"
+            description="You will find your in-progress courses here."
+          />
           ) : (
             <div className="d-flex ">
               <div className="w-100">
                 <TotalCourseWrapper
                   coursesCount={
-                coursesEnrollment?.filter(
-                  (courseInfo) => courseInfo?.progress?.incomplete_count > 0,
-                )?.length
-              }
+                  coursesEnrollment?.filter(
+                    (courseInfo) => courseInfo?.progress?.incomplete_count > 0,
+                  )?.length
+                }
                   loading={loading}
                 />
                 {loading
                   ? Array(4)
                     .fill(1)
                     .map((item, i) => (
-                      // eslint-disable-next-line react/no-array-index-key
+                    // eslint-disable-next-line react/no-array-index-key
                       <UserCourseCardSkeleton key={i} />
                     ))
                   : coursesEnrollment
@@ -67,7 +70,6 @@ const InProgress = () => {
           )}
       </main>
     </>
-
   );
 };
 export default InProgress;

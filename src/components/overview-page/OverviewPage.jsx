@@ -16,7 +16,6 @@ const OverviewPage = () => {
     courseIds,
   } = useGetEnrollmentList();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
-
   return (
     <>
       {isMobile && <NavHeader />}
@@ -34,23 +33,29 @@ const OverviewPage = () => {
                     <UserCourseCardSkeleton key={i} />
                   ))}
               </>
-            ) : coursesEnrollment?.length === 0 ? (
-              <NotEnrolledCardCourse />
-            ) : (
-              <div className="overview-courses-wrapper">
-                <h3 className="recent-title mb-4 mt-5.5">Recent Activity</h3>
-                {coursesEnrollment
-                  ?.filter(
-                    (courseInfo) => courseInfo?.progress?.incomplete_count > 0,
-                  )
-                  ?.map((courseInfo) => (
-                    <UserCourseCard
-                      key={courseInfo?.course_details?.course_id}
-                      courseInfo={courseInfo}
-                    />
-                  ))}
-              </div>
-            )}
+            ) : coursesEnrollment
+              ?.filter(
+                (courseInfo) => courseInfo?.progress?.incomplete_count > 0,
+              )?.length === 0 ? (
+                <NotEnrolledCardCourse
+                  title="Earn a certificate Advance your career"
+                  description="You are not enrolled in any courses yet."
+                />
+              ) : (
+                <div className="overview-courses-wrapper">
+                  <h3 className="recent-title mb-4 mt-5.5">Recent Activity</h3>
+                  {coursesEnrollment
+                    ?.filter(
+                      (courseInfo) => courseInfo?.progress?.incomplete_count > 0,
+                    )
+                    ?.map((courseInfo) => (
+                      <UserCourseCard
+                        key={courseInfo?.course_details?.course_id}
+                        courseInfo={courseInfo}
+                      />
+                    ))}
+                </div>
+              )}
             {/* <div className="recommended-program-wrapper">
                 <RecommendedPrograms />
               </div> */}
