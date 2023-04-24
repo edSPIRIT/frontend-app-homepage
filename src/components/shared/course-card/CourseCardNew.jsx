@@ -16,7 +16,7 @@ const CourseCardNew = ({ course }) => {
 
   return (
     <Link to={`/course/${course?.course_slug}`}>
-      <Card className="cards-wrapper">
+      <Card className="cards-wrapper d-flex">
         <Card.ImageCap
           src={`${getConfig().LMS_BASE_URL}${
             course?.additional_metadata?.course_image_url
@@ -40,8 +40,8 @@ const CourseCardNew = ({ course }) => {
             </p>
           </Link>
         </div>
-        <Card.Section>
-          <div className="d-flex flex-column mb-3 font-sm">
+        <div className="d-flex p-4 flex-column justify-content-between flex-grow-1">
+          <div className="d-flex flex-column mb-3 font-sm flex-grow-1">
             <div className="d-flex flex-row align-items-center mb-2">
               <Icon className="card-icon" src={isProgram ? Groups : Person} />
               <p className="program-instructors-wrapper">
@@ -87,8 +87,17 @@ const CourseCardNew = ({ course }) => {
               <span className="price-title mt-auto">Free</span>
             )}
           </div>
-        </Card.Section>
-        <Card.Footer>
+          <div className="btn-card-container mt-3">
+            <Button
+              variant="primary"
+              className="learn-btn"
+              onClick={() => history.push(course?.course_slug)}
+            >
+              Learn more
+            </Button>
+          </div>
+        </div>
+        {/* <Card.Footer>
           <div className="btn-card-container">
             <Button
               variant="primary"
@@ -98,7 +107,7 @@ const CourseCardNew = ({ course }) => {
               Learn more
             </Button>
           </div>
-        </Card.Footer>
+        </Card.Footer> */}
       </Card>
     </Link>
   );

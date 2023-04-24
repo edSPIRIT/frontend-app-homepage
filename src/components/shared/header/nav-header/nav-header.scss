@@ -1,5 +1,6 @@
 .nav-wrapper {
   @extend .d-flex, .align-items-center;
+  font-size: $font-size-base-sm;
   position: relative;
   margin-bottom: 0;
   list-style: none;
@@ -31,9 +32,8 @@
     align-items: center;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .nav-wrapper {
-    font-size: $font-size-base-sm;
     padding-left: 0;
     border-bottom: 1px solid $light-300;
     justify-content: space-between;
@@ -43,7 +43,7 @@
     }
     a {
       padding: 10px 12px 10px 12px;
-      &:last-child{
+      &:last-child {
         display: none;
       }
     }

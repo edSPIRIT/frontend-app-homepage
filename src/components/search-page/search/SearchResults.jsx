@@ -20,7 +20,7 @@ const SearchResults = ({ allCoursesData, loading, setPage }) => (
           <CourseCardNew course={course} key={course.course_slug} />
         ))}
     </div>
-    {allCoursesData?.pagination?.num_pages >= 1 && (
+    {allCoursesData?.pagination?.num_pages > 1 && (
       <Pagination
         className="d-flex justify-content-center pt-4.5 pb-5"
         paginationLabel="pagination navigation"

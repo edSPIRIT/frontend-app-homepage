@@ -50,7 +50,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
         href="#course"
         className="mb-3 enroll-btn"
         onClick={enrollClickHandler}
-        disabled={!availablePaymentData}
+        disabled={courseMetaData?.paid_course?.price > 0 && !availablePaymentData}
       >
         Enroll now
       </Button>

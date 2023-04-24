@@ -19,7 +19,7 @@ const SimilarCourses = ({ courseTitles, courseIds }) => {
       <div className="recommendationCourse-wrapper mt-6 py-6">
         <section className="custom-container similar-courses-wrapper">
           <h3>Similar Courses</h3>
-          <span>Recommended based on your activity and whether you like</span>
+          <span>Recommendation based on your activity and whether you like</span>
           {loading ? (
             <div className="course-container mt-4.5">
               {Array(4)
