@@ -6,7 +6,7 @@ const MobileHeader = React.lazy(() => import('./mobile-header/MobileHeader'));
 
 const HeaderED = () => {
   const [isOpen, open, close] = useToggle(false);
-  const isMobile = useMediaQuery({ maxWidth: '1024px' });
+  const isMobile = useMediaQuery({ maxWidth: '769px' });
 
   return (
     <header>

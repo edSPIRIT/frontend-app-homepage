@@ -10,6 +10,12 @@ const DropdownNavHeader = () => {
 
   return (
     <nav className="nav-items-wrapper">
+      <Link className="nav-link-header mx-2.5" to="/dashboard">
+        Dashboard
+      </Link>
+      <Link className="nav-link-header mx-2.5" to="/discover">
+        Discover
+      </Link>
       <div className="dropdown-nav-header">
         <div className="d-flex mx-2 align-items-center">
           <span className=" mr-2">Subjects</span>
@@ -84,9 +90,6 @@ const DropdownNavHeader = () => {
           </div>
         </div>
       </div> */}
-      <Link className="nav-link-header mx-2" to="/partners">
-        Partners
-      </Link>
     </nav>
   );
 };

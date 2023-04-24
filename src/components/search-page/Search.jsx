@@ -1,17 +1,34 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, Dropdown, Pagination } from '@edx/paragon';
 import {
-  FilterList,
-  KeyboardArrowDown,
-} from '@edx/paragon/icons';
+  Breadcrumb, Dropdown, Skeleton,
+} from '@edx/paragon';
+import { FilterList, KeyboardArrowDown } from '@edx/paragon/icons';
+import { getConfig } from '@edx/frontend-platform';
+import { useQuery } from 'react-query';
 import DiscoverBanner from '../shared/discover-banner/DiscoverBanner';
-import CourseCard from '../shared/course-card/CourseCard';
 import SearchFacets from './search/SearchFacets';
-import { COURSES_SEARCH } from '../../constants';
+import SearchResults from './search/SearchResults';
 
 const Search = () => {
   const [value, setValue] = useState('Recent');
+  // const { allCoursesData, loading } = useGetAllCourses();
+  const [page, setPage] = useState(1);
+
+  const fetchProjects = (pageNum = 1) => fetch(
+    `${
+      getConfig().LMS_BASE_URL
+    }/admin-console/api/course-list/?page=${pageNum}`,
+  ).then((res) => res.json());
+
+  const {
+    isLoading, isError, error, data, isFetching, isPreviousData,
+  } = useQuery({
+    queryKey: ['projects', page],
+    queryFn: () => fetchProjects(page),
+    keepPreviousData: true,
+  });
+
   return (
     <main>
       <DiscoverBanner />
@@ -29,12 +46,13 @@ const Search = () => {
         <div className="d-flex justify-content-between align-items-center my-4">
           <p>
             <span className="total-title">Total Course:</span>
-            <span className="font-weight-bold"> 2</span>
+            {isLoading ? (
+              <Skeleton className="ml-1" width={28} height={20} />
+            ) : (
+              <span className="font-weight-bold"> {data?.results?.length}</span>
+            )}
           </p>
-          <Dropdown
-            className="dropdown-wrapper"
-            onSelect={(e) => setValue(e)}
-          >
+          <Dropdown className="dropdown-wrapper" onSelect={(e) => setValue(e)}>
             <Dropdown.Toggle
               id="dropdown-basic-4"
               iconAfter={KeyboardArrowDown}
@@ -75,17 +93,8 @@ const Search = () => {
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        <div className="course-container">
-          {COURSES_SEARCH.map((course) => (
-            <CourseCard info={course} key={course.title} />
-          ))}
-        </div>
-        <Pagination
-          className="d-flex justify-content-center pt-4.5 pb-5"
-          paginationLabel="pagination navigation"
-          pageCount={20}
-          onPageSelect={() => console.log('page selected')}
-        />
+        <SearchResults allCoursesData={data} loading={isLoading} setPage={setPage} />
+
       </div>
     </main>
   );

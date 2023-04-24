@@ -12,21 +12,19 @@ import useEnrollClickHandler from '../../../hooks/useEnrollClickHandler';
 import useGetEnrollmentList from '../../../hooks/useGetEnrollmentList';
 
 const CourseInfoSideBar = ({ courseMetaData, loading }) => {
+  const { loading: coursesEnrollLoading, courseIds } = useGetEnrollmentList();
   const {
-    loading: coursesEnrollLoading,
-    courseIds,
-  } = useGetEnrollmentList();
-  const { enrollClickHandler, loading: enrollLoading } = useEnrollClickHandler(
+    enrollClickHandler, loading: enrollLoading, transactionData, availablePaymentData,
+  } = useEnrollClickHandler(
     courseMetaData?.course_id,
+    5,
   );
+  console.log('transactionData', transactionData);
+  console.log('paymentData', availablePaymentData, !!availablePaymentData);
   const enrollButton = () => {
     if (coursesEnrollLoading || enrollLoading) {
       return (
-        <Button
-          variant="brand"
-          href="#course"
-          className="mb-3 enroll-btn"
-        >
+        <Button variant="brand" href="#course" className="mb-3 enroll-btn">
           <Spinner animation="border" />
         </Button>
       );
@@ -42,7 +40,6 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
           target="_blank"
           rel="noreferrer"
         >
-
           Go to course
         </a>
       );
@@ -53,6 +50,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
         href="#course"
         className="mb-3 enroll-btn"
         onClick={enrollClickHandler}
+        disabled={!availablePaymentData}
       >
         Enroll now
       </Button>

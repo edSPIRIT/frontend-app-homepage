@@ -1,6 +1,7 @@
 .nav-items-wrapper {
   @extend .d-flex;
   height: 76px;
+  font-size: $font-size-base-sm;
   .dropdown-nav-header {
     @extend .d-flex, .align-items-center, .position-relative;
     &:hover {
@@ -35,7 +36,7 @@
       .tab-header {
         align-items: center;
         margin: 0;
-        .btn-outline-primary  {
+        .btn-outline-primary {
           border-color: $light-300 !important;
         }
       }

@@ -1,8 +1,60 @@
 import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
+import { AppContext } from '@edx/frontend-platform/react';
+import axios from 'axios';
+import { useContext, useEffect, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 
-const useEnrollClickHandler = (courseId) => {
+const useEnrollClickHandler = (courseId, coursePrice) => {
+  const { authenticatedUser } = useContext(AppContext);
+
+  const [availablePaymentData, setAvailablePaymentData] = useState();
+  const [transactionData, setTransactionData] = useState();
+
+  const availablePayment = async () => {
+    try {
+      const Res = await axios.get(
+        `${getConfig().LMS_BASE_URL}/admin-console/api/paid-courses/${courseId}`,
+      );
+      setAvailablePaymentData(Res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  const postTransaction = async () => {
+    try {
+      const url = `${
+        getConfig().LMS_BASE_URL
+      }/admin-console/api/create-transaction/`;
+      const Res = await fetch(url, {
+        method: 'POST',
+        // headers: {
+        //   'Content-Type': 'application/json',
+        // },
+        body: JSON.stringify({
+          course_id: courseId,
+          username: authenticatedUser?.username,
+        }),
+      });
+      const Data = await Res.json();
+      console.log('inside postTransaction', Data);
+      setTransactionData(Data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    if (courseId) {
+      availablePayment();
+    }
+  }, [courseId]);
+
+  // useEffect(() => {
+  //   if (availablePaymentData) {
+  //     postTransaction();
+  //   }
+  // }, [availablePaymentData]);
   const postCourseEnrollment = async (Id) => {
     const url = `${getConfig().LMS_BASE_URL}/api/enrollment/v1/enrollment`;
     const { data, status } = await getAuthenticatedHttpClient().post(url, {
@@ -15,8 +67,7 @@ const useEnrollClickHandler = (courseId) => {
   };
   const queryClient = useQueryClient();
   const { mutate, isLoading } = useMutation(postCourseEnrollment, {
-    onSuccess: (data) => {
-      console.log('enrooooooool', data);
+    onSuccess: () => {
       queryClient.invalidateQueries(['EnrollmentList']);
     },
     onError: () => {
@@ -24,9 +75,17 @@ const useEnrollClickHandler = (courseId) => {
     },
   });
   const enrollClickHandler = () => {
+    if (availablePaymentData) {
+      postTransaction();
+    }
     mutate(courseId);
   };
-  return { enrollClickHandler, isLoading };
+  return {
+    enrollClickHandler,
+    isLoading,
+    transactionData,
+    availablePaymentData,
+  };
 };
 
 export default useEnrollClickHandler;
