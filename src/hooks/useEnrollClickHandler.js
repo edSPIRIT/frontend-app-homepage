@@ -26,19 +26,29 @@ const useEnrollClickHandler = (courseId, coursePrice) => {
       const url = `${
         getConfig().LMS_BASE_URL
       }/admin-console/api/create-transaction/`;
-      const Res = await fetch(url, {
-        method: 'POST',
-        // headers: {
-        //   'Content-Type': 'application/json',
-        // },
-        body: JSON.stringify({
+
+      const { data, status } = await getAuthenticatedHttpClient().post(
+        url,
+        {
           course_id: courseId,
           username: authenticatedUser?.username,
-        }),
-      });
-      const Data = await Res.json();
-      console.log('inside postTransaction', Data);
-      setTransactionData(Data);
+        },
+      );
+      // const Res = await fetch(url, {
+      //   method: 'POST',
+      //   // headers: {
+      //   //   'Content-Type': 'application/json',
+      //   // },
+      //   body: JSON.stringify({
+      //     course_id: courseId,
+      //     username: authenticatedUser?.username,
+      //   }),
+      // });
+      // const Data = await Res.json();
+      // console.log('inside postTransaction', Data);
+      console.log('inside postTransaction', data);
+
+      setTransactionData(data);
     } catch (e) {
       console.error(e);
     }

@@ -9,6 +9,7 @@
     display: flex;
   }
   .pgn__card-wrapper-image-cap {
+    border:1px solid $light-300;
     display: flex;
     flex-shrink: 0;
     width: 248px;
