@@ -1,9 +1,11 @@
-import { Skeleton } from '@edx/paragon';
-import { Link } from 'react-router-dom';
+import { Button, Skeleton } from '@edx/paragon';
+import { Link, useHistory } from 'react-router-dom';
+import { ArrowForward } from '@edx/paragon/icons';
 import useGetPartners from '../../../hooks/useGetPartners';
 
 const Partners = () => {
   const { topPartners, loading } = useGetPartners();
+  const history = useHistory();
   return (
     <section id="partners" className="partners-container">
       <div className="custom-container ">
@@ -34,6 +36,15 @@ const Partners = () => {
               </Link>
             ))
           )}
+        </div>
+        <div className="d-flex justify-content-center">
+          <Button
+            className="view-all-courses-btn mt-5"
+            iconAfter={ArrowForward}
+            onClick={() => history.push('/partners')}
+          >
+            View our partners
+          </Button>
         </div>
       </div>
     </section>

@@ -3,7 +3,7 @@ import {
 } from '@edx/paragon';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import {
-  ArrowForwardIos,
+  ArrowForward,
   BookOpen,
   DrawShapes,
   Groups,
@@ -135,10 +135,10 @@ const PartnerPage = () => {
         <div className="d-flex justify-content-center">
           <Button
             className="view-all-courses-btn"
-            iconAfter={ArrowForwardIos}
+            iconAfter={ArrowForward}
             onClick={() => history.push('/search')}
           >
-            View all Courses
+            View all courses
           </Button>
         </div>
       </div>

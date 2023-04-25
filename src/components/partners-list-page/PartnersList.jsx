@@ -1,10 +1,12 @@
 /* eslint-disable max-len */
-import { SearchField, Icon, Breadcrumb } from '@edx/paragon';
 import {
-  BookOpen, DrawShapes, Groups,
+  SearchField, Icon, Breadcrumb, Pagination,
+} from '@edx/paragon';
+import {
+  ArrowBack, BookOpen, DrawShapes, Groups,
 } from '@edx/paragon/icons';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import useGetPartners from '../../hooks/useGetPartners';
 import PartnersCardGrid from './partners-list/PartnersCardGrid';
 import PartnersCardList from './partners-list/PartnersCardList';
@@ -12,10 +14,19 @@ import TotalPartnersWrapper from './partners-list/TotalPartnersWrapper';
 
 const PartnersList = () => {
   const [view, setView] = useState('grid');
-  const { count, partnersData, loading } = useGetPartners();
+  const [page, setPage] = useState(1);
+
+  const {
+    count, partnersData, loading, numPages, isFetching,
+  } = useGetPartners(page);
+  const history = useHistory();
 
   return (
     <section>
+      <div className="d-flex px-4.5 py-3 align-items-center back-btn-wrapper">
+        <Icon src={ArrowBack} onClick={history.goBack} className="mr-1.5" />
+        <h4 className="ml-3.5">Partners</h4>
+      </div>
       <div className="partners-header pt-5.5">
         <div className="custom-container">
           <h2 className="pb-4">Our Partners</h2>
@@ -34,24 +45,24 @@ const PartnersList = () => {
             <span className="mr-2">How to become a partner</span>
             <Icon src={ArrowForward} />
           </Link> */}
-        </div>
-        <div className="d-flex justify-content-center banner-icons-wrapper">
-          <div className="icon-wrapper">
-            <Icon clas src={BookOpen} style={{ width: '36px' }} />
-            <span>2800+</span>
-            <p>
-              courses in subjects such as humanities, math, computer science
-            </p>
-          </div>
-          <div className="icon-wrapper">
-            <Icon src={DrawShapes} />
-            <span>1 Milion</span>
-            <p>learners worldwide, representing every country</p>
-          </div>
-          <div className="icon-wrapper">
-            <Icon src={Groups} />
-            <span>1 Milion</span>
-            <p>enrollments across edX courses</p>
+          <div className="banner-icons-wrapper">
+            <div className="icon-wrapper">
+              <Icon clas src={BookOpen} style={{ width: '36px' }} />
+              <span>2800+</span>
+              <p>
+                courses in subjects such as humanities, math, computer science
+              </p>
+            </div>
+            <div className="icon-wrapper">
+              <Icon src={DrawShapes} />
+              <span>1 Milion</span>
+              <p>learners worldwide, representing every country</p>
+            </div>
+            <div className="icon-wrapper">
+              <Icon src={Groups} />
+              <span>1 Milion</span>
+              <p>enrollments across edX courses</p>
+            </div>
           </div>
         </div>
       </div>
@@ -69,10 +80,21 @@ const PartnersList = () => {
           loading={loading}
         />
         {view === 'grid' ? (
-          <PartnersCardGrid partnersData={partnersData} loading={loading} />
+          <PartnersCardGrid partnersData={partnersData} loading={loading && isFetching} />
         ) : (
-          <PartnersCardList partnersData={partnersData} loading={loading} />
+          <PartnersCardList partnersData={partnersData} loading={loading && isFetching} />
         )}
+        <div className="pb-5.5 pt-4.5">
+          {numPages > 1 && (
+            <Pagination
+              className="d-flex justify-content-center"
+              paginationLabel="pagination navigation"
+              pageCount={numPages}
+              onPageSelect={(e) => setPage(e)}
+              currentPage={page}
+            />
+          )}
+        </div>
       </div>
     </section>
   );

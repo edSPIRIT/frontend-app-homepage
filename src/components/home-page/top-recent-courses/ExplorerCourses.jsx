@@ -2,7 +2,7 @@ import {
   Button, Tab, Tabs, useMediaQuery,
 } from '@edx/paragon';
 import { useState } from 'react';
-import { ArrowForwardIos } from '@edx/paragon/icons';
+import { ArrowForward } from '@edx/paragon/icons';
 import { useHistory } from 'react-router';
 import useGetTopRecentCourses from '../../../hooks/useGetTopRecentCourses';
 import CourseCardNew from '../../shared/course-card/CourseCardNew';
@@ -62,11 +62,11 @@ const ExplorerCourses = () => {
         </Tabs>
         <div className="d-flex justify-content-center">
           <Button
-            className="view-all-courses-btn mt-4"
-            iconAfter={ArrowForwardIos}
+            className="view-all-courses-btn mt-5"
+            iconAfter={ArrowForward}
             onClick={() => history.push('/search')}
           >
-            View all Courses
+            View all courses
           </Button>
         </div>
       </div>

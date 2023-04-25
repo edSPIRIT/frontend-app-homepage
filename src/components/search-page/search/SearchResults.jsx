@@ -5,7 +5,9 @@ import { Pagination } from '@edx/paragon';
 import CourseCardNew from '../../shared/course-card/CourseCardNew';
 import CourseCardSkeleton from '../../shared/skeleton/CourseCardSkeleton';
 
-const SearchResults = ({ allCoursesData, loading, setPage }) => (
+const SearchResults = ({
+  allCoursesData, loading, page, setPage,
+}) => (
   <>
     <div className="course-container">
       {/* TO DO: Do not use Array index in keys */}
@@ -26,6 +28,7 @@ const SearchResults = ({ allCoursesData, loading, setPage }) => (
         paginationLabel="pagination navigation"
         pageCount={allCoursesData?.pagination?.num_pages}
         onPageSelect={(e) => setPage(e)}
+        currentPage={page}
       />
     )}
   </>

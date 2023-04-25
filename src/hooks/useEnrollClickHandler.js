@@ -3,13 +3,13 @@ import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { AppContext } from '@edx/frontend-platform/react';
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { useHistory } from 'react-router';
 
-const useEnrollClickHandler = (courseId, coursePrice) => {
+const useEnrollClickHandler = (courseId) => {
   const { authenticatedUser } = useContext(AppContext);
-
   const [availablePaymentData, setAvailablePaymentData] = useState();
-  const [transactionData, setTransactionData] = useState();
+  const history = useHistory();
 
   const availablePayment = async () => {
     try {
@@ -21,38 +21,6 @@ const useEnrollClickHandler = (courseId, coursePrice) => {
       console.error(err);
     }
   };
-  const postTransaction = async () => {
-    try {
-      const url = `${
-        getConfig().LMS_BASE_URL
-      }/admin-console/api/create-transaction/`;
-
-      const { data, status } = await getAuthenticatedHttpClient().post(
-        url,
-        {
-          course_id: courseId,
-          username: authenticatedUser?.username,
-        },
-      );
-      // const Res = await fetch(url, {
-      //   method: 'POST',
-      //   // headers: {
-      //   //   'Content-Type': 'application/json',
-      //   // },
-      //   body: JSON.stringify({
-      //     course_id: courseId,
-      //     username: authenticatedUser?.username,
-      //   }),
-      // });
-      // const Data = await Res.json();
-      // console.log('inside postTransaction', Data);
-      console.log('inside postTransaction', data);
-
-      setTransactionData(data);
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
   useEffect(() => {
     if (courseId) {
@@ -60,11 +28,33 @@ const useEnrollClickHandler = (courseId, coursePrice) => {
     }
   }, [courseId]);
 
-  // useEffect(() => {
-  //   if (availablePaymentData) {
-  //     postTransaction();
-  //   }
-  // }, [availablePaymentData]);
+  const fetchTransaction = async () => {
+    const url = `${
+      getConfig().LMS_BASE_URL
+    }/admin-console/api/create-transaction/`;
+    const { data, status } = await getAuthenticatedHttpClient().post(url, {
+      course_id: courseId,
+      username: authenticatedUser?.username,
+    });
+    if (status !== 200) {
+      throw new Error('fetch not ok');
+    }
+    if (status === 200) {
+      history.push(data?.paymentURL);
+    }
+
+    return data;
+  };
+
+  const {
+    data: transactionData,
+    // isLoading: transactionLoading,
+    refetch,
+  } = useQuery('Transaction', fetchTransaction, {
+    refetchOnWindowFocus: false,
+    enabled: false, // disable this query from automatically running
+  });
+
   const postCourseEnrollment = async (Id) => {
     const url = `${getConfig().LMS_BASE_URL}/api/enrollment/v1/enrollment`;
     const { data, status } = await getAuthenticatedHttpClient().post(url, {
@@ -75,6 +65,7 @@ const useEnrollClickHandler = (courseId, coursePrice) => {
     }
     return data;
   };
+
   const queryClient = useQueryClient();
   const { mutate, isLoading } = useMutation(postCourseEnrollment, {
     onSuccess: () => {
@@ -86,9 +77,10 @@ const useEnrollClickHandler = (courseId, coursePrice) => {
   });
   const enrollClickHandler = () => {
     if (availablePaymentData) {
-      postTransaction();
+      refetch();
+    } else {
+      mutate(courseId);
     }
-    mutate(courseId);
   };
   return {
     enrollClickHandler,

@@ -8,13 +8,11 @@
 }
 .view-all-courses-btn {
   // display: none;
+  width: 327px;
   height: 44px;
   color: $gray-500;
   background-color: transparent;
   border-color: $light-400;
-  svg {
-    padding: 4px;
-  }
 }
 .nav-tabs {
   font-size: 14px;

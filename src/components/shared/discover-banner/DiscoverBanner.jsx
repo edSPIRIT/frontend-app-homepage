@@ -2,7 +2,7 @@ import { Chip, Icon, SearchField } from '@edx/paragon';
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { ArrowForwardIos } from '@edx/paragon/icons';
+import { ArrowForward } from '@edx/paragon/icons';
 import { COURSES_SEARCH } from '../../../constants';
 
 const DiscoverBanner = () => {
@@ -60,7 +60,7 @@ const DiscoverBanner = () => {
             >
               <span className="mr-2">View all result</span>
               <Icon
-                src={ArrowForwardIos}
+                src={ArrowForward}
                 style={{ height: '12px', width: '12px' }}
               />
             </Link>

@@ -41,7 +41,7 @@ const CourseCardNew = ({ course }) => {
           </Link>
         </div>
         <div className="d-flex p-4 flex-column justify-content-between flex-grow-1">
-          <div className="d-flex flex-column mb-3 font-sm flex-grow-1">
+          <div className="d-flex flex-column font-sm flex-grow-1">
             <div className="d-flex flex-row align-items-center mb-2">
               <Icon className="card-icon" src={isProgram ? Groups : Person} />
               <p className="program-instructors-wrapper">

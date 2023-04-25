@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const PartnersCardList = ({ partnersData, loading }) => (
   <>
-    <div className="partners-list-wrapper mb-5.5">
+    <div className="partners-list-wrapper">
       {loading
         ? Array(5)
           .fill(1)

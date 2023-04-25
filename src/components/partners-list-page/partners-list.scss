@@ -7,17 +7,22 @@
     @include custom-search-field(354px);
   }
   .banner-icons-wrapper {
-    gap: 172px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
     padding-bottom: 40px;
     .pgn__icon {
       height: unset;
       width: 36px;
     }
     .icon-wrapper {
-      @extend .d-flex,
-        .flex-column,
-        .justify-content-center,
-        .align-items-center;
+      // @extend .d-flex,
+      //   .flex-column,
+      //   .justify-content-center,
+      //   .align-items-center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       color: $light-500;
       padding: 1rem;
     }
@@ -129,6 +134,20 @@
       .arrow-forward-btn {
         display: flex;
       }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .partners-header {
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+  .banner-icons-wrapper {
+    .icon-wrapper {
+      justify-content: flex-start !important;
+    }
+    p {
+      max-width: 192px;
     }
   }
 }

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Button, Skeleton } from '@edx/paragon';
-import { ArrowForwardIos } from '@edx/paragon/icons';
+import { ArrowForward } from '@edx/paragon/icons';
 import { useHistory, useParams } from 'react-router-dom';
 
 import useGetInstructor from '../../hooks/useGetInstructor';
@@ -42,10 +42,10 @@ const Instructor = () => {
           ) : (
             <Button
               className="view-all-courses-btn"
-              iconAfter={ArrowForwardIos}
+              iconAfter={ArrowForward}
               onClick={() => history.push('/discover')}
             >
-              View all Courses
+              View all courses
             </Button>
           )}
         </div>

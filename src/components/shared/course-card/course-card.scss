@@ -28,6 +28,8 @@
     max-width: 244px;
   }
   .institution-title {
+    display: block;
+    width: fit-content;
     max-width: 274px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -91,5 +93,10 @@
       background-color: $primary-400 !important;
       border-color: $primary-400 !important;
     }
+  }
+}
+@media (max-width: 1024px) {
+  .btn-card-container {
+    display: none;
   }
 }

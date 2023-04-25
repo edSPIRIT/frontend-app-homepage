@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Breadcrumb, Dropdown, Skeleton,
-} from '@edx/paragon';
+import { Breadcrumb, Dropdown, Skeleton } from '@edx/paragon';
 import { FilterList, KeyboardArrowDown } from '@edx/paragon/icons';
 import { getConfig } from '@edx/frontend-platform';
 import { useQuery } from 'react-query';
@@ -93,8 +91,12 @@ const Search = () => {
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        <SearchResults allCoursesData={data} loading={isLoading} setPage={setPage} />
-
+        <SearchResults
+          allCoursesData={data}
+          loading={isLoading}
+          page={page}
+          setPage={setPage}
+        />
       </div>
     </main>
   );

@@ -17,7 +17,6 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
     enrollClickHandler, loading: enrollLoading, transactionData, availablePaymentData,
   } = useEnrollClickHandler(
     courseMetaData?.course_id,
-    5,
   );
   console.log('transactionData', transactionData);
   console.log('paymentData', availablePaymentData, !!availablePaymentData);
