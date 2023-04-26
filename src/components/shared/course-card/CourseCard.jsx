@@ -25,7 +25,7 @@ const CourseCard = ({ info }) => {
   return (
     <Link to={`/course/${slug}`}>
       <Card
-        className={classNames('cards-wrapper', {
+        className={classNames('cards-wrapper d-flex', {
           'programs-background': isProgram,
         })}
       >
@@ -36,8 +36,8 @@ const CourseCard = ({ info }) => {
             {institution}
           </a>
         </div>
-        <Card.Section>
-          <div className="d-flex flex-column mb-3 mt-auto font-sm">
+        <div className="d-flex p-4 flex-column justify-content-between flex-grow-1">
+          <div className="d-flex flex-column mt-auto font-sm">
             <div className="d-flex flex-row align-items-center mb-2">
               <Icon className="card-icon" src={isProgram ? Groups : Person} />
               {isProgram ? (
@@ -53,7 +53,10 @@ const CourseCard = ({ info }) => {
                   ))}
                 </p>
               ) : (
-                <Link className="course-text" to={`/instructor/${instructorLink}`}>
+                <Link
+                  className="course-text"
+                  to={`/instructor/${instructorLink}`}
+                >
                   {instructor}
                 </Link>
               )}
@@ -73,17 +76,12 @@ const CourseCard = ({ info }) => {
             </div>
             <span className="price-title">$100 . Available Now</span>
           </div>
-        </Card.Section>
-        <Card.Footer>
-          <div className="btn-card-container">
-            <Button
-              variant="primary"
-              className="learn-btn"
-            >
+          <div className="btn-card-container mt-3">
+            <Button variant="primary" className="learn-btn">
               Learn more
             </Button>
           </div>
-        </Card.Footer>
+        </div>
       </Card>
     </Link>
   );

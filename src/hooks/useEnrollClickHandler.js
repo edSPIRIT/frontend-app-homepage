@@ -9,7 +9,6 @@ import { useHistory } from 'react-router';
 const useEnrollClickHandler = (courseId) => {
   const { authenticatedUser } = useContext(AppContext);
   const [availablePaymentData, setAvailablePaymentData] = useState();
-  const history = useHistory();
 
   const availablePayment = async () => {
     try {
@@ -40,7 +39,7 @@ const useEnrollClickHandler = (courseId) => {
       throw new Error('fetch not ok');
     }
     if (status === 200) {
-      history.push(data?.paymentURL);
+      window.location.href = data?.paymentURL;
     }
 
     return data;

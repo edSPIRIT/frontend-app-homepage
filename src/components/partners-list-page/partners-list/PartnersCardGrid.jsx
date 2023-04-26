@@ -39,7 +39,8 @@ const PartnersCardGrid = ({ partnersData, loading }) => (
                 <span className="font-weight-bold partner-grid-name">
                   {partner.organization.name}
                 </span>
-                <div className="d-flex icons-partner-wrapper mt-2.5">
+                <p className="mb-3 mt-1 partner-desc">{partner.organization.description}</p>
+                <div className="d-flex icons-partner-wrapper">
                   <div className="d-flex mr-2.5 align-items-center justify-content-center">
                     <Icon className="mr-1" src={DrawShapes} />
                     <span>0</span>

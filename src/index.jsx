@@ -24,12 +24,12 @@ import Discover from './components/discover-page/Discover';
 import Search from './components/search-page/Search';
 import NotFound from './components/notFount-page/NotFound';
 import PartnersList from './components/partners-list-page/PartnersList';
-import PartnerPage from './components/partner-page/PartnerPage';
 import CoursePage from './components/course-info-page/CoursePage';
 import ProgramPage from './components/program-info-page/ProgramPage';
 import ProtectedRoute from './ProtectedRoute';
 import ScrollToTop from './ScroollToTop';
 import Instructor from './components/instructor-page/Instructor';
+import PartnerInfo from './components/partner-page/PartnerInfo';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -85,7 +85,7 @@ subscribe(APP_READY, () => {
               <ProgramPage />
             </Route>
             <Route exact path="/partners/:slug">
-              <PartnerPage />
+              <PartnerInfo />
             </Route>
             <Route exact path="/instructor/:slug">
               <Instructor />

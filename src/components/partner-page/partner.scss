@@ -1,3 +1,6 @@
+.partner-page-breadcrumb {
+  padding: 32px 0;
+}
 .banner-container {
   padding: 0 12px;
   margin: 0 auto;
@@ -14,20 +17,26 @@
       border-radius: 6px;
     }
   }
-  .partner-logo-wrapper {
-    width: 216px;
-    height: 116px;
-    padding: 0.5rem;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15), 0px 1px 4px rgba(0, 0, 0, 0.15);
-    border-radius: 6px;
-    background-color: $white;
-    position: absolute;
-    left: 32px;
-    bottom: -16px;
-    img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
+  .partner-logo-container {
+    .partner-logo-wrapper {
+      width: 216px;
+      height: 116px;
+      padding: 0.5rem;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15),
+        0px 1px 4px rgba(0, 0, 0, 0.15);
+      border-radius: 6px;
+      background-color: $white;
+      position: absolute;
+      left: 32px;
+      bottom: -16px;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .share-icon {
+      display: none;
     }
   }
 }
@@ -67,6 +76,10 @@
           color: $light-500;
         }
       }
+      .pgn__icon {
+        width: 40px;
+        height: 40px;
+      }
       .partner-title {
         font-weight: bold;
         color: $gray-700;
@@ -102,12 +115,12 @@
     }
   }
 }
-.instructor-wrapper {
+.instructor-partner-wrapper {
   border: 1px solid transparent;
   border-radius: 6px;
   background-color: $light-200;
   padding: 24px;
-  .instructor-img-wrapper {
+  .instructor-partner-img-wrapper {
     flex-shrink: 0;
     width: 80px;
     height: 80px;
@@ -153,5 +166,56 @@
     .pgn__icon {
       opacity: 0.5;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .partner-page-breadcrumb {
+    padding: 18px 0;
+    border-bottom: 1px solid $light-300;
+  }
+  .banner-container {
+    margin-bottom: 20px;
+    .partner-img-wrapper {
+      display: none;
+    }
+    .partner-logo-container {
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      .partner-logo-wrapper {
+        position: unset !important;
+        width: 80px;
+        height: 40px;
+      }
+      .share-icon {
+        display: block !important;
+      }
+    }
+  }
+  .desc-partner-wrapper {
+    .share-icon {
+      display: none;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .vertical-line {
+    display: none;
+  }
+  .partner-snapshot-wrapper {
+    flex-direction: column;
+  }
+  .partner-page-breadcrumb {
+    display: none;
+  }
+  .partner-logo-container {
+    .partner-logo-wrapper {
+      width: 116px !important;
+      height: 66px !important;
+    }
+  }
+  .instructors-wrapper {
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
   }
 }

@@ -96,6 +96,7 @@
 .share-icon {
   cursor: pointer;
   color: $gray-500;
+  opacity: 0.5;
 }
 .dark-background {
   background-color: $primary-700;
@@ -126,7 +127,7 @@
   opacity: 0.5;
 }
 .check-icon {
-  color: $success-300 !important;
+  color: $brand-500 !important;
 }
 .more-vert-wrapper {
   display: none;

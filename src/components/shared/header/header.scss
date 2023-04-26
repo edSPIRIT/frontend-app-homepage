@@ -25,15 +25,13 @@
 
 .logo-container {
   height: 32px;
-  // margin-left: 98px;
 }
 
 .sign-in-container {
   @extend .d-flex, .align-items-center;
+  height: 76px;
   background-color: #f2f0ef;
   padding-right: 36px;
-  padding-top: 15px;
-  padding-bottom: 15px;
   .avatar-dropdown-wrapper {
     .dropdown-toggle::after {
       content: none;
@@ -78,7 +76,7 @@
 .mobile-header {
   z-index: 10;
   position: relative;
-  box-shadow: 0px 2px 8px 0px #00000026;
+  box-shadow: $box-shadow-mobile;
 
   .tablet-search {
     width: 256px;

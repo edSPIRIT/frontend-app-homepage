@@ -8,9 +8,6 @@
       }
       .course-info-breadcrumb {
         @include custom-breadcrumb($light-300, $light-500);
-        .list-inline {
-          margin-bottom: unset;
-        }
       }
       h1 {
         color: $white;

@@ -720,7 +720,7 @@ export const INSTRUCTORS = [
     slug: 'anna-conway',
     shortBio: 'Director at Teaching and Learning Center',
     bio: 'Anna Conway is the Director of the Teaching and Learning Center at Des Moines Area Community College. She holds a Doctorate degree in Educational Leadership from the University of Northern Iowa. Anna’s teaching interests include adjunct faculty in higher education, adoption of inclusive pedagogy for community college faculty, and teaching and learning in community colleges. Anna leads many faculty development initiatives and creates collaborations among various curricular programs that support effective teaching and learning through a variety of instructional modalities. Anna has developed and facilitated special programs focusing on adjunct professional development, inclusive teaching and learning practices, and online teaching portfolios for college faculty. In 2013 Anna started the first state-wide conference for teaching and learning that has since become an annual event. Anna has participated in national research initiatives including a multi-institutional NSF-IUSE grant focusing on creating an online course for inclusive teaching in STEM fields.',
-    students: '3,142,849',
+    students: '312',
     courses: '57',
     image:
       'https://prod-discovery.edx-cdn.org/media/people/profile_images/d33266dd-5cd2-4668-a6c1-5db8a34e2c8b-2c135d8c24fb.jpeg',
@@ -730,7 +730,7 @@ export const INSTRUCTORS = [
     slug: 'john-byers',
     shortBio: 'Professor of Computer Science at Boston',
     bio: 'John is Professor of Computer Science at Boston University and Founding Chief Scientist of Cogo Labs, founded in 2005. He received his Ph.D. in Computer Science from UC Berkeley in 1997 and his B.A. from Cornell University in 1991.',
-    students: '3,142,849',
+    students: '312',
     courses: '57',
     image:
       'https://prod-discovery.edx-cdn.org/media/people/profile_images/3ce6e3f9-7aaa-4826-ad74-8d67f3c580b6-8e07e1be6006.jpg',
@@ -741,7 +741,7 @@ export const INSTRUCTORS = [
     shortBio:
       'Richard C. Shipley Professor of Information Systems at Boston University',
     bio: 'Chris is Richard C. Shipley Professor of Information Systems at the Questrom School of Business and Associate Provost for Digital Learning & Innovation at Boston University. He received his Ph.D. in Computer Science from MIT in 1996 and his Diploma in Electrical Engineering from the National Technical University of Athens, Greece in 1989.',
-    students: '3,142,849',
+    students: '312',
     courses: '57',
     image:
       'https://prod-discovery.edx-cdn.org/media/people/profile_images/035ba0f1-1c55-4633-a9f6-cf7626ce6974-5c2095dbd541.jpg',
@@ -751,7 +751,7 @@ export const INSTRUCTORS = [
     slug: 'sarah-chobot-hokanson',
     shortBio: 'Assistant Provost of Professional Development',
     bio: 'Sarah is responsible for postdoctoral affairs, professional development programming and resources for doctoral students and postdocs across Boston University, as well as supporting the development of policies related to postdoctoral scholarship. She also provides resources for faculty mentors and PIs applying for grants related to doctoral and postdoctoral training. Sarah is the multi-PI of the Postdoc Academy and the co-PI of other NSF-funded projects. Sarah serves in leadership positions nationally, including most recently on the AAMC Postdoctoral Leaders Steering Committee.',
-    students: '3,142,849',
+    students: '312',
     courses: '57',
     image:
       'https://prod-discovery.edx-cdn.org/media/people/profile_images/f8929cf7-3db3-44c4-af45-068b72e8e70f-dfab03203c25.jpeg',

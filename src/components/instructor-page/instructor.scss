@@ -71,6 +71,7 @@
 }
 .back-btn-wrapper {
   display: none !important;
+  box-shadow: $box-shadow-mobile;
 }
 
 @media (max-width: 1440px) {

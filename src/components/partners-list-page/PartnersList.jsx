@@ -27,9 +27,9 @@ const PartnersList = () => {
         <Icon src={ArrowBack} onClick={history.goBack} className="mr-1.5" />
         <h4 className="ml-3.5">Partners</h4>
       </div>
-      <div className="partners-header pt-5.5">
+      <div className="partners-header pt-5.5 pb-4.5">
         <div className="custom-container">
-          <h2 className="pb-4">Our Partners</h2>
+          <h1 className="pb-4">Our Partners</h1>
           <p className="banner-desc">
             edSPIRIT offers the highest quality online courses from institutions
             who share our commitment to excellence in teaching and learning.
@@ -66,13 +66,15 @@ const PartnersList = () => {
           </div>
         </div>
       </div>
-      <div className="custom-container pt-4.5">
-        <Breadcrumb
-          ariaLabel="Breadcrumb basic"
-          links={[{ label: 'Home', to: '/home' }]}
-          linkAs={Link}
-          activeLabel="Our-Partners"
-        />
+      <div className="custom-container">
+        <div className="partner-breadcrumb pt-4.5">
+          <Breadcrumb
+            ariaLabel="Breadcrumb basic"
+            links={[{ label: 'Home', to: '/home' }]}
+            linkAs={Link}
+            activeLabel="Our-Partners"
+          />
+        </div>
         <TotalPartnersWrapper
           view={view}
           setView={setView}

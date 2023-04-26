@@ -1,6 +1,6 @@
 .partners-header {
   background: $background-dark-blue;
-  h2 {
+  h1 {
     color: $white;
   }
   .partners-search {
@@ -9,16 +9,11 @@
   .banner-icons-wrapper {
     display: grid;
     grid-template-columns: repeat(3, minmax(0px, 1fr));
-    padding-bottom: 40px;
     .pgn__icon {
       height: unset;
       width: 36px;
     }
     .icon-wrapper {
-      // @extend .d-flex,
-      //   .flex-column,
-      //   .justify-content-center,
-      //   .align-items-center;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -70,6 +65,14 @@
   .partner-grid-name {
     @include line-break(1);
   }
+  .partner-desc {
+    @include line-break(2);
+    display: none;
+  }
+  .pgn__card {
+    display: flex;
+    height: 100%;
+  }
   .pgn__card-wrapper-image-cap {
     width: 254.4px;
     height: 145px;
@@ -80,15 +83,19 @@
     height: 100%;
   }
   .pgn__card-section {
+    display: flex;
+    flex-direction: column;
     padding: 1rem 1.5rem;
     background-color: $light-200;
   }
 }
 .icons-partner-wrapper {
+  margin-top: auto;
   color: $gray-500;
   font-size: $font-size-base-sm;
   line-height: 27px;
   .pgn__icon {
+    opacity: 0.5;
     height: unset;
     width: 16px;
   }
@@ -137,10 +144,42 @@
     }
   }
 }
+@media (max-width: 1450px) {
+  .partners-grid-wrapper {
+    grid-template-columns: repeat(4, minmax(0px, 1fr));
+  }
+}
+
+@media (max-width: 1162px) {
+  .partners-grid-wrapper {
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
+  }
+}
+@media (max-width: 900px) {
+  .partners-grid-wrapper {
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
+  .partners-grid-wrapper {
+    .partner-desc {
+      display: -webkit-box;
+      font-size: $font-size-base-sm;
+    }
+    .pgn__card-wrapper-image-cap{
+      height: 129px;
+      width: 100%;
+    }
+  }
+  .icons-view-wrapper {
+    display: none !important;
+  }
   .partners-header {
     padding-top: 32px !important;
-    padding-bottom: 32px !important;
+    h1 {
+      font-size: 36px;
+    }
   }
   .banner-icons-wrapper {
     .icon-wrapper {
@@ -149,5 +188,20 @@
     p {
       max-width: 192px;
     }
+  }
+  .total-count {
+    font-size: $font-size-base-sm;
+  }
+}
+@media (max-width: 600px) {
+  .partner-breadcrumb {
+    display: none;
+  }
+  .banner-icons-wrapper {
+    display: flex !important;
+    flex-direction: column;
+  }
+  .partners-grid-wrapper {
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
   }
 }
