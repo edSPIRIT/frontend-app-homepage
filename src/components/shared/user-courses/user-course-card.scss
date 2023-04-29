@@ -9,7 +9,7 @@
     display: flex;
   }
   .pgn__card-wrapper-image-cap {
-    border:1px solid $light-300;
+    border: 1px solid $light-300;
     display: flex;
     flex-shrink: 0;
     width: 248px;
@@ -128,6 +128,9 @@
 }
 .check-icon {
   color: $brand-500 !important;
+}
+.check-circle-icon {
+  color: $success-300 !important;
 }
 .more-vert-wrapper {
   display: none;

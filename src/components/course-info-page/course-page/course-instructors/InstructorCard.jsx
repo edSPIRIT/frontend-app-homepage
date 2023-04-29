@@ -28,7 +28,8 @@ const InstructorCard = ({ instructor }) => (
         <div className="d-flex mr-4.5">
           <Icon src={People} className="mr-2" />
           <p>
-            <span>0 Students</span>
+            <span>{ instructor?.students_count}</span>
+            <span className="ml-1">Students</span>
           </p>
         </div>
         <div className="d-flex">

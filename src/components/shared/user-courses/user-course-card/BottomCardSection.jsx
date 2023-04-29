@@ -23,7 +23,7 @@ const BottomCardSection = ({ courseInfo }) => {
       return (
         <div className="complete-wrapper d-flex justify-content-between w-100 align-items-center">
           <div className="d-flex align-items-center ">
-            <Icon className="check-icon mr-2.5" src={CheckCircle} />
+            <Icon className="check-circle-icon mr-2.5" src={CheckCircle} />
             <span className="second-title">Completed</span>
           </div>
           <div className="d-flex view-course-btn">

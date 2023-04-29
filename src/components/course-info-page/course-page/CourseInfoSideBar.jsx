@@ -35,7 +35,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
           href={`https://apps.${getConfig().LMS_BASE_URL.replace(
             'https://',
             '',
-          )}/learning/course/${courseMetaData?.course_details?.course_id}/home`}
+          )}/learning/course/${courseMetaData?.course_id}/home`}
           target="_blank"
           rel="noreferrer"
         >

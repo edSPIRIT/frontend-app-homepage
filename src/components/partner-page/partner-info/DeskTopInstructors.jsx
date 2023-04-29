@@ -7,9 +7,10 @@ const DeskTopInstructors = () => (
   <div className="custom-container mb-5.5" id="instructors">
     <h2 className="text-center pb-4.5">Instructors</h2>
     <div className="instructors-wrapper">
+      {/* todo: must use Insreuctor component like course info */}
       {INSTRUCTORS.map((instructor) => (
-        <div className="instructor-partner-wrapper d-flex" key={instructor.name}>
-          <div className="instructor-partner-img-wrapper mr-4">
+        <div className="instructor-wrapper d-flex" key={instructor.name}>
+          <div className="instructor-img-wrapper mr-4">
             <img src={instructor.image} alt="instructor-avatar" />
           </div>
           <div className="d-flex flex-column">

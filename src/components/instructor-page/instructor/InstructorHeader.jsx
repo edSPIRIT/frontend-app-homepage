@@ -96,7 +96,8 @@ const InstructorHeader = ({ InstructorData, loading }) => {
                     <div className="d-flex mr-4.5 align-items-center">
                       <Icon src={People} className="mr-2" />
                       <p>
-                        <span>0 Students</span>
+                        <span>{InstructorData?.students_count}</span>
+                        <span className="ml-1">Students</span>
                       </p>
                     </div>
                     <div className="d-flex">
@@ -166,6 +167,7 @@ InstructorHeader.propTypes = {
     slug: PropTypes.string,
     twitter: PropTypes.string,
     website: PropTypes.string,
+    students_count: PropTypes.number,
   }),
   loading: PropTypes.bool,
 };

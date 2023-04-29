@@ -7,10 +7,10 @@ const MobileInstructors = () => (
     <h2 className="popular-courses-wrapper">Instructors</h2>
     <div className="instructors-wrapper">
       {INSTRUCTORS.map((instructor) => (
-        <div className="instructor-partner-wrapper d-flex" key={instructor.name}>
+        <div className="instructor-wrapper d-flex" key={instructor.name}>
           <div className="d-flex flex-column">
             <div className="d-flex">
-              <div className="instructor-partner-img-wrapper mr-4">
+              <div className="instructor-img-wrapper mr-4">
                 <img src={instructor.image} alt="instructor-avatar" />
               </div>
               <div className="d-flex flex-column">
