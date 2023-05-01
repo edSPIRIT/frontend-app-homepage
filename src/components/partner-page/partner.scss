@@ -47,16 +47,13 @@
   p {
     line-height: 28px;
   }
-  .long-desc-break {
-    @include line-break(4);
-    max-width: 1260px;
-  }
   .partner-snapshot-wrapper {
     background-color: $light-200;
     border-radius: 6px;
     align-items: center;
     padding: 16px 20px;
     gap: 12px;
+    margin-top: 48px;
     .icon-wrapper {
       @extend .d-flex,
         .flex-column,
@@ -173,6 +170,9 @@
   .partner-page-breadcrumb {
     padding: 18px 0;
     border-bottom: 1px solid $light-300;
+  }
+  .partner-snapshot-wrapper {
+    margin-top: 24px !important;
   }
   .banner-container {
     margin-bottom: 20px;

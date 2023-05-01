@@ -4,23 +4,23 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ReactComponent as Warning } from '../../../assets/warning.svg';
-import logoPlaceholder from '../../../assets/card-placeholder.png';
+import logoPlaceholder from '../../../assets/org-logo-place-holder.png';
 
 const Requirements = ({ courseMetaData, loading }) => {
   const history = useHistory();
   return (
-    <div className="requirements-wrapper pt-5" id="requirement">
+    <div className="requirements-wrapper" id="requirement">
       <h2 className="mb-3">Requirements</h2>
       {loading ? (
         <div className="mb-4.5">
           <Skeleton count={2} height={24} />
         </div>
       ) : (
-        <ul className="pl-3.5 mb-4.5">
+        <ul className="pl-3.5 pb-0">
           {courseMetaData?.requirements
             && courseMetaData?.requirements?.map((req, i) => (
               // eslint-disable-next-line react/no-array-index-key
-              <li key={i}>
+              <li key={i} className="mb-3">
                 <p>{req}</p>
               </li>
             ))}

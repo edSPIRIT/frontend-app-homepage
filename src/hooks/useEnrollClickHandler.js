@@ -4,24 +4,22 @@ import { AppContext } from '@edx/frontend-platform/react';
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { useHistory } from 'react-router';
 
 const useEnrollClickHandler = (courseId) => {
   const { authenticatedUser } = useContext(AppContext);
   const [availablePaymentData, setAvailablePaymentData] = useState();
 
-  const availablePayment = async () => {
-    try {
-      const Res = await axios.get(
-        `${getConfig().LMS_BASE_URL}/admin-console/api/paid-courses/${courseId}`,
-      );
-      setAvailablePaymentData(Res.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   useEffect(() => {
+    const availablePayment = async () => {
+      try {
+        const Res = await axios.get(
+          `${getConfig().LMS_BASE_URL}/admin-console/api/paid-courses/${courseId}`,
+        );
+        setAvailablePaymentData(Res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
     if (courseId) {
       availablePayment();
     }
@@ -46,8 +44,6 @@ const useEnrollClickHandler = (courseId) => {
   };
 
   const {
-    data: transactionData,
-    // isLoading: transactionLoading,
     refetch,
   } = useQuery('Transaction', fetchTransaction, {
     refetchOnWindowFocus: false,
@@ -84,7 +80,6 @@ const useEnrollClickHandler = (courseId) => {
   return {
     enrollClickHandler,
     isLoading,
-    transactionData,
     availablePaymentData,
   };
 };

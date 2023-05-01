@@ -11,8 +11,7 @@
     font-size: 1.25rem;
   }
   .long-bio-instructor {
-    max-width: 912px;
-    @include line-break(4);
+    color: $light-300;
   }
   .instructor-share-icon {
     cursor: pointer;

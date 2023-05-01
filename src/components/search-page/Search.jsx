@@ -35,7 +35,7 @@ const Search = () => {
         <Breadcrumb
           ariaLabel="Breadcrumb basic"
           links={[
-            { label: 'Home', to: '/home' },
+            { label: 'Home', to: '/' },
             { label: 'Discover', to: '/discover' },
           ]}
           linkAs={Link}

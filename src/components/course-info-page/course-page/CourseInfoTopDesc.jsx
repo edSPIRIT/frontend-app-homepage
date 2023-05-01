@@ -15,6 +15,7 @@ import {
   Verified,
 } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
+import ShowMoreText from 'react-show-more-text';
 
 const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => (
   <div className="course-info-top-container">
@@ -24,7 +25,7 @@ const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => (
         <Breadcrumb
           ariaLabel="Breadcrumb basic"
           links={[
-            { label: 'Home', to: '/home' },
+            { label: 'Home', to: '/' },
             { label: 'Discover', to: '/Discover' },
             { label: `${courseMetaData?.subject?.title}`, to: '/Discover' },
           ]}
@@ -66,9 +67,17 @@ const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => (
               {courseMetaData.additional_metadata?.org}
             </Link>
           </div>
-          <p className="pt-3.5">
-            {courseMetaData?.additional_metadata?.short_description}
-          </p>
+          <ShowMoreText
+            lines={3}
+            more="Show more"
+            less="Show less"
+            className="content-css pt-3.5"
+            anchorClass="show-more-less-clickable"
+            expanded={false}
+            truncatedEndingComponent="... "
+          >
+            <p>{courseMetaData?.additional_metadata?.short_description}</p>
+          </ShowMoreText>
           <div
             className="icons-wrapper d-flex color-gray-500 mt-3 pb-4.5 font-sm"
             ref={navTopRef}

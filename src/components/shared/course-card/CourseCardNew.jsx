@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
 
 import { Button, Card, Icon } from '@edx/paragon';
 import {
@@ -8,7 +7,8 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
-import logoPlaceholder from '../../../assets/card-placeholder.png';
+import logoPlaceholder from '../../../assets/org-logo-place-holder.png';
+import coverPlaceholder from '../../../assets/cover-course-place-holder.png';
 
 const CourseCardNew = ({ course }) => {
   const isProgram = false;
@@ -18,9 +18,11 @@ const CourseCardNew = ({ course }) => {
     <Link to={`/course/${course?.course_slug}`}>
       <Card className="cards-wrapper d-flex">
         <Card.ImageCap
-          src={`${getConfig().LMS_BASE_URL}${
-            course?.additional_metadata?.course_image_url
-          }`}
+          src={
+            `${getConfig().LMS_BASE_URL}${
+              course?.additional_metadata?.course_image_url
+            }` ?? coverPlaceholder
+          }
           logoSrc={course?.partner?.organization?.logo ?? logoPlaceholder}
           variant="top"
           srcAlt="course-header"

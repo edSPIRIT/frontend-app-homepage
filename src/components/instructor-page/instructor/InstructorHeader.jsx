@@ -1,11 +1,10 @@
-import { Breadcrumb, Button, Icon } from '@edx/paragon';
+import { Breadcrumb, Icon } from '@edx/paragon';
 import {
   ArrowBack, BookOpen, People, Share,
 } from '@edx/paragon/icons';
-import { useEffect, useRef, useState } from 'react';
-import classNames from 'classnames';
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import ShowMoreText from 'react-show-more-text';
 import { ReactComponent as Linkedin } from '../../../assets/linkedin.svg';
 import { ReactComponent as Facebook } from '../../../assets/facebook.svg';
 import { ReactComponent as Globe } from '../../../assets/language-filled.svg';
@@ -13,15 +12,7 @@ import { ReactComponent as Twitter } from '../../../assets/twitter.svg';
 import InstructorSkeleton from './InstructorSkeleton';
 
 const InstructorHeader = ({ InstructorData, loading }) => {
-  const [showMore, setShowMore] = useState(false);
-  const [showShowMoreButton, setShowMoreButton] = useState(false);
   const history = useHistory();
-  const pElement = useRef(null);
-  useEffect(() => {
-    if (pElement.current?.offsetHeight >= 112) {
-      setShowMoreButton(true);
-    }
-  }, [pElement.current?.offsetHeight]);
   return (
     <>
       <div className="d-flex px-4.5 py-3 align-items-center back-btn-wrapper">
@@ -32,7 +23,7 @@ const InstructorHeader = ({ InstructorData, loading }) => {
         <div className="custom-container pb-5 breadcrumb-wrapper">
           <Breadcrumb
             ariaLabel="Breadcrumb basic"
-            links={[{ label: 'Home', to: '/home' }]}
+            links={[{ label: 'Home', to: '/' }]}
             linkAs={Link}
             activeLabel={InstructorData?.name}
           />
@@ -72,25 +63,17 @@ const InstructorHeader = ({ InstructorData, loading }) => {
                 <span className="short-bio mb-3">
                   {InstructorData?.short_bio}
                 </span>
-                <div>
-                  <p
-                    ref={pElement}
-                    className={classNames('mb-2', {
-                      'long-bio-instructor': !showMore,
-                    })}
-                  >
-                    {InstructorData?.bio}
-                  </p>
-                  {showShowMoreButton && (
-                    <Button
-                      variant="tertiary"
-                      className="showMore-btn"
-                      onClick={() => setShowMore(!showMore)}
-                    >
-                      {showMore ? 'Show less' : 'Show more'}
-                    </Button>
-                  )}
-                </div>
+                <ShowMoreText
+                  lines={3}
+                  more="Show more"
+                  less="Show less"
+                  className="content-css long-bio-instructor"
+                  anchorClass="show-more-less-clickable"
+                  expanded={false}
+                  truncatedEndingComponent="... "
+                >
+                  <p className="mb-2">{InstructorData?.bio}</p>
+                </ShowMoreText>
                 <div className="instructor-icons-wrapper pt-4 mt-auto">
                   <div className="d-flex ">
                     <div className="d-flex mr-4.5 align-items-center">

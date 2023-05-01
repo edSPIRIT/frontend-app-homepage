@@ -16,7 +16,7 @@
     .icon-wrapper {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       color: $light-500;
       padding: 1rem;
@@ -27,7 +27,7 @@
     p {
       font-size: $font-size-base-sm;
       text-align: center;
-      width: 300px;
+      max-width: 300px;
       color: $light-500;
       min-height: 48px;
       line-height: 24px;
@@ -74,7 +74,7 @@
     height: 100%;
   }
   .pgn__card-wrapper-image-cap {
-    width: 254.4px;
+    // width: 254.4px;
     height: 145px;
     padding: 8px;
   }
@@ -182,9 +182,6 @@
     }
   }
   .banner-icons-wrapper {
-    .icon-wrapper {
-      justify-content: flex-start !important;
-    }
     p {
       max-width: 192px;
     }

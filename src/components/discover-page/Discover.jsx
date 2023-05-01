@@ -14,7 +14,7 @@ const Discover = () => {
       <div className="custom-container pt-5">
         <Breadcrumb
           ariaLabel="Breadcrumb basic"
-          links={[{ label: 'Home', to: '/home' }]}
+          links={[{ label: 'Home', to: '/' }]}
           linkAs={Link}
           activeLabel="Discover"
         />

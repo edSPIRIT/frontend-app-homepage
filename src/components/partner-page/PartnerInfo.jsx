@@ -26,7 +26,7 @@ const PartnerInfo = () => {
           <Breadcrumb
             ariaLabel="Breadcrumb basic"
             links={[
-              { label: 'Home', to: '/home' },
+              { label: 'Home', to: '/' },
               { label: 'Our-Partners', to: '/partners' },
             ]}
             linkAs={Link}

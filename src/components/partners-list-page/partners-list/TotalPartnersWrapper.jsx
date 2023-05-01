@@ -16,7 +16,7 @@ const TotalPartnersWrapper = ({
 }) => (
   <div className="d-flex justify-content-between align-items-center mb-4 mt-4.5">
     <p>
-      <span className="total-title">Total partners:</span>
+      <span className="total-title">Total:</span>
       {loading ? (
         <Skeleton height={20} width={20} className="ml-1" />
       ) : (

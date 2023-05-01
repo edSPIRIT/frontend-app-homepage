@@ -1,6 +1,10 @@
 /* eslint-disable max-len */
 import {
-  SearchField, Icon, Breadcrumb, Pagination,
+  SearchField,
+  Icon,
+  Breadcrumb,
+  Pagination,
+  useMediaQuery,
 } from '@edx/paragon';
 import {
   ArrowBack, BookOpen, DrawShapes, Groups,
@@ -20,6 +24,7 @@ const PartnersList = () => {
     count, partnersData, loading, numPages, isFetching,
   } = useGetPartners(page);
   const history = useHistory();
+  const isMobile = useMediaQuery({ maxWidth: '768px' });
 
   return (
     <section>
@@ -70,7 +75,7 @@ const PartnersList = () => {
         <div className="partner-breadcrumb pt-4.5">
           <Breadcrumb
             ariaLabel="Breadcrumb basic"
-            links={[{ label: 'Home', to: '/home' }]}
+            links={[{ label: 'Home', to: '/' }]}
             linkAs={Link}
             activeLabel="Our-Partners"
           />
@@ -82,9 +87,15 @@ const PartnersList = () => {
           loading={loading}
         />
         {view === 'grid' ? (
-          <PartnersCardGrid partnersData={partnersData} loading={loading && isFetching} />
+          <PartnersCardGrid
+            partnersData={partnersData}
+            loading={loading && isFetching}
+          />
         ) : (
-          <PartnersCardList partnersData={partnersData} loading={loading && isFetching} />
+          <PartnersCardList
+            partnersData={partnersData}
+            loading={loading && isFetching}
+          />
         )}
         <div className="pb-5.5 pt-4.5">
           {numPages > 1 && (
@@ -94,6 +105,7 @@ const PartnersList = () => {
               pageCount={numPages}
               onPageSelect={(e) => setPage(e)}
               currentPage={page}
+              variant={isMobile ? 'reduced' : 'default'}
             />
           )}
         </div>

@@ -1,4 +1,5 @@
-import { Skeleton } from '@edx/paragon';
+import { Icon, Skeleton } from '@edx/paragon';
+import { Check } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
 
 const WhatYouLearn = ({ learningItems, loading }) => (
@@ -7,14 +8,18 @@ const WhatYouLearn = ({ learningItems, loading }) => (
     {loading ? (
       <Skeleton count={5} height={24} />
     ) : (
-      <div className="items-wrapper">
+      <div className="mobile-icons-wrapper">
         {learningItems
-          && learningItems?.map((item, i) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <ul key={i}>
-              <li>{item}</li>
-            </ul>
-          ))}
+            && learningItems?.map((item, i) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <ul key={i} className=" p-0">
+                <li className="d-flex">
+                  <Icon src={Check} className="mr-1" />
+                  <span>{item}</span>
+
+                </li>
+              </ul>
+            ))}
       </div>
     )}
   </div>

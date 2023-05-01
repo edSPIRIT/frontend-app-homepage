@@ -2,16 +2,21 @@ import { Icon, IconButton } from '@edx/paragon';
 import { ArrowForward, BookOpen, People } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import adImg from '../../../../assets/ad-img.png';
 
 const InstructorCard = ({ instructor }) => (
   <Link to={`/instructor/${instructor?.slug}`} className="instructor-wrapper d-flex">
-    <div className="instructor-img-wrapper mr-4">
-      <img src={instructor?.image} alt="instructor-avator" />
+    <div className="instructor-course-img-wrapper">
+      <img
+        // src={instructor?.image}
+        src={adImg}
+        alt="instructor-avator"
+      />
     </div>
     <div className="d-flex flex-column w-100">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <div>
-          <span className="instructor-title mr-5 mb-1">{instructor?.name}</span>
+          <h4 className="instructor-title mr-5 mb-1">{instructor?.name}</h4>
           <span className="instructor-short-bio mr-3.5">
             {instructor?.short_bio}
           </span>

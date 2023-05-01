@@ -212,20 +212,7 @@
     font-weight: 500;
   }
 }
-.showMore-btn {
-  padding: 0;
-  &:hover {
-    background-color: unset;
-  }
-  &:focus {
-    &::before {
-      border: unset !important;
-    }
-  }
-  &:active {
-    background-color: unset !important;
-  }
-}
+
 .arrow-forward-btn {
   display: none;
   width: 36px;
@@ -240,5 +227,30 @@
   .pgn__icon {
     height: unset !important;
     width: 20px !important;
+  }
+}
+.show-more-less-clickable {
+  color: $info-500;
+  text-decoration: none !important;
+}
+.program-instructors-wrapper {
+  max-width: 244px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  a {
+    &::after {
+      content: ', ';
+    }
+    &:last-child {
+      &::after {
+        content: '';
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .program-instructors-wrapper {
+    max-width: 194px;
   }
 }

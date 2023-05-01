@@ -1,46 +1,27 @@
-import { Button, Skeleton } from '@edx/paragon';
-import classNames from 'classnames';
-import { useEffect, useRef, useState } from 'react';
+import { Skeleton } from '@edx/paragon';
 import PropTypes from 'prop-types';
+import ShowMoreText from 'react-show-more-text';
 
-const AboutCourse = ({ aboutCourse, loading }) => {
-  const [showMore, setShowMore] = useState(false);
-  const [showShowMoreButton, setShowMoreButton] = useState(false);
-  const pElement = useRef(null);
-  useEffect(() => {
-    if (pElement.current?.offsetHeight >= 139) {
-      setShowMoreButton(true);
-    }
-  }, [pElement.current?.offsetHeight]);
-  return (
-    <div className="about-wrapper mb-5" id="about-course">
-      <h2 className="mb-3">About this course</h2>
-      {loading ? (
-        <Skeleton count={4} height={24} />
-      ) : (
-        <div>
-          <p
-            ref={pElement}
-            className={classNames('mb-2', {
-              'long-about-break': !showMore,
-            })}
-          >
-            {aboutCourse}
-          </p>
-          {showShowMoreButton && (
-            <Button
-              variant="tertiary"
-              className="showMore-btn"
-              onClick={() => setShowMore(!showMore)}
-            >
-              {showMore ? 'Show less' : 'Show more'}
-            </Button>
-          )}
-        </div>
-      )}
-    </div>
-  );
-};
+const AboutCourse = ({ aboutCourse, loading }) => (
+  <div className="about-wrapper" id="about-course">
+    <h2 className="mb-3">About this course</h2>
+    {loading ? (
+      <Skeleton count={4} height={24} />
+    ) : (
+      <ShowMoreText
+        lines={3}
+        more="Show more"
+        less="Show less"
+        className="content-css"
+        anchorClass="show-more-less-clickable"
+        expanded={false}
+        truncatedEndingComponent="... "
+      >
+        <p className="mb-2">{aboutCourse}</p>
+      </ShowMoreText>
+    )}
+  </div>
+);
 AboutCourse.propTypes = {
   aboutCourse: PropTypes.string,
   loading: PropTypes.bool,

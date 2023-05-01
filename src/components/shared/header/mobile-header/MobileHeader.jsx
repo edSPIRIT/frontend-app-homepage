@@ -21,7 +21,7 @@ import useHideNavbarOnScroll from '../../../../hooks/utils/useHideNavbarOnScroll
 
 const MobileHeader = () => {
   const { authenticatedUser } = useContext(AppContext);
-  const isNavbarVisible = useHideNavbarOnScroll();
+  // const isNavbarVisible = useHideNavbarOnScroll();
   const [ActiveLink, setActiveLink] = useState(null);
   const { footerData, loading } = useGetFooters();
   const location = useLocation();
@@ -34,7 +34,7 @@ const MobileHeader = () => {
       <div className="hidden-top-mobile-header" />
       <div
         className={classNames(' py-1.5 px-4 mobile-header', {
-          'd-none': !isNavbarVisible,
+          'd-none': !true,
         })}
       >
         <div className="logo-container mr-4">
@@ -64,11 +64,12 @@ const MobileHeader = () => {
         <Nav.Item>
           <Nav.Link
             activeClassName="active"
-            to="/home"
+            exact
+            to="/"
             as={NavLink}
             className="d-flex flex-column align-items-center"
           >
-            <Icon src={ActiveLink === '/home' ? HomeNavColored : HomeNav} />
+            <Icon src={ActiveLink === '/' ? HomeNavColored : HomeNav} />
             <span>Home</span>
           </Nav.Link>
         </Nav.Item>
