@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { ArrowForward } from '@edx/paragon/icons';
-import { COURSES_SEARCH } from '../../../constants';
+import { COURSES_SEARCH } from '../../../utils/constants';
 
 const DiscoverBanner = () => {
   const [searchValue, setSearchValue] = useState('');

@@ -127,8 +127,6 @@
   top: 0;
   font-size: $font-size-base-xl;
   white-space: nowrap;
-  @include infinite-background-container($light-300);
-
   ul {
     display: flex;
     margin-bottom: unset;
@@ -149,6 +147,9 @@
     font-weight: 500;
     color: $primary-500;
   }
+}
+.sticky-nav-wrapper-infinite-border {
+  @include infinite-background-container($light-300);
 }
 
 .about-wrapper {
@@ -356,7 +357,6 @@
     .org-img-wrapper {
       width: 80px;
       height: 40px;
-
       .org-img {
         width: 100%;
         height: 100%;
@@ -364,7 +364,6 @@
       }
     }
   }
-
   .price-wrapper {
     width: 100%;
     background-color: $white;
@@ -380,12 +379,10 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0px, 1fr));
   color: black;
-
   .pgn__icon {
     color: $gray-500;
     opacity: 0.5;
   }
-
   .program-instructors-wrapper {
     a {
       color: black;
@@ -395,7 +392,12 @@
 
 @media (max-width: 768px) {
   .sticky-nav-wrapper {
+    background-color: $light-300;
+    top: 56px;
     z-index: 11;
+    &::-webkit-scrollbar{
+      display: none;
+    }
   }
   .course-info-instructors {
     .instructor-course-img-wrapper {

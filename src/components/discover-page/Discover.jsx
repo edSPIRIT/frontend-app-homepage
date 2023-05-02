@@ -2,9 +2,9 @@ import { Breadcrumb, Button } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import { Link, useHistory } from 'react-router-dom';
 import PopularSubjects from '../shared/popular-subjects/PopularSubjects';
-import { COURSES_INFO_TOP } from '../../constants';
 import CourseCard from '../shared/course-card/CourseCard';
 import DiscoverBanner from '../shared/discover-banner/DiscoverBanner';
+import { COURSES_INFO_TOP } from '../../utils/constants';
 
 const Discover = () => {
   const history = useHistory();

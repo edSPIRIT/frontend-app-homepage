@@ -12,7 +12,7 @@ const SearchResults = ({
 
   return (
     <>
-      <div className="course-container">
+      <div className="course-container pb-4.5">
         {/* TO DO: Do not use Array index in keys */}
         {loading
           ? Array(16)
@@ -27,7 +27,7 @@ const SearchResults = ({
       </div>
       {allCoursesData?.pagination?.num_pages > 1 && (
         <Pagination
-          className="d-flex justify-content-center pt-4.5 pb-5"
+          className="d-flex justify-content-center pb-5"
           paginationLabel="pagination navigation"
           pageCount={allCoursesData?.pagination?.num_pages}
           onPageSelect={(e) => setPage(e)}

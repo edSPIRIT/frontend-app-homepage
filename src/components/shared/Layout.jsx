@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { Suspense } from 'react';
 import { Spinner } from '@edx/paragon';
-import Footer from './footer/Footer';
 import Header from './header/Header';
+import FooterSection from './footer/FooterSection';
 
 const Layout = ({ children }) => (
   <Suspense
@@ -18,7 +18,7 @@ const Layout = ({ children }) => (
   >
     <Header />
     {children}
-    <Footer />
+    <FooterSection />
   </Suspense>
 );
 export default Layout;

@@ -15,6 +15,12 @@
   @include card-styles;
   min-width: 272px;
   height: 100%;
+  .pgn__card-wrapper-image-cap {
+    height: 92px;
+    .pgn__card-image-cap {
+      height: inherit;
+    }
+  }
   .pgn__card-logo-cap {
     object-fit: contain;
   }

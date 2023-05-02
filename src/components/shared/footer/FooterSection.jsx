@@ -1,6 +1,4 @@
-import { Dropdown, Icon } from '@edx/paragon';
-import React, { useState } from 'react';
-import { Language, KeyboardArrowDown } from '@edx/paragon/icons';
+import { Icon } from '@edx/paragon';
 import edLogo from '../../../assets/edspirit-logo.png';
 import mobileFooterLogo from '../../../assets/mobile-footer-logo.svg';
 import mobileEdxLogo from '../../../assets/mobile-edx-logo.svg';
@@ -10,10 +8,11 @@ import { ReactComponent as Facebook } from '../../../assets/facebook.svg';
 import { ReactComponent as Twitter } from '../../../assets/twitter.svg';
 import { ReactComponent as Reddit } from '../../../assets/reddit.svg';
 import useGetFooters from '../../../hooks/useGetFooters';
+import ChooseLanguage from './footer-section/ChooseLanguage';
 
-const Footer = () => {
-  const [value, setValue] = useState('English');
+const FooterSection = () => {
   const { footerData } = useGetFooters();
+
   return (
     <footer>
       <div className="custom-container mb-4 pt-5">
@@ -62,45 +61,7 @@ const Footer = () => {
           </div>
 
           <div className=" footer-col3-wrapper ">
-            <h5 className="mb-2.5">Choose Language</h5>
-            <Dropdown
-              className="dropdown-wrapper d-flex mb-5.5"
-              onSelect={(e) => setValue(e)}
-            >
-              <Dropdown.Toggle
-                id="dropdown-basic-4"
-                iconAfter={KeyboardArrowDown}
-                iconBefore={Language}
-              >
-                <span className="text-primary-500 dropdown-title">{value}</span>
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item
-                  key="English"
-                  active={value === 'English'}
-                  href="#/action-1"
-                  eventKey="English"
-                >
-                  English
-                </Dropdown.Item>
-                <Dropdown.Item
-                  key="فارسی"
-                  active={value === 'فارسی'}
-                  href="#/action-1"
-                  eventKey="فارسی"
-                >
-                  فارسی
-                </Dropdown.Item>
-                <Dropdown.Item
-                  key="العربیه"
-                  active={value === 'العربیه'}
-                  href="#/action-1"
-                  eventKey="العربیه"
-                >
-                  العربیه
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <ChooseLanguage />
             <div className="social-container">
               {footerData?.links?.socials.linkedin && (
                 <a
@@ -183,4 +144,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default FooterSection;

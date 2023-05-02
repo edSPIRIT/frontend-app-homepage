@@ -1,8 +1,8 @@
 import { Button, Dropdown, Form } from '@edx/paragon';
 import { CloseSmall, KeyboardArrowDown } from '@edx/paragon/icons';
 import { useState } from 'react';
-import { SEARCH_FACET_FILTERS } from '../../../constants';
 import SearchFacetItem from './search-facets/SearchFacetItem';
+import { SEARCH_FACET_FILTERS } from '../../../utils/constants';
 
 const SearchFacets = () => {
   const [facetItems, setFacetItems] = useState([]);

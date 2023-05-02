@@ -42,7 +42,7 @@ const DesktopCourseInfo = () => {
         </RouterLink>
       </div>
       <div
-        className={classNames('sticky-nav-wrapper', {
+        className={classNames('sticky-nav-wrapper sticky-nav-wrapper-infinite-border', {
           'sticky-nav': !isTopOnScreen && !loading,
         })}
       >

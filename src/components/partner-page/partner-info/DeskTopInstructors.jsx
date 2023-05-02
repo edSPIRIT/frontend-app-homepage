@@ -1,7 +1,6 @@
 import { Icon, IconButton } from '@edx/paragon';
 import { ArrowForward, BookOpen, People } from '@edx/paragon/icons';
-import React from 'react';
-import { INSTRUCTORS } from '../../../constants';
+import { INSTRUCTORS } from '../../../utils/constants';
 
 const DeskTopInstructors = () => (
   <div className="custom-container mb-5.5" id="instructors">

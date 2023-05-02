@@ -1,0 +1,180 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import {
+  Dropdown,
+  Icon,
+  ModalLayer,
+  useMediaQuery,
+  useToggle,
+} from '@edx/paragon';
+import {
+  Check, Close, KeyboardArrowDown, Language,
+} from '@edx/paragon/icons';
+import { useContext, useState } from 'react';
+import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
+import { getConfig } from '@edx/frontend-platform';
+import {
+  getLocale,
+  handleRtl,
+} from '@edx/frontend-platform/i18n';
+import { AppContext } from '@edx/frontend-platform/react';
+import useGetActiveLangs from '../../../../hooks/useGetActiveLangs';
+import { supportedLanguages } from '../../../../utils/supportsLanguages';
+
+const ChooseLanguage = () => {
+  const { activeLangs } = useGetActiveLangs();
+  const getLangName = (languageCode) => {
+    const langSelected = supportedLanguages?.find(
+      (lang) => lang?.code === languageCode,
+    );
+    return langSelected?.name;
+  };
+  const [value, setValue] = useState(getLangName(getLocale()));
+  const [isOpen, open, close] = useToggle(false);
+  const isMobile = useMediaQuery({ maxWidth: '768px' });
+  const { authenticatedUser } = useContext(AppContext);
+  console.log(getLocale());
+  async function patchPreferences(params) {
+    const { status } = await getAuthenticatedHttpClient().patch(
+      `${getConfig().LMS_BASE_URL}/api/user/v1/preferences/${
+        authenticatedUser?.username
+      }`,
+      {
+        'pref-lang': params,
+      },
+      {
+        headers: { 'Content-Type': 'application/merge-patch+json' },
+      },
+    );
+    if (status === 204) {
+      setValue(getLangName(getLocale()));
+      window.location.reload();
+    }
+    return params; // TODO: Once the server returns the updated preferences object, return that.
+  }
+
+  // async function postSetLang(code) {
+  //   const formData = new FormData();
+  //   formData.append('language', code);
+
+  //   await getAuthenticatedHttpClient().post(
+  //     `${getConfig().LMS_BASE_URL}/i18n/setlang/`,
+  //     formData,
+  //     {
+  //       headers: { 'X-Requested-With': 'XMLHttpRequest' },
+  //     },
+  //   );
+  // }
+  const getLangCode = (languageName) => {
+    const langSelected = supportedLanguages?.find(
+      (lang) => lang?.name === languageName,
+    );
+    return langSelected.code;
+  };
+
+  const handleClick = (e) => {
+    patchPreferences(getLangCode(e.target.innerText));
+    // postSetLang(getLangCode(e.target.innerText));
+    // publish(LOCALE_CHANGED, getLocale());
+    handleRtl();
+  };
+  return (
+    <>
+      <ModalLayer isOpen={isOpen} onClose={close}>
+        <div
+          role="dialog"
+          aria-label="My dialog"
+          className="  bg-white more-modal-items "
+        >
+          <div className="d-flex close-wrapper justify-content-between align-items-center py-2 px-4">
+            <span className="font-sm" />
+            <Icon src={Close} className=" share-icon" onClick={close} />
+          </div>
+          <ul className="subject-items-list px-4 font-xl">
+            {activeLangs?.map((lang) => (
+              <li
+                key={lang.code}
+                onClick={(e) => {
+                  handleClick(e);
+                  close();
+                }}
+                className="d-flex justify-content-between my-2.5"
+              >
+                <span>{lang.name }</span>
+                {value === lang.name && (
+                <Icon className="check-icon" src={Check} />
+                )}
+              </li>
+            ))}
+            {/* <li
+              onClick={() => {
+                setValue('Recent');
+                close();
+              }}
+              className="d-flex justify-content-between my-2.5"
+            >
+              <span>Recent</span>
+              {value === 'Recent' && (
+                <Icon className="check-icon" src={Check} />
+              )}
+            </li>
+            <li
+              onClick={() => {
+                setValue('Title A to Z');
+                close();
+              }}
+              className="d-flex justify-content-between mb-2.5"
+            >
+              <span>Title A to Z</span>
+              {value === 'Title A to Z' && (
+                <Icon className="check-icon" src={Check} />
+              )}
+            </li>
+            <li
+              onClick={() => {
+                setValue('Title Z to A');
+                close();
+              }}
+              className="d-flex justify-content-between"
+            >
+              <span>Title Z to A</span>
+              {value === 'Title Z to A' && (
+                <Icon className="check-icon" src={Check} />
+              )}
+            </li> */}
+          </ul>
+        </div>
+      </ModalLayer>
+      <>
+        <h5 className="mb-2.5">Choose Language</h5>
+        <Dropdown
+          className="dropdown-wrapper mb-5.5"
+          onSelect={(e) => setValue(e)}
+          onClick={isMobile ? open : null}
+        >
+          <Dropdown.Toggle
+            id="dropdown-basic-4"
+            iconAfter={KeyboardArrowDown}
+            iconBefore={Language}
+          >
+            <span className="text-primary-500 dropdown-title"> {value}</span>
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {activeLangs?.map((lang) => (
+              <Dropdown.Item
+                key={lang.code}
+                active={value === lang.name}
+                eventKey={lang.name}
+                onClick={handleClick}
+              >
+                {lang.name}
+              </Dropdown.Item>
+            ))}
+          </Dropdown.Menu>
+        </Dropdown>
+      </>
+    </>
+  );
+};
+
+export default ChooseLanguage;

@@ -1,6 +1,6 @@
 import { Icon } from '@edx/paragon';
 import { BookOpen, People } from '@edx/paragon/icons';
-import { INSTRUCTORS } from '../../../constants';
+import { INSTRUCTORS } from '../../../utils/constants';
 
 const MobileInstructors = () => (
   <div className="custom-container mb-5.5" id="instructors">

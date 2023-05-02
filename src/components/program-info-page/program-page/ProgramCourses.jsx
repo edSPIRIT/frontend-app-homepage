@@ -1,7 +1,7 @@
 import { Carousel, Icon } from '@edx/paragon';
 import { ChevronLeft, ChevronRight } from '@edx/paragon/icons';
-import { SIMILAR_COURSES } from '../../../constants';
 import CourseCard from '../../shared/course-card/CourseCard';
+import { SIMILAR_COURSES } from '../../../utils/constants';
 
 const ProgramCourses = () => {
   const chunkedArray = [];

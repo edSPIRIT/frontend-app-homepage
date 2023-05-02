@@ -1,8 +1,8 @@
 import { Button } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import { useHistory } from 'react-router';
-import { COURSES_INFO } from '../../../constants';
 import CourseCard from '../../shared/course-card/CourseCard';
+import { COURSES_INFO } from '../../../utils/constants';
 
 const PartnerCourses = () => {
   const history = useHistory();
