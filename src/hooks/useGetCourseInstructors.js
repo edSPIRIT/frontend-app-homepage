@@ -8,9 +8,6 @@ const useGetInstructorCourses = (courseId) => {
       `${
         getConfig().LMS_BASE_URL
       }/admin-console/api/instructor-list/?page=1&course_id=${id}`,
-      {
-        enabled: !!courseId,
-      },
     );
 
     if (!apiRes.ok) {
@@ -22,6 +19,10 @@ const useGetInstructorCourses = (courseId) => {
   const { data, isLoading } = useQuery(
     ['InstructorCourses', courseId],
     fetchInstructorCourses,
+
+    {
+      enabled: !!courseId,
+    },
   );
   return {
     InstructorCourses: data,

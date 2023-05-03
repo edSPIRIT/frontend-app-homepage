@@ -1,10 +1,13 @@
 /* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable react/prop-types */
-import { Icon, ProgressBar } from '@edx/paragon';
+import { Button, Icon, ProgressBar } from '@edx/paragon';
 import { CheckCircle } from '@edx/paragon/icons';
 import { Link } from 'react-router-dom';
+import { getConfig } from '@edx/frontend-platform';
+import useGetCertificate from '../../../../hooks/useGetCertificate';
 
 const BottomCardSection = ({ courseInfo }) => {
+  const { certificateData } = useGetCertificate(courseInfo);
   const courseCompleted = courseInfo?.progress?.complete_count > 0
     && courseInfo?.progress?.incomplete_count === 0;
   const courseInprogress = courseInfo?.resume_course?.has_visited_course;
@@ -27,15 +30,17 @@ const BottomCardSection = ({ courseInfo }) => {
             <span className="second-title">Completed</span>
           </div>
           <div className="d-flex view-course-btn">
-            <a
-              target="_blank"
-              href="#/certificate"
-              rel="noreferrer"
+            <Button
               className="view-btn"
-              onClick={(e) => e.preventDefault}
+              onClick={() => {
+                window.location.href = `${getConfig().LMS_BASE_URL}${
+                  certificateData?.download_url
+                }`;
+              }}
+              disabled={!1}
             >
               View certificate
-            </a>
+            </Button>
           </div>
         </div>
       );
@@ -54,7 +59,11 @@ const BottomCardSection = ({ courseInfo }) => {
           className="view-btn view-course-btn"
           to={`/course/${courseInfo?.course_metadata?.slug}`}
         >
-          View Course
+          {calcProgress() > 0 ? (
+            <span> Resume Course</span>
+          ) : (
+            <span> View Course</span>
+          )}
         </Link>
       </>
     );
