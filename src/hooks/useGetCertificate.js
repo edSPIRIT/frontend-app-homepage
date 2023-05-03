@@ -7,10 +7,11 @@ import { useQuery } from 'react-query';
 const useGetCertificate = (courseInfo) => {
   const { authenticatedUser } = useContext(AppContext);
   console.log('courseInfo', courseInfo);
-  const fetchCertificate = async () => {
+  const fetchCertificate = async ({ queryKey }) => {
+    const id = queryKey[1];
     const url = `${getConfig().LMS_BASE_URL}/api/certificates/v0/certificates/${
       authenticatedUser?.username
-    }/courses/${courseInfo?.course_details?.course_id}/`;
+    }/courses/${id}/`;
     const { data } = await getAuthenticatedHttpClient().get(url);
     // if (data.status === "downloadable") {
     //   throw new Error('fetch not ok');
@@ -21,11 +22,15 @@ const useGetCertificate = (courseInfo) => {
 
     return data;
   };
-  const { data, isLoading } = useQuery('Certificate', fetchCertificate, {
-    enabled:
-      courseInfo?.progress?.complete_count > 0
-      && courseInfo?.progress?.incomplete_count === 0,
-  });
+  const { data, isLoading } = useQuery(
+    ['Certificate', courseInfo?.course_details?.course_id],
+    fetchCertificate,
+    {
+      enabled:
+        courseInfo?.progress?.complete_count > 0
+        && courseInfo?.progress?.incomplete_count === 0,
+    },
+  );
   return {
     certificateData: data,
     loading: isLoading,
