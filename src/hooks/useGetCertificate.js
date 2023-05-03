@@ -13,24 +13,13 @@ const useGetCertificate = (courseInfo) => {
       authenticatedUser?.username
     }/courses/${id}/`;
     const { data } = await getAuthenticatedHttpClient().get(url);
-    // if (data.status === "downloadable") {
-    //   throw new Error('fetch not ok');
-    // }
-    // if (status === 200) {
-    //   window.location.href = data?.paymentURL;
-    // }
-
     return data;
   };
-  const { data, isLoading } = useQuery(
-    ['Certificate', courseInfo?.course_details?.course_id],
-    fetchCertificate,
-    {
-      enabled:
-        courseInfo?.progress?.complete_count > 0
-        && courseInfo?.progress?.incomplete_count === 0,
-    },
-  );
+  const { data, isLoading } = useQuery({
+    queryKey: ['Certificate', courseInfo?.course_details?.course_id],
+    queryFn: fetchCertificate,
+    retry: (failureCount, error) => error.status !== 404,
+  });
   return {
     certificateData: data,
     loading: isLoading,
