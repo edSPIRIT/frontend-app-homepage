@@ -4,8 +4,8 @@ import {
   BookOpen, DrawShapes, Groups, Share,
 } from '@edx/paragon/icons';
 import ShowMoreText from 'react-show-more-text';
-import partnerBanner from '../../../assets/card-image-cap-partner.png';
-import logoPlaceholder from '../../../assets/card-placeholder.png';
+import partnerBanner from '../../../assets/place-holders/cover-course-place-holder.png';
+import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.png';
 
 const PartnerHeader = ({ partnerData, loading }) => (
   <>

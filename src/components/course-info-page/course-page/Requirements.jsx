@@ -4,7 +4,7 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ReactComponent as Warning } from '../../../assets/warning.svg';
-import logoPlaceholder from '../../../assets/org-logo-place-holder.png';
+import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.png';
 
 const Requirements = ({ courseMetaData, loading }) => {
   const history = useHistory();

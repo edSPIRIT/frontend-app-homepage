@@ -6,11 +6,11 @@ import { useQuery } from 'react-query';
 
 const useGetCertificate = (courseInfo) => {
   const { authenticatedUser } = useContext(AppContext);
-
+  console.log('courseInfo', courseInfo);
   const fetchCertificate = async () => {
     const url = `${getConfig().LMS_BASE_URL}/api/certificates/v0/certificates/${
       authenticatedUser?.username
-    }/courses/${courseInfo?.course_details?.courseId}/`;
+    }/courses/${courseInfo?.course_details?.course_id}/`;
     const { data } = await getAuthenticatedHttpClient().get(url);
     // if (data.status === "downloadable") {
     //   throw new Error('fetch not ok');

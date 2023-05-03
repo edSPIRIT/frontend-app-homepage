@@ -32,12 +32,13 @@ const BottomCardSection = ({ courseInfo }) => {
           <div className="d-flex view-course-btn">
             <Button
               className="view-btn"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 window.location.href = `${getConfig().LMS_BASE_URL}${
                   certificateData?.download_url
                 }`;
               }}
-              disabled={!1}
+              disabled={!certificateData}
             >
               View certificate
             </Button>

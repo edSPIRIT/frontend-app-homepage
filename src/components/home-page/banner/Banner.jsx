@@ -5,10 +5,15 @@ import {
 } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import { Link, useHistory } from 'react-router-dom';
-import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from '@edx/frontend-platform/i18n';
 import useGetBanner from '../../../hooks/useGetBanner';
 import Highlighted from './Highlighted';
 import messages from '../../../messages';
+import defaultBanner from '../../../assets/default-banner.png';
 
 const Banner = ({ intl }) => {
   const history = useHistory();
@@ -52,7 +57,11 @@ const Banner = ({ intl }) => {
           {isLoading ? (
             <Skeleton width={300} height={200} />
           ) : (
-            <Image className="hero-image" src={image} alt="banner_image" />
+            <Image
+              className="hero-image"
+              src={image ?? defaultBanner}
+              alt="banner_image"
+            />
           )}
         </div>
       </div>
