@@ -2,6 +2,7 @@
 import { Icon, Skeleton } from '@edx/paragon';
 import { BookOpen, People } from '@edx/paragon/icons';
 import { Link } from 'react-router-dom';
+import userAvatar from '../../../../../assets/place-holders/user-placeholder.svg';
 
 const MobileCourseInstructors = ({ instructors, loading }) => (
   <div className="course-info-instructors mt-5" id="instructors">
@@ -36,7 +37,7 @@ const MobileCourseInstructors = ({ instructors, loading }) => (
               <div className="d-flex">
                 <div className="instructor-course-img-wrapper">
                   <img
-                    src={instructor?.image}
+                    src={instructor?.image ?? userAvatar}
                     alt="instructor-avator"
                   />
                 </div>

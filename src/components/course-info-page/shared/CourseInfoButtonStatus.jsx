@@ -7,7 +7,7 @@ import useEnrollClickHandler from '../../../hooks/useEnrollClickHandler';
 import useGetEnrollmentList from '../../../hooks/useGetEnrollmentList';
 
 const CourseInfoButtonStatus = ({ courseMetaData }) => {
-  const { loading: coursesEnrollLoading, courseIds } = useGetEnrollmentList();
+  const { loading: coursesEnrollLoading, userCourseIds } = useGetEnrollmentList();
   const {
     enrollClickHandler,
     loading: enrollLoading,
@@ -20,7 +20,7 @@ const CourseInfoButtonStatus = ({ courseMetaData }) => {
       </Button>
     );
   }
-  if (courseIds?.includes(courseMetaData?.course_id)) {
+  if (userCourseIds?.includes(courseMetaData?.course_id)) {
     return (
       <Button
         variant="primary"

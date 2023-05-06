@@ -17,7 +17,7 @@ import AboutCourse from './AboutCourse';
 import WhatYouLearn from './WhatYouLearn';
 import Requirements from './Requirements';
 import CourseContent from './CourseContent';
-import orgLogo from '../../../assets/place-holders/org-logo-place-holder.png';
+import orgLogo from '../../../assets/place-holders/org-logo-place-holder.svg';
 import CourseInfoButtonStatus from '../shared/CourseInfoButtonStatus';
 import MobileCourseInstructors from './course-instructors/mobile-course-info/MobileCourseInstructors';
 

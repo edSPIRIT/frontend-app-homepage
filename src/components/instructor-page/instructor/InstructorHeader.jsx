@@ -9,6 +9,7 @@ import { ReactComponent as Linkedin } from '../../../assets/linkedin.svg';
 import { ReactComponent as Facebook } from '../../../assets/facebook.svg';
 import { ReactComponent as Globe } from '../../../assets/language-filled.svg';
 import { ReactComponent as Twitter } from '../../../assets/twitter.svg';
+import userAvatar from '../../../assets/place-holders/user-placeholder.svg';
 import InstructorSkeleton from './InstructorSkeleton';
 
 const InstructorHeader = ({ InstructorData, loading }) => {
@@ -37,7 +38,7 @@ const InstructorHeader = ({ InstructorData, loading }) => {
                 <div className="instructor-img-wrapper">
                   <img
                     className="img-instructor"
-                    src={InstructorData?.image}
+                    src={InstructorData?.image ?? userAvatar}
                     alt="instructor-img"
                   />
                 </div>

@@ -13,9 +13,8 @@ const Search = () => {
   const [value, setValue] = useState('Recent');
   const [page, setPage] = useState(1);
   const { allCoursesData, isLoading } = useGetAllCourses(page);
-  console.log('allCoursesData', allCoursesData);
   const dispatch = useDispatch();
-
+  console.log('parent');
   return (
     <main>
       <DiscoverBanner />
@@ -84,8 +83,6 @@ const Search = () => {
           </Dropdown>
         </div>
         <SearchResults
-          allCoursesData={allCoursesData}
-          loading={isLoading}
           page={page}
           setPage={setPage}
         />

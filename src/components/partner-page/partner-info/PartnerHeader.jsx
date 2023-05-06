@@ -4,17 +4,14 @@ import {
   BookOpen, DrawShapes, Groups, Share,
 } from '@edx/paragon/icons';
 import ShowMoreText from 'react-show-more-text';
-import partnerBanner from '../../../assets/place-holders/cover-course-place-holder.png';
-import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.png';
+import partnerBanner from '../../../assets/place-holders/cover-course-place-holder.svg';
+import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
 
 const PartnerHeader = ({ partnerData, loading }) => (
   <>
     <div className="banner-container">
       <div className="partner-img-wrapper">
-        <img
-          src={partnerData?.header ? partnerData?.header : partnerBanner}
-          alt="partnerBanner"
-        />
+        <img src={partnerData?.header ?? partnerBanner} alt="partnerBanner" />
       </div>
       <div className="partner-logo-container">
         <div className="partner-logo-wrapper">

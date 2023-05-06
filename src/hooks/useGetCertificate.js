@@ -20,10 +20,7 @@ const useGetCertificate = (courseInfo) => {
     enabled:
       courseInfo?.progress?.complete_count > 0
       && courseInfo?.progress?.incomplete_count === 0,
-    retry: (failureCount, error) => {
-      console.log('error incertifi', error, error.customAttributes.httpErrorStatus);
-      return error.customAttributes.httpErrorStatus !== 404;
-    },
+    retry: (failureCount, error) => error.customAttributes.httpErrorStatus !== 404,
   });
   return {
     certificateData: data,

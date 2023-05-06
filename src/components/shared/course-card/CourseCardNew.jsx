@@ -7,8 +7,8 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
-import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.png';
-import coverPlaceholder from '../../../assets/place-holders/cover-course-place-holder.png';
+import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
+import coverPlaceholder from '../../../assets/place-holders/cover-course-place-holder.svg';
 
 const CourseCardNew = ({ course }) => {
   const isProgram = false;

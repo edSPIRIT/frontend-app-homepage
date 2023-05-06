@@ -4,17 +4,17 @@
 import { Pagination, useMediaQuery } from '@edx/paragon';
 import CourseCardNew from '../../shared/course-card/CourseCardNew';
 import CourseCardSkeleton from '../../shared/skeleton/CourseCardSkeleton';
+import useGetAllCourses from '../../../hooks/useGetAllCourses';
 
-const SearchResults = ({
-  allCoursesData, loading, page, setPage,
-}) => {
+const SearchResults = ({ page, setPage }) => {
   const isMobile = useMediaQuery({ maxWidth: '768px' });
+  const { allCoursesData, isLoading } = useGetAllCourses(page);
 
   return (
     <>
       <div className="course-container pb-4.5">
         {/* TO DO: Do not use Array index in keys */}
-        {loading
+        {isLoading
           ? Array(16)
             .fill(1)
             .map((item, i) => (

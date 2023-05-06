@@ -1,6 +1,7 @@
 import { Icon, IconButton } from '@edx/paragon';
 import { ArrowForward, BookOpen, People } from '@edx/paragon/icons';
 import { INSTRUCTORS } from '../../../utils/constants';
+import userAvatar from '../../../assets/place-holders/user-placeholder.svg';
 
 const DeskTopInstructors = () => (
   <div className="custom-container mb-5.5" id="instructors">
@@ -10,7 +11,7 @@ const DeskTopInstructors = () => (
       {INSTRUCTORS.map((instructor) => (
         <div className="instructor-wrapper d-flex" key={instructor.name}>
           <div className="instructor-img-wrapper mr-4">
-            <img src={instructor.image} alt="instructor-avatar" />
+            <img src={instructor.image ?? userAvatar} alt="instructor-avatar" />
           </div>
           <div className="d-flex flex-column">
             <div className="instructor-name-wrapper">

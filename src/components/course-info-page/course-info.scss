@@ -276,6 +276,10 @@
     height: 96px;
     border-radius: 6px;
     margin-right: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $light-300;
 
     img {
       width: 100%;
@@ -395,7 +399,7 @@
     background-color: $light-300;
     top: 56px;
     z-index: 11;
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
       display: none;
     }
   }

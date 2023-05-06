@@ -8,7 +8,7 @@ import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleto
 import TotalCourseWrapper from '../shared/total-course-wrapper/TotalCourseWrapper';
 
 const InProgress = () => {
-  const { coursesEnrollment, loading } = useGetEnrollmentList();
+  const { loading, userInprogressCourses } = useGetEnrollmentList();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
 
   return (
@@ -22,52 +22,42 @@ const InProgress = () => {
               // eslint-disable-next-line react/no-array-index-key
               <UserCourseCardSkeleton key={i} />
             ))
-        ) : coursesEnrollment?.filter(
-          (courseInfo) => courseInfo?.progress?.incomplete_count > 0,
-        )?.length === 0 ? (
+        ) : userInprogressCourses?.length === 0 ? (
           <NotEnrolledCardCourse
             title="Earn a certificate Advance your career"
             description="You will find your in-progress courses here."
           />
-          ) : (
-            <div className="d-flex ">
-              <div className="w-100">
-                <TotalCourseWrapper
-                  coursesCount={
-                  coursesEnrollment?.filter(
-                    (courseInfo) => courseInfo?.progress?.incomplete_count > 0,
-                  )?.length
-                }
-                  loading={loading}
-                />
-                {loading
-                  ? Array(4)
-                    .fill(1)
-                    .map((item, i) => (
+        ) : (
+          <div className="d-flex ">
+            <div className="w-100">
+              <TotalCourseWrapper
+                coursesCount={userInprogressCourses?.length}
+                loading={loading}
+              />
+              {loading
+                ? Array(4)
+                  .fill(1)
+                  .map((item, i) => (
                     // eslint-disable-next-line react/no-array-index-key
-                      <UserCourseCardSkeleton key={i} />
-                    ))
-                  : coursesEnrollment
-                    ?.filter(
-                      (courseInfo) => courseInfo?.progress?.incomplete_count > 0,
-                    )
-                    ?.map((courseInfo) => (
-                      <UserCourseCard
-                        courseInfo={courseInfo}
-                        key={courseInfo?.course_details?.course_id}
-                      />
-                    ))}
-                {/*
+                    <UserCourseCardSkeleton key={i} />
+                  ))
+                : userInprogressCourses?.map((courseInfo) => (
+                  <UserCourseCard
+                    courseInfo={courseInfo}
+                    key={courseInfo?.course_details?.course_id}
+                  />
+                ))}
+              {/*
           <Pagination
             className="d-flex justify-content-center"
             paginationLabel="pagination navigation"
             pageCount={20}
             onPageSelect={() => console.log('page selected')}
           /> */}
-              </div>
-              {/* <AdCard /> */}
             </div>
-          )}
+            {/* <AdCard /> */}
+          </div>
+        )}
       </main>
     </>
   );

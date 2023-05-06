@@ -8,7 +8,7 @@ import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleto
 import TotalCourseWrapper from '../shared/total-course-wrapper/TotalCourseWrapper';
 
 const Completed = () => {
-  const { coursesEnrollment, loading } = useGetEnrollmentList();
+  const { userCompletedCourses, loading } = useGetEnrollmentList();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
 
   return (
@@ -23,47 +23,34 @@ const Completed = () => {
                 // eslint-disable-next-line react/no-array-index-key
                 <UserCourseCardSkeleton key={i} />
               ))
-          ) : coursesEnrollment?.filter(
-            (courseInfo) => courseInfo?.progress?.complete_count > 0
-                && courseInfo?.progress?.incomplete_count === 0,
-          )?.length === 0 ? (
+          ) : userCompletedCourses?.length === 0 ? (
             <div className="w-100">
               <NotEnrolledCardCourse
                 title="You will find your finished courses here."
                 description="You are not enrolled in any courses yet."
               />
             </div>
-            ) : (
-              <div className="w-100">
-                <TotalCourseWrapper
-                  coursesCount={
-                  coursesEnrollment?.filter(
-                    (courseInfo) => courseInfo?.progress?.complete_count > 0
-                      && courseInfo?.progress?.incomplete_count === 0,
-                  )?.length
-                }
-                  loading={loading}
-                />
-                {loading
-                  ? Array(4)
-                    .fill(1)
-                    .map((item, i) => (
+          ) : (
+            <div className="w-100">
+              <TotalCourseWrapper
+                coursesCount={userCompletedCourses?.length}
+                loading={loading}
+              />
+              {loading
+                ? Array(4)
+                  .fill(1)
+                  .map((item, i) => (
                     // eslint-disable-next-line react/no-array-index-key
-                      <UserCourseCardSkeleton key={i} />
-                    ))
-                  : coursesEnrollment
-                    ?.filter(
-                      (courseInfo) => courseInfo?.progress?.complete_count > 0
-                        && courseInfo?.progress?.incomplete_count === 0,
-                    )
-                    ?.map((courseInfo) => (
-                      <UserCourseCard
-                        courseInfo={courseInfo}
-                        key={courseInfo?.course_details?.course_id}
-                      />
-                    ))}
-              </div>
-            )}
+                    <UserCourseCardSkeleton key={i} />
+                  ))
+                : userCompletedCourses?.map((courseInfo) => (
+                  <UserCourseCard
+                    courseInfo={courseInfo}
+                    key={courseInfo?.course_details?.course_id}
+                  />
+                ))}
+            </div>
+          )}
           {/* <AdCard /> */}
         </div>
       </main>

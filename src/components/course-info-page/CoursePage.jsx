@@ -16,6 +16,7 @@ const CoursePage = () => {
       <SimilarCourses
         courseTitles={courseMetaData?.additional_metadata?.display_name}
         courseIds={[`${courseMetaData?.course_id}`]}
+        loading={loading}
       />
     </>
   );

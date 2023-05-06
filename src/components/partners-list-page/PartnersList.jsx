@@ -11,7 +11,6 @@ import {
 } from '@edx/paragon/icons';
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import useGetPartners from '../../hooks/useGetPartners';
 import PartnersCardGrid from './partners-list/PartnersCardGrid';
 import PartnersCardList from './partners-list/PartnersCardList';

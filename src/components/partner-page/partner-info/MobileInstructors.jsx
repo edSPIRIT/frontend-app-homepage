@@ -1,6 +1,7 @@
 import { Icon } from '@edx/paragon';
 import { BookOpen, People } from '@edx/paragon/icons';
 import { INSTRUCTORS } from '../../../utils/constants';
+import userAvatar from '../../../assets/place-holders/user-placeholder.svg';
 
 const MobileInstructors = () => (
   <div className="custom-container mb-5.5" id="instructors">
@@ -11,7 +12,7 @@ const MobileInstructors = () => (
           <div className="d-flex flex-column">
             <div className="d-flex">
               <div className="instructor-img-wrapper mr-4">
-                <img src={instructor.image} alt="instructor-avatar" />
+                <img src={instructor.image ?? userAvatar} alt="instructor-avatar" />
               </div>
               <div className="d-flex flex-column">
                 <span className="instructor-title mb-1">{instructor.name}</span>
