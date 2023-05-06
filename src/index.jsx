@@ -12,6 +12,7 @@ import ReactDOM from 'react-dom';
 
 import { Route, Switch } from 'react-router';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Provider } from 'react-redux';
 import appMessages from './i18n';
 
 import './index.scss';
@@ -30,6 +31,7 @@ import ProtectedRoute from './ProtectedRoute';
 import ScrollToTop from './ScroollToTop';
 import Instructor from './components/instructor-page/Instructor';
 import PartnerInfo from './components/partner-page/PartnerInfo';
+import store from './redux/store/store';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -42,63 +44,65 @@ const queryClient = new QueryClient({
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider>
-      <QueryClientProvider client={queryClient}>
-        <Layout>
-          <ScrollToTop />
-          <Switch>
-            <Route exact path="/home">
-              <Home />
-            </Route>
-            <Route exact path="/overview">
-              <ProtectedRoute>
-                <OverviewPage />
-              </ProtectedRoute>
-            </Route>
-            <Route exact path="/dashboard">
-              <ProtectedRoute>
-                <OverviewPage />
-              </ProtectedRoute>
-            </Route>
-            <Route exact path="/discover">
-              <Discover />
-            </Route>
-            <Route exact path="/search">
-              <Search />
-            </Route>
-            <Route exact path="/inprogress">
-              <ProtectedRoute>
-                <InProgress />
-              </ProtectedRoute>
-            </Route>
-            <Route exact path="/completed">
-              <ProtectedRoute>
-                <Completed />
-              </ProtectedRoute>
-            </Route>
-            <Route exact path="/partners">
-              <PartnersList />
-            </Route>
-            <Route exact path="/course/:slug/">
-              <CoursePage />
-            </Route>
-            <Route exact path="/program/:slug/">
-              <ProgramPage />
-            </Route>
-            <Route exact path="/partners/:slug">
-              <PartnerInfo />
-            </Route>
-            <Route exact path="/instructor/:slug">
-              <Instructor />
-            </Route>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/*">
-              <NotFound />
-            </Route>
-          </Switch>
-        </Layout>
-      </QueryClientProvider>
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <Layout>
+            <ScrollToTop />
+            <Switch>
+              <Route exact path="/home">
+                <Home />
+              </Route>
+              <Route exact path="/overview">
+                <ProtectedRoute>
+                  <OverviewPage />
+                </ProtectedRoute>
+              </Route>
+              <Route exact path="/dashboard">
+                <ProtectedRoute>
+                  <OverviewPage />
+                </ProtectedRoute>
+              </Route>
+              <Route exact path="/discover">
+                <Discover />
+              </Route>
+              <Route exact path="/search">
+                <Search />
+              </Route>
+              <Route exact path="/inprogress">
+                <ProtectedRoute>
+                  <InProgress />
+                </ProtectedRoute>
+              </Route>
+              <Route exact path="/completed">
+                <ProtectedRoute>
+                  <Completed />
+                </ProtectedRoute>
+              </Route>
+              <Route exact path="/partners">
+                <PartnersList />
+              </Route>
+              <Route exact path="/course/:slug/">
+                <CoursePage />
+              </Route>
+              <Route exact path="/program/:slug/">
+                <ProgramPage />
+              </Route>
+              <Route exact path="/partners/:slug">
+                <PartnerInfo />
+              </Route>
+              <Route exact path="/instructor/:slug">
+                <Instructor />
+              </Route>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/*">
+                <NotFound />
+              </Route>
+            </Switch>
+          </Layout>
+        </QueryClientProvider>
+      </Provider>
     </AppProvider>,
 
     document.getElementById('root'),

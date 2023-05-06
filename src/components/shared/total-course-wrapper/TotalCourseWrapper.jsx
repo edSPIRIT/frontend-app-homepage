@@ -16,7 +16,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const TotalCourseWrapper = ({ coursesCount, loading }) => {
-  const [value, setValue] = useState('Recent');
+  const [value, setValue] = useState('All');
   const [isOpen, open, close] = useToggle(false);
   const isMobile = useMediaQuery({ maxWidth: '768px' });
 
@@ -77,28 +77,25 @@ const TotalCourseWrapper = ({ coursesCount, loading }) => {
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item
-              key="Recent"
-              active={value === 'Recent'}
-              href="#/action-1"
-              eventKey="Recent"
+              key="All"
+              active={value === 'All'}
+              eventKey="All"
             >
-              Recent
+              All
             </Dropdown.Item>
             <Dropdown.Item
-              key="Title A to Z"
-              active={value === 'Title A to Z'}
-              href="#/action-2"
-              eventKey="Title A to Z"
+              key="Courses"
+              active={value === 'Courses'}
+              eventKey="Courses"
             >
-              Title A to Z
+              Courses
             </Dropdown.Item>
             <Dropdown.Item
-              key="Title Z to A"
-              active={value === 'Title Z to A'}
-              href="#/action-1"
-              eventKey="Title Z to A"
+              key="Programs"
+              active={value === 'Programs'}
+              eventKey="Programs"
             >
-              Title Z to A
+              Programs
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

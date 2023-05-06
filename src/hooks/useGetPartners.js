@@ -1,10 +1,15 @@
 import { getConfig } from '@edx/frontend-platform';
 import { useQuery } from 'react-query';
+import { useSelector } from 'react-redux';
 
 const useGetPartners = (page = 1) => {
+  const sortState = useSelector((state) => state.sortPartners.value);
+
   const fetchPartners = async (pageNum = 1) => {
     const apiRes = await fetch(
-      `${getConfig().LMS_BASE_URL}/admin-console/api/partner-list/?page=${pageNum}`,
+      `${
+        getConfig().LMS_BASE_URL
+      }/admin-console/api/partner-list/?page=${pageNum}&ordering=${sortState}`,
     );
 
     if (!apiRes.ok) {
@@ -13,11 +18,8 @@ const useGetPartners = (page = 1) => {
 
     return apiRes.json();
   };
-  // const { data, isLoading } = useQuery('Partners', fetchPartners);
-  const {
-    isLoading, isError, error, data, isFetching, isPreviousData,
-  } = useQuery({
-    queryKey: ['Partners', page],
+  const { isLoading, data, isFetching } = useQuery({
+    queryKey: ['Partners', page, sortState],
     queryFn: () => fetchPartners(page),
     keepPreviousData: true,
   });

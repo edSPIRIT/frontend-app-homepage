@@ -11,6 +11,7 @@ import {
 } from '@edx/paragon/icons';
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import useGetPartners from '../../hooks/useGetPartners';
 import PartnersCardGrid from './partners-list/PartnersCardGrid';
 import PartnersCardList from './partners-list/PartnersCardList';
@@ -19,7 +20,6 @@ import TotalPartnersWrapper from './partners-list/TotalPartnersWrapper';
 const PartnersList = () => {
   const [view, setView] = useState('grid');
   const [page, setPage] = useState(1);
-
   const {
     count, partnersData, loading, numPages, isFetching,
   } = useGetPartners(page);

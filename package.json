@@ -38,6 +38,7 @@
     "@edx/brand": "https://github.com/Edspirit/brand-openedx",
     "@edx/frontend-platform": "2.6.2",
     "@edx/paragon": "20.26.3",
+    "@reduxjs/toolkit": "^1.9.5",
     "axios": "^0.21.4",
     "axios-cache-adapter": "^2.7.3",
     "classnames": "2.2.6",

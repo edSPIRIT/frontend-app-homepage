@@ -7,7 +7,7 @@ const useGetEnrollmentList = () => {
     const { data, status } = await getAuthenticatedHttpClient().get(
       `${
         getConfig().LMS_BASE_URL
-      }/admin-console/api/openedx/api/enrollment-list/`,
+      }/admin-console/api/openedx/api/enrollment-list/?ordering=recent`,
     );
     if (status !== 200) {
       throw new Error('fetch not ok');

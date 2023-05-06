@@ -33,7 +33,6 @@ const ChooseLanguage = () => {
   const [isOpen, open, close] = useToggle(false);
   const isMobile = useMediaQuery({ maxWidth: '768px' });
   const { authenticatedUser } = useContext(AppContext);
-  console.log(getLocale());
   async function patchPreferences(params) {
     const { status } = await getAuthenticatedHttpClient().patch(
       `${getConfig().LMS_BASE_URL}/api/user/v1/preferences/${

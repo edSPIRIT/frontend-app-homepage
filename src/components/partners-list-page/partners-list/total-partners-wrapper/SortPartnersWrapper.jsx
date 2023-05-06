@@ -14,20 +14,22 @@ import {
   KeyboardArrowDown,
 } from '@edx/paragon/icons';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  ascendingPartners,
+  descendingPartners,
+  recentPartners,
+} from '../../../../redux/slice/partnerSlice';
 
 const SortPartnersWrapper = () => {
   const [value, setValue] = useState('Recent');
   const [isOpen, open, close] = useToggle(false);
   const isMobile = useMediaQuery({ maxWidth: '768px' });
-
+  const dispatch = useDispatch();
   return (
     <>
       <ModalLayer isOpen={isOpen} onClose={close}>
-        <div
-          role="dialog"
-          aria-label="My dialog"
-          className="  bg-white more-modal-items "
-        >
+        <div aria-label="My dialog" className="  bg-white more-modal-items ">
           <div className="d-flex close-wrapper justify-content-between align-items-center py-2 px-4">
             <span className="font-sm" />
             <Icon src={Close} className=" share-icon" onClick={close} />
@@ -36,6 +38,7 @@ const SortPartnersWrapper = () => {
             <li
               onClick={() => {
                 setValue('Recent');
+                dispatch(recentPartners());
                 close();
               }}
               className="d-flex justify-content-between my-2.5"
@@ -48,6 +51,7 @@ const SortPartnersWrapper = () => {
             <li
               onClick={() => {
                 setValue('Title A to Z');
+                dispatch(ascendingPartners());
                 close();
               }}
               className="d-flex justify-content-between mb-2.5"
@@ -60,6 +64,7 @@ const SortPartnersWrapper = () => {
             <li
               onClick={() => {
                 setValue('Title Z to A');
+                dispatch(descendingPartners());
                 close();
               }}
               className="d-flex justify-content-between"
@@ -91,24 +96,24 @@ const SortPartnersWrapper = () => {
           <Dropdown.Item
             key="Recent"
             active={value === 'Recent'}
-            href="#/action-1"
             eventKey="Recent"
+            onClick={() => dispatch(recentPartners())}
           >
             Recent
           </Dropdown.Item>
           <Dropdown.Item
             key="Title A to Z"
             active={value === 'Title A to Z'}
-            href="#/action-2"
             eventKey="Title A to Z"
+            onClick={() => dispatch(ascendingPartners())}
           >
             Title A to Z
           </Dropdown.Item>
           <Dropdown.Item
             key="Title Z to A"
             active={value === 'Title Z to A'}
-            href="#/action-1"
             eventKey="Title Z to A"
+            onClick={() => dispatch(descendingPartners())}
           >
             Title Z to A
           </Dropdown.Item>

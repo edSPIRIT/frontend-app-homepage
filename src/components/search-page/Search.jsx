@@ -2,30 +2,18 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, Dropdown, Skeleton } from '@edx/paragon';
 import { FilterList, KeyboardArrowDown } from '@edx/paragon/icons';
-import { getConfig } from '@edx/frontend-platform';
-import { useQuery } from 'react-query';
+import { useDispatch } from 'react-redux';
 import DiscoverBanner from '../shared/discover-banner/DiscoverBanner';
 import SearchFacets from './search/SearchFacets';
 import SearchResults from './search/SearchResults';
+import useGetAllCourses from '../../hooks/useGetAllCourses';
+import { ascendingCourses, descendingCourses, recentCourses } from '../../redux/slice/allCoursesSlice';
 
 const Search = () => {
   const [value, setValue] = useState('Recent');
-  // const { allCoursesData, loading } = useGetAllCourses();
   const [page, setPage] = useState(1);
-
-  const fetchProjects = (pageNum = 1) => fetch(
-    `${
-      getConfig().LMS_BASE_URL
-    }/admin-console/api/course-list/?page=${pageNum}`,
-  ).then((res) => res.json());
-
-  const {
-    isLoading, isError, error, data, isFetching, isPreviousData,
-  } = useQuery({
-    queryKey: ['projects', page],
-    queryFn: () => fetchProjects(page),
-    keepPreviousData: true,
-  });
+  const { allCoursesData, isLoading } = useGetAllCourses(page);
+  const dispatch = useDispatch();
 
   return (
     <main>
@@ -47,7 +35,10 @@ const Search = () => {
             {isLoading ? (
               <Skeleton className="ml-1" width={28} height={20} />
             ) : (
-              <span className="font-weight-bold"> {data?.results?.length}</span>
+              <span className="font-weight-bold">
+                {' '}
+                {allCoursesData?.results?.length}
+              </span>
             )}
           </p>
           <Dropdown className="dropdown-wrapper" onSelect={(e) => setValue(e)}>
@@ -67,24 +58,24 @@ const Search = () => {
               <Dropdown.Item
                 key="Recent"
                 active={value === 'Recent'}
-                href="#/action-1"
                 eventKey="Recent"
+                onClick={() => dispatch(recentCourses())}
               >
                 Recent
               </Dropdown.Item>
               <Dropdown.Item
                 key="Title A to Z"
                 active={value === 'Title A to Z'}
-                href="#/action-1"
                 eventKey="Title A to Z"
+                onClick={() => dispatch(ascendingCourses())}
               >
                 Title A to Z
               </Dropdown.Item>
               <Dropdown.Item
                 key="Title Z to A"
                 active={value === 'Title Z to A'}
-                href="#/action-1"
                 eventKey="Title Z to A"
+                onClick={() => dispatch(descendingCourses())}
               >
                 Title Z to A
               </Dropdown.Item>
@@ -92,7 +83,7 @@ const Search = () => {
           </Dropdown>
         </div>
         <SearchResults
-          allCoursesData={data}
+          allCoursesData={allCoursesData}
           loading={isLoading}
           page={page}
           setPage={setPage}
