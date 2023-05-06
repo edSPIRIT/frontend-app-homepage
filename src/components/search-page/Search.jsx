@@ -13,6 +13,7 @@ const Search = () => {
   const [value, setValue] = useState('Recent');
   const [page, setPage] = useState(1);
   const { allCoursesData, isLoading } = useGetAllCourses(page);
+  console.log('allCoursesData', allCoursesData);
   const dispatch = useDispatch();
 
   return (
@@ -37,7 +38,7 @@ const Search = () => {
             ) : (
               <span className="font-weight-bold">
                 {' '}
-                {allCoursesData?.results?.length}
+                {allCoursesData?.pagination?.count}
               </span>
             )}
           </p>
