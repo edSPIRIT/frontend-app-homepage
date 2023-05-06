@@ -17,7 +17,13 @@ const useGetCertificate = (courseInfo) => {
   const { data, isLoading } = useQuery({
     queryKey: ['Certificate', courseInfo?.course_details?.course_id],
     queryFn: fetchCertificate,
-    retry: (failureCount, error) => error.customAttributes.httpErrorStatus !== 404,
+    enabled:
+      courseInfo?.progress?.complete_count > 0
+      && courseInfo?.progress?.incomplete_count === 0,
+    retry: (failureCount, error) => {
+      console.log('error incertifi', error, error.customAttributes.httpErrorStatus);
+      return error.customAttributes.httpErrorStatus !== 404;
+    },
   });
   return {
     certificateData: data,

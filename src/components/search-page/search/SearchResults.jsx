@@ -22,7 +22,10 @@ const SearchResults = ({
               <CourseCardSkeleton key={i} />
             ))
           : allCoursesData?.results?.map((course) => (
-            <CourseCardNew course={course} key={course.course_slug} />
+            <CourseCardNew
+              course={course}
+              key={course?.paid_course.course_id}
+            />
           ))}
       </div>
       {allCoursesData?.pagination?.num_pages > 1 && (

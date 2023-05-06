@@ -15,7 +15,7 @@ const sortAllCoursesSlice = createSlice({
       state.value = 'ascending';
     },
     descendingCourses: (state, action) => {
-      state.value = 'dscending';
+      state.value = 'descending';
     },
   },
 });

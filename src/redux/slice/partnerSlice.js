@@ -15,7 +15,7 @@ const sortPartnersSlice = createSlice({
       state.value = 'ascending';
     },
     descendingPartners: (state, action) => {
-      state.value = 'dscending';
+      state.value = 'descending';
     },
 
   },
