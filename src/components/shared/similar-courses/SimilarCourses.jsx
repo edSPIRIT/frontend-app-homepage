@@ -81,7 +81,7 @@ SimilarCourses.propTypes = {
   loading: PropTypes.bool,
 };
 SimilarCourses.defaultProps = {
-  courseTitles: '',
+  courseTitles: undefined,
   courseIds: [],
   loading: false,
 };

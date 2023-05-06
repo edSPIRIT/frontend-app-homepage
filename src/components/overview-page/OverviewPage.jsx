@@ -13,6 +13,7 @@ const OverviewPage = () => {
     loading, userCourseTitles, userCourseIds, userInprogressCourses,
   } = useGetEnrollmentList();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
+  console.log('userCourseTitles', userCourseTitles);
   return (
     <>
       {isMobile && <NavHeader />}

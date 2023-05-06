@@ -3,7 +3,6 @@ import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 
 const useGetAllCourses = (page = 1) => {
-  console.log('hi');
   const sortState = useSelector((state) => state.sortAllCourses.value);
   const fetchAllCourses = async (pageNum = 1) => {
     const apiRes = await fetch(

@@ -19,7 +19,6 @@ const useGetInstructorCourses = (courseId) => {
   const { data, isLoading } = useQuery(
     ['InstructorCourses', courseId],
     fetchInstructorCourses,
-
     {
       enabled: !!courseId,
     },

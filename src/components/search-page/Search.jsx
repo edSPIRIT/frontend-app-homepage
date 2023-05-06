@@ -14,7 +14,6 @@ const Search = () => {
   const [page, setPage] = useState(1);
   const { allCoursesData, isLoading } = useGetAllCourses(page);
   const dispatch = useDispatch();
-  console.log('parent');
   return (
     <main>
       <DiscoverBanner />

@@ -8,7 +8,6 @@ import InstructorCard from './course-instructors/InstructorCard';
 
 const CourseInstructors = ({ instructors, loading }) =>
 // const { InstructorCourses } = useGetInstructorCourses();
-// console.log('InstructorCourses', InstructorCourses);
 // const { courseEnrollment } = useGetEnrollmentList();
 // async function deleteEnroll() {
 //   return getAuthenticatedHttpClient().post(
