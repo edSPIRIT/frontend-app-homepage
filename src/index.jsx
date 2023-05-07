@@ -12,6 +12,8 @@ import ReactDOM from 'react-dom';
 
 import { Route, Switch } from 'react-router';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+
 import { Provider } from 'react-redux';
 import appMessages from './i18n';
 
@@ -101,6 +103,8 @@ subscribe(APP_READY, () => {
               </Route>
             </Switch>
           </Layout>
+          <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+
         </QueryClientProvider>
       </Provider>
     </AppProvider>,

@@ -26,6 +26,7 @@ const useGetCourseMetaData = (courseId) => {
     fetchCourseMetaData,
     {
       enabled: !!courseId,
+      staleTime: 2 * (60 * 1000),
     },
   );
 

@@ -357,6 +357,10 @@
 }
 
 .mobile-course-info-container {
+      scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   .course-info-img-wrapper {
     .org-img-wrapper {
       width: 80px;
@@ -437,7 +441,8 @@
   .sticky-nav-wrapper {
     background-color: $light-300;
     top: 56px;
-    z-index: 11;
+    z-index: 12;
+    scrollbar-width: none;
     &::-webkit-scrollbar {
       display: none;
     }
