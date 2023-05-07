@@ -4,7 +4,8 @@ import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
-const useGetSimilarCourses = (searchQuery, courseIds) => {
+const useGetSimilarCourses = (searchQuery = '', courseIds) => {
+  console.log('searchQuery', !!searchQuery, searchQuery);
   const [filterSimilarCourses, setFilterSimilarCourses] = useState([]);
   const fetchSimilarCourses = async () => {
     const url = `${

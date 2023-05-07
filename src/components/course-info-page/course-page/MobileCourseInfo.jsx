@@ -38,7 +38,7 @@ const MobileCourseInfo = () => {
             'instructors',
           ]}
           currentClassName="active-item"
-          offset={-20}
+          offset={-70}
         >
           <li>
             <Link to="info-course" smooth offset={-120}>

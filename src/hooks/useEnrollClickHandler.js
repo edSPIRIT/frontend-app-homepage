@@ -2,35 +2,37 @@ import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { AppContext } from '@edx/frontend-platform/react';
 import axios from 'axios';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 
-const useEnrollClickHandler = (courseId) => {
+const useEnrollClickHandler = (courseMetaData) => {
   const { authenticatedUser } = useContext(AppContext);
-  const [availablePaymentData, setAvailablePaymentData] = useState();
 
-  useEffect(() => {
-    const availablePayment = async () => {
-      try {
-        const Res = await axios.get(
-          `${getConfig().LMS_BASE_URL}/admin-console/api/paid-courses/${courseId}`,
-        );
-        setAvailablePaymentData(Res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    if (courseId) {
-      availablePayment();
+  const fetchAvailablePayment = async ({ queryKey }) => {
+    const id = queryKey[1];
+    try {
+      const Res = await axios.get(
+        `${getConfig().LMS_BASE_URL}/admin-console/api/paid-courses/${id}`,
+      );
+      return Res.data;
+    } catch (err) {
+      console.error(err);
     }
-  }, [courseId]);
+  };
 
+  const { data: availablePaymentData, loading } = useQuery(
+    ['Transaction', courseMetaData?.course_id],
+    fetchAvailablePayment,
+    {
+      enabled: courseMetaData?.paid_course?.price > 0,
+    },
+  );
   const fetchTransaction = async () => {
     const url = `${
       getConfig().LMS_BASE_URL
     }/admin-console/api/create-transaction/`;
     const { data, status } = await getAuthenticatedHttpClient().post(url, {
-      course_id: courseId,
+      course_id: courseMetaData?.course_id,
       username: authenticatedUser?.username,
     });
     if (status !== 200) {
@@ -43,9 +45,7 @@ const useEnrollClickHandler = (courseId) => {
     return data;
   };
 
-  const {
-    refetch,
-  } = useQuery('Transaction', fetchTransaction, {
+  const { refetch } = useQuery('Transaction', fetchTransaction, {
     refetchOnWindowFocus: false,
     enabled: false, // disable this query from automatically running
   });
@@ -74,7 +74,7 @@ const useEnrollClickHandler = (courseId) => {
     if (availablePaymentData) {
       refetch();
     } else {
-      mutate(courseId);
+      mutate(courseMetaData?.course_id);
     }
   };
   return {

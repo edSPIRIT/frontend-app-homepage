@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ReactComponent as Warning } from '../../../assets/warning.svg';
 import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
+import coverPlaceholder from '../../../assets/place-holders/cover-course-place-holder.svg';
 
 const Requirements = ({ courseMetaData, loading }) => {
   const history = useHistory();
@@ -74,7 +75,7 @@ const Requirements = ({ courseMetaData, loading }) => {
                   >
                     <Card className="cards-wrapper">
                       <Card.ImageCap
-                        src={preCourse.cover}
+                        src={preCourse.cover ?? coverPlaceholder}
                         logoSrc={
                             preCourse?.partner?.organization?.logo
                             ?? logoPlaceholder

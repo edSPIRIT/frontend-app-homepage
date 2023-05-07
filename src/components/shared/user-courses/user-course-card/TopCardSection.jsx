@@ -66,7 +66,7 @@ const TopCardSection = ({ courseInfo, openMoreBtn }) => {
                   `https://apps.${getConfig().LMS_BASE_URL.replace(
                     'https://',
                     '',
-                  )}homepage/course/${courseInfo?.course_metadata?.slug}`,
+                  )}/homepage/course/${courseInfo?.course_metadata?.slug}`,
                 );
               }}
             />

@@ -51,11 +51,13 @@ const OverviewPage = () => {
                 <RecommendedPrograms />
               </div> */}
           </div>
+          { userCourseTitles && (
           <SimilarCourses
             courseTitles={userCourseTitles}
             courseIds={userCourseIds}
             loading={loading}
           />
+          )}
         </div>
       </main>
     </>

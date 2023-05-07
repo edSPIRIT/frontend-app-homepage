@@ -5,6 +5,7 @@ import { BookOpen, DrawShapes } from '@edx/paragon/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
 
 const PartnersCardGrid = ({ partnersData, loading }) => (
   <div className="partners-grid-wrapper">
@@ -31,7 +32,7 @@ const PartnersCardGrid = ({ partnersData, loading }) => (
         >
           <Card isClickable>
             <Card.ImageCap
-              src={partner.organization.logo}
+              src={partner.organization.logo ?? logoPlaceholder}
               srcAlt="Card image"
             />
             <Card.Section>

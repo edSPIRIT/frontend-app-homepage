@@ -5,6 +5,7 @@ import { ArrowForward, BookOpen, DrawShapes } from '@edx/paragon/icons';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
 
 const PartnersCardList = ({ partnersData, loading }) => (
   <div className="partners-list-wrapper">
@@ -32,7 +33,7 @@ const PartnersCardList = ({ partnersData, loading }) => (
         >
           <Card orientation="horizontal">
             <Card.ImageCap
-              src={partner.organization.logo}
+              src={partner.organization.logo ?? logoPlaceholder}
               srcAlt="Card image"
             />
             <Card.Body>
