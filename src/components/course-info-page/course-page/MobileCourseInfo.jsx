@@ -1,7 +1,9 @@
 import { useParams } from 'react-router';
 import Scrollspy from 'react-scrollspy';
 import { Link } from 'react-scroll';
-import { Icon, OverlayTrigger, Tooltip } from '@edx/paragon';
+import {
+  Icon, OverlayTrigger, Tooltip, useMediaQuery,
+} from '@edx/paragon';
 import {
   HowToReg,
   Language,
@@ -12,18 +14,21 @@ import {
   Event,
   Record,
 } from '@edx/paragon/icons';
+import { getConfig } from '@edx/frontend-platform';
 import useGetCourseMetaData from '../../../hooks/useGetCourseMetaData';
 import AboutCourse from './AboutCourse';
 import WhatYouLearn from './WhatYouLearn';
 import Requirements from './Requirements';
 import CourseContent from './CourseContent';
-import orgLogo from '../../../assets/place-holders/org-logo-place-holder.svg';
 import CourseInfoButtonStatus from '../shared/CourseInfoButtonStatus';
 import MobileCourseInstructors from './course-instructors/mobile-course-info/MobileCourseInstructors';
+import partnerBanner from '../../../assets/place-holders/cover-course-place-holder.svg';
+import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
 
 const MobileCourseInfo = () => {
   const { slug } = useParams();
   const { courseMetaData, loading } = useGetCourseMetaData(slug);
+  const isTablet = useMediaQuery({ minWidth: '600px', maxWidth: '768px' });
 
   return (
     <section className="pb-6 mobile-course-info-container">
@@ -74,16 +79,71 @@ const MobileCourseInfo = () => {
           </li>
         </Scrollspy>
       </div>
-      <div className="custom-container">
-        <div className="course-info-img-wrapper">
-          <div className="d-flex justify-content-between pt-4">
-            <div className="org-img-wrapper">
+      {isTablet ? (
+        <>
+          <div className="course-cover-container">
+            <div className="partner-img-wrapper">
               <img
-                className="org-img"
-                src={courseMetaData?.partner?.organization?.logo ?? orgLogo}
-                alt="org-img"
+                src={
+                  `${getConfig().LMS_BASE_URL}${
+                    courseMetaData?.additional_metadata?.course_image_url
+                  }` ?? partnerBanner
+                }
+                alt="course-banner"
               />
             </div>
+            <div className="partner-logo-container">
+              <div className="partner-logo-wrapper">
+                <img
+                  src={
+                    courseMetaData?.partner?.organization.logo
+                    ?? logoPlaceholder
+                  }
+                  alt="partnerLogo"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="d-flex justify-content-between custom-container">
+            <h1 className="mb-1">
+              {courseMetaData?.additional_metadata?.display_name}
+            </h1>
+            <Icon
+              className="share-icon"
+              src={Share}
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+              }}
+            />
+          </div>
+        </>
+      ) : (
+        <div className="custom-container">
+          <div className="course-info-img-wrapper mb-4">
+            <div className="d-flex justify-content-between pt-4">
+              <div className="org-img-wrapper">
+                <img
+                  className="org-img"
+                  src={
+                    courseMetaData?.partner?.organization?.logo
+                    ?? logoPlaceholder
+                  }
+                  alt="org-img"
+                />
+              </div>
+              <Icon
+                className="share-icon"
+                src={Share}
+                onClick={() => {
+                  navigator.clipboard.writeText(window.location.href);
+                }}
+              />
+            </div>
+          </div>
+          <div className="d-flex justify-content-between title-share-wrapper">
+            <h1 className="mb-1">
+              {courseMetaData?.additional_metadata?.display_name}
+            </h1>
             <Icon
               className="share-icon"
               src={Share}
@@ -93,9 +153,8 @@ const MobileCourseInfo = () => {
             />
           </div>
         </div>
-        <h1 className="mb-2 mt-3.5">
-          {courseMetaData?.additional_metadata?.display_name}
-        </h1>
+      )}
+      <div className="d-flex flex-column custom-container">
         <Link
           to={`/partners/${courseMetaData?.partner?.organization?.short_name}`}
           className="course-institution"
@@ -110,50 +169,50 @@ const MobileCourseInfo = () => {
               <span>English</span>
             </div>
             {courseMetaData?.transcript_langs
-                && courseMetaData?.transcript_langs.length > 0 && (
-                  <OverlayTrigger
-                    placement="top"
-                    overlay={(
-                      <Tooltip
-                        variant="light"
-                        id="tooltip-top"
-                        className="course-tooltip"
-                      >
-                        {courseMetaData?.transcript_langs
-                          && courseMetaData?.transcript_langs?.map(
-                            (transLang, i) => (
-                              // eslint-disable-next-line react/no-array-index-key
-                              <span key={i}>{transLang}</span>
-                            ),
-                          )}
-                      </Tooltip>
-                    )}
-                  >
-                    <div className="d-flex align-items-center mb-3">
-                      <Icon className="mr-2" src={PostOutline} />
-                      <span className="course-tooltip">
-                        {courseMetaData?.transcript_langs
-                          && courseMetaData?.transcript_langs?.map(
-                            (transLang, i) => (
-                              // eslint-disable-next-line react/no-array-index-key
-                              <span key={i}>{transLang}</span>
-                            ),
-                          )}
-                      </span>
-                    </div>
-                  </OverlayTrigger>
+              && courseMetaData?.transcript_langs.length > 0 && (
+                <OverlayTrigger
+                  placement="top"
+                  overlay={(
+                    <Tooltip
+                      variant="light"
+                      id="tooltip-top"
+                      className="course-tooltip"
+                    >
+                      {courseMetaData?.transcript_langs
+                        && courseMetaData?.transcript_langs?.map(
+                          (transLang, i) => (
+                            // eslint-disable-next-line react/no-array-index-key
+                            <span key={i}>{transLang}</span>
+                          ),
+                        )}
+                    </Tooltip>
+                  )}
+                >
+                  <div className="d-flex align-items-center mb-3">
+                    <Icon className="mr-2" src={PostOutline} />
+                    <span className="course-tooltip">
+                      {courseMetaData?.transcript_langs
+                        && courseMetaData?.transcript_langs?.map(
+                          (transLang, i) => (
+                            // eslint-disable-next-line react/no-array-index-key
+                            <span key={i}>{transLang}</span>
+                          ),
+                        )}
+                    </span>
+                  </div>
+                </OverlayTrigger>
             )}
             {courseMetaData?.additional_metadata?.self_paced && (
-            <div className="d-flex align-items-center mb-3">
-              <Icon className="mr-2" src={HowToReg} />
-              <span>Self Paced</span>
-            </div>
+              <div className="d-flex align-items-center mb-3">
+                <Icon className="mr-2" src={HowToReg} />
+                <span>Self Paced</span>
+              </div>
             )}
             {courseMetaData?.additional_metadata?.certificate_enabled && (
-            <div className="d-flex align-items-center mb-3">
-              <Icon className="mr-2" src={Verified} />
-              <span>Verified certificate</span>
-            </div>
+              <div className="d-flex align-items-center mb-3">
+                <Icon className="mr-2" src={Verified} />
+                <span>Verified certificate</span>
+              </div>
             )}
             <div className="d-flex flex-row align-items-center mb-3">
               <Icon className="mr-2" src={Record} />
@@ -184,24 +243,23 @@ const MobileCourseInfo = () => {
               </p>
             </div>
             {courseMetaData?.total_weeks_of_effort && (
-            <div className="d-flex flex-row align-items-center mb-3">
-              <Icon className="mr-2" src={WatchFilled} />
-              <p className="course-text">
-                {`${courseMetaData?.total_weeks_of_effort} weeks `}
-                {courseMetaData?.hours_effort_per_week_min
-                      && courseMetaData?.hours_effort_per_week_max && (
-                        <span className="color-gray-700">
-                          {`(${courseMetaData?.hours_effort_per_week_min}
+              <div className="d-flex flex-row align-items-center mb-3">
+                <Icon className="mr-2" src={WatchFilled} />
+                <p className="course-text">
+                  {`${courseMetaData?.total_weeks_of_effort} weeks `}
+                  {courseMetaData?.hours_effort_per_week_min
+                    && courseMetaData?.hours_effort_per_week_max && (
+                      <span className="color-gray-700">
+                        {`(${courseMetaData?.hours_effort_per_week_min}
                         -${courseMetaData?.hours_effort_per_week_max} hours per week)`}
-                        </span>
-                )}
-              </p>
-            </div>
+                      </span>
+                  )}
+                </p>
+              </div>
             )}
           </div>
         </div>
       </div>
-
       <div className="course-content-container">
         <div className="custom-container">
           <AboutCourse aboutCourse={courseMetaData?.about} loading={loading} />

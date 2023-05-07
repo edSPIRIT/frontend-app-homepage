@@ -55,7 +55,7 @@ const DesktopCourseInfo = () => {
             'instructors',
           ]}
           currentClassName="active-item"
-          offset={-220}
+          offset={-160}
         >
           <li>
             <Link to="about-course" smooth offset={-120}>
