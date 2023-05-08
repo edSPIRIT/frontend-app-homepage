@@ -9,25 +9,43 @@ const useGetCourseMetaData = (courseId) => {
 
   const fetchCourseMetaData = async ({ queryKey }) => {
     const id = queryKey[1];
-    try {
-      const apiRes = await axios.get(
-        `${getConfig().LMS_BASE_URL}/admin-console/api/course-metadata/${id}/`,
-        {
-          headers: {
-            'Cache-Control': 'no-cache',
-            Pragma: 'no-cache',
-            Expires: '0',
-          },
-        },
-      );
-      return apiRes.data;
-    } catch (err) {
-      console.error(err);
-      if (err.response.status === 404) {
-        history.push('/404');
-      }
+    const apiRes = await fetch(
+      `${getConfig().LMS_BASE_URL}/admin-console/api/course-metadata/${id}/`,
+      {
+        method: 'GET',
+        cache: 'no-store',
+      },
+    );
+    if (apiRes.status === 404) {
+      history.push('/404');
     }
+    if (!apiRes.ok) {
+      throw new Error('fetch not ok');
+    }
+
+    return apiRes.json();
   };
+  // const fetchCourseMetaData = async ({ queryKey }) => {
+  //   const id = queryKey[1];
+  //   try {
+  //     const apiRes = await axios.get(
+  //       `${getConfig().LMS_BASE_URL}/admin-console/api/course-metadata/${id}/`,
+  //       // {
+  //       //   headers: {
+  //       //     'Cache-Control': 'no-cache',
+  //       //     Pragma: 'no-cache',
+  //       //     Expires: '0',
+  //       //   },
+  //       // },
+  //     );
+  //     return apiRes.data;
+  //   } catch (err) {
+  //     console.error(err);
+  //     if (err.response.status === 404) {
+  //       history.push('/404');
+  //     }
+  //   }
+  // };
   const { data, isLoading } = useQuery(
     ['CourseMetaData', courseId],
     fetchCourseMetaData,
