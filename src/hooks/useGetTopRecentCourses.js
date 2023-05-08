@@ -16,6 +16,9 @@ const useGetTopRecentCourses = () => {
   const { data, isLoading } = useQuery(
     'TopRecentCourses',
     fetchTopRecentCourses,
+    {
+      staleTime: 2 * (60 * 1000),
+    },
   );
   const customCount = (coursesData) => {
     if (coursesData?.length >= 4 && coursesData?.length < 8) {
