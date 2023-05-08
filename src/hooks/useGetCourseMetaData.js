@@ -12,6 +12,13 @@ const useGetCourseMetaData = (courseId) => {
     try {
       const apiRes = await axios.get(
         `${getConfig().LMS_BASE_URL}/admin-console/api/course-metadata/${id}/`,
+        {
+          headers: {
+            'Cache-Control': 'no-cache',
+            Pragma: 'no-cache',
+            Expires: '0',
+          },
+        },
       );
       return apiRes.data;
     } catch (err) {

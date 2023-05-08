@@ -5,6 +5,10 @@ const useGetTopRecentCourses = () => {
   const fetchTopRecentCourses = async () => {
     const apiRes = await fetch(
       `${getConfig().LMS_BASE_URL}/admin-console/api/top-recent-courses/`,
+      {
+        method: 'GET',
+        cache: 'no-store',
+      },
     );
 
     if (!apiRes.ok) {
