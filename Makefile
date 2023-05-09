@@ -1,5 +1,5 @@
-export TRANSIFEX_RESOURCE = frontend-template-application
-transifex_langs = "ar,fr,es_419,zh_CN"
+export TRANSIFEX_RESOURCE = frontend-app-homepage
+supported_langs = "ar,fa_IR"
 
 transifex_utils = ./node_modules/.bin/transifex-utils.js
 i18n = ./src/i18n
@@ -31,17 +31,8 @@ detect_changed_source_translations:
 	# Checking for changed translations...
 	git diff --exit-code $(i18n)
 
-# Pushes translations to Transifex.  You must run make extract_translations first.
-push_translations:
-	# Pushing strings to Transifex...
-	tx push -s
-	# Fetching hashes from Transifex...
-	./node_modules/@edx/reactifex/bash_scripts/get_hashed_strings_v3.sh
-	# Writing out comments to file...
-	$(transifex_utils) $(transifex_temp) --comments --v3-scripts-path
-	# Pushing comments to Transifex...
-	./node_modules/@edx/reactifex/bash_scripts/put_comments_v3.sh
-
 # Pulls translations from Transifex.
 pull_translations:
-	tx pull -t -f --mode reviewed --languages=$(transifex_langs)
+	# export WEBLATE_TOKEN environment variable in your terminal
+	chmod +x ./scripts/weblate.sh
+	./scripts/weblate.sh --languages=$(supported_langs)

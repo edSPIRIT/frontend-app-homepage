@@ -1,76 +1,64 @@
-|Build Status| |Codecov| |license|
 
-frontend-template-application
+frontend-app-homepage
 =================================
 
-Please tag **@edx/fedx-team** on any PRs or issues.  Thanks.
+Welcome to the Homepage Microfrontend designed by EdSpirit! This project aims to fill the empty space of a user interface (UI) for the Open edX home page, providing a similar experience to the edx.org website.
 
-Introduction
-------------
+The Homepage Microfrontend is designed to be easily integrated with your Open edX instance, offering a seamless and visually appealing UI for your learners. With this microfrontend, you can create a more engaging and user-friendly home page that will help attract and retain learners on your platform.
 
-This repository is a template for Open edX micro-frontend applications. It is flagged as a Template Repository, meaning it can be used as a basis for new GitHub repositories by clicking the green "Use this template" button above.  The rest of this document describes how to work with your new micro-frontend after you've created a new repository from the template.
+Features
+========
 
-After Copying The Template
---------------------------
+- Responsive design that adapts to different screen sizes and devices
+- Customizable layout and branding to match your organization's identity
+- Easy integration with Open edX platform
+- Built using modern web technologies for optimal performance and user experience
 
-You'll want to do a find-and-replace to replace all instances of ``frontend-template-application`` with the name of your new repository.  Also edit index.html to replace "Application Template" with a friendly name for this application that users will see in their browser tab.
 
-**Prerequisite**
+Getting Started
+===============
 
-`Devstack <https://edx.readthedocs.io/projects/edx-installing-configuring-and-running/en/latest/installation/index.html>`_.  If you start Devstack with ``make dev.up.ecommerce`` that should give you everything you need as a companion to this frontend.
+To get started with the Homepage Microfrontend, follow these steps:
 
-**Installation and Startup**
+1. Clone the repository::
 
-In the following steps, replace "frontend-template-application' with the name of the repo you created when copying this template above.
+    git clone https://github.com/edspirit/homepage-microfrontend.git
 
-1. Clone your new repo:
+2. Install the dependencies::
 
-  ``git clone https://github.com/openedx/frontend-template-application.git``
+    cd homepage-microfrontend
+    npm install
 
-2. Use node v12.x.
+3. Configure the microfrontend to connect to your Open edX instance by updating the ``config.js`` file with the appropriate settings.
 
-   The micro-frontend build scripts support node 12.  Using other major versions of node *may* work, but is unsupported.  For convenience, this repository includes an .nvmrc file to help in setting the correct node version via `nvm <https://github.com/nvm-sh/nvm>`_.
+4. Build and run the microfrontend::
 
-3. Install npm dependencies:
+    npm run build
+    npm start
 
-  ``cd frontend-template-application && npm install``
+5. Access the microfrontend in your browser at ``http://localhost:8080``.
 
-4. Update the application port to use for local development:
-
-   Default port is 8080. If this does not work for you, update the line `PORT=8080` to your port in all .env.* files
-
-5. Start the dev server:
-
-  ``npm start``
-
-The dev server is running at `http://localhost:8080 <http://localhost:8080>`_ or whatever port you setup.
-
-Making Your New Project's README File
--------------------------------------
-
-Move the file ``README-template-frontend-app.rst`` to your project's ``README.rst`` file. Please fill out all
-the sections - this helps out all developers understand your MFE, how to install it, and how to use it.
-
-Project Structure
------------------
-
-The source for this project is organized into nested submodules according to the ADR `Feature-based Application Organization <https://github.com/openedx/frontend-template-application/blob/master/docs/decisions/0002-feature-based-application-organization.rst>`_.
-
-Build Process Notes
--------------------
-
-**Production Build**
-
-The production build is created with ``npm run build``.
+For more detailed instructions and configuration options, please refer to the `documentation <https://github.com/edspirit/homepage-microfrontend/blob/main/docs/index.rst>`_.
 
 Internationalization
---------------------
+====================
 
 Please see `edx/frontend-platform's i18n module <https://edx.github.io/frontend-platform/module-Internationalization.html>`_ for documentation on internationalization.  The documentation explains how to use it, and the `How To <https://github.com/openedx/frontend-i18n/blob/master/docs/how_tos/i18n.rst>`_ has more detail.
 
-.. |Build Status| image:: https://api.travis-ci.com/edx/frontend-template-application.svg?branch=master
-   :target: https://travis-ci.com/edx/frontend-template-application
-.. |Codecov| image:: https://codecov.io/gh/edx/frontend-template-application/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/edx/frontend-template-application
-.. |license| image:: https://img.shields.io/npm/l/@edx/frontend-template-application.svg
-   :target: @edx/frontend-template-application
+we used weblate instead of transifex for storing translations. to download the latest translations:
+
+1. export WEBLATE_TOKEN in your terminal or add it to `.bashrc` file (file name depends on you terminal). ask team members for the token value.
+
+2. run `make pull_translations`. this will download and update `.json` files inside `srs/i18n/messages`
+
+That's it.
+
+Contributing
+============
+
+We welcome contributions to the Homepage Microfrontend project! If yo'd like to contribute, please follow the `contributing guidelines <https://github.com/edspirit/homepage-microfrontend/blob/main/CONTRIBUTING.rst>`_.
+
+License
+=======
+
+The Homepage Microfrontend is released under the `Apache License, Version 2.0 <https://github.com/edspirit/homepage-microfrontend/blob/main/LICENSE>`_.

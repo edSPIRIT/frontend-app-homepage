@@ -1,9 +1,9 @@
 {
- "catalogHeading":"دوره های من",
- "catalogCourseLoading":"در حال بارگزاری ...",
- "catalogCourseView":"دیدن دوره",
- "catalogCourseBannerAlt":"Alt text for course banner images",
- "bannerSearchPlaceholder":"چه چیزی را میخواهی یاد بگیری؟",
- "bannerExploreNewCourses":"یافتن دوره های جدید",
- "search":"جستجو"
+    "catalogHeading": "دوره های من",
+    "catalogCourseLoading": "در حال بارگزاری ...",
+    "catalogCourseView": "دیدن دوره",
+    "catalogCourseBannerAlt": "نوشته‌ی جایگزین برای عکس بنر دوره",
+    "bannerSearchPlaceholder": "چه چیزی را میخواهی یاد بگیری؟",
+    "bannerExploreNewCourses": "یافتن دوره های جدید",
+    "search": "جستجو"
 }
