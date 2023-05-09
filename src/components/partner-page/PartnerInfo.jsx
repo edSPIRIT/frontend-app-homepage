@@ -49,15 +49,14 @@ const PartnerInfo = () => {
         </div>
         <div className="d-flex justify-content-center">
           <Button className="view-all-course-btn" iconAfter={ArrowForwardIos}>
-            View all Courses
+                            <FormattedMessage
+                  id="viewAllCourses.button"
+                  defaultMessage="View All Courses"
+                />
           </Button>
         </div>
       </div> */}
-      {isMobile ? (
-        <MobileInstructors />
-      ) : (
-        <DeskTopInstructors />
-      )}
+      {isMobile ? <MobileInstructors /> : <DeskTopInstructors />}
     </section>
   );
 };

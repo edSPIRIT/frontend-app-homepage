@@ -1,6 +1,7 @@
 import { Button, Skeleton } from '@edx/paragon';
 import { Link, useHistory } from 'react-router-dom';
 import { ArrowForward } from '@edx/paragon/icons';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import useGetPartners from '../../../hooks/useGetPartners';
 
 const Partners = () => {
@@ -10,23 +11,30 @@ const Partners = () => {
     <section id="partners" className="partners-container">
       <div className="custom-container ">
         <Link to="/partners">
-          <h2 className="d-flex justify-content-center mb-4">Partners</h2>
+          <h2 className="d-flex justify-content-center mb-4">
+            <FormattedMessage
+              id="homePage.partners.title"
+              defaultMessage="Partners"
+            />
+          </h2>
         </Link>
         <span className="d-flex justify-content-center mb-5 text-gray-500">
-          Founded by Harvard and MIT, edX is home to more than 20 million
+          <FormattedMessage
+            id="homePage.partnersDescription.text"
+            defaultMessage="Founded by Harvard and MIT, edX is home to more than 20 million
           learners, the majority of top-ranked universities in the world and
-          industry-leading companies.
+          industry-leading companies."
+          />
         </span>
         <div className="d-flex justify-content-center ">
-          {loading ? (
-            Array(5)
+          {loading
+            ? Array(5)
               .fill(1)
               .map((item, i) => (
                 // eslint-disable-next-line react/no-array-index-key
                 <Skeleton className="mr-4" width={208} height={112} key={i} />
               ))
-          ) : (
-            topPartners?.map((partner) => (
+            : topPartners?.map((partner) => (
               <Link
                 to={`/partners/${partner?.organization.short_name}`}
                 className="mr-4 partners-img-wrapper"
@@ -34,8 +42,7 @@ const Partners = () => {
               >
                 <img src={partner?.organization.logo} alt="" />
               </Link>
-            ))
-          )}
+            ))}
         </div>
         <div className="d-flex justify-content-center">
           <Button
@@ -43,7 +50,10 @@ const Partners = () => {
             iconAfter={ArrowForward}
             onClick={() => history.push('/partners')}
           >
-            View our partners
+            <FormattedMessage
+              id="homePage.viewOurPartners.button"
+              defaultMessage="View our partners"
+            />
           </Button>
         </div>
       </div>

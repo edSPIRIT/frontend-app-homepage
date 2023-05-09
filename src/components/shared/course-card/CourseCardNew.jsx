@@ -7,6 +7,7 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
 import coverPlaceholder from '../../../assets/place-holders/cover-course-place-holder.svg';
 
@@ -64,18 +65,37 @@ const CourseCardNew = ({ course }) => {
                 <span className="mr-1">
                   {course?.additional_metadata?.units_count}
                 </span>
-                <span>lessons</span>
+                <span className="mr-1">
+                  <FormattedMessage
+                    id="courseCard.lessons.text"
+                    defaultMessage="Lessons"
+                  />
+                </span>
               </p>
             </div>
             {course?.total_weeks_of_effort > 0 && (
               <div className="d-flex flex-row align-items-center mb-3">
                 <Icon className="card-icon" src={WatchFilled} />
                 <p className="color-black">
-                  {`${course?.total_weeks_of_effort} weeks `}
+                  <span>{course?.total_weeks_of_effort}</span>
+                  <span>
+                    {' '}
+                    <FormattedMessage
+                      id="courseCard.weeks.text"
+                      defaultMessage="Weeks"
+                    />
+                  </span>
                   {course?.hours_effort_per_week_min
                     && course?.hours_effort_per_week_max && (
                       <span className="color-gray-700">
-                        {`(${course?.hours_effort_per_week_min}-${course?.hours_effort_per_week_max} hours per week)`}
+                        <span>
+                          {' '}
+                          {`(${course?.hours_effort_per_week_min}-${course?.hours_effort_per_week_max} hours per week)`}
+                        </span>{' '}
+                        <FormattedMessage
+                          id="courseCard.hoursPerWeek.text"
+                          defaultMessage="hours per week"
+                        />
                       </span>
                   )}
                 </p>
@@ -86,7 +106,12 @@ const CourseCardNew = ({ course }) => {
                 {course?.paid_course?.price_human}
               </span>
             ) : (
-              <span className="price-title mt-auto">Free</span>
+              <span className="price-title mt-auto">
+                <FormattedMessage
+                  id="courseCard.free.text"
+                  defaultMessage="Free"
+                />
+              </span>
             )}
           </div>
           <div className="btn-card-container mt-3">
@@ -95,7 +120,10 @@ const CourseCardNew = ({ course }) => {
               className="learn-btn"
               onClick={() => history.push(course?.course_slug)}
             >
-              Learn more
+              <FormattedMessage
+                id="courseCard.learnMore.button"
+                defaultMessage="Learn more"
+              />
             </Button>
           </div>
         </div>

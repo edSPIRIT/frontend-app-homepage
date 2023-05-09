@@ -39,15 +39,19 @@ const Banner = ({ intl }) => {
           <SearchField
             className="hero-search my-4"
             submitButtonLocation="external"
-            placeholder={intl.formatMessage(messages.bannerSearchPlaceholder)}
+            placeholder={intl.formatMessage(
+              messages['header.search.placeholder'],
+            )}
             onSubmit={() => history.push('/search')}
+            buttonText={intl.formatMessage(
+              messages['search.button.text'],
+            )}
           />
           <Link className="banner-link" to="/discover">
             <span className="mr-2">
               <FormattedMessage
-                id="bannerExploreNewCourses"
+                id="banner.exploreNewCourses.text"
                 defaultMessage="Explore New Courses"
-                description="link title to discover page on banner"
               />
             </span>
             <Icon src={ArrowForward} />

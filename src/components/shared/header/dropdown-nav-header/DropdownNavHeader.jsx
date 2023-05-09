@@ -1,7 +1,7 @@
 import { Button, Icon } from '@edx/paragon';
 import { ArrowForward, KeyboardArrowDown } from '@edx/paragon/icons';
-import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import useGetSubjects from '../../../../hooks/useGetSubjects';
 
 const DropdownNavHeader = () => {
@@ -11,14 +11,22 @@ const DropdownNavHeader = () => {
   return (
     <nav className="nav-items-wrapper">
       <Link className="nav-link-header mx-2.5" to="/dashboard">
-        Dashboard
+        <FormattedMessage
+          id="header.nav.dashboard"
+          defaultMessage="Dashboard"
+        />
       </Link>
       <Link className="nav-link-header mx-2.5" to="/discover">
-        Discover
+        <FormattedMessage id="header.nav.discover" defaultMessage="Discover" />
       </Link>
       <div className="dropdown-nav-header">
         <div className="d-flex mx-2 align-items-center">
-          <span className=" mr-2">Subjects</span>
+          <span className=" mr-2">
+            <FormattedMessage
+              id="header.dropdown.subjects"
+              defaultMessage="Subjects"
+            />
+          </span>
           <Icon
             src={KeyboardArrowDown}
             style={{ height: '20px', width: '20px' }}
@@ -38,7 +46,12 @@ const DropdownNavHeader = () => {
             </ul>
             <div className="tab-header d-flex justify-content-between">
               <div>
-                <span className="text-gray-500 mr-1">Total Course:</span>
+                <span className="text-gray-500 mr-1">
+                  <FormattedMessage
+                    id="totalCourse.text"
+                    defaultMessage="Total Course:"
+                  />
+                </span>
                 <span className="font-weight-bold">{coursesCounter}</span>
               </div>
               <Button
@@ -47,7 +60,10 @@ const DropdownNavHeader = () => {
                 className="mb-2 mb-sm-0"
                 onClick={() => history.push('/discover')}
               >
-                View All Courses
+                <FormattedMessage
+                  id="viewAllCourses.button"
+                  defaultMessage="View All Courses"
+                />
               </Button>
             </div>
           </div>

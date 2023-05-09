@@ -3,6 +3,7 @@ import { Search } from '@edx/paragon/icons';
 import React from 'react';
 import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import cardImageCap from '../../../assets/card-image-cap.png';
 
 const NotEnrolledCardCourse = ({ title, description }) => {
@@ -24,7 +25,10 @@ const NotEnrolledCardCourse = ({ title, description }) => {
                 iconAfter={Search}
                 onClick={() => history.push('/search')}
               >
-                Explore Courses
+                <FormattedMessage
+                  id="exploreCourses.text"
+                  defaultMessage="Explore Courses"
+                />
               </Button>
             </div>
           </Card.Section>

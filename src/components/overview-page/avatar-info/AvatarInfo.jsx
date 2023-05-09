@@ -1,6 +1,7 @@
 import { Avatar } from '@edx/paragon';
 import { useContext } from 'react';
 import { AppContext } from '@edx/frontend-platform/react';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 
 const AvatarInfo = () => {
   const { authenticatedUser } = useContext(AppContext);
@@ -11,7 +12,10 @@ const AvatarInfo = () => {
         <div className="d-flex justify-content-between mb-2">
           <div className="d-flex">
             <h3 className="mr-2">
-              Hi, <span>{authenticatedUser?.username}</span>
+              <span className="mr-1">
+                <FormattedMessage id="profile.hi.text" defaultMessage="Hi," />
+              </span>
+              <span>{authenticatedUser?.username}</span>
             </h3>
             {/* <Badge>Pro</Badge> */}
           </div>

@@ -14,6 +14,7 @@ import {
 } from '@edx/paragon/icons';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 
 const TotalCourseWrapper = ({ coursesCount, loading }) => {
   const [value, setValue] = useState('All');
@@ -29,20 +30,31 @@ const TotalCourseWrapper = ({ coursesCount, loading }) => {
           className="  bg-white more-modal-items "
         >
           <div className="d-flex close-wrapper justify-content-between align-items-center py-2 px-4">
-            <span className="font-sm">view options</span>
+            <span className="font-sm">
+              <FormattedMessage
+                id="filter.viewOptions.text"
+                defaultMessage="view options"
+              />
+            </span>
             <Icon src={Close} className=" share-icon" onClick={close} />
           </div>
           <ul className="subject-items-list px-4 font-xl">
             <li className="d-flex justify-content-between my-2.5">
-              <span>All</span>
+              <FormattedMessage id="filter.All.text" defaultMessage="All" />
               <Icon className="check-icon" src={Check} />
             </li>
             <li className="d-flex justify-content-between mb-2.5">
-              <span>Courses</span>
+              <FormattedMessage
+                id="filter.courses.text"
+                defaultMessage="Courses"
+              />
               <Icon className="check-icon" src={Check} />
             </li>
             <li className="d-flex justify-content-between">
-              <span>Programs</span>
+              <FormattedMessage
+                id="filter.programs.text"
+                defaultMessage="Programs"
+              />
               <Icon className="check-icon" src={Check} />
             </li>
           </ul>
@@ -50,7 +62,12 @@ const TotalCourseWrapper = ({ coursesCount, loading }) => {
       </ModalLayer>
       <div className="d-flex justify-content-between align-items-center mb-4">
         <p>
-          <span className="total-title">Total Course:</span>
+          <span className="total-title">
+            <FormattedMessage
+              id="totalCourse.text"
+              defaultMessage="Total Course:"
+            />
+          </span>
           {loading ? (
             <Skeleton width={20} height={20} className="ml-1" />
           ) : (
@@ -68,7 +85,7 @@ const TotalCourseWrapper = ({ coursesCount, loading }) => {
             iconBefore={RemoveRedEye}
           >
             <span className="text-primary-500 dropdown-title">
-              View by:
+              <FormattedMessage id="viewBy.text" defaultMessage="View by:" />
               <span className="text-primary-500 font-weight-bold">
                 {' '}
                 {value}
@@ -76,26 +93,28 @@ const TotalCourseWrapper = ({ coursesCount, loading }) => {
             </span>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item
-              key="All"
-              active={value === 'All'}
-              eventKey="All"
-            >
-              All
+            <Dropdown.Item key="All" active={value === 'All'} eventKey="All">
+              <FormattedMessage id="filter.All.text" defaultMessage="All" />
             </Dropdown.Item>
             <Dropdown.Item
               key="Courses"
               active={value === 'Courses'}
               eventKey="Courses"
             >
-              Courses
+              <FormattedMessage
+                id="filter.courses.text"
+                defaultMessage="Courses"
+              />
             </Dropdown.Item>
             <Dropdown.Item
               key="Programs"
               active={value === 'Programs'}
               eventKey="Programs"
             >
-              Programs
+              <FormattedMessage
+                id="filter.programs.text"
+                defaultMessage="Programs"
+              />
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

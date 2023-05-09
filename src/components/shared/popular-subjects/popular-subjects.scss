@@ -40,7 +40,11 @@
     margin-bottom: 48px;
   }
 }
-
+[dir='rtl'] {
+  .popular-title {
+    direction: initial;
+  }
+}
 @media (max-width: 1453px) {
   .subject-container {
     grid-template-columns: repeat(4, minmax(0px, 1fr));

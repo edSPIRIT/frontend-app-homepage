@@ -1,4 +1,5 @@
 import { Icon } from '@edx/paragon';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import edLogo from '../../../assets/edspirit-logo.png';
 import mobileFooterLogo from '../../../assets/mobile-footer-logo.svg';
 import mobileEdxLogo from '../../../assets/mobile-edx-logo.svg';
@@ -119,7 +120,10 @@ const FooterSection = () => {
               />
             </div>
             <p className="footer-desc">
-              Powered by{' '}
+              <FormattedMessage
+                id="footer.powerdBy.text"
+                defaultMessage="Powered by"
+              />
               <a className="footer-desc" href="https://edspirit.com/">
                 edSPIRIT
               </a>
@@ -134,7 +138,10 @@ const FooterSection = () => {
               />
             </div>
             <p className="footer-desc d-flex align-items-center">
-              edX and Open edX are trademarks of edX LLC. All Rights Reserved
+              <FormattedMessage
+                id="footer.copyRight.text"
+                defaultMessage="edX and Open edX are trademarks of edX LLC. All Rights Reserved"
+              />
               <img className="ml-2 desktop-view-edx" src={edxLogo} alt="edx" />
             </p>
           </div>

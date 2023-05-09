@@ -1,13 +1,15 @@
 /* eslint-disable no-nested-ternary */
 import { useMediaQuery } from '@edx/paragon';
+import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
 import NotEnrolledCardCourse from '../overview-page/not-enrolled-course-card/NotEnrolledCourseCard';
 import NavHeader from '../shared/header/nav-header/NavHeader';
 import UserCourseCard from '../shared/user-courses/UserCourseCard';
 import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleton';
 import TotalCourseWrapper from '../shared/total-course-wrapper/TotalCourseWrapper';
+import messages from '../../messages';
 
-const InProgress = () => {
+const InProgress = ({ intl }) => {
   const { loading, userInprogressCourses } = useGetEnrollmentList();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
 
@@ -24,8 +26,10 @@ const InProgress = () => {
             ))
         ) : userInprogressCourses?.length === 0 ? (
           <NotEnrolledCardCourse
-            title="Earn a certificate Advance your career"
-            description="You will find your in-progress courses here."
+            title={intl.formatMessage(messages['inProgress.notEnroll.title'])}
+            description={intl.formatMessage(
+              messages['inProgress.notEnroll.description'],
+            )}
           />
         ) : (
           <div className="d-flex ">
@@ -62,4 +66,9 @@ const InProgress = () => {
     </>
   );
 };
-export default InProgress;
+
+InProgress.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(InProgress);

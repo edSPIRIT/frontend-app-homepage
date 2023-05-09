@@ -1,5 +1,10 @@
 /* eslint-disable no-nested-ternary */
 import { Skeleton, useMediaQuery } from '@edx/paragon';
+import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from '@edx/frontend-platform/i18n';
 import UserCourseCard from '../shared/user-courses/UserCourseCard';
 import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
@@ -7,13 +12,13 @@ import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleto
 import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
 import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import NavHeader from '../shared/header/nav-header/NavHeader';
+import messages from '../../messages';
 
-const OverviewPage = () => {
+const OverviewPage = ({ intl }) => {
   const {
     loading, userCourseTitles, userCourseIds, userInprogressCourses,
   } = useGetEnrollmentList();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
-  console.log('userCourseTitles', userCourseTitles);
   return (
     <>
       {isMobile && <NavHeader />}
@@ -33,12 +38,21 @@ const OverviewPage = () => {
               </>
             ) : userInprogressCourses?.length === 0 ? (
               <NotEnrolledCardCourse
-                title="Earn a certificate Advance your career"
-                description="You are not enrolled in any courses yet."
+                title={intl.formatMessage(
+                  messages['inProgress.notEnroll.title'],
+                )}
+                description={intl.formatMessage(
+                  messages['overview.notEnroll.description'],
+                )}
               />
             ) : (
               <div className="overview-courses-wrapper">
-                <h3 className="recent-title mb-4 mt-5.5">Recent Activity</h3>
+                <h3 className="recent-title mb-4 mt-5.5">
+                  <FormattedMessage
+                    id="overview.recentActivity.text"
+                    defaultMessage="Recent Activity"
+                  />
+                </h3>
                 {userInprogressCourses?.map((courseInfo) => (
                   <UserCourseCard
                     key={courseInfo?.course_details?.course_id}
@@ -51,12 +65,12 @@ const OverviewPage = () => {
                 <RecommendedPrograms />
               </div> */}
           </div>
-          { userCourseTitles && (
-          <SimilarCourses
-            courseTitles={userCourseTitles}
-            courseIds={userCourseIds}
-            loading={loading}
-          />
+          {userCourseTitles && (
+            <SimilarCourses
+              courseTitles={userCourseTitles}
+              courseIds={userCourseIds}
+              loading={loading}
+            />
           )}
         </div>
       </main>
@@ -64,4 +78,8 @@ const OverviewPage = () => {
   );
 };
 
-export default OverviewPage;
+OverviewPage.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(OverviewPage);

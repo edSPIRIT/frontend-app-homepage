@@ -1,13 +1,15 @@
 /* eslint-disable no-nested-ternary */
 import { useMediaQuery } from '@edx/paragon';
+import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
 import NotEnrolledCardCourse from '../overview-page/not-enrolled-course-card/NotEnrolledCourseCard';
 import NavHeader from '../shared/header/nav-header/NavHeader';
 import UserCourseCard from '../shared/user-courses/UserCourseCard';
 import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleton';
 import TotalCourseWrapper from '../shared/total-course-wrapper/TotalCourseWrapper';
+import messages from '../../messages';
 
-const Completed = () => {
+const Completed = ({ intl }) => {
   const { userCompletedCourses, loading } = useGetEnrollmentList();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
 
@@ -26,8 +28,12 @@ const Completed = () => {
           ) : userCompletedCourses?.length === 0 ? (
             <div className="w-100">
               <NotEnrolledCardCourse
-                title="You will find your finished courses here."
-                description="You are not enrolled in any courses yet."
+                title={intl.formatMessage(
+                  messages['completed.notEnroll.title'],
+                )}
+                description={intl.formatMessage(
+                  messages['completed.notEnroll.description'],
+                )}
               />
             </div>
           ) : (
@@ -57,4 +63,8 @@ const Completed = () => {
     </>
   );
 };
-export default Completed;
+Completed.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(Completed);

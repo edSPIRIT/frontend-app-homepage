@@ -10,12 +10,18 @@ import { useContext } from 'react';
 import { AppContext } from '@edx/frontend-platform/react';
 import { ArrowDropDown } from '@edx/paragon/icons';
 import { getConfig } from '@edx/frontend-platform';
+import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from '@edx/frontend-platform/i18n';
 import NavHeader from '../nav-header/NavHeader';
 import DropdownNavHeader from '../dropdown-nav-header/DropdownNavHeader';
 import useGetFooters from '../../../../hooks/useGetFooters';
 import edLogo from '../../../../assets/edspirit-logo.png';
+import messages from '../../../../messages';
 
-const DesktopHeader = () => {
+const DesktopHeader = ({ intl }) => {
   const history = useHistory();
   const { authenticatedUser } = useContext(AppContext);
   const { footerData, loading } = useGetFooters();
@@ -40,7 +46,9 @@ const DesktopHeader = () => {
       <div className="d-flex right-side-wrapper">
         <SearchField
           onSubmit={() => history.push('/search')}
-          placeholder="What do you want to learn?"
+          placeholder={intl.formatMessage(
+            messages['header.search.placeholder'],
+          )}
         />
         {/* <div className="d-flex align-items-center">
             <Button variant="tertiary" size="sm" className="mx-1">
@@ -58,7 +66,10 @@ const DesktopHeader = () => {
                     '',
                   )}/profile/u/${authenticatedUser?.username}`}
                 >
-                  Profile
+                  <FormattedMessage
+                    id="header.dropdownOption.profile"
+                    defaultMessage="Profile"
+                  />
                 </Dropdown.Item>
                 <Dropdown.Item
                   href={`https://apps.${getConfig().LMS_BASE_URL.replace(
@@ -66,19 +77,33 @@ const DesktopHeader = () => {
                     '',
                   )}/account`}
                 >
-                  Account
+                  <FormattedMessage
+                    id="header.dropdownOption.account"
+                    defaultMessage="Account"
+                  />
                 </Dropdown.Item>
-                <Dropdown.Item href="dashboard">Dashboard</Dropdown.Item>
+                <Dropdown.Item href="dashboard">
+                  <FormattedMessage
+                    id="header.dropdownOption.dashboard"
+                    defaultMessage="Dashboard"
+                  />
+                </Dropdown.Item>
                 <Dropdown.Item
                   href={`https://billing.${getConfig().LMS_BASE_URL.replace(
                     'https://',
                     '',
                   )}`}
                 >
-                  Order History
+                  <FormattedMessage
+                    id="header.dropdownOption.orderHistory"
+                    defaultMessage="Order History"
+                  />
                 </Dropdown.Item>
                 <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/logout`}>
-                  Sign out
+                  <FormattedMessage
+                    id="header.dropdownOption.signOut"
+                    defaultMessage="Sign out"
+                  />
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
@@ -90,14 +115,17 @@ const DesktopHeader = () => {
                 size="sm"
                 href={`${getConfig().LOGIN_URL}`}
               >
-                Sign in
+                <FormattedMessage id="header.signIn" defaultMessage="Sign in" />
               </Button>
               <Button
                 variant="primary"
                 size="sm"
                 href={`${getConfig().LMS_BASE_URL}/register`}
               >
-                Register
+                <FormattedMessage
+                  id="header.register"
+                  defaultMessage="Register"
+                />
               </Button>
             </>
           )}
@@ -107,4 +135,8 @@ const DesktopHeader = () => {
   );
 };
 
-export default DesktopHeader;
+DesktopHeader.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(DesktopHeader);

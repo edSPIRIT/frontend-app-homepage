@@ -3,6 +3,7 @@
 /* eslint-disable react/prop-types */
 import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import {
   Dropdown, Icon, IconButton, useMediaQuery,
 } from '@edx/paragon';
@@ -93,7 +94,10 @@ const TopCardSection = ({ courseInfo, openMoreBtn }) => {
                     );
                   }}
                 >
-                  Unroll
+                  <FormattedMessage
+                    id="userCourseCard.unroll.text"
+                    defaultMessage="Unroll"
+                  />
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
@@ -108,7 +112,12 @@ const TopCardSection = ({ courseInfo, openMoreBtn }) => {
       </Link>
       {!courseCompleted && (
         <p className="course-date-title">
-          <span>Course Start - </span>
+          <span>
+            <FormattedMessage
+              id="userCourseCard.courseStart.text"
+              defaultMessage="Course Start - "
+            />
+          </span>
           <span>
             {new Date(courseInfo?.course_details?.course_start).toLocaleString(
               'en-US',

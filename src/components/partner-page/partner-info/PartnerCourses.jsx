@@ -1,6 +1,7 @@
 import { Button } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import { useHistory } from 'react-router';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import CourseCard from '../../shared/course-card/CourseCard';
 import { COURSES_INFO } from '../../../utils/constants';
 
@@ -8,10 +9,7 @@ const PartnerCourses = () => {
   const history = useHistory();
 
   return (
-    <div
-      className="custom-container d-flex flex-column pb-5"
-      id="courses"
-    >
+    <div className="custom-container d-flex flex-column pb-5" id="courses">
       <h2 className="d-flex popular-courses-wrapper">
         Popular<span className="highlighted ml-2">Courses</span>
       </h2>
@@ -26,7 +24,10 @@ const PartnerCourses = () => {
           iconAfter={ArrowForward}
           onClick={() => history.push('/search')}
         >
-          View all courses
+          <FormattedMessage
+            id="viewAllCourses.button"
+            defaultMessage="View All Courses"
+          />
         </Button>
       </div>
     </div>

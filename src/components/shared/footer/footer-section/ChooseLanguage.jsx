@@ -14,6 +14,7 @@ import { useContext, useState } from 'react';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { getConfig } from '@edx/frontend-platform';
 import {
+  FormattedMessage,
   getLocale,
   handleRtl,
 } from '@edx/frontend-platform/i18n';
@@ -105,47 +106,16 @@ const ChooseLanguage = () => {
                 )}
               </li>
             ))}
-            {/* <li
-              onClick={() => {
-                setValue('Recent');
-                close();
-              }}
-              className="d-flex justify-content-between my-2.5"
-            >
-              <span>Recent</span>
-              {value === 'Recent' && (
-                <Icon className="check-icon" src={Check} />
-              )}
-            </li>
-            <li
-              onClick={() => {
-                setValue('Title A to Z');
-                close();
-              }}
-              className="d-flex justify-content-between mb-2.5"
-            >
-              <span>Title A to Z</span>
-              {value === 'Title A to Z' && (
-                <Icon className="check-icon" src={Check} />
-              )}
-            </li>
-            <li
-              onClick={() => {
-                setValue('Title Z to A');
-                close();
-              }}
-              className="d-flex justify-content-between"
-            >
-              <span>Title Z to A</span>
-              {value === 'Title Z to A' && (
-                <Icon className="check-icon" src={Check} />
-              )}
-            </li> */}
           </ul>
         </div>
       </ModalLayer>
       <>
-        <h5 className="mb-2.5">Choose Language</h5>
+        <h5 className="mb-2.5">
+          <FormattedMessage
+            id="footer.chooseLanguage.text"
+            defaultMessage="Choose Language"
+          />
+        </h5>
         <Dropdown
           className="dropdown-wrapper mb-5.5"
           onSelect={(e) => setValue(e)}

@@ -3,6 +3,7 @@ import { Button, Skeleton } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import { useHistory, useParams } from 'react-router-dom';
 
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import useGetInstructor from '../../hooks/useGetInstructor';
 import CourseCardNew from '../shared/course-card/CourseCardNew';
 import CourseCardSkeleton from '../shared/skeleton/CourseCardSkeleton';
@@ -45,7 +46,10 @@ const Instructor = () => {
               iconAfter={ArrowForward}
               onClick={() => history.push('/discover')}
             >
-              View all courses
+              <FormattedMessage
+                id="viewAllCourses.button"
+                defaultMessage="View All Courses"
+              />
             </Button>
           )}
         </div>

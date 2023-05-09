@@ -249,6 +249,11 @@
     }
   }
 }
+[dir='rtl'] {
+  .pgn__icon {
+    transform: scaleX(-1);
+  }
+}
 @media (max-width: 1024px) {
   .program-instructors-wrapper {
     max-width: 194px;
