@@ -9,6 +9,7 @@ import {
   ListView,
 } from '@edx/paragon/icons';
 import classNames from 'classnames';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import SortPartnersWrapper from './total-partners-wrapper/SortPartnersWrapper';
 
 const TotalPartnersWrapper = ({
@@ -16,7 +17,12 @@ const TotalPartnersWrapper = ({
 }) => (
   <div className="d-flex justify-content-between align-items-center mb-4 mt-4.5">
     <p>
-      <span className="total-title">Total:</span>
+      <span className="total-title">
+        <FormattedMessage
+          id="total.text"
+          defaultMessage="Total:"
+        />
+      </span>
       {loading ? (
         <Skeleton height={20} width={20} className="ml-1" />
       ) : (

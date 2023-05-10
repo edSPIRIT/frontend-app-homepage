@@ -4,6 +4,7 @@ import {
   BookOpen, DrawShapes, Groups, Share,
 } from '@edx/paragon/icons';
 import ShowMoreText from 'react-show-more-text';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import partnerBanner from '../../../assets/place-holders/cover-course-place-holder.svg';
 import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
 
@@ -67,19 +68,34 @@ const PartnerHeader = ({ partnerData, loading }) => (
       <div className="d-flex justify-content-center partner-snapshot-wrapper">
         <a className="icon-wrapper" href="#courses">
           <Icon src={BookOpen} />
-          <span className="partner-title">Courses</span>
+          <span className="partner-title">
+            <FormattedMessage
+              id="courses.text"
+              defaultMessage="Courses"
+            />
+          </span>
           <span className="partner-count">{partnerData?.courses_count}</span>
         </a>
         <div className="vertical-line" />
         <div className="icon-wrapper" href="#">
           <Icon src={DrawShapes} />
-          <span className="partner-title">Learners</span>
+          <span className="partner-title">
+            <FormattedMessage
+              id="learners.text"
+              defaultMessage="Learners"
+            />
+          </span>
           <span className="partner-count">0</span>
         </div>
         <div className="vertical-line" />
         <a className="icon-wrapper" href="#instructors">
           <Icon src={Groups} />
-          <span className="partner-title">Instructors</span>
+          <span className="partner-title">
+            <FormattedMessage
+              id="instructors.text"
+              defaultMessage="Instructors"
+            />
+          </span>
           <span className="partner-count">0</span>
         </a>
       </div>

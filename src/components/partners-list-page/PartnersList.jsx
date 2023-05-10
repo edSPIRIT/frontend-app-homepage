@@ -11,12 +11,18 @@ import {
 } from '@edx/paragon/icons';
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from '@edx/frontend-platform/i18n';
 import useGetPartners from '../../hooks/useGetPartners';
 import PartnersCardGrid from './partners-list/PartnersCardGrid';
 import PartnersCardList from './partners-list/PartnersCardList';
 import TotalPartnersWrapper from './partners-list/TotalPartnersWrapper';
+import messages from '../../messages';
 
-const PartnersList = () => {
+const PartnersList = ({ intl }) => {
   const [view, setView] = useState('grid');
   const [page, setPage] = useState(1);
   const {
@@ -33,16 +39,27 @@ const PartnersList = () => {
       </div>
       <div className="partners-header pt-5.5 pb-4.5">
         <div className="custom-container">
-          <h1 className="pb-4">Our Partners</h1>
+          <h1 className="pb-4">
+            <FormattedMessage
+              id="partners.ourPartners.text"
+              defaultMessage="Our Partners"
+            />
+          </h1>
           <p className="banner-desc">
-            edSPIRIT offers the highest quality online courses from institutions
-            who share our commitment to excellence in teaching and learning.
+            <FormattedMessage
+              id="partners.ourPartnersDes.text"
+              defaultMessage="edSPIRIT offers the highest quality online courses from institutions
+            who share our commitment to excellence in teaching and learning."
+            />
           </p>
           <SearchField
             className="partners-search my-4"
             submitButtonLocation="external"
             onSubmit={(value) => console.log(`search submitted: ${value}`)}
-            placeholder="Who are you looking for?"
+            placeholder={intl.formatMessage(
+              messages['partners.search.placeholder'],
+            )}
+            buttonText={intl.formatMessage(messages['search.button.text'])}
           />
           {/* temporary remove from ui */}
           {/* <Link className="banner-link pb-5" to="/">
@@ -54,18 +71,31 @@ const PartnersList = () => {
               <Icon clas src={BookOpen} style={{ width: '36px' }} />
               <span>2800+</span>
               <p>
-                courses in subjects such as humanities, math, computer science
+                <FormattedMessage
+                  id="partners.snapShut.courses.text"
+                  defaultMessage="courses in subjects such as humanities, math, computer science"
+                />
               </p>
             </div>
             <div className="icon-wrapper">
               <Icon src={DrawShapes} />
               <span>1 Milion</span>
-              <p>learners worldwide, representing every country</p>
+              <p>
+                <FormattedMessage
+                  id="partners.snapShut.learners.text"
+                  defaultMessage="learners worldwide, representing every country"
+                />
+              </p>
             </div>
             <div className="icon-wrapper">
               <Icon src={Groups} />
               <span>1 Milion</span>
-              <p>enrollments across edX courses</p>
+              <p>
+                <FormattedMessage
+                  id="partners.snapShut.enrollments.text"
+                  defaultMessage="enrollments across edspirit courses"
+                />
+              </p>
             </div>
           </div>
         </div>
@@ -74,9 +104,18 @@ const PartnersList = () => {
         <div className="partner-breadcrumb pt-4.5">
           <Breadcrumb
             ariaLabel="Breadcrumb basic"
-            links={[{ label: 'Home', to: '/' }]}
+            links={[
+              {
+                label: `${intl.formatMessage(
+                  messages['breadcrumb.home'],
+                )}`,
+                to: '/',
+              },
+            ]}
             linkAs={Link}
-            activeLabel="Our-Partners"
+            activeLabel={intl.formatMessage(
+              messages['partners.breadcrumb.ourPartners'],
+            )}
           />
         </div>
         <TotalPartnersWrapper
@@ -105,6 +144,23 @@ const PartnersList = () => {
               onPageSelect={(e) => setPage(e)}
               currentPage={page}
               variant={isMobile ? 'reduced' : 'default'}
+              buttonLabels={{
+                previous: `${intl.formatMessage(
+                  messages['pagination.previous.button'],
+                )}`,
+                next: `${intl.formatMessage(
+                  messages['pagination.next.button'],
+                )}`,
+                page: `${intl.formatMessage(
+                  messages['pagination.page.text'],
+                )}`,
+                currentPage: `${intl.formatMessage(
+                  messages['pagination.currentPage.text'],
+                )}`,
+                pageOfCount: `${intl.formatMessage(
+                  messages['pagination.of.text'],
+                )}`,
+              }}
             />
           )}
         </div>
@@ -113,4 +169,8 @@ const PartnersList = () => {
   );
 };
 
-export default PartnersList;
+PartnersList.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(PartnersList);

@@ -2,14 +2,16 @@ import { Breadcrumb, Icon, useMediaQuery } from '@edx/paragon';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { ArrowBack } from '@edx/paragon/icons';
 import React from 'react';
+import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import useGetPartner from '../../hooks/useGetPartner';
 import PartnerCourses from './partner-info/PartnerCourses';
 import PartnerHeader from './partner-info/PartnerHeader';
 import DeskTopInstructors from './partner-info/DeskTopInstructors';
+import messages from '../../messages';
 
 const MobileInstructors = React.lazy(() => import('./partner-info/MobileInstructors'));
 
-const PartnerInfo = () => {
+const PartnerInfo = ({ intl }) => {
   const { slug } = useParams();
   const { partnerData, loading } = useGetPartner(slug);
   const history = useHistory();
@@ -26,8 +28,18 @@ const PartnerInfo = () => {
           <Breadcrumb
             ariaLabel="Breadcrumb basic"
             links={[
-              { label: 'Home', to: '/' },
-              { label: 'Our-Partners', to: '/partners' },
+              {
+                label: `${intl.formatMessage(
+                  messages['breadcrumb.home'],
+                )}`,
+                to: '/',
+              },
+              {
+                label: `${intl.formatMessage(
+                  messages['partners.breadcrumb.ourPartners'],
+                )}`,
+                to: '/partners',
+              },
             ]}
             linkAs={Link}
             activeLabel={slug}
@@ -60,4 +72,8 @@ const PartnerInfo = () => {
     </section>
   );
 };
-export default PartnerInfo;
+PartnerInfo.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(PartnerInfo);

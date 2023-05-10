@@ -7,11 +7,16 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from '@edx/frontend-platform/i18n';
 import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
 import coverPlaceholder from '../../../assets/place-holders/cover-course-place-holder.svg';
+import messages from '../../../messages';
 
-const CourseCardNew = ({ course }) => {
+const CourseCardNew = ({ course, intl }) => {
   const isProgram = false;
   const history = useHistory();
 
@@ -88,14 +93,12 @@ const CourseCardNew = ({ course }) => {
                   {course?.hours_effort_per_week_min
                     && course?.hours_effort_per_week_max && (
                       <span className="color-gray-700">
-                        <span>
-                          {' '}
-                          {`(${course?.hours_effort_per_week_min}-${course?.hours_effort_per_week_max} hours per week)`}
-                        </span>{' '}
-                        <FormattedMessage
-                          id="courseCard.hoursPerWeek.text"
-                          defaultMessage="hours per week"
-                        />
+                        {' '}
+                        {`(${course?.hours_effort_per_week_min}-${
+                          course?.hours_effort_per_week_max
+                        } ${intl.formatMessage(
+                          messages['courseCard.hoursPerWeek.text'],
+                        )})`}
                       </span>
                   )}
                 </p>
@@ -209,9 +212,8 @@ CourseCardNew.propTypes = {
       courses_count: PropTypes.number,
       created: PropTypes.string,
     }),
-  },
+  }.isRequired,
+  intl: intlShape.isRequired,
 };
-CourseCardNew.defaultProps = {
-  course: undefined,
-};
-export default CourseCardNew;
+
+export default injectIntl(CourseCardNew);

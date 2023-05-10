@@ -16,13 +16,21 @@ import {
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from '@edx/frontend-platform/i18n';
+import {
   ascendingPartners,
   descendingPartners,
   recentPartners,
 } from '../../../../redux/slice/partnerSlice';
+import messages from '../../../../messages';
 
-const SortPartnersWrapper = () => {
-  const [value, setValue] = useState('Recent');
+const SortPartnersWrapper = ({ intl }) => {
+  const [value, setValue] = useState(
+    intl.formatMessage(messages['recent.text']),
+  );
   const [isOpen, open, close] = useToggle(false);
   const isMobile = useMediaQuery({ maxWidth: '768px' });
   const dispatch = useDispatch();
@@ -37,39 +45,45 @@ const SortPartnersWrapper = () => {
           <ul className="subject-items-list px-4 font-xl">
             <li
               onClick={() => {
-                setValue('Recent');
+                setValue(intl.formatMessage(messages['recent.text']));
                 dispatch(recentPartners());
                 close();
               }}
               className="d-flex justify-content-between my-2.5"
             >
-              <span>Recent</span>
+              <FormattedMessage id="recent.text" defaultMessage="Recent" />
               {value === 'Recent' && (
                 <Icon className="check-icon" src={Check} />
               )}
             </li>
             <li
               onClick={() => {
-                setValue('Title A to Z');
+                setValue(intl.formatMessage(messages['titleAtoZ.text']));
                 dispatch(ascendingPartners());
                 close();
               }}
               className="d-flex justify-content-between mb-2.5"
             >
-              <span>Title A to Z</span>
+              <FormattedMessage
+                id="titleAtoZ.text"
+                defaultMessage="Title A to Z"
+              />
               {value === 'Title A to Z' && (
                 <Icon className="check-icon" src={Check} />
               )}
             </li>
             <li
               onClick={() => {
-                setValue('Title Z to A');
+                setValue(intl.formatMessage(messages['titleZtoA.text']));
                 dispatch(descendingPartners());
                 close();
               }}
               className="d-flex justify-content-between"
             >
-              <span>Title Z to A</span>
+              <FormattedMessage
+                id="titleZtoA.text"
+                defaultMessage="Title Z to A"
+              />
               {value === 'Title Z to A' && (
                 <Icon className="check-icon" src={Check} />
               )}
@@ -88,34 +102,40 @@ const SortPartnersWrapper = () => {
           iconBefore={FilterList}
         >
           <span className="text-primary-500 dropdown-title">
-            Sort by:
+            <FormattedMessage id="sortBy.text" defaultMessage="Sort by:" />
             <span className="text-primary-500 font-weight-bold"> {value}</span>
           </span>
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item
-            key="Recent"
+            key={intl.formatMessage(messages['recent.text'])}
             active={value === 'Recent'}
-            eventKey="Recent"
+            eventKey={intl.formatMessage(messages['recent.text'])}
             onClick={() => dispatch(recentPartners())}
           >
-            Recent
+            <FormattedMessage id="recent.text" defaultMessage="Recent" />
           </Dropdown.Item>
           <Dropdown.Item
-            key="Title A to Z"
+            key={intl.formatMessage(messages['titleAtoZ.text'])}
             active={value === 'Title A to Z'}
-            eventKey="Title A to Z"
+            eventKey={intl.formatMessage(messages['titleAtoZ.text'])}
             onClick={() => dispatch(ascendingPartners())}
           >
-            Title A to Z
+            <FormattedMessage
+              id="titleAtoZ.text"
+              defaultMessage="Title A to Z"
+            />
           </Dropdown.Item>
           <Dropdown.Item
-            key="Title Z to A"
+            key={intl.formatMessage(messages['titleZtoA.text'])}
             active={value === 'Title Z to A'}
-            eventKey="Title Z to A"
+            eventKey={intl.formatMessage(messages['titleZtoA.text'])}
             onClick={() => dispatch(descendingPartners())}
           >
-            Title Z to A
+            <FormattedMessage
+              id="titleZtoA.text"
+              defaultMessage="Title Z to A"
+            />
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
@@ -123,4 +143,8 @@ const SortPartnersWrapper = () => {
   );
 };
 
-export default SortPartnersWrapper;
+SortPartnersWrapper.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(SortPartnersWrapper);

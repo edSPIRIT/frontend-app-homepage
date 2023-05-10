@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import Scrollspy from 'react-scrollspy';
 import { Link as RouterLink } from 'react-router-dom';
 import { Link } from 'react-scroll';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import CourseInfoSideBar from './CourseInfoSideBar';
 import CourseInfoTopDesc from './CourseInfoTopDesc';
 import AboutCourse from './AboutCourse';
@@ -59,29 +60,44 @@ const DesktopCourseInfo = () => {
         >
           <li>
             <Link to="about-course" smooth offset={-120}>
-              About
+              <FormattedMessage
+                id="courseInfo.tab.about.text"
+                defaultMessage="About"
+              />
             </Link>
           </li>
           <li>
             <Link to="what-you-learn" smooth offset={-160}>
-              What you&apos;ll learn
+              <FormattedMessage
+                id="courseInfo.tab.whatYouWillLearn.text"
+                defaultMessage="What you'll learn"
+              />
             </Link>
           </li>
 
           <li>
             <Link to="requirement" smooth offset={-120}>
-              Requirements
+              <FormattedMessage
+                id="courseInfo.tab.requirements.text"
+                defaultMessage="Requirements"
+              />
             </Link>
           </li>
 
           <li>
             <Link to="course-content" smooth offset={-160}>
-              Course content
+              <FormattedMessage
+                id="courseInfo.tab.courseContent.text"
+                defaultMessage="Course content"
+              />
             </Link>
           </li>
           <li>
             <Link to="instructors" smooth offset={-160}>
-              Instructors
+              <FormattedMessage
+                id="courseInfo.tab.instructors.text"
+                defaultMessage="Instructors"
+              />
             </Link>
           </li>
         </Scrollspy>

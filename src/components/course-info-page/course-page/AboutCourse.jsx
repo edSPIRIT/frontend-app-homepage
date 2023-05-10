@@ -1,10 +1,16 @@
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { Skeleton } from '@edx/paragon';
 import PropTypes from 'prop-types';
 import ShowMoreText from 'react-show-more-text';
 
 const AboutCourse = ({ aboutCourse, loading }) => (
   <div className="about-wrapper" id="about-course">
-    <h2 className="mb-3">About this course</h2>
+    <h2 className="mb-3">
+      <FormattedMessage
+        id="courseInfo.aboutThisCourse.text"
+        defaultMessage="About this course"
+      />
+    </h2>
     {loading ? (
       <Skeleton count={4} height={24} />
     ) : (

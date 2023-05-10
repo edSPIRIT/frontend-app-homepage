@@ -18,14 +18,14 @@ const useGetAllCourses = (page = 1) => {
     return apiRes.json();
   };
 
-  const { isLoading, data } = useQuery({
+  const { isLoading, data, isFetching } = useQuery({
     queryKey: ['AllCourses', page, sortState],
     queryFn: () => fetchAllCourses(page),
     keepPreviousData: true,
   });
   return {
     allCoursesData: data,
-    loading: isLoading,
+    loading: isLoading && isFetching,
   };
 };
 export default useGetAllCourses;

@@ -3,11 +3,16 @@ import { Link } from 'react-router-dom';
 import { Breadcrumb, Dropdown, Skeleton } from '@edx/paragon';
 import { FilterList, KeyboardArrowDown } from '@edx/paragon/icons';
 import { useDispatch } from 'react-redux';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import DiscoverBanner from '../shared/discover-banner/DiscoverBanner';
 import SearchFacets from './search/SearchFacets';
 import SearchResults from './search/SearchResults';
 import useGetAllCourses from '../../hooks/useGetAllCourses';
-import { ascendingCourses, descendingCourses, recentCourses } from '../../redux/slice/allCoursesSlice';
+import {
+  ascendingCourses,
+  descendingCourses,
+  recentCourses,
+} from '../../redux/slice/allCoursesSlice';
 
 const Search = () => {
   const [value, setValue] = useState('Recent');
@@ -30,7 +35,9 @@ const Search = () => {
         />
         <div className="d-flex justify-content-between align-items-center my-4">
           <p>
-            <span className="total-title">Total Course:</span>
+            <span className="total-title">
+              <FormattedMessage id="total.text" defaultMessage="Total:" />
+            </span>
             {isLoading ? (
               <Skeleton className="ml-1" width={28} height={20} />
             ) : (
@@ -47,7 +54,7 @@ const Search = () => {
               iconBefore={FilterList}
             >
               <span className="text-primary-500 dropdown-title">
-                Sort by:{' '}
+                <FormattedMessage id="sortBy.text" defaultMessage="Sort by:" />
                 <span className="text-primary-500 font-weight-bold">
                   {value}
                 </span>
@@ -60,7 +67,7 @@ const Search = () => {
                 eventKey="Recent"
                 onClick={() => dispatch(recentCourses())}
               >
-                Recent
+                <FormattedMessage id="recent.text" defaultMessage="ًRecent" />
               </Dropdown.Item>
               <Dropdown.Item
                 key="Title A to Z"
@@ -68,7 +75,10 @@ const Search = () => {
                 eventKey="Title A to Z"
                 onClick={() => dispatch(ascendingCourses())}
               >
-                Title A to Z
+                <FormattedMessage
+                  id="titleAtoZ.text"
+                  defaultMessage="Title A to Z"
+                />
               </Dropdown.Item>
               <Dropdown.Item
                 key="Title Z to A"
@@ -76,15 +86,15 @@ const Search = () => {
                 eventKey="Title Z to A"
                 onClick={() => dispatch(descendingCourses())}
               >
-                Title Z to A
+                <FormattedMessage
+                  id="titleZtoA.text"
+                  defaultMessage="Title Z to A"
+                />
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        <SearchResults
-          page={page}
-          setPage={setPage}
-        />
+        <SearchResults page={page} setPage={setPage} />
       </div>
     </main>
   );

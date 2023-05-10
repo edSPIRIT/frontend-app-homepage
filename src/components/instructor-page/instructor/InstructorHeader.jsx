@@ -5,14 +5,20 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ShowMoreText from 'react-show-more-text';
+import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from '@edx/frontend-platform/i18n';
 import { ReactComponent as Linkedin } from '../../../assets/linkedin.svg';
 import { ReactComponent as Facebook } from '../../../assets/facebook.svg';
 import { ReactComponent as Globe } from '../../../assets/language-filled.svg';
 import { ReactComponent as Twitter } from '../../../assets/twitter.svg';
 import userAvatar from '../../../assets/place-holders/user-placeholder.svg';
 import InstructorSkeleton from './InstructorSkeleton';
+import messages from '../../../messages';
 
-const InstructorHeader = ({ InstructorData, loading }) => {
+const InstructorHeader = ({ InstructorData, loading, intl }) => {
   const history = useHistory();
   return (
     <>
@@ -24,7 +30,14 @@ const InstructorHeader = ({ InstructorData, loading }) => {
         <div className="custom-container pb-5 breadcrumb-wrapper">
           <Breadcrumb
             ariaLabel="Breadcrumb basic"
-            links={[{ label: 'Home', to: '/' }]}
+            links={[
+              {
+                label: `${intl.formatMessage(
+                  messages['breadcrumb.home'],
+                )}`,
+                to: '/',
+              },
+            ]}
             linkAs={Link}
             activeLabel={InstructorData?.name}
           />
@@ -81,13 +94,24 @@ const InstructorHeader = ({ InstructorData, loading }) => {
                       <Icon src={People} className="mr-2" />
                       <p>
                         <span>{InstructorData?.students_count}</span>
-                        <span className="ml-1">Students</span>
+                        <span className="ml-1">
+                          <FormattedMessage
+                            id="instructor.students.text"
+                            defaultMessage="Students"
+                          />
+                        </span>
                       </p>
                     </div>
-                    <div className="d-flex">
+                    <div className="d-flex align-items-center">
                       <Icon src={BookOpen} className="mr-2" />
                       <p>
-                        <span>{InstructorData?.courses?.length} Courses</span>
+                        <span>{InstructorData?.courses?.length}</span>
+                        <span className="ml-1">
+                          <FormattedMessage
+                            id="instructor.courses.text"
+                            defaultMessage="Courses"
+                          />
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -154,9 +178,11 @@ InstructorHeader.propTypes = {
     students_count: PropTypes.number,
   }),
   loading: PropTypes.bool,
+  intl: intlShape.isRequired,
 };
 InstructorHeader.defaultProps = {
   InstructorData: {},
   loading: false,
 };
-export default InstructorHeader;
+
+export default injectIntl(InstructorHeader);

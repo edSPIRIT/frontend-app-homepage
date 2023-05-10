@@ -2,15 +2,16 @@ import { Icon, IconButton } from '@edx/paragon';
 import { ArrowForward, BookOpen, People } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import userAvatar from '../../../../assets/place-holders/user-placeholder.svg';
 
 const InstructorCard = ({ instructor }) => (
-  <Link to={`/instructor/${instructor?.slug}`} className="instructor-wrapper d-flex">
+  <Link
+    to={`/instructor/${instructor?.slug}`}
+    className="instructor-wrapper d-flex"
+  >
     <div className="instructor-course-img-wrapper">
-      <img
-        src={instructor?.image ?? userAvatar}
-        alt="instructor-avator"
-      />
+      <img src={instructor?.image ?? userAvatar} alt="instructor-avator" />
     </div>
     <div className="d-flex flex-column w-100">
       <div className="d-flex justify-content-between align-items-center mb-3">
@@ -32,14 +33,25 @@ const InstructorCard = ({ instructor }) => (
         <div className="d-flex mr-4.5">
           <Icon src={People} className="mr-2" />
           <p>
-            <span>{ instructor?.students_count}</span>
-            <span className="ml-1">Students</span>
+            <span>{instructor?.students_count}</span>
+            <span className="ml-1">
+              <FormattedMessage
+                id="instructor.students.text"
+                defaultMessage="Students"
+              />
+            </span>
           </p>
         </div>
         <div className="d-flex">
           <Icon src={BookOpen} className="mr-2" />
           <p>
-            <span>{instructor?.courses?.length} Courses</span>
+            <span>{instructor?.courses?.length}</span>
+            <span className="ml-1">
+              <FormattedMessage
+                id="instructor.courses.text"
+                defaultMessage="Courses"
+              />
+            </span>
           </p>
         </div>
       </div>

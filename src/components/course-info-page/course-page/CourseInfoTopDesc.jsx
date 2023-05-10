@@ -16,8 +16,15 @@ import {
 } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
 import ShowMoreText from 'react-show-more-text';
+import {
+  injectIntl,
+  intlShape,
+} from '@edx/frontend-platform/i18n';
+import messages from '../../../messages';
 
-const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => (
+const CourseInfoTopDesc = ({
+  courseMetaData, loading, navTopRef, intl,
+}) => (
   <div className="course-info-top-container">
     <div className=" course-info-top-wrapper ">
       <div className="course-info-breadcrumb py-4.5">
@@ -25,8 +32,18 @@ const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => (
         <Breadcrumb
           ariaLabel="Breadcrumb basic"
           links={[
-            { label: 'Home', to: '/' },
-            { label: 'Discover', to: '/Discover' },
+            {
+              label: `${intl.formatMessage(
+                messages['breadcrumb.home'],
+              )}`,
+              to: '/',
+            },
+            {
+              label: `${intl.formatMessage(
+                messages['breadcrumb.discover'],
+              )}`,
+              to: '/Discover',
+            },
             { label: `${courseMetaData?.subject?.title}`, to: '/Discover' },
           ]}
           linkAs={Link}
@@ -204,4 +221,8 @@ CourseInfoTopDesc.defaultProps = {
   loading: false,
   navTopRef: undefined,
 };
-export default CourseInfoTopDesc;
+CourseInfoTopDesc.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(CourseInfoTopDesc);

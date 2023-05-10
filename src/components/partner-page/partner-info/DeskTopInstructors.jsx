@@ -1,11 +1,14 @@
 import { Icon, IconButton } from '@edx/paragon';
 import { ArrowForward, BookOpen, People } from '@edx/paragon/icons';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { INSTRUCTORS } from '../../../utils/constants';
 import userAvatar from '../../../assets/place-holders/user-placeholder.svg';
 
 const DeskTopInstructors = () => (
   <div className="custom-container mb-5.5" id="instructors">
-    <h2 className="text-center pb-4.5">Instructors</h2>
+    <h2 className="text-center pb-4.5">
+      <FormattedMessage id="instructors.text" defaultMessage="Instructors" />
+    </h2>
     <div className="instructors-wrapper">
       {/* todo: must use Insreuctor component like course info */}
       {INSTRUCTORS.map((instructor) => (
@@ -32,13 +35,25 @@ const DeskTopInstructors = () => (
               <div className="d-flex mr-4.5 align-items-center">
                 <Icon src={People} className="mr-2" />
                 <p>
-                  <span>{instructor.students} Students</span>
+                  <span>{instructor.students}</span>
+                  <span className="ml-1">
+                    <FormattedMessage
+                      id="instructor.students.text"
+                      defaultMessage="Students"
+                    />
+                  </span>
                 </p>
               </div>
               <div className="d-flex align-items-center">
                 <Icon src={BookOpen} className="mr-2" />
                 <p>
-                  <span>{instructor.courses} Courses</span>
+                  <span>{instructor.courses}</span>
+                  <span className="ml-1">
+                    <FormattedMessage
+                      id="instructor.courses.text"
+                      defaultMessage="Courses"
+                    />
+                  </span>
                 </p>
               </div>
             </div>

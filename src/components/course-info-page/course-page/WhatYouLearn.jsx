@@ -1,10 +1,16 @@
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { Icon, Skeleton } from '@edx/paragon';
 import { Check } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
 
 const WhatYouLearn = ({ learningItems, loading }) => (
   <div className="what-learn-wrapper " id="what-you-learn">
-    <h2 className="mb-3">What you&apos;ll learn</h2>
+    <h2 className="mb-3">
+      <FormattedMessage
+        id="courseInfo.tab.whatYouWillLearn.text"
+        defaultMessage="What you'll learn"
+      />
+    </h2>
     {loading ? (
       <Skeleton count={5} height={24} />
     ) : (

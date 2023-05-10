@@ -1,14 +1,22 @@
-import { Card, Icon, Skeleton } from '@edx/paragon';
+import {
+  Card, Icon, Skeleton,
+} from '@edx/paragon';
 import { Record, Event, WatchFilled } from '@edx/paragon/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
+import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from '@edx/frontend-platform/i18n';
 import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
 import coverPlaceholder from '../../../assets/place-holders/cover-course-place-holder.svg';
 import CourseInfoButtonStatus from '../shared/CourseInfoButtonStatus';
+import messages from '../../../messages';
 
-const CourseInfoSideBar = ({ courseMetaData, loading }) => (
+const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => (
   <div className="course-info-side-wrapper">
     {loading ? (
       <div className="d-flex flex-column skeleton-wrapper">
@@ -44,7 +52,12 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => (
               ? `${courseMetaData?.paid_course?.price_human}`
               : 'Free'}
           </h2>
-          <span className="text-gray-500 font-sm">Lifetime access</span>
+          <span className="text-gray-500 font-sm">
+            <FormattedMessage
+              id="courseInfo.lifetimeAccess.text"
+              defaultMessage="Lifetime access"
+            />
+          </span>
         </div>
         <Card.Section>
           <div className="d-flex flex-column  font-sm">
@@ -65,14 +78,25 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => (
             <div className="d-flex flex-row align-items-center mb-2">
               <Icon className="card-icon" src={Event} />
               <p>
-                <span className="color-black">Starting</span>{' '}
+                <span className="color-black">
+                  <FormattedMessage
+                    id="courseInfo.starting.text"
+                    defaultMessage="Starting"
+                  />
+                </span>{' '}
                 <span>(6 January 2022)</span>
               </p>
             </div>
             <div className="d-flex flex-row align-items-center mb-2">
               <Icon className="card-icon" src={Event} />
               <p>
-                <span className="color-black">Ending</span>{' '}
+                <span className="color-black">
+                  {' '}
+                  <FormattedMessage
+                    id="courseInfo.ending.text"
+                    defaultMessage="Ending"
+                  />
+                </span>{' '}
                 <span>(3 August 2022)</span>
               </p>
             </div>
@@ -80,12 +104,22 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => (
               <div className="d-flex flex-row align-items-center mb-2">
                 <Icon className="card-icon" src={WatchFilled} />
                 <p className="course-text">
-                  {`${courseMetaData?.total_weeks_of_effort} weeks `}
+                  <span>{courseMetaData?.total_weeks_of_effort}</span>
+                  <span>
+                    {' '}
+                    <FormattedMessage
+                      id="courseCard.weeks.text"
+                      defaultMessage="Weeks"
+                    />
+                  </span>
                   {courseMetaData?.hours_effort_per_week_min
                     && courseMetaData?.hours_effort_per_week_max && (
                       <span className="color-gray-700">
-                        {`(${courseMetaData?.hours_effort_per_week_min}
-                        -${courseMetaData?.hours_effort_per_week_max} hours per week)`}
+                        {`(${courseMetaData?.hours_effort_per_week_min}-${
+                          courseMetaData?.hours_effort_per_week_max
+                        } ${intl.formatMessage(
+                          messages['courseCard.hoursPerWeek.text'],
+                        )})`}
                       </span>
                   )}
                 </p>
@@ -101,7 +135,12 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => (
                 <span>
                   {courseMetaData?.additional_metadata?.total_enrollments}
                 </span>
-                <span className="font-sm"> already enrolled!</span>{' '}
+                <span className="font-sm">
+                  <FormattedMessage
+                    id="courseInfo.alreadyEnrolled.text"
+                    defaultMessage="already enrolled!"
+                  />
+                </span>{' '}
               </p>
             )}
           </div>
@@ -115,7 +154,13 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => (
     ) : (
       courseMetaData?.additional_metadata?.last_modification_date && (
         <p className="font-sm d-flex justify-content-center py-4 date-text">
-          <span className="mr-1">Last update on</span>
+          <span className="mr-1">
+            <FormattedMessage
+              id="courseInfo.lastUpdateOn.text"
+              defaultMessage="Last update on"
+            />
+            Last update on
+          </span>
           <span>
             {courseMetaData?.additional_metadata?.last_modification_date}
           </span>
@@ -177,9 +222,10 @@ CourseInfoSideBar.propTypes = {
     what_you_will_learn: PropTypes.shape({}),
   },
   loading: PropTypes.bool,
+  intl: intlShape.isRequired,
 };
 CourseInfoSideBar.defaultProps = {
   courseMetaData: [],
   loading: false,
 };
-export default CourseInfoSideBar;
+export default injectIntl(CourseInfoSideBar);

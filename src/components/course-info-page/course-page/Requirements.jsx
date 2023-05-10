@@ -3,6 +3,7 @@ import {
 } from '@edx/paragon';
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { ReactComponent as Warning } from '../../../assets/warning.svg';
 import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
 import coverPlaceholder from '../../../assets/place-holders/cover-course-place-holder.svg';
@@ -11,7 +12,13 @@ const Requirements = ({ courseMetaData, loading }) => {
   const history = useHistory();
   return (
     <div className="requirements-wrapper" id="requirement">
-      <h2 className="mb-3">Requirements</h2>
+      <h2 className="mb-3">
+        {' '}
+        <FormattedMessage
+          id="courseInfo.tab.requirements.text"
+          defaultMessage="Requirements"
+        />
+      </h2>
       {loading ? (
         <div className="mb-4.5">
           <Skeleton count={2} height={24} />
@@ -20,7 +27,6 @@ const Requirements = ({ courseMetaData, loading }) => {
         <ul className="pl-3.5 pb-0">
           {courseMetaData?.requirements
             && courseMetaData?.requirements?.map((req, i) => (
-              // eslint-disable-next-line react/no-array-index-key
               <li key={i} className="mb-3">
                 <p>{req}</p>
               </li>

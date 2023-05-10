@@ -11,7 +11,18 @@ const PartnerCourses = () => {
   return (
     <div className="custom-container d-flex flex-column pb-5" id="courses">
       <h2 className="d-flex popular-courses-wrapper">
-        Popular<span className="highlighted ml-2">Courses</span>
+        <span className="ml-2">
+          <FormattedMessage
+            id="popularCourses.firstPartTitle.text"
+            defaultMessage="Popular"
+          />
+        </span>
+        <span className="highlighted ml-2">
+          <FormattedMessage
+            id="popularCourses.secondPartTitle.text"
+            defaultMessage="Courses"
+          />
+        </span>
       </h2>
       <div className="course-container mb-4">
         {COURSES_INFO.map((course) => (

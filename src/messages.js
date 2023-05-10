@@ -37,7 +37,58 @@ const messages = defineMessages({
     id: 'completed.notEnroll.description',
     defaultMessage: 'You are not enrolled in any courses yet.',
   },
-
+  'courseCard.hoursPerWeek.text': {
+    id: 'courseCard.hoursPerWeek.text',
+    defaultMessage: 'hours per week',
+  },
+  'partners.search.placeholder': {
+    id: 'partners.search.placeholder',
+    defaultMessage: 'Who are you looking for?',
+  },
+  'breadcrumb.home': {
+    id: 'breadcrumb.home',
+    defaultMessage: 'Home',
+  },
+  'breadcrumb.discover': {
+    id: 'breadcrumb.discover',
+    defaultMessage: 'Discover',
+  },
+  'partners.breadcrumb.ourPartners': {
+    id: 'partners.breadcrumb.ourPartners',
+    defaultMessage: 'our-partners',
+  },
+  'pagination.previous.button': {
+    id: 'pagination.previous.button',
+    defaultMessage: 'Previous',
+  },
+  'pagination.next.button': {
+    id: 'pagination.next.button',
+    defaultMessage: 'Next',
+  },
+  'pagination.page.button': {
+    id: 'pagination.page.button',
+    defaultMessage: 'Page',
+  },
+  'pagination.currentPage.text': {
+    id: 'pagination.currentPage.button',
+    defaultMessage: 'Current Page',
+  },
+  'pagination.of.text': {
+    id: 'pagination.of.text',
+    defaultMessage: 'of',
+  },
+  'recent.text': {
+    id: 'recent.text',
+    defaultMessage: 'Recent',
+  },
+  'titleAtoZ.text': {
+    id: 'titleAtoZ.text',
+    defaultMessage: 'Title A to Z',
+  },
+  'titleZtoA.text': {
+    id: 'titleZtoA.text',
+    defaultMessage: 'Title Z to A',
+  },
 });
 
 export default messages;

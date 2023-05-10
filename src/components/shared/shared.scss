@@ -204,6 +204,7 @@
 }
 
 .pagination-default {
+  direction: initial;
   .page-link {
     color: $gray-700;
     min-width: 44px;
@@ -250,7 +251,13 @@
   }
 }
 [dir='rtl'] {
+  body {
+    font-family: IRANSans, FontAwesome !important ;
+  }
   .pgn__icon {
+    transform: scaleX(-1);
+  }
+  .social-container {
     transform: scaleX(-1);
   }
 }

@@ -8,13 +8,12 @@ import useGetAllCourses from '../../../hooks/useGetAllCourses';
 
 const SearchResults = ({ page, setPage }) => {
   const isMobile = useMediaQuery({ maxWidth: '768px' });
-  const { allCoursesData, isLoading } = useGetAllCourses(page);
-
+  const { allCoursesData, loading } = useGetAllCourses(page);
   return (
     <>
       <div className="course-container pb-4.5">
         {/* TO DO: Do not use Array index in keys */}
-        {isLoading
+        {loading
           ? Array(16)
             .fill(1)
             .map((item, i) => (
@@ -28,11 +27,11 @@ const SearchResults = ({ page, setPage }) => {
             />
           ))}
       </div>
-      {allCoursesData?.pagination?.num_pages > 1 && (
+      {allCoursesData?.count > 12 && (
         <Pagination
           className="d-flex justify-content-center pb-5"
           paginationLabel="pagination navigation"
-          pageCount={allCoursesData?.pagination?.num_pages}
+          pageCount={Math.ceil(allCoursesData.count / 12)}
           onPageSelect={(e) => setPage(e)}
           currentPage={page}
           variant={isMobile ? 'reduced' : 'default'}
