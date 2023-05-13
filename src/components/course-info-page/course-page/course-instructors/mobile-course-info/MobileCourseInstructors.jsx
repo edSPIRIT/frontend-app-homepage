@@ -2,11 +2,14 @@
 import { Icon, Skeleton } from '@edx/paragon';
 import { BookOpen, People } from '@edx/paragon/icons';
 import { Link } from 'react-router-dom';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import userAvatar from '../../../../../assets/place-holders/user-placeholder.svg';
 
 const MobileCourseInstructors = ({ instructors, loading }) => (
   <div className="course-info-instructors mt-5" id="instructors">
-    <h2 className="mb-3">Instructors</h2>
+    <h2 className="mb-3">
+      <FormattedMessage id="instructors.text" defaultMessage="Instructors" />
+    </h2>
     <div className="instructors-wrapper ">
       {loading
         ? Array(4)
@@ -22,7 +25,6 @@ const MobileCourseInstructors = ({ instructors, loading }) => (
                 </div>
               </div>
               <div className="skeleton-icon-wrapper mt-3">
-                <Skeleton height={20} />
                 <Skeleton height={20} />
               </div>
             </div>
@@ -55,13 +57,24 @@ const MobileCourseInstructors = ({ instructors, loading }) => (
                   <Icon src={People} className="mr-2" />
                   <p>
                     <span>{instructor?.students_count}</span>
-                    <span className="ml-1">Students</span>
+                    <span className="ml-1">
+                      <FormattedMessage
+                        id="instructor.students.text"
+                        defaultMessage="Students"
+                      />
+                    </span>
                   </p>
                 </div>
                 <div className="d-flex">
                   <Icon src={BookOpen} className="mr-2" />
                   <p>
-                    <span>{instructor?.courses_count} Courses</span>
+                    <span>{instructor?.courses_count}</span>
+                    <span className="ml-1">
+                      <FormattedMessage
+                        id="instructor.courses.text"
+                        defaultMessage="Courses"
+                      />
+                    </span>
                   </p>
                 </div>
               </div>

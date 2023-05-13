@@ -39,10 +39,10 @@ const Banner = ({ intl }) => {
           <SearchField
             className="hero-search my-4"
             submitButtonLocation="external"
+            onSubmit={() => history.push('/search')}
             placeholder={intl.formatMessage(
               messages['header.search.placeholder'],
             )}
-            onSubmit={() => history.push('/search')}
             buttonText={intl.formatMessage(
               messages['search.button.text'],
             )}

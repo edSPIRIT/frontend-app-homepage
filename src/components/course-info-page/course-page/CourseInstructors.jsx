@@ -24,7 +24,6 @@ const CourseInstructors = ({ instructors, loading }) => (
   // deleteEnroll();
   <div className="course-info-instructors mt-5" id="instructors">
     <h2 className="mb-3">
-      {' '}
       <FormattedMessage id="instructors.text" defaultMessage="Instructors" />
     </h2>
     <div className="instructors-wrapper ">

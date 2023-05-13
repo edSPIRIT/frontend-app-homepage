@@ -17,6 +17,7 @@ import {
 import PropTypes from 'prop-types';
 import ShowMoreText from 'react-show-more-text';
 import {
+  FormattedMessage,
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
@@ -140,13 +141,19 @@ const CourseInfoTopDesc = ({
             {courseMetaData?.additional_metadata?.self_paced && (
               <div className="d-flex justify-content-center align-items-center mr-4.5">
                 <Icon className="mr-2" src={HowToReg} />
-                <span>Self Paced</span>
+                <FormattedMessage
+                  id="courseInfo.selfPaced.text"
+                  defaultMessage="Self Paced"
+                />
               </div>
             )}
             {courseMetaData?.additional_metadata?.certificate_enabled && (
               <div className="d-flex justify-content-center align-items-center mr-4.5">
                 <Icon className="mr-2" src={Verified} />
-                <span>Verified certificate</span>
+                <FormattedMessage
+                  id="courseInfo.verifiedCertificate.text"
+                  defaultMessage="Verified certificate"
+                />
               </div>
             )}
           </div>

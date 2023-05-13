@@ -35,18 +35,31 @@ const Requirements = ({ courseMetaData, loading }) => {
       )}
       {courseMetaData?.additional_metadata?.pre_req_courses.length > 0 && (
         <div>
-          <h3 className="mb-3">Prerequisite Courses</h3>
+          <h3 className="mb-3">
+            <FormattedMessage
+              id="courseInfo.prerequisiteCourses.text"
+              defaultMessage="Prerequisite Courses"
+            />
+          </h3>
           <div className="attention-wrapper mb-4">
             <div className="d-flex align-items-center mb-2">
               <Icon className="mr-1" src={Warning} />
-              <h4>Attention!</h4>
+              <h4>
+                <FormattedMessage
+                  id="courseInfo.attention.text"
+                  defaultMessage="Attention!"
+                />
+              </h4>
             </div>
             {loading ? (
               <Skeleton height={24} />
             ) : (
               <p className="font-sm">
-                This course has a prerequisite that must be successfully
-                completed before you enroll.
+                <FormattedMessage
+                  id="courseInfo.prerequisiteDesc.text"
+                  defaultMessage="This course has a prerequisite that must be successfully
+                completed before you enroll."
+                />
               </p>
             )}
           </div>
@@ -105,7 +118,10 @@ const Requirements = ({ courseMetaData, loading }) => {
                           variant="primary"
                           onClick={() => history.push(preCourse?.course_slug)}
                         >
-                          Learn more
+                          <FormattedMessage
+                            id="courseCard.learnMore.button"
+                            defaultMessage="Learn more"
+                          />
                         </Button>
                       </Card.Footer>
                     </Card>

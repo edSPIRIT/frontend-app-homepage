@@ -130,17 +130,6 @@ const CourseCardNew = ({ course, intl }) => {
             </Button>
           </div>
         </div>
-        {/* <Card.Footer>
-          <div className="btn-card-container">
-            <Button
-              variant="primary"
-              className="learn-btn"
-              onClick={() => history.push(course?.course_slug)}
-            >
-              Learn more
-            </Button>
-          </div>
-        </Card.Footer> */}
       </Card>
     </Link>
   );

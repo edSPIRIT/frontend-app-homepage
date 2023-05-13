@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { Breadcrumb, Dropdown, Skeleton } from '@edx/paragon';
 import { FilterList, KeyboardArrowDown } from '@edx/paragon/icons';
 import { useDispatch } from 'react-redux';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from '@edx/frontend-platform/i18n';
 import DiscoverBanner from '../shared/discover-banner/DiscoverBanner';
 import SearchFacets from './search/SearchFacets';
 import SearchResults from './search/SearchResults';
@@ -13,9 +17,12 @@ import {
   descendingCourses,
   recentCourses,
 } from '../../redux/slice/allCoursesSlice';
+import messages from '../../messages';
 
-const Search = () => {
-  const [value, setValue] = useState('Recent');
+const Search = ({ intl }) => {
+  const [value, setValue] = useState(
+    intl.formatMessage(messages['recent.text']),
+  );
   const [page, setPage] = useState(1);
   const { allCoursesData, isLoading } = useGetAllCourses(page);
   const dispatch = useDispatch();
@@ -28,10 +35,13 @@ const Search = () => {
           ariaLabel="Breadcrumb basic"
           links={[
             { label: 'Home', to: '/' },
-            { label: 'Discover', to: '/discover' },
+            {
+              label: `${intl.formatMessage(messages['breadcrumb.discover'])}`,
+              to: '/Discover',
+            },
           ]}
           linkAs={Link}
-          activeLabel="Search"
+          activeLabel={intl.formatMessage(messages['search.button.text'])}
         />
         <div className="d-flex justify-content-between align-items-center my-4">
           <p>
@@ -62,17 +72,17 @@ const Search = () => {
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item
-                key="Recent"
+                key={intl.formatMessage(messages['recent.text'])}
                 active={value === 'Recent'}
-                eventKey="Recent"
+                eventKey={intl.formatMessage(messages['recent.text'])}
                 onClick={() => dispatch(recentCourses())}
               >
                 <FormattedMessage id="recent.text" defaultMessage="ًRecent" />
               </Dropdown.Item>
               <Dropdown.Item
-                key="Title A to Z"
+                key={intl.formatMessage(messages['titleAtoZ.text'])}
                 active={value === 'Title A to Z'}
-                eventKey="Title A to Z"
+                eventKey={intl.formatMessage(messages['titleAtoZ.text'])}
                 onClick={() => dispatch(ascendingCourses())}
               >
                 <FormattedMessage
@@ -81,9 +91,9 @@ const Search = () => {
                 />
               </Dropdown.Item>
               <Dropdown.Item
-                key="Title Z to A"
+                key={intl.formatMessage(messages['titleZtoA.text'])}
                 active={value === 'Title Z to A'}
-                eventKey="Title Z to A"
+                eventKey={intl.formatMessage(messages['titleZtoA.text'])}
                 onClick={() => dispatch(descendingCourses())}
               >
                 <FormattedMessage
@@ -100,4 +110,8 @@ const Search = () => {
   );
 };
 
-export default Search;
+Search.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(Search);

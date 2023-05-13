@@ -15,6 +15,11 @@ import {
   Record,
 } from '@edx/paragon/icons';
 import { getConfig } from '@edx/frontend-platform';
+import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from '@edx/frontend-platform/i18n';
 import useGetCourseMetaData from '../../../hooks/useGetCourseMetaData';
 import AboutCourse from './AboutCourse';
 import WhatYouLearn from './WhatYouLearn';
@@ -24,8 +29,9 @@ import CourseInfoButtonStatus from '../shared/CourseInfoButtonStatus';
 import MobileCourseInstructors from './course-instructors/mobile-course-info/MobileCourseInstructors';
 import partnerBanner from '../../../assets/place-holders/cover-course-place-holder.svg';
 import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
+import messages from '../../../messages';
 
-const MobileCourseInfo = () => {
+const MobileCourseInfo = ({ intl }) => {
   const { slug } = useParams();
   const { courseMetaData, loading } = useGetCourseMetaData(slug);
   const isTablet = useMediaQuery({ minWidth: '600px', maxWidth: '768px' });
@@ -47,34 +53,52 @@ const MobileCourseInfo = () => {
         >
           <li>
             <Link to="info-course" smooth offset={-120}>
-              Info
+              <FormattedMessage
+                id="courseInfo.tab.info.text"
+                defaultMessage="Info"
+              />
             </Link>
           </li>
           <li>
             <Link to="about-course" smooth offset={-20}>
-              About
+              <FormattedMessage
+                id="courseInfo.tab.about.text"
+                defaultMessage="About"
+              />
             </Link>
           </li>
           <li>
             <Link to="what-you-learn" smooth offset={-20}>
-              What you&apos;ll learn
+              <FormattedMessage
+                id="courseInfo.tab.whatYouWillLearn.text"
+                defaultMessage="What you'll learn"
+              />
             </Link>
           </li>
 
           <li>
             <Link to="requirement" smooth offset={-20}>
-              Requirements
+              <FormattedMessage
+                id="courseInfo.tab.requirements.text"
+                defaultMessage="Requirements"
+              />
             </Link>
           </li>
 
           <li>
             <Link to="course-content" smooth offset={-20}>
-              Course content
+              <FormattedMessage
+                id="courseInfo.tab.courseContent.text"
+                defaultMessage="Course content"
+              />
             </Link>
           </li>
           <li>
             <Link to="instructors" smooth offset={-60}>
-              Instructors
+              <FormattedMessage
+                id="courseInfo.tab.instructors.text"
+                defaultMessage="Instructors"
+              />
             </Link>
           </li>
         </Scrollspy>
@@ -205,13 +229,19 @@ const MobileCourseInfo = () => {
             {courseMetaData?.additional_metadata?.self_paced && (
               <div className="d-flex align-items-center mb-3">
                 <Icon className="mr-2" src={HowToReg} />
-                <span>Self Paced</span>
+                <FormattedMessage
+                  id="courseInfo.selfPaced.text"
+                  defaultMessage="Self Paced"
+                />
               </div>
             )}
             {courseMetaData?.additional_metadata?.certificate_enabled && (
               <div className="d-flex align-items-center mb-3">
                 <Icon className="mr-2" src={Verified} />
-                <span>Verified certificate</span>
+                <FormattedMessage
+                  id="courseInfo.verifiedCertificate.text"
+                  defaultMessage="Verified certificate"
+                />
               </div>
             )}
             <div className="d-flex flex-row align-items-center mb-3">
@@ -231,27 +261,50 @@ const MobileCourseInfo = () => {
             <div className="d-flex flex-row align-items-center mb-3">
               <Icon className="mr-2" src={Event} />
               <p>
-                <span className="color-black">Starting</span>{' '}
+                <span className="color-black">
+                  {' '}
+                  <FormattedMessage
+                    id="courseInfo.starting.text"
+                    defaultMessage="Starting"
+                  />
+                </span>{' '}
                 <span className="color-gray-700">(6 January 2022)</span>
               </p>
             </div>
             <div className="d-flex flex-row align-items-center mb-3">
               <Icon className="mr-2" src={Event} />
               <p>
-                <span className="color-black">Ending</span>{' '}
+                <span className="color-black">
+                  {' '}
+                  <FormattedMessage
+                    id="courseInfo.ending.text"
+                    defaultMessage="Ending"
+                  />
+                </span>{' '}
                 <span className="color-gray-700">(3 August 2022)</span>
               </p>
             </div>
-            {courseMetaData?.total_weeks_of_effort && (
+            {courseMetaData?.total_weeks_of_effort > 0 && (
               <div className="d-flex flex-row align-items-center mb-3">
-                <Icon className="mr-2" src={WatchFilled} />
-                <p className="course-text">
-                  {`${courseMetaData?.total_weeks_of_effort} weeks `}
+                <Icon className="card-icon" src={WatchFilled} />
+                <p className="color-black">
+                  <span>{courseMetaData?.total_weeks_of_effort}</span>
+                  <span>
+                    {' '}
+                    <FormattedMessage
+                      id="courseCard.weeks.text"
+                      defaultMessage="Weeks"
+                    />
+                  </span>
                   {courseMetaData?.hours_effort_per_week_min
                     && courseMetaData?.hours_effort_per_week_max && (
                       <span className="color-gray-700">
-                        {`(${courseMetaData?.hours_effort_per_week_min}
-                        -${courseMetaData?.hours_effort_per_week_max} hours per week)`}
+                        {' '}
+                        {`(${courseMetaData?.hours_effort_per_week_min}-${
+                          courseMetaData?.hours_effort_per_week_max
+                        } ${intl.formatMessage(
+                          messages['courseCard.hoursPerWeek.text'],
+                        )})`}
                       </span>
                   )}
                 </p>
@@ -284,8 +337,22 @@ const MobileCourseInfo = () => {
       </div>
       <div className="d-flex justify-content-between py-3 px-4 price-wrapper">
         <div className="d-flex flex-column">
-          <h2>{courseMetaData?.paid_course?.price_human}</h2>
-          <span className="font-sm">Lifetime access</span>
+          <h2>
+            {courseMetaData?.paid_course.price === 0 ? (
+              <FormattedMessage
+                id="courseCard.free.text"
+                defaultMessage="Free"
+              />
+            ) : (
+              courseMetaData?.paid_course?.price_human
+            )}
+          </h2>
+          <span className="font-sm">
+            <FormattedMessage
+              id="courseInfo.lifetimeAccess.text"
+              defaultMessage="Lifetime access"
+            />
+          </span>
         </div>
         <CourseInfoButtonStatus courseMetaData={courseMetaData} />
       </div>
@@ -293,4 +360,8 @@ const MobileCourseInfo = () => {
   );
 };
 
-export default MobileCourseInfo;
+MobileCourseInfo.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(MobileCourseInfo);

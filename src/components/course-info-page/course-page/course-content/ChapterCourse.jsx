@@ -7,6 +7,7 @@ import {
 } from '@edx/paragon/icons';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 
 const ChapterCourse = ({ section, loading, sectionCount }) => {
   const [open, setOpen] = useState(!(sectionCount > 1));
@@ -53,7 +54,13 @@ const ChapterCourse = ({ section, loading, sectionCount }) => {
                 <p className="d-flex justify-content-between w-100 subsection-wrapper">
                   <span>{subsection.name}</span>{' '}
                   <p className="count-title">
-                    <span>{subsection.units.length}</span> <span>lectures</span>
+                    <span>{subsection.units.length}</span>{' '}
+                    <span>
+                      <FormattedMessage
+                        id="courseInfo.lectures.text"
+                        defaultMessage="lectures"
+                      />
+                    </span>
                   </p>
                 </p>
               )}

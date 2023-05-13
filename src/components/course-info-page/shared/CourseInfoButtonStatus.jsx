@@ -3,6 +3,7 @@
 
 import { Button, Spinner } from '@edx/paragon';
 import { getConfig } from '@edx/frontend-platform';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import useEnrollClickHandler from '../../../hooks/useEnrollClickHandler';
 import useGetEnrollmentList from '../../../hooks/useGetEnrollmentList';
 
@@ -44,9 +45,15 @@ const CourseInfoButtonStatus = ({ courseMetaData }) => {
       disabled={courseMetaData?.paid_course?.price > 0 && !availablePaymentData}
     >
       {courseMetaData?.paid_course?.price > 0 ? (
-        <span>Purchase now</span>
+        <FormattedMessage
+          id="courseInfo.purchaseNow.text"
+          defaultMessage="Purchase now"
+        />
       ) : (
-        <span>Enroll now</span>
+        <FormattedMessage
+          id="courseInfo.enrollNow.text"
+          defaultMessage="Enroll now"
+        />
       )}
     </Button>
   );

@@ -30,7 +30,7 @@ const InstructorCard = ({ instructor }) => (
         />
       </div>
       <div className="d-flex icons-bottom-wrapper">
-        <div className="d-flex mr-4.5">
+        <div className="d-flex mr-4.5 align-items-center">
           <Icon src={People} className="mr-2" />
           <p>
             <span>{instructor?.students_count}</span>
@@ -42,10 +42,10 @@ const InstructorCard = ({ instructor }) => (
             </span>
           </p>
         </div>
-        <div className="d-flex">
+        <div className="d-flex align-items-center">
           <Icon src={BookOpen} className="mr-2" />
           <p>
-            <span>{instructor?.courses?.length}</span>
+            <span>{instructor?.courses_count}</span>
             <span className="ml-1">
               <FormattedMessage
                 id="instructor.courses.text"

@@ -1,6 +1,9 @@
 import { Button, Dropdown, Form } from '@edx/paragon';
 import { CloseSmall, KeyboardArrowDown } from '@edx/paragon/icons';
 import { useState } from 'react';
+import {
+  FormattedMessage,
+} from '@edx/frontend-platform/i18n';
 import SearchFacetItem from './search-facets/SearchFacetItem';
 import { SEARCH_FACET_FILTERS } from '../../../utils/constants';
 
@@ -45,7 +48,12 @@ const SearchFacets = () => {
             className="font-weight-bold "
             iconAfter={KeyboardArrowDown}
           >
-            <span className="mr-2">Learning type</span>
+            <span className="mr-2">
+              <FormattedMessage
+                id="search.facet.learningType.text"
+                defaultMessage="Learning type"
+              />
+            </span>
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Form.Group>
@@ -55,11 +63,17 @@ const SearchFacets = () => {
                 value={value}
               >
                 <Form.Radio value="Courses">
-                  <span>Courses</span>
+                  <FormattedMessage
+                    id="courses.text"
+                    defaultMessage="Courses"
+                  />
                   <span className="count">635</span>
                 </Form.Radio>
                 <Form.Radio value="Programs">
-                  <span>Programs</span>
+                  <FormattedMessage
+                    id="programs.text"
+                    defaultMessage="Programs"
+                  />
                   <span className="count">100</span>
                 </Form.Radio>
               </Form.RadioSet>
@@ -70,7 +84,13 @@ const SearchFacets = () => {
 
       {facetItems.length > 0 && (
       <div className="custom-container badge-wrapper pb-4">
-        <span className="mr-3 font-sm">Filtered by:</span>
+        <span className="mr-3 font-sm">
+          <FormattedMessage
+            id="filteredBy.text"
+            defaultMessage="Filtered by:"
+          />
+
+        </span>
         {facetItems.map((badge) => (
           <Button
             variant="outline-light"
@@ -95,7 +115,10 @@ const SearchFacets = () => {
             setValue();
           }}
         >
-          Clear all
+          <FormattedMessage
+            id="clearAll.text"
+            defaultMessage="Clear all"
+          />
         </Button>
       </div>
       )}

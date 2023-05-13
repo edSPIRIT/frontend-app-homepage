@@ -3,9 +3,15 @@ import classNames from 'classnames';
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { ArrowForward } from '@edx/paragon/icons';
+import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from '@edx/frontend-platform/i18n';
 import { COURSES_SEARCH } from '../../../utils/constants';
+import messages from '../../../messages';
 
-const DiscoverBanner = () => {
+const DiscoverBanner = ({ intl }) => {
   const [searchValue, setSearchValue] = useState('');
   const [searchSuggestion, setSearchSuggestion] = useState('');
   const trendingChips = ['Python', 'Excel', 'Data Sciences', 'Marketing'];
@@ -23,7 +29,10 @@ const DiscoverBanner = () => {
               'search-header-withSearch': searchValue,
             })}
           >
-            Search our Catalog
+            <FormattedMessage
+              id="discover.searchOurCatalog.text"
+              defaultMessage="Search our Catalog"
+            />
           </span>
           {searchValue && (
             <span className="search-value">{`“${searchValue}”`}</span>
@@ -39,7 +48,10 @@ const DiscoverBanner = () => {
             history.push('/search');
           }}
           onClear={() => setSearchValue('')}
-          placeholder="What do you want to learn?"
+          placeholder={intl.formatMessage(
+            messages['header.search.placeholder'],
+          )}
+          buttonText={intl.formatMessage(messages['search.button.text'])}
         />
         {searchSuggestion && searchSuggestion !== searchValue && (
           <div className="search-suggestion-wrapper">
@@ -58,7 +70,12 @@ const DiscoverBanner = () => {
               className="d-flex align-items-center bg-light-300 btn-wrapper"
               to="/search"
             >
-              <span className="mr-2">View all result</span>
+              <span className="mr-2">
+                <FormattedMessage
+                  id="discover.viewAllResult.text"
+                  defaultMessage="View all result"
+                />
+              </span>
               <Icon
                 src={ArrowForward}
                 style={{ height: '12px', width: '12px' }}
@@ -67,7 +84,12 @@ const DiscoverBanner = () => {
           </div>
         )}
         <div className="d-flex align-items-center mt-4">
-          <span className="trending-title mr-4">Trending:</span>
+          <span className="trending-title mr-4">
+            <FormattedMessage
+              id="discover.trending.text"
+              defaultMessage="Trending:"
+            />
+          </span>
           <div>
             {trendingChips.map((chip) => (
               <Chip key={chip} className="chip-trend mr-2">
@@ -80,4 +102,8 @@ const DiscoverBanner = () => {
     </div>
   );
 };
-export default DiscoverBanner;
+DiscoverBanner.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(DiscoverBanner);
