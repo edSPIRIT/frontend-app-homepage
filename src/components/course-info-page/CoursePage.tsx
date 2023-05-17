@@ -1,9 +1,9 @@
-import { useParams } from 'react-router';
 import { useMediaQuery } from '@edx/paragon';
-import SimilarCourses from '../shared/similar-courses/SimilarCourses';
+import { useParams } from 'react-router';
 import useGetCourseMetaData from '../../hooks/useGetCourseMetaData';
-import MobileCourseInfo from './course-page/MobileCourseInfo';
+import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import DesktopCourseInfo from './course-page/DesktopCourseInfo';
+import MobileCourseInfo from './course-page/MobileCourseInfo';
 
 const CoursePage = () => {
   const { slug } = useParams();
