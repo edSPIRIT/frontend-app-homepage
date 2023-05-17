@@ -49,6 +49,24 @@ const useGetSubjects = () => {
       }
     }
   }, [data?.items, isMobile]);
+  // useEffect(() => {
+  //   if (data?.items) {
+  //     const popSubjects = data.items.filter((item) => item.popular);
+  //     const getPopularSubjects = (min, max) => {
+  //       if (popSubjects.length < min) {
+  //         return [];
+  //       } if (popSubjects.length > max) {
+  //         return popSubjects.slice(0, max);
+  //       }
+  //       return popSubjects;
+  //     };
+  //     const popularSubjectsToShow = isMobile
+  //       ? getPopularSubjects(4, 6)
+  //       : getPopularSubjects(5, 10);
+
+  //     setPopularSubject(popularSubjectsToShow);
+  //   }
+  // }, [data?.items, isMobile]);
   return {
     subjects: data?.items,
     coursesCounter: data?.course_counter,

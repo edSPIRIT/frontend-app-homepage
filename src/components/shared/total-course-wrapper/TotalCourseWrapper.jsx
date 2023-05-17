@@ -38,7 +38,7 @@ const TotalCourseWrapper = ({ coursesCount, loading }) => {
             </span>
             <Icon src={Close} className=" share-icon" onClick={close} />
           </div>
-          <ul className="subject-items-list px-4 font-xl">
+          <ul className="px-4 font-xl transform-rtl">
             <li className="d-flex justify-content-between my-2.5">
               <FormattedMessage id="filter.All.text" defaultMessage="All" />
               <Icon className="check-icon" src={Check} />
@@ -62,7 +62,7 @@ const TotalCourseWrapper = ({ coursesCount, loading }) => {
       </ModalLayer>
       <div className="d-flex justify-content-between align-items-center mb-4">
         <p>
-          <span className="total-title">
+          <span className="font-sm text-gray-500">
             <FormattedMessage
               id="totalCourse.text"
               defaultMessage="Total Course:"

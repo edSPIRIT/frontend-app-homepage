@@ -81,7 +81,7 @@ const CourseCardNew = ({ course, intl }) => {
             {course?.total_weeks_of_effort > 0 && (
               <div className="d-flex flex-row align-items-center mb-3">
                 <Icon className="card-icon" src={WatchFilled} />
-                <p className="color-black">
+                <p className="text-black">
                   <span>{course?.total_weeks_of_effort}</span>
                   <span>
                     {' '}
@@ -92,7 +92,7 @@ const CourseCardNew = ({ course, intl }) => {
                   </span>
                   {course?.hours_effort_per_week_min
                     && course?.hours_effort_per_week_max && (
-                      <span className="color-gray-700">
+                      <span className="text-gray-700">
                         {' '}
                         {`(${course?.hours_effort_per_week_min}-${
                           course?.hours_effort_per_week_max

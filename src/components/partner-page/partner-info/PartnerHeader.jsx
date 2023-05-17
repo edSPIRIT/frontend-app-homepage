@@ -22,7 +22,7 @@ const PartnerHeader = ({ partnerData, loading }) => (
           />
         </div>
         <Icon
-          className="color-gray-500 share-icon"
+          className="text-gray-500 share-icon"
           src={Share}
           onClick={() => {
             navigator.clipboard.writeText(window.location.href);
@@ -40,7 +40,7 @@ const PartnerHeader = ({ partnerData, loading }) => (
           <h1>{partnerData?.organization.name}</h1>
         )}
         <Icon
-          className="color-gray-500 share-icon"
+          className="text-gray-500 share-icon"
           src={Share}
           onClick={() => {
             navigator.clipboard.writeText(window.location.href);

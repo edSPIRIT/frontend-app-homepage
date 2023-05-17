@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight } from '@edx/paragon/icons';
 import { Carousel, Icon } from '@edx/paragon';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import CourseCardSkeleton from '../skeleton/CourseCardSkeleton';
 import CourseCardNew from '../course-card/CourseCardNew';
 import useGetSimilarCourses from '../../../hooks/useGetSimilarCourses';
@@ -25,10 +26,16 @@ const SimilarCourses = ({
     chunkedArray?.length > 0 && (
       <div className="recommendationCourse-wrapper mt-6 py-6">
         <section className="custom-container similar-courses-wrapper">
-          <h3>Similar Courses</h3>
-          <span>
-            Recommendation based on your activity and whether you like
-          </span>
+          <h3>
+            <FormattedMessage
+              id="similarCourses.text"
+              defaultMessage="Similar Courses"
+            />
+          </h3>
+          <FormattedMessage
+            id="similarCoursesDesc.text"
+            defaultMessage="Recommendation based on your activity and whether you like"
+          />
           {coursesTitlesLoading && loading ? (
             <div className="course-container mt-4.5">
               {Array(4)

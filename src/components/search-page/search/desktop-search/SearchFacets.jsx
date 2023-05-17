@@ -5,7 +5,7 @@ import {
   FormattedMessage,
 } from '@edx/frontend-platform/i18n';
 import SearchFacetItem from './search-facets/SearchFacetItem';
-import { SEARCH_FACET_FILTERS } from '../../../utils/constants';
+import { SEARCH_FACET_FILTERS } from '../../../../utils/constants';
 
 const SearchFacets = () => {
   const [facetItems, setFacetItems] = useState([]);

@@ -90,7 +90,7 @@ const ChooseLanguage = () => {
             <span className="font-sm" />
             <Icon src={Close} className=" share-icon" onClick={close} />
           </div>
-          <ul className="subject-items-list px-4 font-xl">
+          <ul className="px-4 font-xl transform-rtl">
             {activeLangs?.map((lang) => (
               <li
                 key={lang.code}
@@ -100,9 +100,9 @@ const ChooseLanguage = () => {
                 }}
                 className="d-flex justify-content-between my-2.5"
               >
-                <span>{lang.name }</span>
+                <span>{lang.name}</span>
                 {value === lang.name && (
-                <Icon className="check-icon" src={Check} />
+                  <Icon className="check-icon" src={Check} />
                 )}
               </li>
             ))}

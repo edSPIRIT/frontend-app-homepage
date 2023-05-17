@@ -1,6 +1,4 @@
-import {
-  Card, Icon, Skeleton,
-} from '@edx/paragon';
+import { Card, Icon, Skeleton } from '@edx/paragon';
 import { Record, Event, WatchFilled } from '@edx/paragon/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -48,9 +46,14 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => (
         />
         <div className="mt-4.5 px-4">
           <h2 className="mb-1">
-            {courseMetaData?.paid_course?.price > 0
-              ? `${courseMetaData?.paid_course?.price_human}`
-              : 'Free'}
+            {courseMetaData?.paid_course?.price > 0 ? (
+              `${courseMetaData?.paid_course?.price_human}`
+            ) : (
+              <FormattedMessage
+                id="courseCard.free.text"
+                defaultMessage="Free"
+              />
+            )}
           </h2>
           <span className="text-gray-500 font-sm">
             <FormattedMessage
@@ -101,20 +104,20 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => (
               </p>
             </div>
             {courseMetaData?.total_weeks_of_effort > 0 && (
-            <div className="d-flex flex-row align-items-center mb-3">
-              <Icon className="card-icon" src={WatchFilled} />
-              <p className="color-black">
-                <span>{courseMetaData?.total_weeks_of_effort}</span>
-                <span>
-                  {' '}
-                  <FormattedMessage
-                    id="courseCard.weeks.text"
-                    defaultMessage="Weeks"
-                  />
-                </span>
-                {courseMetaData?.hours_effort_per_week_min
+              <div className="d-flex flex-row align-items-center mb-3">
+                <Icon className="card-icon" src={WatchFilled} />
+                <p className="color-black">
+                  <span>{courseMetaData?.total_weeks_of_effort}</span>
+                  <span>
+                    {' '}
+                    <FormattedMessage
+                      id="courseCard.weeks.text"
+                      defaultMessage="Weeks"
+                    />
+                  </span>
+                  {courseMetaData?.hours_effort_per_week_min
                     && courseMetaData?.hours_effort_per_week_max && (
-                      <span className="color-gray-700">
+                      <span className="text-gray-700">
                         {' '}
                         {`(${courseMetaData?.hours_effort_per_week_min}-${
                           courseMetaData?.hours_effort_per_week_max
@@ -122,9 +125,9 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => (
                           messages['courseCard.hoursPerWeek.text'],
                         )})`}
                       </span>
-                )}
-              </p>
-            </div>
+                  )}
+                </p>
+              </div>
             )}
           </div>
         </Card.Section>

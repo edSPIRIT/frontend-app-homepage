@@ -268,7 +268,7 @@ const MobileCourseInfo = ({ intl }) => {
                     defaultMessage="Starting"
                   />
                 </span>{' '}
-                <span className="color-gray-700">(6 January 2022)</span>
+                <span className="text-gray-700">(6 January 2022)</span>
               </p>
             </div>
             <div className="d-flex flex-row align-items-center mb-3">
@@ -281,7 +281,7 @@ const MobileCourseInfo = ({ intl }) => {
                     defaultMessage="Ending"
                   />
                 </span>{' '}
-                <span className="color-gray-700">(3 August 2022)</span>
+                <span className="text-gray-700">(3 August 2022)</span>
               </p>
             </div>
             {courseMetaData?.total_weeks_of_effort > 0 && (
@@ -298,7 +298,7 @@ const MobileCourseInfo = ({ intl }) => {
                   </span>
                   {courseMetaData?.hours_effort_per_week_min
                     && courseMetaData?.hours_effort_per_week_max && (
-                      <span className="color-gray-700">
+                      <span className="text-gray-700">
                         {' '}
                         {`(${courseMetaData?.hours_effort_per_week_min}-${
                           courseMetaData?.hours_effort_per_week_max

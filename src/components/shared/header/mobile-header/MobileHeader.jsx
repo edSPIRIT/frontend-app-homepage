@@ -7,6 +7,7 @@ import { AppContext } from '@edx/frontend-platform/react';
 import { Search } from '@edx/paragon/icons';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+import { useDispatch, useSelector } from 'react-redux';
 import edLogo from '../../../../assets/edspirit-logo.png';
 import useGetFooters from '../../../../hooks/useGetFooters';
 import { ReactComponent as HomeNav } from '../../../../assets/nav-icons/home-nav.svg';
@@ -18,6 +19,7 @@ import { ReactComponent as DiscoverdNavColored } from '../../../../assets/nav-ic
 import { ReactComponent as ProfileNav } from '../../../../assets/nav-icons/profile-nav.svg';
 import { ReactComponent as ProfileNavColored } from '../../../../assets/nav-icons/profile-nav-colored.svg';
 import useHideNavbarOnScroll from '../../../../hooks/utils/useHideNavbarOnScroll';
+import { openSearchModal } from '../../../../redux/slice/searchSlice';
 
 const MobileHeader = () => {
   const { authenticatedUser } = useContext(AppContext);
@@ -25,6 +27,9 @@ const MobileHeader = () => {
   const [ActiveLink, setActiveLink] = useState(null);
   const { footerData, loading } = useGetFooters();
   const location = useLocation();
+  const dispatch = useDispatch();
+  const isOpenSearchModal = useSelector((state) => state.searchModal.open);
+  console.log(isOpenSearchModal);
 
   useEffect(() => {
     setActiveLink(location.pathname);
@@ -55,6 +60,7 @@ const MobileHeader = () => {
           src={Search}
           iconAs={Icon}
           alt="Search"
+          onClick={() => dispatch(openSearchModal())}
         />
       </div>
       <Nav

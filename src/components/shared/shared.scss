@@ -5,6 +5,7 @@
 @import 'components/shared/course-card/course-card.scss';
 @import 'components/shared/popular-subjects/popular-subjects.scss';
 @import 'components/shared/similar-courses/similar-courses.scss';
+@import 'components/shared/layout-wrapper/layout.scss';
 
 .custom-container {
   width: 100%;
@@ -61,24 +62,7 @@
     background-color: unset;
   }
 }
-.color-light-500 {
-  color: $light-500;
-}
-.color-light-300 {
-  color: $light-300;
-}
-.color-primary-500 {
-  color: $primary-500;
-}
-.color-gray-500 {
-  color: $gray-500;
-}
-.color-gray-700 {
-  color: $gray-700;
-}
-.color-brand-600 {
-  color: $brand-600;
-}
+
 .color-black {
   color: black;
 }
@@ -88,7 +72,14 @@
 .font-xl {
   font-size: $font-size-base-xl;
 }
-
+.font-xs {
+  font-size: $font-size-base-xs;
+}
+.transform-rtl {
+  .pgn__icon {
+    transform: unset !important;
+  }
+}
 .dropdown-wrapper {
   .dropdown-title {
     font-size: $font-size-base-sm;
@@ -204,7 +195,6 @@
 }
 
 .pagination-default {
-  direction: initial;
   .page-link {
     color: $gray-700;
     min-width: 44px;
@@ -250,6 +240,7 @@
     }
   }
 }
+
 [dir='rtl'] {
   body {
     font-family: IRANSans, FontAwesome !important ;

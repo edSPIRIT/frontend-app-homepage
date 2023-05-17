@@ -2,8 +2,9 @@ import { getConfig } from '@edx/frontend-platform';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 
-const useGetAllCourses = (page = 1) => {
+const useGetAllCourses = () => {
   const sortState = useSelector((state) => state.sortAllCourses.value);
+  const searchPage = useSelector((state) => state.searchPage.page);
   const fetchAllCourses = async (pageNum = 1) => {
     const apiRes = await fetch(
       `${
@@ -19,8 +20,8 @@ const useGetAllCourses = (page = 1) => {
   };
 
   const { isLoading, data, isFetching } = useQuery({
-    queryKey: ['AllCourses', page, sortState],
-    queryFn: () => fetchAllCourses(page),
+    queryKey: ['AllCourses', searchPage, sortState],
+    queryFn: () => fetchAllCourses(searchPage),
     keepPreviousData: true,
   });
   return {

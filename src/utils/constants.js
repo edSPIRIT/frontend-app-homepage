@@ -1152,3 +1152,38 @@ export const SIMILAR_COURSES = [
     isProgram: false,
   },
 ];
+
+export const RECENTLY_VIEWED = [
+  {
+    title: 'Python Programming',
+    institution: 'Harvard University',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/dc6d25de-0dac-43e6-a915-e362bf8b4403-917c4e000b69.png',
+  },
+
+  {
+    title: 'Statistics and R',
+    institution: 'UPValenciaX',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/518a47f2-66fb-4529-8902-a4f7ca3002ef-78d294b01e63.png',
+  },
+  {
+    title: 'Advanced Programming',
+    institution: 'New york University',
+    logo: 'https://prod-discovery.edx-cdn.org/organization/logos/8537d31f-01b4-40fd-b652-e17b38eefe41-7956b2a3cd04.png',
+  },
+];
+
+export const TRENDING_WORDS = ['Programming', 'Data Sciences', 'Marketing'];
+export const TRENDING_COURSES = [
+  {
+    title: 'Python Programming',
+    institution: 'Harvard University',
+  },
+  {
+    title: 'Statistics and R',
+    institution: 'UPValenciaX',
+  },
+  {
+    title: 'Advanced Programming',
+    institution: 'New york University',
+  },
+];

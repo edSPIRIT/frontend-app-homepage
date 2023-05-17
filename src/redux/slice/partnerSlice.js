@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -8,18 +9,12 @@ const sortPartnersSlice = createSlice({
   name: 'sortPartners',
   initialState,
   reducers: {
-    recentPartners: (state, action) => {
-      state.value = 'recent';
+    setSortValue: (state, action) => {
+      state.value = action.payload;
     },
-    ascendingPartners: (state, action) => {
-      state.value = 'ascending';
-    },
-    descendingPartners: (state, action) => {
-      state.value = 'descending';
-    },
-
   },
 });
 
-export const { recentPartners, ascendingPartners, descendingPartners } = sortPartnersSlice.actions;
+export const { setSortValue } = sortPartnersSlice.actions;
+
 export default sortPartnersSlice.reducer;

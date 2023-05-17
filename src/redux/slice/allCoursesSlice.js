@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -8,17 +9,11 @@ const sortAllCoursesSlice = createSlice({
   name: 'sortEnrollment',
   initialState,
   reducers: {
-    recentCourses: (state, action) => {
-      state.value = 'recent';
-    },
-    ascendingCourses: (state, action) => {
-      state.value = 'ascending';
-    },
-    descendingCourses: (state, action) => {
-      state.value = 'descending';
+    setCourseSortValue: (state, action) => {
+      state.value = action.payload;
     },
   },
 });
 
-export const { recentCourses, ascendingCourses, descendingCourses } = sortAllCoursesSlice.actions;
+export const { setCourseSortValue } = sortAllCoursesSlice.actions;
 export default sortAllCoursesSlice.reducer;

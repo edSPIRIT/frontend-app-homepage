@@ -39,7 +39,7 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
             className="d-flex align-items-center py-2 color-black"
             to={`/course/${courseInfo?.course_metadata?.slug}`}
           >
-            <Icon src={VideoTranscript} className="mr-2 color-gray-500" />
+            <Icon src={VideoTranscript} className="mr-2 text-gray-500" />
             <span>Course info</span>
           </Link>
           <div
@@ -53,7 +53,7 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
               );
             }}
           >
-            <Icon src={Share} className="mr-2 color-gray-500" />
+            <Icon src={Share} className="mr-2 text-gray-500" />
             <span>Share</span>
           </div>
           <div
@@ -63,7 +63,7 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
               deleteEnrollCourse.mutate(courseInfo?.course_details?.course_id);
             }}
           >
-            <Icon src={Delete} className="mr-2 color-gray-500" />
+            <Icon src={Delete} className="mr-2 text-gray-500" />
             <span>Unroll</span>
           </div>
         </div>

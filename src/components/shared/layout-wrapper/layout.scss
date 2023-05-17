@@ -1,0 +1,81 @@
+//invisible header in search modal in responsive
+.pgn__modal-header {
+  display: none;
+}
+.pgn__modal-close-container {
+  display: none;
+}
+//
+.search-modal {
+  h4 {
+    color: $gray-500;
+    opacity: 0.5;
+  }
+  .search-wrapper {
+    padding: 10px 24px;
+    border-top: 1px solid $light-400;
+    border-bottom: 1px solid $light-400;
+  }
+  .has-focus {
+    box-shadow: unset;
+  }
+  .pgn__modal-body {
+    padding: unset;
+  }
+  .pgn__searchfield {
+    width: 100%;
+    border: unset;
+    .form-control {
+      &::placeholder {
+        font-size: $font-size-base-sm;
+      }
+      font-size: $font-size-base-std;
+      color: black;
+    }
+    &:focus {
+      box-shadow: unset;
+    }
+  }
+  .pgn__icon {
+    color: $gray-500;
+  }
+  .recent-view-wrapper {
+    span {
+      color: $gray-500;
+      opacity: 0.5;
+    }
+    .logo-img-wrapper {
+      width: 44px;
+      height: 44px;
+      border-radius: 4px;
+      margin-right: 16px;
+      border: 1px solid $light-400;
+      flex-shrink: 0;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    .recent-title {
+      color: black;
+      font-size: $font-size-base-std;
+      font-weight: 700;
+    }
+    .recent-institution {
+      color: $gray-500;
+      font-size: $font-size-base-sm;
+      font-weight: 400;
+    }
+    .pgn__icon {
+      color: $gray-500;
+      opacity: 0.5;
+    }
+  }
+  .btn-outline-primary {
+    padding: 5px 8px;
+    color: $primary-700;
+    border: 1px solid $light-300;
+    font-size: $font-size-base-xs;
+  }
+}

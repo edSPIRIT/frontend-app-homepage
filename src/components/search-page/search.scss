@@ -117,3 +117,15 @@
     height: 28px;
   }
 }
+
+.mobile-search-container {
+  .back-btn-wrapper {
+    box-shadow: unset;
+  }
+  .mobile-filter-sort-wrapper {
+    display: grid;
+    grid-template-columns: (1fr 1fr);
+    border-top: 1px solid $light-300;
+    border-bottom: 1px solid $light-300;
+  }
+}

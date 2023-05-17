@@ -97,7 +97,7 @@ const CourseInfoTopDesc = ({
             <p>{courseMetaData?.additional_metadata?.short_description}</p>
           </ShowMoreText>
           <div
-            className="icons-wrapper d-flex color-gray-500 mt-3 pb-4.5 font-sm"
+            className="icons-wrapper d-flex text-gray-500 mt-3 pb-4.5 font-sm"
             ref={navTopRef}
           >
             <div className="d-flex justify-content-center align-items-center mr-4.5">

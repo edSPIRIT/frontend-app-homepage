@@ -20,7 +20,12 @@ const Discover = ({ intl }) => {
       <div className="custom-container pt-5">
         <Breadcrumb
           ariaLabel="Breadcrumb basic"
-          links={[{ label: 'Home', to: '/' }]}
+          links={[{
+            label: `${intl.formatMessage(
+              messages['breadcrumb.home'],
+            )}`,
+            to: '/',
+          }]}
           linkAs={Link}
           activeLabel={intl.formatMessage(messages['breadcrumb.discover'])}
         />

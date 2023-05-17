@@ -3,14 +3,19 @@
 /* eslint-disable react/prop-types */
 import { Pagination, useMediaQuery } from '@edx/paragon';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import CourseCardNew from '../../shared/course-card/CourseCardNew';
-import CourseCardSkeleton from '../../shared/skeleton/CourseCardSkeleton';
-import useGetAllCourses from '../../../hooks/useGetAllCourses';
-import messages from '../../../messages';
+import { useDispatch, useSelector } from 'react-redux';
+import CourseCardNew from '../../../shared/course-card/CourseCardNew';
+import CourseCardSkeleton from '../../../shared/skeleton/CourseCardSkeleton';
+import useGetAllCourses from '../../../../hooks/useGetAllCourses';
+import messages from '../../../../messages';
+import { incrementSearchPage } from '../../../../redux/slice/searchPageSlice';
 
-const SearchResults = ({ page, setPage, intl }) => {
+const SearchResults = ({ intl }) => {
   const isMobile = useMediaQuery({ maxWidth: '768px' });
-  const { allCoursesData, loading } = useGetAllCourses(page);
+  const { allCoursesData, loading } = useGetAllCourses();
+  const dispatch = useDispatch();
+  const searchPage = useSelector((state) => state.searchPage.page);
+
   return (
     <>
       <div className="course-container pb-4.5">
@@ -31,11 +36,11 @@ const SearchResults = ({ page, setPage, intl }) => {
       </div>
       {allCoursesData?.count > 12 && (
         <Pagination
-          className="d-flex justify-content-center pb-5"
+          className="d-flex justify-content-center pb-5 transform-rtl"
           paginationLabel="pagination navigation"
           pageCount={Math.ceil(allCoursesData.count / 12)}
-          onPageSelect={(e) => setPage(e)}
-          currentPage={page}
+          onPageSelect={(e) => dispatch(incrementSearchPage(e))}
+          currentPage={searchPage}
           variant={isMobile ? 'reduced' : 'default'}
           buttonLabels={{
             previous: `${intl.formatMessage(

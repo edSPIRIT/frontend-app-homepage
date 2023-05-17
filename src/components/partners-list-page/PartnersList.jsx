@@ -138,7 +138,7 @@ const PartnersList = ({ intl }) => {
         <div className="pb-5.5 pt-4.5">
           {numPages > 1 && (
             <Pagination
-              className="d-flex justify-content-center"
+              className="d-flex justify-content-center transform-rtl"
               paginationLabel="pagination navigation"
               pageCount={numPages}
               onPageSelect={(e) => setPage(e)}

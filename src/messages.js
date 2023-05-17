@@ -89,6 +89,18 @@ const messages = defineMessages({
     id: 'titleZtoA.text',
     defaultMessage: 'Title Z to A',
   },
+  recent: {
+    id: 'recent.text',
+    defaultMessage: 'Recent',
+  },
+  ascending: {
+    id: 'titleAtoZ.text',
+    defaultMessage: 'Title A to Z',
+  },
+  descending: {
+    id: 'titleZtoA.text',
+    defaultMessage: 'Title Z to A',
+  },
 });
 
 export default messages;

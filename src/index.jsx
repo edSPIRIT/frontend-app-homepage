@@ -19,7 +19,6 @@ import appMessages from './i18n';
 
 import './index.scss';
 import Home from './components/home-page/Home';
-import Layout from './components/shared/Layout';
 import OverviewPage from './components/overview-page/OverviewPage';
 import InProgress from './components/inProgress-page/InProgress';
 import Completed from './components/completed-page/Completed';
@@ -34,6 +33,7 @@ import ScrollToTop from './ScroollToTop';
 import Instructor from './components/instructor-page/Instructor';
 import PartnerInfo from './components/partner-page/PartnerInfo';
 import store from './redux/store/store';
+import Layout from './components/shared/layout-wrapper/Layout';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -104,7 +104,6 @@ subscribe(APP_READY, () => {
             </Switch>
           </Layout>
           <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
-
         </QueryClientProvider>
       </Provider>
     </AppProvider>,

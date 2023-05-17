@@ -1,16 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import footerReducer from '../slice/footerSlice';
 import sortPartners from '../slice/partnerSlice';
 import sortAllCourses from '../slice/allCoursesSlice';
+import searchModal from '../slice/searchSlice';
+import searchPage from '../slice/searchPageSlice';
 
-// store
 const store = configureStore({
   reducer: {
     sortPartners,
     sortAllCourses,
-    // footer: footerReducer,
-    // accounts: accountsReducer,
-    // transactions: transactionsReducer,
+    searchModal,
+    searchPage,
   },
 });
 

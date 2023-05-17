@@ -17,7 +17,7 @@ const TotalPartnersWrapper = ({
 }) => (
   <div className="d-flex justify-content-between align-items-center mb-4 mt-4.5">
     <p>
-      <span className="total-title">
+      <span className="font-sm text-gray-500">
         <FormattedMessage
           id="total.text"
           defaultMessage="Total:"
