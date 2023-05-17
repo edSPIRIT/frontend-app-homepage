@@ -2,10 +2,10 @@ import { Button, Skeleton } from '@edx/paragon';
 import { Link, useHistory } from 'react-router-dom';
 import { ArrowForward } from '@edx/paragon/icons';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import useGetPartners from '../../../hooks/useGetPartners';
+import useGetPopularPartners from '../../../hooks/useGetPopularPartners';
 
 const Partners = () => {
-  const { topPartners, loading } = useGetPartners();
+  const { PopularPartners, loading } = useGetPopularPartners();
   const history = useHistory();
   return (
     <section id="partners" className="partners-container">
@@ -34,13 +34,13 @@ const Partners = () => {
                 // eslint-disable-next-line react/no-array-index-key
                 <Skeleton className="mr-4" width={208} height={112} key={i} />
               ))
-            : topPartners?.map((partner) => (
+            : PopularPartners?.map((partner) => (
               <Link
                 to={`/partners/${partner?.organization.short_name}`}
                 className="mr-4 partners-img-wrapper"
                 key={partner?.organization.id}
               >
-                <img src={partner?.organization.logo} alt="" />
+                <img src={partner?.organization.logo} alt="partner-logo" />
               </Link>
             ))}
         </div>

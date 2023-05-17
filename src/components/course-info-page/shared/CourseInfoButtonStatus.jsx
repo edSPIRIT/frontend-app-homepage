@@ -33,7 +33,10 @@ const CourseInfoButtonStatus = ({ courseMetaData }) => {
         target="_blank"
         rel="noreferrer"
       >
-        Go to course
+        <FormattedMessage
+          id="courseInfo.goToCourse.button"
+          defaultMessage="Go to course"
+        />
       </Button>
     );
   }

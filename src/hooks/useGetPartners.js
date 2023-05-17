@@ -27,7 +27,6 @@ const useGetPartners = (page = 1) => {
     count: data?.count,
     partnersData: data?.results,
     numPages: data?.num_pages,
-    topPartners: data?.results.filter((org) => org.featured).slice(0, 5),
     loading: isLoading,
     isFetching,
   };
