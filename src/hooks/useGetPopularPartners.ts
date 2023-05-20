@@ -1,5 +1,6 @@
 import { getConfig } from '@edx/frontend-platform';
 import { useQuery } from 'react-query';
+import { IAllPartners } from './interfaces/APIResponsesInterfaces';
 
 const useGetPopularPartners = () => {
   const fetchPopularPartners = async () => {
@@ -13,7 +14,7 @@ const useGetPopularPartners = () => {
 
     return apiRes.json();
   };
-  const { isLoading, data } = useQuery({
+  const { isLoading, data } = useQuery<IAllPartners>({
     queryKey: ['PopularPartners'],
     queryFn: () => fetchPopularPartners(),
     keepPreviousData: true,

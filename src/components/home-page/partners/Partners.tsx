@@ -1,7 +1,7 @@
-import { Button, Skeleton } from '@edx/paragon';
-import { Link, useHistory } from 'react-router-dom';
-import { ArrowForward } from '@edx/paragon/icons';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { Button, Skeleton } from '@edx/paragon';
+import { ArrowForward } from '@edx/paragon/icons';
+import { Link, useHistory } from 'react-router-dom';
 import useGetPopularPartners from '../../../hooks/useGetPopularPartners';
 
 const Partners = () => {

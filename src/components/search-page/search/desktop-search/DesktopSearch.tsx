@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom';
-import { Breadcrumb, Skeleton } from '@edx/paragon';
 import {
   FormattedMessage,
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
-import DiscoverBanner from '../../../shared/discover-banner/DiscoverBanner';
+import { Breadcrumb, Skeleton } from '@edx/paragon';
+import { Link } from 'react-router-dom';
 import useGetAllCourses from '../../../../hooks/useGetAllCourses';
-import SearchFacets from './SearchFacets';
 import messages from '../../../../messages';
-import SearchSortWrapper from './SearchSortWrapper';
+import DiscoverBanner from '../../../shared/discover-banner/DiscoverBanner';
+import SearchFacets from './SearchFacets';
 import SearchResults from './SearchResults';
+import SearchSortWrapper from './SearchSortWrapper';
 
 const DesktopSearch = ({ intl }) => {
   const { allCoursesData, isLoading } = useGetAllCourses();
@@ -29,7 +29,6 @@ const DesktopSearch = ({ intl }) => {
             },
           ]}
           linkAs={Link}
-          activeLabel={intl.formatMessage(messages['search.button.text'])}
         />
         <div className="d-flex justify-content-between align-items-center my-4">
           <p>
