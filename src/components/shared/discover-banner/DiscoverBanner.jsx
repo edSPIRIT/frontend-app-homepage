@@ -8,14 +8,22 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
+import { useDispatch, useSelector } from 'react-redux';
 import { COURSES_SEARCH } from '../../../utils/constants';
 import messages from '../../../messages';
+import { setSearchQuery } from '../../../redux/slice/searchQuerySlice';
+import useGetSearchResults from '../../../hooks/useGetSearchResults';
 
 const DiscoverBanner = ({ intl }) => {
   const [searchValue, setSearchValue] = useState('');
   const [searchSuggestion, setSearchSuggestion] = useState('');
   const trendingChips = ['Python', 'Excel', 'Data Sciences', 'Marketing'];
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { searchResults, searchResultsCount, isLoading } = useGetSearchResults();
+  console.log('searchResultsCount', searchResultsCount, searchResults, !!searchResults);
+  // const searchQuery = useSelector((state) => state.searchQuery.value);
+  // console.log('searchQuery1', searchQuery);
   const res = COURSES_SEARCH.filter((obj) => Object.values(obj)
     .filter((val) => typeof val === 'string')
     .some((val) => val.toLocaleLowerCase().includes(searchSuggestion.toLowerCase())));
@@ -41,7 +49,10 @@ const DiscoverBanner = ({ intl }) => {
         <SearchField
           className="discover-search-field"
           submitButtonLocation="external"
-          onChange={(value) => setSearchSuggestion(value)}
+          onChange={(value) => {
+            setSearchSuggestion(value);
+            dispatch(setSearchQuery(value));
+          }}
           onSubmit={(value) => {
             setSearchValue(value);
             setSearchSuggestion('');
@@ -53,12 +64,12 @@ const DiscoverBanner = ({ intl }) => {
           )}
           buttonText={intl.formatMessage(messages['search.button.text'])}
         />
-        {searchSuggestion && searchSuggestion !== searchValue && (
+        {searchResults?.length > 0 && (
           <div className="search-suggestion-wrapper">
             <div className="search-result-wrapper">
-              {res.map((result) => (
-                <div key={result.title}>
-                  <span>{result.title}</span>
+              {searchResults.map((result) => (
+                <div key={result?.data?.content?.display_name}>
+                  <span>{result?.data?.content?.display_name}</span>
                   <p className="second-title-wrapper">
                     <span>{result.institution}</span> .{' '}
                     <span>{result.isProgram ? 'Program' : 'Course'}</span>

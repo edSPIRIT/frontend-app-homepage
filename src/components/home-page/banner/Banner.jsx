@@ -8,7 +8,7 @@ import {
   useMediaQuery,
 } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   FormattedMessage,
   injectIntl,
@@ -19,10 +19,9 @@ import useGetBanner from '../../../hooks/useGetBanner';
 import Highlighted from './Highlighted';
 import messages from '../../../messages';
 import defaultBanner from '../../../assets/default-banner.png';
-import { openSearchModal } from '../../../redux/slice/searchSlice';
+import { openSearchModal } from '../../../redux/slice/searchModalSlice';
 
 const Banner = ({ intl }) => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
 

@@ -27,6 +27,7 @@ const useGetPartners = (page = 1) => {
     count: data?.count,
     partnersData: data?.results,
     numPages: data?.num_pages,
+    partnersMetaData: data?.metadata,
     loading: isLoading,
     isFetching,
   };

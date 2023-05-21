@@ -26,7 +26,12 @@ const PartnersList = ({ intl }) => {
   const [view, setView] = useState('grid');
   const [page, setPage] = useState(1);
   const {
-    count, partnersData, loading, numPages, isFetching,
+    count,
+    partnersData,
+    partnersMetaData,
+    loading,
+    numPages,
+    isFetching,
   } = useGetPartners(page);
   const history = useHistory();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
@@ -69,7 +74,7 @@ const PartnersList = ({ intl }) => {
           <div className="banner-icons-wrapper">
             <div className="icon-wrapper">
               <Icon clas src={BookOpen} style={{ width: '36px' }} />
-              <span>2800+</span>
+              <span>{partnersMetaData?.total_courses}</span>
               <p>
                 <FormattedMessage
                   id="partners.snapShut.courses.text"
@@ -79,17 +84,17 @@ const PartnersList = ({ intl }) => {
             </div>
             <div className="icon-wrapper">
               <Icon src={DrawShapes} />
-              <span>1 Milion</span>
+              <span>{partnersMetaData?.total_instructors}</span>
               <p>
                 <FormattedMessage
-                  id="partners.snapShut.learners.text"
-                  defaultMessage="learners worldwide, representing every country"
+                  id="partners.snapShut.instructors.text"
+                  defaultMessage="Instructors ..."
                 />
               </p>
             </div>
             <div className="icon-wrapper">
               <Icon src={Groups} />
-              <span>1 Milion</span>
+              <span>{partnersMetaData?.total_learners}</span>
               <p>
                 <FormattedMessage
                   id="partners.snapShut.enrollments.text"
@@ -106,9 +111,7 @@ const PartnersList = ({ intl }) => {
             ariaLabel="Breadcrumb basic"
             links={[
               {
-                label: `${intl.formatMessage(
-                  messages['breadcrumb.home'],
-                )}`,
+                label: `${intl.formatMessage(messages['breadcrumb.home'])}`,
                 to: '/',
               },
             ]}
@@ -151,9 +154,7 @@ const PartnersList = ({ intl }) => {
                 next: `${intl.formatMessage(
                   messages['pagination.next.button'],
                 )}`,
-                page: `${intl.formatMessage(
-                  messages['pagination.page.text'],
-                )}`,
+                page: `${intl.formatMessage(messages['pagination.page.text'])}`,
                 currentPage: `${intl.formatMessage(
                   messages['pagination.currentPage.text'],
                 )}`,

@@ -69,10 +69,7 @@ const PartnerHeader = ({ partnerData, loading }) => (
         <a className="icon-wrapper" href="#courses">
           <Icon src={BookOpen} />
           <span className="partner-title">
-            <FormattedMessage
-              id="courses.text"
-              defaultMessage="Courses"
-            />
+            <FormattedMessage id="courses.text" defaultMessage="Courses" />
           </span>
           <span className="partner-count">{partnerData?.courses_count}</span>
         </a>
@@ -80,12 +77,11 @@ const PartnerHeader = ({ partnerData, loading }) => (
         <div className="icon-wrapper" href="#">
           <Icon src={DrawShapes} />
           <span className="partner-title">
-            <FormattedMessage
-              id="learners.text"
-              defaultMessage="Learners"
-            />
+            <FormattedMessage id="learners.text" defaultMessage="Learners" />
           </span>
-          <span className="partner-count">0</span>
+          <span className="partner-count">
+            {partnerData?.students?.total_count}
+          </span>
         </div>
         <div className="vertical-line" />
         <a className="icon-wrapper" href="#instructors">
@@ -96,7 +92,9 @@ const PartnerHeader = ({ partnerData, loading }) => (
               defaultMessage="Instructors"
             />
           </span>
-          <span className="partner-count">0</span>
+          <span className="partner-count">
+            {partnerData?.instructors?.total_count}
+          </span>
         </a>
       </div>
     </div>

@@ -108,5 +108,14 @@
     "courseInfo.prerequisiteDesc.text": "هذه الدورة لها شرط أساسي مسبق يجب أن يكون تم بنجاح\nاكتمل قبل التسجيل.",
     "courseInfo.alreadyEnrolled.text": "مسجل بالفعل!",
     "courseInfo.purchaseNow.text": "شراء الآن",
-    "courseInfo.lastUpdateOn.text": "آخر تحديث في"
+    "courseInfo.lastUpdateOn.text": "آخر تحديث في",
+    "userCourseCard.unroll.text": "غير مقيد",
+    "filters.text": "فلاتر",
+    "recent": "حديثًا",
+    "ascending": "العنوان من الألف إلى الياء",
+    "courseInfo.goToCourse.button": "انتقل إلى الدورة",
+    "descending": "العنوان من الياء إلى الألف",
+    "similarCoursesDesc.text": "توصية بناءً على نشاطك واهتماماتك",
+    "userCourseCard.viewCertificate.text": "عرض الشهادة",
+    "similarCourses.text": "الدورات المماثلة"
 }

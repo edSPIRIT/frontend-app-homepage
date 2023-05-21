@@ -4,7 +4,7 @@ import {
 } from '@edx/paragon';
 import { useDispatch, useSelector } from 'react-redux';
 import { ArrowBack, Close } from '@edx/paragon/icons';
-import { closeSearchModal } from '../../../../redux/slice/searchSlice';
+import { closeSearchModal } from '../../../../redux/slice/searchModalSlice';
 import messages from '../../../../messages';
 import { RECENTLY_VIEWED, TRENDING_COURSES, TRENDING_WORDS } from '../../../../utils/constants';
 
