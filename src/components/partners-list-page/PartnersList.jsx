@@ -97,8 +97,8 @@ const PartnersList = ({ intl }) => {
               <span>{partnersMetaData?.total_learners}</span>
               <p>
                 <FormattedMessage
-                  id="partners.snapShut.enrollments.text"
-                  defaultMessage="enrollments across edspirit courses"
+                  id="partners.snapShut.learners.text"
+                  defaultMessage="learners across edspirit courses"
                 />
               </p>
             </div>

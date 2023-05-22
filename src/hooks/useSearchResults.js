@@ -3,14 +3,14 @@ import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 
-const useGetSearchResults = () => {
-  const searchQuery = useSelector((state) => state.searchQuery.value);
+const useSearchResults = () => {
+  const searchQueryValue = useSelector((state) => state.search.searchQueryValue);
   const fetchSearchResults = async () => {
     const url = `${
       getConfig().LMS_BASE_URL
     }/admin-console/api/full-course-discovery/`;
     const { data, status } = await getAuthenticatedHttpClient().post(url, {
-      search_string: searchQuery,
+      search_string: searchQueryValue,
     });
     if (status !== 200) {
       throw new Error('fetch not ok');
@@ -18,9 +18,9 @@ const useGetSearchResults = () => {
     return data;
   };
   const { data, isLoading } = useQuery(
-    ['SearchResults', searchQuery],
+    ['SearchResults', searchQueryValue],
     fetchSearchResults,
-    { enabled: !!searchQuery },
+    { enabled: !!searchQueryValue },
   );
 
   return {
@@ -29,4 +29,4 @@ const useGetSearchResults = () => {
     isLoading,
   };
 };
-export default useGetSearchResults;
+export default useSearchResults;

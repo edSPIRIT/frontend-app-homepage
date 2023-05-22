@@ -20,9 +20,9 @@ import Highlighted from './Highlighted';
 import messages from '../../../messages';
 import defaultBanner from '../../../assets/default-banner.png';
 import { openSearchModal } from '../../../redux/slice/searchModalSlice';
+import SearchBox from '../../shared/discover-banner/SearchBox';
 
 const Banner = ({ intl }) => {
-  const dispatch = useDispatch();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
 
   const {
@@ -44,7 +44,9 @@ const Banner = ({ intl }) => {
           ) : (
             <p className="banner-desc">{description}</p>
           )}
-          <SearchField
+          <SearchBox />
+
+          {/* <SearchField
             className="hero-search my-4"
             submitButtonLocation="external"
             onSubmit={() => (isMobile ? dispatch(openSearchModal()) : null)}
@@ -54,8 +56,8 @@ const Banner = ({ intl }) => {
             buttonText={intl.formatMessage(messages['search.button.text'])}
             // onFocus={() => (isMobile ? dispatch(openSearchModal()) : null)}
             // onChange={() => (isMobile ? dispatch(openSearchModal()) : null)}
-          />
-          <Link className="banner-link" to="/discover">
+          /> */}
+          <Link className="banner-link mt-4" to="/discover">
             <span className="mr-2">
               <FormattedMessage
                 id="banner.exploreNewCourses.text"

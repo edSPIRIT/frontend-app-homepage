@@ -7,7 +7,7 @@ import { AppContext } from '@edx/frontend-platform/react';
 import { Search } from '@edx/paragon/icons';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import edLogo from '../../../../assets/edspirit-logo.png';
 import useGetFooters from '../../../../hooks/useGetFooters';
 import { ReactComponent as HomeNav } from '../../../../assets/nav-icons/home-nav.svg';
@@ -28,9 +28,6 @@ const MobileHeader = () => {
   const { footerData, loading } = useGetFooters();
   const location = useLocation();
   const dispatch = useDispatch();
-  const isOpenSearchModal = useSelector((state) => state.searchModal.open);
-  console.log(isOpenSearchModal);
-
   useEffect(() => {
     setActiveLink(location.pathname);
   }, [location.pathname]);
