@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Icon, SearchField } from '@edx/paragon';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ArrowForward } from '@edx/paragon/icons';
 import {
   FormattedMessage,
@@ -9,8 +9,8 @@ import {
 } from '@edx/frontend-platform/i18n';
 import { Link, useHistory } from 'react-router-dom';
 import {
-  setSearchQueryValue,
-  setSearchSuggestionValue,
+  resetSearchFilters,
+  setSearchString,
 } from '../../../redux/slice/searchQuerySlice';
 import messages from '../../../messages';
 import useSearchSuggestions from '../../../hooks/useSearchSuggestions';
@@ -18,13 +18,15 @@ import useSearchSuggestions from '../../../hooks/useSearchSuggestions';
 const SearchBox = ({ intl }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { searchSuggestionsResults, isLoading: suggestionLoading } = useSearchSuggestions();
-
+  const [searchSuggestionValue, setSearchSuggestionValue] = useState('');
+  const { searchSuggestionsResults, isLoading: suggestionLoading } = useSearchSuggestions(searchSuggestionValue);
   const [isFocused, setIsFocused] = useState(false);
-  const searchSuggestionValue = useSelector(
-    (state) => state.search.searchSuggestionValue,
-  );
 
+  const handleSubmitSearch = () => {
+    dispatch(resetSearchFilters());
+    dispatch(setSearchString(searchSuggestionValue));
+    history.push('/search');
+  };
   return (
     <>
       <SearchField
@@ -35,13 +37,10 @@ const SearchBox = ({ intl }) => {
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         onChange={(value) => {
-          dispatch(setSearchSuggestionValue(value));
+          setSearchSuggestionValue(value);
         }}
-        onSubmit={(value) => {
-          dispatch(setSearchQueryValue(value));
-          history.push('/search');
-        }}
-        onClear={() => dispatch(setSearchSuggestionValue(''))}
+        onSubmit={handleSubmitSearch}
+        onClear={() => setSearchSuggestionValue('')}
         placeholder={intl.formatMessage(messages['header.search.placeholder'])}
         buttonText={intl.formatMessage(messages['search.button.text'])}
       />
@@ -74,10 +73,7 @@ const SearchBox = ({ intl }) => {
           <Link
             className="d-flex align-items-center bg-light-300 btn-wrapper"
             to="/search"
-            onMouseDown={() => {
-              dispatch(setSearchQueryValue(searchSuggestionValue));
-              history.push('/search');
-            }}
+            onMouseDown={handleSubmitSearch}
           >
             <span className="mr-2">
               <FormattedMessage

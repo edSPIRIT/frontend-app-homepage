@@ -117,5 +117,11 @@
     "similarCourses.text": "دوره های پیشنهادی",
     "similarCoursesDesc.text": "توصیه بر اساس فعالیت شما و اینکه آیا دوست دارید",
     "courseInfo.goToCourse.button": "رفتن به دوره",
-    "userCourseCard.viewCertificate.text": "دیدن گواهی"
+    "userCourseCard.viewCertificate.text": "دیدن گواهی",
+    "search.facets.partner": "موسسه",
+    "search.facets.instructor": "مدرس",
+    "search.facets.language": "زبان",
+    "search.facets.availability": "دسترسی",
+    "search.facets.learningType": "نوع یادگیری",
+    "search.facets.subject": "موضوع"
 }

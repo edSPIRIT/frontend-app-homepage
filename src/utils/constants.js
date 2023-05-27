@@ -1187,3 +1187,118 @@ export const TRENDING_COURSES = [
     institution: 'New york University',
   },
 ];
+export const SUBJECTS_FILTER_ITEMS = [
+  {
+    id: '1',
+    title: 'Art',
+    count: '97',
+  },
+  {
+    id: '2',
+    title: 'Architecture',
+    count: '45',
+  },
+  {
+    id: '3',
+    title: 'Business',
+    count: '220',
+  },
+  {
+    id: '4',
+    title: 'Engineering',
+    count: '64',
+  },
+  {
+    id: '5',
+    title: 'History',
+    count: '32',
+  },
+  {
+    id: '6',
+    title: 'varzesh',
+    count: '32',
+  },
+  {
+    id: '7',
+    title: 'shimi',
+    count: '32',
+  },
+];
+export const PARTNERS_FILTER_ITEMS = [
+  {
+    id: '1',
+    title: 'Codio',
+    count: '97',
+  },
+  {
+    id: '2',
+    title: 'UniversityZ',
+    count: '45',
+  },
+  {
+    id: '3',
+    title: 'UniversityX',
+    count: '220',
+  },
+  {
+    id: '4',
+    title: 'Unitest3',
+    count: '64',
+  },
+  {
+    id: '5',
+    title: 'UniversityY',
+    count: '32',
+  },
+];
+export const INSTRUCTORS_FILTER_ITEMS = [
+  {
+    id: '1',
+    title: 'Andrei Neagoie',
+    count: '97',
+  },
+  {
+    id: '2',
+    title: 'Jose Portilla',
+    count: '45',
+  },
+  {
+    id: '3',
+    title: 'Rav Ahuja',
+    count: '220',
+  },
+];
+
+export const LANGUAGE_FILTER_ITEMS = [
+  {
+    id: '1',
+    title: 'English',
+    code: 'en',
+    count: '7',
+  },
+  {
+    id: '2',
+    title: 'Arabic',
+    code: 'ar',
+    count: '5',
+  },
+  {
+    id: '3',
+    title: 'Persian',
+    code: 'fa',
+    count: '20',
+  },
+];
+
+export const AVAILABILITY_FILTER_ITEMS = [
+  {
+    id: '1',
+    title: 'Available now',
+    count: '7',
+  },
+  {
+    id: '2',
+    title: 'Upcoming',
+    count: '5',
+  },
+];

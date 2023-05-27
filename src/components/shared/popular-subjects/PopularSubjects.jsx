@@ -1,11 +1,17 @@
 import { ArrowForwardIos } from '@edx/paragon/icons';
 import { Icon, Skeleton } from '@edx/paragon';
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
 import useGetSubjects from '../../../hooks/useGetSubjects';
+import {
+  resetSearchFilters,
+  setSearchSubject,
+} from '../../../redux/slice/searchQuerySlice';
 
 const PopularSubjects = () => {
   const { popularSubjects, loading } = useGetSubjects();
   const history = useHistory();
+  const dispatch = useDispatch();
 
   return (
     <div className="subject-container">
@@ -25,7 +31,11 @@ const PopularSubjects = () => {
           <div
             className="subject-wrapper d-flex"
             key={subject.slug}
-            onClick={() => history.push('/search')}
+            onClick={() => {
+              dispatch(resetSearchFilters());
+              dispatch(setSearchSubject([subject.title]));
+              history.push('/search');
+            }}
           >
             <img className="subject-img" src={subject.image} alt="subject" />
             <h4 className="subject-title mr-2">{subject.title}</h4>

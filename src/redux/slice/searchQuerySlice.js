@@ -2,22 +2,49 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  searchSuggestionValue: '',
-  searchQueryValue: '',
+  search_string: '',
+  language_code: '',
+  instructors: [],
+  partner: [],
+  subject: [],
 };
 
 const searchSlice = createSlice({
   name: 'searchQuery',
   initialState,
   reducers: {
-    setSearchSuggestionValue: (state, action) => {
-      state.searchSuggestionValue = action.payload;
+    setSearchString: (state, action) => {
+      state.search_string = action.payload;
     },
-    setSearchQueryValue: (state, action) => {
-      state.searchQueryValue = action.payload;
+    setSearchLanguageCode: (state, action) => {
+      state.language_code = action.payload;
+    },
+    setSearchInstructors: (state, action) => {
+      state.instructors = action.payload;
+    },
+    setSearchPartner: (state, action) => {
+      state.partner = action.payload;
+    },
+    setSearchSubject: (state, action) => {
+      state.subject = action.payload;
+    },
+    resetSearchFilters: (state) => {
+      state.search_string = '';
+      state.language_code = '';
+      state.instructors = [];
+      state.partner = [];
+      state.subject = [];
     },
   },
 });
 
-export const { setSearchSuggestionValue, setSearchQueryValue } = searchSlice.actions;
+export const {
+  setSearchString,
+  setSearchLanguageCode,
+  setSearchInstructors,
+  setSearchPartner,
+  setSearchSubject,
+  resetSearchFilters,
+} = searchSlice.actions;
+
 export default searchSlice.reducer;

@@ -117,5 +117,11 @@
     "descending": "العنوان من الياء إلى الألف",
     "similarCoursesDesc.text": "توصية بناءً على نشاطك واهتماماتك",
     "userCourseCard.viewCertificate.text": "عرض الشهادة",
-    "similarCourses.text": "الدورات المماثلة"
+    "similarCourses.text": "الدورات المماثلة",
+    "search.facets.subject": "موضوع",
+    "search.facets.partner": "شريك",
+    "search.facets.instructor": "مدرب",
+    "search.facets.language": "لغة",
+    "search.facets.availability": "التوفر",
+    "search.facets.learningType": "نوع التعلم"
 }

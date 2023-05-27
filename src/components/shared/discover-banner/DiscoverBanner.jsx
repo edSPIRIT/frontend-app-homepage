@@ -8,14 +8,10 @@ import SearchBox from './SearchBox';
 
 const DiscoverBanner = () => {
   const trendingChips = ['Python', 'Excel', 'Data Sciences', 'Marketing'];
-  const searchSuggestionValue = useSelector(
-    (state) => state.search.searchSuggestionValue,
+
+  const searchStringValue = useSelector(
+    (state) => state.searchFilters.search_string,
   );
-  const searchQueryValue = useSelector(
-    (state) => state.search.searchQueryValue,
-  );
-  console.log('searchSuggestionValue', searchSuggestionValue);
-  console.log('searchQueryValue', searchQueryValue);
 
   // const res = COURSES_SEARCH.filter((obj) => Object.values(obj)
   //   .filter((val) => typeof val === 'string')
@@ -27,7 +23,7 @@ const DiscoverBanner = () => {
         <div className="mb-4.5">
           <span
             className={classNames('search-header mr-1', {
-              'search-header-withSearch': searchQueryValue,
+              'search-header-withSearch': searchStringValue,
             })}
           >
             <FormattedMessage
@@ -35,8 +31,8 @@ const DiscoverBanner = () => {
               defaultMessage="Search our Catalog"
             />
           </span>
-          {searchQueryValue && (
-            <span className="search-value">{`“${searchQueryValue}”`}</span>
+          {searchStringValue && (
+            <span className="search-value">{`“${searchStringValue}”`}</span>
           )}
         </div>
         <SearchBox />

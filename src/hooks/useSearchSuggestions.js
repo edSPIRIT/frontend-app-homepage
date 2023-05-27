@@ -1,11 +1,9 @@
 import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { useQuery } from 'react-query';
-import { useSelector } from 'react-redux';
 
-const useSearchSuggestions = () => {
-  const searchSuggestionValue = useSelector((state) => state.search.searchSuggestionValue);
-  const fetchSearchResults = async () => {
+const useSearchSuggestions = (searchSuggestionValue) => {
+  const fetchSearchSuggestionsResults = async () => {
     const url = `${
       getConfig().LMS_BASE_URL
     }/admin-console/api/full-course-discovery/`;
@@ -18,8 +16,8 @@ const useSearchSuggestions = () => {
     return data;
   };
   const { data, isLoading } = useQuery(
-    ['SearchResults', searchSuggestionValue],
-    fetchSearchResults,
+    ['SearchSuggestionsResults', searchSuggestionValue],
+    fetchSearchSuggestionsResults,
     { enabled: !!searchSuggestionValue },
   );
 

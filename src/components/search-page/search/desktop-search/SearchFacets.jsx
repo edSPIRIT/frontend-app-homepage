@@ -1,46 +1,32 @@
 import { Button, Dropdown, Form } from '@edx/paragon';
 import { CloseSmall, KeyboardArrowDown } from '@edx/paragon/icons';
-import { useState } from 'react';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { useDispatch, useSelector } from 'react-redux';
+import SubjectFilter from './search-facets/SubjectFilter';
+import PartnerFilter from './search-facets/PartnerFilter';
+import InstructorsFilter from './search-facets/InstructorsFilter';
+import LanguageFilter from './search-facets/LanguageFilter';
+import AvailabilityFilter from './search-facets/AvailabilityFilter';
 import {
-  FormattedMessage,
-} from '@edx/frontend-platform/i18n';
-import SearchFacetItem from './search-facets/SearchFacetItem';
-import { SEARCH_FACET_FILTERS } from '../../../../utils/constants';
+  resetSearchFilters,
+  setSearchInstructors,
+  setSearchPartner,
+  setSearchSubject,
+} from '../../../../redux/slice/searchQuerySlice';
 
 const SearchFacets = () => {
-  const [facetItems, setFacetItems] = useState([]);
-  const [value, setValue] = useState();
-  const toggleFacetItem = (valueItem) => {
-    if (valueItem === 'Courses' || valueItem === 'Programs') {
-      setValue();
-    }
-    if (!facetItems.includes(valueItem)) {
-      setFacetItems([...facetItems, valueItem]);
-    } else {
-      setFacetItems(facetItems.filter((facetItem) => facetItem !== valueItem));
-    }
-  };
-  const handleChange = (e) => {
-    if (!facetItems.includes(e.target.value)) {
-      setFacetItems([
-        ...facetItems.filter((facetItem) => facetItem !== value),
-        e.target.value,
-      ]);
-    }
-    setValue(e.target.value);
-  };
+  const filters = useSelector((state) => state.searchFilters);
+  const dispatch = useDispatch();
 
   return (
     <div className="bg-light-300">
       <div className="d-flex align-items-center custom-container facets-wrapper py-4">
-        {SEARCH_FACET_FILTERS.map((facet) => (
-          <SearchFacetItem
-            facet={facet}
-            facetItems={facetItems}
-            setFacetItems={setFacetItems}
-            key={facet.id}
-          />
-        ))}
+        <SubjectFilter />
+        <PartnerFilter />
+        <InstructorsFilter />
+        <LanguageFilter />
+        <AvailabilityFilter />
+
         <Dropdown autoClose="outside" className="facet-btn">
           <Dropdown.Toggle
             id="{title}-{variant}"
@@ -50,7 +36,7 @@ const SearchFacets = () => {
           >
             <span className="mr-2">
               <FormattedMessage
-                id="search.facet.learningType.text"
+                id="search.facets.learningType"
                 defaultMessage="Learning type"
               />
             </span>
@@ -59,8 +45,8 @@ const SearchFacets = () => {
             <Form.Group>
               <Form.RadioSet
                 name="color-two"
-                onChange={handleChange}
-                value={value}
+                // onChange={handleChange}
+                // value={value}
               >
                 <Form.Radio value="Courses">
                   <FormattedMessage
@@ -82,46 +68,103 @@ const SearchFacets = () => {
         </Dropdown>
       </div>
 
-      {facetItems.length > 0 && (
       <div className="custom-container badge-wrapper pb-4">
-        <span className="mr-3 font-sm">
-          <FormattedMessage
-            id="filteredBy.text"
-            defaultMessage="Filtered by:"
-          />
+        {(filters.instructors.length > 0
+          || filters.partner.length > 0
+          || filters.subject.length > 0
+          || filters.language_code.length > 0) && (
+          <span className="mr-3 font-sm">
+            <FormattedMessage
+              id="filteredBy.text"
+              defaultMessage="Filtered by:"
+            />
+          </span>
+        )}
+        {filters.subject.length > 0
+          && filters.subject.map((badge) => (
+            <Button
+              variant="outline-light"
+              size="sm"
+              iconAfter={CloseSmall}
+              className="badge-btn mr-2"
+              key={badge}
+              onClick={() => dispatch(
+                setSearchSubject(
+                  filters.subject.filter((sub) => sub !== badge),
+                ),
+              )}
+            >
+              {badge}
+            </Button>
+          ))}
+        {filters.partner.length > 0
+          && filters.partner.map((badge) => (
+            <Button
+              variant="outline-light"
+              size="sm"
+              iconAfter={CloseSmall}
+              className="badge-btn mr-2"
+              key={badge}
+              onClick={() => dispatch(
+                setSearchPartner(
+                  filters.partner.filter((partner) => partner !== badge),
+                ),
+              )}
+            >
+              {badge}
+            </Button>
+          ))}
+        {filters.instructors.length > 0
+          && filters.instructors.map((badge) => (
+            <Button
+              variant="outline-light"
+              size="sm"
+              iconAfter={CloseSmall}
+              className="badge-btn mr-2"
+              key={badge}
+              onClick={() => dispatch(
+                setSearchInstructors(
+                  filters.instructors.filter(
+                    (instructor) => instructor !== badge,
+                  ),
+                ),
+              )}
+            >
+              {badge}
+            </Button>
+          ))}
+        {filters.language_code.length > 0
+          && filters.language_code.map((badge) => (
+            <Button
+              variant="outline-light"
+              size="sm"
+              iconAfter={CloseSmall}
+              className="badge-btn mr-2"
+              key={badge}
+              onClick={() => dispatch(
+                setSearchInstructors(
+                  filters.language_code.filter((lang) => lang !== badge),
+                ),
+              )}
+            >
+              {badge}
+            </Button>
+          ))}
 
-        </span>
-        {facetItems.map((badge) => (
+        {(filters.instructors.length > 0
+          || filters.partner.length > 0
+          || filters.subject.length > 0
+          || filters.language_code.length > 0) && (
           <Button
-            variant="outline-light"
+            variant="tertiary"
             size="sm"
-            iconAfter={CloseSmall}
-            className="badge-btn mr-2"
-            key={badge}
-            onClick={(e) => {
-              toggleFacetItem(e.target.textContent);
-            }}
+            className="clear-btn"
+            onClick={() => dispatch(resetSearchFilters())}
           >
-            {badge}
+            <FormattedMessage id="clearAll.text" defaultMessage="Clear all" />
           </Button>
-        ))}
-
-        <Button
-          variant="tertiary"
-          size="sm"
-          className="clear-btn"
-          onClick={() => {
-            setFacetItems([]);
-            setValue();
-          }}
-        >
-          <FormattedMessage
-            id="clearAll.text"
-            defaultMessage="Clear all"
-          />
-        </Button>
+        )}
       </div>
-      )}
     </div>
   );
 };

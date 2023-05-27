@@ -4,15 +4,21 @@ import { ArrowForward } from '@edx/paragon/icons';
 import { useHistory, useParams } from 'react-router-dom';
 
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { useDispatch } from 'react-redux';
 import useGetInstructor from '../../hooks/useGetInstructor';
 import CourseCardNew from '../shared/course-card/CourseCardNew';
 import CourseCardSkeleton from '../shared/skeleton/CourseCardSkeleton';
 import InstructorHeader from './instructor/InstructorHeader';
+import {
+  resetSearchFilters,
+  setSearchInstructors,
+} from '../../redux/slice/searchQuerySlice';
 
 const Instructor = () => {
   const { slug } = useParams();
   const { InstructorData, loading } = useGetInstructor(slug);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   return (
     <main>
@@ -55,7 +61,11 @@ const Instructor = () => {
             <Button
               className="view-all-courses-btn"
               iconAfter={ArrowForward}
-              onClick={() => history.push('/discover')}
+              onClick={() => {
+                dispatch(resetSearchFilters());
+                dispatch(setSearchInstructors([InstructorData?.name]));
+                history.push('/search');
+              }}
             >
               <FormattedMessage
                 id="viewAllCourses.button"
