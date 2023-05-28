@@ -32,7 +32,7 @@ const LanguageFilter = () => {
           )}
         </p>
       </Dropdown.Toggle>
-      <Dropdown.Menu>
+      <Dropdown.Menu className="facet-menu">
         <SearchField
           onSubmit={(value) => console.log(`search submitted: ${value}`)}
           placeholder="Find a ..."
@@ -51,9 +51,10 @@ const LanguageFilter = () => {
                 dispatch(
                   setSearchLanguageCode([
                     ...languageCode,
-                    LANGUAGE_FILTER_ITEMS.find(
-                      (lang) => lang.title === e.target.value,
-                    ).code,
+                    e.target.value,
+                    // LANGUAGE_FILTER_ITEMS.find(
+                    //   (lang) => lang.title === e.target.value,
+                    // ).code,
                   ]),
                 );
               }

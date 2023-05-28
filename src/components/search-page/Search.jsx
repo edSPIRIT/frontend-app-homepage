@@ -1,7 +1,7 @@
 import { useMediaQuery } from '@edx/paragon';
 
-import MobileSearch from './search/mobile-search/MobileSearch';
-import DesktopSearch from './search/desktop-search/DesktopSearch';
+import MobileSearch from './search/MobileSearch';
+import DesktopSearch from './search/DesktopSearch';
 
 const Search = () => {
   const isMobile = useMediaQuery({ maxWidth: '768px' });

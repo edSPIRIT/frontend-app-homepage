@@ -19,7 +19,7 @@ import { ReactComponent as DiscoverdNavColored } from '../../../../assets/nav-ic
 import { ReactComponent as ProfileNav } from '../../../../assets/nav-icons/profile-nav.svg';
 import { ReactComponent as ProfileNavColored } from '../../../../assets/nav-icons/profile-nav-colored.svg';
 import useHideNavbarOnScroll from '../../../../hooks/utils/useHideNavbarOnScroll';
-import { openSearchModal } from '../../../../redux/slice/searchModalSlice';
+import { setSearchModal } from '../../../../redux/slice/searchModalSlice';
 
 const MobileHeader = () => {
   const { authenticatedUser } = useContext(AppContext);
@@ -57,7 +57,7 @@ const MobileHeader = () => {
           src={Search}
           iconAs={Icon}
           alt="Search"
-          onClick={() => dispatch(openSearchModal())}
+          onClick={() => dispatch(setSearchModal(true))}
         />
       </div>
       <Nav

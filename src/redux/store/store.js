@@ -4,6 +4,7 @@ import sortAllCourses from '../slice/allCoursesSlice';
 import searchModal from '../slice/searchModalSlice';
 import searchPage from '../slice/searchPageSlice';
 import searchFilters from '../slice/searchQuerySlice';
+import recentPages from '../slice/recentPagesSlice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     searchModal,
     searchPage,
     searchFilters,
+    recentPages,
   },
 });
 

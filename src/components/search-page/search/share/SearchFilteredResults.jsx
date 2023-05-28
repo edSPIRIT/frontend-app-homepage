@@ -8,7 +8,6 @@ import noResult from '../../../../assets/noResult.svg';
 
 const SearchFilteredResults = () => {
   const { searchResults, searchResultsCount, isLoading } = useSearchResults();
-  console.log('searchResultsCount', searchResultsCount);
   return (
     <>
       <p className="pt-4.5 pb-4">

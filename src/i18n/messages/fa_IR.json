@@ -123,5 +123,8 @@
     "search.facets.language": "زبان",
     "search.facets.availability": "دسترسی",
     "search.facets.learningType": "نوع یادگیری",
-    "search.facets.subject": "موضوع"
+    "search.facets.subject": "موضوع",
+    "searchModal.recentlyViewed.text": "بازدید اخیر",
+    "searchModal.trendingKeywords.text": "کلمات کلیدی پرطرفدار",
+    "searchModal.trendingCourses.text": "دوره های پرطرفدار"
 }

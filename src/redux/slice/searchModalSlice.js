@@ -9,14 +9,11 @@ const searchModalSlice = createSlice({
   name: 'searchModal',
   initialState,
   reducers: {
-    openSearchModal: (state) => {
-      state.open = true;
-    },
-    closeSearchModal: (state) => {
-      state.open = false;
+    setSearchModal: (state, action) => {
+      state.open = action.payload;
     },
   },
 });
 
-export const { openSearchModal, closeSearchModal } = searchModalSlice.actions;
+export const { setSearchModal } = searchModalSlice.actions;
 export default searchModalSlice.reducer;

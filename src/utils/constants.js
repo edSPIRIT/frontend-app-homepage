@@ -1190,7 +1190,7 @@ export const TRENDING_COURSES = [
 export const SUBJECTS_FILTER_ITEMS = [
   {
     id: '1',
-    title: 'Art',
+    title: 'programming',
     count: '97',
   },
   {
@@ -1223,6 +1223,17 @@ export const SUBJECTS_FILTER_ITEMS = [
     title: 'shimi',
     count: '32',
   },
+  {
+    id: '8',
+    title: 'Engineering',
+    count: '97',
+  },
+  {
+    id: '9',
+    title: 'Math',
+    count: '45',
+  },
+
 ];
 export const PARTNERS_FILTER_ITEMS = [
   {
@@ -1250,6 +1261,31 @@ export const PARTNERS_FILTER_ITEMS = [
     title: 'UniversityY',
     count: '32',
   },
+  {
+    id: '6',
+    title: 'digikala-org',
+    count: '97',
+  },
+  {
+    id: '7',
+    title: 'partner6',
+    count: '45',
+  },
+  {
+    id: '8',
+    title: 'over1',
+    count: '220',
+  },
+  {
+    id: '9',
+    title: 'vahid',
+    count: '64',
+  },
+  {
+    id: '10',
+    title: 'lexcorp',
+    count: '32',
+  },
 ];
 export const INSTRUCTORS_FILTER_ITEMS = [
   {
@@ -1265,6 +1301,26 @@ export const INSTRUCTORS_FILTER_ITEMS = [
   {
     id: '3',
     title: 'Rav Ahuja',
+    count: '220',
+  },
+  {
+    id: '4',
+    title: 'kratos',
+    count: '45',
+  },
+  {
+    id: '5',
+    title: 'mahan',
+    count: '220',
+  },
+  {
+    id: '6',
+    title: 'vahid',
+    count: '220',
+  },
+  {
+    id: '7',
+    title: 'milad',
     count: '220',
   },
 ];

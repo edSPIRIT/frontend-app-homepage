@@ -14,12 +14,15 @@ import {
 } from '../../../redux/slice/searchQuerySlice';
 import messages from '../../../messages';
 import useSearchSuggestions from '../../../hooks/useSearchSuggestions';
+import { addPage } from '../../../redux/slice/recentPagesSlice';
 
 const SearchBox = ({ intl }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [searchSuggestionValue, setSearchSuggestionValue] = useState('');
-  const { searchSuggestionsResults, isLoading: suggestionLoading } = useSearchSuggestions(searchSuggestionValue);
+  const { searchSuggestionsResults } = useSearchSuggestions(
+    searchSuggestionValue,
+  );
   const [isFocused, setIsFocused] = useState(false);
 
   const handleSubmitSearch = () => {
@@ -27,6 +30,7 @@ const SearchBox = ({ intl }) => {
     dispatch(setSearchString(searchSuggestionValue));
     history.push('/search');
   };
+
   return (
     <>
       <SearchField
@@ -51,9 +55,12 @@ const SearchBox = ({ intl }) => {
               <Link
                 key={result?.data?.id}
                 to={`/course/${result?.data?.course_metadata?.course_slug}`}
-                onMouseDown={() => history.push(
-                  `/course/${result?.data?.course_metadata?.course_slug}`,
-                )}
+                onMouseDown={() => {
+                  dispatch(addPage(result?.data?.course_metadata));
+                  history.push(
+                    `/course/${result?.data?.course_metadata?.course_slug}`,
+                  );
+                }}
               >
                 <div key={result?.data?.content?.display_name}>
                   <span>{result?.data?.content?.display_name}</span>

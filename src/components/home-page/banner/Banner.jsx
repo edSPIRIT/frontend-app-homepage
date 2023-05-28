@@ -1,5 +1,5 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import {
   Icon,
   Image,
@@ -19,12 +19,11 @@ import useGetBanner from '../../../hooks/useGetBanner';
 import Highlighted from './Highlighted';
 import messages from '../../../messages';
 import defaultBanner from '../../../assets/default-banner.png';
-import { openSearchModal } from '../../../redux/slice/searchModalSlice';
-import SearchBox from '../../shared/discover-banner/SearchBox';
+import { setSearchModal } from '../../../redux/slice/searchModalSlice';
 
 const Banner = ({ intl }) => {
   const isMobile = useMediaQuery({ maxWidth: '768px' });
-
+  const dispatch = useDispatch();
   const {
     title, highlightedWord, description, image, isLoading,
   } = useGetBanner();
@@ -44,19 +43,19 @@ const Banner = ({ intl }) => {
           ) : (
             <p className="banner-desc">{description}</p>
           )}
-          <SearchBox />
-
-          {/* <SearchField
-            className="hero-search my-4"
-            submitButtonLocation="external"
-            onSubmit={() => (isMobile ? dispatch(openSearchModal()) : null)}
-            placeholder={intl.formatMessage(
-              messages['header.search.placeholder'],
-            )}
-            buttonText={intl.formatMessage(messages['search.button.text'])}
-            // onFocus={() => (isMobile ? dispatch(openSearchModal()) : null)}
-            // onChange={() => (isMobile ? dispatch(openSearchModal()) : null)}
-          /> */}
+          <div
+            onClick={() => (isMobile ? dispatch(setSearchModal(true)) : null)}
+          >
+            <SearchField
+              className="hero-search my-4"
+              submitButtonLocation="external"
+              onSubmit={() => (isMobile ? dispatch(setSearchModal(true)) : null)}
+              placeholder={intl.formatMessage(
+                messages['header.search.placeholder'],
+              )}
+              buttonText={intl.formatMessage(messages['search.button.text'])}
+            />
+          </div>
           <Link className="banner-link mt-4" to="/discover">
             <span className="mr-2">
               <FormattedMessage

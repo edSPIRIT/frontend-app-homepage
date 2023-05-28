@@ -10,6 +10,7 @@ import AvailabilityFilter from './search-facets/AvailabilityFilter';
 import {
   resetSearchFilters,
   setSearchInstructors,
+  setSearchLanguageCode,
   setSearchPartner,
   setSearchSubject,
 } from '../../../../redux/slice/searchQuerySlice';
@@ -142,7 +143,7 @@ const SearchFacets = () => {
               className="badge-btn mr-2"
               key={badge}
               onClick={() => dispatch(
-                setSearchInstructors(
+                setSearchLanguageCode(
                   filters.language_code.filter((lang) => lang !== badge),
                 ),
               )}

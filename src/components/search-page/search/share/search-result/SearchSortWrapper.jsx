@@ -6,8 +6,8 @@ import {
 } from '@edx/frontend-platform/i18n';
 import { Dropdown } from '@edx/paragon';
 import { FilterList, KeyboardArrowDown } from '@edx/paragon/icons';
-import messages from '../../../../messages';
-import { setCourseSortValue } from '../../../../redux/slice/allCoursesSlice';
+import messages from '../../../../../messages';
+import { setCourseSortValue } from '../../../../../redux/slice/allCoursesSlice';
 
 const SearchSortWrapper = ({ intl }) => {
   const sortState = useSelector((state) => state.sortAllCourses.value);

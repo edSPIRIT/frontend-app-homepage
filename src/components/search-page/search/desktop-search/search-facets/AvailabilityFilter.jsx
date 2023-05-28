@@ -23,7 +23,7 @@ const AvailabilityFilter = () => {
           defaultMessage="Availability"
         />
       </Dropdown.Toggle>
-      <Dropdown.Menu>
+      <Dropdown.Menu className="facet-menu">
         <SearchField
           onSubmit={(value) => console.log(`search submitted: ${value}`)}
           placeholder="Find a ..."

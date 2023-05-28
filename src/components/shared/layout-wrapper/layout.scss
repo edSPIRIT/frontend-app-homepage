@@ -78,4 +78,14 @@
     border: 1px solid $light-300;
     font-size: $font-size-base-xs;
   }
+  .search-result-modal-wrapper{
+    .suggestion-title{
+      color:$gray-700;
+      font-weight: 400;
+    }
+    .second-title-wrapper{
+      font-size: $font-size-base-sm;
+      color:$gray-500
+    }
+  }
 }

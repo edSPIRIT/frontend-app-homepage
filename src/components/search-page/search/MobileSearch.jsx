@@ -19,22 +19,31 @@ import {
   intlShape,
 } from '@edx/frontend-platform/i18n';
 import { useDispatch, useSelector } from 'react-redux';
-import useGetAllCourses from '../../../../hooks/useGetAllCourses';
-import messages from '../../../../messages';
-import SearchResults from '../desktop-search/SearchResults';
-import { setCourseSortValue } from '../../../../redux/slice/allCoursesSlice';
+import useGetAllCourses from '../../../hooks/useGetAllCourses';
+import messages from '../../../messages';
+import SearchResults from './share/SearchResults';
+import { setCourseSortValue } from '../../../redux/slice/allCoursesSlice';
+import FilterModal from './mobile-search/FilterModal';
+import SearchFilteredResults from './share/SearchFilteredResults';
+import { removeEmptyFilters } from '../../../utils/cleanedFilters';
+import { isObjectEmpty } from '../../../utils/isObjectEmpty';
 
 const MobileSearch = ({ intl }) => {
+  const searchQueryValue = useSelector((state) => state.searchFilters);
+  const cleanedFilters = removeEmptyFilters(searchQueryValue);
   const history = useHistory();
   const { allCoursesData, isLoading } = useGetAllCourses();
   const sortState = useSelector((state) => state.sortAllCourses.value);
   const dispatch = useDispatch();
   const [isOpen, open, close] = useToggle(false);
+  const [isOpenFilter, openFilter, closeFilter] = useToggle(false);
+
   const handleItemClick = (sortType) => {
     dispatch(setCourseSortValue(sortType));
   };
   return (
     <>
+      <FilterModal isOpenFilter={isOpenFilter} closeFilter={closeFilter} />
       <ModalLayer isOpen={isOpen} onClose={close}>
         <div aria-label="My dialog" className="  bg-white more-modal-items ">
           <div className="d-flex close-wrapper justify-content-between align-items-center py-2 px-4">
@@ -95,10 +104,18 @@ const MobileSearch = ({ intl }) => {
           </p>
         </div>
         <div className="font-sm mobile-filter-sort-wrapper">
-          <div className="d-flex align-items-center justify-content-center py-2 my-2">
+          <div
+            className="d-flex align-items-center justify-content-center py-2 my-2"
+            onClick={openFilter}
+          >
             <Icon className="text-light-500" src={FilterList} />
             <FormattedMessage id="filters.text" defaultMessage="Filters" />
-            <span className="text-brand-500">(1)</span>
+            {Object.keys(cleanedFilters).length > 0 && (
+              <span className="text-brand-500 font-weight-bold ml-1">{`(${
+                Object.keys(cleanedFilters).length
+              })`}
+              </span>
+            )}
           </div>
           <div
             className="d-flex align-items-center justify-content-center py-2 my-2"
@@ -145,7 +162,11 @@ const MobileSearch = ({ intl }) => {
               )}
             </p>
           </div>
-          <SearchResults />
+          {!isObjectEmpty(cleanedFilters) ? (
+            <SearchFilteredResults />
+          ) : (
+            <SearchResults />
+          )}
         </div>
       </div>
     </>

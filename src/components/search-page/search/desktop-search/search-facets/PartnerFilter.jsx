@@ -30,7 +30,7 @@ const PartnerFilter = () => {
           )}
         </p>
       </Dropdown.Toggle>
-      <Dropdown.Menu>
+      <Dropdown.Menu className="facet-menu">
         <SearchField
           onSubmit={(value) => console.log(`search submitted: ${value}`)}
           placeholder="Find a ..."
