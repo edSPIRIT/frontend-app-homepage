@@ -1,5 +1,5 @@
 import {
-  Dropdown, Form, Menu, MenuItem, SearchField,
+  Dropdown, Form, Menu, MenuItem,
 } from '@edx/paragon';
 import { KeyboardArrowDown } from '@edx/paragon/icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,10 +33,6 @@ const LanguageFilter = () => {
         </p>
       </Dropdown.Toggle>
       <Dropdown.Menu className="facet-menu">
-        <SearchField
-          onSubmit={(value) => console.log(`search submitted: ${value}`)}
-          placeholder="Find a ..."
-        />
         <Form.Group>
           <Form.CheckboxSet
             name="color-two"

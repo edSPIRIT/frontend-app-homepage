@@ -1,5 +1,5 @@
 import {
-  Dropdown, Form, Menu, MenuItem, SearchField,
+  Dropdown, Form, Menu, MenuItem,
 } from '@edx/paragon';
 import { KeyboardArrowDown } from '@edx/paragon/icons';
 import React from 'react';
@@ -24,10 +24,6 @@ const AvailabilityFilter = () => {
         />
       </Dropdown.Toggle>
       <Dropdown.Menu className="facet-menu">
-        <SearchField
-          onSubmit={(value) => console.log(`search submitted: ${value}`)}
-          placeholder="Find a ..."
-        />
         <Form.Group>
           <Form.CheckboxSet
             name="color-two"

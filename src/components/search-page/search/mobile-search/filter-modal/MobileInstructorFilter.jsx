@@ -15,19 +15,21 @@ import { ArrowBack, ArrowForwardIos } from '@edx/paragon/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useEffect, useState } from 'react';
-import { setSearchSubject } from '../../../../../redux/slice/searchQuerySlice';
-import useGetSubjectsFacet from '../../../../../hooks/useGetSubjectsFacet';
+import { setSearchInstructors } from '../../../../../redux/slice/searchQuerySlice';
+import useGetInstructors from '../../../../../hooks/useGetInstructors';
 
-const MobileSubjectFilter = () => {
+const MobileInstructorFilter = () => {
   const [isOpen, open, close] = useToggle(false);
-  const subject = useSelector((state) => state.searchFilters.subject);
+  const instructor = useSelector((state) => state.searchFilters.instructors);
   const dispatch = useDispatch();
-  const [subjectValues, {
+  const [instructorValues, {
     add, remove, clear, set,
-  }] = useCheckboxSetValues([]);
+  }] = useCheckboxSetValues(
+    [],
+  );
 
   const [searchString, setSearchString] = useState('');
-  const { subjects, loading } = useGetSubjectsFacet(searchString);
+  const { InstructorsData, loading } = useGetInstructors(searchString);
 
   const handleChange = (e) => {
     if (e.target.checked) {
@@ -39,11 +41,11 @@ const MobileSubjectFilter = () => {
 
   useEffect(() => {
     clear();
-    if (subject.length > 0) {
-      set(subject);
+    if (instructor.length > 0) {
+      set(instructor);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subject, isOpen]);
+  }, [instructor, isOpen]);
 
   return (
     <>
@@ -63,8 +65,8 @@ const MobileSubjectFilter = () => {
           />
           <h4>
             <FormattedMessage
-              id="search.facets.subject"
-              defaultMessage="Subject"
+              id="search.facets.instructor"
+              defaultMessage="Instructor"
             />
           </h4>
           <Button
@@ -87,18 +89,18 @@ const MobileSubjectFilter = () => {
               <Form.CheckboxSet
                 name="color-two"
                 onChange={(e) => handleChange(e)}
-                value={subjectValues}
+                value={instructorValues}
               >
                 <Menu>
-                  {subjects?.map((item) => (
+                  {InstructorsData?.map((item) => (
                     <div
                       className="d-flex justify-content-between align-items-center item-wrapper"
-                      key={item.id}
+                      key={item.slug}
                     >
-                      <MenuItem as={Form.Checkbox} value={item.title}>
-                        {item.title}
+                      <MenuItem as={Form.Checkbox} value={item.name}>
+                        {item.name}
                       </MenuItem>
-                      <span className="pr-4">{item.count}</span>
+                      <span className="pr-4">{item.courses_count}</span>
                     </div>
                   ))}
                 </Menu>
@@ -110,7 +112,7 @@ const MobileSubjectFilter = () => {
                 className="w-100"
                 onClick={() => {
                   // dispatch(resetSearchFilters());
-                  dispatch(setSearchSubject(subjectValues));
+                  dispatch(setSearchInstructors(instructorValues));
                   close();
                 }}
               >
@@ -129,11 +131,11 @@ const MobileSubjectFilter = () => {
       >
         <p className="font-sm d-flex justify-content-center align-items-center py-2">
           <FormattedMessage
-            id="search.facets.subject"
-            defaultMessage="Subject"
+            id="search.facets.instructor"
+            defaultMessage="Instructor"
           />
-          {subject.length > 0 && (
-            <span className="font-weight-bold ml-1 text-brand-500">{`(${subject.length})`}</span>
+          {instructor.length > 0 && (
+            <span className="font-weight-bold ml-1 text-brand-500">{`(${instructor.length})`}</span>
           )}
         </p>
         <Icon src={ArrowForwardIos} />
@@ -142,4 +144,4 @@ const MobileSubjectFilter = () => {
   );
 };
 
-export default MobileSubjectFilter;
+export default MobileInstructorFilter;

@@ -156,6 +156,11 @@
     margin-bottom: unset;
   }
 }
+@media (max-width: 768px){
+  .pgn__breadcrumb{
+    font-size: $font-size-base-std;
+  }
+}
 
 .pgn__card {
   border: 1px solid $light-400;

@@ -126,5 +126,6 @@
     "search.facets.subject": "موضوع",
     "searchModal.recentlyViewed.text": "بازدید اخیر",
     "searchModal.trendingKeywords.text": "کلمات کلیدی پرطرفدار",
-    "searchModal.trendingCourses.text": "دوره های پرطرفدار"
+    "searchModal.trendingCourses.text": "دوره های پرطرفدار",
+    "reset.text": "تنظیم مجدد"
 }

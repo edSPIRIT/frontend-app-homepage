@@ -15,19 +15,19 @@ import { ArrowBack, ArrowForwardIos } from '@edx/paragon/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useEffect, useState } from 'react';
-import { setSearchSubject } from '../../../../../redux/slice/searchQuerySlice';
-import useGetSubjectsFacet from '../../../../../hooks/useGetSubjectsFacet';
+import { setSearchPartner } from '../../../../../redux/slice/searchQuerySlice';
+import useGetPartnersFacet from '../../../../../hooks/useGetPartnersFacet';
 
-const MobileSubjectFilter = () => {
+const MobilePartnerFilter = () => {
   const [isOpen, open, close] = useToggle(false);
-  const subject = useSelector((state) => state.searchFilters.subject);
+  const partner = useSelector((state) => state.searchFilters.partner);
   const dispatch = useDispatch();
-  const [subjectValues, {
+  const [partnerValues, {
     add, remove, clear, set,
   }] = useCheckboxSetValues([]);
 
   const [searchString, setSearchString] = useState('');
-  const { subjects, loading } = useGetSubjectsFacet(searchString);
+  const { partnersData, loading } = useGetPartnersFacet(searchString);
 
   const handleChange = (e) => {
     if (e.target.checked) {
@@ -39,11 +39,11 @@ const MobileSubjectFilter = () => {
 
   useEffect(() => {
     clear();
-    if (subject.length > 0) {
-      set(subject);
+    if (partner.length > 0) {
+      set(partner);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subject, isOpen]);
+  }, [partner, isOpen]);
 
   return (
     <>
@@ -63,8 +63,8 @@ const MobileSubjectFilter = () => {
           />
           <h4>
             <FormattedMessage
-              id="search.facets.subject"
-              defaultMessage="Subject"
+              id="search.facets.partner"
+              defaultMessage="Partner"
             />
           </h4>
           <Button
@@ -87,18 +87,18 @@ const MobileSubjectFilter = () => {
               <Form.CheckboxSet
                 name="color-two"
                 onChange={(e) => handleChange(e)}
-                value={subjectValues}
+                value={partnerValues}
               >
                 <Menu>
-                  {subjects?.map((item) => (
+                  {partnersData?.map((item) => (
                     <div
                       className="d-flex justify-content-between align-items-center item-wrapper"
-                      key={item.id}
+                      key={item.organization.id}
                     >
-                      <MenuItem as={Form.Checkbox} value={item.title}>
-                        {item.title}
+                      <MenuItem as={Form.Checkbox} value={item.organization.name}>
+                        {item.organization.name}
                       </MenuItem>
-                      <span className="pr-4">{item.count}</span>
+                      <span className="pr-4">{item.courses_count}</span>
                     </div>
                   ))}
                 </Menu>
@@ -110,7 +110,7 @@ const MobileSubjectFilter = () => {
                 className="w-100"
                 onClick={() => {
                   // dispatch(resetSearchFilters());
-                  dispatch(setSearchSubject(subjectValues));
+                  dispatch(setSearchPartner(partnerValues));
                   close();
                 }}
               >
@@ -129,11 +129,11 @@ const MobileSubjectFilter = () => {
       >
         <p className="font-sm d-flex justify-content-center align-items-center py-2">
           <FormattedMessage
-            id="search.facets.subject"
-            defaultMessage="Subject"
+            id="search.facets.partner"
+            defaultMessage="Partner"
           />
-          {subject.length > 0 && (
-            <span className="font-weight-bold ml-1 text-brand-500">{`(${subject.length})`}</span>
+          {partner.length > 0 && (
+            <span className="font-weight-bold ml-1 text-brand-500">{`(${partner.length})`}</span>
           )}
         </p>
         <Icon src={ArrowForwardIos} />
@@ -142,4 +142,4 @@ const MobileSubjectFilter = () => {
   );
 };
 
-export default MobileSubjectFilter;
+export default MobilePartnerFilter;

@@ -2,15 +2,17 @@ import {
   Dropdown, Form, Menu, MenuItem, SearchField,
 } from '@edx/paragon';
 import { KeyboardArrowDown } from '@edx/paragon/icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import { PARTNERS_FILTER_ITEMS } from '../../../../../utils/constants';
 import { setSearchPartner } from '../../../../../redux/slice/searchQuerySlice';
+import useGetPartnersFacet from '../../../../../hooks/useGetPartnersFacet';
 
 const PartnerFilter = () => {
   const partner = useSelector((state) => state.searchFilters.partner);
   const dispatch = useDispatch();
+  const [searchString, setSearchString] = useState('');
+  const { partnersData, loading } = useGetPartnersFacet(searchString);
 
   return (
     <Dropdown autoClose="outside" className="facet-btn  mr-3" key="subject">
@@ -32,7 +34,8 @@ const PartnerFilter = () => {
       </Dropdown.Toggle>
       <Dropdown.Menu className="facet-menu">
         <SearchField
-          onSubmit={(value) => console.log(`search submitted: ${value}`)}
+          onChange={(value) => setSearchString(value)}
+          onSubmit={(value) => setSearchString(value)}
           placeholder="Find a ..."
         />
         <Form.Group>
@@ -52,15 +55,15 @@ const PartnerFilter = () => {
             value={partner}
           >
             <Menu>
-              {PARTNERS_FILTER_ITEMS.map((item) => (
+              {partnersData?.map((item) => (
                 <div
                   className="d-flex justify-content-between align-items-center item-wrapper"
-                  key={item.id}
+                  key={item.organization.id}
                 >
-                  <MenuItem as={Form.Checkbox} value={item.title}>
-                    {item.title}
+                  <MenuItem as={Form.Checkbox} value={item.organization.name}>
+                    {item.organization.name}
                   </MenuItem>
-                  <span className="mr-2.5">{item.count}</span>
+                  <span className="mr-2.5">{item.courses_count}</span>
                 </div>
               ))}
             </Menu>

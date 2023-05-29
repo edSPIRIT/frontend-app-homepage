@@ -7,28 +7,23 @@ import {
   Icon,
   Menu,
   MenuItem,
-  SearchField,
   useCheckboxSetValues,
   useToggle,
 } from '@edx/paragon';
 import { ArrowBack, ArrowForwardIos } from '@edx/paragon/icons';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import { useEffect, useState } from 'react';
-import { setSearchSubject } from '../../../../../redux/slice/searchQuerySlice';
-import useGetSubjectsFacet from '../../../../../hooks/useGetSubjectsFacet';
+import { useEffect } from 'react';
+import { AVAILABILITY_FILTER_ITEMS } from '../../../../../utils/constants';
 
-const MobileSubjectFilter = () => {
+const MobileAvailabilityFilter = () => {
   const [isOpen, open, close] = useToggle(false);
-  const subject = useSelector((state) => state.searchFilters.subject);
-  const dispatch = useDispatch();
-  const [subjectValues, {
+  const instructor = useSelector((state) => state.searchFilters.instructors);
+  const [instructorValues, {
     add, remove, clear, set,
-  }] = useCheckboxSetValues([]);
-
-  const [searchString, setSearchString] = useState('');
-  const { subjects, loading } = useGetSubjectsFacet(searchString);
-
+  }] = useCheckboxSetValues(
+    [],
+  );
   const handleChange = (e) => {
     if (e.target.checked) {
       add(e.target.value);
@@ -36,14 +31,13 @@ const MobileSubjectFilter = () => {
       remove(e.target.value);
     }
   };
-
   useEffect(() => {
     clear();
-    if (subject.length > 0) {
-      set(subject);
+    if (instructor.length > 0) {
+      set(instructor);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subject, isOpen]);
+  }, [instructor, isOpen]);
 
   return (
     <>
@@ -63,8 +57,8 @@ const MobileSubjectFilter = () => {
           />
           <h4>
             <FormattedMessage
-              id="search.facets.subject"
-              defaultMessage="Subject"
+              id="search.facets.availability"
+              defaultMessage="Availability"
             />
           </h4>
           <Button
@@ -77,20 +71,15 @@ const MobileSubjectFilter = () => {
           </Button>
         </div>
         <div className="facet-menu mobile-facet-menu h-100 d-flex flex-column">
-          <SearchField
-            onChange={(value) => setSearchString(value)}
-            onSubmit={(value) => setSearchString(value)}
-            placeholder="Find a ..."
-          />
           <div className="d-flex flex-column justify-content-between h-100">
             <Form.Group>
               <Form.CheckboxSet
                 name="color-two"
                 onChange={(e) => handleChange(e)}
-                value={subjectValues}
+                value={instructorValues}
               >
                 <Menu>
-                  {subjects?.map((item) => (
+                  {AVAILABILITY_FILTER_ITEMS.map((item) => (
                     <div
                       className="d-flex justify-content-between align-items-center item-wrapper"
                       key={item.id}
@@ -110,7 +99,7 @@ const MobileSubjectFilter = () => {
                 className="w-100"
                 onClick={() => {
                   // dispatch(resetSearchFilters());
-                  dispatch(setSearchSubject(subjectValues));
+                  // dispatch(setSearchInstructors(instructorValues));
                   close();
                 }}
               >
@@ -129,12 +118,12 @@ const MobileSubjectFilter = () => {
       >
         <p className="font-sm d-flex justify-content-center align-items-center py-2">
           <FormattedMessage
-            id="search.facets.subject"
-            defaultMessage="Subject"
+            id="search.facets.availability"
+            defaultMessage="Availability"
           />
-          {subject.length > 0 && (
-            <span className="font-weight-bold ml-1 text-brand-500">{`(${subject.length})`}</span>
-          )}
+          {/* {instructor.length > 0 && (
+            <span className="font-weight-bold ml-1 text-brand-500">{`(${instructor.length})`}</span>
+          )} */}
         </p>
         <Icon src={ArrowForwardIos} />
       </div>
@@ -142,4 +131,4 @@ const MobileSubjectFilter = () => {
   );
 };
 
-export default MobileSubjectFilter;
+export default MobileAvailabilityFilter;

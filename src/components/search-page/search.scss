@@ -69,8 +69,8 @@
   .pgn__form-group {
     margin-bottom: 0;
     .pgn__menu {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
+      // border-top-left-radius: 0;
+      // border-top-right-radius: 0;
       box-shadow: unset;
       .item-wrapper {
         font-size: $font-size-base-sm;
@@ -103,6 +103,9 @@
             background-image: url(../../assets/Form.Checkbox.png);
             border-color: transparent;
           }
+          &:checked + div label {
+            font-weight: bold;
+          }
         }
       }
     }
@@ -130,4 +133,3 @@
     height: 100%;
   }
 }
-

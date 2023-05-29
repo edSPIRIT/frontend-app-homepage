@@ -23,6 +23,7 @@ const SearchResults = ({ intl }) => {
 
   return (
     <>
+      { !isMobile && (
       <div className="d-flex justify-content-between align-items-center my-4">
         <p>
           <span className="font-sm text-gray-500">
@@ -36,6 +37,7 @@ const SearchResults = ({ intl }) => {
         </p>
         <SearchSortWrapper />
       </div>
+      )}
       <div className="course-container pb-4.5">
         {/* TO DO: Do not use Array index in keys */}
         {loading

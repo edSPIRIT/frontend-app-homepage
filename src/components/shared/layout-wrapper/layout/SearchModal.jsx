@@ -33,6 +33,8 @@ const SearchModal = ({ intl }) => {
   const handleSubmitSearch = () => {
     dispatch(resetSearchFilters());
     dispatch(setSearchString(searchSuggestionValue));
+    dispatch(setSearchModal(false));
+    setSearchSuggestionValue('');
   };
 
   useEffect(() => {

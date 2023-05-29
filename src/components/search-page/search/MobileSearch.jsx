@@ -27,12 +27,15 @@ import FilterModal from './mobile-search/FilterModal';
 import SearchFilteredResults from './share/SearchFilteredResults';
 import { removeEmptyFilters } from '../../../utils/cleanedFilters';
 import { isObjectEmpty } from '../../../utils/isObjectEmpty';
+import useSearchResults from '../../../hooks/useSearchResults';
 
 const MobileSearch = ({ intl }) => {
   const searchQueryValue = useSelector((state) => state.searchFilters);
   const cleanedFilters = removeEmptyFilters(searchQueryValue);
   const history = useHistory();
   const { allCoursesData, isLoading } = useGetAllCourses();
+  const { searchResultsCount } = useSearchResults();
+
   const sortState = useSelector((state) => state.sortAllCourses.value);
   const dispatch = useDispatch();
   const [isOpen, open, close] = useToggle(false);
@@ -96,12 +99,19 @@ const MobileSearch = ({ intl }) => {
       <div className="mobile-search-container">
         <div className="d-flex px-4.5 py-3 align-items-center back-btn-wrapper">
           <Icon src={ArrowBack} onClick={history.goBack} className="mr-1.5" />
-          <p className="d-flex align-items-center d-flex justify-content-center w-100">
-            <h4 className="mr-1">
-              <FormattedMessage id="courses.text" defaultMessage="Courses" />
-            </h4>
-            <span>{`(${allCoursesData?.count})`}</span>
-          </p>
+          {searchQueryValue.search_string ? (
+            <p className="d-flex align-items-center d-flex justify-content-center w-100">
+              <h4 className="mr-1">{searchQueryValue.search_string}</h4>
+              <span>{`(${searchResultsCount})`}</span>
+            </p>
+          ) : (
+            <p className="d-flex align-items-center d-flex justify-content-center w-100">
+              <h4 className="mr-1">
+                <FormattedMessage id="courses.text" defaultMessage="Courses" />
+              </h4>
+              <span>{`(${allCoursesData?.count})`}</span>
+            </p>
+          )}
         </div>
         <div className="font-sm mobile-filter-sort-wrapper">
           <div
@@ -111,9 +121,8 @@ const MobileSearch = ({ intl }) => {
             <Icon className="text-light-500" src={FilterList} />
             <FormattedMessage id="filters.text" defaultMessage="Filters" />
             {Object.keys(cleanedFilters).length > 0 && (
-              <span className="text-brand-500 font-weight-bold ml-1">{`(${
-                Object.keys(cleanedFilters).length
-              })`}
+              <span className="text-brand-500 font-weight-bold ml-1">
+                {`(${Object.keys(cleanedFilters).length})`}
               </span>
             )}
           </div>

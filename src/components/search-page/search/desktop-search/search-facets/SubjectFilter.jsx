@@ -2,15 +2,18 @@ import {
   Dropdown, Form, Menu, MenuItem, SearchField,
 } from '@edx/paragon';
 import { KeyboardArrowDown } from '@edx/paragon/icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import { SUBJECTS_FILTER_ITEMS } from '../../../../../utils/constants';
 import { setSearchSubject } from '../../../../../redux/slice/searchQuerySlice';
+import useGetSubjectsFacet from '../../../../../hooks/useGetSubjectsFacet';
 
 const SubjectFilter = () => {
   const subject = useSelector((state) => state.searchFilters.subject);
   const dispatch = useDispatch();
+
+  const [searchString, setSearchString] = useState('');
+  const { subjects, loading } = useGetSubjectsFacet(searchString);
 
   return (
     <Dropdown autoClose="outside" className="facet-btn  mr-3" key="subject">
@@ -32,7 +35,8 @@ const SubjectFilter = () => {
       </Dropdown.Toggle>
       <Dropdown.Menu className="facet-menu">
         <SearchField
-          onSubmit={(value) => console.log(`search submitted: ${value}`)}
+          onChange={(value) => setSearchString(value)}
+          onSubmit={(value) => setSearchString(value)}
           placeholder="Find a ..."
         />
         <Form.Group>
@@ -52,15 +56,15 @@ const SubjectFilter = () => {
             value={subject}
           >
             <Menu>
-              {SUBJECTS_FILTER_ITEMS.map((item) => (
+              {subjects?.map((item) => (
                 <div
                   className="d-flex justify-content-between align-items-center item-wrapper"
-                  key={item.id}
+                  key={item.slug}
                 >
                   <MenuItem as={Form.Checkbox} value={item.title}>
                     {item.title}
                   </MenuItem>
-                  <span className="mr-2.5">{item.count}</span>
+                  <span className="mr-2.5">{item.courses_count}</span>
                 </div>
               ))}
             </Menu>

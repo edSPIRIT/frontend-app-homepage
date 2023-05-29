@@ -62,4 +62,16 @@
     flex-wrap: wrap;
     row-gap: 12px;
   }
+  .learning-type-wrapper {
+    .pgn__form-radio {
+      width: 100%;
+      div {
+        width: 100%;
+      }
+    }
+    .pgn__form-label {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }

@@ -2,14 +2,14 @@ import { ArrowForwardIos } from '@edx/paragon/icons';
 import { Icon, Skeleton } from '@edx/paragon';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
-import useGetSubjects from '../../../hooks/useGetSubjects';
 import {
   resetSearchFilters,
   setSearchSubject,
 } from '../../../redux/slice/searchQuerySlice';
+import useGetPopularSubjects from '../../../hooks/useGetPopularSubjects';
 
 const PopularSubjects = () => {
-  const { popularSubjects, loading } = useGetSubjects();
+  const { popularSubjects, loading } = useGetPopularSubjects();
   const history = useHistory();
   const dispatch = useDispatch();
 

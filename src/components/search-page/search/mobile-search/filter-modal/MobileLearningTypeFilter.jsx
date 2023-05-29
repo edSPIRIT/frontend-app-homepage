@@ -5,30 +5,23 @@ import {
   Form,
   FullscreenModal,
   Icon,
-  Menu,
-  MenuItem,
-  SearchField,
   useCheckboxSetValues,
   useToggle,
 } from '@edx/paragon';
 import { ArrowBack, ArrowForwardIos } from '@edx/paragon/icons';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import { useEffect, useState } from 'react';
-import { setSearchSubject } from '../../../../../redux/slice/searchQuerySlice';
-import useGetSubjectsFacet from '../../../../../hooks/useGetSubjectsFacet';
+import { useEffect } from 'react';
 
-const MobileSubjectFilter = () => {
+const MobileLearningTypeFilter = () => {
   const [isOpen, open, close] = useToggle(false);
-  const subject = useSelector((state) => state.searchFilters.subject);
-  const dispatch = useDispatch();
-  const [subjectValues, {
+  const language = useSelector((state) => state.searchFilters.language_code);
+  //   const dispatch = useDispatch();
+  const [languageValues, {
     add, remove, clear, set,
-  }] = useCheckboxSetValues([]);
-
-  const [searchString, setSearchString] = useState('');
-  const { subjects, loading } = useGetSubjectsFacet(searchString);
-
+  }] = useCheckboxSetValues(
+    [],
+  );
   const handleChange = (e) => {
     if (e.target.checked) {
       add(e.target.value);
@@ -36,14 +29,13 @@ const MobileSubjectFilter = () => {
       remove(e.target.value);
     }
   };
-
   useEffect(() => {
     clear();
-    if (subject.length > 0) {
-      set(subject);
+    if (language.length > 0) {
+      set(language);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subject, isOpen]);
+  }, [language, isOpen]);
 
   return (
     <>
@@ -52,7 +44,7 @@ const MobileSubjectFilter = () => {
         isOpen={isOpen}
         onClose={() => close()}
       >
-        <div className="d-flex align-items-center justify-content-between p-3 modal-header-wrapper">
+        <div className="d-flex align-items-center justify-content-between p-3 modal-header-wrapper zindex-1">
           <Icon
             src={ArrowBack}
             loadPages
@@ -63,8 +55,8 @@ const MobileSubjectFilter = () => {
           />
           <h4>
             <FormattedMessage
-              id="search.facets.subject"
-              defaultMessage="Subject"
+              id="search.facets.learningType"
+              defaultMessage="LearningType"
             />
           </h4>
           <Button
@@ -77,32 +69,29 @@ const MobileSubjectFilter = () => {
           </Button>
         </div>
         <div className="facet-menu mobile-facet-menu h-100 d-flex flex-column">
-          <SearchField
-            onChange={(value) => setSearchString(value)}
-            onSubmit={(value) => setSearchString(value)}
-            placeholder="Find a ..."
-          />
           <div className="d-flex flex-column justify-content-between h-100">
-            <Form.Group>
-              <Form.CheckboxSet
+            <Form.Group className="pt-2.5 px-3 learning-type-wrapper">
+              <Form.RadioSet
                 name="color-two"
-                onChange={(e) => handleChange(e)}
-                value={subjectValues}
+                // onChange={handleChange}
+                // value={value}
               >
-                <Menu>
-                  {subjects?.map((item) => (
-                    <div
-                      className="d-flex justify-content-between align-items-center item-wrapper"
-                      key={item.id}
-                    >
-                      <MenuItem as={Form.Checkbox} value={item.title}>
-                        {item.title}
-                      </MenuItem>
-                      <span className="pr-4">{item.count}</span>
-                    </div>
-                  ))}
-                </Menu>
-              </Form.CheckboxSet>
+                <Form.Radio value="Courses" className="py-2">
+
+                  <FormattedMessage
+                    id="courses.text"
+                    defaultMessage="Courses"
+                  />
+                  <span className="count">635</span>
+                </Form.Radio>
+                <Form.Radio value="Programs" className="py-2">
+                  <FormattedMessage
+                    id="programs.text"
+                    defaultMessage="Programs"
+                  />
+                  <span className="count">100</span>
+                </Form.Radio>
+              </Form.RadioSet>
             </Form.Group>
             <div className="p-4">
               <Button
@@ -110,7 +99,7 @@ const MobileSubjectFilter = () => {
                 className="w-100"
                 onClick={() => {
                   // dispatch(resetSearchFilters());
-                  dispatch(setSearchSubject(subjectValues));
+                //   dispatch(setSearchLanguageCode(languageValues));
                   close();
                 }}
               >
@@ -129,12 +118,12 @@ const MobileSubjectFilter = () => {
       >
         <p className="font-sm d-flex justify-content-center align-items-center py-2">
           <FormattedMessage
-            id="search.facets.subject"
-            defaultMessage="Subject"
+            id="search.facets.learningType"
+            defaultMessage="LearningType"
           />
-          {subject.length > 0 && (
-            <span className="font-weight-bold ml-1 text-brand-500">{`(${subject.length})`}</span>
-          )}
+          {/* {language.length > 0 && (
+            <span className="font-weight-bold ml-1 text-brand-500">{`(${language.length})`}</span>
+          )} */}
         </p>
         <Icon src={ArrowForwardIos} />
       </div>
@@ -142,4 +131,4 @@ const MobileSubjectFilter = () => {
   );
 };
 
-export default MobileSubjectFilter;
+export default MobileLearningTypeFilter;
