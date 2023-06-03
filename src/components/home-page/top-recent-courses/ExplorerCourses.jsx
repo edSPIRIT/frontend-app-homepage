@@ -16,7 +16,7 @@ import ScrollableExplorerCourses from './explorer-courses/ScrollableExplorerCour
 import messages from '../../../messages';
 
 const ExplorerCourses = ({ intl }) => {
-  const [key, setKey] = useState('home');
+  const [key, setKey] = useState('top-courses');
   const { recentCourses, topCourses, loading } = useGetTopRecentCourses();
   const isMobile = useMediaQuery({ maxWidth: '1024px' });
   const history = useHistory();
@@ -44,11 +44,11 @@ const ExplorerCourses = ({ intl }) => {
           onSelect={(k) => setKey(k)}
         >
           <Tab
-            eventKey="home"
+            eventKey="top-courses"
             title={intl.formatMessage(messages['homePage.tab.topCourses'])}
           >
             {isMobile ? (
-              <ScrollableExplorerCourses />
+              <ScrollableExplorerCourses courses={topCourses} loading={loading} />
             ) : (
               <div className="course-container">
                 {/* TO DO: Do not use Array index in keys */}
@@ -66,11 +66,11 @@ const ExplorerCourses = ({ intl }) => {
             )}
           </Tab>
           <Tab
-            eventKey="profile"
+            eventKey="recently-added"
             title={intl.formatMessage(messages['homePage.tab.recentlyAdded'])}
           >
             {isMobile ? (
-              <ScrollableExplorerCourses />
+              <ScrollableExplorerCourses courses={recentCourses} loading={loading} />
             ) : (
               <div className="course-container">
                 {recentCourses?.map((course) => (

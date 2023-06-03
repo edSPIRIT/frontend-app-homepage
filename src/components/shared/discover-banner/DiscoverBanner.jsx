@@ -13,13 +13,9 @@ const DiscoverBanner = () => {
     (state) => state.searchFilters.search_string,
   );
 
-  // const res = COURSES_SEARCH.filter((obj) => Object.values(obj)
-  //   .filter((val) => typeof val === 'string')
-  //   .some((val) => val.toLocaleLowerCase().includes(searchSuggestion.toLowerCase())));
-
   return (
     <div className="search-header-wrapper">
-      <div className="custom-container py-5.5 ">
+      <div className="custom-container  ">
         <div className="mb-4.5">
           <span
             className={classNames('search-header mr-1', {

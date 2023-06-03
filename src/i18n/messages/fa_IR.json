@@ -127,5 +127,8 @@
     "searchModal.recentlyViewed.text": "بازدید اخیر",
     "searchModal.trendingKeywords.text": "کلمات کلیدی پرطرفدار",
     "searchModal.trendingCourses.text": "دوره های پرطرفدار",
-    "reset.text": "تنظیم مجدد"
+    "reset.text": "تنظیم مجدد",
+    "subjectModal.search.placeholder": "جستجوی دوره ها بر اساس موضوع",
+    "discover.exploreAllSubjects.text": "همه ی موضوعات را جستجو کنید",
+    "allSubjects.text": "تمام موضوعات"
 }

@@ -5,6 +5,10 @@ const messages = defineMessages({
     id: 'header.search.placeholder',
     defaultMessage: 'What do you want to learn?',
   },
+  'subjectModal.search.placeholder': {
+    id: 'subjectModal.search.placeholder',
+    defaultMessage: 'Search courses by subject',
+  },
   'search.button.text': {
     id: 'search.button.text',
     defaultMessage: 'Search',

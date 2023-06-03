@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import { OverflowScroll } from '@edx/paragon';
 import OverflowScrollContent from './OverflowScrollContent';
 
-const ScrollableExplorerCourses = () => (
+const ScrollableExplorerCourses = ({ courses, loading }) => (
   <div className="scroll-courses-container">
     <OverflowScroll ariaLabel="example overflow scroll usage">
-      <OverflowScrollContent />
+      <OverflowScrollContent courses={courses} loading={loading} />
     </OverflowScroll>
   </div>
 );
