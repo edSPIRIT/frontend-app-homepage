@@ -93,6 +93,10 @@ const messages = defineMessages({
     id: 'titleZtoA.text',
     defaultMessage: 'Title Z to A',
   },
+  'partners.search.find': {
+    id: 'partners.search.find',
+    defaultMessage: 'Find ...',
+  },
   recent: {
     id: 'recent.text',
     defaultMessage: 'Recent',

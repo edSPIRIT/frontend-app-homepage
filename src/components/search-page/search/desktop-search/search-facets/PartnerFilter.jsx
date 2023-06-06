@@ -4,15 +4,16 @@ import {
 import { KeyboardArrowDown } from '@edx/paragon/icons';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { setSearchPartner } from '../../../../../redux/slice/searchQuerySlice';
 import useGetPartnersFacet from '../../../../../hooks/useGetPartnersFacet';
+import messages from '../../../../../messages';
 
-const PartnerFilter = () => {
+const PartnerFilter = ({ intl }) => {
   const partner = useSelector((state) => state.searchFilters.partner);
   const dispatch = useDispatch();
   const [searchString, setSearchString] = useState('');
-  const { partnersData, loading } = useGetPartnersFacet(searchString);
+  const { partnersData, loading } = useGetPartnersFacet(1, searchString);
 
   return (
     <Dropdown autoClose="outside" className="facet-btn  mr-3" key="subject">
@@ -36,7 +37,10 @@ const PartnerFilter = () => {
         <SearchField
           onChange={(value) => setSearchString(value)}
           onSubmit={(value) => setSearchString(value)}
-          placeholder="Find a ..."
+          placeholder={intl.formatMessage(
+            messages['partners.search.find'],
+          )}
+
         />
         <Form.Group>
           <Form.CheckboxSet
@@ -74,4 +78,8 @@ const PartnerFilter = () => {
   );
 };
 
-export default PartnerFilter;
+PartnerFilter.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(PartnerFilter);

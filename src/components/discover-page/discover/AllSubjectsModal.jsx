@@ -78,11 +78,11 @@ const AllSubjectsModal = ({ isOpen, close, intl }) => {
               }}
             >
               <img
-                className="subject-img"
+                className="subject-img mr-3"
                 src={subject.image}
                 alt="subject"
               />
-              <p className="subject-title mr-2">{subject.title}</p>
+              <p className="subject-title">{subject.title}</p>
             </div>
           ))}
       </div>

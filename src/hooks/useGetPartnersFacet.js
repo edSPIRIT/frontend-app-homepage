@@ -1,23 +1,15 @@
 import { getConfig } from '@edx/frontend-platform';
-import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
+import { useSelector } from 'react-redux';
 
-const useGetPartnersFacet = (searchString) => {
-  const [debouncedSearchValue, setDebouncedSearchValue] = useState(searchString);
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      setDebouncedSearchValue(searchString);
-    }, 500);
+const useGetPartnersFacet = (page = 1, searchString = '') => {
+  const sortState = useSelector((state) => state.sortPartners.value);
 
-    return () => {
-      clearTimeout(timerId);
-    };
-  }, [searchString]);
-  const fetchPartnersFaset = async (query) => {
+  const fetchPartnersFaset = async (query, pageNum) => {
     const apiRes = await fetch(
       `${
         getConfig().LMS_BASE_URL
-      }/admin-console/api/partner-list/?has-courses-count=true&name=${query}`,
+      }/admin-console/api/partner-list/?page=${pageNum}&ordering=${sortState}&has-courses-count=true&name=${query}`,
     );
 
     if (!apiRes.ok) {
@@ -26,14 +18,18 @@ const useGetPartnersFacet = (searchString) => {
 
     return apiRes.json();
   };
-  const { isLoading, data } = useQuery({
-    queryKey: ['PartnersFacet', debouncedSearchValue],
-    queryFn: () => fetchPartnersFaset(debouncedSearchValue),
+  const { isLoading, data, isFetching } = useQuery({
+    queryKey: ['PartnersFacet', searchString, page, sortState],
+    queryFn: () => fetchPartnersFaset(searchString, page ?? 1),
     keepPreviousData: true,
   });
   return {
     partnersData: data?.results,
+    count: data?.count,
+    numPages: data?.num_pages,
+    partnersMetaData: data?.metadata,
     loading: isLoading,
+    isFetching,
   };
 };
 export default useGetPartnersFacet;

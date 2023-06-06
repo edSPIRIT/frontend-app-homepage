@@ -28,6 +28,7 @@ const useGetEnrollmentList = () => {
       (courseInfo) => courseInfo?.progress?.complete_count > 0
         && courseInfo?.progress?.incomplete_count === 0,
     ),
+    userCourses: data?.slice(0, 5),
     loading: isLoading,
   };
 };

@@ -16,7 +16,7 @@ import messages from '../../messages';
 
 const OverviewPage = ({ intl }) => {
   const {
-    loading, userCourseTitles, userCourseIds, userInprogressCourses,
+    loading, userCourseTitles, userCourseIds, userCourses,
   } = useGetEnrollmentList();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
   return (
@@ -36,7 +36,7 @@ const OverviewPage = ({ intl }) => {
                     <UserCourseCardSkeleton key={i} />
                   ))}
               </>
-            ) : userInprogressCourses?.length === 0 ? (
+            ) : userCourses?.length === 0 ? (
               <NotEnrolledCardCourse
                 title={intl.formatMessage(
                   messages['inProgress.notEnroll.title'],
@@ -53,7 +53,7 @@ const OverviewPage = ({ intl }) => {
                     defaultMessage="Recent Activity"
                   />
                 </h3>
-                {userInprogressCourses?.map((courseInfo) => (
+                {userCourses?.map((courseInfo) => (
                   <UserCourseCard
                     key={courseInfo?.course_details?.course_id}
                     courseInfo={courseInfo}

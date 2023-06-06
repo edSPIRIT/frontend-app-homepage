@@ -7,7 +7,11 @@ import {
   useMediaQuery,
 } from '@edx/paragon';
 import {
-  ArrowBack, BookOpen, DrawShapes, Groups,
+  ArrowBack,
+  ArrowForward,
+  BookOpen,
+  DrawShapes,
+  Groups,
 } from '@edx/paragon/icons';
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
@@ -16,15 +20,20 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
-import useGetPartners from '../../hooks/useGetPartners';
 import PartnersCardGrid from './partners-list/PartnersCardGrid';
 import PartnersCardList from './partners-list/PartnersCardList';
 import TotalPartnersWrapper from './partners-list/TotalPartnersWrapper';
 import messages from '../../messages';
+import useGetPartnersFacet from '../../hooks/useGetPartnersFacet';
+import useGetPartnersSuggestions from '../../hooks/useGetPartnersSuggestions';
 
 const PartnersList = ({ intl }) => {
   const [view, setView] = useState('grid');
   const [page, setPage] = useState(1);
+  const [searchString, setSearchString] = useState('');
+  const [suggestionQuery, setSuggestionQuery] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
+
   const {
     count,
     partnersData,
@@ -32,10 +41,13 @@ const PartnersList = ({ intl }) => {
     loading,
     numPages,
     isFetching,
-  } = useGetPartners(page);
+  } = useGetPartnersFacet(page, searchString);
+  const { partnersSuggestionsResults } = useGetPartnersSuggestions(suggestionQuery);
   const history = useHistory();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
-
+  const handleSubmitSearch = () => {
+    setSearchString(suggestionQuery);
+  };
   return (
     <section>
       <div className="d-flex px-4.5 py-3 align-items-center back-btn-wrapper">
@@ -58,20 +70,65 @@ const PartnersList = ({ intl }) => {
             />
           </p>
           <SearchField
-            className="partners-search my-4"
+            className="partners-search mt-4"
             submitButtonLocation="external"
-            onSubmit={(value) => console.log(`search submitted: ${value}`)}
+            onChange={(value) => setSuggestionQuery(value)}
+            onSubmit={(value) => setSearchString(value)}
             placeholder={intl.formatMessage(
               messages['partners.search.placeholder'],
             )}
             buttonText={intl.formatMessage(messages['search.button.text'])}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
           />
+          {partnersSuggestionsResults?.length > 0
+            && isFocused
+            && suggestionQuery && (
+              <div className="search-suggestion-wrapper ">
+                <div className="search-result-wrapper">
+                  {partnersSuggestionsResults.map((result) => (
+                    <Link
+                      key={result?.data?.id}
+                      to={`/partners/${result?.organization?.short_name}`}
+                      onMouseDown={() => {
+                        history.push(
+                          `/partners/${result?.organization?.short_name}`,
+                        );
+                      }}
+                    >
+                      <span
+                        key={result?.organization?.id}
+                        className="text-gray-500"
+                      >
+                        {result?.organization?.name}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+                <Link
+                  className="d-flex align-items-center bg-light-300 btn-wrapper"
+                  to="/search"
+                  onMouseDown={handleSubmitSearch}
+                >
+                  <span className="mr-2">
+                    <FormattedMessage
+                      id="discover.viewAllResult.text"
+                      defaultMessage="View all result"
+                    />
+                  </span>
+                  <Icon
+                    src={ArrowForward}
+                    style={{ height: '12px', width: '12px' }}
+                  />
+                </Link>
+              </div>
+          )}
           {/* temporary remove from ui */}
           {/* <Link className="banner-link pb-5" to="/">
             <span className="mr-2">How to become a partner</span>
             <Icon src={ArrowForward} />
           </Link> */}
-          <div className="banner-icons-wrapper">
+          <div className="banner-icons-wrapper mt-4">
             <div className="icon-wrapper">
               <Icon clas src={BookOpen} style={{ width: '36px' }} />
               <span>{partnersMetaData?.total_courses}</span>
