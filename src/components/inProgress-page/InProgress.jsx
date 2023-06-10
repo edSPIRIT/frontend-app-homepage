@@ -51,13 +51,33 @@ const InProgress = ({ intl }) => {
                     key={courseInfo?.course_details?.course_id}
                   />
                 ))}
-              {/*
-          <Pagination
-            className="d-flex justify-content-center"
-            paginationLabel="pagination navigation"
-            pageCount={20}
-            onPageSelect={() => console.log('page selected')}
-          /> */}
+              {/* <div className="pb-5.5 pt-4.5">
+                { 1 && (
+                <Pagination
+                  className="d-flex justify-content-center transform-rtl"
+                  paginationLabel="pagination navigation"
+                  pageCount={Math.ceil(userInprogressCourses?.count / 12)}
+                  onPageSelect={(e) => setPage(e)}
+                  currentPage={page}
+                  variant={isMobile ? 'reduced' : 'default'}
+                  buttonLabels={{
+                    previous: `${intl.formatMessage(
+                      messages['pagination.previous.button'],
+                    )}`,
+                    next: `${intl.formatMessage(
+                      messages['pagination.next.button'],
+                    )}`,
+                    page: `${intl.formatMessage(messages['pagination.page.text'])}`,
+                    currentPage: `${intl.formatMessage(
+                      messages['pagination.currentPage.text'],
+                    )}`,
+                    pageOfCount: `${intl.formatMessage(
+                      messages['pagination.of.text'],
+                    )}`,
+                  }}
+                />
+                )}
+              </div> */}
             </div>
             {/* <AdCard /> */}
           </div>

@@ -10,14 +10,12 @@ const Partners = () => {
   return (
     <section id="partners" className="partners-container">
       <div className="custom-container ">
-        <Link to="/partners">
-          <h2 className="d-flex justify-content-center mb-4">
-            <FormattedMessage
-              id="homePage.partners.title"
-              defaultMessage="Partners"
-            />
-          </h2>
-        </Link>
+        <h2 className="d-flex justify-content-center mb-4">
+          <FormattedMessage
+            id="homePage.partners.title"
+            defaultMessage="Partners"
+          />
+        </h2>
         <span className="d-flex justify-content-center mb-5 text-gray-500">
           <FormattedMessage
             id="homePage.partnersDescription.text"

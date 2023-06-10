@@ -9,11 +9,11 @@ import { setSearchSubject } from '../../../../../redux/slice/searchQuerySlice';
 import useGetSubjectsFacet from '../../../../../hooks/useGetSubjectsFacet';
 
 const SubjectFilter = () => {
-  const subject = useSelector((state) => state.searchFilters.subject);
+  const subjects = useSelector((state) => state.searchFilters.subjects);
   const dispatch = useDispatch();
 
   const [searchString, setSearchString] = useState('');
-  const { subjects, loading } = useGetSubjectsFacet(searchString);
+  const { subjectItems, loading } = useGetSubjectsFacet(searchString);
 
   return (
     <Dropdown autoClose="outside" className="facet-btn  mr-3" key="subject">
@@ -28,8 +28,8 @@ const SubjectFilter = () => {
             id="search.facets.subject"
             defaultMessage="Subject"
           />
-          {subject.length > 0 && (
-            <span className="font-weight-bold">: {subject.length} items</span>
+          {subjects.length > 0 && (
+            <span className="font-weight-bold">: {subjects.length} items</span>
           )}
         </p>
       </Dropdown.Toggle>
@@ -43,20 +43,20 @@ const SubjectFilter = () => {
           <Form.CheckboxSet
             name="color-two"
             onChange={(e) => {
-              if (subject.includes(e.target.value)) {
+              if (subjects.includes(e.target.value)) {
                 dispatch(
                   setSearchSubject(
-                    subject.filter((sub) => sub !== e.target.value),
+                    subjects.filter((sub) => sub !== e.target.value),
                   ),
                 );
               } else {
-                dispatch(setSearchSubject([...subject, e.target.value]));
+                dispatch(setSearchSubject([...subjects, e.target.value]));
               }
             }}
-            value={subject}
+            value={subjects}
           >
             <Menu>
-              {subjects?.map((item) => (
+              {subjectItems?.map((item) => (
                 <div
                   className="d-flex justify-content-between align-items-center item-wrapper"
                   key={item.slug}

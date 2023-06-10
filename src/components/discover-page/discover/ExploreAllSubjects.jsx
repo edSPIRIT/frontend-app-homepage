@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Button, Skeleton } from '@edx/paragon';
-import { ArrowForward } from '@edx/paragon/icons';
+import { Skeleton } from '@edx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
@@ -12,7 +11,7 @@ import {
   setSearchSubject,
 } from '../../../redux/slice/searchQuerySlice';
 
-const ExploreAllSubjects = ({ openAllSubjects }) => {
+const ExploreAllSubjects = () => {
   const history = useHistory();
   const { arrangedSubjects, loading } = useGetSubjects();
   const dispatch = useDispatch();
@@ -26,14 +25,6 @@ const ExploreAllSubjects = ({ openAllSubjects }) => {
             defaultMessage="Explore all subjects"
           />
         </h2>
-        <Button
-          variant="outline-primary"
-          iconAfter={ArrowForward}
-          className="view-all-btn"
-          onClick={() => history.push('/search')}
-        >
-          <FormattedMessage id="viewAll.text" defaultMessage="View All" />
-        </Button>
       </div>
       <div className="subjects-container pt-4">
         {loading
@@ -63,15 +54,6 @@ const ExploreAllSubjects = ({ openAllSubjects }) => {
               <span className="font-sm">{subject.title}</span>
             </div>
           ))}
-      </div>
-      <div className="d-flex justify-content-center">
-        <Button
-          className="view-all-courses-btn "
-          iconAfter={ArrowForward}
-          onClick={openAllSubjects}
-        >
-          <FormattedMessage id="viewAll.text" defaultMessage="View All" />
-        </Button>
       </div>
     </div>
   );

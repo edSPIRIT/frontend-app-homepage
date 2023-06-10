@@ -75,3 +75,9 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .result-total-count-wrapper {
+    display: none !important;
+  }
+}

@@ -5,12 +5,12 @@ import { KeyboardArrowDown } from '@edx/paragon/icons';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { setSearchPartner } from '../../../../../redux/slice/searchQuerySlice';
+import { setSearchPartners } from '../../../../../redux/slice/searchQuerySlice';
 import useGetPartnersFacet from '../../../../../hooks/useGetPartnersFacet';
 import messages from '../../../../../messages';
 
 const PartnerFilter = ({ intl }) => {
-  const partner = useSelector((state) => state.searchFilters.partner);
+  const partners = useSelector((state) => state.searchFilters.partners);
   const dispatch = useDispatch();
   const [searchString, setSearchString] = useState('');
   const { partnersData, loading } = useGetPartnersFacet(1, searchString);
@@ -28,8 +28,8 @@ const PartnerFilter = ({ intl }) => {
             id="search.facets.partner"
             defaultMessage="Partner"
           />
-          {partner.length > 0 && (
-            <span className="font-weight-bold">: {partner.length} items</span>
+          {partners.length > 0 && (
+            <span className="font-weight-bold">: {partners.length} items</span>
           )}
         </p>
       </Dropdown.Toggle>
@@ -46,17 +46,17 @@ const PartnerFilter = ({ intl }) => {
           <Form.CheckboxSet
             name="color-two"
             onChange={(e) => {
-              if (partner.includes(e.target.value)) {
+              if (partners.includes(e.target.value)) {
                 dispatch(
-                  setSearchPartner(
-                    partner.filter((part) => part !== e.target.value),
+                  setSearchPartners(
+                    partners.filter((part) => part !== e.target.value),
                   ),
                 );
               } else {
-                dispatch(setSearchPartner([...partner, e.target.value]));
+                dispatch(setSearchPartners([...partners, e.target.value]));
               }
             }}
-            value={partner}
+            value={partners}
           >
             <Menu>
               {partnersData?.map((item) => (

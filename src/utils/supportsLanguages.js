@@ -46,3 +46,8 @@ export const supportedLanguages = [
     released: true,
   },
 ];
+
+export const getLangCode = (langName) => supportedLanguages.find((lang) => lang.name === langName).code;
+export const getLangName = (langCode) => supportedLanguages.find((lang) => lang.code === langCode).name;
+export const codeToTitle = (arrayLang) => arrayLang?.map((langCode) => getLangName(langCode));
+export const titleToCode = (arrayLang) => arrayLang?.map((langName) => getLangCode(langName));

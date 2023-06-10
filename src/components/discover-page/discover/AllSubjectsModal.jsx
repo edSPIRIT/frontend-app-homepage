@@ -20,7 +20,7 @@ import useGetSubjectsFacet from '../../../hooks/useGetSubjectsFacet';
 
 const AllSubjectsModal = ({ isOpen, close, intl }) => {
   const [searchString, setSearchString] = useState('');
-  const { subjects, loading } = useGetSubjectsFacet(searchString);
+  const { subjectItems, loading } = useGetSubjectsFacet(searchString);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -66,7 +66,7 @@ const AllSubjectsModal = ({ isOpen, close, intl }) => {
                 <Skeleton width={175} height={20} />
               </div>
             ))
-          : subjects?.map((subject) => (
+          : subjectItems?.map((subject) => (
             // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
             <div
               className="mobile-subject-wrapper d-flex"

@@ -15,7 +15,7 @@ import { useEffect } from 'react';
 
 const MobileLearningTypeFilter = () => {
   const [isOpen, open, close] = useToggle(false);
-  const language = useSelector((state) => state.searchFilters.language_code);
+  const language = useSelector((state) => state.searchFilters.language_codes);
   //   const dispatch = useDispatch();
   const [languageValues, {
     add, remove, clear, set,
@@ -99,7 +99,7 @@ const MobileLearningTypeFilter = () => {
                 className="w-100"
                 onClick={() => {
                   // dispatch(resetSearchFilters());
-                //   dispatch(setSearchLanguageCode(languageValues));
+                //   dispatch(setSearchLanguageCodes(languageValues));
                   close();
                 }}
               >

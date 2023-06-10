@@ -16,19 +16,19 @@ const useGetEnrollmentList = () => {
   };
   const { data, isLoading } = useQuery('EnrollmentList', fetchEnrollmentList);
   return {
-    userCourseTitles: `${data?.reduce(
+    userCourseTitles: `${data?.results?.reduce(
       (acc, current) => `${acc}${current?.course_details?.course_name} `,
       '',
     )}`,
-    userCourseIds: data?.map((course) => course?.course_details?.course_id),
-    userInprogressCourses: data?.filter(
+    userCourseIds: data?.results?.map((course) => course?.course_details?.course_id),
+    userInprogressCourses: data?.results?.filter(
       (courseInfo) => courseInfo?.progress?.incomplete_count > 0,
     ),
-    userCompletedCourses: data?.filter(
+    userCompletedCourses: data?.results?.filter(
       (courseInfo) => courseInfo?.progress?.complete_count > 0
         && courseInfo?.progress?.incomplete_count === 0,
     ),
-    userCourses: data?.slice(0, 5),
+    userCourses: data?.results?.slice(0, 5),
     loading: isLoading,
   };
 };

@@ -9,7 +9,7 @@ import CourseCardNew from '../../shared/course-card/CourseCardNew';
 
 const PopularSubjectsOverview = () => {
   const history = useHistory();
-  const isMobile = useMediaQuery({ maxWidth: '1024px' });
+  const isMobile = useMediaQuery({ maxWidth: '1350px' });
 
   return (
     <div className="custom-container subjects-courses-wrapper pb-4.5">

@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState } from 'react';
-import { Icon, SearchField } from '@edx/paragon';
+import { Icon, SearchField, useMediaQuery } from '@edx/paragon';
 import { useDispatch } from 'react-redux';
 import { ArrowForward } from '@edx/paragon/icons';
 import {
@@ -15,10 +17,13 @@ import {
 import messages from '../../../messages';
 import useSearchSuggestions from '../../../hooks/useSearchSuggestions';
 import { addPage } from '../../../redux/slice/recentPagesSlice';
+import { setSearchModal } from '../../../redux/slice/searchModalSlice';
 
 const SearchBox = ({ intl }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const isMobile = useMediaQuery({ maxWidth: '768px' });
+
   const [searchSuggestionValue, setSearchSuggestionValue] = useState('');
   const { searchSuggestionsResults } = useSearchSuggestions(
     searchSuggestionValue,
@@ -32,10 +37,8 @@ const SearchBox = ({ intl }) => {
   };
 
   return (
-    <>
+    <div onClick={() => (isMobile ? dispatch(setSearchModal(true)) : null)}>
       <SearchField
-        // autoComplete="off"
-        autoComplete="false"
         className="discover-search-field"
         submitButtonLocation="external"
         onFocus={() => setIsFocused(true)}
@@ -95,7 +98,7 @@ const SearchBox = ({ intl }) => {
           </Link>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

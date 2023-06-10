@@ -3,10 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   search_string: '',
-  language_code: '',
+  language_codes: [],
   instructors: [],
-  partner: [],
-  subject: [],
+  partners: [],
+  subjects: [],
 };
 
 const searchSlice = createSlice({
@@ -16,33 +16,33 @@ const searchSlice = createSlice({
     setSearchString: (state, action) => {
       state.search_string = action.payload;
     },
-    setSearchLanguageCode: (state, action) => {
-      state.language_code = action.payload;
+    setSearchLanguageCodes: (state, action) => {
+      state.language_codes = action.payload;
     },
     setSearchInstructors: (state, action) => {
       state.instructors = action.payload;
     },
-    setSearchPartner: (state, action) => {
-      state.partner = action.payload;
+    setSearchPartners: (state, action) => {
+      state.partners = action.payload;
     },
     setSearchSubject: (state, action) => {
-      state.subject = action.payload;
+      state.subjects = action.payload;
     },
     resetSearchFilters: (state) => {
       state.search_string = '';
-      state.language_code = '';
+      state.language_codes = [];
       state.instructors = [];
-      state.partner = [];
-      state.subject = [];
+      state.partners = [];
+      state.subjects = [];
     },
   },
 });
 
 export const {
   setSearchString,
-  setSearchLanguageCode,
+  setSearchLanguageCodes,
   setSearchInstructors,
-  setSearchPartner,
+  setSearchPartners,
   setSearchSubject,
   resetSearchFilters,
 } = searchSlice.actions;

@@ -19,22 +19,18 @@ import {
   intlShape,
 } from '@edx/frontend-platform/i18n';
 import { useDispatch, useSelector } from 'react-redux';
-import useGetAllCourses from '../../../hooks/useGetAllCourses';
 import messages from '../../../messages';
-import SearchResults from './share/SearchResults';
 import { setCourseSortValue } from '../../../redux/slice/allCoursesSlice';
 import FilterModal from './mobile-search/FilterModal';
 import SearchFilteredResults from './share/SearchFilteredResults';
 import { removeEmptyFilters } from '../../../utils/cleanedFilters';
-import { isObjectEmpty } from '../../../utils/isObjectEmpty';
 import useSearchResults from '../../../hooks/useSearchResults';
 
 const MobileSearch = ({ intl }) => {
   const searchQueryValue = useSelector((state) => state.searchFilters);
   const cleanedFilters = removeEmptyFilters(searchQueryValue);
   const history = useHistory();
-  const { allCoursesData, isLoading } = useGetAllCourses();
-  const { searchResultsCount } = useSearchResults();
+  const { searchResultsCount, isLoading } = useSearchResults();
 
   const sortState = useSelector((state) => state.sortAllCourses.value);
   const dispatch = useDispatch();
@@ -99,19 +95,16 @@ const MobileSearch = ({ intl }) => {
       <div className="mobile-search-container">
         <div className="d-flex px-4.5 py-3 align-items-center back-btn-wrapper">
           <Icon src={ArrowBack} onClick={history.goBack} className="mr-1.5" />
-          {searchQueryValue.search_string ? (
-            <p className="d-flex align-items-center d-flex justify-content-center w-100">
-              <h4 className="mr-1">{searchQueryValue.search_string}</h4>
-              <span>{`(${searchResultsCount})`}</span>
-            </p>
-          ) : (
-            <p className="d-flex align-items-center d-flex justify-content-center w-100">
-              <h4 className="mr-1">
+          <p className="d-flex align-items-center d-flex justify-content-center w-100">
+            <h4 className="mr-1">
+              {searchQueryValue.search_string ? (
+                searchQueryValue.search_string
+              ) : (
                 <FormattedMessage id="courses.text" defaultMessage="Courses" />
-              </h4>
-              <span>{`(${allCoursesData?.count})`}</span>
-            </p>
-          )}
+              )}
+            </h4>
+            <span>{`(${searchResultsCount})`}</span>
+          </p>
         </div>
         <div className="font-sm mobile-filter-sort-wrapper">
           <div
@@ -166,16 +159,17 @@ const MobileSearch = ({ intl }) => {
               ) : (
                 <span className="font-weight-bold">
                   {' '}
-                  {allCoursesData?.count}
+                  {/* {!isObjectEmpty(cleanedFilters) ? searchResultsCount : allCoursesData?.count} */}
+                  {searchResultsCount}
                 </span>
               )}
             </p>
           </div>
-          {!isObjectEmpty(cleanedFilters) ? (
-            <SearchFilteredResults />
-          ) : (
+          {/* {!isObjectEmpty(cleanedFilters) ? ( */}
+          <SearchFilteredResults />
+          {/* ) : (
             <SearchResults />
-          )}
+          )} */}
         </div>
       </div>
     </>

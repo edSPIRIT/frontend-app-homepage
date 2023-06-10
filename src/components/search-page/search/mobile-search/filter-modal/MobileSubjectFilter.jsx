@@ -20,14 +20,14 @@ import useGetSubjectsFacet from '../../../../../hooks/useGetSubjectsFacet';
 
 const MobileSubjectFilter = () => {
   const [isOpen, open, close] = useToggle(false);
-  const subject = useSelector((state) => state.searchFilters.subject);
+  const subjects = useSelector((state) => state.searchFilters.subjects);
   const dispatch = useDispatch();
   const [subjectValues, {
     add, remove, clear, set,
   }] = useCheckboxSetValues([]);
 
   const [searchString, setSearchString] = useState('');
-  const { subjects, loading } = useGetSubjectsFacet(searchString);
+  const { subjectItems, loading } = useGetSubjectsFacet(searchString);
 
   const handleChange = (e) => {
     if (e.target.checked) {
@@ -39,11 +39,11 @@ const MobileSubjectFilter = () => {
 
   useEffect(() => {
     clear();
-    if (subject.length > 0) {
-      set(subject);
+    if (subjects.length > 0) {
+      set(subjects);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subject, isOpen]);
+  }, [subjects, isOpen]);
 
   return (
     <>
@@ -90,7 +90,7 @@ const MobileSubjectFilter = () => {
                 value={subjectValues}
               >
                 <Menu>
-                  {subjects?.map((item) => (
+                  {subjectItems?.map((item) => (
                     <div
                       className="d-flex justify-content-between align-items-center item-wrapper"
                       key={item.id}
@@ -132,8 +132,8 @@ const MobileSubjectFilter = () => {
             id="search.facets.subject"
             defaultMessage="Subject"
           />
-          {subject.length > 0 && (
-            <span className="font-weight-bold ml-1 text-brand-500">{`(${subject.length})`}</span>
+          {subjects.length > 0 && (
+            <span className="font-weight-bold ml-1 text-brand-500">{`(${subjects.length})`}</span>
           )}
         </p>
         <Icon src={ArrowForwardIos} />

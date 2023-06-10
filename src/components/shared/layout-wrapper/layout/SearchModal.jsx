@@ -35,6 +35,7 @@ const SearchModal = ({ intl }) => {
     dispatch(setSearchString(searchSuggestionValue));
     dispatch(setSearchModal(false));
     setSearchSuggestionValue('');
+    history.push('/search');
   };
 
   useEffect(() => {
@@ -71,7 +72,7 @@ const SearchModal = ({ intl }) => {
         />
       </div>
       {searchSuggestionsResults?.length > 0 && (
-        <div className="search-result-modal-wrapper p-4">
+        <div className="search-result-modal-wrapper px-4 pt-3">
           {searchSuggestionsResults?.map((result) => (
             <Link
               key={result?.data?.id}
@@ -101,7 +102,7 @@ const SearchModal = ({ intl }) => {
         </div>
       )}
       {recentSearch.length > 0 && (
-        <div className="p-4 recent-view-wrapper">
+        <div className="px-4 pt-4 recent-view-wrapper">
           <div className="d-flex justify-content-between align-items-center mb-4">
             <h4>
               <FormattedMessage
@@ -148,7 +149,7 @@ const SearchModal = ({ intl }) => {
         </div>
       )}
       <div className="d-flex flex-column px-4">
-        <h4 className="mb-3">
+        <h4 className="mb-3 pt-4">
           <FormattedMessage id="searchModal.trendingKeywords.text" defaultMessage="Trending keywords" />
         </h4>
         <div>

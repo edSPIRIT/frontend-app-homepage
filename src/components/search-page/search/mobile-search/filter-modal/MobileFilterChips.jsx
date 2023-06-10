@@ -4,9 +4,12 @@ import { CloseSmall } from '@edx/paragon/icons';
 import { Button } from '@edx/paragon';
 import {
   setSearchInstructors,
-  setSearchPartner,
+  setSearchLanguageCodes,
+  setSearchPartners,
+  setSearchString,
   setSearchSubject,
 } from '../../../../../redux/slice/searchQuerySlice';
+import { getLangName } from '../../../../../utils/supportsLanguages';
 
 const MobileFilterChips = () => {
   const filters = useSelector((state) => state.searchFilters);
@@ -15,9 +18,10 @@ const MobileFilterChips = () => {
     <div className="bg-light-200 py-3">
       <div className="custom-container align-items-center badge-wrapper mobile-badge-wrapper">
         {(filters.instructors.length > 0
-          || filters.partner.length > 0
-          || filters.subject.length > 0
-          || filters.language_code.length > 0) && (
+          || filters.search_string.length > 0
+          || filters.partners.length > 0
+          || filters.subjects.length > 0
+          || filters.language_codes.length > 0) && (
           <h5 className="mr-3 font-sm text-gray-500 d-inline">
             <FormattedMessage
               id="filteredBy.text"
@@ -25,8 +29,20 @@ const MobileFilterChips = () => {
             />
           </h5>
         )}
-        {filters.subject.length > 0
-          && filters.subject.map((badge) => (
+        {filters.search_string.length > 0
+          && (
+          <Button
+            variant="outline-light"
+            size="sm"
+            iconAfter={CloseSmall}
+            className="badge-btn mr-2"
+            onClick={() => dispatch(setSearchString(''))}
+          >
+            {filters.search_string}
+          </Button>
+          )}
+        {filters.subjects.length > 0
+          && filters.subjects.map((badge) => (
             <Button
               variant="outline-light"
               size="sm"
@@ -35,15 +51,15 @@ const MobileFilterChips = () => {
               key={badge}
               onClick={() => dispatch(
                 setSearchSubject(
-                  filters.subject.filter((sub) => sub !== badge),
+                  filters.subjects.filter((sub) => sub !== badge),
                 ),
               )}
             >
               {badge}
             </Button>
           ))}
-        {filters.partner.length > 0
-          && filters.partner.map((badge) => (
+        {filters.partners.length > 0
+          && filters.partners.map((badge) => (
             <Button
               variant="outline-light"
               size="sm"
@@ -51,8 +67,8 @@ const MobileFilterChips = () => {
               className="badge-btn mr-2"
               key={badge}
               onClick={() => dispatch(
-                setSearchPartner(
-                  filters.partner.filter((partner) => partner !== badge),
+                setSearchPartners(
+                  filters.partners.filter((partner) => partner !== badge),
                 ),
               )}
             >
@@ -78,21 +94,21 @@ const MobileFilterChips = () => {
               {badge}
             </Button>
           ))}
-        {filters.language_code.length > 0
-          && filters.language_code.map((badge) => (
+        {filters.language_codes.length > 0
+          && filters.language_codes.map((langCode) => (
             <Button
               variant="outline-light"
               size="sm"
               iconAfter={CloseSmall}
               className="badge-btn mr-2"
-              key={badge}
+              key={langCode}
               onClick={() => dispatch(
-                setSearchInstructors(
-                  filters.language_code.filter((lang) => lang !== badge),
+                setSearchLanguageCodes(
+                  filters.language_codes.filter((lang) => lang !== langCode),
                 ),
               )}
             >
-              {badge}
+              {getLangName(langCode)}
             </Button>
           ))}
       </div>

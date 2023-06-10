@@ -16,7 +16,7 @@ const CourseInfoButtonStatus = ({ courseMetaData }) => {
   } = useEnrollClickHandler(courseMetaData);
   if (coursesEnrollLoading || enrollLoading) {
     return (
-      <Button variant="brand" href="#course" className="mb-3 enroll-btn">
+      <Button variant="brand" className="mb-3 enroll-btn">
         <Spinner animation="border" />
       </Button>
     );

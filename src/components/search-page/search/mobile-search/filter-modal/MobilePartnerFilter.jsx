@@ -15,19 +15,19 @@ import { ArrowBack, ArrowForwardIos } from '@edx/paragon/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useEffect, useState } from 'react';
-import { setSearchPartner } from '../../../../../redux/slice/searchQuerySlice';
+import { setSearchPartners } from '../../../../../redux/slice/searchQuerySlice';
 import useGetPartnersFacet from '../../../../../hooks/useGetPartnersFacet';
 
 const MobilePartnerFilter = () => {
   const [isOpen, open, close] = useToggle(false);
-  const partner = useSelector((state) => state.searchFilters.partner);
+  const partners = useSelector((state) => state.searchFilters.partners);
   const dispatch = useDispatch();
   const [partnerValues, {
     add, remove, clear, set,
   }] = useCheckboxSetValues([]);
 
   const [searchString, setSearchString] = useState('');
-  const { partnersData, loading } = useGetPartnersFacet(searchString);
+  const { partnersData, loading } = useGetPartnersFacet(1, searchString);
 
   const handleChange = (e) => {
     if (e.target.checked) {
@@ -39,11 +39,11 @@ const MobilePartnerFilter = () => {
 
   useEffect(() => {
     clear();
-    if (partner.length > 0) {
-      set(partner);
+    if (partners.length > 0) {
+      set(partners);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [partner, isOpen]);
+  }, [partners, isOpen]);
 
   return (
     <>
@@ -110,7 +110,7 @@ const MobilePartnerFilter = () => {
                 className="w-100"
                 onClick={() => {
                   // dispatch(resetSearchFilters());
-                  dispatch(setSearchPartner(partnerValues));
+                  dispatch(setSearchPartners(partnerValues));
                   close();
                 }}
               >
@@ -132,8 +132,8 @@ const MobilePartnerFilter = () => {
             id="search.facets.partner"
             defaultMessage="Partner"
           />
-          {partner.length > 0 && (
-            <span className="font-weight-bold ml-1 text-brand-500">{`(${partner.length})`}</span>
+          {partners.length > 0 && (
+            <span className="font-weight-bold ml-1 text-brand-500">{`(${partners.length})`}</span>
           )}
         </p>
         <Icon src={ArrowForwardIos} />

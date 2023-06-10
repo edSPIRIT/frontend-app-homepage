@@ -7,7 +7,7 @@ import CourseCard from '../../shared/course-card/CourseCard';
 import { COURSES_INFO } from '../../../utils/constants';
 import {
   resetSearchFilters,
-  setSearchPartner,
+  setSearchPartners,
 } from '../../../redux/slice/searchQuerySlice';
 import useGetPartner from '../../../hooks/useGetPartner';
 
@@ -44,7 +44,7 @@ const PartnerCourses = () => {
           iconAfter={ArrowForward}
           onClick={() => {
             dispatch(resetSearchFilters());
-            dispatch(setSearchPartner([partnerData?.organization.name]));
+            dispatch(setSearchPartners([partnerData?.organization.name]));
             history.push('/search');
           }}
         >

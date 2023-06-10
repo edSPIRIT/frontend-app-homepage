@@ -32,7 +32,7 @@ const useGetSubjectsFacet = (searchString) => {
   );
 
   return {
-    subjects: data?.items,
+    subjectItems: data?.items,
     coursesCounter: data?.course_counter,
     loading: isLoading,
   };

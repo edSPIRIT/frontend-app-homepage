@@ -2,9 +2,12 @@ import { Chip } from '@edx/paragon';
 import classNames from 'classnames';
 
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { useEffect } from 'react';
+import { useLocation } from 'react-router';
 import SearchBox from './SearchBox';
+import { resetSearchFilters } from '../../../redux/slice/searchQuerySlice';
 
 const DiscoverBanner = () => {
   const trendingChips = ['Python', 'Excel', 'Data Sciences', 'Marketing'];
@@ -12,7 +15,15 @@ const DiscoverBanner = () => {
   const searchStringValue = useSelector(
     (state) => state.searchFilters.search_string,
   );
+  const location = useLocation();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (location.pathname === '/discover') {
+      dispatch(resetSearchFilters());
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname]);
   return (
     <div className="search-header-wrapper">
       <div className="custom-container  ">

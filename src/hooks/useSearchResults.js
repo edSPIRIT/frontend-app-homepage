@@ -3,7 +3,6 @@ import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { removeEmptyFilters } from '../utils/cleanedFilters';
-import { isObjectEmpty } from '../utils/isObjectEmpty';
 
 const useSearchResults = () => {
   const filters = useSelector((state) => state.searchFilters);
@@ -25,7 +24,7 @@ const useSearchResults = () => {
   const { data, isLoading } = useQuery(
     ['SearchResults', cleanedFilters],
     () => fetchSearchResults(cleanedFilters),
-    { enabled: !isObjectEmpty(cleanedFilters) },
+    // { enabled: !isObjectEmpty(cleanedFilters) },
   );
 
   return {

@@ -11,15 +11,20 @@ import {
   useToggle,
 } from '@edx/paragon';
 import { ArrowBack, ArrowForwardIos } from '@edx/paragon/icons';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useEffect } from 'react';
-import { LANGUAGE_FILTER_ITEMS } from '../../../../../utils/constants';
+import useGetActiveLangs from '../../../../../hooks/useGetActiveLangs';
+import { codeToTitle, getLangCode } from '../../../../../utils/supportsLanguages';
+import { setSearchLanguageCodes } from '../../../../../redux/slice/searchQuerySlice';
 
 const MobileLanguageFilter = () => {
   const [isOpen, open, close] = useToggle(false);
-  const language = useSelector((state) => state.searchFilters.language_code);
-  //   const dispatch = useDispatch();
+  const language = useSelector((state) => state.searchFilters.language_codes);
+  const dispatch = useDispatch();
+
+  const { activeLangs } = useGetActiveLangs();
+
   const [languageValues, {
     add, remove, clear, set,
   }] = useCheckboxSetValues(
@@ -27,9 +32,9 @@ const MobileLanguageFilter = () => {
   );
   const handleChange = (e) => {
     if (e.target.checked) {
-      add(e.target.value);
+      add(getLangCode(e.target.value));
     } else {
-      remove(e.target.value);
+      remove(getLangCode(e.target.value));
     }
   };
   useEffect(() => {
@@ -77,18 +82,18 @@ const MobileLanguageFilter = () => {
               <Form.CheckboxSet
                 name="color-two"
                 onChange={(e) => handleChange(e)}
-                value={languageValues}
+                value={codeToTitle(languageValues)}
               >
                 <Menu>
-                  {LANGUAGE_FILTER_ITEMS.map((item) => (
+                  {activeLangs?.map((item) => (
                     <div
                       className="d-flex justify-content-between align-items-center item-wrapper"
-                      key={item.id}
+                      key={item.code}
                     >
-                      <MenuItem as={Form.Checkbox} value={item.title}>
-                        {item.title}
+                      <MenuItem as={Form.Checkbox} value={item.name}>
+                        {item.name}
                       </MenuItem>
-                      <span className="pr-4">{item.count}</span>
+                      {/* <span className="pr-4">{item.count}</span> */}
                     </div>
                   ))}
                 </Menu>
@@ -100,7 +105,7 @@ const MobileLanguageFilter = () => {
                 className="w-100"
                 onClick={() => {
                   // dispatch(resetSearchFilters());
-                //   dispatch(setSearchLanguageCode(languageValues));
+                  dispatch(setSearchLanguageCodes(languageValues));
                   close();
                 }}
               >

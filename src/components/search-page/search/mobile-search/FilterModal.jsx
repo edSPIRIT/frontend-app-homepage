@@ -9,8 +9,6 @@ import { resetSearchFilters } from '../../../../redux/slice/searchQuerySlice';
 import MobilePartnerFilter from './filter-modal/MobilePartnerFilter';
 import MobileInstructorFilter from './filter-modal/MobileInstructorFilter';
 import MobileLanguageFilter from './filter-modal/MobileLanguageFilter';
-import MobileAvailabilityFilter from './filter-modal/MobileAvailabilityFilter';
-import MobileLearningTypeFilter from './filter-modal/MobileLearningTypeFilter';
 
 const FilterModal = ({ isOpenFilter, closeFilter }) => {
   const dispatch = useDispatch();
@@ -44,17 +42,17 @@ const FilterModal = ({ isOpenFilter, closeFilter }) => {
         </Button>
       </div>
       {(filters.instructors.length > 0
-        || filters.partner.length > 0
-        || filters.subject.length > 0
-        || filters.language_code.length > 0) && <MobileFilterChips />}
+        || filters.search_string.length > 0
+        || filters.partners.length > 0
+        || filters.subjects.length > 0
+        || filters.language_codes.length > 0) && <MobileFilterChips />}
       <div className="d-flex flex-column px-4 py-2.5 mobile-facets-wrapper ">
         <MobileSubjectFilter />
         <MobilePartnerFilter />
         <MobileInstructorFilter />
         <MobileLanguageFilter />
-        <MobileAvailabilityFilter />
-        <MobileLearningTypeFilter />
-
+        {/* <MobileAvailabilityFilter />
+        <MobileLearningTypeFilter /> */}
       </div>
     </FullscreenModal>
   );

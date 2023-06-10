@@ -1,19 +1,20 @@
-import { Button, Dropdown, Form } from '@edx/paragon';
-import { CloseSmall, KeyboardArrowDown } from '@edx/paragon/icons';
+import { Button } from '@edx/paragon';
+import { CloseSmall } from '@edx/paragon/icons';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useDispatch, useSelector } from 'react-redux';
 import SubjectFilter from './search-facets/SubjectFilter';
 import PartnerFilter from './search-facets/PartnerFilter';
 import InstructorsFilter from './search-facets/InstructorsFilter';
 import LanguageFilter from './search-facets/LanguageFilter';
-import AvailabilityFilter from './search-facets/AvailabilityFilter';
 import {
   resetSearchFilters,
   setSearchInstructors,
-  setSearchLanguageCode,
-  setSearchPartner,
+  setSearchLanguageCodes,
+  setSearchPartners,
+  setSearchString,
   setSearchSubject,
 } from '../../../../redux/slice/searchQuerySlice';
+import { getLangName } from '../../../../utils/supportsLanguages';
 
 const SearchFacets = () => {
   const filters = useSelector((state) => state.searchFilters);
@@ -26,9 +27,9 @@ const SearchFacets = () => {
         <PartnerFilter />
         <InstructorsFilter />
         <LanguageFilter />
-        <AvailabilityFilter />
+        {/* <AvailabilityFilter /> */}
 
-        <Dropdown autoClose="outside" className="facet-btn">
+        {/* <Dropdown autoClose="outside" className="facet-btn">
           <Dropdown.Toggle
             id="{title}-{variant}"
             variant="outline-primary"
@@ -66,14 +67,15 @@ const SearchFacets = () => {
               </Form.RadioSet>
             </Form.Group>
           </Dropdown.Menu>
-        </Dropdown>
+        </Dropdown> */}
       </div>
 
       <div className="custom-container badge-wrapper pb-4">
         {(filters.instructors.length > 0
-          || filters.partner.length > 0
-          || filters.subject.length > 0
-          || filters.language_code.length > 0) && (
+          || filters.search_string.length > 0
+          || filters.partners.length > 0
+          || filters.subjects.length > 0
+          || filters.language_codes.length > 0) && (
           <span className="mr-3 font-sm">
             <FormattedMessage
               id="filteredBy.text"
@@ -81,8 +83,19 @@ const SearchFacets = () => {
             />
           </span>
         )}
-        {filters.subject.length > 0
-          && filters.subject.map((badge) => (
+        {filters.search_string.length > 0 && (
+          <Button
+            variant="outline-light"
+            size="sm"
+            iconAfter={CloseSmall}
+            className="badge-btn mr-2"
+            onClick={() => dispatch(setSearchString(''))}
+          >
+            {filters.search_string}
+          </Button>
+        )}
+        {filters.subjects.length > 0
+          && filters.subjects.map((badge) => (
             <Button
               variant="outline-light"
               size="sm"
@@ -91,15 +104,15 @@ const SearchFacets = () => {
               key={badge}
               onClick={() => dispatch(
                 setSearchSubject(
-                  filters.subject.filter((sub) => sub !== badge),
+                  filters.subjects.filter((sub) => sub !== badge),
                 ),
               )}
             >
               {badge}
             </Button>
           ))}
-        {filters.partner.length > 0
-          && filters.partner.map((badge) => (
+        {filters.partners.length > 0
+          && filters.partners.map((badge) => (
             <Button
               variant="outline-light"
               size="sm"
@@ -107,8 +120,8 @@ const SearchFacets = () => {
               className="badge-btn mr-2"
               key={badge}
               onClick={() => dispatch(
-                setSearchPartner(
-                  filters.partner.filter((partner) => partner !== badge),
+                setSearchPartners(
+                  filters.partners.filter((partner) => partner !== badge),
                 ),
               )}
             >
@@ -134,28 +147,29 @@ const SearchFacets = () => {
               {badge}
             </Button>
           ))}
-        {filters.language_code.length > 0
-          && filters.language_code.map((badge) => (
+        {filters.language_codes.length > 0
+          && filters.language_codes.map((langCode) => (
             <Button
               variant="outline-light"
               size="sm"
               iconAfter={CloseSmall}
               className="badge-btn mr-2"
-              key={badge}
+              key={langCode}
               onClick={() => dispatch(
-                setSearchLanguageCode(
-                  filters.language_code.filter((lang) => lang !== badge),
+                setSearchLanguageCodes(
+                  filters.language_codes.filter((lang) => lang !== langCode),
                 ),
               )}
             >
-              {badge}
+              {getLangName(langCode)}
             </Button>
           ))}
 
         {(filters.instructors.length > 0
-          || filters.partner.length > 0
-          || filters.subject.length > 0
-          || filters.language_code.length > 0) && (
+          || filters.search_string.length > 0
+          || filters.partners.length > 0
+          || filters.subjects.length > 0
+          || filters.language_codes.length > 0) && (
           <Button
             variant="tertiary"
             size="sm"

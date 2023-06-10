@@ -5,21 +5,25 @@ import CourseCardSkeleton from '../../../shared/skeleton/CourseCardSkeleton';
 import CourseCardNew from '../../../shared/course-card/CourseCardNew';
 import useSearchResults from '../../../../hooks/useSearchResults';
 import noResult from '../../../../assets/noResult.svg';
+import SearchSortWrapper from './search-result/SearchSortWrapper';
 
 const SearchFilteredResults = () => {
   const { searchResults, searchResultsCount, isLoading } = useSearchResults();
   return (
     <>
-      <p className="pt-4.5 pb-4">
-        <span className="font-sm text-gray-500">
-          <FormattedMessage id="total.text" defaultMessage="Total:" />
-        </span>
-        {isLoading ? (
-          <Skeleton className="ml-1" width={28} height={20} />
-        ) : (
-          <span className="font-weight-bold"> {searchResultsCount}</span>
-        )}
-      </p>
+      <div className="pt-4.5 pb-4 result-total-count-wrapper d-flex justify-content-between align-items-center">
+        <p>
+          <span className="font-sm text-gray-500">
+            <FormattedMessage id="total.text" defaultMessage="Total:" />
+          </span>
+          {isLoading ? (
+            <Skeleton className="ml-1" width={28} height={20} />
+          ) : (
+            <span className="font-weight-bold"> {searchResultsCount}</span>
+          )}
+        </p>
+        <SearchSortWrapper />
+      </div>
       {searchResultsCount === 0 && (
         <div className="d-flex flex-column justify-content-center align-items-center">
           <div className="img-noResult-wrapper mb-2">

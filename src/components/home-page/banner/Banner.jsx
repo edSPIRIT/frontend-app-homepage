@@ -1,29 +1,17 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import {
-  Icon,
-  Image,
-  SearchField,
-  Skeleton,
-  useMediaQuery,
-} from '@edx/paragon';
+import { Icon, Image, Skeleton } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import { Link } from 'react-router-dom';
 import {
   FormattedMessage,
-  injectIntl,
-  intlShape,
 } from '@edx/frontend-platform/i18n';
-import { useDispatch } from 'react-redux';
 import useGetBanner from '../../../hooks/useGetBanner';
 import Highlighted from './Highlighted';
-import messages from '../../../messages';
 import defaultBanner from '../../../assets/default-banner.png';
-import { setSearchModal } from '../../../redux/slice/searchModalSlice';
+import SearchBox from '../../shared/discover-banner/SearchBox';
 
-const Banner = ({ intl }) => {
-  const isMobile = useMediaQuery({ maxWidth: '768px' });
-  const dispatch = useDispatch();
+const Banner = () => {
   const {
     title, highlightedWord, description, image, isLoading,
   } = useGetBanner();
@@ -43,19 +31,7 @@ const Banner = ({ intl }) => {
           ) : (
             <p className="banner-desc">{description}</p>
           )}
-          <div
-            onClick={() => (isMobile ? dispatch(setSearchModal(true)) : null)}
-          >
-            <SearchField
-              className="hero-search my-4"
-              submitButtonLocation="external"
-              onSubmit={() => (isMobile ? dispatch(setSearchModal(true)) : null)}
-              placeholder={intl.formatMessage(
-                messages['header.search.placeholder'],
-              )}
-              buttonText={intl.formatMessage(messages['search.button.text'])}
-            />
-          </div>
+          <SearchBox />
           <Link className="banner-link mt-4" to="/discover">
             <span className="mr-2">
               <FormattedMessage
@@ -82,8 +58,4 @@ const Banner = ({ intl }) => {
   );
 };
 
-Banner.propTypes = {
-  intl: intlShape.isRequired,
-};
-
-export default injectIntl(Banner);
+export default Banner;
