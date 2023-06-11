@@ -1,24 +1,25 @@
-import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useParams } from 'react-router';
 import classNames from 'classnames';
-import Scrollspy from 'react-scrollspy';
 import { Link as RouterLink } from 'react-router-dom';
-import { Link } from 'react-scroll';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import CourseInfoSideBar from './CourseInfoSideBar';
-import CourseInfoTopDesc from './CourseInfoTopDesc';
-import AboutCourse from './AboutCourse';
-import WhatYouLearn from './WhatYouLearn';
-import Requirements from './Requirements';
-import CourseContent from './CourseContent';
-import CourseInstructors from './CourseInstructors';
+import { useMediaQuery } from '@edx/paragon';
+import CourseInfoSideBar from './desktop-course-info/CourseInfoSideBar';
+import CourseInfoTopDesc from './desktop-course-info/CourseInfoTopDesc';
+import AboutCourse from './share/AboutCourse';
+import WhatYouLearn from './share/WhatYouLearn';
+import Requirements from './share/Requirements';
+import CourseContent from './share/CourseContent';
+import CourseInstructors from './desktop-course-info/CourseInstructors';
 import useGetCourseMetaData from '../../../hooks/useGetCourseMetaData';
+import CourseNavItems from './desktop-course-info/CourseNavItems';
+import MobileCourseInstructors from './mobile-course-info/MobileCourseInstructors';
 
 const DesktopCourseInfo = () => {
   const { ref: navTopRef, inView: isTopOnScreen } = useInView();
   const { slug } = useParams();
   const { courseMetaData, loading } = useGetCourseMetaData(slug);
+  const isTablet = useMediaQuery({ maxWidth: '1024px' });
+
   return (
     <section className="custom-container  pb-6">
       <CourseInfoSideBar courseMetaData={courseMetaData} loading={loading} />
@@ -42,66 +43,8 @@ const DesktopCourseInfo = () => {
           {courseMetaData?.additional_metadata?.org}
         </RouterLink>
       </div>
-      <div
-        className={classNames('sticky-nav-wrapper sticky-nav-wrapper-infinite-border', {
-          'sticky-nav': !isTopOnScreen && !loading,
-        })}
-      >
-        <Scrollspy
-          items={[
-            'about-course',
-            'what-you-learn',
-            'requirement',
-            'course-content',
-            'instructors',
-          ]}
-          currentClassName="active-item"
-          offset={-160}
-        >
-          <li>
-            <Link to="about-course" smooth offset={-120}>
-              <FormattedMessage
-                id="courseInfo.tab.about.text"
-                defaultMessage="About"
-              />
-            </Link>
-          </li>
-          <li>
-            <Link to="what-you-learn" smooth offset={-160}>
-              <FormattedMessage
-                id="courseInfo.tab.whatYouWillLearn.text"
-                defaultMessage="What you'll learn"
-              />
-            </Link>
-          </li>
+      <CourseNavItems isTopOnScreen={isTopOnScreen} loading={loading} />
 
-          <li>
-            <Link to="requirement" smooth offset={-120}>
-              <FormattedMessage
-                id="courseInfo.tab.requirements.text"
-                defaultMessage="Requirements"
-              />
-            </Link>
-          </li>
-
-          <li>
-            <Link to="course-content" smooth offset={-160}>
-              <FormattedMessage
-                id="courseInfo.tab.courseContent.text"
-                defaultMessage="Course content"
-              />
-            </Link>
-          </li>
-          <li>
-            <Link to="instructors" smooth offset={-160}>
-              <FormattedMessage
-                id="courseInfo.tab.instructors.text"
-                defaultMessage="Instructors"
-              />
-            </Link>
-          </li>
-        </Scrollspy>
-      </div>
       <div className="course-content-container">
         <AboutCourse aboutCourse={courseMetaData?.about} loading={loading} />
         <WhatYouLearn
@@ -112,10 +55,17 @@ const DesktopCourseInfo = () => {
           <Requirements courseMetaData={courseMetaData} loading={loading} />
         )}
         <CourseContent courseId={courseMetaData?.course_id} loading={loading} />
-        <CourseInstructors
-          instructors={courseMetaData?.instructors}
-          loading={loading}
-        />
+        {isTablet ? (
+          <MobileCourseInstructors
+            instructors={courseMetaData?.instructors}
+            loading={loading}
+          />
+        ) : (
+          <CourseInstructors
+            instructors={courseMetaData?.instructors}
+            loading={loading}
+          />
+        )}
       </div>
     </section>
   );

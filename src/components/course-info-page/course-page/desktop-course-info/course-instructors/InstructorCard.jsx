@@ -3,7 +3,7 @@ import { ArrowForward, BookOpen, People } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import userAvatar from '../../../../assets/place-holders/user-placeholder.svg';
+import userAvatar from '../../../../../assets/place-holders/user-placeholder.svg';
 
 const InstructorCard = ({ instructor }) => (
   <Link

@@ -3,8 +3,8 @@ import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { Button, Skeleton } from '@edx/paragon';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import useGetCourseInstructors from '../../../hooks/useGetCourseInstructors';
-import useGetEnrollmentList from '../../../hooks/useGetEnrollmentList';
+import useGetCourseInstructors from '../../../../hooks/useGetCourseInstructors';
+import useGetEnrollmentList from '../../../../hooks/useGetEnrollmentList';
 import InstructorCard from './course-instructors/InstructorCard';
 
 const CourseInstructors = ({ instructors, loading }) => (

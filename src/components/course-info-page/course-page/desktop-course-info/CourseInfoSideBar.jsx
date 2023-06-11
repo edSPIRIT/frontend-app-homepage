@@ -9,10 +9,10 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
-import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
-import coverPlaceholder from '../../../assets/place-holders/cover-course-place-holder.svg';
-import CourseInfoButtonStatus from '../shared/CourseInfoButtonStatus';
-import messages from '../../../messages';
+import logoPlaceholder from '../../../../assets/place-holders/org-logo-place-holder.svg';
+import coverPlaceholder from '../../../../assets/place-holders/cover-course-place-holder.svg';
+import CourseInfoButtonStatus from '../share/CourseInfoButtonStatus';
+import messages from '../../../../messages';
 
 const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => (
   <div className="course-info-side-wrapper">

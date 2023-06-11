@@ -22,7 +22,8 @@ const useGetEnrollmentList = () => {
     )}`,
     userCourseIds: data?.results?.map((course) => course?.course_details?.course_id),
     userInprogressCourses: data?.results?.filter(
-      (courseInfo) => courseInfo?.progress?.incomplete_count > 0,
+      (courseInfo) => !(courseInfo?.progress?.complete_count > 0
+        && courseInfo?.progress?.incomplete_count === 0),
     ),
     userCompletedCourses: data?.results?.filter(
       (courseInfo) => courseInfo?.progress?.complete_count > 0

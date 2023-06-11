@@ -21,7 +21,7 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
-import messages from '../../../messages';
+import messages from '../../../../messages';
 
 const CourseInfoTopDesc = ({
   courseMetaData, loading, navTopRef, intl,

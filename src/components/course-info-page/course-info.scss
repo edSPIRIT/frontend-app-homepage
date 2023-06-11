@@ -122,7 +122,42 @@
 .nav-container-top-trigger {
   height: 1px;
 }
+.dropdown-course-nav-container {
+  border-bottom: unset !important;
+  .active-item {
+    .dropdown-menu {
+      background-color: unset !important;
 
+      .active {
+        background-color: unset !important;
+      }
+    }
+  }
+  .show {
+    .btn {
+      background-color: $light-400 !important;
+    }
+  }
+  .btn {
+    background-color: $light-300 !important;
+    width: 44px;
+    height: 44px;
+    .pgn__icon {
+      margin: 0;
+      width: unset;
+    }
+  }
+  .dropdown-menu {
+    .active {
+      background-color: $light-300;
+    }
+  }
+}
+.drop-items-wrapper {
+  a {
+    padding: 6px 16px;
+  }
+}
 .sticky-nav-wrapper {
   position: sticky;
   top: 0;
@@ -133,7 +168,7 @@
     margin-bottom: unset;
     list-style: none;
     padding-left: 0;
-    overflow-x: auto;
+    // overflow-x: auto;
 
     li {
       margin-right: 32px;
@@ -268,6 +303,7 @@
 
 .course-content-container {
   max-width: 1008px;
+  padding-right: 36px;
 }
 
 .course-info-instructors {
@@ -438,8 +474,12 @@
     }
   }
 }
-
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .course-content-container {
+    max-width: 628px;
+  }
+}
+@media (max-width: 1024px) {
   .sticky-nav-wrapper {
     background-color: $light-300;
     top: 56px;
@@ -489,7 +529,13 @@
     }
   }
 }
-
+@media (max-width: 768px) {
+  .sticky-nav-wrapper {
+    ul {
+      overflow-x: auto;
+    }
+  }
+}
 @media (max-width: 600px) {
   .mobile-icons-wrapper {
     grid-template-columns: repeat(1, minmax(0px, 1fr)) !important;
@@ -504,3 +550,4 @@
     }
   }
 }
+

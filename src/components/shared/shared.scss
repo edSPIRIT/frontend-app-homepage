@@ -123,7 +123,8 @@
   }
   .dropdown-menu {
     width: 100%;
-    min-width: 7rem;
+    // min-width: 7rem;
+    min-width: fit-content;
   }
   //in mobile view we have modal
   @media (max-width: 768px) {
@@ -156,8 +157,8 @@
     margin-bottom: unset;
   }
 }
-@media (max-width: 768px){
-  .pgn__breadcrumb{
+@media (max-width: 768px) {
+  .pgn__breadcrumb {
     font-size: $font-size-base-std;
   }
 }
@@ -173,6 +174,7 @@
   box-shadow: $box-shadow-custom;
   border: unset;
   padding: unset;
+  min-width: unset;
 }
 // change dropdown icon when it is open
 .show {
@@ -246,13 +248,13 @@
   }
 }
 //remove scroll-x in modal
-  .pgn__modal-body {
-    // padding: unset;
-    // overflow-x: hidden;
-    &::after {
-      content: unset;
-    }
+.pgn__modal-body {
+  // padding: unset;
+  // overflow-x: hidden;
+  &::after {
+    content: unset;
   }
+}
 [dir='rtl'] {
   body {
     font-family: IRANSans, FontAwesome !important ;

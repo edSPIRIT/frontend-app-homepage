@@ -2,12 +2,13 @@ import classNames from 'classnames';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-scroll';
 import Scrollspy from 'react-scrollspy';
-import AboutCourse from '../course-info-page/course-page/AboutCourse';
-import CourseInfoSideBar from '../course-info-page/course-page/CourseInfoSideBar';
-import CourseInfoTopDesc from '../course-info-page/course-page/CourseInfoTopDesc';
-import Requirements from '../course-info-page/course-page/Requirements';
-import WhatYouLearn from '../course-info-page/course-page/WhatYouLearn';
+
 import ProgramCourses from './program-page/ProgramCourses';
+import AboutCourse from '../course-info-page/course-page/share/AboutCourse';
+import WhatYouLearn from '../course-info-page/course-page/share/WhatYouLearn';
+import Requirements from '../course-info-page/course-page/share/Requirements';
+import CourseInfoSideBar from '../course-info-page/course-page/desktop-course-info/CourseInfoSideBar';
+import CourseInfoTopDesc from '../course-info-page/course-page/desktop-course-info/CourseInfoTopDesc';
 
 const ProgramPage = () => {
   const { ref: navTopRef, inView: isTopOnScreen } = useInView();

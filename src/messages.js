@@ -97,6 +97,14 @@ const messages = defineMessages({
     id: 'partners.search.find',
     defaultMessage: 'Find ...',
   },
+  'courseInfo.tab.courseContent.text': {
+    id: 'courseInfo.tab.courseContent.text',
+    defaultMessage: 'Course content',
+  },
+  'courseInfo.tab.instructors.text': {
+    id: 'courseInfo.tab.instructors.text',
+    defaultMessage: 'Instructors',
+  },
   recent: {
     id: 'recent.text',
     defaultMessage: 'Recent',

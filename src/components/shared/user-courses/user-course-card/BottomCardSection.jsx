@@ -22,20 +22,25 @@ const BottomCardSection = ({ courseInfo }) => {
     }
     return 0;
   };
-  const courseStatus = () => {
-    if (courseCompleted) {
-      return (
-        <div className="complete-wrapper d-flex justify-content-between w-100 align-items-center">
-          <div className="d-flex align-items-center ">
-            <Icon className="check-circle-icon mr-2.5" src={CheckCircle} />
-            <span className="second-title">
-              <FormattedMessage
-                id="header.nav.completed"
-                defaultMessage="Completed"
-              />
-            </span>
-          </div>
-          <div className="d-flex view-course-btn">
+
+  return (
+    <div className="d-flex align-items-center justify-content-between bottom-wrapper">
+      {courseCompleted ? (
+        <div className="d-flex align-items-center ">
+          <Icon className="check-circle-icon mr-2.5" src={CheckCircle} />
+          <span className="second-title">
+            <FormattedMessage
+              id="header.nav.completed"
+              defaultMessage="Completed"
+            />
+          </span>
+        </div>
+      ) : (
+        <ProgressBar now={calcProgress()} label={`${calcProgress()}%`} />
+      )}
+      <div className="d-flex">
+        {certificateData && (
+          <div className="d-flex view-course-btn mr-2">
             <Button
               className="view-btn"
               onClick={(e) => {
@@ -44,7 +49,6 @@ const BottomCardSection = ({ courseInfo }) => {
                   certificateData?.download_url
                 }`;
               }}
-              disabled={!certificateData}
             >
               <FormattedMessage
                 id="userCourseCard.viewCertificate.text"
@@ -52,12 +56,7 @@ const BottomCardSection = ({ courseInfo }) => {
               />
             </Button>
           </div>
-        </div>
-      );
-    }
-    return (
-      <>
-        <ProgressBar now={calcProgress()} label={`${calcProgress()}%`} />
+        )}
         <Link
           className="view-btn view-course-btn"
           to={`/course/${courseInfo?.course_metadata?.slug}`}
@@ -78,13 +77,7 @@ const BottomCardSection = ({ courseInfo }) => {
             </span>
           )}
         </Link>
-      </>
-    );
-  };
-
-  return (
-    <div className="d-flex align-items-center justify-content-between bottom-wrapper">
-      {courseStatus()}
+      </div>
     </div>
   );
 };

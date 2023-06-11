@@ -9,7 +9,7 @@ const useGetPopularSubjects = () => {
 
   const fetchSubjects = async () => {
     const apiRes = await fetch(
-      `${getConfig().LMS_BASE_URL}/admin-console/api/subject-list/?popolar`,
+      `${getConfig().LMS_BASE_URL}/admin-console/api/subject-list/?popular=true`,
     );
 
     if (!apiRes.ok) {

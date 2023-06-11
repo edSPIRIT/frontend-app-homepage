@@ -4,8 +4,8 @@
 import { Button, Spinner } from '@edx/paragon';
 import { getConfig } from '@edx/frontend-platform';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import useEnrollClickHandler from '../../../hooks/useEnrollClickHandler';
-import useGetEnrollmentList from '../../../hooks/useGetEnrollmentList';
+import useEnrollClickHandler from '../../../../hooks/useEnrollClickHandler';
+import useGetEnrollmentList from '../../../../hooks/useGetEnrollmentList';
 
 const CourseInfoButtonStatus = ({ courseMetaData }) => {
   const { loading: coursesEnrollLoading, userCourseIds } = useGetEnrollmentList();

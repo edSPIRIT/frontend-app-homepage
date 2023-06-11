@@ -21,12 +21,12 @@ import {
   intlShape,
 } from '@edx/frontend-platform/i18n';
 import useGetCourseMetaData from '../../../hooks/useGetCourseMetaData';
-import AboutCourse from './AboutCourse';
-import WhatYouLearn from './WhatYouLearn';
-import Requirements from './Requirements';
-import CourseContent from './CourseContent';
-import CourseInfoButtonStatus from '../shared/CourseInfoButtonStatus';
-import MobileCourseInstructors from './course-instructors/mobile-course-info/MobileCourseInstructors';
+import AboutCourse from './share/AboutCourse';
+import WhatYouLearn from './share/WhatYouLearn';
+import Requirements from './share/Requirements';
+import CourseContent from './share/CourseContent';
+import CourseInfoButtonStatus from './share/CourseInfoButtonStatus';
+import MobileCourseInstructors from './mobile-course-info/MobileCourseInstructors';
 import partnerBanner from '../../../assets/place-holders/cover-course-place-holder.svg';
 import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
 import messages from '../../../messages';
