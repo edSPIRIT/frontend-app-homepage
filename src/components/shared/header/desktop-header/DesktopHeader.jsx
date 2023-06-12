@@ -20,11 +20,13 @@ import DropdownNavHeader from '../dropdown-nav-header/DropdownNavHeader';
 import useGetFooters from '../../../../hooks/useGetFooters';
 import edLogo from '../../../../assets/edspirit-logo.png';
 import messages from '../../../../messages';
+import handleRedirect from '../../../../utils/handleRedirect';
 
 const DesktopHeader = ({ intl }) => {
   const history = useHistory();
   const { authenticatedUser } = useContext(AppContext);
   const { footerData, loading } = useGetFooters();
+
   return (
     <div className="d-flex flex-row justify-content-between align-items-center header-wrapper">
       <div className="left-side-container">
@@ -113,7 +115,7 @@ const DesktopHeader = ({ intl }) => {
                 variant="tertiary"
                 className="mx-1"
                 size="sm"
-                href={`${getConfig().LOGIN_URL}`}
+                onClick={handleRedirect}
               >
                 <FormattedMessage id="header.signIn" defaultMessage="Sign in" />
               </Button>

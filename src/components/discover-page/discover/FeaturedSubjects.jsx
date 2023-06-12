@@ -4,16 +4,16 @@ import { Skeleton } from '@edx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
-import useGetSubjects from '../../../hooks/useGetSubjects';
 import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
 import {
   resetSearchFilters,
   setSearchSubject,
 } from '../../../redux/slice/searchQuerySlice';
 
-const ExploreAllSubjects = () => {
+const FeaturedSubjects = ({ featuredSubjects, loading }) => {
   const history = useHistory();
-  const { arrangedSubjects, loading } = useGetSubjects();
+  console.log('featuredSubjects', featuredSubjects);
+
   const dispatch = useDispatch();
 
   return (
@@ -21,8 +21,8 @@ const ExploreAllSubjects = () => {
       <div className="d-flex justify-content-between">
         <h2>
           <FormattedMessage
-            id="discover.exploreAllSubjects.text"
-            defaultMessage="Explore all subjects"
+            id="discover.featuredSubjects.text"
+            defaultMessage="Featured subjects"
           />
         </h2>
       </div>
@@ -30,14 +30,24 @@ const ExploreAllSubjects = () => {
         {loading
           ? Array(10)
             .fill(1)
-            .map((item, i) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <div className="subject-wrapper" key={i}>
-                <Skeleton className="mr-1" width={66} height={66} />
-                <Skeleton width={175} height={20} />
+            .map((_, i) => (
+              <div
+                className="d-flex flex-column bg-light-200 align-items-center p-2 "
+                // eslint-disable-next-line react/no-array-index-key
+                key={i}
+              >
+                <Skeleton
+                  circle
+                  className="mr-1 mt-0"
+                  width={54}
+                  height={54}
+                />
+                <div className="w-100">
+                  <Skeleton width="100%" height={40} />
+                </div>
               </div>
             ))
-          : arrangedSubjects?.map((subject) => (
+          : featuredSubjects?.map((subject) => (
             // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
             <div
               className="subject-wrapper d-flex flex-column"
@@ -59,4 +69,4 @@ const ExploreAllSubjects = () => {
   );
 };
 
-export default ExploreAllSubjects;
+export default FeaturedSubjects;

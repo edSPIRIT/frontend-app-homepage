@@ -1,6 +1,7 @@
 .subject-container {
   display: grid;
   grid-template-columns: repeat(5, minmax(0px, 1fr));
+  gap:24px
 }
 .subject-img {
   @extend .mr-2;
@@ -10,7 +11,7 @@
   border-radius: 4px;
 }
 .subject-wrapper {
-  @extend .d-flex, .align-items-center, .mr-4, .mb-4;
+  @extend .d-flex, .align-items-center;
   cursor: pointer;
   &:hover {
     .subject-img {

@@ -41,7 +41,7 @@ const TotalCourseWrapper = ({ coursesCount, loading }) => {
           <ul className="px-4 font-xl transform-rtl">
             <li className="d-flex justify-content-between my-2.5">
               <FormattedMessage id="filter.All.text" defaultMessage="All" />
-              <Icon className="check-icon" src={Check} />
+              {/* <Icon className="check-icon" src={Check} /> */}
             </li>
             <li className="d-flex justify-content-between mb-2.5">
               <FormattedMessage
@@ -55,7 +55,7 @@ const TotalCourseWrapper = ({ coursesCount, loading }) => {
                 id="filter.programs.text"
                 defaultMessage="Programs"
               />
-              <Icon className="check-icon" src={Check} />
+              {/* <Icon className="check-icon" src={Check} /> */}
             </li>
           </ul>
         </div>

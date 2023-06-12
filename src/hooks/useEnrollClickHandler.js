@@ -4,6 +4,7 @@ import { AppContext } from '@edx/frontend-platform/react';
 import axios from 'axios';
 import { useContext } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
+import handleRedirect from '../utils/handleRedirect';
 
 const fetchAvailablePayment = async (id) => {
   try {
@@ -67,7 +68,7 @@ const useEnrollClickHandler = (courseMetaData) => {
   });
   const enrollClickHandler = () => {
     if (!authenticatedUser) {
-      window.location.href = getConfig().LOGIN_URL;
+      handleRedirect();
       return;
     }
 

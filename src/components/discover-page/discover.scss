@@ -66,6 +66,8 @@
   .subjects-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    row-gap: 24px;
+    column-gap: 16px;
     .subject-wrapper {
       background-color: $light-200;
       border-radius: 8px;
@@ -92,34 +94,7 @@
     width: unset;
   }
 }
-.subjects-modal {
-  .pgn__searchfield {
-    border: 1px solid $light-400;
-    direction: rtl;
-    .pgn__icon {
-      color: $gray-500;
-    }
-    .form-control {
-      direction: ltr;
-    }
-  }
-  .mobile-subject-wrapper {
-    padding: 8px 24px;
-    display: flex;
-    align-items: center;
-    .subject-img {
-      width: 54px;
-      height: 54px;
-      object-fit: cover;
-      border-radius: 4px;
-    }
-    p {
-      font-size: 18px !important;
-      color: $black !important;
-      font-weight: 400;
-    }
-  }
-}
+
 @media (max-width: 1024px) {
   .search-header-wrapper {
     padding: 32px 0;
@@ -130,6 +105,9 @@
   .subjects-courses-wrapper {
     .view-all-courses-btn {
       width: unset;
+    }
+    .view-all-btn {
+      display: none;
     }
   }
 }
