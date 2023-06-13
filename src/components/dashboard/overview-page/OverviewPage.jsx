@@ -5,18 +5,22 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
-import UserCourseCard from '../shared/user-courses/UserCourseCard';
+import UserCourseCard from '../../shared/user-courses/UserCourseCard';
 import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
-import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleton';
-import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
-import SimilarCourses from '../shared/similar-courses/SimilarCourses';
-import NavHeader from '../shared/header/nav-header/NavHeader';
-import messages from '../../messages';
+import UserCourseCardSkeleton from '../../shared/user-courses/UserCourseCardSkeleton';
+import useGetEnrollmentList from '../../../hooks/useGetEnrollmentList';
+import SimilarCourses from '../../shared/similar-courses/SimilarCourses';
+import NavHeader from '../../shared/header/nav-header/NavHeader';
+import messages from '../../../messages';
 
 const OverviewPage = ({ intl }) => {
   const {
-    loading, userCourseTitles, userCourseIds, userCourses,
+    loading,
+    userCourseTitles,
+    userCourseIds,
+    recentUserCourses,
+    courseCount,
   } = useGetEnrollmentList();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
   return (
@@ -36,7 +40,7 @@ const OverviewPage = ({ intl }) => {
                     <UserCourseCardSkeleton key={i} />
                   ))}
               </>
-            ) : userCourses?.length === 0 ? (
+            ) : courseCount === 0 ? (
               <NotEnrolledCardCourse
                 title={intl.formatMessage(
                   messages['inProgress.notEnroll.title'],
@@ -53,7 +57,7 @@ const OverviewPage = ({ intl }) => {
                     defaultMessage="Recent Activity"
                   />
                 </h3>
-                {userCourses?.map((courseInfo) => (
+                {recentUserCourses?.map((courseInfo) => (
                   <UserCourseCard
                     key={courseInfo?.course_details?.course_id}
                     courseInfo={courseInfo}

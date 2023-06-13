@@ -19,9 +19,7 @@ import appMessages from './i18n';
 
 import './index.scss';
 import Home from './components/home-page/Home';
-import OverviewPage from './components/overview-page/OverviewPage';
-import InProgress from './components/inProgress-page/InProgress';
-import Completed from './components/completed-page/Completed';
+import OverviewPage from './components/dashboard/overview-page/OverviewPage';
 import Discover from './components/discover-page/Discover';
 import Search from './components/search-page/Search';
 import NotFound from './components/notFount-page/NotFound';
@@ -34,6 +32,7 @@ import Instructor from './components/instructor-page/Instructor';
 import PartnerInfo from './components/partner-page/PartnerInfo';
 import store from './redux/store/store';
 import Layout from './components/shared/layout-wrapper/Layout';
+import EnrollmentList from './components/dashboard/EnrollmentList';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -72,12 +71,12 @@ subscribe(APP_READY, () => {
               </Route>
               <Route exact path="/inprogress">
                 <ProtectedRoute>
-                  <InProgress />
+                  <EnrollmentList type="in-progress" />
                 </ProtectedRoute>
               </Route>
               <Route exact path="/completed">
                 <ProtectedRoute>
-                  <Completed />
+                  <EnrollmentList type="completed" />
                 </ProtectedRoute>
               </Route>
               <Route exact path="/partners">

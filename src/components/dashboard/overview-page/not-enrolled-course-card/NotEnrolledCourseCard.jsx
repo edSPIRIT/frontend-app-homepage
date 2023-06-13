@@ -4,7 +4,7 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import cardImageCap from '../../../assets/card-image-cap.png';
+import cardImageCap from '../../../../assets/card-image-cap.png';
 
 const NotEnrolledCardCourse = ({ title, description }) => {
   const history = useHistory();

@@ -1,18 +1,19 @@
 /* eslint-disable no-nested-ternary */
-import { useMediaQuery } from '@edx/paragon';
+import { Pagination, useMediaQuery } from '@edx/paragon';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
+import { useState } from 'react';
+import useGetEnrollmentList from '../../../hooks/useGetEnrollmentList';
 import NotEnrolledCardCourse from '../overview-page/not-enrolled-course-card/NotEnrolledCourseCard';
-import NavHeader from '../shared/header/nav-header/NavHeader';
-import UserCourseCard from '../shared/user-courses/UserCourseCard';
-import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleton';
-import TotalCourseWrapper from '../shared/total-course-wrapper/TotalCourseWrapper';
-import messages from '../../messages';
+import NavHeader from '../../shared/header/nav-header/NavHeader';
+import UserCourseCard from '../../shared/user-courses/UserCourseCard';
+import UserCourseCardSkeleton from '../../shared/user-courses/UserCourseCardSkeleton';
+import TotalCourseWrapper from '../../shared/total-course-wrapper/TotalCourseWrapper';
+import messages from '../../../messages';
 
 const InProgress = ({ intl }) => {
-  const { loading, userInprogressCourses } = useGetEnrollmentList();
+  const [page, setPage] = useState(1);
+  const { loading, userCourses, courseCount } = useGetEnrollmentList('in-progress', page);
   const isMobile = useMediaQuery({ maxWidth: '768px' });
-
   return (
     <>
       {isMobile && <NavHeader />}
@@ -24,7 +25,7 @@ const InProgress = ({ intl }) => {
               // eslint-disable-next-line react/no-array-index-key
               <UserCourseCardSkeleton key={i} />
             ))
-        ) : userInprogressCourses?.length === 0 ? (
+        ) : courseCount === 0 ? (
           <NotEnrolledCardCourse
             title={intl.formatMessage(messages['inProgress.notEnroll.title'])}
             description={intl.formatMessage(
@@ -35,7 +36,7 @@ const InProgress = ({ intl }) => {
           <div className="d-flex ">
             <div className="w-100">
               <TotalCourseWrapper
-                coursesCount={userInprogressCourses?.length}
+                coursesCount={courseCount}
                 loading={loading}
               />
               {loading
@@ -45,18 +46,18 @@ const InProgress = ({ intl }) => {
                     // eslint-disable-next-line react/no-array-index-key
                     <UserCourseCardSkeleton key={i} />
                   ))
-                : userInprogressCourses?.map((courseInfo) => (
+                : userCourses?.map((courseInfo) => (
                   <UserCourseCard
                     courseInfo={courseInfo}
                     key={courseInfo?.course_details?.course_id}
                   />
                 ))}
-              {/* <div className="pb-5.5 pt-4.5">
-                { 1 && (
+              <div className="pb-5.5 pt-4.5">
+                { courseCount > 12 && (
                 <Pagination
                   className="d-flex justify-content-center transform-rtl"
                   paginationLabel="pagination navigation"
-                  pageCount={Math.ceil(userInprogressCourses?.count / 12)}
+                  pageCount={Math.ceil(courseCount / 12)}
                   onPageSelect={(e) => setPage(e)}
                   currentPage={page}
                   variant={isMobile ? 'reduced' : 'default'}
@@ -77,7 +78,7 @@ const InProgress = ({ intl }) => {
                   }}
                 />
                 )}
-              </div> */}
+              </div>
             </div>
             {/* <AdCard /> */}
           </div>
