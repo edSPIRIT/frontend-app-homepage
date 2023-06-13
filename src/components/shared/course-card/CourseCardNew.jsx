@@ -25,11 +25,15 @@ const CourseCardNew = ({ course, intl }) => {
       <Card className="cards-wrapper d-flex">
         <Card.ImageCap
           src={
-            `${getConfig().LMS_BASE_URL}${
-              course?.additional_metadata?.course_image_url
-            }` ?? coverPlaceholder
+            // `${getConfig().LMS_BASE_URL}${
+            //   course?.additional_metadata?.course_image_url
+            // }` ??
+            coverPlaceholder
           }
-          logoSrc={course?.partner?.organization?.logo ?? logoPlaceholder}
+          logoSrc={
+            // course?.partner?.organization?.logo ??
+            logoPlaceholder
+}
           variant="top"
           srcAlt="course-header"
           logoAlt="partner-logo"

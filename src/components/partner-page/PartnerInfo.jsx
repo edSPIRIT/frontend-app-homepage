@@ -8,6 +8,7 @@ import PartnerCourses from './partner-info/PartnerCourses';
 import PartnerHeader from './partner-info/PartnerHeader';
 import DeskTopInstructors from './partner-info/DeskTopInstructors';
 import messages from '../../messages';
+import usePartnerInstructorsInfinite from '../../hooks/usePartnerInstructorsInfinite';
 
 const MobileInstructors = React.lazy(() => import('./partner-info/MobileInstructors'));
 
@@ -16,6 +17,11 @@ const PartnerInfo = ({ intl }) => {
   const { partnerData, loading } = useGetPartner(slug);
   const history = useHistory();
   const isMobile = useMediaQuery({ maxWidth: '769px' });
+  const {
+    partnerInstructors,
+    loading: partnerInstructorsLoading,
+    isFetching,
+  } = usePartnerInstructorsInfinite(slug);
 
   return (
     <section>
@@ -29,9 +35,7 @@ const PartnerInfo = ({ intl }) => {
             ariaLabel="Breadcrumb basic"
             links={[
               {
-                label: `${intl.formatMessage(
-                  messages['breadcrumb.home'],
-                )}`,
+                label: `${intl.formatMessage(messages['breadcrumb.home'])}`,
                 to: '/',
               },
               {
@@ -48,27 +52,20 @@ const PartnerInfo = ({ intl }) => {
       </div>
       <PartnerHeader partnerData={partnerData} loading={loading} />
       <PartnerCourses />
-      {/* <div className="custom-container d-flex flex-column pb-6" id="programs">
-        <h2 className="d-flex justify-content-center mb-4">
-          <h2 className="d-flex justify-content-center mb-4">
-            Popular<span className="highlighted ml-2">Programs</span>
-          </h2>
-        </h2>
-        <div className="programs-container">
-          {TOP_PROGRAM.map((course) => (
-            <ProgramCard info={course} key={course.title} />
-          ))}
-        </div>
-        <div className="d-flex justify-content-center">
-          <Button className="view-all-course-btn" iconAfter={ArrowForwardIos}>
-                            <FormattedMessage
-                  id="viewAllCourses.button"
-                  defaultMessage="View All Courses"
-                />
-          </Button>
-        </div>
-      </div> */}
-      {isMobile ? <MobileInstructors /> : <DeskTopInstructors />}
+      {/* <PartnerPrograms/> */}
+      {isMobile ? (
+        <MobileInstructors
+          partnerInstructors={partnerInstructors}
+          loading={partnerInstructorsLoading}
+          isFetching={isFetching}
+        />
+      ) : (
+        <DeskTopInstructors
+          partnerInstructors={partnerInstructors}
+          loading={partnerInstructorsLoading}
+          isFetching={isFetching}
+        />
+      )}
     </section>
   );
 };

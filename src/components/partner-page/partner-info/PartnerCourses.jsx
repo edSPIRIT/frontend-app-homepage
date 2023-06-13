@@ -10,12 +10,16 @@ import {
   setSearchPartners,
 } from '../../../redux/slice/searchQuerySlice';
 import useGetPartner from '../../../hooks/useGetPartner';
+import useGetPartnerPopularCourses from '../../../hooks/useGetPartnerPopularCourses';
+import CourseCardNew from '../../shared/course-card/CourseCardNew';
+import CourseCardSkeleton from '../../shared/skeleton/CourseCardSkeleton';
 
 const PartnerCourses = () => {
   const history = useHistory();
   const { slug } = useParams();
   const { partnerData } = useGetPartner(slug);
   const dispatch = useDispatch();
+  const { partnerPopularCourses, loading } = useGetPartnerPopularCourses(slug);
 
   return (
     <div className="custom-container d-flex flex-column pb-5" id="courses">
@@ -34,9 +38,16 @@ const PartnerCourses = () => {
         </span>
       </h2>
       <div className="course-container mb-4">
-        {COURSES_INFO.map((course) => (
-          <CourseCard info={course} key={course.title} />
-        ))}
+        {loading
+          ? Array(4)
+            .fill(1)
+            .map((item, i) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <CourseCardSkeleton key={i} />
+            ))
+          : partnerPopularCourses?.map((course) => (
+            <CourseCardNew course={course} key={course.slug} />
+          ))}
       </div>
       <div className="d-flex justify-content-center">
         <Button

@@ -13,12 +13,14 @@ import {
   resetSearchFilters,
   setSearchInstructors,
 } from '../../redux/slice/searchQuerySlice';
+import useGetInstructorPopularCourses from '../../hooks/useGetInstructorPopularCourses';
 
 const Instructor = () => {
   const { slug } = useParams();
   const { InstructorData, loading } = useGetInstructor(slug);
   const history = useHistory();
   const dispatch = useDispatch();
+  const { instructorPopularCourses, loading: instructorPopularCoursesLoading } = useGetInstructorPopularCourses(slug);
 
   return (
     <main>
@@ -39,14 +41,14 @@ const Instructor = () => {
           </span>
         </h2>
         <div className="course-container mb-4">
-          {loading
+          {instructorPopularCoursesLoading
             ? Array(4)
               .fill(1)
               .map((item, i) => (
                 // eslint-disable-next-line react/no-array-index-key
                 <CourseCardSkeleton key={i} />
               ))
-            : InstructorData?.courses?.map((course) => (
+            : instructorPopularCourses?.map((course) => (
               <CourseCardNew course={course} key={course.slug} />
             ))}
         </div>

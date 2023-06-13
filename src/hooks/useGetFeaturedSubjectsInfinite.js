@@ -40,7 +40,7 @@ const useGetFeaturedSubjectsInfinite = () => {
     }
 
     const mobileSlices = [
-      { condition: (len) => len > 3 && len < 6, start: 3 },
+      { condition: (len) => len >= 3 && len < 6, start: 3 },
       { condition: (len) => len > 6, start: 6 },
     ];
 
