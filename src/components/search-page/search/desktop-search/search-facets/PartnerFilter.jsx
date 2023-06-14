@@ -1,19 +1,31 @@
 import {
-  Dropdown, Form, Menu, MenuItem, SearchField,
+  Dropdown,
+  Form,
+  Menu,
+  MenuItem,
+  SearchField,
+  Skeleton,
 } from '@edx/paragon';
 import { KeyboardArrowDown } from '@edx/paragon/icons';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from '@edx/frontend-platform/i18n';
+import { useInView } from 'react-intersection-observer';
 import { setSearchPartners } from '../../../../../redux/slice/searchQuerySlice';
-import useGetPartnersFacet from '../../../../../hooks/useGetPartnersFacet';
+
 import messages from '../../../../../messages';
+import useGetPartnersFacetInfinite from '../../../../../hooks/useGetPartnersFacetInfinite';
 
 const PartnerFilter = ({ intl }) => {
+  const { ref, inView } = useInView();
   const partners = useSelector((state) => state.searchFilters.partners);
   const dispatch = useDispatch();
   const [searchString, setSearchString] = useState('');
-  const { partnersData, loading } = useGetPartnersFacet(1, searchString);
+  const { partnersFilterItems, loading, isFetching } = useGetPartnersFacetInfinite(searchString, inView);
 
   return (
     <Dropdown autoClose="outside" className="facet-btn  mr-3" key="subject">
@@ -33,14 +45,11 @@ const PartnerFilter = ({ intl }) => {
           )}
         </p>
       </Dropdown.Toggle>
-      <Dropdown.Menu className="facet-menu">
+      <Dropdown.Menu className="facet-menu" id="partner-facet">
         <SearchField
           onChange={(value) => setSearchString(value)}
           onSubmit={(value) => setSearchString(value)}
-          placeholder={intl.formatMessage(
-            messages['partners.search.find'],
-          )}
-
+          placeholder={intl.formatMessage(messages['partners.search.find'])}
         />
         <Form.Group>
           <Form.CheckboxSet
@@ -59,7 +68,7 @@ const PartnerFilter = ({ intl }) => {
             value={partners}
           >
             <Menu>
-              {partnersData?.map((item) => (
+              {partnersFilterItems?.map((item) => (
                 <div
                   className="d-flex justify-content-between align-items-center item-wrapper"
                   key={item.organization.id}
@@ -70,6 +79,16 @@ const PartnerFilter = ({ intl }) => {
                   <span className="mr-2.5">{item.courses_count}</span>
                 </div>
               ))}
+              <div ref={ref} />
+              {(loading || isFetching) && (
+                <div className="d-flex pl-3 justify-content-between">
+                  <div className="d-flex ">
+                    <Skeleton className="mr-2" width={18} height={18} />
+                    <Skeleton className="" width={90} height={18} />
+                  </div>
+                  <Skeleton className="mr-2" width={15} height={18} />
+                </div>
+              )}
             </Menu>
           </Form.CheckboxSet>
         </Form.Group>

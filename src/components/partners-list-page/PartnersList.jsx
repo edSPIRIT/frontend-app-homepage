@@ -24,7 +24,7 @@ import PartnersCardGrid from './partners-list/PartnersCardGrid';
 import PartnersCardList from './partners-list/PartnersCardList';
 import TotalPartnersWrapper from './partners-list/TotalPartnersWrapper';
 import messages from '../../messages';
-import useGetPartnersFacet from '../../hooks/useGetPartnersFacet';
+import useGetPartners from '../../hooks/useGetPartners';
 import useGetPartnersSuggestions from '../../hooks/useGetPartnersSuggestions';
 
 const PartnersList = ({ intl }) => {
@@ -41,7 +41,7 @@ const PartnersList = ({ intl }) => {
     loading,
     numPages,
     isFetching,
-  } = useGetPartnersFacet(page, searchString);
+  } = useGetPartners(page, searchString);
   const { partnersSuggestionsResults } = useGetPartnersSuggestions(suggestionQuery);
   const history = useHistory();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
@@ -73,7 +73,10 @@ const PartnersList = ({ intl }) => {
             className="partners-search mt-4"
             submitButtonLocation="external"
             onChange={(value) => setSuggestionQuery(value)}
-            onSubmit={(value) => setSearchString(value)}
+            onSubmit={(value) => {
+              setPage(1);
+              setSearchString(value);
+            }}
             placeholder={intl.formatMessage(
               messages['partners.search.placeholder'],
             )}

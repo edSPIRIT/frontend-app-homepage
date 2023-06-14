@@ -84,7 +84,7 @@ const DesktopHeader = ({ intl }) => {
                     defaultMessage="Account"
                   />
                 </Dropdown.Item>
-                <Dropdown.Item href="dashboard">
+                <Dropdown.Item as={Link} to="overview">
                   <FormattedMessage
                     id="header.dropdownOption.dashboard"
                     defaultMessage="Dashboard"

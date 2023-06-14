@@ -13,7 +13,7 @@ const useGetFeaturedSubjectsInfinite = () => {
     const apiRes = await fetch(
       `${
         getConfig().LMS_BASE_URL
-      }/admin-console/api/popular-subject-list/?page_size=10&page=${pageParam}`,
+      }/admin-console/api/popular-subject-list/?page_size=15&page=${pageParam}`,
     );
 
     if (!apiRes.ok) {

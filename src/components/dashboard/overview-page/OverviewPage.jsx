@@ -5,6 +5,8 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { useEffect } from 'react';
 import UserCourseCard from '../../shared/user-courses/UserCourseCard';
 import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
@@ -23,6 +25,12 @@ const OverviewPage = ({ intl }) => {
     courseCount,
   } = useGetEnrollmentList();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
+  const { pathname } = useLocation();
+  useEffect(() => {
+    if (pathname === '/overview') {
+      document.title = 'Overview';
+    }
+  }, [pathname, intl]);
   return (
     <>
       {isMobile && <NavHeader />}

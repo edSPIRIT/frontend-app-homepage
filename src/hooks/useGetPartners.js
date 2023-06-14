@@ -2,10 +2,10 @@ import { getConfig } from '@edx/frontend-platform';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 
-const useGetPartnersFacet = (page = 1, searchString = '') => {
+const useGetPartners = (page = 1, searchString = '') => {
   const sortState = useSelector((state) => state.sortPartners.value);
 
-  const fetchPartnersFaset = async (query, pageNum) => {
+  const fetchPartners = async (query, pageNum) => {
     const apiRes = await fetch(
       `${
         getConfig().LMS_BASE_URL
@@ -19,8 +19,8 @@ const useGetPartnersFacet = (page = 1, searchString = '') => {
     return apiRes.json();
   };
   const { isLoading, data, isFetching } = useQuery({
-    queryKey: ['PartnersFacet', searchString, page, sortState],
-    queryFn: () => fetchPartnersFaset(searchString, page ?? 1),
+    queryKey: ['Partners', searchString, page, sortState],
+    queryFn: () => fetchPartners(searchString, page ?? 1),
     keepPreviousData: true,
   });
   return {
@@ -32,4 +32,4 @@ const useGetPartnersFacet = (page = 1, searchString = '') => {
     isFetching,
   };
 };
-export default useGetPartnersFacet;
+export default useGetPartners;

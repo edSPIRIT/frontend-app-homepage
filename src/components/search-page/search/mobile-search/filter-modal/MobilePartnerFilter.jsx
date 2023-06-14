@@ -8,6 +8,7 @@ import {
   Menu,
   MenuItem,
   SearchField,
+  Skeleton,
   useCheckboxSetValues,
   useToggle,
 } from '@edx/paragon';
@@ -15,8 +16,9 @@ import { ArrowBack, ArrowForwardIos } from '@edx/paragon/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { setSearchPartners } from '../../../../../redux/slice/searchQuerySlice';
-import useGetPartnersFacet from '../../../../../hooks/useGetPartnersFacet';
+import useGetPartnersFacetInfinite from '../../../../../hooks/useGetPartnersFacetInfinite';
 
 const MobilePartnerFilter = () => {
   const [isOpen, open, close] = useToggle(false);
@@ -27,7 +29,8 @@ const MobilePartnerFilter = () => {
   }] = useCheckboxSetValues([]);
 
   const [searchString, setSearchString] = useState('');
-  const { partnersData, loading } = useGetPartnersFacet(1, searchString);
+  const { ref, inView } = useInView();
+  const { partnersFilterItems, loading, isFetching } = useGetPartnersFacetInfinite(searchString, inView);
 
   const handleChange = (e) => {
     if (e.target.checked) {
@@ -90,17 +93,30 @@ const MobilePartnerFilter = () => {
                 value={partnerValues}
               >
                 <Menu>
-                  {partnersData?.map((item) => (
+                  {partnersFilterItems?.map((item) => (
                     <div
                       className="d-flex justify-content-between align-items-center item-wrapper"
                       key={item.organization.id}
                     >
-                      <MenuItem as={Form.Checkbox} value={item.organization.name}>
+                      <MenuItem
+                        as={Form.Checkbox}
+                        value={item.organization.name}
+                      >
                         {item.organization.name}
                       </MenuItem>
                       <span className="pr-4">{item.courses_count}</span>
                     </div>
                   ))}
+                  <div ref={ref} />
+                  {(loading || isFetching) && (
+                    <div className="d-flex pl-3 justify-content-between">
+                      <div className="d-flex ">
+                        <Skeleton className="mr-2" width={18} height={18} />
+                        <Skeleton className="" width={90} height={18} />
+                      </div>
+                      <Skeleton className="mr-2" width={15} height={18} />
+                    </div>
+                  )}
                 </Menu>
               </Form.CheckboxSet>
             </Form.Group>
@@ -109,7 +125,6 @@ const MobilePartnerFilter = () => {
                 variant="brand"
                 className="w-100"
                 onClick={() => {
-                  // dispatch(resetSearchFilters());
                   dispatch(setSearchPartners(partnerValues));
                   close();
                 }}

@@ -58,11 +58,6 @@ subscribe(APP_READY, () => {
                   <OverviewPage />
                 </ProtectedRoute>
               </Route>
-              <Route exact path="/dashboard">
-                <ProtectedRoute>
-                  <OverviewPage />
-                </ProtectedRoute>
-              </Route>
               <Route exact path="/discover">
                 <Discover />
               </Route>
