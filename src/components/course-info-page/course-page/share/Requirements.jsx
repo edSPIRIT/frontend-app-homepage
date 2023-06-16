@@ -33,7 +33,7 @@ const Requirements = ({ courseMetaData, loading }) => {
             ))}
         </ul>
       )}
-      {courseMetaData?.additional_metadata?.pre_req_courses.length > 0 && (
+      {courseMetaData?.additional_metadata?.pre_req_courses?.length > 0 && (
         <div>
           <h3 className="mb-3">
             <FormattedMessage

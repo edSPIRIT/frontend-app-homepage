@@ -1,13 +1,18 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { Skeleton } from '@edx/paragon';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import CourseCardSkeleton from '../../../shared/skeleton/CourseCardSkeleton';
 import CourseCardNew from '../../../shared/course-card/CourseCardNew';
 import useSearchResults from '../../../../hooks/useSearchResults';
 import noResult from '../../../../assets/noResult.svg';
-import SearchSortWrapper from './search-result/SearchSortWrapper';
+import SearchSortWrapper from './search-filter-results/SearchSortWrapper';
+import { addPage } from '../../../../redux/slice/recentPagesSlice';
 
 const SearchFilteredResults = () => {
+  const dispatch = useDispatch();
   const { searchResults, searchResultsCount, isLoading } = useSearchResults();
   return (
     <>
@@ -47,10 +52,12 @@ const SearchFilteredResults = () => {
               <CourseCardSkeleton key={i} />
             ))
           : searchResults?.map((course) => (
-            <CourseCardNew
-              course={course.data.course_metadata}
+            <div
+              onClick={() => dispatch(addPage(course?.data?.course_metadata))}
               key={course.data.id}
-            />
+            >
+              <CourseCardNew course={course.data.course_metadata} />
+            </div>
           ))}
       </div>
     </>

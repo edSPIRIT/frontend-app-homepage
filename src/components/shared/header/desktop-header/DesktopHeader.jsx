@@ -15,18 +15,29 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
+import { useDispatch } from 'react-redux';
 import NavHeader from '../nav-header/NavHeader';
 import DropdownNavHeader from '../dropdown-nav-header/DropdownNavHeader';
 import useGetFooters from '../../../../hooks/useGetFooters';
 import edLogo from '../../../../assets/edspirit-logo.png';
 import messages from '../../../../messages';
 import handleRedirect from '../../../../utils/handleRedirect';
+import {
+  resetSearchFilters,
+  setSearchString,
+} from '../../../../redux/slice/searchQuerySlice';
 
 const DesktopHeader = ({ intl }) => {
   const history = useHistory();
   const { authenticatedUser } = useContext(AppContext);
   const { footerData, loading } = useGetFooters();
+  const dispatch = useDispatch();
 
+  const handleSubmitSearch = (value) => {
+    dispatch(resetSearchFilters());
+    dispatch(setSearchString(value));
+    history.push('/search');
+  };
   return (
     <div className="d-flex flex-row justify-content-between align-items-center header-wrapper">
       <div className="left-side-container">
@@ -47,7 +58,7 @@ const DesktopHeader = ({ intl }) => {
       </div>
       <div className="d-flex right-side-wrapper">
         <SearchField
-          onSubmit={() => history.push('/search')}
+          onSubmit={handleSubmitSearch}
           placeholder={intl.formatMessage(
             messages['header.search.placeholder'],
           )}

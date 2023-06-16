@@ -4,10 +4,12 @@ import { Button, useMediaQuery } from '@edx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { ArrowForward } from '@edx/paragon/icons';
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
 import ScrollableExplorerCourses from '../../home-page/top-recent-courses/explorer-courses/ScrollableExplorerCourses';
 import CourseCardNew from '../../shared/course-card/CourseCardNew';
 import MobileLoadingSkeleton from './featured-subjects-with-courses/MobileLoadingSkeleton';
 import DesktopLoadingSkeleton from './featured-subjects-with-courses/DesktopLoadingSkeleton';
+import { resetSearchFilters, setSearchSubject } from '../../../redux/slice/searchQuerySlice';
 
 const FeaturedSubjectsWithCourses = ({
   featuredSubjectsWithCourses,
@@ -15,6 +17,7 @@ const FeaturedSubjectsWithCourses = ({
   isFetching,
 }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery({ maxWidth: '1350px' });
   console.log('featuredSubjectsWithCourses', featuredSubjectsWithCourses);
   return (
@@ -31,7 +34,11 @@ const FeaturedSubjectsWithCourses = ({
                 variant="outline-primary"
                 iconAfter={ArrowForward}
                 className="view-all-btn"
-                onClick={() => history.push('/search')}
+                onClick={() => {
+                  dispatch(resetSearchFilters());
+                  dispatch(setSearchSubject([subject.title]));
+                  history.push('/search');
+                }}
               >
                 <FormattedMessage id="viewAll.text" defaultMessage="View All" />
               </Button>

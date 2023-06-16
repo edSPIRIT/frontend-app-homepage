@@ -1,32 +1,38 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import {
   FormattedMessage,
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
-import {
-  Button, FullscreenModal, Icon, SearchField,
-} from '@edx/paragon';
+import { FullscreenModal, Icon, SearchField } from '@edx/paragon';
 import { useDispatch, useSelector } from 'react-redux';
 import { ArrowBack, Close } from '@edx/paragon/icons';
 import { useHistory } from 'react-router';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import messages from '../../../../messages';
-import { TRENDING_COURSES, TRENDING_WORDS } from '../../../../utils/constants';
 import { setSearchModal } from '../../../../redux/slice/searchModalSlice';
 import {
   resetSearchFilters,
   setSearchString,
 } from '../../../../redux/slice/searchQuerySlice';
 import useSearchSuggestions from '../../../../hooks/useSearchSuggestions';
-import { addPage, loadPages } from '../../../../redux/slice/recentPagesSlice';
+import {
+  addPage,
+  clearAllPages,
+  loadPages,
+  removePage,
+} from '../../../../redux/slice/recentPagesSlice';
 import logoPlaceholder from '../../../../assets/place-holders/org-logo-place-holder.svg';
 
 const SearchModal = ({ intl }) => {
   const dispatch = useDispatch();
   const isOpenSearchModal = useSelector((state) => state.searchModal.open);
   const [searchSuggestionValue, setSearchSuggestionValue] = useState('');
-  const { searchSuggestionsResults } = useSearchSuggestions(searchSuggestionValue);
+  const { searchSuggestionsResults } = useSearchSuggestions(
+    searchSuggestionValue,
+  );
   const recentSearch = useSelector((state) => state.recentPages.pages);
 
   const history = useHistory();
@@ -110,7 +116,7 @@ const SearchModal = ({ intl }) => {
                 defaultMessage="Recently viewed"
               />
             </h4>
-            <span className="font-sm">
+            <span className="font-sm" onClick={() => dispatch(clearAllPages())}>
               <FormattedMessage id="clearAll.text" defaultMessage="Clear all" />
             </span>
           </div>
@@ -139,41 +145,16 @@ const SearchModal = ({ intl }) => {
                 </div>
                 <Icon
                   src={Close}
-                  // onClick={() => RECENTLY_VIEWED.filter(
-                  //   (course) => course.title !== recentView.title,
-                  // )}
+                  onClick={() => dispatch(removePage(recentView?.course_slug))}
                 />
               </div>
             </div>
           ))}
         </div>
       )}
-      <div className="d-flex flex-column px-4">
-        <h4 className="mb-3 pt-4">
-          <FormattedMessage id="searchModal.trendingKeywords.text" defaultMessage="Trending keywords" />
-        </h4>
-        <div>
-          {TRENDING_WORDS.map((word, i) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <Button key={i} variant="outline-primary" className="mr-2">
-              {word}
-            </Button>
-          ))}
-        </div>
-      </div>
-      <div className="d-flex flex-column px-4 mt-3">
-        <h4 className="mb-3">
-          <FormattedMessage id="searchModal.trendingCourses.text" defaultMessage="Trending courses" />
-        </h4>
-        <div>
-          {TRENDING_COURSES.map((course) => (
-            <div className="mb-2.5" key={course.title}>
-              <p className="mb-2">{course.title}</p>
-              <p className="text-gray-500 font-xs">{course.institution}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* TODO: Need Backend Data */}
+      {/* <TrendingWords />
+      <TrendingCourses /> */}
     </FullscreenModal>
   );
 };

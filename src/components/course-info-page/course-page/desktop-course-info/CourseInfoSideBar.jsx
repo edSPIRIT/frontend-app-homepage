@@ -78,31 +78,39 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => (
                 ))}
               </p>
             </div>
-            <div className="d-flex flex-row align-items-center mb-2">
-              <Icon className="card-icon" src={Event} />
-              <p>
-                <span className="color-black">
-                  <FormattedMessage
-                    id="courseInfo.starting.text"
-                    defaultMessage="Starting"
-                  />
-                </span>{' '}
-                <span>(6 January 2022)</span>
-              </p>
-            </div>
-            <div className="d-flex flex-row align-items-center mb-2">
-              <Icon className="card-icon" src={Event} />
-              <p>
-                <span className="color-black">
-                  {' '}
-                  <FormattedMessage
-                    id="courseInfo.ending.text"
-                    defaultMessage="Ending"
-                  />
-                </span>{' '}
-                <span>(3 August 2022)</span>
-              </p>
-            </div>
+            {courseMetaData?.additional_metadata?.enrollment_start && (
+              <div className="d-flex flex-row align-items-center mb-2">
+                <Icon className="card-icon" src={Event} />
+                <p>
+                  <span className="color-black">
+                    <FormattedMessage
+                      id="courseInfo.starting.text"
+                      defaultMessage="Starting"
+                    />
+                  </span>{' '}
+                  <span>
+                    `(${courseMetaData?.additional_metadata?.enrollment_start})`
+                  </span>
+                </p>
+              </div>
+            )}
+            {courseMetaData?.additional_metadata?.enrollment_end && (
+              <div className="d-flex flex-row align-items-center mb-2">
+                <Icon className="card-icon" src={Event} />
+                <p>
+                  <span className="color-black">
+                    {' '}
+                    <FormattedMessage
+                      id="courseInfo.ending.text"
+                      defaultMessage="Ending"
+                    />
+                  </span>{' '}
+                  <span>
+                    `(${courseMetaData?.additional_metadata?.enrollment_end})`
+                  </span>
+                </p>
+              </div>
+            )}
             {courseMetaData?.total_weeks_of_effort > 0 && (
               <div className="d-flex flex-row align-items-center mb-3">
                 <Icon className="card-icon" src={WatchFilled} />
@@ -136,7 +144,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => (
             <CourseInfoButtonStatus courseMetaData={courseMetaData} />
             {courseMetaData?.additional_metadata?.total_enrollments && (
               <p className="mt-3">
-                <span>
+                <span className="mr-1">
                   {courseMetaData?.additional_metadata?.total_enrollments}
                 </span>
                 <span className="font-sm">

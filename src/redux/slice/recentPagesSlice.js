@@ -22,6 +22,20 @@ const recentPagesSlice = createSlice({
       }
       localStorage.setItem('recentPages', JSON.stringify(state.pages));
     },
+    removePage(state, action) {
+      const courseSlug = action.payload;
+      const index = state.pages.findIndex(
+        (page) => page.course_slug === courseSlug,
+      );
+      if (index !== -1) {
+        state.pages.splice(index, 1);
+        localStorage.setItem('recentPages', JSON.stringify(state.pages));
+      }
+    },
+    clearAllPages(state) {
+      state.pages = [];
+      localStorage.removeItem('recentPages');
+    },
     loadPages(state) {
       const pages = localStorage.getItem('recentPages');
       if (pages) {
@@ -31,6 +45,8 @@ const recentPagesSlice = createSlice({
   },
 });
 
-export const { addPage, loadPages } = recentPagesSlice.actions;
+export const {
+  addPage, removePage, clearAllPages, loadPages,
+} = recentPagesSlice.actions;
 
 export default recentPagesSlice.reducer;
