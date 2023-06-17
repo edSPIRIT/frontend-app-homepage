@@ -125,7 +125,7 @@ const CourseCardNew = ({ course, intl }) => {
             >
               <FormattedMessage
                 id="courseCard.learnMore.button"
-                defaultMessage="Learn more"
+                defaultMessage="Learn More"
               />
             </Button>
           </div>

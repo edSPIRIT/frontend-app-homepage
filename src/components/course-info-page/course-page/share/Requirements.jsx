@@ -120,7 +120,7 @@ const Requirements = ({ courseMetaData, loading }) => {
                         >
                           <FormattedMessage
                             id="courseCard.learnMore.button"
-                            defaultMessage="Learn more"
+                            defaultMessage="Learn More"
                           />
                         </Button>
                       </Card.Footer>

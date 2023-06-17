@@ -24,7 +24,6 @@ const useSearchResults = () => {
   const { data, isLoading } = useQuery(
     ['SearchResults', cleanedFilters],
     () => fetchSearchResults(cleanedFilters),
-    // { enabled: !isObjectEmpty(cleanedFilters) },
   );
 
   return {

@@ -15,12 +15,12 @@ const CourseInfoButtonStatus = ({ courseMetaData }) => {
         {courseMetaData?.paid_course?.price > 0 ? (
           <FormattedMessage
             id="courseInfo.purchaseNow.text"
-            defaultMessage="Purchase now"
+            defaultMessage="Purchase"
           />
         ) : (
           <FormattedMessage
             id="courseInfo.enrollNow.text"
-            defaultMessage="Enroll now"
+            defaultMessage="Enroll Now"
           />
         )}
       </Button>

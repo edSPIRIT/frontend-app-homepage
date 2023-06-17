@@ -9,17 +9,20 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
+import { useDispatch } from 'react-redux';
 import useGetTopRecentCourses from '../../../hooks/useGetTopRecentCourses';
 import CourseCardNew from '../../shared/course-card/CourseCardNew';
 import CourseCardSkeleton from '../../shared/skeleton/CourseCardSkeleton';
 import ScrollableExplorerCourses from './explorer-courses/ScrollableExplorerCourses';
 import messages from '../../../messages';
+import { resetSearchFilters } from '../../../redux/slice/searchQuerySlice';
 
 const ExplorerCourses = ({ intl }) => {
   const [key, setKey] = useState('top-courses');
   const { recentCourses, topCourses, loading } = useGetTopRecentCourses();
   const isMobile = useMediaQuery({ maxWidth: '1024px' });
   const history = useHistory();
+  const dispatch = useDispatch();
 
   return (
     <section id="explore-courses" className="explore-courses-container">
@@ -48,7 +51,10 @@ const ExplorerCourses = ({ intl }) => {
             title={intl.formatMessage(messages['homePage.tab.topCourses'])}
           >
             {isMobile ? (
-              <ScrollableExplorerCourses courses={topCourses} loading={loading} />
+              <ScrollableExplorerCourses
+                courses={topCourses}
+                loading={loading}
+              />
             ) : (
               <div className="course-container">
                 {/* TO DO: Do not use Array index in keys */}
@@ -70,7 +76,10 @@ const ExplorerCourses = ({ intl }) => {
             title={intl.formatMessage(messages['homePage.tab.recentlyAdded'])}
           >
             {isMobile ? (
-              <ScrollableExplorerCourses courses={recentCourses} loading={loading} />
+              <ScrollableExplorerCourses
+                courses={recentCourses}
+                loading={loading}
+              />
             ) : (
               <div className="course-container">
                 {recentCourses?.map((course) => (
@@ -84,7 +93,10 @@ const ExplorerCourses = ({ intl }) => {
           <Button
             className="view-all-courses-btn mt-5"
             iconAfter={ArrowForward}
-            onClick={() => history.push('/search')}
+            onClick={() => {
+              dispatch(resetSearchFilters());
+              history.push('/search');
+            }}
           >
             <FormattedMessage
               id="viewAllCourses.button"

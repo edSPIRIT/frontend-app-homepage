@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { ArrowForwardIos } from '@edx/paragon/icons';
 import { Icon, Skeleton } from '@edx/paragon';
 import { useHistory } from 'react-router';
@@ -6,10 +7,8 @@ import {
   resetSearchFilters,
   setSearchSubject,
 } from '../../../redux/slice/searchQuerySlice';
-import useGetPopularSubjects from '../../../hooks/useGetPopularSubjects';
 
-const PopularSubjects = () => {
-  const { popularSubjects, loading } = useGetPopularSubjects();
+const PopularSubjects = ({ popularSubjects, loading }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -19,7 +18,7 @@ const PopularSubjects = () => {
       {loading
         ? Array(10)
           .fill(1)
-          .map((item, i) => (
+          .map((_, i) => (
             // eslint-disable-next-line react/no-array-index-key
             <div className="subject-wrapper" key={i}>
               <Skeleton className="mr-1" width={66} height={66} />

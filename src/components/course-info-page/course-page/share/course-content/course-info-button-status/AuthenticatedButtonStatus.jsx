@@ -10,9 +10,10 @@ const AuthenticatedButtonStatus = ({ courseMetaData }) => {
   const { loading: coursesEnrollLoading, userCourseIds } = useGetOverviewList();
   const {
     enrollClickHandler,
-    loading: enrollLoading,
+    isLoading: enrollLoading,
     availablePaymentData,
   } = useEnrollClickHandler(courseMetaData);
+  console.log('enrollLoading', enrollLoading);
   if (coursesEnrollLoading || enrollLoading) {
     return (
       <Button variant="brand" className="mb-3 enroll-btn">
@@ -25,6 +26,7 @@ const AuthenticatedButtonStatus = ({ courseMetaData }) => {
       <Button
         variant="primary"
         className="enroll-btn"
+        loading={enrollLoading}
         href={`https://apps.${getConfig().LMS_BASE_URL.replace(
           'https://',
           '',
@@ -44,17 +46,18 @@ const AuthenticatedButtonStatus = ({ courseMetaData }) => {
       variant="brand"
       className="enroll-btn"
       onClick={enrollClickHandler}
+      loading={enrollLoading}
       disabled={courseMetaData?.paid_course?.price > 0 && !availablePaymentData}
     >
       {courseMetaData?.paid_course?.price > 0 ? (
         <FormattedMessage
           id="courseInfo.purchaseNow.text"
-          defaultMessage="Purchase now"
+          defaultMessage="Purchase"
         />
       ) : (
         <FormattedMessage
           id="courseInfo.enrollNow.text"
-          defaultMessage="Enroll now"
+          defaultMessage="Enroll Now"
         />
       )}
     </Button>

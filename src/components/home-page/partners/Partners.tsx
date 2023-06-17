@@ -50,7 +50,7 @@ const Partners = () => {
           >
             <FormattedMessage
               id="homePage.viewOurPartners.button"
-              defaultMessage="View our partners"
+              defaultMessage="View Our Partners"
             />
           </Button>
         </div>
