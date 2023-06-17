@@ -7,7 +7,7 @@ import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
 import messages from '../../messages';
 import NavHeader from '../shared/header/nav-header/NavHeader';
 import NotEnrolledCardCourse from './overview-page/not-enrolled-course-card/NotEnrolledCourseCard';
-import TotalCourseWrapper from '../shared/total-course-wrapper/TotalCourseWrapper';
+import TotalCourseWrapper from './enrollment-list/TotalCourseWrapper';
 import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleton';
 import UserCourseCard from '../shared/user-courses/UserCourseCard';
 

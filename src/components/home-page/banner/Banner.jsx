@@ -9,7 +9,7 @@ import {
 import useGetBanner from '../../../hooks/useGetBanner';
 import Highlighted from './Highlighted';
 import defaultBanner from '../../../assets/default-banner.png';
-import SearchBox from '../../shared/discover-banner/SearchBox';
+import SearchBox from '../../shared/search-header/search-header/SearchBox';
 
 const Banner = () => {
   const {

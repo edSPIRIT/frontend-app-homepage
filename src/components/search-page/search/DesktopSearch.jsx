@@ -1,14 +1,14 @@
 import { Breadcrumb } from '@edx/paragon';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { Link } from 'react-router-dom';
-import DiscoverBanner from '../../shared/discover-banner/DiscoverBanner';
 import SearchFacets from './desktop-search/SearchFacets';
 import messages from '../../../messages';
 import SearchFilteredResults from './share/SearchFilteredResults';
+import SearchHeader from '../../shared/search-header/SearchHeader';
 
 const DesktopSearch = ({ intl }) => (
   <main>
-    <DiscoverBanner />
+    <SearchHeader />
     <SearchFacets />
     <div className="custom-container pt-4.5">
       <Breadcrumb

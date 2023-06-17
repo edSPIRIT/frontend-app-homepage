@@ -1,5 +1,5 @@
 import useGetFeaturedSubjectsInfinite from '../../hooks/useGetFeaturedSubjectsInfinite';
-import DiscoverBanner from '../shared/discover-banner/DiscoverBanner';
+import SearchHeader from '../shared/search-header/SearchHeader';
 import FeaturedSubjects from './discover/FeaturedSubjects';
 import FeaturedSubjectsWithCourses from './discover/FeaturedSubjectsWithCourses';
 
@@ -10,7 +10,7 @@ const Discover = () => {
 
   return (
     <main>
-      <DiscoverBanner />
+      <SearchHeader />
       <FeaturedSubjects
         featuredSubjects={featuredSubjects}
         loading={loading}

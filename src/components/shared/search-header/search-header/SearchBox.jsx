@@ -13,11 +13,11 @@ import { Link, useHistory } from 'react-router-dom';
 import {
   resetSearchFilters,
   setSearchString,
-} from '../../../redux/slice/searchQuerySlice';
-import messages from '../../../messages';
-import useSearchSuggestions from '../../../hooks/useSearchSuggestions';
-import { addPage } from '../../../redux/slice/recentPagesSlice';
-import { setSearchModal } from '../../../redux/slice/searchModalSlice';
+} from '../../../../redux/slice/searchQuerySlice';
+import messages from '../../../../messages';
+import useSearchSuggestions from '../../../../hooks/useSearchSuggestions';
+import { addPage } from '../../../../redux/slice/recentPagesSlice';
+import { setSearchModal } from '../../../../redux/slice/searchModalSlice';
 
 const SearchBox = ({ intl }) => {
   const dispatch = useDispatch();

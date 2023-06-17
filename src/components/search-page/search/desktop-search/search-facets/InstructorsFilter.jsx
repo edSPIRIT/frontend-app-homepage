@@ -1,18 +1,25 @@
 import {
-  Dropdown, Form, Menu, MenuItem, SearchField,
+  Dropdown,
+  Form,
+  Menu,
+  MenuItem,
+  SearchField,
+  Skeleton,
 } from '@edx/paragon';
 import { KeyboardArrowDown } from '@edx/paragon/icons';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { useInView } from 'react-intersection-observer';
 import { setSearchInstructors } from '../../../../../redux/slice/searchQuerySlice';
-import useGetInstructors from '../../../../../hooks/useGetInstructors';
+import useGetInstructorsFacetInfinite from '../../../../../hooks/useGetInstructorsFacetInfinite';
 
 const InstructorsFilter = () => {
+  const { ref, inView } = useInView();
   const instructors = useSelector((state) => state.searchFilters.instructors);
   const dispatch = useDispatch();
   const [searchString, setSearchString] = useState('');
-  const { InstructorsData, loading } = useGetInstructors(searchString);
+  const { instructorsFilterItems, loading, isFetching } = useGetInstructorsFacetInfinite(searchString, inView);
   return (
     <Dropdown autoClose="outside" className="facet-btn  mr-3" key="subject">
       <Dropdown.Toggle
@@ -58,7 +65,7 @@ const InstructorsFilter = () => {
             value={instructors}
           >
             <Menu>
-              {InstructorsData?.map((item) => (
+              {instructorsFilterItems?.map((item) => (
                 <div
                   className="d-flex justify-content-between align-items-center item-wrapper"
                   key={item.slug}
@@ -69,6 +76,16 @@ const InstructorsFilter = () => {
                   <span className="mr-2.5">{item.courses_count}</span>
                 </div>
               ))}
+              <div ref={ref} />
+              {(loading || isFetching) && (
+                <div className="d-flex pl-3 justify-content-between">
+                  <div className="d-flex ">
+                    <Skeleton className="mr-2" width={18} height={18} />
+                    <Skeleton className="" width={90} height={18} />
+                  </div>
+                  <Skeleton className="mr-2" width={15} height={18} />
+                </div>
+              )}
             </Menu>
           </Form.CheckboxSet>
         </Form.Group>

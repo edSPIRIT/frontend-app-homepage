@@ -49,6 +49,7 @@ const SimilarCourses = ({
             <Carousel
               interval={null}
               indicators={false}
+              controls={similarCourses?.length > 4}
               nextIcon={(
                 <Icon
                   style={{ height: '38px', width: '38px' }}
