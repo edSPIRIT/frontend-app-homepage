@@ -11,10 +11,10 @@ import UserCourseCard from '../../shared/user-courses/UserCourseCard';
 import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
 import UserCourseCardSkeleton from '../../shared/user-courses/UserCourseCardSkeleton';
-import useGetEnrollmentList from '../../../hooks/useGetEnrollmentList';
 import SimilarCourses from '../../shared/similar-courses/SimilarCourses';
 import NavHeader from '../../shared/header/nav-header/NavHeader';
 import messages from '../../../messages';
+import useGetOverviewList from '../../../hooks/useGetOverviewList';
 
 const OverviewPage = ({ intl }) => {
   const {
@@ -23,7 +23,8 @@ const OverviewPage = ({ intl }) => {
     userCourseIds,
     recentUserCourses,
     courseCount,
-  } = useGetEnrollmentList();
+  } = useGetOverviewList();
+
   const isMobile = useMediaQuery({ maxWidth: '768px' });
   const { pathname } = useLocation();
   useEffect(() => {

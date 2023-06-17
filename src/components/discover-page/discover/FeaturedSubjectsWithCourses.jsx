@@ -19,7 +19,6 @@ const FeaturedSubjectsWithCourses = ({
   const history = useHistory();
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ maxWidth: '1350px' });
-  console.log('featuredSubjectsWithCourses', featuredSubjectsWithCourses);
   return (
     <div className="custom-container subjects-courses-wrapper pb-4.5">
       {featuredSubjectsWithCourses?.map((subject) => {

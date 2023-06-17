@@ -4,7 +4,7 @@ import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
-const useGetSimilarCourses = (searchQuery = '', courseIds) => {
+const useGetSimilarCourses = (searchQuery, courseIds) => {
   const [filterSimilarCourses, setFilterSimilarCourses] = useState([]);
   const fetchSimilarCourses = async () => {
     const url = `${
@@ -19,13 +19,15 @@ const useGetSimilarCourses = (searchQuery = '', courseIds) => {
     ['SimilarCourses', searchQuery],
     fetchSimilarCourses,
     {
-      enabled: searchQuery !== 'undefined',
+      enabled: !!searchQuery && searchQuery !== 'undefined',
     },
   );
   useEffect(() => {
     if (courseIds && data) {
       const filteredCourses = data?.results?.filter(
-        (course) => !courseIds?.includes(course?.data?.id),
+        (course) => !courseIds?.includes(
+          course?.data?.course_metadata?.paid_course?.course_id,
+        ),
       );
       setFilterSimilarCourses(filteredCourses);
     }

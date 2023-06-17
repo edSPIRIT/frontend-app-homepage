@@ -12,8 +12,6 @@ import {
 
 const FeaturedSubjects = ({ featuredSubjects, loading }) => {
   const history = useHistory();
-  console.log('featuredSubjects', featuredSubjects);
-
   const dispatch = useDispatch();
 
   return (

@@ -19,15 +19,7 @@ const useGetEnrollmentList = (courseStatus, page) => {
     () => fetchEnrollmentList(courseStatus, page),
   );
   return {
-    userCourseTitles: `${data?.results?.reduce(
-      (acc, current) => `${acc}${current?.course_details?.course_name} `,
-      '',
-    )}`,
-    userCourseIds: data?.results?.map(
-      (course) => course?.course_details?.course_id,
-    ),
     userCourses: data?.results,
-    recentUserCourses: data?.results?.slice(0, 5),
     courseCount: data?.count,
     loading: isLoading,
   };

@@ -4,10 +4,10 @@ import { Button, Spinner } from '@edx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { getConfig } from '@edx/frontend-platform';
 import useEnrollClickHandler from '../../../../../../hooks/useEnrollClickHandler';
-import useGetEnrollmentList from '../../../../../../hooks/useGetEnrollmentList';
+import useGetOverviewList from '../../../../../../hooks/useGetOverviewList';
 
 const AuthenticatedButtonStatus = ({ courseMetaData }) => {
-  const { loading: coursesEnrollLoading, userCourseIds } = useGetEnrollmentList();
+  const { loading: coursesEnrollLoading, userCourseIds } = useGetOverviewList();
   const {
     enrollClickHandler,
     loading: enrollLoading,

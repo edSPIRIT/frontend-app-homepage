@@ -1,27 +1,9 @@
-import { getConfig } from '@edx/frontend-platform';
-import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
-import { Button, Skeleton } from '@edx/paragon';
+import { Skeleton } from '@edx/paragon';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import useGetCourseInstructors from '../../../../hooks/useGetCourseInstructors';
-import useGetEnrollmentList from '../../../../hooks/useGetEnrollmentList';
 import InstructorCard from './course-instructors/InstructorCard';
 
 const CourseInstructors = ({ instructors, loading }) => (
-  // const { InstructorCourses } = useGetInstructorCourses();
-  // const { courseEnrollment } = useGetEnrollmentList();
-  // async function deleteEnroll() {
-  //   return getAuthenticatedHttpClient().post(
-
-  //     `${
-  //       getConfig().LMS_BASE_URL
-  //     }/admin-console/api/openedx/api/unenroll/`,
-  //     {
-  //       course_id: 'course-v1:test+test1+2014',
-  //     },
-  //   );
-  // }
-  // deleteEnroll();
   <div className="course-info-instructors mt-5" id="instructors">
     <h2 className="mb-3">
       <FormattedMessage id="instructors.text" defaultMessage="Instructors" />
