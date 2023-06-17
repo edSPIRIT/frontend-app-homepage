@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { Icon, ModalLayer } from '@edx/paragon';
 import {
   Close, Delete, Share, VideoTranscript,
@@ -20,7 +21,7 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
       },
     ),
     onSuccess: () => {
-      queryClient.invalidateQueries(['EnrollmentList']);
+      queryClient.invalidateQueries(['OverviewList']);
       // setShowToast(true);
     },
   });
@@ -40,7 +41,10 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
             to={`/course/${courseInfo?.course_metadata?.slug}`}
           >
             <Icon src={VideoTranscript} className="mr-2 text-gray-500" />
-            <span>Course info</span>
+            <FormattedMessage
+              id="dashboard.courseInfo.item"
+              defaultMessage="Course info"
+            />
           </Link>
           <div
             className="d-flex align-items-center py-2 "
@@ -54,7 +58,10 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
             }}
           >
             <Icon src={Share} className="mr-2 text-gray-500" />
-            <span>Share</span>
+            <FormattedMessage
+              id="dashboard.share.item"
+              defaultMessage="Share"
+            />
           </div>
           <div
             className="d-flex align-items-center py-2 "
@@ -64,7 +71,10 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
             }}
           >
             <Icon src={Delete} className="mr-2 text-gray-500" />
-            <span>Unroll</span>
+            <FormattedMessage
+              id="dashboard.unroll.item"
+              defaultMessage="Unroll"
+            />
           </div>
         </div>
       </div>

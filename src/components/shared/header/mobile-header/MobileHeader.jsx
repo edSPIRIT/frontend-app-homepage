@@ -8,6 +8,7 @@ import { Search } from '@edx/paragon/icons';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import edLogo from '../../../../assets/edspirit-logo.png';
 import useGetFooters from '../../../../hooks/useGetFooters';
 import { ReactComponent as HomeNav } from '../../../../assets/nav-icons/home-nav.svg';
@@ -73,7 +74,7 @@ const MobileHeader = () => {
             className="d-flex flex-column align-items-center"
           >
             <Icon src={ActiveLink === '/' ? HomeNavColored : HomeNav} />
-            <span>Home</span>
+            <FormattedMessage id="header.nav.home" defaultMessage="Home" />
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
@@ -88,7 +89,10 @@ const MobileHeader = () => {
                 ActiveLink === '/overview' ? DashboardNavColored : DashboardNav
               }
             />
-            <span>Dashboard</span>
+            <FormattedMessage
+              id="header.nav.dashboard"
+              defaultMessage="Dashboard"
+            />
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
@@ -103,7 +107,10 @@ const MobileHeader = () => {
                 ActiveLink === '/discover' ? DiscoverdNavColored : DiscoverNav
               }
             />
-            <span>Discover</span>
+            <FormattedMessage
+              id="header.nav.discover"
+              defaultMessage="Discover"
+            />
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
@@ -117,7 +124,10 @@ const MobileHeader = () => {
             <Icon
               src={ActiveLink === '/profile' ? ProfileNavColored : ProfileNav}
             />
-            <span>Profile</span>
+            <FormattedMessage
+              id="header.dropdownOption.profile"
+              defaultMessage="Profile"
+            />
           </Nav.Link>
         </Nav.Item>
       </Nav>

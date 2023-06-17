@@ -132,5 +132,9 @@
     "discover.exploreAllSubjects.text": "همه ی موضوعات را جستجو کنید",
     "allSubjects.text": "تمام موضوعات",
     "partners.search.find": "جستجوی یک ...",
-    "discover.featuredSubjects.text": "موضوعات برجسته"
+    "discover.featuredSubjects.text": "موضوعات برجسته",
+    "dashboard.courseInfo.item": "اطلاعات دوره",
+    "dashboard.share.item": "اشتراک گذاری",
+    "dashboard.unroll.item": "لغو",
+    "header.nav.home": "خانه"
 }
