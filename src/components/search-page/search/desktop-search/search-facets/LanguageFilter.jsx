@@ -1,5 +1,5 @@
 import {
-  Dropdown, Form, Menu, MenuItem,
+  Dropdown, Form, Menu, MenuItem, Skeleton,
 } from '@edx/paragon';
 import { KeyboardArrowDown } from '@edx/paragon/icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,15 +8,14 @@ import { setSearchLanguageCodes } from '../../../../../redux/slice/searchQuerySl
 import {
   codeToTitle, getLangCode,
 } from '../../../../../utils/supportsLanguages';
-import useGetActiveLangs from '../../../../../hooks/useGetActiveLangs';
+import useGetLanguagesFilter from '../../../../../hooks/useGetLanguagesFilter';
 
 const LanguageFilter = () => {
   const languageCodes = useSelector(
     (state) => state.searchFilters.language_codes,
   );
   const dispatch = useDispatch();
-  const { activeLangs } = useGetActiveLangs();
-
+  const { languagesFilter, loading } = useGetLanguagesFilter();
   return (
     <Dropdown autoClose="outside" className="facet-btn  mr-3" key="subject">
       <Dropdown.Toggle
@@ -60,7 +59,7 @@ const LanguageFilter = () => {
             value={codeToTitle(languageCodes)}
           >
             <Menu>
-              {activeLangs?.map((item) => (
+              {languagesFilter?.map((item) => (
                 <div
                   className="d-flex justify-content-between align-items-center item-wrapper"
                   key={item.code}
@@ -68,9 +67,18 @@ const LanguageFilter = () => {
                   <MenuItem as={Form.Checkbox} value={item.name}>
                     {item.name}
                   </MenuItem>
-                  {/* <span className="mr-3">{item.count}</span> */}
+                  <span className="mr-3">{item.course_count}</span>
                 </div>
               ))}
+              {(loading) && (
+                <div className="d-flex pl-3 justify-content-between">
+                  <div className="d-flex ">
+                    <Skeleton className="mr-2" width={18} height={18} />
+                    <Skeleton className="" width={90} height={18} />
+                  </div>
+                  <Skeleton className="mr-2" width={15} height={18} />
+                </div>
+              )}
             </Menu>
           </Form.CheckboxSet>
         </Form.Group>

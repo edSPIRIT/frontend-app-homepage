@@ -40,22 +40,20 @@ const BottomCardSection = ({ courseInfo }) => {
       )}
       <div className="d-flex">
         {certificateData && (
-          <div className="d-flex view-course-btn mr-2">
-            <Button
-              className="view-btn"
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = `${getConfig().LMS_BASE_URL}${
-                  certificateData?.download_url
-                }`;
-              }}
-            >
-              <FormattedMessage
-                id="userCourseCard.viewCertificate.text"
-                defaultMessage="View certificate"
-              />
-            </Button>
-          </div>
+        <Button
+          className="view-btn view-course-btn mr-2"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = `${getConfig().LMS_BASE_URL}${
+              certificateData?.download_url
+            }`;
+          }}
+        >
+          <FormattedMessage
+            id="userCourseCard.viewCertificate.text"
+            defaultMessage="View certificate"
+          />
+        </Button>
         )}
         <Link
           className="view-btn view-course-btn"

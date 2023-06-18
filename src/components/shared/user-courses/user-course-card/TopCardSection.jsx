@@ -111,21 +111,23 @@ const TopCardSection = ({ courseInfo, openMoreBtn }) => {
       >
         {courseInfo?.organization?.name}
       </Link>
-      {!courseCompleted && (
-        <p className="course-date-title">
-          <span>
-            <FormattedMessage
-              id="userCourseCard.courseStart.text"
-              defaultMessage="Course Start - "
-            />
-          </span>
-          <span>
-            {new Date(courseInfo?.course_details?.course_start).toLocaleString(
-              'en-US',
-            )}
-          </span>
-        </p>
-      )}
+      <p className="course-date-title">
+        {!courseCompleted && (
+          <>
+            <span>
+              <FormattedMessage
+                id="userCourseCard.courseStart.text"
+                defaultMessage="Course Start - "
+              />
+            </span>
+            <span>
+              {new Date(
+                courseInfo?.course_details?.course_start,
+              ).toLocaleString('en-US')}
+            </span>
+          </>
+        )}
+      </p>
     </>
   );
 };

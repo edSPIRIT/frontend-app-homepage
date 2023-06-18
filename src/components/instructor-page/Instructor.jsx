@@ -23,7 +23,7 @@ const Instructor = () => {
   const { instructorPopularCourses, loading: instructorPopularCoursesLoading } = useGetInstructorPopularCourses(slug);
 
   return (
-    <main>
+    <>
       <InstructorHeader InstructorData={InstructorData} loading={loading} />
       <div className="custom-container d-flex flex-column pb-5">
         <h2 className="d-flex popular-courses-wrapper">
@@ -77,7 +77,7 @@ const Instructor = () => {
           )}
         </div>
       </div>
-    </main>
+    </>
   );
 };
 

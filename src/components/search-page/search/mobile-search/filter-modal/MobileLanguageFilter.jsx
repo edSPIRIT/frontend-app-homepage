@@ -7,6 +7,7 @@ import {
   Icon,
   Menu,
   MenuItem,
+  Skeleton,
   useCheckboxSetValues,
   useToggle,
 } from '@edx/paragon';
@@ -14,16 +15,19 @@ import { ArrowBack, ArrowForwardIos } from '@edx/paragon/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useEffect } from 'react';
-import useGetActiveLangs from '../../../../../hooks/useGetActiveLangs';
-import { codeToTitle, getLangCode } from '../../../../../utils/supportsLanguages';
+import {
+  codeToTitle,
+  getLangCode,
+} from '../../../../../utils/supportsLanguages';
 import { setSearchLanguageCodes } from '../../../../../redux/slice/searchQuerySlice';
+import useGetLanguagesFilter from '../../../../../hooks/useGetLanguagesFilter';
 
 const MobileLanguageFilter = () => {
   const [isOpen, open, close] = useToggle(false);
   const language = useSelector((state) => state.searchFilters.language_codes);
   const dispatch = useDispatch();
 
-  const { activeLangs } = useGetActiveLangs();
+  const { languagesFilter, loading } = useGetLanguagesFilter();
 
   const [languageValues, {
     add, remove, clear, set,
@@ -85,17 +89,30 @@ const MobileLanguageFilter = () => {
                 value={codeToTitle(languageValues)}
               >
                 <Menu>
-                  {activeLangs?.map((item) => (
+                  {languagesFilter?.map((item) => (
                     <div
                       className="d-flex justify-content-between align-items-center item-wrapper"
                       key={item.code}
                     >
-                      <MenuItem as={Form.Checkbox} value={item.name} className="pl-2">
+                      <MenuItem
+                        as={Form.Checkbox}
+                        value={item.name}
+                        className="pl-2"
+                      >
                         {item.name}
                       </MenuItem>
-                      {/* <span className="pr-4">{item.count}</span> */}
+                      <span className="pr-4">{item.course_count}</span>
                     </div>
                   ))}
+                  {loading && (
+                    <div className="d-flex pl-3 justify-content-between">
+                      <div className="d-flex ">
+                        <Skeleton className="mr-2" width={18} height={18} />
+                        <Skeleton className="" width={90} height={18} />
+                      </div>
+                      <Skeleton className="mr-2" width={15} height={18} />
+                    </div>
+                  )}
                 </Menu>
               </Form.CheckboxSet>
             </Form.Group>
@@ -104,7 +121,6 @@ const MobileLanguageFilter = () => {
                 variant="brand"
                 className="w-100"
                 onClick={() => {
-                  // dispatch(resetSearchFilters());
                   dispatch(setSearchLanguageCodes(languageValues));
                   close();
                 }}

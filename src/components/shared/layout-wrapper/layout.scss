@@ -78,14 +78,25 @@
     border: 1px solid $light-300;
     font-size: $font-size-base-xs;
   }
-  .search-result-modal-wrapper{
-    .suggestion-title{
-      color:$gray-700;
+  .search-result-modal-wrapper {
+    .suggestion-title {
+      color: $gray-700;
       font-weight: 400;
     }
-    .second-title-wrapper{
+    .second-title-wrapper {
       font-size: $font-size-base-sm;
-      color:$gray-500
+      color: $gray-500;
     }
+  }
+}
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  .main-container {
+    flex-grow: 1;
+  }
+  footer{
+    margin-top: auto;
   }
 }

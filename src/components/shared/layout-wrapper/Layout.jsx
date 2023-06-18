@@ -18,9 +18,13 @@ const Layout = ({ children }) => (
     )}
   >
     <SearchModal />
-    <Header />
-    {children}
-    <FooterSection />
+    <div className="layout-container">
+      <Header />
+      <main className="main-container">
+        {children}
+      </main>
+      <FooterSection />
+    </div>
   </Suspense>
 );
 

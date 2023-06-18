@@ -34,7 +34,7 @@ const EnrollmentList = ({ type, intl }) => {
   return (
     <>
       {isMobile && <NavHeader />}
-      <main className="d-flex custom-container py-5 flex-column">
+      <div className="d-flex custom-container py-5 flex-column">
         {loading ? (
           Array(4)
             .fill(1)
@@ -100,7 +100,7 @@ const EnrollmentList = ({ type, intl }) => {
             {/* <AdCard /> */}
           </div>
         )}
-      </main>
+      </div>
     </>
   );
 };

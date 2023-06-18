@@ -7,7 +7,7 @@ import SearchFilteredResults from './share/SearchFilteredResults';
 import SearchHeader from '../../shared/search-header/SearchHeader';
 
 const DesktopSearch = ({ intl }) => (
-  <main>
+  <>
     <SearchHeader />
     <SearchFacets />
     <div className="custom-container pt-4.5">
@@ -25,7 +25,7 @@ const DesktopSearch = ({ intl }) => (
       />
       <SearchFilteredResults />
     </div>
-  </main>
+  </>
 );
 DesktopSearch.propTypes = {
   intl: intlShape.isRequired,

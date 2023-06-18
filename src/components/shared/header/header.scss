@@ -247,9 +247,7 @@
   color: $gray-500;
   .active {
     background-color: unset !important;
-    span {
-      color: $brand-500 !important;
-    }
+    color: $brand-500 !important;
   }
   span {
     color: $gray-500;

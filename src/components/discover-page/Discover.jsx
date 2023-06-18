@@ -9,7 +9,7 @@ const Discover = () => {
   } = useGetFeaturedSubjectsInfinite();
 
   return (
-    <main>
+    <>
       <SearchHeader />
       <FeaturedSubjects
         featuredSubjects={featuredSubjects}
@@ -20,7 +20,7 @@ const Discover = () => {
         loading={loading}
         isFetching={isFetching}
       />
-    </main>
+    </>
   );
 };
 
