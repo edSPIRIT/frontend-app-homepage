@@ -99,6 +99,7 @@ const MobilePartnerFilter = () => {
                       key={item.organization.id}
                     >
                       <MenuItem
+                        className="pl-2"
                         as={Form.Checkbox}
                         value={item.organization.name}
                       >

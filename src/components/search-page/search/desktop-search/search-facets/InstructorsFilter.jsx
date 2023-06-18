@@ -73,7 +73,7 @@ const InstructorsFilter = () => {
                   <MenuItem as={Form.Checkbox} value={item.name}>
                     {item.name}
                   </MenuItem>
-                  <span className="mr-2.5">{item.courses_count}</span>
+                  <span className="mr-3">{item.courses_count}</span>
                 </div>
               ))}
               <div ref={ref} />

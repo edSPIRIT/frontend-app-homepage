@@ -27,6 +27,7 @@ const Requirements = ({ courseMetaData, loading }) => {
         <ul className="pl-3.5 pb-0">
           {courseMetaData?.requirements
             && courseMetaData?.requirements?.map((req, i) => (
+              // eslint-disable-next-line react/no-array-index-key
               <li key={i} className="mb-3">
                 <p>{req}</p>
               </li>

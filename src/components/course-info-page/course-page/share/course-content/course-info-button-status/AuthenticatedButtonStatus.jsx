@@ -13,7 +13,6 @@ const AuthenticatedButtonStatus = ({ courseMetaData }) => {
     isLoading: enrollLoading,
     availablePaymentData,
   } = useEnrollClickHandler(courseMetaData);
-  console.log('enrollLoading', enrollLoading);
   if (coursesEnrollLoading || enrollLoading) {
     return (
       <Button variant="brand" className="mb-3 enroll-btn">

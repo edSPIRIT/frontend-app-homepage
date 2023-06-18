@@ -21,7 +21,7 @@ import DropdownNavHeader from '../dropdown-nav-header/DropdownNavHeader';
 import useGetFooters from '../../../../hooks/useGetFooters';
 import edLogo from '../../../../assets/edspirit-logo.png';
 import messages from '../../../../messages';
-import handleRedirect from '../../../../utils/handleRedirect';
+import handleRedirect, { handleLogout } from '../../../../utils/handleRedirect';
 import {
   resetSearchFilters,
   setSearchString,
@@ -38,6 +38,7 @@ const DesktopHeader = ({ intl }) => {
     dispatch(setSearchString(value));
     history.push('/search');
   };
+
   return (
     <div className="d-flex flex-row justify-content-between align-items-center header-wrapper">
       <div className="left-side-container">
@@ -112,7 +113,7 @@ const DesktopHeader = ({ intl }) => {
                     defaultMessage="Order History"
                   />
                 </Dropdown.Item>
-                <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/logout`}>
+                <Dropdown.Item onClick={handleLogout}>
                   <FormattedMessage
                     id="header.dropdownOption.signOut"
                     defaultMessage="Sign out"

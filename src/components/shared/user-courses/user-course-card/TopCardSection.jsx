@@ -24,6 +24,7 @@ const TopCardSection = ({ courseInfo, openMoreBtn }) => {
     ),
     onSuccess: () => {
       queryClient.invalidateQueries(['OverviewList']);
+      queryClient.invalidateQueries(['EnrollmentList']);
       // setShowToast(true);
     },
   });

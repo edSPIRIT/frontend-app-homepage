@@ -22,6 +22,7 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
     ),
     onSuccess: () => {
       queryClient.invalidateQueries(['OverviewList']);
+      queryClient.invalidateQueries(['EnrollmentList']);
       // setShowToast(true);
     },
   });

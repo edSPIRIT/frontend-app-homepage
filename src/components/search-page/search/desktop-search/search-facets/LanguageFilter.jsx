@@ -68,7 +68,7 @@ const LanguageFilter = () => {
                   <MenuItem as={Form.Checkbox} value={item.name}>
                     {item.name}
                   </MenuItem>
-                  {/* <span className="mr-2.5">{item.count}</span> */}
+                  {/* <span className="mr-3">{item.count}</span> */}
                 </div>
               ))}
             </Menu>

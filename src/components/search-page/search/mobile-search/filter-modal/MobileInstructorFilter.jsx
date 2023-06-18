@@ -100,7 +100,7 @@ const MobileInstructorFilter = () => {
                       className="d-flex justify-content-between align-items-center item-wrapper"
                       key={item.slug}
                     >
-                      <MenuItem as={Form.Checkbox} value={item.name}>
+                      <MenuItem as={Form.Checkbox} value={item.name} className="pl-2">
                         {item.name}
                       </MenuItem>
                       <span className="pr-4">{item.courses_count}</span>

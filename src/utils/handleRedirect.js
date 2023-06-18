@@ -11,3 +11,9 @@ const handleRedirect = () => {
   window.location.href = `${loginUrl}${redirectParams}`;
 };
 export default handleRedirect;
+
+export const handleLogout = () => {
+  const logoutUrl = `${getConfig().LMS_BASE_URL}/logout`;
+  const redirectParams = `?next=${encodeURIComponent(window.location.href)}`;
+  window.location.href = `${logoutUrl}${redirectParams}`;
+};

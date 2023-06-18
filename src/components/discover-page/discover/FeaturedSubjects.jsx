@@ -20,7 +20,7 @@ const FeaturedSubjects = ({ featuredSubjects, loading }) => {
         <h2>
           <FormattedMessage
             id="discover.featuredSubjects.text"
-            defaultMessage="Featured subjects"
+            defaultMessage="Featured Subjects"
           />
         </h2>
       </div>

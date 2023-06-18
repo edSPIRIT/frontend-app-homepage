@@ -84,7 +84,7 @@ const MobileAvailabilityFilter = () => {
                       className="d-flex justify-content-between align-items-center item-wrapper"
                       key={item.id}
                     >
-                      <MenuItem as={Form.Checkbox} value={item.title}>
+                      <MenuItem as={Form.Checkbox} value={item.title} className="pl-2">
                         {item.title}
                       </MenuItem>
                       <span className="pr-4">{item.count}</span>

@@ -69,24 +69,26 @@
   .pgn__form-group {
     margin-bottom: 0;
     .pgn__menu {
-      // border-top-left-radius: 0;
-      // border-top-right-radius: 0;
       box-shadow: unset;
       .item-wrapper {
-        font-size: $font-size-base-sm;
+        font-size: $font-size-base-xl;
         span {
           color: $gray-500;
+          opacity: 0.5;
         }
         &:hover {
           background-color: $light-200;
         }
         .pgn__menu-item {
+          height: 44px;
+          margin: 12px 16px;
+          padding: 0;
           &:hover {
             background-color: $light-200;
           }
         }
         .pgn__form-label {
-          font-size: $font-size-base-sm;
+          font-size: $font-size-base-xl;
           color: $gray-700;
         }
         .pgn__form-checkbox-input {
