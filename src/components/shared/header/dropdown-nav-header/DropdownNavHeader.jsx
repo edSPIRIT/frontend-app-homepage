@@ -10,7 +10,7 @@ const DropdownNavHeader = () => {
 
   return (
     <nav className="nav-items-wrapper">
-      <Link className="nav-link-header mx-2.5" to="/dashboard">
+      <Link className="nav-link-header mx-2.5" to="/overview">
         <FormattedMessage
           id="header.nav.dashboard"
           defaultMessage="Dashboard"
