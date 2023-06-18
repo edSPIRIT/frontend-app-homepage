@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Skeleton } from '@edx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
@@ -9,6 +8,7 @@ import {
   resetSearchFilters,
   setSearchSubject,
 } from '../../../redux/slice/searchQuerySlice';
+import FeaturedSubjectsSkeleton from './featured-subjects/FeaturedSubjectsSkeleton';
 
 const FeaturedSubjects = ({ featuredSubjects, loading }) => {
   const history = useHistory();
@@ -29,21 +29,8 @@ const FeaturedSubjects = ({ featuredSubjects, loading }) => {
           ? Array(10)
             .fill(1)
             .map((_, i) => (
-              <div
-                className="d-flex flex-column bg-light-200 align-items-center p-2 "
-                // eslint-disable-next-line react/no-array-index-key
-                key={i}
-              >
-                <Skeleton
-                  circle
-                  className="mr-1 mt-0"
-                  width={54}
-                  height={54}
-                />
-                <div className="w-100">
-                  <Skeleton width="100%" height={40} />
-                </div>
-              </div>
+              // eslint-disable-next-line react/no-array-index-key
+              <FeaturedSubjectsSkeleton key={i} />
             ))
           : featuredSubjects?.map((subject) => (
             // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events

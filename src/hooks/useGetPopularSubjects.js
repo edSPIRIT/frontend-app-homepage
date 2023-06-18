@@ -9,7 +9,7 @@ const useGetPopularSubjects = () => {
 
   const fetchSubjects = async () => {
     const apiRes = await fetch(
-      `${getConfig().LMS_BASE_URL}/admin-console/api/subject-list/?featured=true`,
+      `${getConfig().LMS_BASE_URL}/admin-console/api/popular-subject-list/`,
     );
 
     if (!apiRes.ok) {
@@ -20,26 +20,26 @@ const useGetPopularSubjects = () => {
   };
   const { data, isLoading } = useQuery('Subjects', fetchSubjects);
   useEffect(() => {
-    if (data?.items) {
+    if (data?.results) {
       if (isMobile) {
         switch (true) {
-          case data.items.length < 4:
+          case data.results.length < 4:
             setPopularSubject([]);
             break;
-          case data.items.length > 6:
-            setPopularSubject(data.items.slice(0, 6));
+          case data.results.length > 6:
+            setPopularSubject(data.results.slice(0, 6));
             break;
           default:
-            setPopularSubject(data.items);
+            setPopularSubject(data.results);
             break;
         }
       } else {
         switch (true) {
-          case data.items.length >= 10:
-            setPopularSubject(data.items.slice(0, 10));
+          case data.results.length >= 10:
+            setPopularSubject(data.results.slice(0, 10));
             break;
-          case data.items.length < 10 && data.items.length >= 5:
-            setPopularSubject(data.items.slice(0, 5));
+          case data.results.length < 10 && data.results.length >= 5:
+            setPopularSubject(data.results.slice(0, 5));
             break;
           default:
             setPopularSubject([]);
@@ -47,7 +47,7 @@ const useGetPopularSubjects = () => {
         }
       }
     }
-  }, [data?.items, isMobile]);
+  }, [data?.results, isMobile]);
   // useEffect(() => {
   //   if (data?.items) {
   //     const popSubjects = data.items.filter((item) => item.popular);

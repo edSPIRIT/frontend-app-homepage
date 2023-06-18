@@ -1,11 +1,33 @@
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { Skeleton } from '@edx/paragon';
 import PopularSubjects from '../../shared/popular-subjects/PopularSubjects';
 import useGetPopularSubjects from '../../../hooks/useGetPopularSubjects';
 
 const PopularSubjectsWrapper = () => {
   const { popularSubjects, loading } = useGetPopularSubjects();
 
-  return popularSubjects?.length > 0 ? (
+  if (loading) {
+    return (
+      <section className="popular-subject-container custom-container">
+        <div className="d-flex d-flex popular-title">
+          <Skeleton width={250} height={40} />
+        </div>
+        <div className="subject-container  mb-6">
+          {Array.from({ length: 10 }).map((_, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <div className="subject-wrapper" key={index}>
+              <Skeleton className="mr-1" width={66} height={66} />
+              <Skeleton width={175} height={20} />
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  const hasPopularSubjects = popularSubjects?.length > 0;
+
+  return hasPopularSubjects ? (
     <section className="popular-subject-container">
       <div className="custom-container">
         <h2 className="d-flex popular-title">
@@ -22,7 +44,7 @@ const PopularSubjectsWrapper = () => {
             />
           </span>
         </h2>
-        <PopularSubjects popularSubjects={popularSubjects} loading={loading} />
+        <PopularSubjects popularSubjects={popularSubjects} />
       </div>
     </section>
   ) : null;

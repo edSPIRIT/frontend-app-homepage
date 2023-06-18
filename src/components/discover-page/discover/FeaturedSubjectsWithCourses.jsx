@@ -22,7 +22,7 @@ const FeaturedSubjectsWithCourses = ({
   return (
     <div className="custom-container subjects-courses-wrapper pb-4.5">
       {featuredSubjectsWithCourses?.map((subject) => {
-        if (subject?.some_of_its_courses.length === 0) {
+        if (subject?.some_of_its_courses?.length === 0) {
           return null;
         }
         return (

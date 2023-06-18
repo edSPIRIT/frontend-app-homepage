@@ -51,6 +51,7 @@ const SearchModal = ({ intl }) => {
   return (
     <FullscreenModal
       className="search-modal"
+      title="search-modal"
       isOpen={isOpenSearchModal}
       onClose={() => {
         setSearchSuggestionValue('');

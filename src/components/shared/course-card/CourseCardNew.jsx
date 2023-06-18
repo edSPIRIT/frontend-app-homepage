@@ -5,7 +5,6 @@ import {
   Person, BookOpen, WatchFilled, Groups,
 } from '@edx/paragon/icons';
 import { Link, useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
 import {
   FormattedMessage,
@@ -135,73 +134,6 @@ const CourseCardNew = ({ course, intl }) => {
   );
 };
 CourseCardNew.propTypes = {
-  course: {
-    additional_metadata: PropTypes.shape({
-      self_paced: PropTypes.bool,
-      total_enrollments: PropTypes.number,
-      last_modification_date: PropTypes.string,
-      course_created_at: PropTypes.string,
-      enrollment_start: PropTypes.string,
-      enrollment_end: PropTypes.string,
-      banner_image_url: PropTypes.string,
-      course_image_url: PropTypes.string,
-      language: PropTypes.string,
-      certificate_enabled: PropTypes.bool,
-      short_description: PropTypes.string,
-      org: PropTypes.string,
-      display_name: PropTypes.string,
-      effort: PropTypes.string,
-      // eslint-disable-next-line react/forbid-prop-types
-      pre_req_courses: PropTypes.array,
-      sections_count: PropTypes.number,
-      units_count: PropTypes.number,
-    }),
-    course_id: PropTypes.string,
-    course_slug: PropTypes.string,
-    created: PropTypes.string,
-    hours_effort_per_week_max: PropTypes.string,
-    hours_effort_per_week_min: PropTypes.string,
-    instructors: PropTypes.arrayOf(
-      PropTypes.shape({
-        bio: PropTypes.string,
-        courses: PropTypes.arrayOf(PropTypes.string),
-        facebook: PropTypes.string,
-        image: PropTypes.string,
-        linkedin: PropTypes.string,
-        name: PropTypes.string,
-        short_bio: PropTypes.string,
-        slug: PropTypes.string,
-        twitter: PropTypes.string,
-        website: PropTypes.string,
-      }),
-    ),
-    paid_course: PropTypes.shape({
-      active: PropTypes.bool,
-      course_id: PropTypes.string,
-      currency: PropTypes.string,
-      price: PropTypes.number,
-    }),
-    requirements: PropTypes.shape({}),
-    total_weeks_of_effort: PropTypes.any,
-    transcript_langs: PropTypes.shape({}),
-    what_you_will_learn: PropTypes.shape({}),
-    partner: PropTypes.shape({
-      organization: PropTypes.shape({
-        id: PropTypes.number,
-        created: PropTypes.string,
-        modified: PropTypes.string,
-        name: PropTypes.string,
-        short_name: PropTypes.string,
-        description: PropTypes.string,
-        logo: PropTypes.string,
-        active: PropTypes.bool,
-      }),
-      header: PropTypes.string,
-      featured: PropTypes.bool,
-      courses_count: PropTypes.number,
-      created: PropTypes.string,
-    }),
-  }.isRequired,
   intl: intlShape.isRequired,
 };
 
