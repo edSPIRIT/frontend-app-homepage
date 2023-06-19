@@ -89,7 +89,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => (
                     />
                   </span>{' '}
                   <span>
-                    `(${courseMetaData?.additional_metadata?.enrollment_start})`
+                    {`(${courseMetaData?.additional_metadata?.enrollment_start})`}
                   </span>
                 </p>
               </div>
@@ -106,7 +106,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => (
                     />
                   </span>{' '}
                   <span>
-                    `(${courseMetaData?.additional_metadata?.enrollment_end})`
+                    {`(${courseMetaData?.additional_metadata?.enrollment_end})`}
                   </span>
                 </p>
               </div>

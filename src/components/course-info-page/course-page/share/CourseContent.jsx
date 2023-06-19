@@ -15,7 +15,7 @@ const CourseContent = ({ courseId }) => {
       </h2>
       {sections?.map((section) => (
         <ChapterCourse
-          key={section.name}
+          key={section.lms_url}
           section={section}
           loading={loading}
           sectionCount={sections?.length}

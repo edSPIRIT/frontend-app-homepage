@@ -9,7 +9,10 @@ import ScrollableExplorerCourses from '../../home-page/top-recent-courses/explor
 import CourseCardNew from '../../shared/course-card/CourseCardNew';
 import MobileLoadingSkeleton from './featured-subjects-with-courses/MobileLoadingSkeleton';
 import DesktopLoadingSkeleton from './featured-subjects-with-courses/DesktopLoadingSkeleton';
-import { resetSearchFilters, setSearchSubject } from '../../../redux/slice/searchQuerySlice';
+import {
+  resetSearchFilters,
+  setSearchSubject,
+} from '../../../redux/slice/searchQuerySlice';
 
 const FeaturedSubjectsWithCourses = ({
   featuredSubjectsWithCourses,
@@ -19,6 +22,13 @@ const FeaturedSubjectsWithCourses = ({
   const history = useHistory();
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ maxWidth: '1350px' });
+
+  const handleClick = (subject) => {
+    dispatch(resetSearchFilters());
+    dispatch(setSearchSubject([subject.title]));
+    history.push('/search');
+  };
+
   return (
     <div className="custom-container subjects-courses-wrapper pb-4.5">
       {featuredSubjectsWithCourses?.map((subject) => {
@@ -33,11 +43,7 @@ const FeaturedSubjectsWithCourses = ({
                 variant="outline-primary"
                 iconAfter={ArrowForward}
                 className="view-all-btn"
-                onClick={() => {
-                  dispatch(resetSearchFilters());
-                  dispatch(setSearchSubject([subject.title]));
-                  history.push('/search');
-                }}
+                onClick={() => handleClick(subject)}
               >
                 <FormattedMessage id="viewAll.text" defaultMessage="View All" />
               </Button>
@@ -53,7 +59,7 @@ const FeaturedSubjectsWithCourses = ({
                   <Button
                     className="view-all-courses-btn "
                     iconAfter={ArrowForward}
-                    onClick={() => history.push('/discover')}
+                    onClick={() => handleClick(subject)}
                   >
                     <FormattedMessage
                       id="viewAll.text"

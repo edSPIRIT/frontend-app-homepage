@@ -112,8 +112,6 @@
     .search-header {
       font-size: 36px;
       line-height: 40px;
-      height: 40px;
-      display: block;
     }
   }
   // .subjects-courses-wrapper {
@@ -136,6 +134,11 @@
   .subjects-courses-wrapper {
     .view-all-courses-btn {
       width: 100%;
+    }
+  }
+  .search-header-wrapper {
+    .search-header {
+      letter-spacing: -0.05em;
     }
   }
 }

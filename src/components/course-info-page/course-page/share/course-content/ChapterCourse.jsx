@@ -48,7 +48,7 @@ const ChapterCourse = ({ section, loading, sectionCount }) => {
         ) : (
           section.subsections.map((subsection) => (
             <Collapsible
-              key={subsection.name}
+              key={subsection.lms_url}
               className="mb-1"
               title={(
                 <p className="d-flex justify-content-between w-100 subsection-wrapper">
@@ -66,7 +66,7 @@ const ChapterCourse = ({ section, loading, sectionCount }) => {
               )}
             >
               {subsection.units.map((unit) => (
-                <div key={unit.name} className="d-flex">
+                <div key={unit.lms_url} className="d-flex">
                   <Icon
                     src={unit.type === 'video' ? PlayCircle : Article}
                     className="mr-1.5"

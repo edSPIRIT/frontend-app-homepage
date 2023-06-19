@@ -18,7 +18,7 @@ const DesktopCourseInfo = () => {
   const { ref: navTopRef, inView: isTopOnScreen } = useInView();
   const { slug } = useParams();
   const { courseMetaData, loading } = useGetCourseMetaData(slug);
-  const isTablet = useMediaQuery({ maxWidth: '1024px' });
+  const isTablet = useMediaQuery({ maxWidth: '1300px' });
 
   return (
     <section className="custom-container  pb-6">
@@ -29,7 +29,7 @@ const DesktopCourseInfo = () => {
         navTopRef={navTopRef}
       />
       <div
-        className={classNames(' d-none ', {
+        className={classNames('d-none', {
           'sticky-trigger py-4': !isTopOnScreen && !loading,
         })}
       >
@@ -45,7 +45,7 @@ const DesktopCourseInfo = () => {
       </div>
       <CourseNavItems isTopOnScreen={isTopOnScreen} loading={loading} />
 
-      <div className="course-content-container">
+      <div className="course-content-container d-flex flex-column">
         <AboutCourse aboutCourse={courseMetaData?.about} loading={loading} />
         <WhatYouLearn
           learningItems={courseMetaData?.what_you_will_learn}

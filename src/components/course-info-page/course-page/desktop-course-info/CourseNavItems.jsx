@@ -13,12 +13,12 @@ import Scrollspy from 'react-scrollspy';
 import messages from '../../../../messages';
 
 const CourseNavItems = ({ isTopOnScreen, loading, intl }) => {
-  const isTablet = useMediaQuery({ minWidth: '800px', maxWidth: '1024px' });
+  const isTablet = useMediaQuery({ maxWidth: '1100px' });
   const [selectedItem, setSelectedItem] = useState('');
   return (
     <div
       className={classNames(
-        'sticky-nav-wrapper sticky-nav-wrapper-infinite-border',
+        'sticky-nav-wrapper sticky-nav-wrapper-infinite-border d-flex',
         {
           'sticky-nav': !isTopOnScreen && !loading,
         },
@@ -52,7 +52,7 @@ const CourseNavItems = ({ isTopOnScreen, loading, intl }) => {
           <Link
             to="what-you-learn"
             smooth
-            offset={-160}
+            offset={-40}
             onClick={(e) => setSelectedItem(e.target.innerText)}
           >
             <FormattedMessage
@@ -75,92 +75,94 @@ const CourseNavItems = ({ isTopOnScreen, loading, intl }) => {
             />
           </Link>
         </li>
-        {!isTablet ? (
-          <>
-            <li>
-              <Link
-                to="course-content"
-                smooth
-                offset={-160}
-                onClick={(e) => setSelectedItem(e.target.innerText)}
-              >
-                <FormattedMessage
-                  id="courseInfo.tab.courseContent.text"
-                  defaultMessage="Course content"
-                />
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="instructors"
-                smooth
-                offset={-160}
-                onClick={(e) => setSelectedItem(e.target.innerText)}
-              >
-                <FormattedMessage
-                  id="courseInfo.tab.instructors.text"
-                  defaultMessage="Instructors"
-                />
-              </Link>
-            </li>
-          </>
-        ) : (
-          <li className="p-0 dropdown-course-nav-container">
-            <div className="facets-wrapper">
-              <Dropdown
-                autoClose="outside"
-                className="facet-btn mr-3 bg-light-300 dropdown-wrapper dropdown-course-nav"
-                key="subject"
-              >
-                <Dropdown.Toggle
-                  id="{title}-{variant}"
-                  variant="outline-primary"
-                  className="font-weight-bold"
-                  iconAfter={ArrowDropDown}
-                />
-                <Dropdown.Menu className="facet-menu">
-                  <Link to="course-content" smooth offset={-160}>
-                    <Dropdown.Item
-                      key={intl.formatMessage(
+        { !isTablet && (
+        <li>
+          <Link
+            to="course-content"
+            smooth
+            offset={-160}
+            onClick={(e) => setSelectedItem(e.target.innerText)}
+          >
+            <FormattedMessage
+              id="courseInfo.tab.courseContent.text"
+              defaultMessage="Course content"
+            />
+          </Link>
+        </li>
+        )}
+        { !isTablet && (
+        <li>
+          <Link
+            to="instructors"
+            smooth
+            offset={-160}
+            onClick={(e) => setSelectedItem(e.target.innerText)}
+          >
+            <FormattedMessage
+              id="courseInfo.tab.instructors.text"
+              defaultMessage="Instructors"
+            />
+          </Link>
+        </li>
+        )}
+        { isTablet && (
+        <li className="p-0 dropdown-course-nav-container">
+          <div className="facets-wrapper">
+            <Dropdown
+              autoClose="outside"
+              className="facet-btn mr-3 bg-light-300 dropdown-wrapper dropdown-course-nav"
+              key="subject"
+            >
+              <Dropdown.Toggle
+                id="{title}-{variant}"
+                variant="outline-primary"
+                className="font-weight-bold"
+                iconAfter={ArrowDropDown}
+              />
+              <Dropdown.Menu className="facet-menu">
+                <Link to="course-content" smooth offset={-140}>
+                  <Dropdown.Item
+                    key={intl.formatMessage(
+                      messages['courseInfo.tab.courseContent.text'],
+                    )}
+                    active={
+                      selectedItem
+                      === intl.formatMessage(
                         messages['courseInfo.tab.courseContent.text'],
-                      )}
-                      active={
-                        selectedItem
-                        === intl.formatMessage(
-                          messages['courseInfo.tab.courseContent.text'],
-                        )
-                      }
-                      onClick={(e) => setSelectedItem(e.target.innerText)}
-                    >
-                      {intl.formatMessage(
-                        messages['courseInfo.tab.courseContent.text'],
-                      )}
-                    </Dropdown.Item>
-                  </Link>
-                  <Link to="instructors" smooth offset={-160}>
-                    <Dropdown.Item
-                      key={intl.formatMessage(
+                      )
+                    }
+                    onClick={(e) => setSelectedItem(e.target.innerText)}
+                  >
+                    {intl.formatMessage(
+                      messages['courseInfo.tab.courseContent.text'],
+                    )}
+                  </Dropdown.Item>
+                </Link>
+                <Link to="instructors" smooth offset={-160}>
+                  <Dropdown.Item
+                    key={intl.formatMessage(
+                      messages['courseInfo.tab.instructors.text'],
+                    )}
+                    active={
+                      selectedItem
+                      === intl.formatMessage(
                         messages['courseInfo.tab.instructors.text'],
-                      )}
-                      active={
-                        selectedItem
-                        === intl.formatMessage(
-                          messages['courseInfo.tab.instructors.text'],
-                        )
-                      }
-                      onClick={(e) => setSelectedItem(e.target.innerText)}
-                    >
-                      {intl.formatMessage(
-                        messages['courseInfo.tab.instructors.text'],
-                      )}
-                    </Dropdown.Item>
-                  </Link>
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
-          </li>
+                      )
+                    }
+                    onClick={(e) => setSelectedItem(e.target.innerText)}
+                  >
+                    {intl.formatMessage(
+                      messages['courseInfo.tab.instructors.text'],
+                    )}
+                  </Dropdown.Item>
+                </Link>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+        </li>
         )}
       </Scrollspy>
+
     </div>
   );
 };

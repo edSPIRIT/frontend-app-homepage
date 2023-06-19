@@ -165,7 +165,11 @@
     }
   }
 }
-
+@media (max-width: 1024px) {
+  .instructors-wrapper {
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+  }
+}
 @media (max-width: 768px) {
   .partner-page-breadcrumb {
     padding: 18px 0;
@@ -214,8 +218,5 @@
       width: 116px !important;
       height: 66px !important;
     }
-  }
-  .instructors-wrapper {
-    grid-template-columns: repeat(1, minmax(0px, 1fr));
   }
 }

@@ -13,7 +13,11 @@ import FeaturedSubjectsSkeleton from './featured-subjects/FeaturedSubjectsSkelet
 const FeaturedSubjects = ({ featuredSubjects, loading }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-
+  const handleClick = (subject) => {
+    dispatch(resetSearchFilters());
+    dispatch(setSearchSubject([subject.title]));
+    history.push('/search');
+  };
   return (
     <div className="custom-container pt-5 explore-container">
       <div className="d-flex justify-content-between">
@@ -37,11 +41,7 @@ const FeaturedSubjects = ({ featuredSubjects, loading }) => {
             <div
               className="subject-wrapper d-flex flex-column"
               key={subject.slug}
-              onClick={() => {
-                dispatch(resetSearchFilters());
-                dispatch(setSearchSubject([subject.title]));
-                history.push('/search');
-              }}
+              onClick={() => handleClick(subject)}
             >
               <div className="subject-img-wrapper">
                 <img src={subject.image ?? logoPlaceholder} alt="subject" />
