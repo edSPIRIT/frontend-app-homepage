@@ -536,6 +536,9 @@
       overflow-x: auto;
     }
   }
+  .course-content-container {
+    padding-right: unset;
+  }
 }
 @media (max-width: 600px) {
   .mobile-icons-wrapper {

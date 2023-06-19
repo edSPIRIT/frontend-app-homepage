@@ -96,7 +96,24 @@
   .main-container {
     flex-grow: 1;
   }
-  footer{
+  footer {
     margin-top: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout-container {
+    padding-bottom: 58px;
+  }
+  .has-price-wrapper {
+    margin-bottom: 94px;
+  }
+}
+@media (max-width: 600px) {
+  .layout-container {
+    padding-bottom: 56px;
+  }
+  .has-price-wrapper {
+    margin-bottom: 97px;
   }
 }
