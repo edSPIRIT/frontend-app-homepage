@@ -157,6 +157,11 @@
   .list-inline {
     margin-bottom: unset;
   }
+  ol li:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 @media (max-width: 768px) {
   .pgn__breadcrumb {

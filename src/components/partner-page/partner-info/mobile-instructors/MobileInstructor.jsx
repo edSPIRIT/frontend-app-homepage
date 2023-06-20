@@ -2,10 +2,14 @@
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { Icon } from '@edx/paragon';
 import { BookOpen, People } from '@edx/paragon/icons';
+import { Link } from 'react-router-dom';
 import userAvatar from '../../../../assets/place-holders/user-placeholder.svg';
 
 const MobileInstructor = ({ instructor }) => (
-  <div className="instructor-wrapper d-flex">
+  <Link
+    to={`/instructor/${instructor?.slug}`}
+    className="instructor-wrapper d-flex"
+  >
     <div className="d-flex flex-column">
       <div className="d-flex">
         <div className="instructor-img-wrapper mr-4">
@@ -44,7 +48,7 @@ const MobileInstructor = ({ instructor }) => (
         </div>
       </div>
     </div>
-  </div>
+  </Link>
 );
 
 export default MobileInstructor;

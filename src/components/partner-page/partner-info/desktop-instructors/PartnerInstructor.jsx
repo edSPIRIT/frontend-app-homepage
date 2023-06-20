@@ -2,10 +2,14 @@
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { Icon, IconButton } from '@edx/paragon';
 import { ArrowForward, BookOpen, People } from '@edx/paragon/icons';
+import { Link } from 'react-router-dom';
 import userAvatar from '../../../../assets/place-holders/user-placeholder.svg';
 
 const PartnerInstructor = ({ instructor }) => (
-  <div className="instructor-wrapper d-flex">
+  <Link
+    to={`/instructor/${instructor?.slug}`}
+    className="instructor-wrapper d-flex"
+  >
     <div className="instructor-img-wrapper mr-4">
       <img src={instructor?.image ?? userAvatar} alt="instructor-avatar" />
     </div>
@@ -49,7 +53,7 @@ const PartnerInstructor = ({ instructor }) => (
         </div>
       </div>
     </div>
-  </div>
+  </Link>
 );
 
 export default PartnerInstructor;
