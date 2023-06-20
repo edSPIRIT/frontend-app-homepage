@@ -28,3 +28,20 @@
 .recommendationCourse-wrapper {
   background-color: $light-200;
 }
+.login-wrapper {
+  padding-top: 80px;
+  .btn {
+    text-decoration: underline;
+  }
+  p {
+    direction: initial;
+    display: inline-flex;
+    justify-content: center;
+    align-items:center;
+  }
+}
+@media (max-width: 600px) {
+  .login-wrapper {
+    padding-top: 24px;
+  }
+}

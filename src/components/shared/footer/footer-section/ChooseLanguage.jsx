@@ -21,6 +21,7 @@ import {
 import { AppContext } from '@edx/frontend-platform/react';
 import useGetActiveLangs from '../../../../hooks/useGetActiveLangs';
 import { supportedLanguages } from '../../../../utils/supportsLanguages';
+import handleRedirect from '../../../../utils/handleRedirect';
 
 const ChooseLanguage = () => {
   const { activeLangs } = useGetActiveLangs();
@@ -73,6 +74,10 @@ const ChooseLanguage = () => {
   };
 
   const handleClick = (e) => {
+    if (!authenticatedUser) {
+      handleRedirect();
+      return null;
+    }
     patchPreferences(getLangCode(e.target.innerText));
     // postSetLang(getLangCode(e.target.innerText));
     // publish(LOCALE_CHANGED, getLocale());

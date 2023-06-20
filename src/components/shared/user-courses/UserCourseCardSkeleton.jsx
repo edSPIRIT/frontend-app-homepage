@@ -1,7 +1,7 @@
 import { Card, Skeleton, useMediaQuery } from '@edx/paragon';
 
 const UserCourseCardSkeleton = () => {
-  const isMobile = useMediaQuery({ maxWidth: '768px' });
+  const isMobile = useMediaQuery({ maxWidth: '600px' });
 
   return (
     <Card
@@ -11,11 +11,13 @@ const UserCourseCardSkeleton = () => {
       <Card.ImageCap src="" srcAlt="Card image" />
       <Card.Body>
         <Card.Section>
-          <Skeleton width="100%" height={28} className="" />
+          <Skeleton width="70%" height={28} className="" />
           <Skeleton width="40%" height={28} className="mb-3" />
           <Skeleton width="30%" height={24} className="mb-2" />
-          <div className="d-flex justify-content-between align-items-center bott">
-            <Skeleton width={250} height={16} />
+          <div className="d-flex justify-content-between align-items-center w-100">
+            <div className="w-50">
+              <Skeleton width="80%%" height={16} />
+            </div>
             {!isMobile && <Skeleton width={142} height={44} />}
           </div>
         </Card.Section>

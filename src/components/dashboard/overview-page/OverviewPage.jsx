@@ -6,7 +6,8 @@ import {
   intlShape,
 } from '@edx/frontend-platform/i18n';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { AppContext } from '@edx/frontend-platform/react';
 import UserCourseCard from '../../shared/user-courses/UserCourseCard';
 import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
@@ -15,6 +16,7 @@ import SimilarCourses from '../../shared/similar-courses/SimilarCourses';
 import NavHeader from '../../shared/header/nav-header/NavHeader';
 import messages from '../../../messages';
 import useGetOverviewList from '../../../hooks/useGetOverviewList';
+import LogInFirst from './LogInFirst';
 
 const OverviewPage = ({ intl }) => {
   const {
@@ -27,11 +29,17 @@ const OverviewPage = ({ intl }) => {
 
   const isMobile = useMediaQuery({ maxWidth: '768px' });
   const { pathname } = useLocation();
+  const { authenticatedUser } = useContext(AppContext);
+
   useEffect(() => {
     if (pathname === '/overview') {
       document.title = 'Overview';
     }
   }, [pathname, intl]);
+
+  if (!authenticatedUser) {
+    return <LogInFirst />;
+  }
   return (
     <>
       {isMobile && <NavHeader />}
@@ -50,9 +58,7 @@ const OverviewPage = ({ intl }) => {
             </>
           ) : courseCount === 0 ? (
             <NotEnrolledCardCourse
-              title={intl.formatMessage(
-                messages['inProgress.notEnroll.title'],
-              )}
+              title={intl.formatMessage(messages['inProgress.notEnroll.title'])}
               description={intl.formatMessage(
                 messages['overview.notEnroll.description'],
               )}
@@ -78,11 +84,11 @@ const OverviewPage = ({ intl }) => {
               </div> */}
         </div>
         {userCourseTitles && (
-        <SimilarCourses
-          courseTitles={userCourseTitles}
-          courseIds={userCourseIds}
-          loading={loading}
-        />
+          <SimilarCourses
+            courseTitles={userCourseTitles}
+            courseIds={userCourseIds}
+            loading={loading}
+          />
         )}
       </div>
     </>

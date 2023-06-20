@@ -26,7 +26,6 @@ import NotFound from './components/notFount-page/NotFound';
 import PartnersList from './components/partners-list-page/PartnersList';
 import CoursePage from './components/course-info-page/CoursePage';
 import ProgramPage from './components/program-info-page/ProgramPage';
-import ProtectedRoute from './ProtectedRoute';
 import ScrollToTop from './ScroollToTop';
 import Instructor from './components/instructor-page/Instructor';
 import PartnerInfo from './components/partner-page/PartnerInfo';
@@ -54,9 +53,9 @@ subscribe(APP_READY, () => {
                 <Home />
               </Route>
               <Route exact path="/overview">
-                <ProtectedRoute>
-                  <OverviewPage />
-                </ProtectedRoute>
+                {/* <ProtectedRoute> */}
+                <OverviewPage />
+                {/* </ProtectedRoute> */}
               </Route>
               <Route exact path="/discover">
                 <Discover />
@@ -65,14 +64,10 @@ subscribe(APP_READY, () => {
                 <Search />
               </Route>
               <Route exact path="/inprogress">
-                <ProtectedRoute>
-                  <EnrollmentList type="in-progress" />
-                </ProtectedRoute>
+                <EnrollmentList type="in-progress" />
               </Route>
               <Route exact path="/completed">
-                <ProtectedRoute>
-                  <EnrollmentList type="completed" />
-                </ProtectedRoute>
+                <EnrollmentList type="completed" />
               </Route>
               <Route exact path="/partners">
                 <PartnersList />

@@ -136,5 +136,8 @@
     "dashboard.courseInfo.item": "اطلاعات دوره",
     "dashboard.share.item": "اشتراک گذاری",
     "dashboard.unroll.item": "لغو",
-    "header.nav.home": "خانه"
+    "header.nav.home": "خانه",
+    "overView.please.text": "لطفا",
+    "overView.logIn.text": "وارد شوید",
+    "overView.toAccessYourDashboard.text": "برای دسترسی به داشبورد خود"
 }

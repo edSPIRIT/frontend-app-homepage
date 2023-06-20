@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-nested-ternary */
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Pagination, useMediaQuery } from '@edx/paragon';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { AppContext } from '@edx/frontend-platform/react';
 import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
 import messages from '../../messages';
 import NavHeader from '../shared/header/nav-header/NavHeader';
@@ -10,8 +11,10 @@ import NotEnrolledCardCourse from './overview-page/not-enrolled-course-card/NotE
 import TotalCourseWrapper from './enrollment-list/TotalCourseWrapper';
 import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleton';
 import UserCourseCard from '../shared/user-courses/UserCourseCard';
+import LogInFirst from './overview-page/LogInFirst';
 
 const EnrollmentList = ({ type, intl }) => {
+  const { authenticatedUser } = useContext(AppContext);
   const [page, setPage] = useState(1);
   const { loading, userCourses, courseCount } = useGetEnrollmentList(
     type,
@@ -31,6 +34,9 @@ const EnrollmentList = ({ type, intl }) => {
     setPage(1);
   }, [type]);
 
+  if (!authenticatedUser) {
+    return <LogInFirst />;
+  }
   return (
     <>
       {isMobile && <NavHeader />}
