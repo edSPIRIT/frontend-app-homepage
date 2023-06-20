@@ -20,7 +20,7 @@ const usePartnerInstructorsInfinite = (partner) => {
 
   const {
     data, isLoading, fetchNextPage, hasNextPage, isFetching,
-  } = useInfiniteQuery('PartnerInstructors', fetchPartnerInstructors, {
+  } = useInfiniteQuery(['PartnerInstructors', partner], fetchPartnerInstructors, {
     enabled: !!partner,
     getNextPageParam: (lastPage) => {
       if (lastPage.next) {

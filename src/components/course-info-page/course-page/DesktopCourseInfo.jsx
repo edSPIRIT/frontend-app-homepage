@@ -13,6 +13,7 @@ import CourseInstructors from './desktop-course-info/CourseInstructors';
 import useGetCourseMetaData from '../../../hooks/useGetCourseMetaData';
 import CourseNavItems from './desktop-course-info/CourseNavItems';
 import MobileCourseInstructors from './mobile-course-info/MobileCourseInstructors';
+import CourseInfoBreadcrumb from './desktop-course-info/CourseInfoBreadcrumb';
 
 const DesktopCourseInfo = () => {
   const { ref: navTopRef, inView: isTopOnScreen } = useInView();
@@ -21,53 +22,56 @@ const DesktopCourseInfo = () => {
   const isTablet = useMediaQuery({ maxWidth: '1300px' });
 
   return (
-    <section className="custom-container  pb-6">
-      <CourseInfoSideBar courseMetaData={courseMetaData} loading={loading} />
-      <CourseInfoTopDesc
-        courseMetaData={courseMetaData}
-        loading={loading}
-        navTopRef={navTopRef}
-      />
-      <div
-        className={classNames('d-none', {
-          'sticky-trigger py-4': !isTopOnScreen && !loading,
-        })}
-      >
-        <div className="d-flex justify-content-between mb-1">
-          <h3>{courseMetaData?.additional_metadata?.display_name}</h3>
-        </div>
-        <RouterLink
-          to={`/partners/${courseMetaData?.partner?.organization?.short_name}`}
-          className="course-institution"
-        >
-          {courseMetaData?.additional_metadata?.org}
-        </RouterLink>
-      </div>
-      <CourseNavItems isTopOnScreen={isTopOnScreen} loading={loading} />
-
-      <div className="course-content-container d-flex flex-column">
-        <AboutCourse aboutCourse={courseMetaData?.about} loading={loading} />
-        <WhatYouLearn
-          learningItems={courseMetaData?.what_you_will_learn}
+    <>
+      <CourseInfoBreadcrumb />
+      <section className="custom-container  pb-6">
+        <CourseInfoSideBar courseMetaData={courseMetaData} loading={loading} />
+        <CourseInfoTopDesc
+          courseMetaData={courseMetaData}
           loading={loading}
+          navTopRef={navTopRef}
         />
-        {courseMetaData?.requirements?.length > 0 && (
+        <div
+          className={classNames('d-none', {
+            'sticky-trigger py-4': !isTopOnScreen && !loading,
+          })}
+        >
+          <div className="d-flex justify-content-between mb-1">
+            <h3>{courseMetaData?.additional_metadata?.display_name}</h3>
+          </div>
+          <RouterLink
+            to={`/partners/${courseMetaData?.partner?.organization?.short_name}`}
+            className="course-institution"
+          >
+            {courseMetaData?.additional_metadata?.org}
+          </RouterLink>
+        </div>
+        <CourseNavItems isTopOnScreen={isTopOnScreen} loading={loading} />
+
+        <div className="course-content-container d-flex flex-column">
+          <AboutCourse aboutCourse={courseMetaData?.about} loading={loading} />
+          <WhatYouLearn
+            learningItems={courseMetaData?.what_you_will_learn}
+            loading={loading}
+          />
+          {courseMetaData?.requirements?.length > 0 && (
           <Requirements courseMetaData={courseMetaData} loading={loading} />
-        )}
-        <CourseContent courseId={courseMetaData?.course_id} loading={loading} />
-        {isTablet ? (
-          <MobileCourseInstructors
-            instructors={courseMetaData?.instructors}
-            loading={loading}
-          />
-        ) : (
-          <CourseInstructors
-            instructors={courseMetaData?.instructors}
-            loading={loading}
-          />
-        )}
-      </div>
-    </section>
+          )}
+          <CourseContent courseId={courseMetaData?.course_id} loading={loading} />
+          {isTablet ? (
+            <MobileCourseInstructors
+              instructors={courseMetaData?.instructors}
+              loading={loading}
+            />
+          ) : (
+            <CourseInstructors
+              instructors={courseMetaData?.instructors}
+              loading={loading}
+            />
+          )}
+        </div>
+      </section>
+    </>
   );
 };
 

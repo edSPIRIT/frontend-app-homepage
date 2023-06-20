@@ -100,6 +100,9 @@
     margin-top: auto;
   }
 }
+header {
+  z-index: 9;
+}
 
 @media (max-width: 768px) {
   .layout-container {
@@ -117,3 +120,4 @@
     margin-bottom: 97px;
   }
 }
+

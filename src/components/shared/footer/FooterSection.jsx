@@ -122,7 +122,7 @@ const FooterSection = () => {
             <p className="footer-desc">
               <FormattedMessage
                 id="footer.powerdBy.text"
-                defaultMessage="Powered by"
+                defaultMessage="Powered by "
               />
               <a className="footer-desc" href="https://edspirit.com/">
                 edSPIRIT

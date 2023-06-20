@@ -3,8 +3,6 @@ import { ArrowForward } from '@edx/paragon/icons';
 import { useHistory, useParams } from 'react-router';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
-import CourseCard from '../../shared/course-card/CourseCard';
-import { COURSES_INFO } from '../../../utils/constants';
 import {
   resetSearchFilters,
   setSearchPartners,
