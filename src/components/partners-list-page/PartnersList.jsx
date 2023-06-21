@@ -13,7 +13,7 @@ import {
   DrawShapes,
   Groups,
 } from '@edx/paragon/icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import {
   FormattedMessage,
@@ -33,6 +33,10 @@ const PartnersList = ({ intl }) => {
   const [searchString, setSearchString] = useState('');
   const [suggestionQuery, setSuggestionQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
+
+  useEffect(() => {
+    document.title = `Partners | ${process.env.SITE_NAME}`;
+  }, []);
 
   const {
     count,

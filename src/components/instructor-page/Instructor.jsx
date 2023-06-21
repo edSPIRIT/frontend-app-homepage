@@ -5,6 +5,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import useGetInstructor from '../../hooks/useGetInstructor';
 import CourseCardNew from '../shared/course-card/CourseCardNew';
 import CourseCardSkeleton from '../shared/skeleton/CourseCardSkeleton';
@@ -21,6 +22,12 @@ const Instructor = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { instructorPopularCourses, loading: instructorPopularCoursesLoading } = useGetInstructorPopularCourses(slug);
+
+  useEffect(() => {
+    if (InstructorData?.name) {
+      document.title = `${InstructorData?.name} | ${process.env.SITE_NAME}`;
+    }
+  }, [InstructorData]);
 
   return (
     <>

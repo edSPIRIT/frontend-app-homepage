@@ -34,6 +34,10 @@ const EnrollmentList = ({ type, intl }) => {
     setPage(1);
   }, [type]);
 
+  useEffect(() => {
+    document.title = `Dashboard | ${process.env.SITE_NAME}`;
+  }, []);
+
   if (!authenticatedUser) {
     return <LogInFirst />;
   }

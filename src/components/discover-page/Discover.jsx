@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import useGetFeaturedSubjectsInfinite from '../../hooks/useGetFeaturedSubjectsInfinite';
 import SearchHeader from '../shared/search-header/SearchHeader';
 import FeaturedSubjects from './discover/FeaturedSubjects';
@@ -8,13 +9,13 @@ const Discover = () => {
     featuredSubjectsWithCourses, featuredSubjects, isFetching, loading,
   } = useGetFeaturedSubjectsInfinite();
 
+  useEffect(() => {
+    document.title = `Discover | ${process.env.SITE_NAME}`;
+  }, []);
   return (
     <>
       <SearchHeader />
-      <FeaturedSubjects
-        featuredSubjects={featuredSubjects}
-        loading={loading}
-      />
+      <FeaturedSubjects featuredSubjects={featuredSubjects} loading={loading} />
       <FeaturedSubjectsWithCourses
         featuredSubjectsWithCourses={featuredSubjectsWithCourses}
         loading={loading}

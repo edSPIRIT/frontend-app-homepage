@@ -1,7 +1,9 @@
 import { Breadcrumb, Icon, useMediaQuery } from '@edx/paragon';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import {
+  Link, useHistory, useParams,
+} from 'react-router-dom';
 import { ArrowBack } from '@edx/paragon/icons';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import useGetPartner from '../../hooks/useGetPartner';
 import PartnerCourses from './partner-info/PartnerCourses';
@@ -22,6 +24,12 @@ const PartnerInfo = ({ intl }) => {
     loading: partnerInstructorsLoading,
     isFetching,
   } = usePartnerInstructorsInfinite(slug);
+
+  useEffect(() => {
+    if (partnerData?.organization?.name) {
+      document.title = `${partnerData.organization.name} | ${process.env.SITE_NAME}`;
+    }
+  }, [partnerData]);
 
   return (
     <section>

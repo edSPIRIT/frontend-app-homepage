@@ -5,7 +5,6 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { useContext, useEffect } from 'react';
 import { AppContext } from '@edx/frontend-platform/react';
 import UserCourseCard from '../../shared/user-courses/UserCourseCard';
@@ -28,14 +27,11 @@ const OverviewPage = ({ intl }) => {
   } = useGetOverviewList();
 
   const isMobile = useMediaQuery({ maxWidth: '768px' });
-  const { pathname } = useLocation();
   const { authenticatedUser } = useContext(AppContext);
 
   useEffect(() => {
-    if (pathname === '/overview') {
-      document.title = 'Overview';
-    }
-  }, [pathname, intl]);
+    document.title = `Dashboard | ${process.env.SITE_NAME}`;
+  }, []);
 
   if (!authenticatedUser) {
     return <LogInFirst />;
