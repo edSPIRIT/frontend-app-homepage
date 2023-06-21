@@ -5,6 +5,7 @@ import searchModal from '../slice/searchModalSlice';
 import searchPage from '../slice/searchPageSlice';
 import searchFilters from '../slice/searchQuerySlice';
 import recentPages from '../slice/recentPagesSlice';
+import toast from '../slice/toastSlice';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     searchPage,
     searchFilters,
     recentPages,
+    toast,
   },
 });
 

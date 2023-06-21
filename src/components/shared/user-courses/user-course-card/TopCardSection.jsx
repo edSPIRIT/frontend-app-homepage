@@ -10,11 +10,14 @@ import {
 import { Close, MoreVert, Share } from '@edx/paragon/icons';
 import { useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setToastMessage } from '../../../../redux/slice/toastSlice';
 
-const TopCardSection = ({ courseInfo, openMoreBtn }) => {
+const TopCardSection = ({ courseInfo, openMoreBtnModal }) => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const deleteEnrollCourse = useMutation({
     mutationFn: (courseId) => getAuthenticatedHttpClient().post(
       `${getConfig().LMS_BASE_URL}/admin-console/api/openedx/api/unenroll/`,
@@ -25,7 +28,6 @@ const TopCardSection = ({ courseInfo, openMoreBtn }) => {
     onSuccess: () => {
       queryClient.invalidateQueries(['OverviewList']);
       queryClient.invalidateQueries(['EnrollmentList']);
-      // setShowToast(true);
     },
   });
   const isTablet = useMediaQuery({ maxWidth: '768px' });
@@ -33,26 +35,28 @@ const TopCardSection = ({ courseInfo, openMoreBtn }) => {
     && courseInfo?.progress?.incomplete_count === 0;
 
   return (
-    <>
+    <div onMouseLeave={() => setIsOpenDropDown(false)}>
       <div className="d-flex justify-content-between align-items-center mb-1 title-wrapper">
         <h3 className="course-title">
           {courseInfo?.course_details?.course_name}
         </h3>
+        {/* more vertical for mobile view display none in web */}
         <div
           className="more-vert-wrapper m-3"
           onClick={(e) => {
             e.preventDefault();
-            openMoreBtn();
+            openMoreBtnModal();
           }}
         >
           <Icon className="" src={MoreVert} />
         </div>
+        {/* more vertical for tablet view  */}
         {isTablet ? (
           <div
             className="more-vert-tablet-wrapper "
             onClick={(e) => {
               e.preventDefault();
-              openMoreBtn();
+              openMoreBtnModal();
             }}
           >
             <Icon className="" src={MoreVert} />
@@ -70,6 +74,9 @@ const TopCardSection = ({ courseInfo, openMoreBtn }) => {
                     '',
                   )}/homepage/course/${courseInfo?.course_metadata?.slug}`,
                 );
+                dispatch(
+                  setToastMessage('The link has been saved to your clipboard'),
+                );
               }}
             />
             <Dropdown
@@ -86,21 +93,28 @@ const TopCardSection = ({ courseInfo, openMoreBtn }) => {
                 iconAs={Icon}
                 variant="primary"
               />
-              <Dropdown.Menu>
-                <Dropdown.Item
-                  onClick={(e) => {
-                    e.preventDefault();
-                    deleteEnrollCourse.mutate(
-                      courseInfo?.course_details?.course_id,
-                    );
-                  }}
-                >
-                  <FormattedMessage
-                    id="userCourseCard.unroll.text"
-                    defaultMessage="Unroll"
-                  />
-                </Dropdown.Item>
-              </Dropdown.Menu>
+              {isOpenDropDown && (
+                <Dropdown.Menu>
+                  <Dropdown.Item
+                    onClick={(e) => {
+                      e.preventDefault();
+                      deleteEnrollCourse.mutate(
+                        courseInfo?.course_details?.course_id,
+                      );
+                      dispatch(
+                        setToastMessage(
+                          'You have successfully unenrolled from the course',
+                        ),
+                      );
+                    }}
+                  >
+                    <FormattedMessage
+                      id="userCourseCard.unroll.text"
+                      defaultMessage="Unenrolled"
+                    />
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              )}
             </Dropdown>
           </div>
         )}
@@ -128,7 +142,7 @@ const TopCardSection = ({ courseInfo, openMoreBtn }) => {
           </>
         )}
       </p>
-    </>
+    </div>
   );
 };
 

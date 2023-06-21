@@ -1,24 +1,20 @@
 import {
-  Card, Toast, useMediaQuery, useToggle,
+  Card, useMediaQuery, useToggle,
 } from '@edx/paragon';
-import { useState } from 'react';
 
 import { getConfig } from '@edx/frontend-platform';
 import PropTypes from 'prop-types';
-import cardPlaceholder from '../../../assets/card-placeholder.png';
+import cardPlaceholder from '../../../assets/place-holders/cover-course-place-holder.svg';
 import MoreButtonModal from './user-course-card/MoreButtonModal';
 import TopCardSection from './user-course-card/TopCardSection';
 import BottomCardSection from './user-course-card/BottomCardSection';
 
 const UserCourseCard = ({ courseInfo }) => {
-  const [showToast, setShowToast] = useState(false);
   const [isOpen, open, close] = useToggle(false);
   const isMobile = useMediaQuery({ maxWidth: '600px' });
+
   return (
     <>
-      <Toast onClose={() => setShowToast(false)} show={showToast} delay={2000}>
-        Course Deleted
-      </Toast>
       <MoreButtonModal
         isOpen={isOpen}
         onClose={close}
@@ -39,15 +35,18 @@ const UserCourseCard = ({ courseInfo }) => {
         >
           <Card.ImageCap
             src={
-              `${getConfig().LMS_BASE_URL}${
-                courseInfo?.course_details?.course_image_url
-              }` ?? cardPlaceholder
+              courseInfo?.course_details?.course_image_url
+                ? `${getConfig().LMS_BASE_URL}${
+                  courseInfo.course_details.course_image_url
+                }`
+                : cardPlaceholder
             }
             srcAlt="Card image"
+            fallbackSrc={cardPlaceholder}
           />
           <Card.Body>
             <Card.Section>
-              <TopCardSection courseInfo={courseInfo} openMoreBtn={open} />
+              <TopCardSection courseInfo={courseInfo} openMoreBtnModal={open} />
               <BottomCardSection courseInfo={courseInfo} />
             </Card.Section>
           </Card.Body>
