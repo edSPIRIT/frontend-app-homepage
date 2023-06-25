@@ -7,11 +7,11 @@ import {
   FormattedMessage,
 } from '@edx/frontend-platform/i18n';
 import useGetBanner from '../../../hooks/useGetBanner';
-import Highlighted from './Highlighted';
+import Highlighted from './HomePageBanner/Highlighted';
 import defaultBanner from '../../../assets/default-banner.png';
 import SearchBox from '../../shared/search-header/search-header/SearchBox';
 
-const Banner = () => {
+const HomePageBanner = () => {
   const {
     title, highlightedWord, description, image, isLoading,
   } = useGetBanner();
@@ -58,4 +58,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default HomePageBanner;

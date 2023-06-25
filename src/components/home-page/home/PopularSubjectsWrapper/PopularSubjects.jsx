@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import {
   resetSearchFilters,
   setSearchSubject,
-} from '../../../redux/slice/searchQuerySlice';
+} from '../../../../redux/slice/searchQuerySlice';
 
 const PopularSubjects = ({ popularSubjects = [] }) => {
   const history = useHistory();

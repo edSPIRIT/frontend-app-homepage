@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { OverflowScroll, OverflowScrollContext } from '@edx/paragon';
 import React, { useContext } from 'react';
-import CourseCardNew from '../../../shared/course-card/CourseCardNew';
-import CourseCardSkeleton from '../../../shared/skeleton/CourseCardSkeleton';
+import CourseCardNew from '../../course-card/CourseCardNew';
+import CourseCardSkeleton from '../../skeleton/CourseCardSkeleton';
 
 const OverflowScrollContent = ({ courses, loading }) => {
   const { setOverflowRef } = useContext(OverflowScrollContext);

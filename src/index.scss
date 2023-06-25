@@ -7,10 +7,11 @@
 @import './styles/variables';
 @import './styles/mixins';
 
-@import 'components/home-page/banner/banner.scss';
-@import 'components/home-page/top-recent-courses/explorer-courses.scss';
-@import 'components/home-page/top-programs/top-programs.scss';
-@import 'components/home-page/partners/partners.scss';
+@import 'components/home-page/home/HomePageBanner/home-page-banner.scss';
+@import 'components/home-page/home/ExplorerCourses/explorer-courses.scss';
+@import 'components/home-page/home/TopPrograms/top-programs.scss';
+@import 'components/home-page/home/HomePagePartners/home-page-partners.scss';
+@import 'components/home-page/home/PopularSubjectsWrapper/popular-subjects.scss';
 @import 'components/shared/shared.scss';
 @import 'components/dashboard/overview-page/overview.scss';
 @import 'components/instructor-page/instructor.scss';

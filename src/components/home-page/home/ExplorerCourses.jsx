@@ -13,9 +13,9 @@ import { useDispatch } from 'react-redux';
 import useGetTopRecentCourses from '../../../hooks/useGetTopRecentCourses';
 import CourseCardNew from '../../shared/course-card/CourseCardNew';
 import CourseCardSkeleton from '../../shared/skeleton/CourseCardSkeleton';
-import ScrollableExplorerCourses from './explorer-courses/ScrollableExplorerCourses';
 import messages from '../../../messages';
 import { resetSearchFilters } from '../../../redux/slice/searchQuerySlice';
+import ScrollableCourses from '../../shared/scrollable-courses-component/ScrollableCourses';
 
 const ExplorerCourses = ({ intl }) => {
   const [key, setKey] = useState('top-courses');
@@ -51,7 +51,7 @@ const ExplorerCourses = ({ intl }) => {
             title={intl.formatMessage(messages['homePage.tab.topCourses'])}
           >
             {isMobile ? (
-              <ScrollableExplorerCourses
+              <ScrollableCourses
                 courses={topCourses}
                 loading={loading}
               />
@@ -76,7 +76,7 @@ const ExplorerCourses = ({ intl }) => {
             title={intl.formatMessage(messages['homePage.tab.recentlyAdded'])}
           >
             {isMobile ? (
-              <ScrollableExplorerCourses
+              <ScrollableCourses
                 courses={recentCourses}
                 loading={loading}
               />

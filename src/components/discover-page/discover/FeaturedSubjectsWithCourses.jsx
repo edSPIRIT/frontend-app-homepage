@@ -5,7 +5,6 @@ import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { ArrowForward } from '@edx/paragon/icons';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
-import ScrollableExplorerCourses from '../../home-page/top-recent-courses/explorer-courses/ScrollableExplorerCourses';
 import CourseCardNew from '../../shared/course-card/CourseCardNew';
 import MobileLoadingSkeleton from './featured-subjects-with-courses/MobileLoadingSkeleton';
 import DesktopLoadingSkeleton from './featured-subjects-with-courses/DesktopLoadingSkeleton';
@@ -13,6 +12,7 @@ import {
   resetSearchFilters,
   setSearchSubject,
 } from '../../../redux/slice/searchQuerySlice';
+import ScrollableCourses from '../../shared/scrollable-courses-component/ScrollableCourses';
 
 const FeaturedSubjectsWithCourses = ({
   featuredSubjectsWithCourses,
@@ -51,7 +51,7 @@ const FeaturedSubjectsWithCourses = ({
 
             {isMobile ? (
               <div className="d-flex flex-column">
-                <ScrollableExplorerCourses
+                <ScrollableCourses
                   courses={subject?.some_of_its_courses}
                   loading={loading}
                 />

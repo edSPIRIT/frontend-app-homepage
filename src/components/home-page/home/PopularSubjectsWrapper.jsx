@@ -1,7 +1,7 @@
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { Skeleton } from '@edx/paragon';
-import PopularSubjects from '../../shared/popular-subjects/PopularSubjects';
 import useGetPopularSubjects from '../../../hooks/useGetPopularSubjects';
+import PopularSubjects from './PopularSubjectsWrapper/PopularSubjects';
 
 const PopularSubjectsWrapper = () => {
   const { popularSubjects, loading } = useGetPopularSubjects();

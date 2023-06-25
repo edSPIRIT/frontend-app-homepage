@@ -5,7 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
 import useGetPopularPartners from '../../../hooks/useGetPopularPartners';
 
-const Partners = () => {
+const HomePagePartners = () => {
   const { PopularPartners, loading } = useGetPopularPartners();
   const history = useHistory();
   return (
@@ -63,4 +63,4 @@ const Partners = () => {
   );
 };
 
-export default Partners;
+export default HomePagePartners;

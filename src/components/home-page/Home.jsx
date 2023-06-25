@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import ExplorerCourses from './top-recent-courses/ExplorerCourses';
-import Partners from './partners/Partners';
-import Banner from './banner/Banner';
-import PopularSubjectsWrapper from './popular-subjects-wrapper/PopularSubjectsWrapper';
+import HomePagePartners from './home/HomePagePartners';
+import PopularSubjectsWrapper from './home/PopularSubjectsWrapper';
+import HomePageBanner from './home/HomePageBanner';
+import ExplorerCourses from './home/ExplorerCourses';
 
 const Home = () => {
   useEffect(() => {
@@ -10,11 +10,11 @@ const Home = () => {
   }, []);
   return (
     <>
-      <Banner />
+      <HomePageBanner />
       <PopularSubjectsWrapper />
       <ExplorerCourses />
       {/* <TopPrograms /> */}
-      <Partners />
+      <HomePagePartners />
     </>
   );
 };
