@@ -51,10 +51,9 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
             className="d-flex align-items-center py-2 "
             onClick={() => {
               navigator.clipboard.writeText(
-                `https://apps.${getConfig().LMS_BASE_URL.replace(
-                  'https://',
-                  '',
-                )}homepage/course/${courseInfo?.course_metadata?.slug}`,
+                `${getConfig().BASE_URL}homepage/course/${
+                  courseInfo?.course_metadata?.slug
+                }`,
               );
             }}
           >

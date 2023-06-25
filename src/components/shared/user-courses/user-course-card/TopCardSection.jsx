@@ -69,10 +69,9 @@ const TopCardSection = ({ courseInfo, openMoreBtnModal }) => {
               onClick={(e) => {
                 e.preventDefault();
                 navigator.clipboard.writeText(
-                  `https://apps.${getConfig().LMS_BASE_URL.replace(
-                    'https://',
-                    '',
-                  )}/homepage/course/${courseInfo?.course_metadata?.slug}`,
+                  `${getConfig().BASE_URL}/homepage/course/${
+                    courseInfo?.course_metadata?.slug
+                  }`,
                 );
                 dispatch(
                   setToastMessage('The link has been saved to your clipboard'),
