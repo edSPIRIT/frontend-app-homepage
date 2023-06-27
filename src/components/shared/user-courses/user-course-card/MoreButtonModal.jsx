@@ -10,6 +10,8 @@ import {
 import PropTypes from 'prop-types';
 import { useMutation, useQueryClient } from 'react-query';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setToastMessage } from '../../../../redux/slice/toastSlice';
 
 const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
   const queryClient = useQueryClient();
@@ -23,9 +25,10 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
     onSuccess: () => {
       queryClient.invalidateQueries(['OverviewList']);
       queryClient.invalidateQueries(['EnrollmentList']);
-      // setShowToast(true);
     },
   });
+  const dispatch = useDispatch();
+
   return (
     <ModalLayer isOpen={isOpen} onClose={onClose}>
       <div
@@ -57,7 +60,16 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
               );
             }}
           >
-            <Icon src={Share} className="mr-2 text-gray-500" />
+            <Icon
+              src={Share}
+              className="mr-2 text-gray-500"
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+                dispatch(
+                  setToastMessage('The link has been saved to your clipboard'),
+                );
+              }}
+            />
             <FormattedMessage
               id="dashboard.share.item"
               defaultMessage="Share"
@@ -73,7 +85,7 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
             <Icon src={Delete} className="mr-2 text-gray-500" />
             <FormattedMessage
               id="dashboard.unroll.item"
-              defaultMessage="Unroll"
+              defaultMessage="Unenroll"
             />
           </div>
         </div>

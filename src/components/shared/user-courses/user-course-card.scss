@@ -92,6 +92,10 @@
     justify-content: center;
     align-items: center;
   }
+  .course-info-button{
+    border:1px solid $light-400;
+    color: black;
+  }
 }
 .share-icon {
   cursor: pointer;
@@ -130,6 +134,7 @@
   color: $brand-500 !important;
 }
 .check-circle-icon {
+  transform: unset !important;
   color: $success-300 !important;
 }
 .more-vert-wrapper {

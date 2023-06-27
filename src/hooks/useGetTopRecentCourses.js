@@ -1,9 +1,13 @@
 import { getConfig } from '@edx/frontend-platform';
+import { useMediaQuery } from '@edx/paragon';
+import { useMemo } from 'react';
 import { useQuery } from 'react-query';
 
 const useGetTopRecentCourses = () => {
+  const isTablet = useMediaQuery({ maxWidth: '1351px' });
+
   const fetchTopRecentCourses = async () => {
-    const apiRes = await fetch(
+    const response = await fetch(
       `${getConfig().LMS_BASE_URL}/admin-console/api/top-recent-courses/`,
       {
         method: 'GET',
@@ -11,31 +15,48 @@ const useGetTopRecentCourses = () => {
       },
     );
 
-    if (!apiRes.ok) {
-      throw new Error('fetch not ok');
+    if (!response.ok) {
+      throw new Error('Failed to fetch top recent courses');
     }
 
-    return apiRes.json();
+    return response.json();
   };
   const { data, isLoading } = useQuery(
-    'TopRecentCourses',
+    'topRecentCourses',
     fetchTopRecentCourses,
     {
       staleTime: 2 * (60 * 1000),
     },
   );
   const customCount = (coursesData) => {
+    if (isTablet) {
+      if (coursesData?.length >= 3 && coursesData?.length < 6) {
+        return coursesData.slice(0, 3);
+      }
+      if (coursesData?.length > 6) {
+        return coursesData.slice(0, 6);
+      }
+      return [];
+    }
     if (coursesData?.length >= 4 && coursesData?.length < 8) {
-      return coursesData?.slice(0, 4);
+      return coursesData.slice(0, 4);
     }
     if (coursesData?.length >= 8) {
-      return coursesData?.slice(0, 8);
+      return coursesData.slice(0, 8);
     }
-    return coursesData;
+    return [];
   };
+  const { recentCourses, topCourses } = useMemo(
+    () => ({
+      recentCourses: customCount(data?.recent_courses),
+      topCourses: customCount(data?.top_courses),
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [data, isTablet],
+  );
   return {
-    recentCourses: customCount(data?.recent_courses),
-    topCourses: customCount(data?.top_courses),
+    recentCourses,
+    topCourses,
     loading: isLoading,
   };
 };

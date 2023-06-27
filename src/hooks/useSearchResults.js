@@ -4,14 +4,14 @@ import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { removeEmptyFilters } from '../utils/cleanedFilters';
 
-const useSearchResults = () => {
+const useSearchResults = (page = 0) => {
   const filters = useSelector((state) => state.searchFilters);
 
   const cleanedFilters = removeEmptyFilters(filters);
-  const fetchSearchResults = async (cleanFilters) => {
+  const fetchSearchResults = async (cleanFilters, pageNum = 0) => {
     const url = `${
       getConfig().LMS_BASE_URL
-    }/admin-console/api/full-course-discovery/`;
+    }/admin-console/api/full-course-discovery/?page_size=12&page_index=${pageNum}`;
     const { data, status } = await getAuthenticatedHttpClient().post(
       url,
       cleanFilters,
@@ -22,8 +22,8 @@ const useSearchResults = () => {
     return data;
   };
   const { data, isLoading } = useQuery(
-    ['SearchResults', cleanedFilters],
-    () => fetchSearchResults(cleanedFilters),
+    ['SearchResults', cleanedFilters, page],
+    () => fetchSearchResults(cleanedFilters, page),
   );
 
   return {

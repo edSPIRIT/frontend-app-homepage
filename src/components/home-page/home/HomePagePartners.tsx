@@ -19,10 +19,8 @@ const HomePagePartners = () => {
         </h2>
         <span className="d-flex justify-content-center mb-5 text-gray-500">
           <FormattedMessage
-            id="homePage.partnersDescription.text"
-            defaultMessage="Founded by Harvard and MIT, edX is home to more than 20 million
-          learners, the majority of top-ranked universities in the world and
-          industry-leading companies."
+            id="partners.ourPartnersDes.text"
+            defaultMessage="Our partners and collaborators help us provide excellent learning materials and high-quality online courses."
           />
         </span>
         <div className="d-flex justify-content-center ">

@@ -59,7 +59,7 @@ const messages = defineMessages({
   },
   'partners.breadcrumb.ourPartners': {
     id: 'partners.breadcrumb.ourPartners',
-    defaultMessage: 'our-partners',
+    defaultMessage: 'Our Partners',
   },
   'pagination.previous.button': {
     id: 'pagination.previous.button',

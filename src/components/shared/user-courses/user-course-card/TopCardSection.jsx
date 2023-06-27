@@ -109,7 +109,7 @@ const TopCardSection = ({ courseInfo, openMoreBtnModal }) => {
                   >
                     <FormattedMessage
                       id="userCourseCard.unroll.text"
-                      defaultMessage="Unenrolled"
+                      defaultMessage="Unenroll"
                     />
                   </Dropdown.Item>
                 </Dropdown.Menu>

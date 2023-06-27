@@ -116,7 +116,7 @@ const DesktopHeader = ({ intl }) => {
                 <Dropdown.Item onClick={handleLogout}>
                   <FormattedMessage
                     id="header.dropdownOption.signOut"
-                    defaultMessage="Sign out"
+                    defaultMessage="Sign Out"
                   />
                 </Dropdown.Item>
               </Dropdown.Menu>

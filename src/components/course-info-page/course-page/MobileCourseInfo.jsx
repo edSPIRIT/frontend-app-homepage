@@ -20,6 +20,7 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
+import { useDispatch } from 'react-redux';
 import useGetCourseMetaData from '../../../hooks/useGetCourseMetaData';
 import AboutCourse from './share/AboutCourse';
 import WhatYouLearn from './share/WhatYouLearn';
@@ -30,11 +31,13 @@ import MobileCourseInstructors from './mobile-course-info/MobileCourseInstructor
 import partnerBanner from '../../../assets/place-holders/cover-course-place-holder.svg';
 import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
 import messages from '../../../messages';
+import { setToastMessage } from '../../../redux/slice/toastSlice';
 
 const MobileCourseInfo = ({ intl }) => {
   const { slug } = useParams();
   const { courseMetaData, loading } = useGetCourseMetaData(slug);
   const isTablet = useMediaQuery({ minWidth: '600px', maxWidth: '768px' });
+  const dispatch = useDispatch();
 
   return (
     <section className="pb-6 mobile-course-info-container">
@@ -137,6 +140,9 @@ const MobileCourseInfo = ({ intl }) => {
               src={Share}
               onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
+                dispatch(
+                  setToastMessage('The link has been saved to your clipboard'),
+                );
               }}
             />
           </div>
@@ -160,6 +166,9 @@ const MobileCourseInfo = ({ intl }) => {
                 src={Share}
                 onClick={() => {
                   navigator.clipboard.writeText(window.location.href);
+                  dispatch(
+                    setToastMessage('The link has been saved to your clipboard'),
+                  );
                 }}
               />
             </div>
@@ -173,6 +182,9 @@ const MobileCourseInfo = ({ intl }) => {
               src={Share}
               onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
+                dispatch(
+                  setToastMessage('The link has been saved to your clipboard'),
+                );
               }}
             />
           </div>

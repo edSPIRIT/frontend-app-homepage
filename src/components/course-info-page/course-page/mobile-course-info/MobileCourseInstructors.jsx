@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Icon, Skeleton } from '@edx/paragon';
-import { BookOpen, People } from '@edx/paragon/icons';
+import { BookOpen, Groups } from '@edx/paragon/icons';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import userAvatar from '../../../../assets/place-holders/user-placeholder.svg';
@@ -54,13 +54,13 @@ const MobileCourseInstructors = ({ instructors, loading }) => (
               </div>
               <div className="d-flex icons-bottom-wrapper mt-3">
                 <div className="d-flex mr-4.5">
-                  <Icon src={People} className="mr-2" />
+                  <Icon src={Groups} className="mr-2" />
                   <p>
                     <span>{instructor?.students_count}</span>
                     <span className="ml-1">
                       <FormattedMessage
-                        id="instructor.students.text"
-                        defaultMessage="Students"
+                        id="partners.snapShut.learners.text"
+                        defaultMessage="Learners"
                       />
                     </span>
                   </p>

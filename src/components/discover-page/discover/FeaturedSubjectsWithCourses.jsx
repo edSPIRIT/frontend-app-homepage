@@ -13,6 +13,7 @@ import {
   setSearchSubject,
 } from '../../../redux/slice/searchQuerySlice';
 import ScrollableCourses from '../../shared/scrollable-courses-component/ScrollableCourses';
+import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter';
 
 const FeaturedSubjectsWithCourses = ({
   featuredSubjectsWithCourses,
@@ -38,7 +39,7 @@ const FeaturedSubjectsWithCourses = ({
         return (
           <div key={subject.slug}>
             <div className="d-flex justify-content-between pb-4 pt-5">
-              <h2>{subject.title}</h2>
+              <h2>{capitalizeFirstLetter(subject.title)}</h2>
               <Button
                 variant="outline-primary"
                 iconAfter={ArrowForward}

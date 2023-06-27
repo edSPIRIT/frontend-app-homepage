@@ -1,6 +1,6 @@
 import { Breadcrumb, Icon } from '@edx/paragon';
 import {
-  ArrowBack, BookOpen, People, Share,
+  ArrowBack, BookOpen, Groups, Share,
 } from '@edx/paragon/icons';
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -10,6 +10,7 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
+import { useDispatch } from 'react-redux';
 import { ReactComponent as Linkedin } from '../../../assets/linkedin.svg';
 import { ReactComponent as Facebook } from '../../../assets/facebook.svg';
 import { ReactComponent as Globe } from '../../../assets/language-filled.svg';
@@ -17,9 +18,11 @@ import { ReactComponent as Twitter } from '../../../assets/twitter.svg';
 import userAvatar from '../../../assets/place-holders/user-placeholder.svg';
 import InstructorSkeleton from './InstructorSkeleton';
 import messages from '../../../messages';
+import { setToastMessage } from '../../../redux/slice/toastSlice';
 
 const InstructorHeader = ({ InstructorData, loading, intl }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
   return (
     <>
       <div className="d-flex px-4.5 py-3 align-items-center back-btn-wrapper">
@@ -60,6 +63,11 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                   className="instructor-share-icon-mobile d-none"
                   onClick={() => {
                     navigator.clipboard.writeText(window.location.href);
+                    dispatch(
+                      setToastMessage(
+                        'The link has been saved to your clipboard',
+                      ),
+                    );
                   }}
                 />
               </div>
@@ -71,6 +79,11 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                     className="instructor-share-icon"
                     onClick={() => {
                       navigator.clipboard.writeText(window.location.href);
+                      dispatch(
+                        setToastMessage(
+                          'The link has been saved to your clipboard',
+                        ),
+                      );
                     }}
                   />
                 </div>
@@ -91,13 +104,13 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                 <div className="instructor-icons-wrapper pt-4 mt-auto">
                   <div className="d-flex ">
                     <div className="d-flex mr-4.5 align-items-center">
-                      <Icon src={People} className="mr-2" />
+                      <Icon src={Groups} className="mr-2" />
                       <p>
                         <span>{InstructorData?.students_count}</span>
                         <span className="ml-1">
                           <FormattedMessage
-                            id="instructor.students.text"
-                            defaultMessage="Students"
+                            id="partners.snapShut.learners.text"
+                            defaultMessage="Learners"
                           />
                         </span>
                       </p>

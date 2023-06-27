@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { Icon, IconButton } from '@edx/paragon';
-import { ArrowForward, BookOpen, People } from '@edx/paragon/icons';
+import { ArrowForward, BookOpen, Groups } from '@edx/paragon/icons';
 import { Link } from 'react-router-dom';
 import userAvatar from '../../../../assets/place-holders/user-placeholder.svg';
 
@@ -28,13 +28,13 @@ const PartnerInstructor = ({ instructor }) => (
       <p className="instructor-bio mb-3">{instructor?.bio}</p>
       <div className="d-flex icons-bottom-wrapper mt-auto">
         <div className="d-flex mr-4.5 align-items-center">
-          <Icon src={People} className="mr-2" />
+          <Icon src={Groups} className="mr-2" />
           <p>
             <span>{instructor?.students_count}</span>
             <span className="ml-1">
               <FormattedMessage
-                id="instructor.students.text"
-                defaultMessage="Students"
+                id="partners.snapShut.learners.text"
+                defaultMessage="Learners"
               />
             </span>
           </p>

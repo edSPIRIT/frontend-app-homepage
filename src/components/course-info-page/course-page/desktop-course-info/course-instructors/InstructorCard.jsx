@@ -1,5 +1,7 @@
 import { Icon, IconButton } from '@edx/paragon';
-import { ArrowForward, BookOpen, People } from '@edx/paragon/icons';
+import {
+  ArrowForward, BookOpen, Groups,
+} from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
@@ -31,13 +33,13 @@ const InstructorCard = ({ instructor }) => (
       </div>
       <div className="d-flex icons-bottom-wrapper">
         <div className="d-flex mr-4.5 align-items-center">
-          <Icon src={People} className="mr-2" />
+          <Icon src={Groups} className="mr-2" />
           <p>
             <span>{instructor?.students_count}</span>
             <span className="ml-1">
               <FormattedMessage
-                id="instructor.students.text"
-                defaultMessage="Students"
+                id="partners.snapShut.learners.text"
+                defaultMessage="Learners"
               />
             </span>
           </p>

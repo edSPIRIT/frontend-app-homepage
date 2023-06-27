@@ -256,14 +256,21 @@
   }
 }
 [dir='rtl'] {
-  body {
-    font-family: IRANSans, FontAwesome !important ;
-  }
   .pgn__icon {
     transform: scaleX(-1);
   }
   .social-container {
     transform: scaleX(-1);
+  }
+}
+.lang_fa {
+  * {
+    font-family: IRANSans !important ;
+  }
+}
+.lang_ar {
+  * {
+    font-family: 'Noto Sans Arabic' !important ;
   }
 }
 @media (max-width: 1024px) {

@@ -2,7 +2,7 @@ import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { useQuery } from 'react-query';
 
-const useGetOverviewList = (page) => {
+const useGetOverviewList = () => {
   const fetchOverviewList = async (pageNum = 1) => {
     const { data, status } = await getAuthenticatedHttpClient().get(
       `${
@@ -31,7 +31,7 @@ const useGetOverviewList = (page) => {
 
     return { results: allResults, count: allResults.length };
   };
-  const { data, isLoading } = useQuery(['OverviewList', page], fetchAllOverviewList);
+  const { data, isLoading } = useQuery('OverviewList', fetchAllOverviewList);
   return {
     userCourseTitles: `${data?.results?.reduce(
       (acc, current) => `${acc}${current?.course_details?.course_name} `,

@@ -41,9 +41,9 @@
     "header.signIn": "تسجيل الدخول",
     "header.register": "انشاء حساب جديد",
     "userCourseCard.courseStart.text": "بداية الدورة - ",
-    "partners.ourPartnersDes.text": "تقدم edSPIRIT أعلى مستويات الدورات التعليمية عبر الإنترنت من خلال المؤسسات التي تشترك معنا في تحقيق التفوق في جميع مستويات التدريس والتعلم.",
+    "partners.ourPartnersDes.text": "",
     "partners.search.placeholder": "من تبحث عنه؟",
-    "partners.snapShut.learners.text": "المتعلمون حول العالم، ممثلون لكل دولة",
+    "partners.snapShut.learners.text": "المتعلمون",
     "partners.snapShut.enrollments.text": "تسجيلات الطلاب في دورات edX",
     "homePage.partners.title": "الشركاء",
     "footer.copyRight.text": "edX وOpen edX هما علامتان تجاريتان تعود ملكيتهما لشركة edX LLC. جميع الحقوق محفوظة.",
@@ -59,7 +59,7 @@
     "viewBy.text": "عرض بواسطة:",
     "userCourseCard.resumeCourse.text": "استئناف الدورة التدريبية",
     "inProgress.notEnroll.description": "ستجد دوراتك الجارية هنا.",
-    "partners.snapShut.courses.text": "دورة في مواضيع مختلفة مثل العلوم الإنسانية، الرياضيات، علوم الكمبيوتر.",
+    "partners.snapShut.courses.text": "الدورات",
     "totalCourse.text": "إجمالي عدد الدورات:",
     "header.dropdownOption.orderHistory": "سجل الطلبات",
     "footer.powerdBy.text": "مدعم بواسطة ",
@@ -124,5 +124,5 @@
     "search.facets.language": "لغة",
     "search.facets.availability": "التوفر",
     "search.facets.learningType": "نوع التعلم",
-    "partners.snapShut.instructors.text": "..."
+    "partners.snapShut.instructors.text": "مدربين"
 }

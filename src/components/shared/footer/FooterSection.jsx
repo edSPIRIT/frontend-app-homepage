@@ -7,7 +7,7 @@ import edxLogo from '../../../assets/Edx.svg';
 import { ReactComponent as Linkedin } from '../../../assets/linkedin.svg';
 import { ReactComponent as Facebook } from '../../../assets/facebook.svg';
 import { ReactComponent as Twitter } from '../../../assets/twitter.svg';
-import { ReactComponent as Reddit } from '../../../assets/reddit.svg';
+import { ReactComponent as Instagram } from '../../../assets/instagram.svg';
 import useGetFooters from '../../../hooks/useGetFooters';
 import ChooseLanguage from './footer-section/ChooseLanguage';
 
@@ -97,7 +97,7 @@ const FooterSection = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Icon className="social-icon-footer" src={Reddit} />
+                  <Icon className="social-icon-footer" src={Instagram} />
                 </a>
               )}
             </div>

@@ -7,11 +7,7 @@ import {
   useMediaQuery,
 } from '@edx/paragon';
 import {
-  ArrowBack,
-  ArrowForward,
-  BookOpen,
-  DrawShapes,
-  Groups,
+  ArrowBack, ArrowForward, BookOpen, Groups,
 } from '@edx/paragon/icons';
 import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
@@ -26,6 +22,7 @@ import TotalPartnersWrapper from './partners-list/TotalPartnersWrapper';
 import messages from '../../messages';
 import useGetPartners from '../../hooks/useGetPartners';
 import useGetPartnersSuggestions from '../../hooks/useGetPartnersSuggestions';
+import { ReactComponent as Instructors } from '../../assets/instructors.svg';
 
 const PartnersList = ({ intl }) => {
   const [view, setView] = useState('grid');
@@ -69,8 +66,7 @@ const PartnersList = ({ intl }) => {
           <p className="banner-desc">
             <FormattedMessage
               id="partners.ourPartnersDes.text"
-              defaultMessage="edSPIRIT offers the highest quality online courses from institutions
-            who share our commitment to excellence in teaching and learning."
+              defaultMessage="Our partners and collaborators help us provide excellent learning materials and high-quality online courses."
             />
           </p>
           <SearchField
@@ -137,32 +133,32 @@ const PartnersList = ({ intl }) => {
           </Link> */}
           <div className="banner-icons-wrapper mt-4">
             <div className="icon-wrapper">
-              <Icon clas src={BookOpen} style={{ width: '36px' }} />
+              <Icon clas src={BookOpen} style={{ width: '40px' }} />
               <span>{partnersMetaData?.total_courses}</span>
               <p>
                 <FormattedMessage
                   id="partners.snapShut.courses.text"
-                  defaultMessage="courses in subjects such as humanities, math, computer science"
+                  defaultMessage="Courses"
                 />
               </p>
             </div>
             <div className="icon-wrapper">
-              <Icon src={DrawShapes} />
-              <span>{partnersMetaData?.total_instructors}</span>
-              <p>
-                <FormattedMessage
-                  id="partners.snapShut.instructors.text"
-                  defaultMessage="Instructors ..."
-                />
-              </p>
-            </div>
-            <div className="icon-wrapper">
-              <Icon src={Groups} />
+              <Icon src={Groups} style={{ width: '40px' }} />
               <span>{partnersMetaData?.total_learners}</span>
               <p>
                 <FormattedMessage
                   id="partners.snapShut.learners.text"
-                  defaultMessage="learners across edspirit courses"
+                  defaultMessage="Learners"
+                />
+              </p>
+            </div>
+            <div className="icon-wrapper">
+              <Icon src={Instructors} style={{ width: '40px' }} />
+              <span>{partnersMetaData?.total_instructors}</span>
+              <p>
+                <FormattedMessage
+                  id="partners.snapShut.instructors.text"
+                  defaultMessage="Instructors"
                 />
               </p>
             </div>

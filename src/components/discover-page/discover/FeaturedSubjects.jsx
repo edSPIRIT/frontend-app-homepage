@@ -9,6 +9,7 @@ import {
   setSearchSubject,
 } from '../../../redux/slice/searchQuerySlice';
 import FeaturedSubjectsSkeleton from './featured-subjects/FeaturedSubjectsSkeleton';
+import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter';
 
 const FeaturedSubjects = ({ featuredSubjects, loading }) => {
   const history = useHistory();
@@ -46,7 +47,9 @@ const FeaturedSubjects = ({ featuredSubjects, loading }) => {
               <div className="subject-img-wrapper">
                 <img src={subject.image ?? logoPlaceholder} alt="subject" />
               </div>
-              <span className="font-sm">{subject.title}</span>
+              <span className="font-sm">
+                {capitalizeFirstLetter(subject.title)}
+              </span>
             </div>
           ))}
       </div>
