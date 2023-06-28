@@ -49,7 +49,7 @@ const DesktopCourseInfo = () => {
         <CourseNavItems isTopOnScreen={isTopOnScreen} loading={loading} />
 
         <div className="course-content-container d-flex flex-column">
-          <AboutCourse aboutCourse={courseMetaData?.about} loading={loading} />
+          <AboutCourse aboutCourse={courseMetaData?.additional_metadata?.about_overview} loading={loading} />
           <WhatYouLearn
             learningItems={courseMetaData?.what_you_will_learn}
             loading={loading}

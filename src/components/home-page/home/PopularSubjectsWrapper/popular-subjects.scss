@@ -36,8 +36,10 @@
 .popular-subject-container {
   padding-top: 80px;
   padding-bottom: 80px;
-  .popular-title {
+  .popular-title-wrapper {
     justify-content: center;
+  }
+  .popular-title {
     margin-bottom: 48px;
     direction: initial;
   }
@@ -61,8 +63,10 @@
     padding-top: 32px !important;
     padding-bottom: 32px !important;
     .popular-title {
-      justify-content: unset !important;
       margin-bottom: 24px !important;
+    }
+    .popular-title-wrapper {
+      justify-content: unset;
     }
   }
   .subject-container {

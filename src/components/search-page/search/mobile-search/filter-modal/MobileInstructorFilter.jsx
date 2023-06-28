@@ -76,7 +76,7 @@ const MobileInstructorFilter = () => {
             variant="tertiary"
             size="sm"
             className="reset-btn"
-            onClick={() => {}}
+            onClick={() => clear()}
           >
             <FormattedMessage id="reset.text" defaultMessage="Reset" />
           </Button>

@@ -71,10 +71,7 @@ const BottomCardSection = ({ courseInfo }) => {
         <Button
           className="view-btn view-course-btn"
           variant="primary"
-          href={`https://apps.${getConfig().LMS_BASE_URL.replace(
-            'https://',
-            '',
-          )}/learning/course/${courseInfo?.course_details?.course_id}/home`}
+          href={`${getConfig().BASE_URL}/learning/course/${courseInfo?.course_details?.course_id}/home`}
         >
           {calcProgress() > 0 ? (
             <span>

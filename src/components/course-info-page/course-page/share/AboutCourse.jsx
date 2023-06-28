@@ -23,7 +23,10 @@ const AboutCourse = ({ aboutCourse, loading }) => (
         expanded={false}
         truncatedEndingComponent="... "
       >
-        <p className="mb-2">{aboutCourse}</p>
+        <div
+          className="mb-2"
+          dangerouslySetInnerHTML={{ __html: aboutCourse }}
+        />
       </ShowMoreText>
     )}
   </div>

@@ -13,7 +13,7 @@
     img {
       height: inherit;
       width: 100%;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: 6px;
     }
   }
@@ -32,7 +32,7 @@
       img {
         height: 100%;
         width: 100%;
-        object-fit: cover;
+        object-fit: contain;
       }
     }
     .share-icon {
@@ -191,6 +191,7 @@
         position: unset !important;
         width: 80px;
         height: 40px;
+        padding: 0;
       }
       .share-icon {
         display: block !important;
