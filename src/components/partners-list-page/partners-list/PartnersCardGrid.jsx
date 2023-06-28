@@ -5,7 +5,7 @@ import { BookOpen, DrawShapes } from '@edx/paragon/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
+import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
 
 const PartnersCardGrid = ({ partnersData, loading }) => (
   <div className="partners-grid-wrapper">

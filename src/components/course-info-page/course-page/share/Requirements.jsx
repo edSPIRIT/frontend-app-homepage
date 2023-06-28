@@ -5,7 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { ReactComponent as Warning } from '../../../../assets/warning.svg';
-import logoPlaceholder from '../../../../assets/place-holders/org-logo-place-holder.svg';
+import logoPlaceholder from '../../../../assets/place-holders/org-place-holder.svg';
 import coverPlaceholder from '../../../../assets/place-holders/cover-course-place-holder.svg';
 
 const Requirements = ({ courseMetaData, loading }) => {

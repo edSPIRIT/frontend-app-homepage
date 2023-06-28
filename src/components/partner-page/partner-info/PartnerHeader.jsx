@@ -5,7 +5,7 @@ import ShowMoreText from 'react-show-more-text';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
 import partnerBanner from '../../../assets/place-holders/cover-course-place-holder.svg';
-import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
+import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
 import { ReactComponent as Instructors } from '../../../assets/instructors.svg';
 import { setToastMessage } from '../../../redux/slice/toastSlice';
 

@@ -11,7 +11,7 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
-import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
+import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
 import coverPlaceholder from '../../../assets/place-holders/cover-course-place-holder.svg';
 import messages from '../../../messages';
 
@@ -26,9 +26,13 @@ const CourseCardNew = ({ course, intl }) => {
           src={
             `${getConfig().LMS_BASE_URL}${
               course?.additional_metadata?.course_image_url
-            }` ?? coverPlaceholder
+            }`
+            ?? coverPlaceholder
           }
-          logoSrc={course?.partner?.organization?.logo ?? logoPlaceholder}
+          logoSrc={
+            course?.partner?.organization?.logo
+            ?? logoPlaceholder
+}
           variant="top"
           srcAlt="course-header"
           logoAlt="partner-logo"

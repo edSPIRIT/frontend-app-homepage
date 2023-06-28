@@ -24,7 +24,7 @@ import {
   loadPages,
   removePage,
 } from '../../../../redux/slice/recentPagesSlice';
-import logoPlaceholder from '../../../../assets/place-holders/org-logo-place-holder.svg';
+import logoPlaceholder from '../../../../assets/place-holders/org-place-holder.svg';
 
 const SearchModal = ({ intl }) => {
   const dispatch = useDispatch();

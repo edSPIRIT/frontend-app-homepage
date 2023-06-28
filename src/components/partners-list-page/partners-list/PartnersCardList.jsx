@@ -5,7 +5,7 @@ import { ArrowForward, BookOpen, DrawShapes } from '@edx/paragon/icons';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
+import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
 
 const PartnersCardList = ({ partnersData, loading }) => (
   <div className="partners-list-wrapper">

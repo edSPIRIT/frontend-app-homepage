@@ -9,7 +9,7 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
-import logoPlaceholder from '../../../../assets/place-holders/org-logo-place-holder.svg';
+import logoPlaceholder from '../../../../assets/place-holders/org-place-holder.svg';
 import coverPlaceholder from '../../../../assets/place-holders/cover-course-place-holder.svg';
 import CourseInfoButtonStatus from '../share/CourseInfoButtonStatus';
 import messages from '../../../../messages';
@@ -36,10 +36,12 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => (
           src={
             `${getConfig().LMS_BASE_URL}${
               courseMetaData?.additional_metadata?.course_image_url
-            }` ?? coverPlaceholder
+            }`
+              ?? coverPlaceholder
           }
           logoSrc={
-            courseMetaData?.partner?.organization?.logo ?? logoPlaceholder
+            courseMetaData?.partner?.organization?.logo
+            ?? logoPlaceholder
           }
           variant="top"
           alt=""

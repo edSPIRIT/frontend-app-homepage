@@ -2,7 +2,7 @@ import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { Button, Skeleton } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import { Link, useHistory } from 'react-router-dom';
-import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
+import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
 import useGetPopularPartners from '../../../hooks/useGetPopularPartners';
 
 const HomePagePartners = () => {

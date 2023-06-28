@@ -29,7 +29,7 @@ import CourseContent from './share/CourseContent';
 import CourseInfoButtonStatus from './share/CourseInfoButtonStatus';
 import MobileCourseInstructors from './mobile-course-info/MobileCourseInstructors';
 import partnerBanner from '../../../assets/place-holders/cover-course-place-holder.svg';
-import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
+import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
 import messages from '../../../messages';
 import { setToastMessage } from '../../../redux/slice/toastSlice';
 
