@@ -15,7 +15,7 @@ import {
 import ScrollableCourses from '../../shared/scrollable-courses-component/ScrollableCourses';
 import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter';
 
-const FeaturedSubjectsWithCourses = ({
+const SubjectsWithCourses = ({
   featuredSubjectsWithCourses,
   loading,
   isFetching,
@@ -85,4 +85,4 @@ const FeaturedSubjectsWithCourses = ({
   );
 };
 
-export default FeaturedSubjectsWithCourses;
+export default SubjectsWithCourses;

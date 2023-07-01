@@ -80,7 +80,8 @@
     transform: unset !important;
   }
 }
-.dropdown-wrapper {
+.dropdown-wrapper,
+.avatar-dropdown-wrapper {
   .dropdown-title {
     font-size: $font-size-base-sm;
   }

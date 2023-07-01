@@ -2,16 +2,27 @@
   font-size: $font-size-base-xl;
   color: $gray-500;
 }
-.avatar-wrapper {
+.avatar-container {
   margin-top: 80px;
+  .avatar-wrapper {
+    width: 96px;
+    height: 96px;
+    flex-shrink: 0;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
   .badge {
     @extend .d-flex, .align-items-center;
     line-height: unset;
     background-color: $primary-400;
   }
 }
-@media (max-width: 1024px) {
-  .avatar-wrapper {
+@media (max-width: 768px) {
+  .avatar-container {
     margin-top: 24px;
     .mobile-header {
       margin-bottom: 10px;

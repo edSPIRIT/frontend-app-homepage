@@ -22,12 +22,7 @@ const BottomCardSection = ({ courseInfo }) => {
     }
     return 0;
   };
-  const handleClick = () => {
-    const newUrl = `${getConfig().BASE_URL}/learning/course/${
-      courseInfo?.course_details?.course_id
-    }/home`;
-    window.location.replace(newUrl);
-  };
+
   return (
     <div className="d-flex align-items-center justify-content-between bottom-wrapper">
       {courseCompleted ? (
@@ -76,7 +71,10 @@ const BottomCardSection = ({ courseInfo }) => {
         <Button
           className="view-btn view-course-btn"
           variant="primary"
-          onClick={handleClick}
+          href={`https://apps.${getConfig().LMS_BASE_URL.replace(
+            'https://',
+            '',
+          )}/learning/course/${courseInfo?.course_details?.course_id}/home`}
         >
           {calcProgress() > 0 ? (
             <span>

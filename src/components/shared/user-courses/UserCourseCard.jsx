@@ -4,7 +4,7 @@ import {
 
 import { getConfig } from '@edx/frontend-platform';
 import PropTypes from 'prop-types';
-import cardPlaceholder from '../../../assets/place-holders/cover-course-place-holder.svg';
+import cardPlaceholder from '../../../assets/place-holders/book-open.svg';
 import MoreButtonModal from './user-course-card/MoreButtonModal';
 import TopCardSection from './user-course-card/TopCardSection';
 import BottomCardSection from './user-course-card/BottomCardSection';

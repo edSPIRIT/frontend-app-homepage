@@ -30,7 +30,7 @@ const TopCardSection = ({ courseInfo, openMoreBtnModal }) => {
       queryClient.invalidateQueries(['EnrollmentList']);
     },
   });
-  const isTablet = useMediaQuery({ maxWidth: '768px' });
+  const isTablet = useMediaQuery({ maxWidth: '920px' });
   const courseCompleted = courseInfo?.progress?.complete_count > 0
     && courseInfo?.progress?.incomplete_count === 0;
 

@@ -1,8 +1,12 @@
 import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
+import { AppContext } from '@edx/frontend-platform/react';
+import { useContext } from 'react';
 import { useQuery } from 'react-query';
 
 const useGetOverviewList = () => {
+  const { authenticatedUser } = useContext(AppContext);
+
   const fetchOverviewList = async (pageNum = 1) => {
     const { data, status } = await getAuthenticatedHttpClient().get(
       `${
@@ -31,7 +35,9 @@ const useGetOverviewList = () => {
 
     return { results: allResults, count: allResults.length };
   };
-  const { data, isLoading } = useQuery('OverviewList', fetchAllOverviewList);
+  const { data, isLoading } = useQuery('OverviewList', fetchAllOverviewList, {
+    enabled: !!authenticatedUser,
+  });
   return {
     userCourseTitles: `${data?.results?.reduce(
       (acc, current) => `${acc}${current?.course_details?.course_name} `,

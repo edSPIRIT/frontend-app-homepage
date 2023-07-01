@@ -1,25 +1,35 @@
 import { useEffect } from 'react';
-import useGetFeaturedSubjectsInfinite from '../../hooks/useGetFeaturedSubjectsInfinite';
 import SearchHeader from '../shared/search-header/SearchHeader';
 import FeaturedSubjects from './discover/FeaturedSubjects';
-import FeaturedSubjectsWithCourses from './discover/FeaturedSubjectsWithCourses';
+import useSubjectsWithCoursesInfinite from '../../hooks/useSubjectsWithCoursesInfinite';
+import SubjectsWithCourses from './discover/SubjectsWithCourses';
+import useGetFeaturedSubjects from '../../hooks/useGetFeaturedSubjects';
+import FeaturedSubjectsSkeleton from './discover/featured-subjects/FeaturedSubjectsSkeleton';
 
 const Discover = () => {
+  const { featuredSubjects, loading } = useGetFeaturedSubjects();
   const {
-    featuredSubjectsWithCourses, featuredSubjects, isFetching, loading,
-  } = useGetFeaturedSubjectsInfinite();
-
+    subjectsWithCourses,
+    loading: subjectsWithCoursesLoading,
+    isFetching: subjectsWithCoursesFetching,
+  } = useSubjectsWithCoursesInfinite();
   useEffect(() => {
     document.title = `Discover | ${process.env.SITE_NAME}`;
   }, []);
   return (
     <>
       <SearchHeader />
-      <FeaturedSubjects featuredSubjects={featuredSubjects} loading={loading} />
-      <FeaturedSubjectsWithCourses
-        featuredSubjectsWithCourses={featuredSubjectsWithCourses}
-        loading={loading}
-        isFetching={isFetching}
+      {loading ? (
+        <FeaturedSubjectsSkeleton />
+      ) : (
+        featuredSubjects?.length > 0 && (
+          <FeaturedSubjects featuredSubjects={featuredSubjects} />
+        )
+      )}
+      <SubjectsWithCourses
+        featuredSubjectsWithCourses={subjectsWithCourses}
+        loading={subjectsWithCoursesLoading}
+        isFetching={subjectsWithCoursesFetching}
       />
     </>
   );

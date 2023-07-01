@@ -1,14 +1,7 @@
-import {
-  AvatarButton,
-  Button,
-  Dropdown,
-  SearchField,
-  Skeleton,
-} from '@edx/paragon';
+import { Button, SearchField, Skeleton } from '@edx/paragon';
 import { Link, useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import { AppContext } from '@edx/frontend-platform/react';
-import { ArrowDropDown } from '@edx/paragon/icons';
 import { getConfig } from '@edx/frontend-platform';
 import {
   FormattedMessage,
@@ -21,11 +14,12 @@ import DropdownNavHeader from '../dropdown-nav-header/DropdownNavHeader';
 import useGetFooters from '../../../../hooks/useGetFooters';
 import edLogo from '../../../../assets/edspirit-logo.png';
 import messages from '../../../../messages';
-import handleRedirect, { handleLogout } from '../../../../utils/handleRedirect';
+import handleRedirect from '../../../../utils/handleRedirect';
 import {
   resetSearchFilters,
   setSearchString,
 } from '../../../../redux/slice/searchQuerySlice';
+import ProfileDropdown from './ProfileDropdown';
 
 const DesktopHeader = ({ intl }) => {
   const history = useHistory();
@@ -71,56 +65,7 @@ const DesktopHeader = ({ intl }) => {
           </div> */}
         <div className="sign-in-container ml-3">
           {authenticatedUser ? (
-            <Dropdown className="ml-3 avatar-dropdown-wrapper">
-              <Dropdown.Toggle as={AvatarButton} iconAfter={ArrowDropDown} />
-              <Dropdown.Menu alignRight>
-                <Dropdown.Item
-                  href={`https://apps.${getConfig().LMS_BASE_URL.replace(
-                    'https://',
-                    '',
-                  )}/profile/u/${authenticatedUser?.username}`}
-                >
-                  <FormattedMessage
-                    id="header.dropdownOption.profile"
-                    defaultMessage="Profile"
-                  />
-                </Dropdown.Item>
-                <Dropdown.Item
-                  href={`https://apps.${getConfig().LMS_BASE_URL.replace(
-                    'https://',
-                    '',
-                  )}/account`}
-                >
-                  <FormattedMessage
-                    id="header.dropdownOption.account"
-                    defaultMessage="Account"
-                  />
-                </Dropdown.Item>
-                <Dropdown.Item as={Link} to="overview">
-                  <FormattedMessage
-                    id="header.dropdownOption.dashboard"
-                    defaultMessage="Dashboard"
-                  />
-                </Dropdown.Item>
-                <Dropdown.Item
-                  href={`https://billing.${getConfig().LMS_BASE_URL.replace(
-                    'https://',
-                    '',
-                  )}`}
-                >
-                  <FormattedMessage
-                    id="header.dropdownOption.orderHistory"
-                    defaultMessage="Order History"
-                  />
-                </Dropdown.Item>
-                <Dropdown.Item onClick={handleLogout}>
-                  <FormattedMessage
-                    id="header.dropdownOption.signOut"
-                    defaultMessage="Sign Out"
-                  />
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <ProfileDropdown />
           ) : (
             <>
               <Button

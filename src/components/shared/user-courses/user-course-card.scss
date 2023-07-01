@@ -9,6 +9,9 @@
     display: flex;
   }
   .pgn__card-wrapper-image-cap {
+    justify-content: center;
+    align-items: center;
+    background-color: $light-300;
     border: 1px solid $light-300;
     display: flex;
     flex-shrink: 0;
@@ -18,7 +21,8 @@
     min-width: unset;
   }
   .pgn__card-image-cap {
-    width: 100% !important;
+    width: 72px !important;
+    height: 72px !important;
   }
 
   .pgn__card-section {
@@ -187,7 +191,7 @@
     }
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 920px) {
   .user-card-course {
     &:hover {
       .icons-wrapper {

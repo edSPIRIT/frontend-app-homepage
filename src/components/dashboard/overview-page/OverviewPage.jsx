@@ -28,6 +28,19 @@ const OverviewPage = ({ intl }) => {
 
   const isMobile = useMediaQuery({ maxWidth: '768px' });
   const { authenticatedUser } = useContext(AppContext);
+  // async function getAccount() {
+  //   if (authenticatedUser) {
+  //     const { data } = await getAuthenticatedHttpClient().get(
+  //       `${getConfig().LMS_BASE_URL}/api/user/v1/accounts/${
+  //         authenticatedUser?.username
+  //       }`,
+  //     );
+
+  //     // Process response data
+  //     return data;
+  //   }
+  //   return null;
+  // }
 
   useEffect(() => {
     document.title = `Dashboard | ${process.env.SITE_NAME}`;
