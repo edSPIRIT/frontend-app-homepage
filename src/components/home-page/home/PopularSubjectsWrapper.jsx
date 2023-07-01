@@ -32,13 +32,13 @@ const PopularSubjectsWrapper = () => {
       <div className="custom-container">
         <div className="popular-title-wrapper d-flex">
           <h2 className="d-flex popular-title">
-            <span className="ml-2">
+            <span>
               <FormattedMessage
                 id="popularSubjects.firstPartTitle.text"
                 defaultMessage="Popular"
               />
             </span>
-            <span className="highlighted ml-2">
+            <span className="highlighted">
               <FormattedMessage
                 id="popularSubjects.secondPartTitle.text"
                 defaultMessage="Subjects"
