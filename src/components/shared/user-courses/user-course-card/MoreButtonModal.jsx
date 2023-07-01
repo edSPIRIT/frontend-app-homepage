@@ -12,6 +12,8 @@ import { useMutation, useQueryClient } from 'react-query';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setToastMessage } from '../../../../redux/slice/toastSlice';
+import { ReactComponent as Learning } from '../../../../assets/learning-icon.svg';
+import useGetCertificate from '../../../../hooks/useGetCertificate';
 
 const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
   const queryClient = useQueryClient();
@@ -28,6 +30,7 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
     },
   });
   const dispatch = useDispatch();
+  const { certificateData } = useGetCertificate(courseInfo);
 
   return (
     <ModalLayer isOpen={isOpen} onClose={onClose}>
@@ -40,6 +43,23 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
           <Icon src={Close} className=" share-icon" onClick={onClose} />
         </div>
         <div className="d-flex flex-column mx-4 color-black">
+          {certificateData && (
+            <a
+              className="d-flex align-items-center py-2 color-black"
+              href={`https://apps.${getConfig().LMS_BASE_URL.replace(
+                'https://',
+                '',
+              )}/learning/course/${courseInfo?.course_details?.course_id}/home`}
+            >
+              <Icon src={Learning} className="mr-2 text-gray-500" />
+              <span>
+                <FormattedMessage
+                  id="userCourseCard.goToYourCourse.button"
+                  defaultMessage="Go To Your Course"
+                />
+              </span>
+            </a>
+          )}
           <Link
             className="d-flex align-items-center py-2 color-black"
             to={`/course/${courseInfo?.course_metadata?.slug}`}

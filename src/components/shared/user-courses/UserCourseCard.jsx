@@ -1,9 +1,9 @@
+/* eslint-disable react/prop-types */
 import {
   Card, useMediaQuery, useToggle,
 } from '@edx/paragon';
 
 import { getConfig } from '@edx/frontend-platform';
-import PropTypes from 'prop-types';
 import cardPlaceholder from '../../../assets/place-holders/book-open.svg';
 import MoreButtonModal from './user-course-card/MoreButtonModal';
 import TopCardSection from './user-course-card/TopCardSection';
@@ -55,52 +55,5 @@ const UserCourseCard = ({ courseInfo }) => {
     </>
   );
 };
-UserCourseCard.propTypes = {
-  courseInfo: {
-    created: PropTypes.string,
-    mode: PropTypes.string,
-    is_active: PropTypes.bool,
-    course_details: PropTypes.shape({
-      course_id: PropTypes.string,
-      course_name: PropTypes.string,
-      enrollment_start: PropTypes.string,
-      enrollment_end: PropTypes.string,
-      course_start: PropTypes.string,
-      course_end: PropTypes.string,
-      invite_only: PropTypes.bool,
-      course_modes: PropTypes.arrayOf(
-        PropTypes.shape({
-          slug: PropTypes.string,
-          name: PropTypes.string,
-          min_price: PropTypes.number,
-          suggested_prices: PropTypes.string,
-          currency: PropTypes.string,
-          expiration_datetime: PropTypes.string,
-          description: PropTypes.string,
-          sku: PropTypes.string,
-          bulk_sku: PropTypes.string,
-        }),
-      ),
-      pacing_type: PropTypes.string,
-      banner_image_url: PropTypes.string,
-      course_image_url: PropTypes.string,
-    }),
-    organization: PropTypes.shape({
-      name: PropTypes.string,
-      short_name: PropTypes.string,
-    }),
-    progress: PropTypes.shape({
-      complete_count: PropTypes.number,
-      incomplete_count: PropTypes.number,
-      locked_count: PropTypes.number,
-    }),
-    course_metadata: PropTypes.shape({
-      slug: PropTypes.string,
-    }),
-    user: PropTypes.string,
-  },
-};
-UserCourseCard.defaultProps = {
-  courseInfo: undefined,
-};
+
 export default UserCourseCard;

@@ -36,15 +36,14 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => (
           src={
             `${getConfig().LMS_BASE_URL}${
               courseMetaData?.additional_metadata?.course_image_url
-            }`
-              ?? coverPlaceholder
+            }` ?? coverPlaceholder
           }
           logoSrc={
-            courseMetaData?.partner?.organization?.logo
-            ?? logoPlaceholder
+            courseMetaData?.partner?.organization?.logo ?? logoPlaceholder
           }
+          fallbackSrc={coverPlaceholder}
           variant="top"
-          alt=""
+          alt="course-cover"
         />
         <div className="mt-4.5 px-4">
           <h2 className="mb-1">
