@@ -22,23 +22,25 @@ const TabletBottomCard = ({
         </span>
       </div>
     ) : (
-      <ProgressBar now={calcProgress()} label={`${calcProgress()}%`} />
+      !certificateData && (
+        <ProgressBar now={calcProgress()} label={`${calcProgress()}%`} />
+      )
     )}
-    { certificateData && (
-    <Button
-      className="view-course-btn"
-      onClick={(e) => {
-        e.preventDefault();
-        window.location.href = `${getConfig().LMS_BASE_URL}${
-          certificateData?.download_url
-        }`;
-      }}
-    >
-      <FormattedMessage
-        id="userCourseCard.viewCertificate.text"
-        defaultMessage="View Certificate"
-      />
-    </Button>
+    {certificateData && (
+      <Button
+        className="view-course-btn"
+        onClick={(e) => {
+          e.preventDefault();
+          window.location.href = `${getConfig().LMS_BASE_URL}${
+            certificateData?.download_url
+          }`;
+        }}
+      >
+        <FormattedMessage
+          id="userCourseCard.viewCertificate.text"
+          defaultMessage="View Certificate"
+        />
+      </Button>
     )}
   </div>
 );
