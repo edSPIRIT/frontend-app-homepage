@@ -68,13 +68,26 @@ const SearchBox = ({ intl }) => {
                 <div key={result?.data?.content?.display_name}>
                   <span>{result?.data?.content?.display_name}</span>
                   <p className="second-title-wrapper">
-                    <span>
+                    <span className="mr-1">
                       {
                         result?.data?.course_metadata?.partner?.organization
                           ?.name
                       }
                     </span>
-                    . <span>{result.isProgram ? 'Program' : 'Course'}</span>
+                    .{' '}
+                    <span>
+                      {result.isProgram ? (
+                        <FormattedMessage
+                          id="program.text"
+                          defaultMessage="Program"
+                        />
+                      ) : (
+                        <FormattedMessage
+                          id="course.text"
+                          defaultMessage="Course"
+                        />
+                      )}
+                    </span>
                   </p>
                 </div>
               </Link>

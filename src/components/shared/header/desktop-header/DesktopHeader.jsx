@@ -74,7 +74,7 @@ const DesktopHeader = ({ intl }) => {
                 size="sm"
                 onClick={handleRedirect}
               >
-                <FormattedMessage id="header.signIn" defaultMessage="Sign in" />
+                <FormattedMessage id="header.signIn" defaultMessage="Sign In" />
               </Button>
               <Button
                 variant="primary"

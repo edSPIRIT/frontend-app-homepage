@@ -23,7 +23,7 @@
     "banner.exploreNewCourses.text": "جستجوی دوره‌های جدید",
     "search.button.text": "جستجو",
     "courseCard.hoursPerWeek.text": "ساعت در هفته",
-    "courseCard.weeks.text": "هفته",
+    "courseCard.weeks.text": "{weekCount, number} {weekCount, plural, one {هفته} other {هفته}}",
     "courseCard.lessons.text": "{lessonCount, number} {lessonCount, plural, one {فصل‌} other {فصل‌}}",
     "courseCard.free.text": "رایگان",
     "courseCard.learnMore.button": "اطلاعات بیشتر",
@@ -74,7 +74,7 @@
     "pagination.page.text": "صفحه",
     "pagination.currentPage.text": "صفحه فعلی",
     "pagination.of.text": "از",
-    "courses.text": "دوره‌ها",
+    "courses.text": "{courseCount, plural, one {دوره‌} other {دوره‌}}",
     "learners.text": "{learnerCount, number} {learnerCount, plural, one {یادگیرنده} other {یادگیرنده}}",
     "instructors.text": "مدرسان",
     "breadcrumb.discover": "جستجو",
@@ -144,5 +144,6 @@
     "userCourseCard.goToYourCourse.button": "رفتن به دوره",
     "userCourseCard.completed.text": "آفرین! شما این دوره را به پایان رساندید",
     "partners.snapShut.instructors.text": "{instructorCount, plural, one {مدرس} other {مدرس}}",
-    "learner.text": "یادگیرنده"
+    "learner.text": "یادگیرنده",
+    "course.text": "دوره"
 }

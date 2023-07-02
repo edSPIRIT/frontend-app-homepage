@@ -307,14 +307,13 @@ const MobileCourseInfo = ({ intl }) => {
               <div className="d-flex flex-row align-items-center mb-3">
                 <Icon className="card-icon" src={WatchFilled} />
                 <p className="color-black">
-                  <span>{courseMetaData?.total_weeks_of_effort}</span>
-                  <span>
-                    {' '}
-                    <FormattedMessage
-                      id="courseCard.weeks.text"
-                      defaultMessage="Weeks"
-                    />
-                  </span>
+                  <FormattedMessage
+                    id="courseCard.weeks.text"
+                    defaultMessage="{weekCount, number} {weekCount, plural, one {Week} other {Weeks}}"
+                    values={{
+                      weekCount: courseMetaData?.total_weeks_of_effort,
+                    }}
+                  />
                   {courseMetaData?.hours_effort_per_week_min
                     && courseMetaData?.hours_effort_per_week_max && (
                       <span className="text-gray-700">

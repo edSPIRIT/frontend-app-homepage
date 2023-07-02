@@ -32,6 +32,7 @@ const CourseCardNew = ({ course, intl }) => {
           variant="top"
           srcAlt="course-header"
           logoAlt="partner-logo"
+          fallbackSrc={coverPlaceholder}
         />
         <div className="mt-4.5 px-4">
           <h4 className="mb-1 course-title">
@@ -79,14 +80,13 @@ const CourseCardNew = ({ course, intl }) => {
               <div className="d-flex flex-row align-items-center mb-3">
                 <Icon className="card-icon" src={WatchFilled} />
                 <p className="text-black">
-                  <span>{course?.total_weeks_of_effort}</span>
-                  <span>
-                    {' '}
-                    <FormattedMessage
-                      id="courseCard.weeks.text"
-                      defaultMessage="Weeks"
-                    />
-                  </span>
+                  <FormattedMessage
+                    id="courseCard.weeks.text"
+                    defaultMessage="{weekCount, number} {weekCount, plural, one {Week} other {Weeks}}"
+                    values={{
+                      weekCount: course?.total_weeks_of_effort,
+                    }}
+                  />
                   {course?.hours_effort_per_week_min
                     && course?.hours_effort_per_week_max && (
                       <span className="text-gray-700">
