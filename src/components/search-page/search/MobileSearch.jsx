@@ -48,7 +48,13 @@ const MobileSearch = ({ intl }) => {
               {searchQueryValue.search_string ? (
                 searchQueryValue.search_string
               ) : (
-                <FormattedMessage id="courses.text" defaultMessage="Courses" />
+                <FormattedMessage
+                  id="courses.text"
+                  defaultMessage="{courseCount, number} {courseCount, plural, one {Course} other {Courses}}"
+                  values={{
+                    courseCount: searchResultsCount,
+                  }}
+                />
               )}
             </h4>
             <span>{`(${searchResultsCount})`}</span>

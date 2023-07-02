@@ -78,7 +78,13 @@ const PartnerHeader = ({ partnerData, loading }) => {
           <a className="icon-wrapper" href="#courses">
             <Icon src={BookOpen} style={{ width: '40px' }} />
             <span className="partner-title">
-              <FormattedMessage id="courses.text" defaultMessage="Courses" />
+              <FormattedMessage
+                id="partners.snapShut.courses.text"
+                defaultMessage="{courseCount, plural, one {Course} other {Courses}}"
+                values={{
+                  courseCount: partnerData?.courses_count,
+                }}
+              />
             </span>
             <span className="partner-count">{partnerData?.courses_count}</span>
           </a>
@@ -86,7 +92,13 @@ const PartnerHeader = ({ partnerData, loading }) => {
           <div className="icon-wrapper" href="#">
             <Icon src={Groups} style={{ width: '40px' }} />
             <span className="partner-title">
-              <FormattedMessage id="learners.text" defaultMessage="Learners" />
+              <FormattedMessage
+                id="partners.snapShut.learners.text"
+                defaultMessage="{learnerCount, plural, one {Lerner} other {Learners}}"
+                values={{
+                  learnerCount: partnerData?.students?.total_count,
+                }}
+              />
             </span>
             <span className="partner-count">
               {partnerData?.students?.total_count}
@@ -97,8 +109,11 @@ const PartnerHeader = ({ partnerData, loading }) => {
             <Icon src={Instructors} style={{ width: '40px' }} />
             <span className="partner-title">
               <FormattedMessage
-                id="instructors.text"
-                defaultMessage="Instructors"
+                id="partners.snapShut.instructors.text"
+                defaultMessage="{instructorCount, plural, one {Instructor} other {Instructors}}"
+                values={{
+                  instructorCount: partnerData?.instructors?.total_count,
+                }}
               />
             </span>
             <span className="partner-count">

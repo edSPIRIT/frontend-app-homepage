@@ -26,13 +26,9 @@ const CourseCardNew = ({ course, intl }) => {
           src={
             `${getConfig().LMS_BASE_URL}${
               course?.additional_metadata?.course_image_url
-            }`
-            ?? coverPlaceholder
+            }` ?? coverPlaceholder
           }
-          logoSrc={
-            course?.partner?.organization?.logo
-            ?? logoPlaceholder
-}
+          logoSrc={course?.partner?.organization?.logo ?? logoPlaceholder}
           variant="top"
           srcAlt="course-header"
           logoAlt="partner-logo"
@@ -70,15 +66,13 @@ const CourseCardNew = ({ course, intl }) => {
             <div className="d-flex flex-row align-items-center mb-2">
               <Icon className="card-icon" src={BookOpen} />
               <p className="color-black">
-                <span className="mr-1">
-                  {course?.additional_metadata?.units_count}
-                </span>
-                <span className="mr-1">
-                  <FormattedMessage
-                    id="courseCard.lessons.text"
-                    defaultMessage="Lessons"
-                  />
-                </span>
+                <FormattedMessage
+                  id="courseCard.lessons.text"
+                  defaultMessage="{lessonCount, number} {lessonCount, plural, one {Lesson} other {Lessons}}"
+                  values={{
+                    lessonCount: course?.additional_metadata?.units_count,
+                  }}
+                />
               </p>
             </div>
             {course?.total_weeks_of_effort > 0 && (

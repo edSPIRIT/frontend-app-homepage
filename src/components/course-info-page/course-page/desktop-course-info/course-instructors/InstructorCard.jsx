@@ -1,7 +1,5 @@
 import { Icon, IconButton } from '@edx/paragon';
-import {
-  ArrowForward, BookOpen, Groups,
-} from '@edx/paragon/icons';
+import { ArrowForward, BookOpen, Groups } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
@@ -35,26 +33,24 @@ const InstructorCard = ({ instructor }) => (
         <div className="d-flex mr-4.5 align-items-center">
           <Icon src={Groups} className="mr-2" />
           <p>
-            <span>{instructor?.students_count}</span>
-            <span className="ml-1">
-              <FormattedMessage
-                id="partners.snapShut.learners.text"
-                defaultMessage="Learners"
-              />
-            </span>
+            <FormattedMessage
+              id="learners.text"
+              defaultMessage="{learnerCount, number} {learnerCount, plural, one {Lerner} other {Learners}}"
+              values={{
+                learnerCount: instructor?.students_count,
+              }}
+            />
           </p>
         </div>
         <div className="d-flex align-items-center">
           <Icon src={BookOpen} className="mr-2" />
-          <p>
-            <span>{instructor?.courses_count}</span>
-            <span className="ml-1">
-              <FormattedMessage
-                id="instructor.courses.text"
-                defaultMessage="Courses"
-              />
-            </span>
-          </p>
+          <FormattedMessage
+            id="instructor.courses.text"
+            defaultMessage="{courseCount, number} {courseCount, plural, one {Course} other {Courses}}"
+            values={{
+              courseCount: instructor?.courses_count,
+            }}
+          />
         </div>
       </div>
     </div>

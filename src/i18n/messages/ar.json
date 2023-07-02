@@ -23,7 +23,7 @@
     "filter.All.text": "جميع",
     "viewAllCourses.button": "عرض جميع الدورات",
     "userCourseCard.viewCourse.text": "عرض الدورة",
-    "courseCard.lessons.text": "الدروس",
+    "courseCard.lessons.text": "{lessonCount, number} {lessonCount, plural, one {الدروس} other {الدروس}}",
     "homePage.partnersDescription.text": "تأسست EdX من قبل جامعة هارفارد ومعهد ماساتشوستس للتكنولوجيا، وتعتبر منصة edX موطنًا لأكثر من 20 مليون متعلم، ومعظم الجامعات ذات التصنيف العالي في العالم، و الشركات الرائدة في الصناعة.",
     "homePage.viewOurPartners.button": "عرض جميع الشركاء",
     "filter.courses.text": "الدورات",
@@ -37,7 +37,7 @@
     "header.dropdownOption.signOut": "تسجيل خروج",
     "profile.hi.text": "مرحبا،",
     "completed.notEnroll.title": "ستجد الدورات التي انتهيت منها هنا.",
-    "instructor.courses.text": "الدورات",
+    "instructor.courses.text": "{courseCount, number} {courseCount, plural, one {الدورات} other {الدورات}}",
     "header.signIn": "تسجيل الدخول",
     "header.register": "انشاء حساب جديد",
     "userCourseCard.courseStart.text": "بداية الدورة - ",
@@ -59,7 +59,7 @@
     "viewBy.text": "عرض بواسطة:",
     "userCourseCard.resumeCourse.text": "استئناف الدورة التدريبية",
     "inProgress.notEnroll.description": "ستجد دوراتك الجارية هنا.",
-    "partners.snapShut.courses.text": "الدورات",
+    "partners.snapShut.courses.text": "{courseCount, plural, one {الدورات} other {الدورات}}",
     "totalCourse.text": "إجمالي عدد الدورات:",
     "header.dropdownOption.orderHistory": "سجل الطلبات",
     "footer.powerdBy.text": "مدعم بواسطة ",
@@ -72,7 +72,7 @@
     "sortBy.text": "ترتيب حسب:",
     "courses.text": "الدورات",
     "breadcrumb.discover": "اكتشف",
-    "learners.text": "المتعلمين",
+    "learners.text": "{learnerCount, number} {learnerCount, plural, one {المتعلمين} other {المتعلمين}}",
     "instructors.text": "مدربين",
     "pagination.previous.button": "السابق",
     "pagination.next.button": "التالى",
@@ -124,5 +124,5 @@
     "search.facets.language": "لغة",
     "search.facets.availability": "التوفر",
     "search.facets.learningType": "نوع التعلم",
-    "partners.snapShut.instructors.text": "مدربين"
+    "partners.snapShut.instructors.text": "{instructorCount, plural, one {مدربين} other {مدربين}}"
 }

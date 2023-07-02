@@ -138,7 +138,10 @@ const PartnersList = ({ intl }) => {
               <p>
                 <FormattedMessage
                   id="partners.snapShut.courses.text"
-                  defaultMessage="Courses"
+                  defaultMessage="{courseCount, plural, one {Course} other {Courses}}"
+                  values={{
+                    courseCount: partnersMetaData?.total_courses,
+                  }}
                 />
               </p>
             </div>
@@ -148,19 +151,23 @@ const PartnersList = ({ intl }) => {
               <p>
                 <FormattedMessage
                   id="partners.snapShut.learners.text"
-                  defaultMessage="Learners"
+                  defaultMessage="{learnerCount, plural, one {Lerner} other {Learners}}"
+                  values={{
+                    learnerCount: partnersMetaData?.total_learners,
+                  }}
                 />
               </p>
             </div>
             <div className="icon-wrapper">
               <Icon src={Instructors} style={{ width: '40px' }} />
               <span>{partnersMetaData?.total_instructors}</span>
-              <p>
-                <FormattedMessage
-                  id="partners.snapShut.instructors.text"
-                  defaultMessage="Instructors"
-                />
-              </p>
+              <FormattedMessage
+                id="partners.snapShut.instructors.text"
+                defaultMessage="{instructorCount, plural, one {Instructor} other {Instructors}}"
+                values={{
+                  instructorCount: partnersMetaData?.total_instructors,
+                }}
+              />
             </div>
           </div>
         </div>

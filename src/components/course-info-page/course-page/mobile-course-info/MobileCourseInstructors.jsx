@@ -56,26 +56,24 @@ const MobileCourseInstructors = ({ instructors, loading }) => (
                 <div className="d-flex mr-4.5">
                   <Icon src={Groups} className="mr-2" />
                   <p>
-                    <span>{instructor?.students_count}</span>
-                    <span className="ml-1">
-                      <FormattedMessage
-                        id="partners.snapShut.learners.text"
-                        defaultMessage="Learners"
-                      />
-                    </span>
+                    <FormattedMessage
+                      id="learners.text"
+                      defaultMessage="{learnerCount, number} {learnerCount, plural, one {Lerner} other {Learners}}"
+                      values={{
+                        learnerCount: instructor?.students_count,
+                      }}
+                    />
                   </p>
                 </div>
                 <div className="d-flex">
                   <Icon src={BookOpen} className="mr-2" />
-                  <p>
-                    <span>{instructor?.courses_count}</span>
-                    <span className="ml-1">
-                      <FormattedMessage
-                        id="instructor.courses.text"
-                        defaultMessage="Courses"
-                      />
-                    </span>
-                  </p>
+                  <FormattedMessage
+                    id="instructor.courses.text"
+                    defaultMessage="{courseCount, number} {courseCount, plural, one {Course} other {Courses}}"
+                    values={{
+                      courseCount: instructor?.courses_count,
+                    }}
+                  />
                 </div>
               </div>
             </div>

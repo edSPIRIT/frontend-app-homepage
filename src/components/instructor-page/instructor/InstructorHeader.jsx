@@ -35,9 +35,7 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
             ariaLabel="Breadcrumb basic"
             links={[
               {
-                label: `${intl.formatMessage(
-                  messages['breadcrumb.home'],
-                )}`,
+                label: `${intl.formatMessage(messages['breadcrumb.home'])}`,
                 to: '/',
               },
             ]}
@@ -105,27 +103,24 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                   <div className="d-flex ">
                     <div className="d-flex mr-4.5 align-items-center">
                       <Icon src={Groups} className="mr-2" />
-                      <p>
-                        <span>{InstructorData?.students_count}</span>
-                        <span className="ml-1">
-                          <FormattedMessage
-                            id="partners.snapShut.learners.text"
-                            defaultMessage="Learners"
-                          />
-                        </span>
-                      </p>
+                      <FormattedMessage
+                        id="learners.text"
+                        defaultMessage="{learnerCount, number} {learnerCount, plural, one {Lerner} other {Learners}}"
+                        values={{
+                          learnerCount: InstructorData?.students_count,
+                        }}
+                      />
                     </div>
                     <div className="d-flex align-items-center">
                       <Icon src={BookOpen} className="mr-2" />
-                      <p>
-                        <span>{InstructorData?.courses?.length}</span>
-                        <span className="ml-1">
-                          <FormattedMessage
-                            id="instructor.courses.text"
-                            defaultMessage="Courses"
-                          />
-                        </span>
-                      </p>
+                      <FormattedMessage
+                        id="instructor.courses.text"
+                        defaultMessage="{courseCount, number} {courseCount, plural, one {Course} other {Courses}}"
+                        values={{
+                          courseCount: InstructorData?.courses?.length,
+                        }}
+                      />
+
                     </div>
                   </div>
                   <div className="social-container">
