@@ -4,6 +4,7 @@ import edLogo from '../../../assets/edspirit-logo.png';
 import mobileFooterLogo from '../../../assets/mobile-footer-logo.svg';
 import mobileEdxLogo from '../../../assets/mobile-edx-logo.svg';
 import edxLogo from '../../../assets/Edx.svg';
+import DefaultLogo from '../../../assets/place-holders/NavLogo-placeholder.svg';
 import { ReactComponent as Linkedin } from '../../../assets/linkedin.svg';
 import { ReactComponent as Facebook } from '../../../assets/facebook.svg';
 import { ReactComponent as Twitter } from '../../../assets/twitter.svg';
@@ -23,7 +24,7 @@ const FooterSection = () => {
               <div className="logo-container mb-4">
                 <img
                   className="footer-logo h-100"
-                  src={footerData?.logo}
+                  src={footerData?.logo ?? DefaultLogo}
                   alt="footer-logo"
                 />
               </div>
@@ -109,7 +110,7 @@ const FooterSection = () => {
           <div className="d-flex align-items-center">
             <div className="logo-container mr-2">
               <img
-                className="footer-logo  h-100"
+                className="footer-logo"
                 src={edLogo}
                 alt="footer-logo"
               />

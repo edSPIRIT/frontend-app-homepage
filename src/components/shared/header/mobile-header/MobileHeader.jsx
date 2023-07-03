@@ -9,7 +9,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import edLogo from '../../../../assets/edspirit-logo.png';
+import DefaultLogo from '../../../../assets/place-holders/NavLogo-placeholder.svg';
 import useGetFooters from '../../../../hooks/useGetFooters';
 import { ReactComponent as HomeNav } from '../../../../assets/nav-icons/home-nav.svg';
 import { ReactComponent as HomeNavColored } from '../../../../assets/nav-icons/home-nav-colored.svg';
@@ -46,8 +46,7 @@ const MobileHeader = () => {
           ) : (
             <Link to="/">
               <img
-                className="h-100"
-                src={footerData?.logo ?? edLogo}
+                src={footerData?.logo ?? DefaultLogo}
                 alt="edspirit-logo"
               />
             </Link>

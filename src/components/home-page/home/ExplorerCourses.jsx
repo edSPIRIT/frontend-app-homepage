@@ -16,6 +16,7 @@ import CourseCardSkeleton from '../../shared/skeleton/CourseCardSkeleton';
 import messages from '../../../messages';
 import { resetSearchFilters } from '../../../redux/slice/searchQuerySlice';
 import ScrollableCourses from '../../shared/scrollable-courses-component/ScrollableCourses';
+import EmptyStateCourses from './ExplorerCourses/EmptyStateCourses';
 
 const ExplorerCourses = ({ intl }) => {
   const [key, setKey] = useState('top-courses');
@@ -23,7 +24,26 @@ const ExplorerCourses = ({ intl }) => {
   const isMobile = useMediaQuery({ maxWidth: '1024px' });
   const history = useHistory();
   const dispatch = useDispatch();
-
+  const renderCourseCards = (courses) => (
+    <div className="course-container">
+      {loading
+        ? Array(4)
+          .fill(1)
+          .map((_, i) => <CourseCardSkeleton key={i} />)
+        : courses.map((course) => (
+          <CourseCardNew course={course} key={course.course_slug} />
+        ))}
+    </div>
+  );
+  const renderCourseContent = (courses) => {
+    if (!courses) {
+      return <EmptyStateCourses />;
+    }
+    if (isMobile) {
+      return <ScrollableCourses courses={courses} loading={loading} />;
+    }
+    return renderCourseCards(courses);
+  };
   return (
     <section id="explore-courses" className="explore-courses-container">
       <div className="custom-container d-flex flex-column explore-course-wrapper">
@@ -50,60 +70,32 @@ const ExplorerCourses = ({ intl }) => {
             eventKey="top-courses"
             title={intl.formatMessage(messages['homePage.tab.topCourses'])}
           >
-            {isMobile ? (
-              <ScrollableCourses
-                courses={topCourses}
-                loading={loading}
-              />
-            ) : (
-              <div className="course-container">
-                {/* TO DO: Do not use Array index in keys */}
-                {loading
-                  ? Array(4)
-                    .fill(1)
-                    .map((item, i) => (
-                      // eslint-disable-next-line react/no-array-index-key
-                      <CourseCardSkeleton key={i} />
-                    ))
-                  : topCourses?.map((course) => (
-                    <CourseCardNew course={course} key={course.course_slug} />
-                  ))}
-              </div>
-            )}
+            {renderCourseContent(topCourses)}
           </Tab>
           <Tab
             eventKey="recently-added"
             title={intl.formatMessage(messages['homePage.tab.recentlyAdded'])}
           >
-            {isMobile ? (
-              <ScrollableCourses
-                courses={recentCourses}
-                loading={loading}
-              />
-            ) : (
-              <div className="course-container">
-                {recentCourses?.map((course) => (
-                  <CourseCardNew course={course} key={course.course_slug} />
-                ))}
-              </div>
-            )}
+            {renderCourseContent(recentCourses)}
           </Tab>
         </Tabs>
-        <div className="d-flex justify-content-center">
-          <Button
-            className="view-all-courses-btn mt-5"
-            iconAfter={ArrowForward}
-            onClick={() => {
-              dispatch(resetSearchFilters());
-              history.push('/search');
-            }}
-          >
-            <FormattedMessage
-              id="viewAllCourses.button"
-              defaultMessage="View All Courses"
-            />
-          </Button>
-        </div>
+        {(recentCourses || topCourses) && (
+          <div className="d-flex justify-content-center">
+            <Button
+              className="view-all-courses-btn mt-5"
+              iconAfter={ArrowForward}
+              onClick={() => {
+                dispatch(resetSearchFilters());
+                history.push('/search');
+              }}
+            >
+              <FormattedMessage
+                id="viewAllCourses.button"
+                defaultMessage="View All Courses"
+              />
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

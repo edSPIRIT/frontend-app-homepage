@@ -1,36 +1,54 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Icon, Image, Skeleton } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import { Link } from 'react-router-dom';
-import {
-  FormattedMessage,
-} from '@edx/frontend-platform/i18n';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import useGetBanner from '../../../hooks/useGetBanner';
 import Highlighted from './HomePageBanner/Highlighted';
-import defaultBanner from '../../../assets/default-banner.png';
 import SearchBox from '../../shared/search-header/search-header/SearchBox';
+import defaultImage from '../../../assets/place-holders/banner-placeholder.svg';
 
 const HomePageBanner = () => {
-  const {
-    title, highlightedWord, description, image, isLoading,
-  } = useGetBanner();
+  const { bannerData, isLoading } = useGetBanner();
+
+  const renderTitle = () => {
+    if (isLoading) {
+      return <Skeleton />;
+    }
+
+    return bannerData?.title ? (
+      <Highlighted
+        text={bannerData.title}
+        highlight={bannerData.highlightedWord}
+      />
+    ) : (
+      <FormattedMessage
+        id="banner.welcomeText"
+        defaultMessage="Welcome Text!"
+      />
+    );
+  };
+  const renderDescription = () => {
+    if (isLoading) {
+      return <Skeleton count={2} />;
+    }
+
+    return (
+      <p className="banner-desc">
+        {bannerData?.description || (
+          <FormattedMessage
+            id="banner.welcomeDesc"
+            defaultMessage="Welcome message will be appeared here!"
+          />
+        )}
+      </p>
+    );
+  };
   return (
     <section className="hero">
       <div className=" custom-container banner-wrapper">
         <div className="text-container">
-          <h1 className="display-1">
-            {isLoading ? (
-              <Skeleton />
-            ) : (
-              <Highlighted text={title} highlight={highlightedWord} />
-            )}
-          </h1>
-          {isLoading ? (
-            <Skeleton count={2} />
-          ) : (
-            <p className="banner-desc">{description}</p>
-          )}
+          <h1 className="display-1">{renderTitle()}</h1>
+          {renderDescription()}
           <SearchBox />
           <Link className="banner-link mt-4" to="/discover">
             <span className="mr-2">
@@ -48,7 +66,7 @@ const HomePageBanner = () => {
           ) : (
             <Image
               className="hero-image"
-              src={image ?? defaultBanner}
+              src={bannerData?.image ?? defaultImage}
               alt="banner_image"
             />
           )}

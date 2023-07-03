@@ -104,6 +104,13 @@ footer {
       }
     }
   }
+  .footer-copy-right {
+    .logo-container {
+      img {
+        object-fit: contain;
+      }
+    }
+  }
 }
 @media (max-width: 600px) {
   .footer-wrapper {
@@ -115,7 +122,6 @@ footer {
     padding-bottom: 24px;
   }
   .footer-col1-wrapper {
-    // padding: 24px 0;
     padding-top: 24px;
     border-bottom: 1px solid $light-300;
   }
@@ -149,6 +155,9 @@ footer {
       padding: 4px;
       background-color: $light-300;
       border-radius: 4px;
+      img {
+        object-fit: contain;
+      }
     }
     .footer-logo {
       display: none;

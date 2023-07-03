@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 import NavHeader from '../nav-header/NavHeader';
 import DropdownNavHeader from '../dropdown-nav-header/DropdownNavHeader';
 import useGetFooters from '../../../../hooks/useGetFooters';
-import edLogo from '../../../../assets/edspirit-logo.png';
+import DefaultLogo from '../../../../assets/place-holders/NavLogo-placeholder.svg';
 import messages from '../../../../messages';
 import handleRedirect from '../../../../utils/handleRedirect';
 import {
@@ -42,8 +42,7 @@ const DesktopHeader = ({ intl }) => {
           ) : (
             <Link to="/">
               <img
-                className="h-100"
-                src={footerData?.logo ?? edLogo}
+                src={footerData?.logo ?? DefaultLogo}
                 alt="edspirit-logo"
               />
             </Link>

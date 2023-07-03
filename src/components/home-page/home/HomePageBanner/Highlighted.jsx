@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
-import classNames from 'classnames';
 
-const Highlighted = ({ text, highlight, highlightClass }) => {
+const Highlighted = ({ text, highlight }) => {
   if (!highlight.trim()) {
     return <span>{text}</span>;
   }
@@ -15,8 +14,9 @@ const Highlighted = ({ text, highlight, highlightClass }) => {
         .filter((part) => part)
         .map((part, i) => (regex.test(part) ? (
           <span
-            className={classNames('highlighted-banner', highlightClass)}
-            key={highlightClass}
+            className="highlighted-banner"
+            // eslint-disable-next-line react/no-array-index-key
+            key={i}
           >
             {part}
           </span>
@@ -31,13 +31,11 @@ const Highlighted = ({ text, highlight, highlightClass }) => {
 Highlighted.defaultProps = {
   text: '',
   highlight: '',
-  highlightClass: '',
 };
 
 Highlighted.propTypes = {
   text: PropTypes.string,
   highlight: PropTypes.string,
-  highlightClass: PropTypes.string,
 };
 
 export default Highlighted;
