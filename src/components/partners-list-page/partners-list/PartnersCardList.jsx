@@ -49,7 +49,7 @@ const PartnersCardList = ({ partnersData, loading }) => (
                   />
                 </div>
                 <p className="mb-3.5">{partner.organization.description}</p>
-                <div className="d-flex icons-partner-wrapper mt-3">
+                <div className="d-flex icons-partner-wrapper">
                   <div className="d-flex mr-2.5">
                     <Icon className="mr-1" src={DrawShapes} />
                     <span>0</span>

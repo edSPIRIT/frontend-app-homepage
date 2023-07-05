@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 import Scrollspy from 'react-scrollspy';
 import { Link } from 'react-scroll';
 import {
-  Icon, OverlayTrigger, Tooltip, useMediaQuery,
+  Icon, useMediaQuery,
 } from '@edx/paragon';
 import {
   HowToReg,
@@ -32,6 +32,7 @@ import partnerBanner from '../../../assets/place-holders/cover-course-place-hold
 import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
 import messages from '../../../messages';
 import { setToastMessage } from '../../../redux/slice/toastSlice';
+import { getLangName } from '../../../utils/supportsLanguages';
 
 const MobileCourseInfo = ({ intl }) => {
   const { slug } = useParams();
@@ -200,46 +201,32 @@ const MobileCourseInfo = ({ intl }) => {
         <div id="info-course" className="pt-3.5 pb-4.5">
           <p>{courseMetaData?.additional_metadata?.short_description}</p>
           <div className="mobile-icons-wrapper mt-4 font-sm">
-            <div className="d-flex align-items-center mb-3">
-              <Icon className="mr-2" src={Language} />
-              <span>English</span>
-            </div>
-            {courseMetaData?.transcript_langs
-              && courseMetaData?.transcript_langs.length > 0 && (
-                <OverlayTrigger
-                  placement="top"
-                  overlay={(
-                    <Tooltip
-                      variant="light"
-                      id="tooltip-top"
-                      className="course-tooltip"
-                    >
-                      {courseMetaData?.transcript_langs
-                        && courseMetaData?.transcript_langs?.map(
-                          (transLang, i) => (
-                            // eslint-disable-next-line react/no-array-index-key
-                            <span key={i}>{transLang}</span>
-                          ),
-                        )}
-                    </Tooltip>
+            {courseMetaData?.additional_metadata?.language && (
+              <div className="d-flex  align-items-center mb-2">
+                <Icon className="mr-2" src={Language} />
+                <span>
+                  {getLangName(
+                    courseMetaData?.additional_metadata?.language,
                   )}
-                >
-                  <div className="d-flex align-items-center mb-3">
-                    <Icon className="mr-2" src={PostOutline} />
-                    <span className="course-tooltip">
-                      {courseMetaData?.transcript_langs
-                        && courseMetaData?.transcript_langs?.map(
-                          (transLang, i) => (
-                            // eslint-disable-next-line react/no-array-index-key
-                            <span key={i}>{transLang}</span>
-                          ),
-                        )}
-                    </span>
-                  </div>
-                </OverlayTrigger>
+                </span>
+              </div>
+            )}
+            {courseMetaData?.transcript_langs
+                && courseMetaData?.transcript_langs.length > 0 && (
+                <div className="d-flex  align-items-center mb-2">
+                  <Icon className="mr-2" src={PostOutline} />
+                  <span className="course-tooltip">
+                    {courseMetaData?.transcript_langs
+                          && courseMetaData?.transcript_langs?.map((transLang) => (
+                            <span key={transLang}>
+                              {getLangName(transLang)}
+                            </span>
+                          ))}
+                  </span>
+                </div>
             )}
             {courseMetaData?.additional_metadata?.self_paced && (
-              <div className="d-flex align-items-center mb-3">
+              <div className="d-flex align-items-center mb-2">
                 <Icon className="mr-2" src={HowToReg} />
                 <FormattedMessage
                   id="courseInfo.selfPaced.text"
@@ -248,7 +235,7 @@ const MobileCourseInfo = ({ intl }) => {
               </div>
             )}
             {courseMetaData?.additional_metadata?.certificate_enabled && (
-              <div className="d-flex align-items-center mb-3">
+              <div className="d-flex align-items-center mb-2">
                 <Icon className="mr-2" src={Verified} />
                 <FormattedMessage
                   id="courseInfo.verifiedCertificate.text"
@@ -256,7 +243,7 @@ const MobileCourseInfo = ({ intl }) => {
                 />
               </div>
             )}
-            <div className="d-flex flex-row align-items-center mb-3">
+            <div className="d-flex align-items-center mb-2">
               <Icon className="mr-2" src={Record} />
               <p className="program-instructors-wrapper">
                 {courseMetaData?.instructors?.map((ins) => (
@@ -272,7 +259,7 @@ const MobileCourseInfo = ({ intl }) => {
             </div>
             {courseMetaData?.additional_metadata?.enrollment_start && (
               <div className="d-flex flex-row align-items-center mb-2">
-                <Icon className="card-icon" src={Event} />
+                <Icon className="card-icon mr-2" src={Event} />
                 <p>
                   <span className="color-black">
                     <FormattedMessage
@@ -288,7 +275,7 @@ const MobileCourseInfo = ({ intl }) => {
             )}
             {courseMetaData?.additional_metadata?.enrollment_end && (
               <div className="d-flex flex-row align-items-center mb-2">
-                <Icon className="card-icon" src={Event} />
+                <Icon className="card-icon mr-2" src={Event} />
                 <p>
                   <span className="color-black">
                     {' '}
@@ -304,8 +291,8 @@ const MobileCourseInfo = ({ intl }) => {
               </div>
             )}
             {courseMetaData?.total_weeks_of_effort > 0 && (
-              <div className="d-flex flex-row align-items-center mb-3">
-                <Icon className="card-icon" src={WatchFilled} />
+              <div className="d-flex flex-row align-items-center 2">
+                <Icon className="card-icon mr-2" src={WatchFilled} />
                 <p className="color-black">
                   <FormattedMessage
                     id="courseCard.weeks.text"

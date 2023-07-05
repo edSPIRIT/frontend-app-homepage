@@ -105,8 +105,8 @@ const ChooseLanguage = () => {
                 }}
                 className="d-flex justify-content-between my-2.5"
               >
-                <span>{lang.name}</span>
-                {value === lang.name && (
+                <span>{getLangName(lang.code)}</span>
+                {value === getLangName(lang.code) && (
                   <Icon className="check-icon" src={Check} />
                 )}
               </li>
@@ -122,7 +122,7 @@ const ChooseLanguage = () => {
           />
         </h5>
         <Dropdown
-          className="dropdown-wrapper mb-5.5"
+          className="dropdown-wrapper lang-dropdown mb-5.5"
           onSelect={(e) => setValue(e)}
           onClick={isMobile ? open : null}
         >
@@ -137,11 +137,11 @@ const ChooseLanguage = () => {
             {activeLangs?.map((lang) => (
               <Dropdown.Item
                 key={lang.code}
-                active={value === lang.name}
+                active={value === getLangName(lang.code)}
                 eventKey={lang.name}
                 onClick={handleClick}
               >
-                {lang.name}
+                {getLangName(lang.code)}
               </Dropdown.Item>
             ))}
           </Dropdown.Menu>

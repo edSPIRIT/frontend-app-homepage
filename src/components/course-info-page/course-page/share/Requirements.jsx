@@ -13,7 +13,6 @@ const Requirements = ({ courseMetaData, loading }) => {
   return (
     <div className="requirements-wrapper" id="requirement">
       <h2 className="mb-3">
-        {' '}
         <FormattedMessage
           id="courseInfo.tab.requirements.text"
           defaultMessage="Requirements"

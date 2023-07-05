@@ -70,6 +70,11 @@ footer {
     grid-column: 22/27;
     grid-row: 1/2;
   }
+  .lang-dropdown{
+    .dropdown-menu{
+      width: auto;
+    }
+  }
 }
 @media (min-width: 600px) and (max-width: 1024px) {
   .footer-desc-wrapper {

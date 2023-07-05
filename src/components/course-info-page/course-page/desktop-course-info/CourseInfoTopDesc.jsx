@@ -15,6 +15,7 @@ import ShowMoreText from 'react-show-more-text';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
 import { setToastMessage } from '../../../../redux/slice/toastSlice';
+import { getLangName } from '../../../../utils/supportsLanguages';
 
 const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
   const dispatch = useDispatch();
@@ -76,10 +77,32 @@ const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
               className="icons-wrapper d-flex text-gray-500 mt-3 pb-4.5 font-sm"
               ref={navTopRef}
             >
-              <div className="d-flex justify-content-center align-items-center mr-4.5">
-                <Icon className="mr-2" src={Language} />
-                <span>English</span>
-              </div>
+              {courseMetaData?.additional_metadata?.language && (
+                <OverlayTrigger
+                  placement="top"
+                  overlay={(
+                    <Tooltip
+                      variant="light"
+                      id="tooltip-top"
+                      className="course-tooltip"
+                    >
+                      <FormattedMessage
+                        id="search.facets.language"
+                        defaultMessage="Language"
+                      />
+                    </Tooltip>
+                  )}
+                >
+                  <div className="d-flex justify-content-center align-items-center mr-4.5">
+                    <Icon className="mr-2" src={Language} />
+                    <span>
+                      {getLangName(
+                        courseMetaData?.additional_metadata?.language,
+                      )}
+                    </span>
+                  </div>
+                </OverlayTrigger>
+              )}
               {courseMetaData?.transcript_langs
                 && courseMetaData?.transcript_langs.length > 0 && (
                   <OverlayTrigger
@@ -90,13 +113,10 @@ const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
                         id="tooltip-top"
                         className="course-tooltip"
                       >
-                        {courseMetaData?.transcript_langs
-                          && courseMetaData?.transcript_langs?.map(
-                            (transLang, i) => (
-                              // eslint-disable-next-line react/no-array-index-key
-                              <span key={i}>{transLang}</span>
-                            ),
-                          )}
+                        <FormattedMessage
+                          id="courseInfo.tooltip.transcript"
+                          defaultMessage="Transcript"
+                        />
                       </Tooltip>
                     )}
                   >
@@ -104,12 +124,11 @@ const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
                       <Icon className="mr-2" src={PostOutline} />
                       <span className="course-tooltip">
                         {courseMetaData?.transcript_langs
-                          && courseMetaData?.transcript_langs?.map(
-                            (transLang, i) => (
-                              // eslint-disable-next-line react/no-array-index-key
-                              <span key={i}>{transLang}</span>
-                            ),
-                          )}
+                          && courseMetaData?.transcript_langs?.map((transLang) => (
+                            <span key={transLang}>
+                              {getLangName(transLang)}
+                            </span>
+                          ))}
                       </span>
                     </div>
                   </OverlayTrigger>

@@ -46,18 +46,26 @@ const DesktopCourseInfo = () => {
             {courseMetaData?.additional_metadata?.org}
           </RouterLink>
         </div>
-        <CourseNavItems isTopOnScreen={isTopOnScreen} loading={loading} />
+        <CourseNavItems courseMetaData={courseMetaData} isTopOnScreen={isTopOnScreen} loading={loading} />
 
         <div className="course-content-container d-flex flex-column">
-          <AboutCourse aboutCourse={courseMetaData?.additional_metadata?.about_overview} loading={loading} />
+          <AboutCourse
+            aboutCourse={courseMetaData?.additional_metadata?.about_overview}
+            loading={loading}
+          />
           <WhatYouLearn
             learningItems={courseMetaData?.what_you_will_learn}
             loading={loading}
           />
-          {courseMetaData?.requirements?.length > 0 && (
-          <Requirements courseMetaData={courseMetaData} loading={loading} />
+          {(courseMetaData?.requirements?.length > 0
+            || courseMetaData?.additional_metadata?.pre_req_courses?.length
+              > 0) && (
+              <Requirements courseMetaData={courseMetaData} loading={loading} />
           )}
-          <CourseContent courseId={courseMetaData?.course_id} loading={loading} />
+          <CourseContent
+            courseId={courseMetaData?.course_id}
+            loading={loading}
+          />
           {isTablet ? (
             <MobileCourseInstructors
               instructors={courseMetaData?.instructors}

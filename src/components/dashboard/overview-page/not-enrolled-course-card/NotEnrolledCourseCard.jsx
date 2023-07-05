@@ -17,7 +17,7 @@ const NotEnrolledCardCourse = ({ title, description }) => {
           <Card.Section>
             <div className="d-flex align-items-center explorer-wrapper">
               <div className="d-flex flex-column mr-4 w-100">
-                <h2 className="mt-5 mb-3.5">{title}</h2>
+                <h2>{title}</h2>
                 <p>{description}</p>
               </div>
               <Button
@@ -33,15 +33,6 @@ const NotEnrolledCardCourse = ({ title, description }) => {
             </div>
           </Card.Section>
         </Card.Body>
-        {/* <Card.Footer className="justify-content-end">
-          <Button
-            variant="brand"
-            iconAfter={Search}
-            onClick={() => history.push('/search')}
-          >
-            Explore Courses
-          </Button>
-        </Card.Footer> */}
       </Card>
     </div>
   );

@@ -9,9 +9,9 @@
     display: flex;
   }
   .pgn__card-wrapper-image-cap {
-    justify-content: center;
-    align-items: center;
-    background-color: $light-300;
+    // justify-content: center;
+    // align-items: center;
+    // background-color: $light-300;
     border: 1px solid $light-300;
     display: flex;
     flex-shrink: 0;
@@ -21,8 +21,7 @@
     min-width: unset;
   }
   .pgn__card-image-cap {
-    width: 72px !important;
-    height: 72px !important;
+    width: 100%;
   }
 
   .pgn__card-section {
@@ -31,8 +30,8 @@
   }
   .course-title {
     color: black;
-    max-width: 604px;
-    @include line-break(2);
+    margin-right: 85px;
+    @include line-break(1);
   }
   .second-title {
     color: $gray-500;
@@ -41,7 +40,8 @@
   .progress {
     background: $light-200;
     border: 1px solid $light-700;
-    width: 282px;
+    max-width: 282px;
+    width: 100%;
     .progress-bar {
       background-color: $info-300;
     }
@@ -105,6 +105,7 @@
   cursor: pointer;
   color: $gray-500;
   opacity: 0.5;
+  transform: unset !important;
 }
 .dark-background {
   background-color: $primary-700;
@@ -170,7 +171,7 @@
   .user-card-course {
     .course-title {
       max-width: 310px;
-      @include line-break(2);
+      @include line-break(1);
       margin-right: 20px !important;
       font-size: $font-size-base-xl;
     }
@@ -203,7 +204,7 @@
     }
     .course-title {
       max-width: 248px;
-      @include line-break(2);
+      @include line-break(1);
       margin-right: 20px !important;
       font-size: $font-size-base-xl;
     }

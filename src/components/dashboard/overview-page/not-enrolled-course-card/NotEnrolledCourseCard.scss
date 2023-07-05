@@ -10,6 +10,10 @@
   .pgn__card-footer {
     width: unset;
   }
+  .pgn__card-section {
+    height: 100%;
+    display: flex;
+  }
   p {
     font-size: $font-size-base-xl;
   }

@@ -109,7 +109,7 @@ const BottomCardSection = ({ courseInfo }) => {
       ) : (
         <ProgressBar now={calcProgress()} label={`${calcProgress()}%`} />
       )}
-      <div className="d-flex">
+      <div className="d-flex flex-shrink-0 ml-3">
         <Button
           className="course-info-button view-course-btn mr-2"
           variant="outline-primary"

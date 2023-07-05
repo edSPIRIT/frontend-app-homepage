@@ -145,5 +145,6 @@
     "userCourseCard.completed.text": "آفرین! شما این دوره را به پایان رساندید",
     "partners.snapShut.instructors.text": "{instructorCount, plural, one {مدرس} other {مدرس}}",
     "learner.text": "یادگیرنده",
-    "course.text": "دوره"
+    "course.text": "دوره",
+    "courseInfo.tooltip.transcript": "رونوشت"
 }
