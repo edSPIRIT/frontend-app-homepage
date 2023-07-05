@@ -171,6 +171,9 @@
     font-weight: 500;
     color: $primary-500;
   }
+  .disable-link{
+    opacity: 0.5;
+  }
 }
 .sticky-nav-wrapper-infinite-border {
   @include infinite-background-container($light-300);

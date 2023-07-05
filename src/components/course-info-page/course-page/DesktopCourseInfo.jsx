@@ -14,12 +14,14 @@ import useGetCourseMetaData from '../../../hooks/useGetCourseMetaData';
 import CourseNavItems from './desktop-course-info/CourseNavItems';
 import MobileCourseInstructors from './mobile-course-info/MobileCourseInstructors';
 import CourseInfoBreadcrumb from './desktop-course-info/CourseInfoBreadcrumb';
+import useGetCourseToc from '../../../hooks/useGetCourseToc';
 
 const DesktopCourseInfo = () => {
   const { ref: navTopRef, inView: isTopOnScreen } = useInView();
   const { slug } = useParams();
   const { courseMetaData, loading } = useGetCourseMetaData(slug);
   const isTablet = useMediaQuery({ maxWidth: '1300px' });
+  const { sections } = useGetCourseToc(courseMetaData?.course_id);
 
   return (
     <>
@@ -46,37 +48,48 @@ const DesktopCourseInfo = () => {
             {courseMetaData?.additional_metadata?.org}
           </RouterLink>
         </div>
-        <CourseNavItems courseMetaData={courseMetaData} isTopOnScreen={isTopOnScreen} loading={loading} />
+        <CourseNavItems
+          courseMetaData={courseMetaData}
+          isTopOnScreen={isTopOnScreen}
+          loading={loading}
+        />
 
         <div className="course-content-container d-flex flex-column">
-          <AboutCourse
-            aboutCourse={courseMetaData?.additional_metadata?.about_overview}
-            loading={loading}
-          />
-          <WhatYouLearn
-            learningItems={courseMetaData?.what_you_will_learn}
-            loading={loading}
-          />
+          {courseMetaData?.additional_metadata?.about_overview && (
+            <AboutCourse
+              aboutCourse={courseMetaData?.additional_metadata?.about_overview}
+              loading={loading}
+            />
+          )}
+          {courseMetaData?.what_you_will_learn.length > 0 && (
+            <WhatYouLearn
+              learningItems={courseMetaData?.what_you_will_learn}
+              loading={loading}
+            />
+          )}
           {(courseMetaData?.requirements?.length > 0
             || courseMetaData?.additional_metadata?.pre_req_courses?.length
               > 0) && (
               <Requirements courseMetaData={courseMetaData} loading={loading} />
           )}
-          <CourseContent
-            courseId={courseMetaData?.course_id}
-            loading={loading}
-          />
-          {isTablet ? (
-            <MobileCourseInstructors
-              instructors={courseMetaData?.instructors}
-              loading={loading}
-            />
-          ) : (
-            <CourseInstructors
-              instructors={courseMetaData?.instructors}
+          {sections?.length > 0 && (
+            <CourseContent
+              courseId={courseMetaData?.course_id}
               loading={loading}
             />
           )}
+          {courseMetaData?.instructors?.length > 0
+            && (isTablet ? (
+              <MobileCourseInstructors
+                instructors={courseMetaData.instructors}
+                loading={loading}
+              />
+            ) : (
+              <CourseInstructors
+                instructors={courseMetaData.instructors}
+                loading={loading}
+              />
+            ))}
         </div>
       </section>
     </>

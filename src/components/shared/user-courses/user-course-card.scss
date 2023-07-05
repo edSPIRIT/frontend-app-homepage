@@ -30,7 +30,8 @@
   }
   .course-title {
     color: black;
-    margin-right: 85px;
+    // margin-right: 85px;
+    max-width: 604px;
     @include line-break(1);
   }
   .second-title {
