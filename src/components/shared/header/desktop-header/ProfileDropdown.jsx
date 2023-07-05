@@ -56,7 +56,7 @@ const ProfileDropdown = () => {
             defaultMessage="Account"
           />
         </Dropdown.Item>
-        <Dropdown.Item as={Link} to="overview">
+        <Dropdown.Item as={Link} to="/overview">
           <FormattedMessage
             id="header.dropdownOption.dashboard"
             defaultMessage="Dashboard"

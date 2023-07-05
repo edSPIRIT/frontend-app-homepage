@@ -29,6 +29,7 @@ const ExplorerCourses = ({ intl }) => {
       {loading
         ? Array(4)
           .fill(1)
+          // eslint-disable-next-line react/no-array-index-key
           .map((_, i) => <CourseCardSkeleton key={i} />)
         : courses.map((course) => (
           <CourseCardNew course={course} key={course.course_slug} />
@@ -36,7 +37,7 @@ const ExplorerCourses = ({ intl }) => {
     </div>
   );
   const renderCourseContent = (courses) => {
-    if (!courses) {
+    if (courses.length === 0) {
       return <EmptyStateCourses />;
     }
     if (isMobile) {
