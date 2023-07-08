@@ -109,13 +109,29 @@ const messages = defineMessages({
     id: 'recent.text',
     defaultMessage: 'Recent',
   },
+  mostRelevant: {
+    id: 'mostRelevant.text',
+    defaultMessage: 'Most Relevant',
+  },
   ascending: {
+    id: 'titleAtoZ.text',
+    defaultMessage: 'Title A to Z',
+  },
+  'A-Z': {
     id: 'titleAtoZ.text',
     defaultMessage: 'Title A to Z',
   },
   descending: {
     id: 'titleZtoA.text',
     defaultMessage: 'Title Z to A',
+  },
+  'Z-A': {
+    id: 'titleZtoA.text',
+    defaultMessage: 'Title Z to A',
+  },
+  popular: {
+    id: 'popular.text',
+    defaultMessage: 'Popular',
   },
 });
 

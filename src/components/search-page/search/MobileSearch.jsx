@@ -2,14 +2,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import {
-  Breadcrumb,
-  Icon,
-  Skeleton,
-  useToggle,
+  Breadcrumb, Icon, Skeleton, useToggle,
 } from '@edx/paragon';
-import {
-  ArrowBack, FilterList, Sort,
-} from '@edx/paragon/icons';
+import { ArrowBack, FilterList, Sort } from '@edx/paragon/icons';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import {
@@ -31,7 +26,7 @@ const MobileSearch = ({ intl }) => {
   const history = useHistory();
   const { searchResultsCount, isLoading } = useSearchResults();
 
-  const sortState = useSelector((state) => state.sortAllCourses.value);
+  const sortState = useSelector((state) => state.sortSearchSlice.value);
   const [isOpen, open, close] = useToggle(false);
   const [isOpenFilter, openFilter, closeFilter] = useToggle(false);
 
@@ -80,7 +75,9 @@ const MobileSearch = ({ intl }) => {
             <Icon className="text-light-500" src={Sort} />
             <FormattedMessage id="sortBy.text" defaultMessage="Sort by:" />
             <span className="text-primary-500 font-weight-bold ml-1">
-              {intl.formatMessage(messages[sortState])}
+              {sortState === ''
+                ? intl.formatMessage(messages.mostRelevant)
+                : intl.formatMessage(messages[sortState])}
             </span>
           </div>
         </div>

@@ -6,12 +6,12 @@ import { removeEmptyFilters } from '../utils/cleanedFilters';
 
 const useSearchResults = (page = 0) => {
   const filters = useSelector((state) => state.searchFilters);
-
+  const sortState = useSelector((state) => state.sortSearchSlice.value);
   const cleanedFilters = removeEmptyFilters(filters);
   const fetchSearchResults = async (cleanFilters, pageNum = 0) => {
     const url = `${
       getConfig().LMS_BASE_URL
-    }/admin-console/api/full-course-discovery/?page_size=12&page_index=${pageNum}`;
+    }/admin-console/api/full-course-discovery/?page_size=12&page_index=${pageNum}&sort=${sortState}`;
     const { data, status } = await getAuthenticatedHttpClient().post(
       url,
       cleanFilters,
@@ -22,7 +22,7 @@ const useSearchResults = (page = 0) => {
     return data;
   };
   const { data, isLoading } = useQuery(
-    ['SearchResults', cleanedFilters, page],
+    ['SearchResults', cleanedFilters, page, sortState],
     () => fetchSearchResults(cleanedFilters, page),
   );
 

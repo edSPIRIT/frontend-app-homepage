@@ -7,15 +7,15 @@ import {
 import { Dropdown } from '@edx/paragon';
 import { FilterList, KeyboardArrowDown } from '@edx/paragon/icons';
 import messages from '../../../../../messages';
-import { setCourseSortValue } from '../../../../../redux/slice/allCoursesSlice';
+import { setSearchSortValue } from '../../../../../redux/slice/sortSearchSlice';
 
 const SearchSortWrapper = ({ intl }) => {
-  const sortState = useSelector((state) => state.sortAllCourses.value);
+  const sortState = useSelector((state) => state.sortSearchSlice.value);
 
   const dispatch = useDispatch();
 
   const handleItemClick = (sortType) => {
-    dispatch(setCourseSortValue(sortType));
+    dispatch(setSearchSortValue(sortType));
   };
   return (
     <Dropdown className="dropdown-wrapper">
@@ -28,11 +28,35 @@ const SearchSortWrapper = ({ intl }) => {
           <FormattedMessage id="sortBy.text" defaultMessage="Sort by:" />
           <span className="text-primary-500 font-weight-bold">
             {' '}
-            {intl.formatMessage(messages[sortState])}
+            {sortState
+              ? intl.formatMessage(messages[sortState])
+              : intl.formatMessage(messages.mostRelevant)}
           </span>
         </span>
       </Dropdown.Toggle>
       <Dropdown.Menu>
+        <Dropdown.Item
+          key="Most Relevant"
+          active={sortState === ''}
+          eventKey={intl.formatMessage(messages.mostRelevant)}
+          onClick={() => handleItemClick('')}
+        >
+          <FormattedMessage
+            id="mostRelevant.text"
+            defaultMessage="Most Relevant"
+          />
+        </Dropdown.Item>
+        <Dropdown.Item
+          key="popular"
+          active={
+            intl.formatMessage(messages[sortState])
+            === intl.formatMessage(messages.popular)
+          }
+          eventKey={intl.formatMessage(messages.popular)}
+          onClick={() => handleItemClick('popular')}
+        >
+          <FormattedMessage id="popular.text" defaultMessage="Popular" />
+        </Dropdown.Item>
         <Dropdown.Item
           key="recent"
           active={
@@ -42,7 +66,7 @@ const SearchSortWrapper = ({ intl }) => {
           eventKey={intl.formatMessage(messages.recent)}
           onClick={() => handleItemClick('recent')}
         >
-          <FormattedMessage id="recent" defaultMessage="Recent" />
+          <FormattedMessage id="recent.text" defaultMessage="Recent" />
         </Dropdown.Item>
         <Dropdown.Item
           key="ascending"
@@ -51,7 +75,7 @@ const SearchSortWrapper = ({ intl }) => {
             === intl.formatMessage(messages.ascending)
           }
           eventKey={intl.formatMessage(messages.ascending)}
-          onClick={() => handleItemClick('ascending')}
+          onClick={() => handleItemClick('A-Z')}
         >
           <FormattedMessage id="ascending" defaultMessage="Title A to Z" />
         </Dropdown.Item>
@@ -62,7 +86,7 @@ const SearchSortWrapper = ({ intl }) => {
             === intl.formatMessage(messages.descending)
           }
           eventKey={intl.formatMessage(messages.descending)}
-          onClick={() => handleItemClick('descending')}
+          onClick={() => handleItemClick('Z-A')}
         >
           <FormattedMessage id="descending" defaultMessage="Title Z to A" />
         </Dropdown.Item>

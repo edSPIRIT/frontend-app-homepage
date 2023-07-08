@@ -146,5 +146,7 @@
     "partners.snapShut.instructors.text": "{instructorCount, plural, one {مدرس} other {مدرس}}",
     "learner.text": "یادگیرنده",
     "course.text": "دوره",
-    "courseInfo.tooltip.transcript": "رونوشت"
+    "courseInfo.tooltip.transcript": "رونوشت",
+    "mostRelevant.text": "بسیار مرتبط",
+    "popular.text": "محبوب"
 }

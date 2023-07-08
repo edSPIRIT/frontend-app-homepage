@@ -11,13 +11,13 @@ import { Check, Close } from '@edx/paragon/icons';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import messages from '../../../../messages';
-import { setCourseSortValue } from '../../../../redux/slice/allCoursesSlice';
+import { setSearchSortValue } from '../../../../redux/slice/sortSearchSlice';
 
 const SortModal = ({ intl, isOpen, close }) => {
   const dispatch = useDispatch();
-  const sortState = useSelector((state) => state.sortAllCourses.value);
+  const sortState = useSelector((state) => state.sortSearchSlice.value);
   const handleItemClick = (sortType) => {
-    dispatch(setCourseSortValue(sortType));
+    dispatch(setSearchSortValue(sortType));
   };
 
   return (
@@ -30,12 +30,38 @@ const SortModal = ({ intl, isOpen, close }) => {
         <ul className="px-4 font-xl transform-rtl">
           <li
             onClick={() => {
+              handleItemClick('');
+              close();
+            }}
+            className="d-flex justify-content-between my-2.5"
+          >
+            <FormattedMessage id="mostRelevant.text" defaultMessage="Most Relevant" />
+            {sortState
+              === '' && (
+              <Icon className="check-icon" src={Check} />
+            )}
+          </li>
+          <li
+            onClick={() => {
+              handleItemClick('popular');
+              close();
+            }}
+            className="d-flex justify-content-between my-2.5"
+          >
+            <FormattedMessage id="popular.text" defaultMessage="Popular" />
+            {intl.formatMessage(messages[sortState])
+              === intl.formatMessage(messages.popular) && (
+              <Icon className="check-icon" src={Check} />
+            )}
+          </li>
+          <li
+            onClick={() => {
               handleItemClick('recent');
               close();
             }}
             className="d-flex justify-content-between my-2.5"
           >
-            <FormattedMessage id="recent" defaultMessage="Recent" />
+            <FormattedMessage id="recent.text" defaultMessage="Recent" />
             {intl.formatMessage(messages[sortState])
               === intl.formatMessage(messages.recent) && (
               <Icon className="check-icon" src={Check} />

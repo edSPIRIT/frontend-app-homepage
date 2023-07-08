@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { IAllCoursesPagination } from './interfaces/APIResponsesInterfaces';
 
 const useGetAllCourses = () => {
-  const sortState = useSelector((state: any) => state.sortAllCourses.value);
+  const sortState = useSelector((state: any) => state.sortSearchSlice.value);
   const searchPage = useSelector((state: any) => state.searchPage.page);
   const fetchAllCourses = async (pageNum = 1) => {
     const apiRes = await fetch(

@@ -26,17 +26,24 @@ const ExplorerCourses = ({ intl }) => {
   const dispatch = useDispatch();
   const renderCourseCards = (courses) => (
     <div className="course-container">
-      {loading
-        ? Array(4)
-          .fill(1)
-          // eslint-disable-next-line react/no-array-index-key
-          .map((_, i) => <CourseCardSkeleton key={i} />)
-        : courses.map((course) => (
-          <CourseCardNew course={course} key={course.course_slug} />
-        ))}
+      {courses.map((course) => (
+        <CourseCardNew course={course} key={course.course_slug} />
+      ))}
     </div>
   );
   const renderCourseContent = (courses) => {
+    if (loading) {
+      return (
+        <div className="course-container">
+          {Array(4)
+            .fill(1)
+            .map((_, i) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <CourseCardSkeleton key={i} />
+            ))}
+        </div>
+      );
+    }
     if (courses.length === 0) {
       return <EmptyStateCourses />;
     }
@@ -80,7 +87,7 @@ const ExplorerCourses = ({ intl }) => {
             {renderCourseContent(recentCourses)}
           </Tab>
         </Tabs>
-        {(recentCourses || topCourses) && (
+        {(recentCourses.length > 0 || topCourses.length > 0) && (
           <div className="d-flex justify-content-center">
             <Button
               className="view-all-courses-btn mt-5"
