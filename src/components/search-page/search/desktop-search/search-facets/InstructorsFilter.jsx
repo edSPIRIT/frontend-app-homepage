@@ -29,7 +29,7 @@ const InstructorsFilter = ({ intl }) => {
         variant="outline-primary"
         className="font-weight-bold"
         iconAfter={KeyboardArrowDown}
-        disabled={instructorsFilterItems.length === 0 && !searchString}
+        disabled={instructorsFilterItems?.length === 0 && !searchString}
       >
         <p>
           <FormattedMessage
@@ -68,7 +68,7 @@ const InstructorsFilter = ({ intl }) => {
             value={instructors}
           >
             <Menu>
-              {instructorsFilterItems.length === 0 && searchString && (
+              {instructorsFilterItems?.length === 0 && searchString && (
                 <span className="text-gray-500 no-result">
                   <FormattedMessage
                     id="search.noResult.text"

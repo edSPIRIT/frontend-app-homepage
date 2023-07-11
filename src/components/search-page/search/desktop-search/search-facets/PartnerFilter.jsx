@@ -34,7 +34,7 @@ const PartnerFilter = ({ intl }) => {
         variant="outline-primary"
         className="font-weight-bold"
         iconAfter={KeyboardArrowDown}
-        disabled={partnersFilterItems.length === 0 && !searchString}
+        disabled={partnersFilterItems?.length === 0 && !searchString}
       >
         <p>
           <FormattedMessage

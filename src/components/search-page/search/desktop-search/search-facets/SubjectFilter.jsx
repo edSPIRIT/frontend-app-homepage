@@ -34,7 +34,7 @@ const SubjectFilter = ({ intl }) => {
         variant="outline-primary"
         className="font-weight-bold"
         iconAfter={KeyboardArrowDown}
-        disabled={subjectsFilterItems.length === 0 && !searchString}
+        disabled={subjectsFilterItems?.length === 0 && !searchString}
       >
         <p>
           <FormattedMessage

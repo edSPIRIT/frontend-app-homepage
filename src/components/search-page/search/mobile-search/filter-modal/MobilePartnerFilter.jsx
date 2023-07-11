@@ -93,7 +93,7 @@ const MobilePartnerFilter = () => {
                 value={partnerValues}
               >
                 <Menu>
-                  {partnersFilterItems.length === 0 && searchString && (
+                  {partnersFilterItems?.length === 0 && searchString && (
                   <span className="text-gray-500 no-result">
                     <FormattedMessage
                       id="search.noResult.text"

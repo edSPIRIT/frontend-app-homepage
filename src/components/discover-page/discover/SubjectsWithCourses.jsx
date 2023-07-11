@@ -84,7 +84,7 @@ const SubjectsWithCourses = ({
       {(!featuredSubjectsWithCourses
         || featuredSubjectsWithCourses.length === 0)
       && !isFetching ? (
-        <>
+        <div className="mt-6">
           {[1, 2, 3].map((num) => (
             <div key={num} className="custom-container">
               <h2 className="mb-4">
@@ -98,7 +98,7 @@ const SubjectsWithCourses = ({
               </div>
             </div>
           ))}
-        </>
+        </div>
         ) : null}
     </div>
   );

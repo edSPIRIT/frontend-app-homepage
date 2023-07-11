@@ -23,6 +23,7 @@ const LanguageFilter = () => {
         variant="outline-primary"
         className="font-weight-bold"
         iconAfter={KeyboardArrowDown}
+        disabled={languagesFilter?.length === 0}
       >
         <p>
           <FormattedMessage

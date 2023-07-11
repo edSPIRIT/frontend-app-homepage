@@ -59,6 +59,8 @@ const useEnrollClickHandler = (courseMetaData) => {
   const queryClient = useQueryClient();
   const { mutate, isLoading } = useMutation(postCourseEnrollment, {
     onSuccess: () => {
+      queryClient.invalidateQueries(['enrollmentStatus']);
+      queryClient.invalidateQueries(['EnrollmentList']);
       queryClient.invalidateQueries(['OverviewList']);
     },
     onError: () => {

@@ -95,7 +95,7 @@ const MobileInstructorFilter = () => {
                 value={instructorValues}
               >
                 <Menu>
-                  {instructorsFilterItems.length === 0 && searchString && (
+                  {instructorsFilterItems?.length === 0 && searchString && (
                     <span className="text-gray-500 no-result">
                       <FormattedMessage
                         id="search.noResult.text"

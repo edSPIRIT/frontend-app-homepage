@@ -22,7 +22,6 @@ const DesktopCourseInfo = () => {
   const { courseMetaData, loading } = useGetCourseMetaData(slug);
   const isTablet = useMediaQuery({ maxWidth: '1300px' });
   const { sections } = useGetCourseToc(courseMetaData?.course_id);
-
   return (
     <>
       <CourseInfoBreadcrumb />
