@@ -42,6 +42,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => (
             courseMetaData?.partner?.organization?.logo ?? logoPlaceholder
           }
           fallbackSrc={coverPlaceholder}
+          fallbackLogoSrc={logoPlaceholder}
           variant="top"
           alt="course-cover"
         />

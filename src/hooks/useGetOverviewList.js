@@ -39,7 +39,7 @@ const useGetOverviewList = () => {
     enabled: !!authenticatedUser,
   });
   return {
-    userCourseTitles: `${data?.results?.reduce(
+    userCourseTitles: `${data?.results?.slice(0, 8).reduce(
       (acc, current) => `${acc}${current?.course_details?.course_name} `,
       '',
     )}`,

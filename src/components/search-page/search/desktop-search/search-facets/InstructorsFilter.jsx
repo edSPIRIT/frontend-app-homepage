@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Dropdown,
   Form,
@@ -9,12 +10,13 @@ import {
 import { KeyboardArrowDown } from '@edx/paragon/icons';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
 import { useInView } from 'react-intersection-observer';
 import { setSearchInstructors } from '../../../../../redux/slice/searchQuerySlice';
 import useGetInstructorsFacetInfinite from '../../../../../hooks/useGetInstructorsFacetInfinite';
+import messages from '../../../../../messages';
 
-const InstructorsFilter = () => {
+const InstructorsFilter = ({ intl }) => {
   const { ref, inView } = useInView();
   const instructors = useSelector((state) => state.searchFilters.instructors);
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ const InstructorsFilter = () => {
         variant="outline-primary"
         className="font-weight-bold"
         iconAfter={KeyboardArrowDown}
+        disabled={instructorsFilterItems.length === 0 && !searchString}
       >
         <p>
           <FormattedMessage
@@ -44,7 +47,7 @@ const InstructorsFilter = () => {
         <SearchField
           onChange={(value) => setSearchString(value)}
           onSubmit={(value) => setSearchString(value)}
-          placeholder="Find a ..."
+          placeholder={intl.formatMessage(messages['partners.search.find'])}
         />
         <Form.Group>
           <Form.CheckboxSet
@@ -65,6 +68,14 @@ const InstructorsFilter = () => {
             value={instructors}
           >
             <Menu>
+              {instructorsFilterItems.length === 0 && searchString && (
+                <span className="text-gray-500 no-result">
+                  <FormattedMessage
+                    id="search.noResult.text"
+                    defaultMessage="We couldn't find any exact matches"
+                  />
+                </span>
+              )}
               {instructorsFilterItems?.map((item) => (
                 <div
                   className="d-flex justify-content-between align-items-center item-wrapper"
@@ -94,4 +105,4 @@ const InstructorsFilter = () => {
   );
 };
 
-export default InstructorsFilter;
+export default injectIntl(InstructorsFilter);

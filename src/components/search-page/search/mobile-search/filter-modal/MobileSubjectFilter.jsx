@@ -96,6 +96,14 @@ const MobileSubjectFilter = () => {
                 value={subjectValues}
               >
                 <Menu>
+                  {subjectsFilterItems.length === 0 && searchString && (
+                  <span className="text-gray-500 no-result">
+                    <FormattedMessage
+                      id="search.noResult.text"
+                      defaultMessage="We couldn't find any exact matches"
+                    />
+                  </span>
+                  )}
                   {subjectsFilterItems?.map((item) => (
                     <div
                       className="d-flex justify-content-between align-items-center item-wrapper"

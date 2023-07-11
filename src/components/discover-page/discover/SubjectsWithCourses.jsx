@@ -14,6 +14,7 @@ import {
 } from '../../../redux/slice/searchQuerySlice';
 import ScrollableCourses from '../../shared/scrollable-courses-component/ScrollableCourses';
 import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter';
+import EmptyStateCourses from '../../home-page/home/ExplorerCourses/EmptyStateCourses';
 
 const SubjectsWithCourses = ({
   featuredSubjectsWithCourses,
@@ -29,7 +30,6 @@ const SubjectsWithCourses = ({
     dispatch(setSearchSubject([subject.title]));
     history.push('/search');
   };
-
   return (
     <div className="custom-container subjects-courses-wrapper pb-4.5">
       {featuredSubjectsWithCourses?.map((subject) => {
@@ -81,6 +81,31 @@ const SubjectsWithCourses = ({
       })}
       {isFetching
         && (isMobile ? <MobileLoadingSkeleton /> : <DesktopLoadingSkeleton />)}
+      {(!featuredSubjectsWithCourses
+        || featuredSubjectsWithCourses.length === 0)
+      && !isFetching ? (
+        <div className="custom-container">
+          <h2 className="mb-4">
+            <FormattedMessage
+              id="viewAll.text"
+              defaultMessage="Subject Title"
+            />
+          </h2>
+          {[1, 2, 3].map((num) => (
+            <div key={num} className="custom-container">
+              <h2 className="mb-4">
+                <FormattedMessage
+                  id="viewAll.text"
+                  defaultMessage="Subject Title"
+                />
+              </h2>
+              <div className="mb-5">
+                <EmptyStateCourses />
+              </div>
+            </div>
+          ))}
+        </div>
+        ) : null}
     </div>
   );
 };

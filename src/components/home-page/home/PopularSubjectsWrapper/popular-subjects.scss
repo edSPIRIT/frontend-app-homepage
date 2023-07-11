@@ -9,6 +9,7 @@
   height: 66px;
   object-fit: cover;
   border-radius: 4px;
+  flex-shrink: 0;
 }
 .subject-wrapper {
   @extend .d-flex, .align-items-center;
@@ -25,7 +26,7 @@
 }
 .subject-title {
   @extend .text-primary-500;
-  width: 150px;
+  width: 100%;
   font-size: 1rem !important;
 }
 .subject-icon {

@@ -30,13 +30,9 @@ const useGetFeaturedSubjects = () => {
     if (data) {
       const getFeaturedSubjects = (min, max) => {
         if (data?.count < min) {
-          console.log('featuredSubjects min', data?.results.slice(0, min), min, data?.course_counter);
-
           return [];
         }
         if (data?.count >= max) {
-          console.log('featuredSubjects max', data?.results.slice(0, max), max, data?.course_counter);
-
           return data?.results.slice(0, max);
         }
         return data?.results.slice(0, min);

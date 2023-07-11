@@ -14,7 +14,7 @@ const DesktopSearch = ({ intl }) => (
       <Breadcrumb
         ariaLabel="Breadcrumb basic"
         links={[
-          { label: 'Home', to: '/' },
+          { label: `${intl.formatMessage(messages['breadcrumb.home'])}`, to: '/' },
           {
             label: `${intl.formatMessage(messages['breadcrumb.discover'])}`,
             to: '/Discover',

@@ -105,12 +105,12 @@
   .explorer-title {
     justify-content: unset !important;
   }
-  .view-all-courses-btn {
-    width: 100%;
-  }
 }
 @media (max-width: 600px) {
   .course-container {
     grid-template-columns: repeat(1, minmax(0px, 1fr));
+  }
+  .view-all-courses-btn {
+    width: 100%;
   }
 }

@@ -11,7 +11,6 @@ import {
 import { useDispatch } from 'react-redux';
 import NavHeader from '../nav-header/NavHeader';
 import DropdownNavHeader from '../dropdown-nav-header/DropdownNavHeader';
-import useGetFooters from '../../../../hooks/useGetFooters';
 import DefaultLogo from '../../../../assets/place-holders/NavLogo-placeholder.svg';
 import messages from '../../../../messages';
 import handleRedirect from '../../../../utils/handleRedirect';
@@ -20,11 +19,12 @@ import {
   setSearchString,
 } from '../../../../redux/slice/searchQuerySlice';
 import ProfileDropdown from './ProfileDropdown';
+import useGetConfig from '../../../../hooks/useGetConfig';
 
 const DesktopHeader = ({ intl }) => {
   const history = useHistory();
   const { authenticatedUser } = useContext(AppContext);
-  const { footerData, loading } = useGetFooters();
+  const { headerLogo, loading } = useGetConfig();
   const dispatch = useDispatch();
 
   const handleSubmitSearch = (value) => {
@@ -42,7 +42,7 @@ const DesktopHeader = ({ intl }) => {
           ) : (
             <Link to="/">
               <img
-                src={footerData?.logo ?? DefaultLogo}
+                src={headerLogo ?? DefaultLogo}
                 alt="edspirit-logo"
               />
             </Link>

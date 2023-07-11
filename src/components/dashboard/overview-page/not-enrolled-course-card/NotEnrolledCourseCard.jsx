@@ -15,10 +15,10 @@ const NotEnrolledCardCourse = ({ title, description }) => {
         <Card.ImageCap src={cardImageCap} srcAlt="Card image" />
         <Card.Body>
           <Card.Section>
-            <div className="d-flex align-items-center explorer-wrapper">
+            <div className="d-flex align-items-center explorer-wrapper w-100">
               <div className="d-flex flex-column mr-4 w-100">
                 <h2>{title}</h2>
-                <p>{description}</p>
+                <p className="mt-3.5">{description}</p>
               </div>
               <Button
                 variant="brand"

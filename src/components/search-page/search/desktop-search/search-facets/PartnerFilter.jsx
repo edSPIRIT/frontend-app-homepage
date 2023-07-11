@@ -34,6 +34,7 @@ const PartnerFilter = ({ intl }) => {
         variant="outline-primary"
         className="font-weight-bold"
         iconAfter={KeyboardArrowDown}
+        disabled={partnersFilterItems.length === 0 && !searchString}
       >
         <p>
           <FormattedMessage
@@ -46,11 +47,13 @@ const PartnerFilter = ({ intl }) => {
         </p>
       </Dropdown.Toggle>
       <Dropdown.Menu className="facet-menu" id="partner-facet">
-        <SearchField
-          onChange={(value) => setSearchString(value)}
-          onSubmit={(value) => setSearchString(value)}
-          placeholder={intl.formatMessage(messages['partners.search.find'])}
-        />
+        {partners && (
+          <SearchField
+            onChange={(value) => setSearchString(value)}
+            onSubmit={(value) => setSearchString(value)}
+            placeholder={intl.formatMessage(messages['partners.search.find'])}
+          />
+        )}
         <Form.Group>
           <Form.CheckboxSet
             name="color-two"
@@ -68,6 +71,14 @@ const PartnerFilter = ({ intl }) => {
             value={partners}
           >
             <Menu>
+              {partnersFilterItems.length === 0 && searchString && (
+                <span className="text-gray-500 no-result">
+                  <FormattedMessage
+                    id="search.noResult.text"
+                    defaultMessage="We couldn't find any exact matches"
+                  />
+                </span>
+              )}
               {partnersFilterItems?.map((item) => (
                 <div
                   className="d-flex justify-content-between align-items-center item-wrapper"

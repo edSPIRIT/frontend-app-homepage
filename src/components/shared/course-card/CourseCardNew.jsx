@@ -33,6 +33,7 @@ const CourseCardNew = ({ course, intl }) => {
           srcAlt="course-header"
           logoAlt="partner-logo"
           fallbackSrc={coverPlaceholder}
+          fallbackLogoSrc={logoPlaceholder}
         />
         <div className="mt-4.5 px-4">
           <h4 className="mb-1 course-title">
