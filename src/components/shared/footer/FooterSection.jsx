@@ -23,7 +23,7 @@ const FooterSection = () => {
             <div className="d-flex flex-column">
               <div className="logo-container mb-4">
                 <img
-                  className="footer-logo h-100"
+                  className="h-100"
                   src={footerData?.logo ?? DefaultLogo}
                   alt="footer-logo"
                 />

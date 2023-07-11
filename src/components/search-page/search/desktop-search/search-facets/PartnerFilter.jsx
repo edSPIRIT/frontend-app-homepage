@@ -47,13 +47,11 @@ const PartnerFilter = ({ intl }) => {
         </p>
       </Dropdown.Toggle>
       <Dropdown.Menu className="facet-menu" id="partner-facet">
-        {partners && (
-          <SearchField
-            onChange={(value) => setSearchString(value)}
-            onSubmit={(value) => setSearchString(value)}
-            placeholder={intl.formatMessage(messages['partners.search.find'])}
-          />
-        )}
+        <SearchField
+          onChange={(value) => setSearchString(value)}
+          onSubmit={(value) => setSearchString(value)}
+          placeholder={intl.formatMessage(messages['partners.search.find'])}
+        />
         <Form.Group>
           <Form.CheckboxSet
             name="color-two"
