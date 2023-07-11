@@ -20,6 +20,7 @@ const useGetSimilarCourses = (searchQuery, courseIds) => {
     fetchSimilarCourses,
     {
       enabled: !!searchQuery && searchQuery !== 'undefined',
+      retry: (failureCount, error) => error.customAttributes.httpErrorStatus !== 404,
     },
   );
   useEffect(() => {

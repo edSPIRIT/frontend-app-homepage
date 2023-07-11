@@ -119,7 +119,7 @@ const CourseCardNew = ({ course, intl }) => {
             <Button
               variant="primary"
               className="learn-btn"
-              onClick={() => history.push(course?.course_slug)}
+              onClick={() => history.push(`/course/${course?.course_slug}`)}
             >
               <FormattedMessage
                 id="courseCard.learnMore.button"

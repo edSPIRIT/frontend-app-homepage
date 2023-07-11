@@ -10,7 +10,6 @@ import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import DefaultLogo from '../../../../assets/place-holders/NavLogo-placeholder.svg';
-import useGetFooters from '../../../../hooks/useGetFooters';
 import { ReactComponent as HomeNav } from '../../../../assets/nav-icons/home-nav.svg';
 import { ReactComponent as HomeNavColored } from '../../../../assets/nav-icons/home-nav-colored.svg';
 import { ReactComponent as DashboardNav } from '../../../../assets/nav-icons/dashboard-nav.svg';
@@ -21,12 +20,13 @@ import { ReactComponent as ProfileNav } from '../../../../assets/nav-icons/profi
 import { ReactComponent as ProfileNavColored } from '../../../../assets/nav-icons/profile-nav-colored.svg';
 import useHideNavbarOnScroll from '../../../../hooks/utils/useHideNavbarOnScroll';
 import { setSearchModal } from '../../../../redux/slice/searchModalSlice';
+import useGetConfig from '../../../../hooks/useGetConfig';
 
 const MobileHeader = () => {
   const { authenticatedUser } = useContext(AppContext);
   // const isNavbarVisible = useHideNavbarOnScroll();
+  const { headerLogo, loading } = useGetConfig();
   const [ActiveLink, setActiveLink] = useState(null);
-  const { footerData, loading } = useGetFooters();
   const location = useLocation();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -45,10 +45,7 @@ const MobileHeader = () => {
             <Skeleton height={32} width={112} className="mb-1" />
           ) : (
             <Link to="/">
-              <img
-                src={footerData?.logo ?? DefaultLogo}
-                alt="edspirit-logo"
-              />
+              <img src={headerLogo ?? DefaultLogo} alt="edspirit-logo" />
             </Link>
           )}
         </div>
