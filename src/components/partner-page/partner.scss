@@ -70,7 +70,7 @@
           color: $white;
         }
         .partner-count {
-          color: $light-500;
+          color: $light-700;
         }
       }
       .pgn__icon {
@@ -78,12 +78,13 @@
         height: 40px;
       }
       .partner-title {
-        font-weight: bold;
-        color: $gray-700;
-      }
-      .partner-count {
         font-size: $font-size-base-sm;
         color: $gray-500;
+      }
+      .partner-count {
+        font-weight: bold;
+        color: $gray-700;
+        font-size: $font-size-base-xl;
       }
       svg {
         color: $gray-700;

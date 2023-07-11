@@ -133,7 +133,7 @@ const PartnersList = ({ intl }) => {
           </Link> */}
           <div className="banner-icons-wrapper mt-4">
             <div className="icon-wrapper">
-              <Icon clas src={BookOpen} style={{ width: '40px' }} />
+              <Icon src={BookOpen} style={{ width: '40px' }} />
               <span>{partnersMetaData?.total_courses}</span>
               <p>
                 <FormattedMessage
@@ -161,13 +161,15 @@ const PartnersList = ({ intl }) => {
             <div className="icon-wrapper">
               <Icon src={Instructors} style={{ width: '40px' }} />
               <span>{partnersMetaData?.total_instructors}</span>
-              <FormattedMessage
-                id="partners.snapShut.instructors.text"
-                defaultMessage="{instructorCount, plural, one {Instructor} other {Instructors}}"
-                values={{
-                  instructorCount: partnersMetaData?.total_instructors,
-                }}
-              />
+              <p>
+                <FormattedMessage
+                  id="partners.snapShut.instructors.text"
+                  defaultMessage="{instructorCount, plural, one {Instructor} other {Instructors}}"
+                  values={{
+                    instructorCount: partnersMetaData?.total_instructors,
+                  }}
+                />
+              </p>
             </div>
           </div>
         </div>

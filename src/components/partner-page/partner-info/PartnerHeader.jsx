@@ -77,6 +77,7 @@ const PartnerHeader = ({ partnerData, loading }) => {
         <div className="d-flex justify-content-center partner-snapshot-wrapper">
           <a className="icon-wrapper" href="#courses">
             <Icon src={BookOpen} style={{ width: '40px' }} />
+            <p className="partner-count">{partnerData?.courses_count}</p>
             <span className="partner-title">
               <FormattedMessage
                 id="partners.snapShut.courses.text"
@@ -86,11 +87,13 @@ const PartnerHeader = ({ partnerData, loading }) => {
                 }}
               />
             </span>
-            <span className="partner-count">{partnerData?.courses_count}</span>
           </a>
           <div className="vertical-line" />
           <div className="icon-wrapper" href="#">
             <Icon src={Groups} style={{ width: '40px' }} />
+            <span className="partner-count">
+              {partnerData?.students?.total_count}
+            </span>
             <span className="partner-title">
               <FormattedMessage
                 id="partners.snapShut.learners.text"
@@ -100,13 +103,13 @@ const PartnerHeader = ({ partnerData, loading }) => {
                 }}
               />
             </span>
-            <span className="partner-count">
-              {partnerData?.students?.total_count}
-            </span>
           </div>
           <div className="vertical-line" />
           <a className="icon-wrapper" href="#instructors">
             <Icon src={Instructors} style={{ width: '40px' }} />
+            <span className="partner-count">
+              {partnerData?.instructors?.total_count}
+            </span>
             <span className="partner-title">
               <FormattedMessage
                 id="partners.snapShut.instructors.text"
@@ -115,9 +118,6 @@ const PartnerHeader = ({ partnerData, loading }) => {
                   instructorCount: partnerData?.instructors?.total_count,
                 }}
               />
-            </span>
-            <span className="partner-count">
-              {partnerData?.instructors?.total_count}
             </span>
           </a>
         </div>
