@@ -4,20 +4,19 @@ import { Button, Card, Icon } from '@edx/paragon';
 import {
   Person, BookOpen, WatchFilled, Groups,
 } from '@edx/paragon/icons';
-import { Link, useHistory } from 'react-router-dom';
 import { getConfig } from '@edx/frontend-platform';
 import {
   FormattedMessage,
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
+import { Link } from 'react-router-dom';
 import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
 import coverPlaceholder from '../../../assets/place-holders/cover-course-place-holder.svg';
 import messages from '../../../messages';
 
 const CourseCardNew = ({ course, intl }) => {
   const isProgram = false;
-  const history = useHistory();
 
   return (
     <Link to={`/course/${course?.course_slug}`}>
@@ -119,7 +118,6 @@ const CourseCardNew = ({ course, intl }) => {
             <Button
               variant="primary"
               className="learn-btn"
-              onClick={() => history.push(`/course/${course?.course_slug}`)}
             >
               <FormattedMessage
                 id="courseCard.learnMore.button"
