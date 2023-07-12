@@ -77,18 +77,15 @@ const DesktopCourseInfo = () => {
               loading={loading}
             />
           )}
-          {courseMetaData?.instructors?.length > 0
-            && (isTablet ? (
-              <MobileCourseInstructors
-                instructors={courseMetaData.instructors}
-                loading={loading}
-              />
-            ) : (
-              <CourseInstructors
-                instructors={courseMetaData.instructors}
-                loading={loading}
-              />
-            ))}
+          {isTablet ? (
+            <MobileCourseInstructors
+              courseSlug={courseMetaData?.course_slug}
+            />
+          ) : (
+            <CourseInstructors
+              courseSlug={courseMetaData?.course_slug}
+            />
+          )}
         </div>
       </section>
     </>

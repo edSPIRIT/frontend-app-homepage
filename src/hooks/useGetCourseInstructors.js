@@ -1,13 +1,12 @@
 import { getConfig } from '@edx/frontend-platform';
 import { useQuery } from 'react-query';
 
-const useGetInstructorCourses = (courseId) => {
-  const fetchInstructorCourses = async ({ queryKey }) => {
-    const id = queryKey[1];
+const useGetInstructorCourses = (courseSlug) => {
+  const fetchInstructorCourses = async (course_slug) => {
     const apiRes = await fetch(
       `${
         getConfig().LMS_BASE_URL
-      }/admin-console/api/instructor-list/?page=1&course_id=${id}`,
+      }/admin-console/api/course-metadata/${course_slug}/instructors`,
     );
 
     if (!apiRes.ok) {
@@ -17,14 +16,14 @@ const useGetInstructorCourses = (courseId) => {
     return apiRes.json();
   };
   const { data, isLoading } = useQuery(
-    ['InstructorCourses', courseId],
-    fetchInstructorCourses,
+    ['InstructorCourses', courseSlug],
+    () => fetchInstructorCourses(courseSlug),
     {
-      enabled: !!courseId,
+      enabled: !!courseSlug,
     },
   );
   return {
-    InstructorCourses: data,
+    instructors: data,
     loading: isLoading,
   };
 };
