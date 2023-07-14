@@ -32,7 +32,7 @@ const SearchFilteredResults = ({ intl }) => {
             <span className="font-weight-bold"> {searchResultsCount}</span>
           )}
         </p>
-        <SearchSortWrapper />
+        <SearchSortWrapper searchResultsCount={searchResultsCount} />
       </div>
       {searchResultsCount === 0 && (
         <div className="d-flex flex-column justify-content-center align-items-center">

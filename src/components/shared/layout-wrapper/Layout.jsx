@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
   useEffect(() => {
     if (activeLangs) {
       const currentLocale = getLocale();
-      const newLocale = activeLangs[1]?.code;
+      const newLocale = activeLangs[0]?.code;
       const url = new URL(getConfig().LMS_BASE_URL).hostname;
       if (currentLocale !== newLocale) {
         const cookies = document.cookie;

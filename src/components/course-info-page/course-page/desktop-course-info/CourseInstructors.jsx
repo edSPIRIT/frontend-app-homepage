@@ -6,8 +6,6 @@ import InstructorCard from './course-instructors/InstructorCard';
 import useGetInstructorCourses from '../../../../hooks/useGetCourseInstructors';
 
 const CourseInstructors = ({ courseSlug }) => {
-  // console.log('courseSlug', courseSlug);
-
   const { instructors, loading } = useGetInstructorCourses(courseSlug);
 
   return (

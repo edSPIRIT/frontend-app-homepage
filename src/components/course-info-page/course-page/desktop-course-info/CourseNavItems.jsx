@@ -12,6 +12,7 @@ import { Link } from 'react-scroll';
 import Scrollspy from 'react-scrollspy';
 import messages from '../../../../messages';
 import useGetCourseToc from '../../../../hooks/useGetCourseToc';
+import useGetInstructorCourses from '../../../../hooks/useGetCourseInstructors';
 
 const CourseNavItems = ({
   courseMetaData, isTopOnScreen, loading, intl,
@@ -19,6 +20,7 @@ const CourseNavItems = ({
   const isTablet = useMediaQuery({ maxWidth: '1100px' });
   const [selectedItem, setSelectedItem] = useState('');
   const { sections } = useGetCourseToc(courseMetaData?.course_id);
+  const { instructors } = useGetInstructorCourses(courseMetaData?.course_slug);
 
   return (
     <div
@@ -133,7 +135,7 @@ const CourseNavItems = ({
             </span>
           ))}
         {!isTablet
-          && (courseMetaData?.instructors?.length > 0 ? (
+          && (instructors?.length > 0 ? (
             <li>
               <Link
                 to="instructors"

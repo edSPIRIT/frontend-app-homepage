@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useDispatch, useSelector } from 'react-redux';
 import {
   FormattedMessage,
@@ -9,7 +10,7 @@ import { FilterList, KeyboardArrowDown } from '@edx/paragon/icons';
 import messages from '../../../../../messages';
 import { setSearchSortValue } from '../../../../../redux/slice/sortSearchSlice';
 
-const SearchSortWrapper = ({ intl }) => {
+const SearchSortWrapper = ({ intl, searchResultsCount }) => {
   const sortState = useSelector((state) => state.sortSearchSlice.value);
 
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const SearchSortWrapper = ({ intl }) => {
         id="dropdown-basic-4"
         iconAfter={KeyboardArrowDown}
         iconBefore={FilterList}
+        disabled={searchResultsCount === 0}
       >
         <span className="text-primary-500 dropdown-title">
           <FormattedMessage id="sortBy.text" defaultMessage="Sort by:" />

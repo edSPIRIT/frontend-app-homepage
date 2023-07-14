@@ -84,20 +84,13 @@ const SubjectsWithCourses = ({
       {(!featuredSubjectsWithCourses
         || featuredSubjectsWithCourses.length === 0)
       && !isFetching ? (
-        <div className="mt-6">
-          {[1, 2, 3].map((num) => (
-            <div key={num} className="custom-container">
-              <h2 className="mb-4">
-                <FormattedMessage
-                  id="subjectTitle.text"
-                  defaultMessage="Subject Title"
-                />
-              </h2>
-              <div className="mb-5">
-                <EmptyStateCourses />
-              </div>
-            </div>
-          ))}
+        <div className="custom-container mt-6">
+          <h2 className="mb-4">
+            <FormattedMessage id="subjectTitle.text" defaultMessage="Subject" />
+          </h2>
+          <div className="mb-5">
+            <EmptyStateCourses />
+          </div>
         </div>
         ) : null}
     </div>

@@ -335,8 +335,7 @@ const MobileCourseInfo = ({ intl }) => {
             loading={loading}
           />
           <MobileCourseInstructors
-            instructors={courseMetaData?.instructors}
-            loading={loading}
+            courseSlug={courseMetaData?.course_slug}
           />
         </div>
       </div>

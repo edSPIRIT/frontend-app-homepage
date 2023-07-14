@@ -7,7 +7,6 @@ import userAvatar from '../../../../assets/place-holders/user-placeholder.svg';
 import useGetInstructorCourses from '../../../../hooks/useGetCourseInstructors';
 
 const MobileCourseInstructors = ({ courseSlug }) => {
-  // console.log('courseSlug', courseSlug);
   const { instructors, loading } = useGetInstructorCourses(courseSlug);
 
   return (
