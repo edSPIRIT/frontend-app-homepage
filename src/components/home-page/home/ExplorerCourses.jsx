@@ -20,8 +20,8 @@ import ScrollableCourses from '../../shared/scrollable-courses-component-discove
 
 const ExplorerCourses = ({ intl }) => {
   const [key, setKey] = useState('top-courses');
-  const { topRecentCourses: topCourses, loading: topCoursesLoading } = useGetTopRecentCourses('recent');
-  const { topRecentCourses: recentCourses, loading: recentCoursesLoading } = useGetTopRecentCourses('popular');
+  const { topRecentCourses: topCourses, loading: topCoursesLoading } = useGetTopRecentCourses('popular');
+  const { topRecentCourses: recentCourses, loading: recentCoursesLoading } = useGetTopRecentCourses('recent');
   const isMobile = useMediaQuery({ maxWidth: '1024px' });
   const history = useHistory();
   const dispatch = useDispatch();
