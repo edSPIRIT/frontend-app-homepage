@@ -17,7 +17,6 @@ import messages from '../../../messages';
 
 const CourseCardNew = ({ course, intl }) => {
   const isProgram = false;
-
   return (
     <Link to={`/course/${course?.course_slug}`}>
       <Card className="cards-wrapper d-flex">
@@ -50,20 +49,22 @@ const CourseCardNew = ({ course, intl }) => {
         </div>
         <div className="d-flex p-4 flex-column justify-content-between flex-grow-1">
           <div className="d-flex flex-column font-sm flex-grow-1">
-            <div className="d-flex flex-row align-items-center mb-2">
-              <Icon className="card-icon" src={isProgram ? Groups : Person} />
-              <p className="program-instructors-wrapper">
-                {course?.instructors?.map((ins) => (
-                  <Link
-                    key={ins.slug}
-                    className="instructor-title"
-                    to={`/instructor/${ins.slug}`}
-                  >
-                    {ins.name}
-                  </Link>
-                ))}
-              </p>
-            </div>
+            {course?.instructors.length > 0 && (
+              <div className="d-flex flex-row align-items-center mb-2">
+                <Icon className="card-icon" src={isProgram ? Groups : Person} />
+                <p className="program-instructors-wrapper">
+                  {course?.instructors?.map((ins) => (
+                    <Link
+                      key={ins.slug}
+                      className="instructor-title"
+                      to={`/instructor/${ins.slug}`}
+                    >
+                      {ins.name}
+                    </Link>
+                  ))}
+                </p>
+              </div>
+            )}
             <div className="d-flex flex-row align-items-center mb-2">
               <Icon className="card-icon" src={BookOpen} />
               <p className="color-black">
@@ -115,10 +116,7 @@ const CourseCardNew = ({ course, intl }) => {
             )}
           </div>
           <div className="btn-card-container mt-3">
-            <Button
-              variant="primary"
-              className="learn-btn"
-            >
+            <Button variant="primary" className="learn-btn">
               <FormattedMessage
                 id="courseCard.learnMore.button"
                 defaultMessage="Learn More"

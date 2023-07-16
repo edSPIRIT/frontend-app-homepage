@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, {
-  Suspense, useEffect, useState,
-} from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Spinner, Toast } from '@edx/paragon';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,8 +16,7 @@ const Layout = ({ children }) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const message = useSelector((state) => state.toast.message);
-  const { activeLangs } = useGetActiveLangs();
-
+  const { activeLangs, loading: activeLangsLoading } = useGetActiveLangs();
   useEffect(() => {
     setHasPriceWrapper(location.pathname.includes('/course'));
   }, [location]);
@@ -48,6 +45,17 @@ const Layout = ({ children }) => {
       body.removeAttribute('class');
     }
   }, []);
+  if (activeLangsLoading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <Spinner
+          animation="border"
+          className="mie-3 "
+          screenReaderText="loading"
+        />
+      </div>
+    );
+  }
   return (
     <Suspense
       fallback={(

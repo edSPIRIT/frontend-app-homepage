@@ -2,12 +2,11 @@
   background-color: $light-200;
   padding-top: 80px;
   padding-bottom: 80px;
-  .explorer-title {
-    justify-content: center;
-  }
+}
+.explorer-title {
+  justify-content: center;
 }
 .view-all-courses-btn {
-  // display: none;
   width: 327px;
   height: 44px;
   color: $gray-500;

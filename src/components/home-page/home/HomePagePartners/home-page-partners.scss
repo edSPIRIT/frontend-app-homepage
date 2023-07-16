@@ -1,6 +1,9 @@
 .partners-container {
   padding-top: 80px;
   padding-bottom: 80px;
+  .partners-logo-wrapper {
+    gap: 24px;
+  }
   .partners-img-wrapper {
     width: 208px;
     height: 112px;
@@ -11,11 +14,23 @@
     padding: 8px;
     object-fit: contain;
   }
+  .partner-logo-skeleton-wrapper {
+    display: flex;
+    gap: 24px;
+    margin-right: 24px;
+    span {
+      width: 100%;
+    }
+    .partner-logo-skeleton {
+      max-width: 208px;
+      height: 90px;
+    }
+  }
 }
 
 @media (max-width: 1024px) {
-.partners-container {
-  padding-top: 32px !important;
-  padding-bottom: 32px !important;
-}
+  .partners-container {
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
 }

@@ -23,9 +23,7 @@ const useGetPopularPartners = () => {
     keepPreviousData: true,
   });
   return {
-    PopularPartners: data?.results
-      .filter((org) => org.featured)
-      .slice(0, partnerCount),
+    PopularPartners: data?.results.slice(0, partnerCount),
     loading: isLoading,
   };
 };

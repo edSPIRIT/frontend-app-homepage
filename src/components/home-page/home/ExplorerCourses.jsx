@@ -15,24 +15,28 @@ import CourseCardNew from '../../shared/course-card/CourseCardNew';
 import CourseCardSkeleton from '../../shared/skeleton/CourseCardSkeleton';
 import messages from '../../../messages';
 import { resetSearchFilters } from '../../../redux/slice/searchQuerySlice';
-import ScrollableCourses from '../../shared/scrollable-courses-component/ScrollableCourses';
 import EmptyStateCourses from './ExplorerCourses/EmptyStateCourses';
+import ScrollableCourses from '../../shared/scrollable-courses-component-discovery-api/ScrollableCourses';
 
 const ExplorerCourses = ({ intl }) => {
   const [key, setKey] = useState('top-courses');
-  const { recentCourses, topCourses, loading } = useGetTopRecentCourses();
+  const { topRecentCourses: topCourses, loading: topCoursesLoading } = useGetTopRecentCourses('recent');
+  const { topRecentCourses: recentCourses, loading: recentCoursesLoading } = useGetTopRecentCourses('popular');
   const isMobile = useMediaQuery({ maxWidth: '1024px' });
   const history = useHistory();
   const dispatch = useDispatch();
   const renderCourseCards = (courses) => (
     <div className="course-container">
       {courses.map((course) => (
-        <CourseCardNew course={course} key={course.course_slug} />
+        <CourseCardNew
+          course={course?.data?.course_metadata}
+          key={course?.data?.id}
+        />
       ))}
     </div>
   );
   const renderCourseContent = (courses) => {
-    if (loading) {
+    if (topCoursesLoading && recentCoursesLoading) {
       return (
         <div className="course-container">
           {Array(4)
@@ -48,7 +52,12 @@ const ExplorerCourses = ({ intl }) => {
       return <EmptyStateCourses />;
     }
     if (isMobile) {
-      return <ScrollableCourses courses={courses} loading={loading} />;
+      return (
+        <ScrollableCourses
+          courses={courses}
+          loading={topCoursesLoading && recentCoursesLoading}
+        />
+      );
     }
     return renderCourseCards(courses);
   };
@@ -87,23 +96,21 @@ const ExplorerCourses = ({ intl }) => {
             {renderCourseContent(recentCourses)}
           </Tab>
         </Tabs>
-        {(recentCourses.length > 0 || topCourses.length > 0) && (
-          <div className="d-flex justify-content-center">
-            <Button
-              className="view-all-courses-btn mt-5"
-              iconAfter={ArrowForward}
-              onClick={() => {
-                dispatch(resetSearchFilters());
-                history.push('/search');
-              }}
-            >
-              <FormattedMessage
-                id="viewAllCourses.button"
-                defaultMessage="View All Courses"
-              />
-            </Button>
-          </div>
-        )}
+        <div className="d-flex justify-content-center">
+          <Button
+            className="view-all-courses-btn mt-5"
+            iconAfter={ArrowForward}
+            onClick={() => {
+              dispatch(resetSearchFilters());
+              history.push('/search');
+            }}
+          >
+            <FormattedMessage
+              id="viewAllCourses.button"
+              defaultMessage="View All Courses"
+            />
+          </Button>
+        </div>
       </div>
     </section>
   );
