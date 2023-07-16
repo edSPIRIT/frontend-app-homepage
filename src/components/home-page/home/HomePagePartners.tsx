@@ -34,7 +34,7 @@ const HomePagePartners = () => {
         {PopularPartners?.map((partner) => (
           <Link
             to={`/partners/${partner?.organization.short_name}`}
-            className="mr-4 partners-img-wrapper"
+            className="partners-img-wrapper"
             key={partner?.organization.id}
           >
             <img

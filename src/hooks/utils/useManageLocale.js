@@ -8,7 +8,7 @@ const useManageLocale = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (activeLangs && !error) {
+    if (activeLangs) {
       const currentLocale = getLocale();
       const newLocale = activeLangs[0]?.code;
       const url = new URL(getConfig().LMS_BASE_URL).hostname;
@@ -23,7 +23,8 @@ const useManageLocale = () => {
       } else {
         setIsLoading(false);
       }
-    } else {
+    }
+    if (error) {
       setIsLoading(false);
     }
   }, [activeLangs, error]);
