@@ -5,7 +5,7 @@
     gap: 24px;
   }
   .partners-img-wrapper {
-    width: 208px;
+    width: 112px;
     height: 112px;
   }
   img {
@@ -32,5 +32,13 @@
   .partners-container {
     padding-top: 32px !important;
     padding-bottom: 32px !important;
+  }
+}
+@media (max-width: 768px) {
+  .partners-container {
+    .partners-img-wrapper {
+      width: 89px;
+      height: 48px;
+    }
   }
 }

@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { IAllPartners } from './interfaces/APIResponsesInterfaces';
 
 const useGetPopularPartners = () => {
-  const isMobile = useMediaQuery({ maxWidth: '768px' });
+  const isMobile = useMediaQuery({ maxWidth: '600px' });
   const partnerCount = isMobile ? 3 : 5;
   const fetchPopularPartners = async () => {
     const apiRes = await fetch(

@@ -15,11 +15,19 @@ const useGetActiveLangs = () => {
     setLocale(newLocale);
     return activeLangs;
   };
-  const { data, isLoading } = useQuery('ActiveLangs', fetchActiveLangs);
+  const {
+    data, isLoading, isError, error,
+  } = useQuery('ActiveLangs', fetchActiveLangs, {
+    retry: 1,
+    onError: (err) => {
+      console.error('An error occurred:', err);
+    },
+  });
 
   return {
     activeLangs: data,
     loading: isLoading,
+    error: isError ? error : null,
     locale,
   };
 };

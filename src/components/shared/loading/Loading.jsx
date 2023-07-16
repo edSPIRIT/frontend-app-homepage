@@ -1,10 +1,12 @@
+import { Spinner } from '@edx/paragon';
+
 const Loading = () => (
-  <div id="loading-container">
-    <div className="loading-dots">
-      <div className="dot" />
-      <div className="dot" />
-      <div className="dot" />
-    </div>
+  <div className="d-flex justify-content-center align-items-center vh-100">
+    <Spinner
+      animation="border"
+      className="mie-3 "
+      screenReaderText="loading"
+    />
   </div>
 );
 
