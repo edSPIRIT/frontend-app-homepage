@@ -11,7 +11,7 @@ import UserCourseCard from '../../shared/user-courses/UserCourseCard';
 import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
 import UserCourseCardSkeleton from '../../shared/user-courses/UserCourseCardSkeleton';
-import SimilarCourses from '../../shared/similar-courses/SimilarCourses';
+// import SimilarCourses from '../../shared/similar-courses/SimilarCourses';
 import NavHeader from '../../shared/header/nav-header/NavHeader';
 import messages from '../../../messages';
 import useGetOverviewList from '../../../hooks/useGetOverviewList';
@@ -20,8 +20,6 @@ import LogInFirst from './LogInFirst';
 const OverviewPage = ({ intl }) => {
   const {
     loading,
-    userCourseTitles,
-    userCourseIds,
     recentUserCourses,
     courseCount,
   } = useGetOverviewList();
@@ -79,13 +77,13 @@ const OverviewPage = ({ intl }) => {
                 <RecommendedPrograms />
               </div> */}
         </div>
-        {userCourseTitles && (
+        {/* {userCourseTitles && (
           <SimilarCourses
             courseTitles={userCourseTitles}
             courseIds={userCourseIds}
             loading={loading}
           />
-        )}
+        )} */}
       </div>
     </>
   );
