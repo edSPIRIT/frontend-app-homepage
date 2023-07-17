@@ -13,7 +13,7 @@ const HomePagePartners = () => {
   if (loading) {
     return <LoadingSkeleton />;
   }
-  if (PopularPartners.length === 0) {
+  if (PopularPartners?.length === 0) {
     return null;
   }
   return (
