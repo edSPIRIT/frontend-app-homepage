@@ -15,7 +15,9 @@ const useManageLocale = () => {
       if (currentLocale !== newLocale) {
         setIsLoading(true);
         try {
-          document.cookie = `openedx-language-preference=${newLocale}; path=/; domain=.${url}`;
+          if (!document.cookie.includes('openedx-language-preference')) {
+            document.cookie = `openedx-language-preference=${newLocale}; path=/; domain=.${url}`;
+          }
         } catch (err) {
           console.error(err);
         }
