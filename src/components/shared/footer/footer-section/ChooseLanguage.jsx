@@ -75,8 +75,13 @@ const ChooseLanguage = () => {
 
   const handleClick = (e) => {
     if (!authenticatedUser) {
-      handleRedirect();
-      return null;
+      const url = new URL(getConfig().LMS_BASE_URL).hostname;
+      if (getLocale() !== getLangCode(e.target.innerText)) {
+        document.cookie = `openedx-language-preference=${getLangCode(
+          e.target.innerText,
+        )}; path=/; domain=.${url}`;
+        window.location.reload();
+      }
     }
     patchPreferences(getLangCode(e.target.innerText));
     // postSetLang(getLangCode(e.target.innerText));

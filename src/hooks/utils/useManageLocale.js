@@ -8,29 +8,34 @@ const useManageLocale = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    if (error) {
+      setIsLoading(false);
+      return;
+    }
+
     if (activeLangs) {
       const currentLocale = getLocale();
       const newLocale = activeLangs[0]?.code;
       const url = new URL(getConfig().LMS_BASE_URL).hostname;
-      if (currentLocale !== newLocale) {
-        setIsLoading(true);
+
+      if (
+        !document.cookie.includes('openedx-language-preference')
+        && currentLocale !== newLocale
+      ) {
         try {
-          if (!document.cookie.includes('openedx-language-preference')) {
-            document.cookie = `openedx-language-preference=${newLocale}; path=/; domain=.${url}`;
-          }
+          document.cookie = `openedx-language-preference=${newLocale}; path=/; domain=.${url}`;
+          window.location.reload();
         } catch (err) {
           console.error(err);
+          setIsLoading(false);
         }
-        window.location.reload();
       } else {
         setIsLoading(false);
       }
-    }
-    if (error) {
-      setIsLoading(false);
     }
   }, [activeLangs, error]);
 
   return isLoading;
 };
+
 export default useManageLocale;
