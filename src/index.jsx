@@ -37,8 +37,10 @@ import EnrollmentList from './components/dashboard/EnrollmentList';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: Infinity,
-      cacheTime: Infinity,
+      // Set staleTime to 5 minutes
+      staleTime: 5 * 60 * 1000,
+      // Set cacheTime to 60 minutes
+      cacheTime: 60 * 60 * 1000,
     },
   },
 });
@@ -115,16 +117,20 @@ initialize({
   // hydrateAuthenticatedUser: true,
   handlers: {
     config: () => {
-      mergeConfig({
-        SUPPORT_URL: process.env.SUPPORT_URL,
-        COACHING_ENABLED: (process.env.COACHING_ENABLED || false),
-        ENABLE_DEMOGRAPHICS_COLLECTION: (process.env.ENABLE_DEMOGRAPHICS_COLLECTION || false),
-        DEMOGRAPHICS_BASE_URL: process.env.DEMOGRAPHICS_BASE_URL,
-        ENABLE_COPPA_COMPLIANCE: (process.env.ENABLE_COPPA_COMPLIANCE || false),
-        MARKETING_EMAILS_OPT_IN: (process.env.MARKETING_EMAILS_OPT_IN || false),
-        AC_LANGUAGES_API_URL: process.env.AC_LANGUAGES_API_URL,
-        AC_INSTANCE_CONFIG_API_URL: process.env.AC_INSTANCE_CONFIG_API_URL,
-      }, 'App loadConfig override handler');
+      mergeConfig(
+        {
+          SUPPORT_URL: process.env.SUPPORT_URL,
+          COACHING_ENABLED: process.env.COACHING_ENABLED || false,
+          ENABLE_DEMOGRAPHICS_COLLECTION:
+            process.env.ENABLE_DEMOGRAPHICS_COLLECTION || false,
+          DEMOGRAPHICS_BASE_URL: process.env.DEMOGRAPHICS_BASE_URL,
+          ENABLE_COPPA_COMPLIANCE: process.env.ENABLE_COPPA_COMPLIANCE || false,
+          MARKETING_EMAILS_OPT_IN: process.env.MARKETING_EMAILS_OPT_IN || false,
+          AC_LANGUAGES_API_URL: process.env.AC_LANGUAGES_API_URL,
+          AC_INSTANCE_CONFIG_API_URL: process.env.AC_INSTANCE_CONFIG_API_URL,
+        },
+        'App loadConfig override handler',
+      );
     },
   },
 });
