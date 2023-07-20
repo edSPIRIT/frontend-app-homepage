@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Icon, SearchField, useMediaQuery } from '@edx/paragon';
 import { useDispatch } from 'react-redux';
 import { ArrowForward } from '@edx/paragon/icons';
@@ -9,7 +9,7 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import {
   resetSearchFilters,
   setSearchString,
@@ -21,6 +21,7 @@ import { setSearchModal } from '../../../../redux/slice/searchModalSlice';
 
 const SearchBox = ({ intl }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const history = useHistory();
   const isMobile = useMediaQuery({ maxWidth: '768px' });
 
@@ -30,10 +31,17 @@ const SearchBox = ({ intl }) => {
   );
   const [isFocused, setIsFocused] = useState(false);
 
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const query = searchParams.get('q');
+    dispatch(setSearchString(query || ''));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
+
   const handleSubmitSearch = () => {
     dispatch(resetSearchFilters());
     dispatch(setSearchString(searchSuggestionValue));
-    history.push('/search');
+    history.push(`/search?q=${searchSuggestionValue}`);
   };
 
   return (

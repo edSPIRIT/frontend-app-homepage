@@ -149,5 +149,8 @@
     "courseInfo.tooltip.transcript": "رونوشت",
     "mostRelevant.text": "بسیار مرتبط",
     "popular.text": "محبوب",
-    "subjectTitle.text": "عنوان موضوع"
+    "subjectTitle.text": "موضوع",
+    "banner.welcomeText": "متن خوش آمدگویی!",
+    "banner.welcomeDesc": "پیام خوش آمد گویی در اینجا ظاهر می شود!",
+    "homePage.exploreCourses.skeletonDesc": "ما مشتاقیم که به زودی محتوای شگفت انگیزی را برای شما به ارمغان بیاوریم!"
 }

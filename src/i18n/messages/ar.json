@@ -124,5 +124,8 @@
     "search.facets.language": "لغة",
     "search.facets.availability": "التوفر",
     "search.facets.learningType": "نوع التعلم",
-    "partners.snapShut.instructors.text": "{instructorCount, plural, one {مدربين} other {مدربين}}"
+    "partners.snapShut.instructors.text": "{instructorCount, plural, one {مدربين} other {مدربين}}",
+    "banner.welcomeText": "نرحب بالنص!",
+    "banner.welcomeDesc": "ستظهر رسالة الترحيب هنا!",
+    "homePage.exploreCourses.skeletonDesc": "يسعدنا أن نقدم لك محتوى رائعًا قريبًا جدًا!"
 }

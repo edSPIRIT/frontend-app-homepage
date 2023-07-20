@@ -9,7 +9,7 @@ const EmptyStateCourses = () => (
     <div className="loading-text">
       <FormattedMessage
         id="homePage.exploreCourses.skeletonDesc"
-        defaultMessage="We're excited to bring you amazing content very soon! "
+        defaultMessage="We're excited to bring you amazing content very soon!"
       />
     </div>
   </div>
