@@ -8,7 +8,7 @@ import {
 import { FullscreenModal, Icon, SearchField } from '@edx/paragon';
 import { useDispatch, useSelector } from 'react-redux';
 import { ArrowBack, Close } from '@edx/paragon/icons';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import messages from '../../../../messages';
@@ -28,25 +28,33 @@ import logoPlaceholder from '../../../../assets/place-holders/org-place-holder.s
 
 const SearchModal = ({ intl }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const isOpenSearchModal = useSelector((state) => state.searchModal.open);
   const [searchSuggestionValue, setSearchSuggestionValue] = useState('');
   const { searchSuggestionsResults } = useSearchSuggestions(
     searchSuggestionValue,
   );
   const recentSearch = useSelector((state) => state.recentPages.pages);
-
   const history = useHistory();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const query = searchParams.get('q');
+    dispatch(setSearchString(query || ''));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
+
+  useEffect(() => {
+    dispatch(loadPages());
+  }, [dispatch]);
+
   const handleSubmitSearch = () => {
     dispatch(resetSearchFilters());
     dispatch(setSearchString(searchSuggestionValue));
     dispatch(setSearchModal(false));
     setSearchSuggestionValue('');
-    history.push('/search');
+    history.push(`/search?q=${searchSuggestionValue}`);
   };
-
-  useEffect(() => {
-    dispatch(loadPages());
-  }, [dispatch]);
 
   return (
     <FullscreenModal

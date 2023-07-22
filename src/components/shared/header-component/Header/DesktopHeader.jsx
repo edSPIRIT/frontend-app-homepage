@@ -9,8 +9,7 @@ import {
   intlShape,
 } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
-import NavHeader from '../nav-header/NavHeader';
-import DropdownNavHeader from '../dropdown-nav-header/DropdownNavHeader';
+import NavHeader from './DesktopHeader/NavHeader';
 import DefaultLogo from '../../../../assets/place-holders/NavLogo-placeholder.svg';
 import messages from '../../../../messages';
 import handleRedirect from '../../../../utils/handleRedirect';
@@ -18,8 +17,9 @@ import {
   resetSearchFilters,
   setSearchString,
 } from '../../../../redux/slice/searchQuerySlice';
-import ProfileDropdown from './ProfileDropdown';
+import ProfileDropdown from './DesktopHeader/ProfileDropdown';
 import useGetConfig from '../../../../hooks/useGetConfig';
+import DropdownNavHeader from './DesktopHeader/DropdownNavHeader';
 
 const DesktopHeader = ({ intl }) => {
   const history = useHistory();

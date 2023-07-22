@@ -12,7 +12,7 @@ import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
 import UserCourseCardSkeleton from '../../shared/user-courses/UserCourseCardSkeleton';
 // import SimilarCourses from '../../shared/similar-courses/SimilarCourses';
-import NavHeader from '../../shared/header/nav-header/NavHeader';
+import NavHeader from '../../shared/header-component/Header/DesktopHeader/NavHeader';
 import messages from '../../../messages';
 import useGetOverviewList from '../../../hooks/useGetOverviewList';
 import LogInFirst from './LogInFirst';

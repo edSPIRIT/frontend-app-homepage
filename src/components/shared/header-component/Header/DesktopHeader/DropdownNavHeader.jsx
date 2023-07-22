@@ -2,10 +2,10 @@ import { Button, Icon } from '@edx/paragon';
 import { ArrowForward, KeyboardArrowDown } from '@edx/paragon/icons';
 import { Link, useHistory } from 'react-router-dom';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import useGetSubjects from '../../../../hooks/useGetSubjects';
+import useGetPopularSubjects from '../../../../../hooks/useGetPopularSubjects';
 
 const DropdownNavHeader = () => {
-  const { subjects, coursesCounter } = useGetSubjects();
+  const { subjects, coursesCounter } = useGetPopularSubjects();
   const history = useHistory();
 
   return (

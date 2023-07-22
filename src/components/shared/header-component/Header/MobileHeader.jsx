@@ -18,7 +18,7 @@ import { ReactComponent as DiscoverNav } from '../../../../assets/nav-icons/disc
 import { ReactComponent as DiscoverdNavColored } from '../../../../assets/nav-icons/discover-nav-colored.svg';
 import { ReactComponent as ProfileNav } from '../../../../assets/nav-icons/profile-nav.svg';
 import { ReactComponent as ProfileNavColored } from '../../../../assets/nav-icons/profile-nav-colored.svg';
-import useHideNavbarOnScroll from '../../../../hooks/utils/useHideNavbarOnScroll';
+// import useHideNavbarOnScroll from '../../../../hooks/utils/useHideNavbarOnScroll';
 import { setSearchModal } from '../../../../redux/slice/searchModalSlice';
 import useGetConfig from '../../../../hooks/useGetConfig';
 

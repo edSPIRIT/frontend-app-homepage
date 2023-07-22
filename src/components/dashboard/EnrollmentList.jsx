@@ -6,7 +6,7 @@ import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { AppContext } from '@edx/frontend-platform/react';
 import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
 import messages from '../../messages';
-import NavHeader from '../shared/header/nav-header/NavHeader';
+import NavHeader from '../shared/header-component/Header/DesktopHeader/NavHeader';
 import NotEnrolledCardCourse from './overview-page/not-enrolled-course-card/NotEnrolledCourseCard';
 import TotalCourseWrapper from './enrollment-list/TotalCourseWrapper';
 import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleton';

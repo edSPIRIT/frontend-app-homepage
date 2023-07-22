@@ -3,9 +3,8 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { Toast } from '@edx/paragon';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Header from '../header/Header';
+import Header from '../header-component/Header';
 import FooterSection from '../footer/FooterSection';
-import SearchModal from './layout/SearchModal';
 import { setToastMessage } from '../../../redux/slice/toastSlice';
 import useManageLocale from '../../../hooks/utils/useManageLocale';
 import Loading from '../loading/Loading';
@@ -35,7 +34,6 @@ const Layout = ({ children }) => {
       >
         {message}
       </Toast>
-      <SearchModal />
       <div
         className={`layout-container ${
           hasPriceWrapper ? 'has-price-wrapper' : ''

@@ -5,9 +5,9 @@ import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { ArrowDropDown } from '@edx/paragon/icons';
 import { Link } from 'react-router-dom';
 import { getConfig } from '@edx/frontend-platform';
-import { ReactComponent as Avatar } from '../../../../assets/header-avatar.svg';
-import { handleLogout } from '../../../../utils/handleRedirect';
-import useGetUserProfile from '../../../../hooks/useGetUserProfile';
+import { ReactComponent as Avatar } from '../../../../../assets/header-avatar.svg';
+import { handleLogout } from '../../../../../utils/handleRedirect';
+import useGetUserProfile from '../../../../../hooks/useGetUserProfile';
 
 const ProfileDropdown = () => {
   const { authenticatedUser } = useContext(AppContext);

@@ -1,5 +1,6 @@
-@import 'components/shared/header/nav-header/nav-header.scss';
-@import 'components/shared/header/dropdown-nav-header/dropdown-nav-header.scss';
+@import 'components/shared/header-component/Header/DesktopHeader/NavHeader/nav-header.scss';
+@import 'components/shared/header-component/Header/DesktopHeader/DropdownNavHeader/dropdown-nav-header.scss';
+@import 'components/shared/header-component/Header/SearchModal/search-modal.scss';
 
 .header-wrapper {
   box-shadow: $card-ing-shadow;
