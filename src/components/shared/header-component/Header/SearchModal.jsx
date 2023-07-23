@@ -134,24 +134,39 @@ const SearchModal = ({ intl }) => {
               className="d-flex align-items-center mb-2.5"
               key={recentView?.paid_course?.course_id}
             >
-              <div className="logo-img-wrapper ">
+              <Link
+                to={`/course/${recentView?.course_slug}`}
+                onMouseDown={() => {
+                  setSearchSuggestionValue('');
+                  dispatch(setSearchModal(false));
+                  history.push(`/course/${recentView?.course_slug}`);
+                }}
+                className="logo-img-wrapper "
+              >
                 <img
                   src={
                     recentView?.partner?.organization?.logo ?? logoPlaceholder
                   }
                   alt="org-logo"
                 />
-              </div>
+              </Link>
 
               <div className="d-flex justify-content-between align-items-center w-100">
-                <div>
+                <Link
+                  to={`/course/${recentView?.course_slug}`}
+                  onMouseDown={() => {
+                    setSearchSuggestionValue('');
+                    dispatch(setSearchModal(false));
+                    history.push(`/course/${recentView?.course_slug}`);
+                  }}
+                >
                   <p className="recent-title">
                     {recentView?.additional_metadata?.display_name}
                   </p>
                   <p className="recent-institution">
                     {recentView?.partner?.organization?.name}
                   </p>
-                </div>
+                </Link>
                 <Icon
                   src={Close}
                   onClick={() => dispatch(removePage(recentView?.course_slug))}

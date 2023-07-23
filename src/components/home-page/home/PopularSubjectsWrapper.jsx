@@ -9,7 +9,7 @@ const PopularSubjectsWrapper = () => {
   if (loading) {
     return (
       <section className="popular-subject-container custom-container">
-        <div className="d-flex d-flex popular-title">
+        <div className="d-flex popular-title-wrapper mb-5">
           <Skeleton width={250} height={40} />
         </div>
         <div className="subject-container  mb-6">
