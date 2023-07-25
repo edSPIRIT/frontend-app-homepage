@@ -22,27 +22,22 @@ export const supportedLanguages = [
   },
   {
     code: 'de-DE',
-    name: 'German',
+    name: 'Deutsch',
     released: true,
   },
   {
     code: 'it-IT',
-    name: 'Italian',
+    name: 'Italiano',
     released: true,
   },
   {
     code: 'tr-TR',
-    name: 'Turkish',
-    released: true,
-  },
-  {
-    code: 'es-419',
-    name: 'Spanish (Latin America)',
+    name: 'Türkçe',
     released: true,
   },
   {
     code: 'pt-PT',
-    name: 'Portuguese (Portugal)',
+    name: 'Português (Portugal)',
     released: true,
   },
   {
