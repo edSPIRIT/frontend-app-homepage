@@ -34,7 +34,7 @@
     "homePage.partners.title": "موسسات",
     "profile.hi.text": "سلام،",
     "footer.powerdBy.text": "پشتیبانی شده توسط ",
-    "footer.copyRight.text": "edX و Open edX علائم تجاری edX LLC هستند. تمامی حقوق محفوظ است.",
+    "footer.copyRight.text": "edX و Open edX علائم تجاری edX LLC هستند. تمامی حقوق محفوظ است",
     "footer.chooseLanguage.text": "تغییر زبان",
     "filter.programs.text": "برنامه‌ها",
     "filter.courses.text": "دوره‌ها",
@@ -88,7 +88,7 @@
     "courseInfo.lifetimeAccess.text": "دسترسی مادام العمر",
     "courseInfo.starting.text": "شروع",
     "courseInfo.ending.text": "پایان",
-    "courseInfo.alreadyEnrolled.text": "نفر قبلا ثبت نام کرده اند",
+    "courseInfo.alreadyEnrolled.text": "نفر قبلا ثبت نام کرده اند!",
     "courseInfo.lastUpdateOn.text": "آخرین به روز رسانی در",
     "courseInfo.prerequisiteCourses.text": "دوره های پیش نیاز",
     "courseInfo.lectures.text": "درس",
@@ -152,5 +152,6 @@
     "subjectTitle.text": "موضوع",
     "banner.welcomeText": "متن خوش آمدگویی!",
     "banner.welcomeDesc": "پیام خوش آمد گویی در اینجا ظاهر می شود!",
-    "homePage.exploreCourses.skeletonDesc": "ما مشتاقیم که به زودی محتوای شگفت انگیزی را برای شما به ارمغان بیاوریم!"
+    "homePage.exploreCourses.skeletonDesc": "ما مشتاقیم که به زودی محتوای شگفت انگیزی را برای شما به ارمغان بیاوریم!",
+    "courseInfo.instructorPaced.text": "به روند استاد"
 }

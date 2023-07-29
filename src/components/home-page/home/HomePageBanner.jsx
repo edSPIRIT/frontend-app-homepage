@@ -29,7 +29,11 @@ const HomePageBanner = () => {
   };
   const renderDescription = () => {
     if (isLoading) {
-      return <Skeleton count={2} />;
+      return (
+        <div className="mb-2">
+          <Skeleton count={2} />
+        </div>
+      );
     }
 
     return (

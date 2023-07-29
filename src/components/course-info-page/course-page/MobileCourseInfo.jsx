@@ -1,9 +1,7 @@
 import { useParams } from 'react-router';
 import Scrollspy from 'react-scrollspy';
 import { Link } from 'react-scroll';
-import {
-  Icon, useMediaQuery,
-} from '@edx/paragon';
+import { Icon, useMediaQuery } from '@edx/paragon';
 import {
   HowToReg,
   Language,
@@ -205,35 +203,36 @@ const MobileCourseInfo = ({ intl }) => {
               <div className="d-flex  align-items-center mb-2">
                 <Icon className="mr-2" src={Language} />
                 <span>
-                  {getLangName(
-                    courseMetaData?.additional_metadata?.language,
-                  )}
+                  {getLangName(courseMetaData?.additional_metadata?.language)}
                 </span>
               </div>
             )}
             {courseMetaData?.transcript_langs
-                && courseMetaData?.transcript_langs.length > 0 && (
+              && courseMetaData?.transcript_langs.length > 0 && (
                 <div className="d-flex  align-items-center mb-2">
                   <Icon className="mr-2" src={PostOutline} />
                   <span className="course-tooltip">
                     {courseMetaData?.transcript_langs
-                          && courseMetaData?.transcript_langs?.map((transLang) => (
-                            <span key={transLang}>
-                              {getLangName(transLang)}
-                            </span>
-                          ))}
+                      && courseMetaData?.transcript_langs?.map((transLang) => (
+                        <span key={transLang}>{getLangName(transLang)}</span>
+                      ))}
                   </span>
                 </div>
             )}
-            {courseMetaData?.additional_metadata?.self_paced && (
-              <div className="d-flex align-items-center mb-2">
-                <Icon className="mr-2" src={HowToReg} />
+            <div className="d-flex align-items-center mb-2">
+              <Icon className="mr-2" src={HowToReg} />
+              {courseMetaData?.additional_metadata?.self_paced ? (
                 <FormattedMessage
                   id="courseInfo.selfPaced.text"
                   defaultMessage="Self Paced"
                 />
-              </div>
-            )}
+              ) : (
+                <FormattedMessage
+                  id="courseInfo.instructorPaced.text"
+                  defaultMessage="Instructor Paced"
+                />
+              )}
+            </div>
             {courseMetaData?.additional_metadata?.certificate_enabled && (
               <div className="d-flex align-items-center mb-2">
                 <Icon className="mr-2" src={Verified} />
@@ -334,9 +333,7 @@ const MobileCourseInfo = ({ intl }) => {
             courseId={courseMetaData?.course_id}
             loading={loading}
           />
-          <MobileCourseInstructors
-            courseSlug={courseMetaData?.course_slug}
-          />
+          <MobileCourseInstructors courseSlug={courseMetaData?.course_slug} />
         </div>
       </div>
       <div className="d-flex justify-content-between py-3 px-4 price-wrapper">

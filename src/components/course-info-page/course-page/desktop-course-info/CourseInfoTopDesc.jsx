@@ -133,15 +133,20 @@ const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
                     </div>
                   </OverlayTrigger>
               )}
-              {courseMetaData?.additional_metadata?.self_paced && (
-                <div className="d-flex justify-content-center align-items-center mr-4.5">
-                  <Icon className="mr-2" src={HowToReg} />
+              <div className="d-flex justify-content-center align-items-center mr-4.5">
+                <Icon className="mr-2" src={HowToReg} />
+                {courseMetaData?.additional_metadata?.self_paced ? (
                   <FormattedMessage
                     id="courseInfo.selfPaced.text"
                     defaultMessage="Self Paced"
                   />
-                </div>
-              )}
+                ) : (
+                  <FormattedMessage
+                    id="courseInfo.instructorPaced.text"
+                    defaultMessage="Instructor Paced"
+                  />
+                )}
+              </div>
               {courseMetaData?.additional_metadata?.certificate_enabled && (
                 <div className="d-flex justify-content-center align-items-center mr-4.5">
                   <Icon className="mr-2" src={Verified} />

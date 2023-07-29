@@ -6,7 +6,7 @@ const useGetSubjects = () => {
     const apiRes = await fetch(
       `${
         getConfig().LMS_BASE_URL
-      }/admin-console/api/subject-list/?page=${pageNum}`,
+      }/admin-console/api/subject-list/?page_size=25&page=${pageNum}`,
     );
 
     if (!apiRes.ok) {
