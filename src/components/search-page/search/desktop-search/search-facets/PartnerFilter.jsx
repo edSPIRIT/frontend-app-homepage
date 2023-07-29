@@ -11,6 +11,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   FormattedMessage,
+  FormattedNumber,
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
@@ -85,7 +86,9 @@ const PartnerFilter = ({ intl }) => {
                   <MenuItem as={Form.Checkbox} value={item.organization.name}>
                     {item.organization.name}
                   </MenuItem>
-                  <span className="mr-3">{item.courses_count}</span>
+                  <span className="mr-3">
+                    <FormattedNumber value={item.courses_count} />
+                  </span>
                 </div>
               ))}
               <div ref={ref} />

@@ -10,7 +10,11 @@ import {
 import { KeyboardArrowDown } from '@edx/paragon/icons';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
+import {
+  FormattedMessage,
+  FormattedNumber,
+  injectIntl,
+} from '@edx/frontend-platform/i18n';
 import { useInView } from 'react-intersection-observer';
 import { setSearchInstructors } from '../../../../../redux/slice/searchQuerySlice';
 import useGetInstructorsFacetInfinite from '../../../../../hooks/useGetInstructorsFacetInfinite';
@@ -84,7 +88,9 @@ const InstructorsFilter = ({ intl }) => {
                   <MenuItem as={Form.Checkbox} value={item.name}>
                     {item.name}
                   </MenuItem>
-                  <span className="mr-3">{item.courses_count}</span>
+                  <span className="mr-3">
+                    <FormattedNumber value={item.courses_count} />
+                  </span>
                 </div>
               ))}
               <div ref={ref} />

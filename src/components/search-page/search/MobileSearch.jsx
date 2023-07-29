@@ -9,6 +9,7 @@ import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import {
   FormattedMessage,
+  FormattedNumber,
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
@@ -45,14 +46,14 @@ const MobileSearch = ({ intl }) => {
               ) : (
                 <FormattedMessage
                   id="courses.text"
-                  defaultMessage="{courseCount, number} {courseCount, plural, one {Course} other {Courses}}"
+                  defaultMessage="{courseCount, plural, one {Course} other {Courses}}"
                   values={{
                     courseCount: searchResultsCount,
                   }}
                 />
               )}
             </h4>
-            <span>{`(${searchResultsCount})`}</span>
+            (<FormattedNumber value={searchResultsCount} />)
           </p>
         </div>
         <div className="font-sm mobile-filter-sort-wrapper">
@@ -108,7 +109,9 @@ const MobileSearch = ({ intl }) => {
               {isLoading ? (
                 <Skeleton className="ml-1" width={28} height={20} />
               ) : (
-                <span className="font-weight-bold"> {searchResultsCount}</span>
+                <span className="font-weight-bold ml-1">
+                  <FormattedNumber value={searchResultsCount} />
+                </span>
               )}
             </p>
           </div>

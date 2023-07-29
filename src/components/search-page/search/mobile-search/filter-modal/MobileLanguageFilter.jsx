@@ -13,7 +13,7 @@ import {
 } from '@edx/paragon';
 import { ArrowBack, ArrowForwardIos } from '@edx/paragon/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, FormattedNumber } from '@edx/frontend-platform/i18n';
 import { useEffect } from 'react';
 import {
   codeToTitle,
@@ -101,7 +101,9 @@ const MobileLanguageFilter = () => {
                       >
                         {item.name}
                       </MenuItem>
-                      <span className="pr-4">{item.course_count}</span>
+                      <span className="pr-4">
+                        <FormattedNumber value={item.course_count} />
+                      </span>
                     </div>
                   ))}
                   {loading && (

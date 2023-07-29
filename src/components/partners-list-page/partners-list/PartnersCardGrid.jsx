@@ -1,10 +1,9 @@
-import {
-  Card, Icon, Skeleton,
-} from '@edx/paragon';
+import { Card, Icon, Skeleton } from '@edx/paragon';
 import { BookOpen, DrawShapes } from '@edx/paragon/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { FormattedNumber } from '@edx/frontend-platform/i18n';
 import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
 
 const PartnersCardGrid = ({ partnersData, loading }) => (
@@ -39,15 +38,18 @@ const PartnersCardGrid = ({ partnersData, loading }) => (
               <span className="font-weight-bold partner-grid-name">
                 {partner.organization.name}
               </span>
-              <p className="mb-3 mt-1 partner-desc">{partner.organization.description}</p>
+              <p className="mb-3 mt-1 partner-desc">
+                {partner.organization.description}
+              </p>
               <div className="d-flex icons-partner-wrapper">
                 <div className="d-flex mr-2.5 align-items-center justify-content-center">
                   <Icon className="mr-1" src={DrawShapes} />
-                  <span>0</span>
+                  {/* TODO: partner's program count */}
+                  <FormattedNumber value="0" />
                 </div>
                 <div className="d-flex align-items-center justify-content-center">
                   <Icon className="mr-1" src={BookOpen} />
-                  <span>{partner.courses_count}</span>
+                  <FormattedNumber value={partner.courses_count} />
                 </div>
               </div>
             </Card.Section>

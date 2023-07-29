@@ -10,7 +10,11 @@ import {
 import { KeyboardArrowDown } from '@edx/paragon/icons';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
+import {
+  FormattedMessage,
+  FormattedNumber,
+  injectIntl,
+} from '@edx/frontend-platform/i18n';
 import { useInView } from 'react-intersection-observer';
 import { setSearchSubject } from '../../../../../redux/slice/searchQuerySlice';
 import useSubjectsFacetInfinite from '../../../../../hooks/useSubjectsFacetInfinite';
@@ -85,7 +89,9 @@ const SubjectFilter = ({ intl }) => {
                   <MenuItem as={Form.Checkbox} value={item.title}>
                     {item.title}
                   </MenuItem>
-                  <span className="mr-3">{item.courses_count}</span>
+                  <span className="mr-3">
+                    <FormattedNumber value={item.courses_count} />
+                  </span>
                 </div>
               ))}
               <div ref={ref} />

@@ -1,7 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
+import {
+  FormattedMessage,
+  FormattedNumber,
+  injectIntl,
+} from '@edx/frontend-platform/i18n';
 import { Pagination, Skeleton, useMediaQuery } from '@edx/paragon';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -29,7 +33,9 @@ const SearchFilteredResults = ({ intl }) => {
           {isLoading ? (
             <Skeleton className="ml-1" width={28} height={20} />
           ) : (
-            <span className="font-weight-bold"> {searchResultsCount}</span>
+            <span className="font-weight-bold ml-1">
+              <FormattedNumber value={searchResultsCount} />
+            </span>
           )}
         </p>
         <SearchSortWrapper searchResultsCount={searchResultsCount} />
@@ -67,31 +73,27 @@ const SearchFilteredResults = ({ intl }) => {
       </div>
       <div className="pb-5.5 pt-4.5">
         {searchResultsCount > 12 && (
-        <Pagination
-          className="d-flex justify-content-center transform-rtl"
-          paginationLabel="pagination navigation"
-          pageCount={Math.ceil(searchResultsCount / 12)}
-          onPageSelect={(e) => setPage(e - 1)}
-          currentPage={page + 1}
-          variant={isMobile ? 'reduced' : 'default'}
-          buttonLabels={{
-            previous: `${intl.formatMessage(
-              messages['pagination.previous.button'],
-            )}`,
-            next: `${intl.formatMessage(
-              messages['pagination.next.button'],
-            )}`,
-            page: `${intl.formatMessage(
-              messages['pagination.page.text'],
-            )}`,
-            currentPage: `${intl.formatMessage(
-              messages['pagination.currentPage.text'],
-            )}`,
-            pageOfCount: `${intl.formatMessage(
-              messages['pagination.of.text'],
-            )}`,
-          }}
-        />
+          <Pagination
+            className="d-flex justify-content-center transform-rtl"
+            paginationLabel="pagination navigation"
+            pageCount={Math.ceil(searchResultsCount / 12)}
+            onPageSelect={(e) => setPage(e - 1)}
+            currentPage={page + 1}
+            variant={isMobile ? 'reduced' : 'default'}
+            buttonLabels={{
+              previous: `${intl.formatMessage(
+                messages['pagination.previous.button'],
+              )}`,
+              next: `${intl.formatMessage(messages['pagination.next.button'])}`,
+              page: `${intl.formatMessage(messages['pagination.page.text'])}`,
+              currentPage: `${intl.formatMessage(
+                messages['pagination.currentPage.text'],
+              )}`,
+              pageOfCount: `${intl.formatMessage(
+                messages['pagination.of.text'],
+              )}`,
+            }}
+          />
         )}
       </div>
     </>

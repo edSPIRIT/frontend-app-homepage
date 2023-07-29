@@ -26,7 +26,7 @@ const SimilarCourses = ({
     chunkedArray?.length > 0 && (
       <div className="recommendationCourse-wrapper mt-6 py-6">
         <section className="custom-container similar-courses-wrapper">
-          <h3>
+          <h3 className="mb-1">
             <FormattedMessage
               id="similarCourses.text"
               defaultMessage="Similar Courses"

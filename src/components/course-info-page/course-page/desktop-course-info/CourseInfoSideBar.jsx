@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
 import {
   FormattedMessage,
+  FormattedNumber,
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
@@ -146,7 +147,11 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => (
             {courseMetaData?.additional_metadata?.total_enrollments && (
               <p className="mt-3">
                 <span className="mr-1">
-                  {courseMetaData?.additional_metadata?.total_enrollments}
+                  <FormattedNumber
+                    value={
+                      courseMetaData?.additional_metadata?.total_enrollments
+                    }
+                  />
                 </span>
                 <span className="font-sm">
                   <FormattedMessage

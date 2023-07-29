@@ -2,7 +2,7 @@
 import { Icon, Skeleton } from '@edx/paragon';
 import { BookOpen, Groups, Share } from '@edx/paragon/icons';
 import ShowMoreText from 'react-show-more-text';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, FormattedNumber } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
 import partnerBanner from '../../../assets/place-holders/cover-course-place-holder.svg';
 import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
@@ -77,7 +77,9 @@ const PartnerHeader = ({ partnerData, loading }) => {
         <div className="d-flex justify-content-center partner-snapshot-wrapper">
           <a className="icon-wrapper" href="#courses">
             <Icon src={BookOpen} style={{ width: '40px' }} />
-            <p className="partner-count">{partnerData?.courses_count}</p>
+            <p className="partner-count">
+              <FormattedNumber value={partnerData?.courses_count} />
+            </p>
             <span className="partner-title">
               <FormattedMessage
                 id="partners.snapShut.courses.text"
@@ -92,14 +94,14 @@ const PartnerHeader = ({ partnerData, loading }) => {
           <div className="icon-wrapper" href="#">
             <Icon src={Groups} style={{ width: '40px' }} />
             <span className="partner-count">
-              {partnerData?.students?.total_count}
+              <FormattedNumber value={partnerData?.students_count} />
             </span>
             <span className="partner-title">
               <FormattedMessage
                 id="partners.snapShut.learners.text"
                 defaultMessage="{learnerCount, plural, one {Lerner} other {Learners}}"
                 values={{
-                  learnerCount: partnerData?.students?.total_count,
+                  learnerCount: partnerData?.students_count,
                 }}
               />
             </span>
@@ -108,14 +110,14 @@ const PartnerHeader = ({ partnerData, loading }) => {
           <a className="icon-wrapper" href="#instructors">
             <Icon src={Instructors} style={{ width: '40px' }} />
             <span className="partner-count">
-              {partnerData?.instructors?.total_count}
+              <FormattedNumber value={partnerData?.instructors_count} />
             </span>
             <span className="partner-title">
               <FormattedMessage
                 id="partners.snapShut.instructors.text"
                 defaultMessage="{instructorCount, plural, one {Instructor} other {Instructors}}"
                 values={{
-                  instructorCount: partnerData?.instructors?.total_count,
+                  instructorCount: partnerData?.instructors_count,
                 }}
               />
             </span>

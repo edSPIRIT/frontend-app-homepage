@@ -3,10 +3,11 @@ import {
 } from '@edx/paragon';
 import { KeyboardArrowDown } from '@edx/paragon/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, FormattedNumber } from '@edx/frontend-platform/i18n';
 import { setSearchLanguageCodes } from '../../../../../redux/slice/searchQuerySlice';
 import {
-  codeToTitle, getLangCode,
+  codeToTitle,
+  getLangCode,
 } from '../../../../../utils/supportsLanguages';
 import useGetLanguagesFilter from '../../../../../hooks/useGetLanguagesFilter';
 
@@ -45,7 +46,9 @@ const LanguageFilter = () => {
               if (languageCodes.includes(getLangCode(e.target.value))) {
                 dispatch(
                   setSearchLanguageCodes(
-                    languageCodes.filter((lang) => lang !== getLangCode(e.target.value)),
+                    languageCodes.filter(
+                      (lang) => lang !== getLangCode(e.target.value),
+                    ),
                   ),
                 );
               } else {
@@ -68,10 +71,12 @@ const LanguageFilter = () => {
                   <MenuItem as={Form.Checkbox} value={item.name}>
                     {item.name}
                   </MenuItem>
-                  <span className="mr-3">{item.course_count}</span>
+                  <span className="mr-3">
+                    <FormattedNumber value={item.course_count} />
+                  </span>
                 </div>
               ))}
-              {(loading) && (
+              {loading && (
                 <div className="d-flex pl-3 justify-content-between">
                   <div className="d-flex ">
                     <Skeleton className="mr-2" width={18} height={18} />

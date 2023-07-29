@@ -14,7 +14,7 @@ import {
 } from '@edx/paragon';
 import { ArrowBack, ArrowForwardIos } from '@edx/paragon/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, FormattedNumber } from '@edx/frontend-platform/i18n';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { setSearchSubject } from '../../../../../redux/slice/searchQuerySlice';
@@ -97,22 +97,28 @@ const MobileSubjectFilter = () => {
               >
                 <Menu>
                   {subjectsFilterItems?.length === 0 && searchString && (
-                  <span className="text-gray-500 no-result">
-                    <FormattedMessage
-                      id="search.noResult.text"
-                      defaultMessage="We couldn't find any exact matches"
-                    />
-                  </span>
+                    <span className="text-gray-500 no-result">
+                      <FormattedMessage
+                        id="search.noResult.text"
+                        defaultMessage="We couldn't find any exact matches"
+                      />
+                    </span>
                   )}
                   {subjectsFilterItems?.map((item) => (
                     <div
                       className="d-flex justify-content-between align-items-center item-wrapper"
                       key={item.id}
                     >
-                      <MenuItem as={Form.Checkbox} value={item.title} className="pl-2">
+                      <MenuItem
+                        as={Form.Checkbox}
+                        value={item.title}
+                        className="pl-2"
+                      >
                         {item.title}
                       </MenuItem>
-                      <span className="pr-4">{item.courses_count}</span>
+                      <span className="pr-4">
+                        <FormattedNumber value={item.courses_count} />
+                      </span>
                     </div>
                   ))}
                   <div ref={ref} />

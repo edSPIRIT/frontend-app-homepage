@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import {
   FormattedMessage,
+  FormattedNumber,
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
@@ -126,15 +127,10 @@ const PartnersList = ({ intl }) => {
                 </Link>
               </div>
           )}
-          {/* temporary remove from ui */}
-          {/* <Link className="banner-link pb-5" to="/">
-            <span className="mr-2">How to become a partner</span>
-            <Icon src={ArrowForward} />
-          </Link> */}
           <div className="banner-icons-wrapper mt-4">
             <div className="icon-wrapper">
               <Icon src={BookOpen} style={{ width: '40px' }} />
-              <span>{partnersMetaData?.total_courses}</span>
+              <FormattedNumber value={partnersMetaData?.total_courses} />
               <p>
                 <FormattedMessage
                   id="partners.snapShut.courses.text"
@@ -147,7 +143,7 @@ const PartnersList = ({ intl }) => {
             </div>
             <div className="icon-wrapper">
               <Icon src={Groups} style={{ width: '40px' }} />
-              <span>{partnersMetaData?.total_learners}</span>
+              <FormattedNumber value={partnersMetaData?.total_learners} />
               <p>
                 <FormattedMessage
                   id="partners.snapShut.learners.text"
@@ -160,7 +156,7 @@ const PartnersList = ({ intl }) => {
             </div>
             <div className="icon-wrapper">
               <Icon src={Instructors} style={{ width: '40px' }} />
-              <span>{partnersMetaData?.total_instructors}</span>
+              <FormattedNumber value={partnersMetaData?.total_instructors} />
               <p>
                 <FormattedMessage
                   id="partners.snapShut.instructors.text"
