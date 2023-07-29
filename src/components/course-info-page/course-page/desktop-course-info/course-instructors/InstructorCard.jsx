@@ -35,7 +35,7 @@ const InstructorCard = ({ instructor }) => (
           <p>
             <FormattedMessage
               id="learners.text"
-              defaultMessage="{learnerCount, number} {learnerCount, plural, one {Lerner} other {Learners}}"
+              defaultMessage="{learnerCount, number} {learnerCount, plural, one {Learner} other {Learners}}"
               values={{
                 learnerCount: instructor?.students_count,
               }}

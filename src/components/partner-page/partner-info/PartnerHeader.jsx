@@ -99,7 +99,7 @@ const PartnerHeader = ({ partnerData, loading }) => {
             <span className="partner-title">
               <FormattedMessage
                 id="partners.snapShut.learners.text"
-                defaultMessage="{learnerCount, plural, one {Lerner} other {Learners}}"
+                defaultMessage="{learnerCount, plural, one {Learner} other {Learners}}"
                 values={{
                   learnerCount: partnerData?.students_count,
                 }}

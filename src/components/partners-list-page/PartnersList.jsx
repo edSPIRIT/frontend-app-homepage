@@ -147,7 +147,7 @@ const PartnersList = ({ intl }) => {
               <p>
                 <FormattedMessage
                   id="partners.snapShut.learners.text"
-                  defaultMessage="{learnerCount, plural, one {Lerner} other {Learners}}"
+                  defaultMessage="{learnerCount, plural, one {Learner} other {Learners}}"
                   values={{
                     learnerCount: partnersMetaData?.total_learners,
                   }}

@@ -105,7 +105,7 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                       <Icon src={Groups} className="mr-2" />
                       <FormattedMessage
                         id="learners.text"
-                        defaultMessage="{learnerCount, number} {learnerCount, plural, one {Lerner} other {Learners}}"
+                        defaultMessage="{learnerCount, number} {learnerCount, plural, one {Learner} other {Learners}}"
                         values={{
                           learnerCount: InstructorData?.students_count,
                         }}
