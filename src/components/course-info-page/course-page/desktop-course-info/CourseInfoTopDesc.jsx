@@ -15,6 +15,7 @@ import ShowMoreText from 'react-show-more-text';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
 import { setToastMessage } from '../../../../redux/slice/toastSlice';
+import getTransLangName from '../../../../utils/transcriptLang';
 import { getLangName } from '../../../../utils/supportsLanguages';
 
 const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
@@ -113,22 +114,22 @@ const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
                         id="tooltip-top"
                         className="course-tooltip"
                       >
-                        <FormattedMessage
-                          id="courseInfo.tooltip.transcript"
-                          defaultMessage="Transcript"
-                        />
+                        {courseMetaData?.transcript_langs?.map((transLang) => (
+                          <span key={transLang}>
+                            {getTransLangName(transLang)}
+                          </span>
+                        ))}
                       </Tooltip>
                     )}
                   >
                     <div className="d-flex justify-content-center align-items-center mr-4.5">
                       <Icon className="mr-2" src={PostOutline} />
-                      <span className="course-tooltip">
-                        {courseMetaData?.transcript_langs
-                          && courseMetaData?.transcript_langs?.map((transLang) => (
-                            <span key={transLang}>
-                              {getLangName(transLang)}
-                            </span>
-                          ))}
+                      <span className="course-tooltip transcript-title">
+                        {courseMetaData?.transcript_langs?.map((transLang) => (
+                          <span key={transLang}>
+                            {getTransLangName(transLang)}
+                          </span>
+                        ))}
                       </span>
                     </div>
                   </OverlayTrigger>
