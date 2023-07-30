@@ -16,7 +16,6 @@ import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
 import { setToastMessage } from '../../../../redux/slice/toastSlice';
 import getTransLangName from '../../../../utils/transcriptLang';
-import { getLangName } from '../../../../utils/supportsLanguages';
 
 const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
   const dispatch = useDispatch();
@@ -97,7 +96,7 @@ const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
                   <div className="d-flex justify-content-center align-items-center mr-4.5">
                     <Icon className="mr-2" src={Language} />
                     <span>
-                      {getLangName(
+                      {getTransLangName(
                         courseMetaData?.additional_metadata?.language,
                       )}
                     </span>
