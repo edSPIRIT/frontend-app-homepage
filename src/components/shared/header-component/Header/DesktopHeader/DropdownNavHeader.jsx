@@ -1,12 +1,31 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Button, Icon } from '@edx/paragon';
 import { ArrowForward, KeyboardArrowDown } from '@edx/paragon/icons';
 import { Link, useHistory } from 'react-router-dom';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { useDispatch } from 'react-redux';
+import { useCallback } from 'react';
 import useGetSubjects from '../../../../../hooks/useGetSubjects';
+import {
+  resetSearchFilters,
+  setSearchSubject,
+} from '../../../../../redux/slice/searchQuerySlice';
 
 const DropdownNavHeader = () => {
   const { subjects, coursesCounter } = useGetSubjects();
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const handleSubjectClick = useCallback(
+    (subject) => {
+      dispatch(resetSearchFilters());
+      dispatch(setSearchSubject([subject.title]));
+      history.push('/search');
+    },
+    [dispatch, history],
+  );
 
   return (
     <nav className="nav-items-wrapper">
@@ -38,7 +57,10 @@ const DropdownNavHeader = () => {
             <ul className="mb-4">
               {subjects?.map((subject) => (
                 <li key={subject.slug}>
-                  <a className="custom-link" href="/learn/architecture">
+                  <a
+                    className="custom-link"
+                    onClick={() => handleSubjectClick(subject)}
+                  >
                     {subject.title}
                   </a>
                 </li>
