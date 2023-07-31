@@ -15,12 +15,9 @@ import { ArrowBack, ArrowForwardIos } from '@edx/paragon/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage, FormattedNumber } from '@edx/frontend-platform/i18n';
 import { useEffect } from 'react';
-import {
-  codeToTitle,
-  getLangCode,
-} from '../../../../../utils/supportsLanguages';
 import { setSearchLanguageCodes } from '../../../../../redux/slice/searchQuerySlice';
 import useGetLanguagesFilter from '../../../../../hooks/useGetLanguagesFilter';
+import { codeToTitle, getLangCode } from '../../../../../utils/transcriptLang';
 
 const MobileLanguageFilter = () => {
   const [isOpen, open, close] = useToggle(false);
