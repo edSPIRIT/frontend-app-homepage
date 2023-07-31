@@ -1,9 +1,10 @@
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+/* eslint-disable react/prop-types */
+import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
 import { Skeleton } from '@edx/paragon';
-import PropTypes from 'prop-types';
 import ShowMoreText from 'react-show-more-text';
+import messages from '../../../../messages';
 
-const AboutCourse = ({ aboutCourse, loading }) => (
+const AboutCourse = ({ aboutCourse, loading, intl }) => (
   <div className="about-wrapper" id="about-course">
     <h2 className="mb-3">
       <FormattedMessage
@@ -16,8 +17,8 @@ const AboutCourse = ({ aboutCourse, loading }) => (
     ) : (
       <ShowMoreText
         lines={3}
-        more="Show more"
-        less="Show less"
+        more={intl.formatMessage(messages['showMore.text'])}
+        less={intl.formatMessage(messages['showLess.text'])}
         className="content-css"
         anchorClass="show-more-less-clickable"
         expanded={false}
@@ -31,12 +32,5 @@ const AboutCourse = ({ aboutCourse, loading }) => (
     )}
   </div>
 );
-AboutCourse.propTypes = {
-  aboutCourse: PropTypes.string,
-  loading: PropTypes.bool,
-};
-AboutCourse.defaultProps = {
-  aboutCourse: '',
-  loading: false,
-};
-export default AboutCourse;
+
+export default injectIntl(AboutCourse);

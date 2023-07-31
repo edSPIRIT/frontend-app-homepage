@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Icon, OverlayTrigger, Skeleton, Tooltip,
 } from '@edx/paragon';
@@ -10,14 +11,16 @@ import {
   HowToReg,
   Verified,
 } from '@edx/paragon/icons';
-import PropTypes from 'prop-types';
 import ShowMoreText from 'react-show-more-text';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
 import { setToastMessage } from '../../../../redux/slice/toastSlice';
-import getTransLangName from '../../../../utils/transcriptLang';
+import { getLangName } from '../../../../utils/transcriptLang';
+import messages from '../../../../messages';
 
-const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
+const CourseInfoTopDesc = ({
+  courseMetaData, loading, navTopRef, intl,
+}) => {
   const dispatch = useDispatch();
 
   return (
@@ -64,8 +67,8 @@ const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
             </div>
             <ShowMoreText
               lines={3}
-              more="Show more"
-              less="Show less"
+              more={intl.formatMessage(messages['showMore.text'])}
+              less={intl.formatMessage(messages['showLess.text'])}
               className="d-flex flex-column pt-3.5"
               anchorClass="show-more-less-clickable"
               expanded={false}
@@ -96,7 +99,7 @@ const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
                   <div className="d-flex justify-content-center align-items-center mr-4.5">
                     <Icon className="mr-2" src={Language} />
                     <span>
-                      {getTransLangName(
+                      {getLangName(
                         courseMetaData?.additional_metadata?.language,
                       )}
                     </span>
@@ -115,7 +118,7 @@ const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
                       >
                         {courseMetaData?.transcript_langs?.map((transLang) => (
                           <span key={transLang}>
-                            {getTransLangName(transLang)}
+                            {getLangName(transLang)}
                           </span>
                         ))}
                       </Tooltip>
@@ -126,7 +129,7 @@ const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
                       <span className="course-tooltip transcript-title">
                         {courseMetaData?.transcript_langs?.map((transLang) => (
                           <span key={transLang}>
-                            {getTransLangName(transLang)}
+                            {getLangName(transLang)}
                           </span>
                         ))}
                       </span>
@@ -163,71 +166,5 @@ const CourseInfoTopDesc = ({ courseMetaData, loading, navTopRef }) => {
     </div>
   );
 };
-CourseInfoTopDesc.propTypes = {
-  courseMetaData: {
-    additional_metadata: PropTypes.shape({
-      self_paced: PropTypes.bool,
-      total_enrollments: PropTypes.number,
-      last_modification_date: PropTypes.string,
-      course_created_at: PropTypes.string,
-      enrollment_start: PropTypes.string,
-      enrollment_end: PropTypes.string,
-      banner_image_url: PropTypes.string,
-      course_image_url: PropTypes.string,
-      language: PropTypes.string,
-      certificate_enabled: PropTypes.bool,
-      short_description: PropTypes.string,
-      org: PropTypes.string,
-      display_name: PropTypes.string,
-      effort: PropTypes.string,
-      // eslint-disable-next-line react/forbid-prop-types
-      pre_req_courses: PropTypes.array,
-      sections_count: PropTypes.number,
-      units_count: PropTypes.number,
-      subject: PropTypes.shape({
-        image: PropTypes.string,
-        popular: PropTypes.string,
-        slug: PropTypes.string,
-        title: PropTypes.string,
-      }),
-    }),
-    course_id: PropTypes.string,
-    course_slug: PropTypes.string,
-    created: PropTypes.string,
-    hours_effort_per_week_max: PropTypes.string,
-    hours_effort_per_week_min: PropTypes.string,
-    instructors: PropTypes.arrayOf(
-      PropTypes.shape({
-        bio: PropTypes.string,
-        courses: PropTypes.arrayOf(PropTypes.string),
-        facebook: PropTypes.string,
-        image: PropTypes.string,
-        linkedin: PropTypes.string,
-        name: PropTypes.string,
-        short_bio: PropTypes.string,
-        slug: PropTypes.string,
-        twitter: PropTypes.string,
-        website: PropTypes.string,
-      }),
-    ),
-    paid_course: PropTypes.shape({
-      active: PropTypes.bool,
-      course_id: PropTypes.string,
-      currency: PropTypes.string,
-      price: PropTypes.number,
-    }),
-    requirements: PropTypes.shape({}),
-    total_weeks_of_effort: PropTypes.any,
-    transcript_langs: PropTypes.shape({}),
-    what_you_will_learn: PropTypes.shape({}),
-  },
-  loading: PropTypes.bool,
-  navTopRef: PropTypes.element,
-};
-CourseInfoTopDesc.defaultProps = {
-  courseMetaData: [],
-  loading: false,
-  navTopRef: undefined,
-};
 
-export default CourseInfoTopDesc;
+export default injectIntl(CourseInfoTopDesc);

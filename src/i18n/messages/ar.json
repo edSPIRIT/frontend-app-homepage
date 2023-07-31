@@ -151,5 +151,7 @@
     "userCourseCard.courseInfo.button": "معلومات الدورة التدريبية",
     "userCourseCard.completed.text": "أحسنت! لقد أكملت هذه الدورة",
     "learner.text": "المتعلم",
-    "courseInfo.instructorPaced.text": "بوتيرة المدرب"
+    "courseInfo.instructorPaced.text": "بوتيرة المدرب",
+    "showMore.text": "أظهر المزيد",
+    "showLess.text": "تظهر أقل"
 }

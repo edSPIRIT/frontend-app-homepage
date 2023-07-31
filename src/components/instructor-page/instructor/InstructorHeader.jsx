@@ -90,8 +90,8 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                 </span>
                 <ShowMoreText
                   lines={3}
-                  more="Show more"
-                  less="Show less"
+                  more={intl.formatMessage(messages['showMore.text'])}
+                  less={intl.formatMessage(messages['showLess.text'])}
                   className="content-css long-bio-instructor"
                   anchorClass="show-more-less-clickable"
                   expanded={false}

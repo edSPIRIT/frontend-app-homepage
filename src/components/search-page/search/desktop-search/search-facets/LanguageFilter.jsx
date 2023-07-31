@@ -5,11 +5,8 @@ import { KeyboardArrowDown } from '@edx/paragon/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage, FormattedNumber } from '@edx/frontend-platform/i18n';
 import { setSearchLanguageCodes } from '../../../../../redux/slice/searchQuerySlice';
-import {
-  codeToTitle,
-  getLangCode,
-} from '../../../../../utils/supportsLanguages';
 import useGetLanguagesFilter from '../../../../../hooks/useGetLanguagesFilter';
+import { codeToTitle, getLangCode } from '../../../../../utils/transcriptLang';
 
 const LanguageFilter = () => {
   const languageCodes = useSelector(

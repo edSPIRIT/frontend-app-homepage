@@ -2,14 +2,20 @@
 import { Icon, Skeleton } from '@edx/paragon';
 import { BookOpen, Groups, Share } from '@edx/paragon/icons';
 import ShowMoreText from 'react-show-more-text';
-import { FormattedMessage, FormattedNumber } from '@edx/frontend-platform/i18n';
+import {
+  FormattedMessage,
+  FormattedNumber,
+  getLocale,
+  injectIntl,
+} from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
 import partnerBanner from '../../../assets/place-holders/cover-course-place-holder.svg';
 import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
 import { ReactComponent as Instructors } from '../../../assets/instructors.svg';
 import { setToastMessage } from '../../../redux/slice/toastSlice';
+import messages from '../../../messages';
 
-const PartnerHeader = ({ partnerData, loading }) => {
+const PartnerHeader = ({ partnerData, loading, intl }) => {
   const dispatch = useDispatch();
   return (
     <>
@@ -58,8 +64,8 @@ const PartnerHeader = ({ partnerData, loading }) => {
         </div>
         <ShowMoreText
           lines={3}
-          more="Show more"
-          less="Show less"
+          more={intl.formatMessage(messages['showMore.text'])}
+          less={intl.formatMessage(messages['showLess.text'])}
           className="content-css long-bio-instructor"
           anchorClass="show-more-less-clickable"
           expanded={false}
@@ -78,7 +84,10 @@ const PartnerHeader = ({ partnerData, loading }) => {
           <a className="icon-wrapper" href="#courses">
             <Icon src={BookOpen} style={{ width: '40px' }} />
             <p className="partner-count">
-              <FormattedNumber value={partnerData?.courses_count} />
+              <FormattedNumber
+                value={partnerData?.courses_count}
+                numberingSystem={getLocale() === 'ar' ? 'arab' : 'null'}
+              />
             </p>
             <span className="partner-title">
               <FormattedMessage
@@ -128,4 +137,4 @@ const PartnerHeader = ({ partnerData, loading }) => {
   );
 };
 
-export default PartnerHeader;
+export default injectIntl(PartnerHeader);

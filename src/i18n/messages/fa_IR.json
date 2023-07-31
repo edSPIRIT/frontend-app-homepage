@@ -153,5 +153,7 @@
     "banner.welcomeText": "متن خوش آمدگویی!",
     "banner.welcomeDesc": "پیام خوش آمد گویی در اینجا ظاهر می شود!",
     "homePage.exploreCourses.skeletonDesc": "ما مشتاقیم که به زودی محتوای شگفت انگیزی را برای شما به ارمغان بیاوریم!",
-    "courseInfo.instructorPaced.text": "به روند استاد"
+    "courseInfo.instructorPaced.text": "به روند استاد",
+    "showMore.text": "نمایش بیشتر",
+    "showLess.text": "نمایش کمتر"
 }

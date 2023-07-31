@@ -14,7 +14,7 @@ import {
   setSearchString,
   setSearchSubject,
 } from '../../../../redux/slice/searchQuerySlice';
-import { getLangName } from '../../../../utils/supportsLanguages';
+import { getLangName } from '../../../../utils/transcriptLang';
 
 const SearchFacets = () => {
   const filters = useSelector((state) => state.searchFilters);

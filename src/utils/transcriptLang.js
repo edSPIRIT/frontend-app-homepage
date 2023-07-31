@@ -186,6 +186,7 @@ const transcriptLangs = [
   { code: 'za', name: 'Zhuang' },
   { code: 'zu', name: 'Zulu' },
 ];
-const getTransLangName = (langCode) => transcriptLangs.find((lang) => lang.code === langCode)?.name;
-
-export default getTransLangName;
+export const getLangName = (langCode) => transcriptLangs.find((lang) => lang.code === langCode)?.name;
+export const getLangCode = (langName) => transcriptLangs.find((lang) => lang.name === langName)?.code;
+export const codeToTitle = (arrayLang) => arrayLang?.map((langCode) => getLangName(langCode));
+export const titleToCode = (arrayLang) => arrayLang?.map((langName) => getLangCode(langName));

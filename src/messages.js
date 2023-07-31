@@ -105,6 +105,14 @@ const messages = defineMessages({
     id: 'courseInfo.tab.instructors.text',
     defaultMessage: 'Instructors',
   },
+  'showMore.text': {
+    id: 'showMore.text',
+    defaultMessage: 'Show more',
+  },
+  'showLess.text': {
+    id: 'showLess.text',
+    defaultMessage: 'Show less',
+  },
   recent: {
     id: 'recent.text',
     defaultMessage: 'Recent',
