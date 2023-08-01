@@ -20,16 +20,10 @@ import {
 } from '@edx/frontend-platform/i18n';
 import { AppContext } from '@edx/frontend-platform/react';
 import useGetActiveLangs from '../../../../hooks/useGetActiveLangs';
-import { supportedLanguages } from '../../../../utils/supportsLanguages';
+import { getLangCode, getLangName } from '../../../../utils/supportsLanguages';
 
 const ChooseLanguage = () => {
   const { activeLangs } = useGetActiveLangs();
-  const getLangName = (languageCode) => {
-    const langSelected = supportedLanguages?.find(
-      (lang) => lang?.code === languageCode,
-    );
-    return langSelected?.name;
-  };
   const [value, setValue] = useState(getLangName(getLocale()));
   const [isOpen, open, close] = useToggle(false);
   const isMobile = useMediaQuery({ maxWidth: '768px' });
@@ -53,25 +47,6 @@ const ChooseLanguage = () => {
     return params; // TODO: Once the server returns the updated preferences object, return that.
   }
 
-  // async function postSetLang(code) {
-  //   const formData = new FormData();
-  //   formData.append('language', code);
-
-  //   await getAuthenticatedHttpClient().post(
-  //     `${getConfig().LMS_BASE_URL}/i18n/setlang/`,
-  //     formData,
-  //     {
-  //       headers: { 'X-Requested-With': 'XMLHttpRequest' },
-  //     },
-  //   );
-  // }
-  const getLangCode = (languageName) => {
-    const langSelected = supportedLanguages?.find(
-      (lang) => lang?.name === languageName,
-    );
-    return langSelected.code;
-  };
-
   const handleClick = (e) => {
     if (!authenticatedUser) {
       const url = new URL(getConfig().LMS_BASE_URL).hostname;
@@ -83,8 +58,6 @@ const ChooseLanguage = () => {
       }
     }
     patchPreferences(getLangCode(e.target.innerText));
-    // postSetLang(getLangCode(e.target.innerText));
-    // publish(LOCALE_CHANGED, getLocale());
     handleRtl();
   };
   return (
