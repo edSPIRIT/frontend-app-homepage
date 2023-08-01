@@ -3,7 +3,7 @@ import React from 'react';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
-import logoPlaceholder from '../../../assets/place-holders/org-logo-place-holder.svg';
+import logoPlaceholder from '../../../assets/place-holders/subject-place-holder.svg';
 import {
   resetSearchFilters,
   setSearchSubject,

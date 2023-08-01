@@ -7,6 +7,7 @@ import {
   resetSearchFilters,
   setSearchSubject,
 } from '../../../../redux/slice/searchQuerySlice';
+import logoPlaceholder from '../../../../assets/place-holders/subject-place-holder.svg';
 
 const PopularSubjects = ({ popularSubjects = [] }) => {
   const history = useHistory();
@@ -27,7 +28,7 @@ const PopularSubjects = ({ popularSubjects = [] }) => {
           key={subject.slug}
           onClick={() => handleSubjectClick(subject)}
         >
-          <img className="subject-img" src={subject.image} alt="subject" />
+          <img className="subject-img" src={subject.image ?? logoPlaceholder} alt="subject" />
           <h4 className="subject-title mr-2">{subject.title}</h4>
           <Icon className="subject-icon" src={ArrowForwardIos} />
         </div>
