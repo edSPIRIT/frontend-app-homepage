@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
 import coverPlaceholder from '../../../assets/place-holders/cover-course-place-holder.svg';
 import messages from '../../../messages';
+import { determineDirection } from '../../../utils/determineDirection';
 
 const CourseCardNew = ({ course, intl }) => {
   const isProgram = false;
@@ -34,7 +35,17 @@ const CourseCardNew = ({ course, intl }) => {
           fallbackLogoSrc={logoPlaceholder}
         />
         <div className="mt-4.5 px-4">
-          <h4 className="mb-1 course-title">
+          <h4
+            style={{
+              direction:
+                determineDirection(
+                  course?.additional_metadata?.display_name,
+                ) === 'rtl'
+                  ? 'rtl'
+                  : 'ltr',
+            }}
+            className="mb-1 course-title "
+          >
             {course?.additional_metadata?.display_name}
           </h4>
           <Link
