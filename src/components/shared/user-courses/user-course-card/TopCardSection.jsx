@@ -13,6 +13,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setToastMessage } from '../../../../redux/slice/toastSlice';
+import { determineDirection } from '../../../../utils/determineDirection';
 
 const TopCardSection = ({ courseInfo, openMoreBtnModal }) => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
@@ -37,7 +38,16 @@ const TopCardSection = ({ courseInfo, openMoreBtnModal }) => {
   return (
     <div onMouseLeave={() => setIsOpenDropDown(false)}>
       <div className="d-flex justify-content-between align-items-center mb-1 title-wrapper">
-        <h3 className="course-title">
+        <h3
+          style={{
+            direction:
+              determineDirection(courseInfo?.course_details?.course_name)
+              === 'rtl'
+                ? 'rtl'
+                : 'ltr',
+          }}
+          className="course-title"
+        >
           {courseInfo?.course_details?.course_name}
         </h3>
         {/* more vertical for mobile view display none in web */}

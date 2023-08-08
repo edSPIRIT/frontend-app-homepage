@@ -31,7 +31,8 @@
   .course-title {
     color: black;
     // margin-right: 85px;
-    max-width: 604px;
+    // max-width: 604px;
+      margin-right: 20px !important;
     @include line-break(1);
   }
   .second-title {
@@ -108,30 +109,30 @@
   opacity: 0.5;
   transform: unset !important;
 }
-.dark-background {
-  background-color: $primary-700;
-  h3 {
-    color: $white;
-  }
-  .org-title {
-    color: $light-300;
-  }
-  .course-date-title {
-    color: $light-500;
-  }
-  .progress {
-    background-color: $primary-700;
-    border-color: $gray-500;
-  }
-  .btn-outline-primary {
-    border-color: $light-400;
-    color: $white;
-  }
-  .btn-primary {
-    background-color: $white;
-    color: $primary-700;
-  }
-}
+// .dark-background {
+//   background-color: $primary-700;
+//   h3 {
+//     color: $white;
+//   }
+//   .org-title {
+//     color: $light-300;
+//   }
+//   .course-date-title {
+//     color: $light-500;
+//   }
+//   .progress {
+//     background-color: $primary-700;
+//     border-color: $gray-500;
+//   }
+//   .btn-outline-primary {
+//     border-color: $light-400;
+//     color: $white;
+//   }
+//   .btn-primary {
+//     background-color: $white;
+//     color: $primary-700;
+//   }
+// }
 .info-icon {
   color: $light-700;
   opacity: 0.5;
@@ -171,9 +172,8 @@
 @media (max-width: 1024px) {
   .user-card-course {
     .course-title {
-      max-width: 310px;
+      // max-width: 310px;
       @include line-break(1);
-      margin-right: 20px !important;
       font-size: $font-size-base-xl;
     }
     .org-title {
@@ -204,9 +204,8 @@
       justify-content: space-between;
     }
     .course-title {
-      max-width: 248px;
+      // max-width: 248px;
       @include line-break(1);
-      margin-right: 20px !important;
       font-size: $font-size-base-xl;
     }
     .view-course-btn {
@@ -240,7 +239,7 @@
       }
     }
     .course-title {
-      max-width: 279px;
+      // max-width: 279px;
       @include line-break(3);
     }
     .course-date-title {

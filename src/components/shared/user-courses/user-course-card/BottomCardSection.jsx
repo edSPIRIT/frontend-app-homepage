@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable react/prop-types */
 import {
@@ -18,16 +19,15 @@ const BottomCardSection = ({ courseInfo }) => {
   const { certificateData } = useGetCertificate(courseInfo);
   const courseCompleted = courseInfo?.progress?.complete_count > 0
     && courseInfo?.progress?.incomplete_count === 0;
-  const courseInprogress = courseInfo?.resume_course?.has_visited_course;
   const calcProgress = () => {
-    if (courseInprogress) {
-      const progress = (courseInfo?.progress?.complete_count
-          / (courseInfo?.progress?.complete_count
-            + courseInfo?.progress?.incomplete_count))
-        * 100;
-      return Math.round(progress);
+    const { complete_count, incomplete_count } = courseInfo?.progress;
+
+    if (complete_count === 0) {
+      return 0;
     }
-    return 0;
+
+    const progress = (complete_count / (complete_count + incomplete_count)) * 100;
+    return Math.round(progress);
   };
   const buttonStatus = () => {
     if (certificateData) {
