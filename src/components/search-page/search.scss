@@ -124,6 +124,13 @@
     }
   }
 }
+[dir='rtl'] {
+  .facets-wrapper {
+    .dropdown-menu {
+      inset: 0px 0px auto auto !important;
+    }
+  }
+}
 .badge-wrapper {
   .badge-btn {
     font-size: $font-size-base-xs;
