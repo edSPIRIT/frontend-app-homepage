@@ -31,6 +31,7 @@ import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg'
 import messages from '../../../messages';
 import { setToastMessage } from '../../../redux/slice/toastSlice';
 import { getLangName } from '../../../utils/supportsLanguages';
+import { formatDate } from '../../../utils/formatDate';
 
 const MobileCourseInfo = ({ intl }) => {
   const { slug } = useParams();
@@ -256,7 +257,7 @@ const MobileCourseInfo = ({ intl }) => {
                 ))}
               </p>
             </div>
-            {courseMetaData?.additional_metadata?.enrollment_start && (
+            {courseMetaData?.additional_metadata?.course_start && (
               <div className="d-flex flex-row align-items-center mb-2">
                 <Icon className="card-icon mr-2" src={Event} />
                 <p>
@@ -267,12 +268,14 @@ const MobileCourseInfo = ({ intl }) => {
                     />
                   </span>{' '}
                   <span>
-                    {`(${courseMetaData?.additional_metadata?.enrollment_start})`}
+                    {`(${formatDate(
+                      courseMetaData?.additional_metadata?.course_start,
+                    )})`}
                   </span>
                 </p>
               </div>
             )}
-            {courseMetaData?.additional_metadata?.enrollment_end && (
+            {courseMetaData?.additional_metadata?.course_end && (
               <div className="d-flex flex-row align-items-center mb-2">
                 <Icon className="card-icon mr-2" src={Event} />
                 <p>
@@ -284,7 +287,9 @@ const MobileCourseInfo = ({ intl }) => {
                     />
                   </span>{' '}
                   <span>
-                    {`(${courseMetaData?.additional_metadata?.enrollment_end})`}
+                    {`(${formatDate(
+                      courseMetaData?.additional_metadata?.course_end,
+                    )})`}
                   </span>
                 </p>
               </div>

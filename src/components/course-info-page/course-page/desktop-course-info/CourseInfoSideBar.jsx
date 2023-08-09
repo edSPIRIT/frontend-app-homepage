@@ -1,26 +1,25 @@
+/* eslint-disable react/prop-types */
 import { Card, Icon, Skeleton } from '@edx/paragon';
 import { Record, Event, WatchFilled } from '@edx/paragon/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
 import {
   FormattedMessage,
   FormattedNumber,
   injectIntl,
-  intlShape,
 } from '@edx/frontend-platform/i18n';
 import logoPlaceholder from '../../../../assets/place-holders/org-place-holder.svg';
 import coverPlaceholder from '../../../../assets/place-holders/cover-course-place-holder.svg';
 import CourseInfoButtonStatus from '../share/CourseInfoButtonStatus';
 import messages from '../../../../messages';
 import useGetInstructorCourses from '../../../../hooks/useGetCourseInstructors';
+import { formatDate } from '../../../../utils/formatDate';
 
 const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
   const { instructors, loading: instructorsLoading } = useGetInstructorCourses(
     courseMetaData?.course_slug,
   );
-
   return (
     <div className="course-info-side-wrapper">
       {loading ? (
@@ -90,7 +89,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
                   </p>
                 </div>
               )}
-              {courseMetaData?.additional_metadata?.enrollment_start && (
+              {courseMetaData?.additional_metadata?.course_start && (
                 <div className="d-flex flex-row align-items-center mb-2">
                   <Icon className="card-icon" src={Event} />
                   <p>
@@ -101,12 +100,12 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
                       />
                     </span>{' '}
                     <span>
-                      {`(${courseMetaData?.additional_metadata?.enrollment_start})`}
+                      {`(${formatDate(courseMetaData?.additional_metadata?.course_start)})`}
                     </span>
                   </p>
                 </div>
               )}
-              {courseMetaData?.additional_metadata?.enrollment_end && (
+              {courseMetaData?.additional_metadata?.course_end && (
                 <div className="d-flex flex-row align-items-center mb-2">
                   <Icon className="card-icon" src={Event} />
                   <p>
@@ -118,7 +117,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
                       />
                     </span>{' '}
                     <span>
-                      {`(${courseMetaData?.additional_metadata?.enrollment_end})`}
+                      {`(${formatDate(courseMetaData?.additional_metadata?.course_end)})`}
                     </span>
                   </p>
                 </div>
@@ -195,64 +194,5 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
       )}
     </div>
   );
-};
-CourseInfoSideBar.propTypes = {
-  courseMetaData: {
-    additional_metadata: PropTypes.shape({
-      self_paced: PropTypes.bool,
-      total_enrollments: PropTypes.number,
-      last_modification_date: PropTypes.string,
-      course_created_at: PropTypes.string,
-      enrollment_start: PropTypes.string,
-      enrollment_end: PropTypes.string,
-      banner_image_url: PropTypes.string,
-      course_image_url: PropTypes.string,
-      language: PropTypes.string,
-      certificate_enabled: PropTypes.bool,
-      short_description: PropTypes.string,
-      org: PropTypes.string,
-      display_name: PropTypes.string,
-      effort: PropTypes.string,
-      // eslint-disable-next-line react/forbid-prop-types
-      pre_req_courses: PropTypes.array,
-      sections_count: PropTypes.number,
-      units_count: PropTypes.number,
-    }),
-    course_id: PropTypes.string,
-    course_slug: PropTypes.string,
-    created: PropTypes.string,
-    hours_effort_per_week_max: PropTypes.string,
-    hours_effort_per_week_min: PropTypes.string,
-    instructors: PropTypes.arrayOf(
-      PropTypes.shape({
-        bio: PropTypes.string,
-        courses: PropTypes.arrayOf(PropTypes.string),
-        facebook: PropTypes.string,
-        image: PropTypes.string,
-        linkedin: PropTypes.string,
-        name: PropTypes.string,
-        short_bio: PropTypes.string,
-        slug: PropTypes.string,
-        twitter: PropTypes.string,
-        website: PropTypes.string,
-      }),
-    ),
-    paid_course: PropTypes.shape({
-      active: PropTypes.bool,
-      course_id: PropTypes.string,
-      currency: PropTypes.string,
-      price: PropTypes.number,
-    }),
-    requirements: PropTypes.shape({}),
-    total_weeks_of_effort: PropTypes.any,
-    transcript_langs: PropTypes.shape({}),
-    what_you_will_learn: PropTypes.shape({}),
-  },
-  loading: PropTypes.bool,
-  intl: intlShape.isRequired,
-};
-CourseInfoSideBar.defaultProps = {
-  courseMetaData: [],
-  loading: false,
 };
 export default injectIntl(CourseInfoSideBar);

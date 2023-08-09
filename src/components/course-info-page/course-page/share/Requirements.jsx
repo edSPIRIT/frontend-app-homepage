@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
 import {
   Button, Card, Icon, Skeleton,
 } from '@edx/paragon';
 import { Link, useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { ReactComponent as Warning } from '../../../../assets/warning.svg';
 import logoPlaceholder from '../../../../assets/place-holders/org-place-holder.svg';
@@ -134,56 +134,5 @@ const Requirements = ({ courseMetaData, loading }) => {
     </div>
   );
 };
-Requirements.propTypes = {
-  courseMetaData: {
-    additional_metadata: PropTypes.shape({
-      banner_image_url: PropTypes.string,
-      certificate_enabled: PropTypes.bool,
-      course_created_at: PropTypes.string,
-      course_image_url: PropTypes.string,
-      enrollment_end: PropTypes.string,
-      enrollment_start: PropTypes.string,
-      language: PropTypes.string,
-      last_modification_date: PropTypes.string,
-      org: PropTypes.string,
-      self_paced: PropTypes.bool,
-      short_description: PropTypes.string,
-      total_enrollments: PropTypes.number,
-    }),
-    course_id: PropTypes.string,
-    course_slug: PropTypes.string,
-    created: PropTypes.string,
-    hours_effort_per_week_max: PropTypes.string,
-    hours_effort_per_week_min: PropTypes.string,
-    instructors: PropTypes.arrayOf(
-      PropTypes.shape({
-        bio: PropTypes.string,
-        courses: PropTypes.arrayOf(PropTypes.string),
-        facebook: PropTypes.string,
-        image: PropTypes.string,
-        linkedin: PropTypes.string,
-        name: PropTypes.string,
-        short_bio: PropTypes.string,
-        slug: PropTypes.string,
-        twitter: PropTypes.string,
-        website: PropTypes.string,
-      }),
-    ),
-    paid_course: PropTypes.shape({
-      active: PropTypes.bool,
-      course_id: PropTypes.string,
-      currency: PropTypes.string,
-      price: PropTypes.number,
-    }),
-    requirements: PropTypes.shape({}),
-    total_weeks_of_effort: PropTypes.any,
-    transcript_langs: PropTypes.shape({}),
-    what_you_will_learn: PropTypes.shape({}),
-  },
-  loading: PropTypes.bool,
-};
-Requirements.defaultProps = {
-  courseMetaData: [],
-  loading: false,
-};
+
 export default Requirements;
