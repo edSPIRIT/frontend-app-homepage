@@ -155,5 +155,6 @@
     "homePage.exploreCourses.skeletonDesc": "ما مشتاقیم که به زودی محتوای شگفت انگیزی را برای شما به ارمغان بیاوریم!",
     "courseInfo.instructorPaced.text": "به روند استاد",
     "showMore.text": "نمایش بیشتر",
-    "showLess.text": "نمایش کمتر"
+    "showLess.text": "نمایش کمتر",
+    "notFountPage.text": "متاسفانه صفحه ی مورد نظر یافت نشد. لطفا به صفحه ی اصلی بازگردید."
 }

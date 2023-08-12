@@ -1,5 +1,5 @@
 export TRANSIFEX_RESOURCE = frontend-app-homepage
-supported_langs = "ar,fr,es_419,zh_CN,pt,it,de,uk,ru,hi,fr_CA,it_IT,pt_PT,de_DE,fa_IR"
+supported_langs = "ar,fr,es_419,zh_CN,pt,it,de,uk,ru,hi,fr_CA,it_IT,pt_PT,de_DE,fa_IR,tr"
 
 
 transifex_utils = ./node_modules/.bin/transifex-utils.js

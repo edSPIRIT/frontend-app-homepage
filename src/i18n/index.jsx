@@ -21,6 +21,7 @@ import frcaMessages from './messages/fr_CA.json';
 import ititMessages from './messages/it_IT.json';
 import ptptMessages from './messages/pt_PT.json';
 import dedeMessages from './messages/de_DE.json';
+import trtrMessages from './messages/tr.json';
 
 const messages = {
   ar: arMessages,
@@ -46,6 +47,8 @@ const messages = {
   'it-it': ititMessages,
   'pt-pt': ptptMessages,
   'de-de': dedeMessages,
+  'tr-tr': trtrMessages,
+  tr: trtrMessages,
 };
 
 export default messages;
