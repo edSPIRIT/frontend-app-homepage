@@ -12,7 +12,7 @@ import useGetUserProfile from '../../../../../hooks/useGetUserProfile';
 const ProfileDropdown = () => {
   const { authenticatedUser } = useContext(AppContext);
   const { userProfile, loading: userProfileLoading } = useGetUserProfile();
-
+  const baseUrl = new URL(getConfig().LMS_BASE_URL).hostname;
   const renderAvatar = () => {
     if (userProfileLoading) {
       return <Icon src={Avatar} />;
@@ -35,22 +35,14 @@ const ProfileDropdown = () => {
       <Dropdown.Toggle iconAfter={ArrowDropDown} iconBefore={renderAvatar} />
       <Dropdown.Menu alignRight>
         <Dropdown.Item
-          href={`https://apps.${getConfig().LMS_BASE_URL.replace(
-            'https://',
-            '',
-          )}/profile/u/${authenticatedUser?.username}`}
+          href={`https://apps.${baseUrl}/profile/u/${authenticatedUser?.username}`}
         >
           <FormattedMessage
             id="header.dropdownOption.profile"
             defaultMessage="Profile"
           />
         </Dropdown.Item>
-        <Dropdown.Item
-          href={`https://apps.${getConfig().LMS_BASE_URL.replace(
-            'https://',
-            '',
-          )}/account`}
-        >
+        <Dropdown.Item href={`https://apps.${baseUrl}/account`}>
           <FormattedMessage
             id="header.dropdownOption.account"
             defaultMessage="Account"
@@ -62,12 +54,7 @@ const ProfileDropdown = () => {
             defaultMessage="Dashboard"
           />
         </Dropdown.Item>
-        <Dropdown.Item
-          href={`https://billing.${getConfig().LMS_BASE_URL.replace(
-            'https://',
-            '',
-          )}`}
-        >
+        <Dropdown.Item href={`https://billing.${baseUrl}`}>
           <FormattedMessage
             id="header.dropdownOption.orderHistory"
             defaultMessage="Order History"

@@ -7,6 +7,7 @@ import useEnrollClickHandler from '../../../../../../hooks/useEnrollClickHandler
 import useGetEnrollmentStatus from '../../../../../../hooks/useGetEnrollmentStatus';
 
 const AuthenticatedButtonStatus = ({ courseMetaData }) => {
+  const baseUrl = new URL(getConfig().LMS_BASE_URL).hostname;
   const { enrollmentStatus, loading } = useGetEnrollmentStatus(courseMetaData?.course_id);
   const {
     enrollClickHandler,
@@ -26,10 +27,7 @@ const AuthenticatedButtonStatus = ({ courseMetaData }) => {
         variant="primary"
         className="enroll-btn"
         loading={enrollLoading}
-        href={`https://apps.${getConfig().LMS_BASE_URL.replace(
-          'https://',
-          '',
-        )}/learning/course/${courseMetaData?.course_id}/home`}
+        href={`https://apps.${baseUrl}/learning/course/${courseMetaData?.course_id}/home`}
         target="_blank"
         rel="noreferrer"
       >
