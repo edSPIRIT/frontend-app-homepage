@@ -14,6 +14,7 @@ import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg'
 import { ReactComponent as Instructors } from '../../../assets/instructors.svg';
 import { setToastMessage } from '../../../redux/slice/toastSlice';
 import messages from '../../../messages';
+import SharedToastMessage from '../../shared/base-components/SharedToastMessage';
 
 const PartnerHeader = ({ partnerData, loading, intl }) => {
   const dispatch = useDispatch();
@@ -35,9 +36,7 @@ const PartnerHeader = ({ partnerData, loading, intl }) => {
             src={Share}
             onClick={() => {
               navigator.clipboard.writeText(window.location.href);
-              dispatch(
-                setToastMessage('The link has been saved to your clipboard'),
-              );
+              dispatch(setToastMessage(<SharedToastMessage />));
             }}
           />
         </div>
@@ -56,9 +55,7 @@ const PartnerHeader = ({ partnerData, loading, intl }) => {
             src={Share}
             onClick={() => {
               navigator.clipboard.writeText(window.location.href);
-              dispatch(
-                setToastMessage('The link has been saved to your clipboard'),
-              );
+              dispatch(setToastMessage(<SharedToastMessage />));
             }}
           />
         </div>

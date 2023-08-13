@@ -100,7 +100,9 @@ const Requirements = ({ courseMetaData, loading }) => {
                             ?? logoPlaceholder
                           }
                         variant="top"
-                        alt=""
+                        alt="logo"
+                        fallbackSrc={coverPlaceholder}
+                        fallbackLogoSrc={logoPlaceholder}
                       />
                       <div className="my-4.5 px-4">
                         <h4 className="mb-1 course-title">

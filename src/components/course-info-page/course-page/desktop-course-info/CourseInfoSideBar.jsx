@@ -100,7 +100,9 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
                       />
                     </span>{' '}
                     <span>
-                      {`(${formatDate(courseMetaData?.additional_metadata?.course_start)})`}
+                      {`(${formatDate(
+                        courseMetaData?.additional_metadata?.course_start,
+                      )})`}
                     </span>
                   </p>
                 </div>
@@ -117,7 +119,9 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
                       />
                     </span>{' '}
                     <span>
-                      {`(${formatDate(courseMetaData?.additional_metadata?.course_end)})`}
+                      {`(${formatDate(
+                        courseMetaData?.additional_metadata?.course_end,
+                      )})`}
                     </span>
                   </p>
                 </div>
@@ -126,22 +130,30 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
                 <div className="d-flex flex-row align-items-center mb-3">
                   <Icon className="card-icon" src={WatchFilled} />
                   <p className="color-black">
-                    <FormattedMessage
-                      id="courseCard.weeks.text"
-                      defaultMessage="{weekCount, number} {weekCount, plural, one {Week} other {Weeks}}"
-                      values={{
-                        weekCount: courseMetaData?.total_weeks_of_effort,
-                      }}
-                    />
+                    <span className="mr-1">
+                      <FormattedMessage
+                        id="courseCard.weeks.text"
+                        defaultMessage="{weekCount, number} {weekCount, plural, one {Week} other {Weeks}}"
+                        values={{
+                          weekCount: courseMetaData?.total_weeks_of_effort,
+                        }}
+                      />
+                    </span>
                     {courseMetaData?.hours_effort_per_week_min
                       && courseMetaData?.hours_effort_per_week_max && (
                         <span className="text-gray-700">
-                          {' '}
-                          {`(${courseMetaData?.hours_effort_per_week_min}-${
-                            courseMetaData?.hours_effort_per_week_max
-                          } ${intl.formatMessage(
+                          (
+                          <FormattedNumber
+                            value={courseMetaData?.hours_effort_per_week_min}
+                          />
+                          -
+                          <FormattedNumber
+                            value={courseMetaData?.hours_effort_per_week_max}
+                          />{' '}
+                          {intl.formatMessage(
                             messages['courseCard.hoursPerWeek.text'],
-                          )})`}
+                          )}
+                          )
                         </span>
                     )}
                   </p>
@@ -187,7 +199,9 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
               />
             </span>
             <span>
-              {courseMetaData?.additional_metadata?.last_modification_date}
+              {formatDate(
+                courseMetaData?.additional_metadata?.last_modification_date,
+              )}
             </span>
           </p>
         )

@@ -19,6 +19,7 @@ import userAvatar from '../../../assets/place-holders/user-placeholder.svg';
 import InstructorSkeleton from './InstructorSkeleton';
 import messages from '../../../messages';
 import { setToastMessage } from '../../../redux/slice/toastSlice';
+import SharedToastMessage from '../../shared/base-components/SharedToastMessage';
 
 const InstructorHeader = ({ InstructorData, loading, intl }) => {
   const history = useHistory();
@@ -61,11 +62,7 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                   className="instructor-share-icon-mobile d-none"
                   onClick={() => {
                     navigator.clipboard.writeText(window.location.href);
-                    dispatch(
-                      setToastMessage(
-                        'The link has been saved to your clipboard',
-                      ),
-                    );
+                    dispatch(setToastMessage(<SharedToastMessage />));
                   }}
                 />
               </div>
@@ -77,11 +74,7 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                     className="instructor-share-icon"
                     onClick={() => {
                       navigator.clipboard.writeText(window.location.href);
-                      dispatch(
-                        setToastMessage(
-                          'The link has been saved to your clipboard',
-                        ),
-                      );
+                      dispatch(setToastMessage(<SharedToastMessage />));
                     }}
                   />
                 </div>
@@ -120,7 +113,6 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                           courseCount: InstructorData?.courses?.length,
                         }}
                       />
-
                     </div>
                   </div>
                   <div className="social-container">

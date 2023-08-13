@@ -11,10 +11,12 @@ import {
   WatchFilled,
   Event,
   Record,
+  InfoOutline,
 } from '@edx/paragon/icons';
 import { getConfig } from '@edx/frontend-platform';
 import {
   FormattedMessage,
+  FormattedNumber,
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
@@ -30,12 +32,15 @@ import partnerBanner from '../../../assets/place-holders/cover-course-place-hold
 import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
 import messages from '../../../messages';
 import { setToastMessage } from '../../../redux/slice/toastSlice';
-import { getLangName } from '../../../utils/supportsLanguages';
 import { formatDate } from '../../../utils/formatDate';
+import SharedToastMessage from '../../shared/base-components/SharedToastMessage';
+import useGetInstructorCourses from '../../../hooks/useGetCourseInstructors';
+import { getLangName } from '../../../utils/transcriptLang';
 
 const MobileCourseInfo = ({ intl }) => {
   const { slug } = useParams();
   const { courseMetaData, loading } = useGetCourseMetaData(slug);
+  const { instructors } = useGetInstructorCourses(slug);
   const isTablet = useMediaQuery({ minWidth: '600px', maxWidth: '768px' });
   const dispatch = useDispatch();
 
@@ -132,7 +137,7 @@ const MobileCourseInfo = ({ intl }) => {
             </div>
           </div>
           <div className="d-flex justify-content-between custom-container">
-            <h1 className="mb-1">
+            <h1 className="mb-2">
               {courseMetaData?.additional_metadata?.display_name}
             </h1>
             <Icon
@@ -140,9 +145,7 @@ const MobileCourseInfo = ({ intl }) => {
               src={Share}
               onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
-                dispatch(
-                  setToastMessage('The link has been saved to your clipboard'),
-                );
+                dispatch(setToastMessage(<SharedToastMessage />));
               }}
             />
           </div>
@@ -166,9 +169,7 @@ const MobileCourseInfo = ({ intl }) => {
                 src={Share}
                 onClick={() => {
                   navigator.clipboard.writeText(window.location.href);
-                  dispatch(
-                    setToastMessage('The link has been saved to your clipboard'),
-                  );
+                  dispatch(setToastMessage(<SharedToastMessage />));
                 }}
               />
             </div>
@@ -182,9 +183,7 @@ const MobileCourseInfo = ({ intl }) => {
               src={Share}
               onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
-                dispatch(
-                  setToastMessage('The link has been saved to your clipboard'),
-                );
+                dispatch(setToastMessage(<SharedToastMessage />));
               }}
             />
           </div>
@@ -243,20 +242,22 @@ const MobileCourseInfo = ({ intl }) => {
                 />
               </div>
             )}
-            <div className="d-flex align-items-center mb-2">
-              <Icon className="mr-2" src={Record} />
-              <p className="program-instructors-wrapper">
-                {courseMetaData?.instructors?.map((ins) => (
-                  <Link
-                    key={ins.name}
-                    className="instructor-title"
-                    to={`/instructor/${ins.slug}`}
-                  >
-                    {ins.name}
-                  </Link>
-                ))}
-              </p>
-            </div>
+            {instructors?.length && (
+              <div className="d-flex align-items-center mb-2">
+                <Icon className="mr-2" src={Record} />
+                <p className="program-instructors-wrapper">
+                  {instructors?.map((ins) => (
+                    <Link
+                      key={ins.name}
+                      className="instructor-title"
+                      to={`/instructor/${ins.slug}`}
+                    >
+                      {ins.name}
+                    </Link>
+                  ))}
+                </p>
+              </div>
+            )}
             {courseMetaData?.additional_metadata?.course_start && (
               <div className="d-flex flex-row align-items-center mb-2">
                 <Icon className="card-icon mr-2" src={Event} />
@@ -295,29 +296,75 @@ const MobileCourseInfo = ({ intl }) => {
               </div>
             )}
             {courseMetaData?.total_weeks_of_effort > 0 && (
-              <div className="d-flex flex-row align-items-center 2">
+              <div className="d-flex flex-row align-items-center mb-2">
                 <Icon className="card-icon mr-2" src={WatchFilled} />
                 <p className="color-black">
-                  <FormattedMessage
-                    id="courseCard.weeks.text"
-                    defaultMessage="{weekCount, number} {weekCount, plural, one {Week} other {Weeks}}"
-                    values={{
-                      weekCount: courseMetaData?.total_weeks_of_effort,
-                    }}
-                  />
+                  <span className="mr-1">
+                    <FormattedMessage
+                      id="courseCard.weeks.text"
+                      defaultMessage="{weekCount, number} {weekCount, plural, one {Week} other {Weeks}}"
+                      values={{
+                        weekCount: courseMetaData?.total_weeks_of_effort,
+                      }}
+                    />
+                  </span>
                   {courseMetaData?.hours_effort_per_week_min
                     && courseMetaData?.hours_effort_per_week_max && (
                       <span className="text-gray-700">
-                        {' '}
-                        {`(${courseMetaData?.hours_effort_per_week_min}-${
-                          courseMetaData?.hours_effort_per_week_max
-                        } ${intl.formatMessage(
+                        (
+                        <FormattedNumber
+                          value={courseMetaData?.hours_effort_per_week_min}
+                        />
+                        -
+                        <FormattedNumber
+                          value={courseMetaData?.hours_effort_per_week_max}
+                        />{' '}
+                        {intl.formatMessage(
                           messages['courseCard.hoursPerWeek.text'],
-                        )})`}
+                        )}
+                        )
                       </span>
                   )}
                 </p>
               </div>
+            )}
+            {courseMetaData?.additional_metadata?.total_enrollments && (
+              <div className="d-flex flex-row align-items-center mb-2">
+                <Icon className="card-icon mr-2" src={InfoOutline} />
+                {courseMetaData?.additional_metadata?.total_enrollments && (
+                  <p>
+                    <span className="mr-1">
+                      <FormattedNumber
+                        value={
+                          courseMetaData?.additional_metadata?.total_enrollments
+                        }
+                      />
+                    </span>
+                    <span className="font-sm">
+                      <FormattedMessage
+                        id="courseInfo.alreadyEnrolled.text"
+                        defaultMessage="already enrolled!"
+                      />
+                    </span>{' '}
+                  </p>
+                )}
+              </div>
+            )}
+            {courseMetaData?.additional_metadata?.last_modification_date && (
+              <p className="d-flex flex-row align-items-center mb-2">
+                <Icon className="card-icon mr-2" src={Event} />
+                <span className="mr-1">
+                  <FormattedMessage
+                    id="courseInfo.lastUpdateOn.text"
+                    defaultMessage="Last update on"
+                  />
+                </span>
+                <span>
+                  {formatDate(
+                    courseMetaData?.additional_metadata?.last_modification_date,
+                  )}
+                </span>
+              </p>
             )}
           </div>
         </div>

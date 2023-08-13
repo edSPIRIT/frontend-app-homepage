@@ -32,7 +32,7 @@ const useGetTopRecentCourses = (sortState) => {
       if (coursesData?.length >= 3 && coursesData?.length < 6) {
         return coursesData.slice(0, 3);
       }
-      if (coursesData?.length > 6) {
+      if (coursesData?.length >= 6) {
         return coursesData.slice(0, 6);
       }
       return [];

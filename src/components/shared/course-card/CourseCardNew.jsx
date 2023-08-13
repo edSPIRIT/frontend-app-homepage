@@ -7,6 +7,7 @@ import {
 import { getConfig } from '@edx/frontend-platform';
 import {
   FormattedMessage,
+  FormattedNumber,
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
@@ -91,23 +92,31 @@ const CourseCardNew = ({ course, intl }) => {
             {course?.total_weeks_of_effort > 0 && (
               <div className="d-flex flex-row align-items-center mb-3">
                 <Icon className="card-icon" src={WatchFilled} />
-                <p className="text-black">
-                  <FormattedMessage
-                    id="courseCard.weeks.text"
-                    defaultMessage="{weekCount, number} {weekCount, plural, one {Week} other {Weeks}}"
-                    values={{
-                      weekCount: course?.total_weeks_of_effort,
-                    }}
-                  />
+                <p className="color-black">
+                  <span className="mr-1">
+                    <FormattedMessage
+                      id="courseCard.weeks.text"
+                      defaultMessage="{weekCount, number} {weekCount, plural, one {Week} other {Weeks}}"
+                      values={{
+                        weekCount: course?.total_weeks_of_effort,
+                      }}
+                    />
+                  </span>
                   {course?.hours_effort_per_week_min
                     && course?.hours_effort_per_week_max && (
                       <span className="text-gray-700">
-                        {' '}
-                        {`(${course?.hours_effort_per_week_min}-${
-                          course?.hours_effort_per_week_max
-                        } ${intl.formatMessage(
+                        (
+                        <FormattedNumber
+                          value={course?.hours_effort_per_week_min}
+                        />
+                        -
+                        <FormattedNumber
+                          value={course?.hours_effort_per_week_max}
+                        />{' '}
+                        {intl.formatMessage(
                           messages['courseCard.hoursPerWeek.text'],
-                        )})`}
+                        )}
+                        )
                       </span>
                   )}
                 </p>

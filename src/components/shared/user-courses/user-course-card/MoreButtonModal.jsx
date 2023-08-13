@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import { setToastMessage } from '../../../../redux/slice/toastSlice';
 import { ReactComponent as Learning } from '../../../../assets/learning-icon.svg';
 import useGetCertificate from '../../../../hooks/useGetCertificate';
+import SharedToastMessage from '../../base-components/SharedToastMessage';
 
 const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
   const queryClient = useQueryClient();
@@ -78,16 +79,21 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
                   courseInfo?.course_metadata?.slug
                 }`,
               );
+              dispatch(setToastMessage(<SharedToastMessage />));
+              onClose();
             }}
           >
             <Icon
               src={Share}
               className="mr-2 text-gray-500"
               onClick={() => {
-                navigator.clipboard.writeText(window.location.href);
-                dispatch(
-                  setToastMessage('The link has been saved to your clipboard'),
+                navigator.clipboard.writeText(
+                  `${getConfig().BASE_URL}homepage/course/${
+                    courseInfo?.course_metadata?.slug
+                  }`,
                 );
+                dispatch(setToastMessage(<SharedToastMessage />));
+                onClose();
               }}
             />
             <FormattedMessage

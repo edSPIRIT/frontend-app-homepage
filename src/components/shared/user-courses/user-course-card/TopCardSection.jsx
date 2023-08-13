@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setToastMessage } from '../../../../redux/slice/toastSlice';
 import { determineDirection } from '../../../../utils/determineDirection';
+import SharedToastMessage from '../../base-components/SharedToastMessage';
 
 const TopCardSection = ({ courseInfo, openMoreBtnModal }) => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
@@ -83,9 +84,7 @@ const TopCardSection = ({ courseInfo, openMoreBtnModal }) => {
                     courseInfo?.course_metadata?.slug
                   }`,
                 );
-                dispatch(
-                  setToastMessage('The link has been saved to your clipboard'),
-                );
+                dispatch(setToastMessage(<SharedToastMessage />));
               }}
             />
             <Dropdown

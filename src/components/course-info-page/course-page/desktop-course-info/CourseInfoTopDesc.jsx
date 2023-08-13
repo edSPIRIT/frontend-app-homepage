@@ -17,6 +17,7 @@ import { useDispatch } from 'react-redux';
 import { setToastMessage } from '../../../../redux/slice/toastSlice';
 import { getLangName } from '../../../../utils/transcriptLang';
 import messages from '../../../../messages';
+import SharedToastMessage from '../../../shared/base-components/SharedToastMessage';
 
 const CourseInfoTopDesc = ({
   courseMetaData, loading, navTopRef, intl,
@@ -50,11 +51,7 @@ const CourseInfoTopDesc = ({
                   src={Share}
                   onClick={() => {
                     navigator.clipboard.writeText(window.location.href);
-                    dispatch(
-                      setToastMessage(
-                        'The link has been saved to your clipboard',
-                      ),
-                    );
+                    dispatch(setToastMessage(<SharedToastMessage />));
                   }}
                 />
               </div>
