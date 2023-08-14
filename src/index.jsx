@@ -33,6 +33,7 @@ import PartnerInfo from './components/partner-page/PartnerInfo';
 import store from './redux/store/store';
 import Layout from './components/shared/layout-wrapper/Layout';
 import EnrollmentList from './components/dashboard/EnrollmentList';
+import MobileProfile from './components/shared/header-component/Header/MobileHeader/MobileProfile';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -54,6 +55,9 @@ subscribe(APP_READY, () => {
             <Switch>
               <Route exact path="/home">
                 <Home />
+              </Route>
+              <Route exact path="/profile">
+                <MobileProfile />
               </Route>
               <Route exact path="/overview">
                 {/* <ProtectedRoute> */}

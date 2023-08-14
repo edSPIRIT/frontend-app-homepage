@@ -18,6 +18,8 @@ const Layout = ({ children }) => {
   const isLoading = useManageLocale();
   useUpdateBodyClassName();
 
+  const isProfileRoute = location.pathname === '/profile';
+
   useEffect(() => {
     setHasPriceWrapper(location.pathname.includes('/course'));
   }, [location]);
@@ -41,7 +43,7 @@ const Layout = ({ children }) => {
       >
         <Header />
         <main className="main-container">{children}</main>
-        <FooterSection />
+        {!isProfileRoute && <FooterSection />}
       </div>
     </Suspense>
   );

@@ -1,9 +1,7 @@
-import { getConfig } from '@edx/frontend-platform';
 import {
   Icon, IconButton, Nav, Skeleton,
 } from '@edx/paragon';
-import React, { useContext, useEffect, useState } from 'react';
-import { AppContext } from '@edx/frontend-platform/react';
+import React, { useEffect, useState } from 'react';
 import { Search } from '@edx/paragon/icons';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
@@ -23,7 +21,6 @@ import { setSearchModal } from '../../../../redux/slice/searchModalSlice';
 import useGetConfig from '../../../../hooks/useGetConfig';
 
 const MobileHeader = () => {
-  const { authenticatedUser } = useContext(AppContext);
   // const isNavbarVisible = useHideNavbarOnScroll();
   const { headerLogo, loading } = useGetConfig();
   const [ActiveLink, setActiveLink] = useState(null);
@@ -32,6 +29,7 @@ const MobileHeader = () => {
   useEffect(() => {
     setActiveLink(location.pathname);
   }, [location.pathname]);
+
   return (
     <>
       <div className="hidden-top-mobile-header" />
@@ -57,6 +55,7 @@ const MobileHeader = () => {
           onClick={() => dispatch(setSearchModal(true))}
         />
       </div>
+
       <Nav
         variant="pills"
         className="d-flex justify-content-between w-100 mobile-bottom-nav-wrapper"
@@ -112,10 +111,8 @@ const MobileHeader = () => {
         <Nav.Item>
           <Nav.Link
             className="d-flex flex-column align-items-center"
-            href={`https://apps.${getConfig().LMS_BASE_URL.replace(
-              'https://',
-              '',
-            )}/profile/u/${authenticatedUser?.username}`}
+            to="/profile"
+            as={NavLink}
           >
             <Icon
               src={ActiveLink === '/profile' ? ProfileNavColored : ProfileNav}

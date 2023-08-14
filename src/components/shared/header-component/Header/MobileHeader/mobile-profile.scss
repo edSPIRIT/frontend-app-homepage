@@ -1,0 +1,22 @@
+.profile-header {
+  background-color: $light-200;
+  padding: 10px 24px;
+  width: 100%;
+  .email-title {
+    font-size: $font-size-base-sm;
+    font-weight: 700;
+    margin-right: auto;
+    @include line-break(1);
+  }
+  .profile-btn-wrapper{
+    .btn{
+        width: 100%;
+    }
+  }
+}
+.profile-nav-items{
+    .nav-link{
+        font-weight: normal;
+        padding: 8px 0px;
+    }
+}
