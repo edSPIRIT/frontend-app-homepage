@@ -8,12 +8,11 @@ import { getConfig } from '@edx/frontend-platform';
 import { ReactComponent as Avatar } from '../../../../../assets/header-avatar.svg';
 import { handleLogout } from '../../../../../utils/handleRedirect';
 import useGetUserProfile from '../../../../../hooks/useGetUserProfile';
-import useGetConfig from '../../../../../hooks/useGetConfig';
 
 const ProfileDropdown = () => {
   const { authenticatedUser } = useContext(AppContext);
   const { userProfile, loading: userProfileLoading } = useGetUserProfile();
-  const { hasBilling } = useGetConfig();
+  // const { hasBilling } = useGetConfig();
   const baseUrl = new URL(getConfig().LMS_BASE_URL).hostname;
   const renderAvatar = () => {
     if (userProfileLoading) {
@@ -56,7 +55,7 @@ const ProfileDropdown = () => {
             defaultMessage="Dashboard"
           />
         </Dropdown.Item>
-        <Dropdown.Item href={`https://billing.${baseUrl}`} disabled={!hasBilling}>
+        <Dropdown.Item href={`https://billing.${baseUrl}`}>
           <FormattedMessage
             id="header.dropdownOption.orderHistory"
             defaultMessage="Order History"

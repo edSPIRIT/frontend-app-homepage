@@ -5,7 +5,7 @@ const useGetConfig = () => {
   const fetchConfig = async ({ baseURL, instanceConfigAPIUrl }) => {
     const response = await fetch(`${baseURL}${instanceConfigAPIUrl}`);
     const result = await response.json();
-    return result;
+    return JSON.parse(result)?.logo;
   };
 
   const { data, isLoading, isError } = useQuery(
@@ -21,8 +21,7 @@ const useGetConfig = () => {
   );
 
   return {
-    headerLogo: data?.logo,
-    hasBilling: data?.has_billing,
+    headerLogo: data,
     loading: isLoading,
     isError,
   };
