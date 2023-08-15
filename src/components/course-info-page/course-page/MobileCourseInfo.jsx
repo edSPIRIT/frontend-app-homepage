@@ -15,6 +15,7 @@ import {
 } from '@edx/paragon/icons';
 import { getConfig } from '@edx/frontend-platform';
 import {
+  FormattedDate,
   FormattedMessage,
   FormattedNumber,
   injectIntl,
@@ -32,7 +33,6 @@ import partnerBanner from '../../../assets/place-holders/cover-course-place-hold
 import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
 import messages from '../../../messages';
 import { setToastMessage } from '../../../redux/slice/toastSlice';
-import { formatDate } from '../../../utils/formatDate';
 import SharedToastMessage from '../../shared/base-components/SharedToastMessage';
 import useGetInstructorCourses from '../../../hooks/useGetCourseInstructors';
 import { getLangName } from '../../../utils/transcriptLang';
@@ -242,7 +242,7 @@ const MobileCourseInfo = ({ intl }) => {
                 />
               </div>
             )}
-            {instructors?.length && (
+            {instructors?.length > 0 && (
               <div className="d-flex align-items-center mb-2">
                 <Icon className="mr-2" src={Record} />
                 <p className="program-instructors-wrapper">
@@ -262,16 +262,21 @@ const MobileCourseInfo = ({ intl }) => {
               <div className="d-flex flex-row align-items-center mb-2">
                 <Icon className="card-icon mr-2" src={Event} />
                 <p>
-                  <span className="color-black">
+                  <span className="color-black mr-1">
                     <FormattedMessage
                       id="courseInfo.starting.text"
                       defaultMessage="Starting"
                     />
-                  </span>{' '}
+                  </span>
                   <span>
-                    {`(${formatDate(
-                      courseMetaData?.additional_metadata?.course_start,
-                    )})`}
+                    (
+                    <FormattedDate
+                      value={courseMetaData?.additional_metadata?.course_start}
+                      day="numeric"
+                      month="long"
+                      year="numeric"
+                    />
+                    )
                   </span>
                 </p>
               </div>
@@ -280,17 +285,21 @@ const MobileCourseInfo = ({ intl }) => {
               <div className="d-flex flex-row align-items-center mb-2">
                 <Icon className="card-icon mr-2" src={Event} />
                 <p>
-                  <span className="color-black">
-                    {' '}
+                  <span className="color-black mr-1">
                     <FormattedMessage
                       id="courseInfo.ending.text"
                       defaultMessage="Ending"
                     />
-                  </span>{' '}
+                  </span>
                   <span>
-                    {`(${formatDate(
-                      courseMetaData?.additional_metadata?.course_end,
-                    )})`}
+                    (
+                    <FormattedDate
+                      value={courseMetaData?.additional_metadata?.course_end}
+                      day="numeric"
+                      month="long"
+                      year="numeric"
+                    />
+                    )
                   </span>
                 </p>
               </div>
@@ -360,9 +369,15 @@ const MobileCourseInfo = ({ intl }) => {
                   />
                 </span>
                 <span>
-                  {formatDate(
-                    courseMetaData?.additional_metadata?.last_modification_date,
-                  )}
+                  <FormattedDate
+                    value={
+                      courseMetaData?.additional_metadata
+                        ?.last_modification_date
+                    }
+                    day="numeric"
+                    month="long"
+                    year="numeric"
+                  />
                 </span>
               </p>
             )}

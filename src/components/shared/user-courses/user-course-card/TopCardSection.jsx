@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { FormattedDate, FormattedMessage } from '@edx/frontend-platform/i18n';
 import {
   Dropdown, Icon, IconButton, useMediaQuery,
 } from '@edx/paragon';
@@ -143,9 +143,12 @@ const TopCardSection = ({ courseInfo, openMoreBtnModal }) => {
               />
             </span>
             <span>
-              {new Date(
-                courseInfo?.course_details?.course_start,
-              ).toLocaleString('en-US')}
+              <FormattedDate
+                value={courseInfo?.course_details?.course_start}
+                day="numeric"
+                month="short"
+                year="numeric"
+              />
             </span>
           </>
         )}

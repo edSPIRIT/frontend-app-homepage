@@ -5,6 +5,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getConfig } from '@edx/frontend-platform';
 import {
+  FormattedDate,
   FormattedMessage,
   FormattedNumber,
   injectIntl,
@@ -14,7 +15,6 @@ import coverPlaceholder from '../../../../assets/place-holders/cover-course-plac
 import CourseInfoButtonStatus from '../share/CourseInfoButtonStatus';
 import messages from '../../../../messages';
 import useGetInstructorCourses from '../../../../hooks/useGetCourseInstructors';
-import { formatDate } from '../../../../utils/formatDate';
 
 const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
   const { instructors, loading: instructorsLoading } = useGetInstructorCourses(
@@ -93,16 +93,21 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
                 <div className="d-flex flex-row align-items-center mb-2">
                   <Icon className="card-icon" src={Event} />
                   <p>
-                    <span className="color-black">
+                    <span className="color-black mr-1">
                       <FormattedMessage
                         id="courseInfo.starting.text"
                         defaultMessage="Starting"
                       />
-                    </span>{' '}
+                    </span>
                     <span>
-                      {`(${formatDate(
-                        courseMetaData?.additional_metadata?.course_start,
-                      )})`}
+                      (
+                      <FormattedDate
+                        value={courseMetaData?.additional_metadata?.course_start}
+                        day="numeric"
+                        month="long"
+                        year="numeric"
+                      />
+                      )
                     </span>
                   </p>
                 </div>
@@ -111,17 +116,21 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
                 <div className="d-flex flex-row align-items-center mb-2">
                   <Icon className="card-icon" src={Event} />
                   <p>
-                    <span className="color-black">
-                      {' '}
+                    <span className="color-black mr-1">
                       <FormattedMessage
                         id="courseInfo.ending.text"
                         defaultMessage="Ending"
                       />
-                    </span>{' '}
+                    </span>
                     <span>
-                      {`(${formatDate(
-                        courseMetaData?.additional_metadata?.course_end,
-                      )})`}
+                      (
+                      <FormattedDate
+                        value={courseMetaData?.additional_metadata?.course_end}
+                        day="numeric"
+                        month="long"
+                        year="numeric"
+                      />
+                      )
                     </span>
                   </p>
                 </div>
@@ -199,9 +208,13 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
               />
             </span>
             <span>
-              {formatDate(
-                courseMetaData?.additional_metadata?.last_modification_date,
-              )}
+              <FormattedDate
+                value={courseMetaData?.additional_metadata?.last_modification_date}
+                day="numeric"
+                month="short"
+                weekday="short"
+                year="numeric"
+              />
             </span>
           </p>
         )
