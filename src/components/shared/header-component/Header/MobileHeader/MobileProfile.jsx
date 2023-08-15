@@ -6,7 +6,7 @@ import {
 } from '@edx/paragon';
 import { ArrowForwardIos } from '@edx/paragon/icons';
 import React, { useContext } from 'react';
-// import useGetConfig from '../../../../../hooks/useGetConfig';
+import useGetConfig from '../../../../../hooks/useGetConfig';
 import handleRedirect, {
   handleLogout,
 } from '../../../../../utils/handleRedirect';
@@ -14,7 +14,7 @@ import handleRedirect, {
 const MobileProfile = () => {
   const { authenticatedUser } = useContext(AppContext);
   const baseUrl = new URL(getConfig().LMS_BASE_URL).hostname;
-  //   const { hasBilling } = useGetConfig();
+  const { hasBilling } = useGetConfig();
 
   return (
     <div>
@@ -65,7 +65,7 @@ const MobileProfile = () => {
           <Nav.Item>
             <Nav.Link
               href={`https://billing.${baseUrl}`}
-            //   disabled={!hasBilling}
+              disabled={!hasBilling}
             >
               <FormattedMessage
                 id="header.dropdownOption.orderHistory"
