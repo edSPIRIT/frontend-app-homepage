@@ -33,7 +33,7 @@ const AuthenticatedButtonStatus = ({ courseMetaData }) => {
       >
         <FormattedMessage
           id="courseInfo.goToCourse.button"
-          defaultMessage="Go to course"
+          defaultMessage="Go to Course"
         />
       </Button>
     );

@@ -56,7 +56,17 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
           <div className="mt-4.5 px-4">
             <h2 className="mb-1">
               {courseMetaData?.paid_course?.price > 0 ? (
-                `${courseMetaData?.paid_course?.price_human}`
+                <p className="price-symbol-wrapper">
+                  <span className="mr-1">
+                    <FormattedMessage
+                      id={courseMetaData?.paid_course?.currency}
+                      defaultMessage="$"
+                    />
+                  </span>
+                  <span className="mr-1">
+                    {courseMetaData?.paid_course?.price}
+                  </span>
+                </p>
               ) : (
                 <FormattedMessage
                   id="courseCard.free.text"
@@ -102,7 +112,9 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
                     <span>
                       (
                       <FormattedDate
-                        value={courseMetaData?.additional_metadata?.course_start}
+                        value={
+                          courseMetaData?.additional_metadata?.course_start
+                        }
                         day="numeric"
                         month="long"
                         year="numeric"
@@ -209,7 +221,9 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
             </span>
             <span>
               <FormattedDate
-                value={courseMetaData?.additional_metadata?.last_modification_date}
+                value={
+                  courseMetaData?.additional_metadata?.last_modification_date
+                }
                 day="numeric"
                 month="short"
                 weekday="short"

@@ -56,12 +56,14 @@ const ProfileDropdown = () => {
             defaultMessage="Dashboard"
           />
         </Dropdown.Item>
-        <Dropdown.Item href={`https://billing.${baseUrl}`} disabled={!hasBilling}>
-          <FormattedMessage
-            id="header.dropdownOption.orderHistory"
-            defaultMessage="Order History"
-          />
-        </Dropdown.Item>
+        {hasBilling && (
+          <Dropdown.Item href={`https://billing.${baseUrl}`}>
+            <FormattedMessage
+              id="header.dropdownOption.orderHistory"
+              defaultMessage="Order History"
+            />
+          </Dropdown.Item>
+        )}
         <Dropdown.Item onClick={handleLogout}>
           <FormattedMessage
             id="header.dropdownOption.signOut"

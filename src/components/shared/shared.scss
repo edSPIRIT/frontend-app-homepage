@@ -293,6 +293,11 @@ p {
   .social-container {
     transform: scaleX(-1);
   }
+  .price-symbol-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    direction: initial;
+  }
 }
 .lang_fa {
   * {
@@ -309,4 +314,3 @@ p {
     max-width: 194px;
   }
 }
-

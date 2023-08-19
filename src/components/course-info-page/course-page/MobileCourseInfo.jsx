@@ -403,7 +403,7 @@ const MobileCourseInfo = ({ intl }) => {
           <MobileCourseInstructors courseSlug={courseMetaData?.course_slug} />
         </div>
       </div>
-      <div className="d-flex justify-content-between py-3 px-4 price-wrapper">
+      <div className="d-flex justify-content-between py-3 px-4 price-wrapper align-items-center">
         <div className="d-flex flex-column">
           <h2>
             {courseMetaData?.paid_course.price === 0 ? (

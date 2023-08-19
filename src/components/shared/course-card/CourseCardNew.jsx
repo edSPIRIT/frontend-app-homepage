@@ -123,9 +123,15 @@ const CourseCardNew = ({ course, intl }) => {
               </div>
             )}
             {course?.paid_course?.price > 0 ? (
-              <span className="price-title mt-auto">
-                {course?.paid_course?.price_human}
-              </span>
+              <p className="price-wrapper price-title mt-auto">
+                <span className="mr-1">
+                  <FormattedMessage
+                    id={course?.paid_course?.currency}
+                    defaultMessage="$"
+                  />
+                </span>
+                <span className="mr-1">{course?.paid_course?.price}</span>
+              </p>
             ) : (
               <span className="price-title mt-auto">
                 <FormattedMessage

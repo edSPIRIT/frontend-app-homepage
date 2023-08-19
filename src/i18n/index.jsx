@@ -1,4 +1,5 @@
 import arMessages from './messages/ar.json';
+import enMessages from './messages/en.json';
 import faIRMessages from './messages/fa_IR.json';
 import caMessages from './messages/ca.json';
 // no need to import en messages-- they are in the defaultMessage field
@@ -24,6 +25,7 @@ import dedeMessages from './messages/de_DE.json';
 import trtrMessages from './messages/tr.json';
 
 const messages = {
+  en: enMessages,
   ar: arMessages,
   'fa-ir': faIRMessages,
   fa: faIRMessages,
