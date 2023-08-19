@@ -5,13 +5,29 @@ import { useContext } from 'react';
 import { AppContext } from '@edx/frontend-platform/react';
 import AuthenticatedButtonStatus from './course-content/course-info-button-status/AuthenticatedButtonStatus';
 import handleRedirect from '../../../../utils/handleRedirect';
+import useEnrollClickHandler from '../../../../hooks/useEnrollClickHandler';
 
-const CourseInfoButtonStatus = ({ courseMetaData }) => {
+const CourseInfoButtonStatus = ({
+  courseMetaData,
+  isCourseNotStarted,
+  isEnrollActive,
+}) => {
   const { authenticatedUser } = useContext(AppContext);
-
+  const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
   if (!authenticatedUser) {
     return (
-      <Button variant="brand" className="enroll-btn" onClick={handleRedirect}>
+      <Button
+        variant="brand"
+        className="enroll-btn"
+        onClick={handleRedirect}
+        disabled={
+          courseMetaData?.paid_course?.price > 0
+            ? (courseMetaData?.paid_course?.price > 0
+                && !availablePaymentData)
+              || isEnrollActive
+            : isEnrollActive
+        }
+      >
         {courseMetaData?.paid_course?.price > 0 ? (
           <FormattedMessage
             id="courseInfo.purchaseNow.text"
@@ -26,7 +42,13 @@ const CourseInfoButtonStatus = ({ courseMetaData }) => {
       </Button>
     );
   }
-  return <AuthenticatedButtonStatus courseMetaData={courseMetaData} />;
+  return (
+    <AuthenticatedButtonStatus
+      courseMetaData={courseMetaData}
+      isCourseNotStarted={isCourseNotStarted}
+      isEnrollActive={isEnrollActive}
+    />
+  );
 };
 
 export default CourseInfoButtonStatus;

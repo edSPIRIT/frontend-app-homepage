@@ -6,9 +6,15 @@ import { getConfig } from '@edx/frontend-platform';
 import useEnrollClickHandler from '../../../../../../hooks/useEnrollClickHandler';
 import useGetEnrollmentStatus from '../../../../../../hooks/useGetEnrollmentStatus';
 
-const AuthenticatedButtonStatus = ({ courseMetaData }) => {
+const AuthenticatedButtonStatus = ({
+  courseMetaData,
+  isCourseNotStarted,
+  isEnrollActive,
+}) => {
   const baseUrl = new URL(getConfig().LMS_BASE_URL).hostname;
-  const { enrollmentStatus, loading } = useGetEnrollmentStatus(courseMetaData?.course_id);
+  const { isEnrollmentActive, loading } = useGetEnrollmentStatus(
+    courseMetaData?.course_id,
+  );
   const {
     enrollClickHandler,
     isLoading: enrollLoading,
@@ -21,7 +27,7 @@ const AuthenticatedButtonStatus = ({ courseMetaData }) => {
       </Button>
     );
   }
-  if (enrollmentStatus) {
+  if (isEnrollmentActive) {
     return (
       <Button
         variant="primary"
@@ -30,6 +36,7 @@ const AuthenticatedButtonStatus = ({ courseMetaData }) => {
         href={`https://apps.${baseUrl}/learning/course/${courseMetaData?.course_id}/home`}
         target="_blank"
         rel="noreferrer"
+        disabled={isCourseNotStarted}
       >
         <FormattedMessage
           id="courseInfo.goToCourse.button"
@@ -44,7 +51,12 @@ const AuthenticatedButtonStatus = ({ courseMetaData }) => {
       className="enroll-btn"
       onClick={enrollClickHandler}
       loading={enrollLoading}
-      disabled={courseMetaData?.paid_course?.price > 0 && !availablePaymentData}
+      disabled={
+        courseMetaData?.paid_course?.price > 0
+          ? (courseMetaData?.paid_course?.price > 0 && !availablePaymentData)
+            || isEnrollActive
+          : isEnrollActive
+      }
     >
       {courseMetaData?.paid_course?.price > 0 ? (
         <FormattedMessage

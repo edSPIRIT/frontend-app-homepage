@@ -62,17 +62,16 @@ const MobileProfile = () => {
               />
             </Nav.Link>
           </Nav.Item>
-          <Nav.Item>
-            <Nav.Link
-              href={`https://billing.${baseUrl}`}
-              disabled={!hasBilling}
-            >
-              <FormattedMessage
-                id="header.dropdownOption.orderHistory"
-                defaultMessage="Order History"
-              />
-            </Nav.Link>
-          </Nav.Item>
+          {hasBilling && (
+            <Nav.Item>
+              <Nav.Link href={`https://billing.${baseUrl}`}>
+                <FormattedMessage
+                  id="header.dropdownOption.orderHistory"
+                  defaultMessage="Order History"
+                />
+              </Nav.Link>
+            </Nav.Item>
+          )}
           <Nav.Item>
             <Nav.Link onClick={handleLogout}>
               <FormattedMessage

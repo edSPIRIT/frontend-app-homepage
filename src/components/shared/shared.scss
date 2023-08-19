@@ -28,6 +28,12 @@
   &:hover {
     background-color: $brand-600;
   }
+  &:disabled {
+    color: $white;
+    &:hover {
+      background-color: $brand-500;
+    }
+  }
 }
 .btn-outline-brand {
   background-color: $brand-100;

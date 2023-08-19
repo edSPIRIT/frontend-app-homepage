@@ -20,7 +20,7 @@ const useGetEnrollmentStatus = (courseId) => {
     },
   );
   return {
-    enrollmentStatus: data?.is_active,
+    isEnrollmentActive: data?.is_active,
     loading: isLoading,
   };
 };

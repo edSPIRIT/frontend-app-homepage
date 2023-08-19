@@ -30,6 +30,7 @@ const TopCardSection = ({ courseInfo, openMoreBtnModal }) => {
     onSuccess: () => {
       queryClient.invalidateQueries(['OverviewList']);
       queryClient.invalidateQueries(['EnrollmentList']);
+      queryClient.invalidateQueries(['enrollmentStatus']);
     },
   });
   const isTablet = useMediaQuery({ maxWidth: '920px' });

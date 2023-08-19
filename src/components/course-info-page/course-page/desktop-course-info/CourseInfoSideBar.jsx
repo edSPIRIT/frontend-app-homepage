@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Card, Icon, Skeleton } from '@edx/paragon';
-import { Record, Event, WatchFilled } from '@edx/paragon/icons';
+import {
+  Record, Event, WatchFilled, Warning,
+} from '@edx/paragon/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getConfig } from '@edx/frontend-platform';
@@ -15,28 +17,18 @@ import coverPlaceholder from '../../../../assets/place-holders/cover-course-plac
 import CourseInfoButtonStatus from '../share/CourseInfoButtonStatus';
 import messages from '../../../../messages';
 import useGetInstructorCourses from '../../../../hooks/useGetCourseInstructors';
+import CourseSideBarSkeleton from './CourseInfoSideBar/CourseSideBarSkeleton';
+import useGetButtonStatus from '../../../../hooks/utils/useGetButtonStatus';
 
 const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
   const { instructors, loading: instructorsLoading } = useGetInstructorCourses(
     courseMetaData?.course_slug,
   );
+  const { isCourseNotStarted, isEnrollActive, warningMessage } = useGetButtonStatus(courseMetaData);
   return (
     <div className="course-info-side-wrapper">
       {loading ? (
-        <div className="d-flex flex-column skeleton-wrapper">
-          <Skeleton className="mb-2" height={204} />
-          <div className="skeleton-logo" />
-          <div className="p-4 bg-white">
-            <Skeleton className="mb-1" width="60%" height={24} />
-            <Skeleton className="mb-3.5" width="60%" height={24} />
-            {instructorsLoading && <Skeleton height={24} />}
-            <Skeleton count={3} height={24} />
-            <Skeleton className="mt-4.5" borderRadius={4} height={44} />
-            <div className="mt-2 px-5">
-              <Skeleton width="100%" height={24} />
-            </div>
-          </div>
-        </div>
+        <CourseSideBarSkeleton instructorsLoading={instructorsLoading} />
       ) : (
         <Card className="cards-info-wrapper ">
           <Card.ImageCap
@@ -84,7 +76,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
           <Card.Section>
             <div className="d-flex flex-column  font-sm">
               {instructors?.length > 0 && (
-                <div className="d-flex flex-row align-items-center mb-2">
+                <div className="d-flex align-items-start mb-2">
                   <Icon className="card-icon" src={Record} />
                   <p className="program-instructors-wrapper">
                     {instructors?.map((ins) => (
@@ -99,8 +91,58 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
                   </p>
                 </div>
               )}
+              {courseMetaData?.additional_metadata?.enrollment_start && (
+              <div className="d-flex align-items-start mb-2">
+                <Icon className="card-icon" src={Event} />
+                <p>
+                  <span className="color-black mr-1">
+                    <FormattedMessage
+                      id="courseInfo.registrationStarDate.text"
+                      defaultMessage="Registration start date"
+                    />
+                  </span>
+                  <span>
+                    (
+                    <FormattedDate
+                      value={
+                          courseMetaData?.additional_metadata?.enrollment_start
+                        }
+                      day="numeric"
+                      month="long"
+                      year="numeric"
+                    />
+                    )
+                  </span>
+                </p>
+              </div>
+              )}
+              {courseMetaData?.additional_metadata?.enrollment_end && (
+              <div className="d-flex align-items-start mb-2">
+                <Icon className="card-icon" src={Event} />
+                <p>
+                  <span className="color-black mr-1">
+                    <FormattedMessage
+                      id="courseInfo.registrationEndDate.text"
+                      defaultMessage="Registration end date"
+                    />
+                  </span>
+                  <span>
+                    (
+                    <FormattedDate
+                      value={
+                          courseMetaData?.additional_metadata?.enrollment_end
+                        }
+                      day="numeric"
+                      month="long"
+                      year="numeric"
+                    />
+                    )
+                  </span>
+                </p>
+              </div>
+              )}
               {courseMetaData?.additional_metadata?.course_start && (
-                <div className="d-flex flex-row align-items-center mb-2">
+                <div className="d-flex align-items-start mb-2">
                   <Icon className="card-icon" src={Event} />
                   <p>
                     <span className="color-black mr-1">
@@ -125,7 +167,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
                 </div>
               )}
               {courseMetaData?.additional_metadata?.course_end && (
-                <div className="d-flex flex-row align-items-center mb-2">
+                <div className="d-flex align-items-start mb-2">
                   <Icon className="card-icon" src={Event} />
                   <p>
                     <span className="color-black mr-1">
@@ -148,7 +190,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
                 </div>
               )}
               {courseMetaData?.total_weeks_of_effort > 0 && (
-                <div className="d-flex flex-row align-items-center mb-3">
+                <div className="d-flex align-items-start mb-3">
                   <Icon className="card-icon" src={WatchFilled} />
                   <p className="color-black">
                     <span className="mr-1">
@@ -180,11 +222,22 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
                   </p>
                 </div>
               )}
+
             </div>
+            {warningMessage() && (
+            <div className="d-flex mt-2.5">
+              <Icon className="mr-1 warning-icon" src={Warning} />
+              <span className="font-sm">{warningMessage()}</span>
+            </div>
+            )}
           </Card.Section>
           <Card.Footer>
             <div className="btn-card-info-container d-flex flex-column justify-content-center align-items-center">
-              <CourseInfoButtonStatus courseMetaData={courseMetaData} />
+              <CourseInfoButtonStatus
+                courseMetaData={courseMetaData}
+                isCourseNotStarted={isCourseNotStarted}
+                isEnrollActive={isEnrollActive}
+              />
               {courseMetaData?.additional_metadata?.total_enrollments && (
                 <p className="mt-3">
                   <span className="mr-1">

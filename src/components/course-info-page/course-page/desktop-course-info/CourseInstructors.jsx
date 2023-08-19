@@ -7,21 +7,24 @@ import useGetInstructorCourses from '../../../../hooks/useGetCourseInstructors';
 
 const CourseInstructors = ({ courseSlug }) => {
   const { instructors, loading } = useGetInstructorCourses(courseSlug);
-
-  return (
-    <div className="course-info-instructors mt-5" id="instructors">
-      <h2 className="mb-3">
-        <FormattedMessage id="instructors.text" defaultMessage="Instructors" />
-      </h2>
-      <div className="instructors-wrapper ">
-        {loading
-          ? Array(4)
+  if (loading) {
+    // Render skeleton loading state
+    return (
+      <div className="course-info-instructors mt-5" id="instructors">
+        <h2 className="mb-3">
+          <FormattedMessage
+            id="instructors.text"
+            defaultMessage="Instructors"
+          />
+        </h2>
+        <div className="instructors-wrapper">
+          {Array(4)
             .fill(1)
             .map((item, i) => (
-            // eslint-disable-next-line react/no-array-index-key
+              // eslint-disable-next-line react/no-array-index-key
               <div className="instructor-wrapper d-flex" key={i}>
                 <Skeleton className="mr-4" width={96} height={96} />
-                <div className="d-flex flex-column w-100 ">
+                <div className="d-flex flex-column w-100">
                   <Skeleton height={24} />
                   <Skeleton className="mb-2.5" height={24} />
                   <div className="skeleton-icon-wrapper">
@@ -30,14 +33,24 @@ const CourseInstructors = ({ courseSlug }) => {
                   </div>
                 </div>
               </div>
-            ))
-          : instructors?.map((instructor) => (
-            <InstructorCard instructor={instructor} key={instructor.name} />
-          ))}
+            ))}
+        </div>
       </div>
-      {/* <Button variant="outline-primary" className="my-4">
-        Show more Instructors
-      </Button> */}
+    );
+  }
+  if (instructors?.length === 0) {
+    return null;
+  }
+  return (
+    <div className="course-info-instructors mt-5" id="instructors">
+      <h2 className="mb-3">
+        <FormattedMessage id="instructors.text" defaultMessage="Instructors" />
+      </h2>
+      <div className="instructors-wrapper">
+        {instructors?.map((instructor) => (
+          <InstructorCard instructor={instructor} key={instructor.name} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -162,5 +162,11 @@
     "usd": "دلار",
     "IRR": "ریال",
     "irr": "ریال",
-    "USD": "دلار"
+    "USD": "دلار",
+    "courseInfo.registrationEndDate.text": "تاریخ پایان ثبت نام",
+    "courseInfo.registrationStarDate.text": "تاریخ شروع ثبت نام",
+    "courseInfo.starCourseDate.attention": "دوره به زودی شروع می شود! منتظر تاریخ شروع باشید",
+    "courseInfo.startEnrollDate.attention": "ثبت نام به زودی باز می شود! تاریخ را ذخیره کنید و برای ثبت نام آماده شوید",
+    "courseInfo.endEnrollDate.attention": "ثبت نام بسته شد: تاریخ ثبت نام به اتمام رسیده است",
+    "courseInfo.ecommerceDeactivated.attention": "خریدها به طور موقت در دسترس نیستند. لطفاً بعداً دوباره امتحان کنید."
 }

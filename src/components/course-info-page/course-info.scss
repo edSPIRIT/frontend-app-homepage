@@ -101,6 +101,10 @@
     .pgn__card-wrapper-image-cap {
       max-height: unset;
     }
+    .warning-icon {
+      color: $warning-300;
+      opacity: unset;
+    }
   }
 
   .date-text {
@@ -412,9 +416,12 @@
     bottom: 56px;
     box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.15),
       0px -1px 4px rgba(0, 0, 0, 0.15);
-      .btn{
-        height: fit-content;
-      }
+    .btn {
+      height: fit-content;
+    }
+    .pgn__icon {
+      color: $warning-300;
+    }
   }
   .course-cover-container {
     position: relative;

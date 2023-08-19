@@ -154,5 +154,7 @@
     "courseInfo.instructorPaced.text": "بوتيرة المدرب",
     "showMore.text": "أظهر المزيد",
     "showLess.text": "تظهر أقل",
-    "notFountPage.text": "نحن آسفون ، الصفحة التي طلبتها لا يمكن العثور عليها. يرجى العودة إلى الصفحة الرئيسية"
+    "notFountPage.text": "نحن آسفون ، الصفحة التي طلبتها لا يمكن العثور عليها. يرجى العودة إلى الصفحة الرئيسية",
+    "courseInfo.registrationStarDate.text": "تاريخ بدء التسجيل",
+    "courseInfo.registrationEndDate.text": "\"تاريخ انتهاء التسجيل"
 }

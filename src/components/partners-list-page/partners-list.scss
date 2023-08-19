@@ -74,11 +74,11 @@
     height: 100%;
   }
   .pgn__card-wrapper-image-cap {
-    // width: 254.4px;
     height: 145px;
     padding: 8px;
   }
   .pgn__card-image-cap {
+    object-fit: contain;
     width: 100%;
     height: 100%;
   }

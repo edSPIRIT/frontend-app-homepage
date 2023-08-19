@@ -28,6 +28,7 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
     onSuccess: () => {
       queryClient.invalidateQueries(['OverviewList']);
       queryClient.invalidateQueries(['EnrollmentList']);
+      queryClient.invalidateQueries(['enrollmentStatus']);
     },
   });
   const dispatch = useDispatch();
