@@ -9,6 +9,8 @@ import { setToastMessage } from '../../../redux/slice/toastSlice';
 import useManageLocale from '../../../hooks/utils/useManageLocale';
 import Loading from '../loading/Loading';
 import useUpdateBodyClassName from '../../../hooks/utils/useUpdateBodyClassName';
+import useSetGtm from '../../../hooks/utils/useSetGtm';
+import useGetConfig from '../../../hooks/useGetConfig';
 
 const Layout = ({ children }) => {
   const [hasPriceWrapper, setHasPriceWrapper] = useState(false);
@@ -16,6 +18,9 @@ const Layout = ({ children }) => {
   const dispatch = useDispatch();
   const message = useSelector((state) => state.toast.message);
   const isLoading = useManageLocale();
+  const { gtm } = useGetConfig();
+  useSetGtm(gtm);
+
   useUpdateBodyClassName();
 
   const isProfileRoute = location.pathname === '/profile';

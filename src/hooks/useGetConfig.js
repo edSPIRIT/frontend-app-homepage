@@ -23,6 +23,7 @@ const useGetConfig = () => {
   return {
     headerLogo: data?.logo,
     hasBilling: data?.has_billing,
+    gtm: data?.gtm,
     loading: isLoading,
     isError,
   };
