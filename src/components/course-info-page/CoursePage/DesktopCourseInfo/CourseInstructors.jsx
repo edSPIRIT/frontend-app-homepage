@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Skeleton } from '@edx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import InstructorCard from './course-instructors/InstructorCard';
+import InstructorCard from './CourseInstructors/InstructorCard';
 import useGetInstructorCourses from '../../../../hooks/useGetCourseInstructors';
 
 const CourseInstructors = ({ courseSlug }) => {

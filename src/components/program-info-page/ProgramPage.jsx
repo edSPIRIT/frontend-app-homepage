@@ -4,11 +4,11 @@ import { Link } from 'react-scroll';
 import Scrollspy from 'react-scrollspy';
 
 import ProgramCourses from './program-page/ProgramCourses';
-import AboutCourse from '../course-info-page/course-page/share/AboutCourse';
-import WhatYouLearn from '../course-info-page/course-page/share/WhatYouLearn';
-import Requirements from '../course-info-page/course-page/share/Requirements';
-import CourseInfoSideBar from '../course-info-page/course-page/desktop-course-info/CourseInfoSideBar';
-import CourseInfoTopDesc from '../course-info-page/course-page/desktop-course-info/CourseInfoTopDesc';
+import CourseInfoSideBar from '../course-info-page/CoursePage/DesktopCourseInfo/CourseInfoSideBar';
+import CourseInfoTopDesc from '../course-info-page/CoursePage/DesktopCourseInfo/CourseInfoTopDesc';
+import AboutCourse from '../course-info-page/CoursePage/share/AboutCourse';
+import WhatYouLearn from '../course-info-page/CoursePage/share/WhatYouLearn';
+import Requirements from '../course-info-page/CoursePage/share/Requirements';
 
 const ProgramPage = () => {
   const { ref: navTopRef, inView: isTopOnScreen } = useInView();

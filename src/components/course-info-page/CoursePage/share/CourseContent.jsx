@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import useGetCourseToc from '../../../../hooks/useGetCourseToc';
-import ChapterCourse from './course-content/ChapterCourse';
+import ChapterCourse from './CourseContent/ChapterCourse';
 
 const CourseContent = ({ courseId }) => {
   const { sections, loading } = useGetCourseToc(courseId);

@@ -3,7 +3,7 @@ import { Button } from '@edx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useContext } from 'react';
 import { AppContext } from '@edx/frontend-platform/react';
-import AuthenticatedButtonStatus from './course-content/course-info-button-status/AuthenticatedButtonStatus';
+import AuthenticatedButtonStatus from './CourseContent/CourseInfoButtonStatus/AuthenticatedButtonStatus';
 import handleRedirect from '../../../../utils/handleRedirect';
 import useEnrollClickHandler from '../../../../hooks/useEnrollClickHandler';
 

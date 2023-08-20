@@ -3,17 +3,17 @@ import { useParams } from 'react-router';
 import classNames from 'classnames';
 import { Link as RouterLink } from 'react-router-dom';
 import { useMediaQuery } from '@edx/paragon';
-import CourseInfoSideBar from './desktop-course-info/CourseInfoSideBar';
-import CourseInfoTopDesc from './desktop-course-info/CourseInfoTopDesc';
+import CourseInfoSideBar from './DesktopCourseInfo/CourseInfoSideBar';
+import CourseInfoTopDesc from './DesktopCourseInfo/CourseInfoTopDesc';
 import AboutCourse from './share/AboutCourse';
 import WhatYouLearn from './share/WhatYouLearn';
 import Requirements from './share/Requirements';
 import CourseContent from './share/CourseContent';
-import CourseInstructors from './desktop-course-info/CourseInstructors';
+import CourseInstructors from './DesktopCourseInfo/CourseInstructors';
 import useGetCourseMetaData from '../../../hooks/useGetCourseMetaData';
-import CourseNavItems from './desktop-course-info/CourseNavItems';
-import MobileCourseInstructors from './mobile-course-info/MobileCourseInstructors';
-import CourseInfoBreadcrumb from './desktop-course-info/CourseInfoBreadcrumb';
+import CourseNavItems from './DesktopCourseInfo/CourseNavItems';
+import MobileCourseInstructors from './MobileCourseInfo/MobileCourseInstructors';
+import CourseInfoBreadcrumb from './DesktopCourseInfo/CourseInfoBreadcrumb';
 import useGetCourseToc from '../../../hooks/useGetCourseToc';
 
 const DesktopCourseInfo = () => {
