@@ -12,18 +12,29 @@ const recentPagesSlice = createSlice({
   reducers: {
     addPage(state, action) {
       const courseMetaData = action.payload;
-      const index = state.pages.indexOf(courseMetaData.course_slug);
-      if (index !== -1) {
-        state.pages.splice(index, 1);
+      const existingPageIndex = state.pages.findIndex(
+        (page) => page.course_slug === courseMetaData.course_slug,
+      );
+
+      // Check if the page with the same course_slug already exists
+      if (existingPageIndex !== -1) {
+        // If it exists, remove it from the array
+        state.pages = state.pages.filter(
+          (page, index) => index !== existingPageIndex,
+        );
       }
-      state.pages.unshift(courseMetaData);
-      if (state.pages.length > MAX_RECENT_PAGES) {
-        state.pages.pop();
-      }
+
+      // Create a new array with the updated values
+      const updatedPages = [courseMetaData, ...state.pages.slice(0, MAX_RECENT_PAGES - 1)];
+
+      // Update state.pages with the new array
+      state.pages = updatedPages;
+
       localStorage.setItem('recentPages', JSON.stringify(state.pages));
     },
     removePage(state, action) {
       const courseSlug = action.payload;
+
       const index = state.pages.findIndex(
         (page) => page.course_slug === courseSlug,
       );
