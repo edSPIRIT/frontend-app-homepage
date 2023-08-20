@@ -495,8 +495,10 @@ const MobileCourseInfo = ({ intl }) => {
           />
         )}
         <div className="custom-container">
-          {courseMetaData?.requirements?.length > 0 && (
-            <Requirements courseMetaData={courseMetaData} loading={loading} />
+          {(courseMetaData?.requirements?.length > 0
+            || courseMetaData?.additional_metadata?.pre_req_courses?.length
+              > 0) && (
+              <Requirements courseMetaData={courseMetaData} loading={loading} />
           )}
           {sections?.length > 0 && (
             <CourseContent
