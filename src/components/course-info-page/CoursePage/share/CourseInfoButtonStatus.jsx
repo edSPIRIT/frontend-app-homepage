@@ -10,7 +10,7 @@ import useEnrollClickHandler from '../../../../hooks/useEnrollClickHandler';
 const CourseInfoButtonStatus = ({
   courseMetaData,
   isCourseNotStarted,
-  isEnrollActive,
+  isEnrollNotActive,
 }) => {
   const { authenticatedUser } = useContext(AppContext);
   const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
@@ -24,8 +24,8 @@ const CourseInfoButtonStatus = ({
           courseMetaData?.paid_course?.price > 0
             ? (courseMetaData?.paid_course?.price > 0
                 && !availablePaymentData)
-              || isEnrollActive
-            : isEnrollActive
+              || isEnrollNotActive
+            : isEnrollNotActive
         }
       >
         {courseMetaData?.paid_course?.price > 0 ? (
@@ -46,7 +46,7 @@ const CourseInfoButtonStatus = ({
     <AuthenticatedButtonStatus
       courseMetaData={courseMetaData}
       isCourseNotStarted={isCourseNotStarted}
-      isEnrollActive={isEnrollActive}
+      isEnrollNotActive={isEnrollNotActive}
     />
   );
 };

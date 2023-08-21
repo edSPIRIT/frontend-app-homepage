@@ -5,10 +5,10 @@ import ShowMoreText from 'react-show-more-text';
 import {
   FormattedMessage,
   FormattedNumber,
-  getLocale,
   injectIntl,
 } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-scroll';
 import partnerBanner from '../../../assets/place-holders/cover-course-place-holder.svg';
 import logoPlaceholder from '../../../assets/place-holders/org-place-holder.svg';
 import { ReactComponent as Instructors } from '../../../assets/instructors.svg';
@@ -78,13 +78,10 @@ const PartnerHeader = ({ partnerData, loading, intl }) => {
         </ShowMoreText>
 
         <div className="d-flex justify-content-center partner-snapshot-wrapper">
-          <a className="icon-wrapper" href="#courses">
+          <Link to="courses" smooth className="icon-wrapper">
             <Icon src={BookOpen} style={{ width: '40px' }} />
             <p className="partner-count">
-              <FormattedNumber
-                value={partnerData?.courses_count}
-                numberingSystem={getLocale() === 'ar' ? 'arab' : 'null'}
-              />
+              <FormattedNumber value={partnerData?.courses_count} />
             </p>
             <span className="partner-title">
               <FormattedMessage
@@ -95,7 +92,7 @@ const PartnerHeader = ({ partnerData, loading, intl }) => {
                 }}
               />
             </span>
-          </a>
+          </Link>
           <div className="vertical-line" />
           <div className="icon-wrapper" href="#">
             <Icon src={Groups} style={{ width: '40px' }} />
@@ -113,7 +110,7 @@ const PartnerHeader = ({ partnerData, loading, intl }) => {
             </span>
           </div>
           <div className="vertical-line" />
-          <a className="icon-wrapper" href="#instructors">
+          <Link to="instructors" smooth className="icon-wrapper">
             <Icon src={Instructors} style={{ width: '40px' }} />
             <span className="partner-count">
               <FormattedNumber value={partnerData?.instructors_count} />
@@ -127,7 +124,7 @@ const PartnerHeader = ({ partnerData, loading, intl }) => {
                 }}
               />
             </span>
-          </a>
+          </Link>
         </div>
       </div>
     </>

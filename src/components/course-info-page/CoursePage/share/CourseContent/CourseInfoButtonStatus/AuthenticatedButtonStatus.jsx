@@ -9,7 +9,7 @@ import useGetEnrollmentStatus from '../../../../../../hooks/useGetEnrollmentStat
 const AuthenticatedButtonStatus = ({
   courseMetaData,
   isCourseNotStarted,
-  isEnrollActive,
+  isEnrollNotActive,
 }) => {
   const baseUrl = new URL(getConfig().LMS_BASE_URL).hostname;
   const { isEnrollmentActive, loading } = useGetEnrollmentStatus(
@@ -54,8 +54,8 @@ const AuthenticatedButtonStatus = ({
       disabled={
         courseMetaData?.paid_course?.price > 0
           ? (courseMetaData?.paid_course?.price > 0 && !availablePaymentData)
-            || isEnrollActive
-          : isEnrollActive
+            || isEnrollNotActive
+          : isEnrollNotActive
       }
     >
       {courseMetaData?.paid_course?.price > 0 ? (

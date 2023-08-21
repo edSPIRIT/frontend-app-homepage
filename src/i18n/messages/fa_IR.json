@@ -53,7 +53,7 @@
     "inProgress.notEnroll.title": "گواهینامه بگیرید و ارتقای حرفه‌ای یابید",
     "homePage.tab.topCourses": "برترین دوره‌ها",
     "homePage.tab.recentlyAdded": "دوره‌های اخیر",
-    "popularCourses.secondPartTitle.text": "دوره‌ها",
+    "popularCourses.secondPartTitle.text": "دوره‌های",
     "popularCourses.firstPartTitle.text": "محبوب",
     "instructor.courses.text": "{courseCount, number} {courseCount, plural, one {دوره} other {دوره}}",
     "instructor.students.text": "دانش آموز",

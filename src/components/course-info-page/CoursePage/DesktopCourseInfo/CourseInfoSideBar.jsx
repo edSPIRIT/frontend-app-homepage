@@ -24,7 +24,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
   const { instructors, loading: instructorsLoading } = useGetInstructorCourses(
     courseMetaData?.course_slug,
   );
-  const { isCourseNotStarted, isEnrollActive, warningMessage } = useGetButtonStatus(courseMetaData);
+  const { isCourseNotStarted, isEnrollNotActive, warningMessage } = useGetButtonStatus(courseMetaData);
   return (
     <div className="course-info-side-wrapper">
       {loading ? (
@@ -56,7 +56,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
                     />
                   </span>
                   <span className="mr-1">
-                    {courseMetaData?.paid_course?.price}
+                    {courseMetaData?.paid_course?.price_human_numeric}
                   </span>
                 </p>
               ) : (
@@ -225,7 +225,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
 
             </div>
             {warningMessage() && (
-            <div className="d-flex mt-2.5">
+            <div className="d-flex mt-2.5 align-items-start">
               <Icon className="mr-1 warning-icon" src={Warning} />
               <span className="font-sm">{warningMessage()}</span>
             </div>
@@ -236,7 +236,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading, intl }) => {
               <CourseInfoButtonStatus
                 courseMetaData={courseMetaData}
                 isCourseNotStarted={isCourseNotStarted}
-                isEnrollActive={isEnrollActive}
+                isEnrollNotActive={isEnrollNotActive}
               />
               {courseMetaData?.additional_metadata?.total_enrollments && (
                 <p className="mt-3">

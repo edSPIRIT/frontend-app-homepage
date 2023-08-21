@@ -123,14 +123,14 @@ const CourseCardNew = ({ course, intl }) => {
               </div>
             )}
             {course?.paid_course?.price > 0 ? (
-              <p className="price-wrapper price-title mt-auto">
+              <p className="price-title mt-auto price-symbol-wrapper">
                 <span className="mr-1">
                   <FormattedMessage
                     id={course?.paid_course?.currency}
                     defaultMessage="$"
                   />
                 </span>
-                <span className="mr-1">{course?.paid_course?.price}</span>
+                <span className="mr-1">{course?.paid_course?.price_human_numeric}</span>
               </p>
             ) : (
               <span className="price-title mt-auto">
