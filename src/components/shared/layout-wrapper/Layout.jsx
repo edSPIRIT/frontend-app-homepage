@@ -3,6 +3,7 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { Toast } from '@edx/paragon';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import Header from '../header-component/Header';
 import FooterSection from '../footer/FooterSection';
 import { setToastMessage } from '../../../redux/slice/toastSlice';
@@ -18,7 +19,7 @@ const Layout = ({ children }) => {
   const dispatch = useDispatch();
   const message = useSelector((state) => state.toast.message);
   const isLoading = useManageLocale();
-  const { gtm } = useGetConfig();
+  const { gtm, favicon, platformName } = useGetConfig();
   useSetGtm(gtm);
 
   useUpdateBodyClassName();
@@ -46,6 +47,10 @@ const Layout = ({ children }) => {
           hasPriceWrapper ? 'has-price-wrapper' : ''
         }`}
       >
+        <Helmet>
+          <link rel="shortcut icon" href={favicon} type="image/x-icon" />
+          <title>{`edSPIRIT App | ${platformName}`}</title>
+        </Helmet>
         <Header />
         <main className="main-container">{children}</main>
         {!isProfileRoute && <FooterSection />}
