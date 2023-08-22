@@ -12,7 +12,6 @@ import BottomCardSection from './user-course-card/BottomCardSection';
 const UserCourseCard = ({ courseInfo }) => {
   const [isOpen, open, close] = useToggle(false);
   const isMobile = useMediaQuery({ maxWidth: '600px' });
-
   return (
     <>
       <MoreButtonModal
@@ -21,7 +20,7 @@ const UserCourseCard = ({ courseInfo }) => {
         courseInfo={courseInfo}
       />
       <a
-        href={`${getConfig().LMS_BASE_URL}/${courseInfo?.course_details?.course_id}/home`}
+        href={`${getConfig().LEARNING_BASE_URL}/${courseInfo?.course_details?.course_id}/home`}
         target="_blank"
         className="user-card-course"
         rel="noreferrer"
