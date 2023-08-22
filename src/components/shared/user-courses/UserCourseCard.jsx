@@ -20,7 +20,7 @@ const UserCourseCard = ({ courseInfo }) => {
         courseInfo={courseInfo}
       />
       <a
-        href={`${getConfig().LEARNING_BASE_URL}/${courseInfo?.course_details?.course_id}/home`}
+        href={`${getConfig().LEARNING_BASE_URL}/course/${courseInfo?.course_details?.course_id}/home`}
         target="_blank"
         className="user-card-course"
         rel="noreferrer"

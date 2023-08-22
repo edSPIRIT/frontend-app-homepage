@@ -11,7 +11,6 @@ const AuthenticatedButtonStatus = ({
   isCourseNotStarted,
   isEnrollNotActive,
 }) => {
-  const baseUrl = new URL(getConfig().LMS_BASE_URL).hostname;
   const { isEnrollmentActive, loading } = useGetEnrollmentStatus(
     courseMetaData?.course_id,
   );
@@ -33,7 +32,7 @@ const AuthenticatedButtonStatus = ({
         variant="primary"
         className="enroll-btn"
         loading={enrollLoading}
-        href={`https://apps.${baseUrl}/learning/course/${courseMetaData?.course_id}/home`}
+        href={`${getConfig().LEARNING_BASE_URL}/course/${courseMetaData?.course_id}/home`}
         target="_blank"
         rel="noreferrer"
         disabled={isCourseNotStarted}

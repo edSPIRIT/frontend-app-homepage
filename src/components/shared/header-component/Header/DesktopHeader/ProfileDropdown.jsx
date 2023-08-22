@@ -14,7 +14,6 @@ const ProfileDropdown = () => {
   const { authenticatedUser } = useContext(AppContext);
   const { userProfile, loading: userProfileLoading } = useGetUserProfile();
   const { hasBilling } = useGetConfig();
-  const baseUrl = new URL(getConfig().LMS_BASE_URL).hostname;
   const renderAvatar = () => {
     if (userProfileLoading) {
       return <Icon src={Avatar} />;
@@ -37,14 +36,16 @@ const ProfileDropdown = () => {
       <Dropdown.Toggle iconAfter={ArrowDropDown} iconBefore={renderAvatar} />
       <Dropdown.Menu alignRight>
         <Dropdown.Item
-          href={`https://apps.${baseUrl}/profile/u/${authenticatedUser?.username}`}
+          href={`${getConfig().ACCOUNT_PROFILE_URL}/u/${
+            authenticatedUser?.username
+          }`}
         >
           <FormattedMessage
             id="header.dropdownOption.profile"
             defaultMessage="Profile"
           />
         </Dropdown.Item>
-        <Dropdown.Item href={`https://apps.${baseUrl}/account`}>
+        <Dropdown.Item href={getConfig().ACCOUNT_SETTINGS_URL}>
           <FormattedMessage
             id="header.dropdownOption.account"
             defaultMessage="Account"
@@ -57,7 +58,7 @@ const ProfileDropdown = () => {
           />
         </Dropdown.Item>
         {hasBilling && (
-          <Dropdown.Item href={`https://billing.${baseUrl}`}>
+          <Dropdown.Item href={`https://billing.${getConfig().BASE_URL}`}>
             <FormattedMessage
               id="header.dropdownOption.orderHistory"
               defaultMessage="Order History"

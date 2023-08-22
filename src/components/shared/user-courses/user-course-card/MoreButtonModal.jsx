@@ -48,10 +48,9 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
           {certificateData && (
             <a
               className="d-flex align-items-center py-2 color-black"
-              href={`https://apps.${getConfig().LMS_BASE_URL.replace(
-                'https://',
-                '',
-              )}/learning/course/${courseInfo?.course_details?.course_id}/home`}
+              href={`${getConfig().LEARNING_BASE_URL}/course/${
+                courseInfo?.course_details?.course_id
+              }/home`}
             >
               <Icon src={Learning} className="mr-2 text-gray-500" />
               <span>

@@ -35,10 +35,9 @@ const MobileBottomCard = ({
       <Button
         className="view-course-btn"
         variant="primary"
-        href={`https://apps.${getConfig().LMS_BASE_URL.replace(
-          'https://',
-          '',
-        )}/learning/course/${courseInfo?.course_details?.course_id}/home`}
+        href={`${getConfig().LEARNING_BASE_URL}/course/${
+          courseInfo?.course_details?.course_id
+        }/home`}
       >
         {calcProgress() > 0 ? (
           <span>

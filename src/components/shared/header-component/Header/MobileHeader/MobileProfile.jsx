@@ -13,7 +13,6 @@ import handleRedirect, {
 
 const MobileProfile = () => {
   const { authenticatedUser } = useContext(AppContext);
-  const baseUrl = new URL(getConfig().LMS_BASE_URL).hostname;
   const { hasBilling } = useGetConfig();
 
   return (
@@ -21,7 +20,9 @@ const MobileProfile = () => {
       <div className="profile-header">
         {authenticatedUser ? (
           <a
-            href={`https://apps.${baseUrl}/profile/u/${authenticatedUser?.username}`}
+            href={`${getConfig().ACCOUNT_PROFILE_URL}/u/${
+              authenticatedUser?.username
+            }`}
             className="d-flex justify-content-center align-items-center text-gray-700 w-100"
           >
             <Avatar className="mr-1 flex-shrink-0" size="sm" />
@@ -55,7 +56,7 @@ const MobileProfile = () => {
       {authenticatedUser && (
         <nav className="p-4 text-gray-700 font-sm profile-nav-items">
           <Nav.Item>
-            <Nav.Link href={`https://apps.${baseUrl}/account`}>
+            <Nav.Link href={getConfig().ACCOUNT_SETTINGS_URL}>
               <FormattedMessage
                 id="header.dropdownOption.account"
                 defaultMessage="Account"
@@ -64,7 +65,7 @@ const MobileProfile = () => {
           </Nav.Item>
           {hasBilling && (
             <Nav.Item>
-              <Nav.Link href={`https://billing.${baseUrl}`}>
+              <Nav.Link href={`https://billing.${getConfig().BASE_URL}`}>
                 <FormattedMessage
                   id="header.dropdownOption.orderHistory"
                   defaultMessage="Order History"
