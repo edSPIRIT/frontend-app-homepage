@@ -14,6 +14,7 @@ const ProfileDropdown = () => {
   const { authenticatedUser } = useContext(AppContext);
   const { userProfile, loading: userProfileLoading } = useGetUserProfile();
   const { hasBilling } = useGetConfig();
+  const baseUrl = new URL(getConfig().BASE_URL).hostname;
   const renderAvatar = () => {
     if (userProfileLoading) {
       return <Icon src={Avatar} />;
@@ -58,7 +59,7 @@ const ProfileDropdown = () => {
           />
         </Dropdown.Item>
         {hasBilling && (
-          <Dropdown.Item href={`https://billing.${getConfig().BASE_URL}`}>
+          <Dropdown.Item href={`https://billing.${baseUrl}`}>
             <FormattedMessage
               id="header.dropdownOption.orderHistory"
               defaultMessage="Order History"
