@@ -48,8 +48,8 @@ const Layout = ({ children }) => {
         }`}
       >
         <Helmet>
-          <link rel="shortcut icon" href={favicon} type="image/x-icon" />
-          <title>{`edSPIRIT App | ${platformName}`}</title>
+          {favicon && <link rel="shortcut icon" href={favicon} type="image/x-icon" />}
+          {platformName && <title>{`edSPIRIT App | ${platformName}`}</title>}
         </Helmet>
         <Header />
         <main className="main-container">{children}</main>
