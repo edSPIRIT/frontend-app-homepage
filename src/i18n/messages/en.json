@@ -1,4 +1,18 @@
 {
-    "USD": "$",
-    "IRR":"IRR"
+  "usd": "$",
+  "IRR": "IRR",
+  "USD": "$",
+  "EUR": "€",
+  "JPY": "¥",
+  "GBP": "£",
+  "AUD": "A$",
+  "CAD": "C$",
+  "CHF": "CHF",
+  "CNY": "¥",
+  "SEK": "kr",
+  "NZD": "NZ$",
+  "SGD": "S$",
+  "HKD": "HK$",
+  "TRY": "₺",
+  "AED":"AED"
 }
