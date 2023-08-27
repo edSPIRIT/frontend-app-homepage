@@ -16,16 +16,15 @@ const WhatYouLearn = ({ learningItems, loading }) => (
     ) : (
       <div className="mobile-icons-wrapper">
         {learningItems
-            && learningItems?.map((item, i) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <ul key={i} className=" p-0">
-                <li className="d-flex">
-                  <Icon src={Check} className="mr-1" />
-                  <span>{item}</span>
-
-                </li>
-              </ul>
-            ))}
+          && learningItems?.map((item, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <ul key={i} className=" p-0">
+              <li className="d-flex">
+                <Icon src={Check} className="mr-1" />
+                <span>{item}</span>
+              </li>
+            </ul>
+          ))}
       </div>
     )}
   </div>

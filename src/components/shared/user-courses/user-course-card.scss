@@ -1,8 +1,13 @@
 .user-card-course {
   border-color: $light-400;
+  cursor: pointer;
   &:hover {
     .icons-wrapper {
       display: flex !important;
+    }
+    .course-card-btn-wrapper {
+      display: flex;
+      flex-shrink: 0 !important;
     }
   }
   .pgn__card {
@@ -32,7 +37,7 @@
     color: black;
     // margin-right: 85px;
     // max-width: 604px;
-      margin-right: 20px !important;
+    margin-right: 20px !important;
     @include line-break(1);
   }
   .second-title {
@@ -101,6 +106,12 @@
   .course-info-button {
     border: 1px solid $light-400;
     color: black;
+  }
+  .bottom-wrapper{
+    height: 45.98px;
+  }
+  .course-card-btn-wrapper {
+    display: none;
   }
 }
 .share-icon {

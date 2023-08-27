@@ -14,7 +14,7 @@ import handleRedirect, {
 const MobileProfile = () => {
   const { authenticatedUser } = useContext(AppContext);
   const { hasBilling } = useGetConfig();
-  const baseUrl = new URL(getConfig().BASE_URL).hostname;
+  const baseUrl = new URL(getConfig().LMS_BASE_URL).hostname;
 
   return (
     <div>

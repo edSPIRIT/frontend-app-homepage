@@ -3,7 +3,11 @@
 /* eslint-disable react/prop-types */
 import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
-import { FormattedDate, FormattedMessage } from '@edx/frontend-platform/i18n';
+import {
+  FormattedDate,
+  FormattedMessage,
+  injectIntl,
+} from '@edx/frontend-platform/i18n';
 import {
   Dropdown, Icon, IconButton, useMediaQuery,
 } from '@edx/paragon';
@@ -15,8 +19,9 @@ import { Link } from 'react-router-dom';
 import { setToastMessage } from '../../../../redux/slice/toastSlice';
 import { determineDirection } from '../../../../utils/determineDirection';
 import SharedToastMessage from '../../base-components/SharedToastMessage';
+import messages from '../../../../messages';
 
-const TopCardSection = ({ courseInfo, openMoreBtnModal }) => {
+const TopCardSection = ({ courseInfo, openMoreBtnModal, intl }) => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
@@ -112,7 +117,9 @@ const TopCardSection = ({ courseInfo, openMoreBtnModal }) => {
                       );
                       dispatch(
                         setToastMessage(
-                          'You have successfully unenrolled from the course',
+                          intl.formatMessage(
+                            messages['userCourseCard.unrollMessage.text'],
+                          ),
                         ),
                       );
                     }}
@@ -158,4 +165,4 @@ const TopCardSection = ({ courseInfo, openMoreBtnModal }) => {
   );
 };
 
-export default TopCardSection;
+export default injectIntl(TopCardSection);

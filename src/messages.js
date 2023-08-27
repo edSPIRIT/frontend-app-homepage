@@ -113,6 +113,10 @@ const messages = defineMessages({
     id: 'showLess.text',
     defaultMessage: 'Show less',
   },
+  'userCourseCard.unrollMessage.text': {
+    id: 'userCourseCard.unrollMessage.text',
+    defaultMessage: 'You have successfully unenrolled from the course',
+  },
   recent: {
     id: 'recent.text',
     defaultMessage: 'Recent',

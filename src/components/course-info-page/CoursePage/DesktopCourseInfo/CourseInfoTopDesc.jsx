@@ -1,23 +1,15 @@
 /* eslint-disable react/prop-types */
-import {
-  Icon, OverlayTrigger, Skeleton, Tooltip,
-} from '@edx/paragon';
+import { Icon, Skeleton } from '@edx/paragon';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Share,
-  Language,
-  PostOutline,
-  HowToReg,
-  Verified,
-} from '@edx/paragon/icons';
+import { Share } from '@edx/paragon/icons';
 import ShowMoreText from 'react-show-more-text';
-import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
+import { injectIntl } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
 import { setToastMessage } from '../../../../redux/slice/toastSlice';
-import { getLangName } from '../../../../utils/transcriptLang';
 import messages from '../../../../messages';
 import SharedToastMessage from '../../../shared/base-components/SharedToastMessage';
+import CourseInfoItems from '../share/CourseInfoItems';
 
 const CourseInfoTopDesc = ({
   courseMetaData, loading, navTopRef, intl,
@@ -74,88 +66,10 @@ const CourseInfoTopDesc = ({
               <p>{courseMetaData?.additional_metadata?.short_description}</p>
             </ShowMoreText>
             <div
-              className="icons-wrapper d-flex text-gray-500 mt-3 pb-4.5 font-sm"
+              className="icons-wrapper d-flex text-gray-500 mt-3 pb-4 font-sm "
               ref={navTopRef}
             >
-              {courseMetaData?.additional_metadata?.language && (
-                <OverlayTrigger
-                  placement="top"
-                  overlay={(
-                    <Tooltip
-                      variant="light"
-                      id="tooltip-top"
-                      className="course-tooltip"
-                    >
-                      <FormattedMessage
-                        id="search.facets.language"
-                        defaultMessage="Language"
-                      />
-                    </Tooltip>
-                  )}
-                >
-                  <div className="d-flex justify-content-center align-items-center mr-4.5">
-                    <Icon className="mr-2" src={Language} />
-                    <span>
-                      {getLangName(
-                        courseMetaData?.additional_metadata?.language,
-                      )}
-                    </span>
-                  </div>
-                </OverlayTrigger>
-              )}
-              {courseMetaData?.transcript_langs
-                && courseMetaData?.transcript_langs.length > 0 && (
-                  <OverlayTrigger
-                    placement="top"
-                    overlay={(
-                      <Tooltip
-                        variant="light"
-                        id="tooltip-top"
-                        className="course-tooltip"
-                      >
-                        {courseMetaData?.transcript_langs?.map((transLang) => (
-                          <span key={transLang}>
-                            {getLangName(transLang)}
-                          </span>
-                        ))}
-                      </Tooltip>
-                    )}
-                  >
-                    <div className="d-flex justify-content-center align-items-center mr-4.5">
-                      <Icon className="mr-2" src={PostOutline} />
-                      <span className="course-tooltip transcript-title">
-                        {courseMetaData?.transcript_langs?.map((transLang) => (
-                          <span key={transLang}>
-                            {getLangName(transLang)}
-                          </span>
-                        ))}
-                      </span>
-                    </div>
-                  </OverlayTrigger>
-              )}
-              <div className="d-flex justify-content-center align-items-center mr-4.5">
-                <Icon className="mr-2" src={HowToReg} />
-                {courseMetaData?.additional_metadata?.self_paced ? (
-                  <FormattedMessage
-                    id="courseInfo.selfPaced.text"
-                    defaultMessage="Self Paced"
-                  />
-                ) : (
-                  <FormattedMessage
-                    id="courseInfo.instructorPaced.text"
-                    defaultMessage="Instructor Paced"
-                  />
-                )}
-              </div>
-              {courseMetaData?.additional_metadata?.certificate_enabled && (
-                <div className="d-flex justify-content-center align-items-center mr-4.5">
-                  <Icon className="mr-2" src={Verified} />
-                  <FormattedMessage
-                    id="courseInfo.verifiedCertificate.text"
-                    defaultMessage="Verified certificate"
-                  />
-                </div>
-              )}
+              <CourseInfoItems courseMetaData={courseMetaData} />
             </div>
           </>
         )}

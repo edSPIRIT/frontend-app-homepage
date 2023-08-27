@@ -38,8 +38,8 @@ const AuthenticatedButtonStatus = ({
         disabled={isCourseNotStarted}
       >
         <FormattedMessage
-          id="courseInfo.goToCourse.button"
-          defaultMessage="Go to Course"
+          id="userCourseCard.goToYourCourse.button"
+          defaultMessage="Go To Your Course"
         />
       </Button>
     );

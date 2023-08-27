@@ -292,6 +292,10 @@ p {
     content: unset;
   }
 }
+.warning-icon {
+  color: $warning-300 !important;
+  opacity: unset;
+}
 [dir='rtl'] {
   .pgn__icon {
     transform: scaleX(-1);

@@ -156,5 +156,10 @@
     "showLess.text": "تظهر أقل",
     "notFountPage.text": "نحن آسفون ، الصفحة التي طلبتها لا يمكن العثور عليها. يرجى العودة إلى الصفحة الرئيسية",
     "courseInfo.registrationStarDate.text": "تاريخ بدء التسجيل",
-    "courseInfo.registrationEndDate.text": "\"تاريخ انتهاء التسجيل"
+    "courseInfo.registrationEndDate.text": "\"تاريخ انتهاء التسجيل",
+    "courseInfo.registrationStartingOn.text": "التسجيل يبدأ بتاريخ",
+    "courseInfo.registrationEndingOn.text": "ينتهي التسجيل في",
+    "courseInfo.courseStartingOn.text": "الدورة تبدأ بتاريخ",
+    "courseInfo.courseEndingOn.text": "تنتهي الدورة بتاريخ",
+    "courseInfo.prerequisite.attention": "يجب عليك إكمال الدورة التدريبية المطلوبة بنجاح قبل أن تبدأ هذه الدورة."
 }

@@ -168,5 +168,11 @@
     "courseInfo.starCourseDate.attention": "دوره به زودی شروع می شود! منتظر تاریخ شروع باشید",
     "courseInfo.startEnrollDate.attention": "ثبت نام به زودی باز می شود! تاریخ را ذخیره کنید و برای ثبت نام آماده شوید",
     "courseInfo.endEnrollDate.attention": "ثبت نام بسته شد: تاریخ ثبت نام به اتمام رسیده است",
-    "courseInfo.ecommerceDeactivated.attention": "خریدها به طور موقت در دسترس نیستند. لطفاً بعداً دوباره امتحان کنید."
+    "courseInfo.ecommerceDeactivated.attention": "خریدها به طور موقت در دسترس نیستند. لطفاً بعداً دوباره امتحان کنید.",
+    "courseInfo.registrationEndingOn.text": "پایان ثبت نام در",
+    "courseInfo.registrationStartingOn.text": "شروع ثبت نام در",
+    "courseInfo.courseStartingOn.text": "شروع دوره در",
+    "courseInfo.courseEndingOn.text": "پایان دوره در",
+    "courseInfo.prerequisite.attention": "قبل از شروع این دوره باید دوره پیش نیاز را با موفقیت ﺑﮕﺬﺭﺍنید.",
+    "userCourseCard.unrollMessage.text": "شما با موفقیت از این دوره خارج شدید"
 }

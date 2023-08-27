@@ -30,6 +30,9 @@ header {
     background-color: $success-100;
     .small {
       display: flex;
+      color: $primary-700;
+      font-size: $font-size-base-std;
+      font-weight: bold;
     }
     .toast-message-wrapper {
       .first-title {
@@ -40,6 +43,7 @@ header {
       .second-title {
         color: $success-800;
         font-size: $font-size-base-sm;
+        font-weight: normal;
       }
       .pgn__icon {
         background-color: $success-300;

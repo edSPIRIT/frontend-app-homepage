@@ -22,9 +22,11 @@
   }
 
   .icons-wrapper {
+    gap: 32px;
     .pgn__icon {
       transform: unset;
       opacity: 0.5;
+      margin-right: 0.5rem;
     }
   }
 }
@@ -100,10 +102,6 @@
 
     .pgn__card-wrapper-image-cap {
       max-height: unset;
-    }
-    .warning-icon {
-      color: $warning-300;
-      opacity: unset;
     }
   }
 
@@ -469,10 +467,11 @@
     color: $gray-500;
     opacity: 0.5;
     transform: unset;
+    margin-right: 0.5rem;
   }
   .program-instructors-wrapper {
     a {
-      color: black;
+      color: black !important;
     }
   }
 }
