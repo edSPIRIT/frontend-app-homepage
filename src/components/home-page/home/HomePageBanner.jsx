@@ -18,7 +18,7 @@ const HomePageBanner = () => {
     return bannerData?.title ? (
       <Highlighted
         text={bannerData.title}
-        highlight={bannerData.highlightedWord}
+        highlight={bannerData.highlight_word}
       />
     ) : (
       <FormattedMessage
@@ -53,7 +53,7 @@ const HomePageBanner = () => {
         <div className="text-container">
           <h1 className="display-1">{renderTitle()}</h1>
           {renderDescription()}
-          <SearchBox />
+          <SearchBox searchBoxClass="banner-search-box" />
           <Link className="banner-link mt-4" to="/discover">
             <span className="mr-2">
               <FormattedMessage

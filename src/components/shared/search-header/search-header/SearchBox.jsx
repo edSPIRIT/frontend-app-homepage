@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from 'react';
@@ -10,6 +11,7 @@ import {
   intlShape,
 } from '@edx/frontend-platform/i18n';
 import { Link, useHistory, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 import {
   resetSearchFilters,
   setSearchString,
@@ -19,7 +21,7 @@ import useSearchSuggestions from '../../../../hooks/useSearchSuggestions';
 import { addPage } from '../../../../redux/slice/recentPagesSlice';
 import { setSearchModal } from '../../../../redux/slice/searchModalSlice';
 
-const SearchBox = ({ intl }) => {
+const SearchBox = ({ intl, searchBoxClass }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
@@ -47,7 +49,7 @@ const SearchBox = ({ intl }) => {
   return (
     <div onClick={() => (isMobile ? dispatch(setSearchModal(true)) : null)}>
       <SearchField
-        className="discover-search-field"
+        className={classNames('discover-search-field', searchBoxClass)}
         submitButtonLocation="external"
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
 
 const Highlighted = ({ text, highlight }) => {
+  console.log('test', text, highlight);
   if (!highlight.trim()) {
     return <span>{text}</span>;
   }

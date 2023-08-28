@@ -14,6 +14,7 @@ const LanguageFilter = () => {
   );
   const dispatch = useDispatch();
   const { languagesFilter, loading } = useGetLanguagesFilter();
+
   return (
     <Dropdown autoClose="outside" className="facet-btn  mr-3" key="subject">
       <Dropdown.Toggle

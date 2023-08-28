@@ -55,7 +55,7 @@ const CourseCardNew = ({ course, intl }) => {
             href="#institution"
           >
             <p className="institution-title font-sm">
-              {course?.additional_metadata?.org}
+              {course?.partner?.organization?.name}
             </p>
           </Link>
         </div>
