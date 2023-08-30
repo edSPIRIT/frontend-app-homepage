@@ -11,6 +11,7 @@ const CourseInfoButtonStatus = ({
   courseMetaData,
   isCourseNotStarted,
   isEnrollNotActive,
+  hasPreReqCourse,
 }) => {
   const { authenticatedUser } = useContext(AppContext);
   const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
@@ -47,6 +48,7 @@ const CourseInfoButtonStatus = ({
       courseMetaData={courseMetaData}
       isCourseNotStarted={isCourseNotStarted}
       isEnrollNotActive={isEnrollNotActive}
+      hasPreReqCourse={hasPreReqCourse}
     />
   );
 };

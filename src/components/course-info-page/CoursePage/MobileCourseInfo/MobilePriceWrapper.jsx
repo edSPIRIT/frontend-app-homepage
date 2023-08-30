@@ -5,7 +5,9 @@ import CourseInfoButtonStatus from '../share/CourseInfoButtonStatus';
 import useGetButtonStatus from '../../../../hooks/utils/useGetButtonStatus';
 
 const MobilePriceWrapper = ({ courseMetaData }) => {
-  const { isCourseNotStarted, isEnrollNotActive, warningComponent } = useGetButtonStatus(courseMetaData);
+  const {
+    isCourseNotStarted, isEnrollNotActive, hasPreReqCourse, warningComponent,
+  } = useGetButtonStatus(courseMetaData);
 
   return (
     <div className="d-flex py-3 px-4 price-wrapper">
@@ -48,6 +50,7 @@ const MobilePriceWrapper = ({ courseMetaData }) => {
             courseMetaData={courseMetaData}
             isCourseNotStarted={isCourseNotStarted}
             isEnrollNotActive={isEnrollNotActive}
+            hasPreReqCourse={hasPreReqCourse}
           />
         </div>
       </div>

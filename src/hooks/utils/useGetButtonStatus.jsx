@@ -11,6 +11,7 @@ const useGetButtonStatus = (courseMetaData) => {
     courseMetaData?.course_id,
   );
   const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
+
   const [status, setStatus] = useState({});
 
   useEffect(() => {
@@ -37,10 +38,10 @@ const useGetButtonStatus = (courseMetaData) => {
       if (isEnrollmentActive && isCourseNotStarted) {
         messageId = 'courseInfo.starCourseDate.attention';
         defaultMessage = 'Course coming soon! Stay tuned for the start date';
-      } else if (isEnrollmentNotStarted) {
+      } else if (!isEnrollmentActive && isEnrollmentNotStarted) {
         messageId = 'courseInfo.startEnrollDate.attention';
         defaultMessage = 'Registration opens soon! Save the date and get ready to sign up';
-      } else if (isEnrollmentOver) {
+      } else if (!isEnrollmentActive && isEnrollmentOver) {
         messageId = 'courseInfo.endEnrollDate.attention';
         defaultMessage = 'Registration Closed: Date Passed';
       } else if (paid_course?.price > 0 && !availablePaymentData) {
@@ -69,10 +70,9 @@ const useGetButtonStatus = (courseMetaData) => {
 
       setStatus({
         isCourseNotStarted,
-        isEnrollNotActive:
-          isEnrollmentNotStarted
-          || isEnrollmentOver
-          || courseMetaData?.additional_metadata?.pre_req_courses?.length > 0,
+        isEnrollNotActive: isEnrollmentNotStarted || isEnrollmentOver,
+        hasPreReqCourse:
+          courseMetaData?.additional_metadata?.pre_req_courses?.length > 0,
         warningComponent,
       });
     }

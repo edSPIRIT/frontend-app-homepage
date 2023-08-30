@@ -16,7 +16,9 @@ import CourseDateInfo from '../share/CourseDateInfo';
 import CourseInstructorsItem from '../share/CourseInstructorsItem';
 
 const CourseInfoSideBar = ({ courseMetaData, loading }) => {
-  const { isCourseNotStarted, isEnrollNotActive, warningComponent } = useGetButtonStatus(courseMetaData);
+  const {
+    isCourseNotStarted, isEnrollNotActive, hasPreReqCourse, warningComponent,
+  } = useGetButtonStatus(courseMetaData);
   return (
     <div className="course-info-side-wrapper">
       {loading ? (
@@ -84,6 +86,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
                 courseMetaData={courseMetaData}
                 isCourseNotStarted={isCourseNotStarted}
                 isEnrollNotActive={isEnrollNotActive}
+                hasPreReqCourse={hasPreReqCourse}
               />
               {courseMetaData?.additional_metadata?.total_enrollments && (
                 <p className="mt-3">

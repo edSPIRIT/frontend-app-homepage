@@ -10,6 +10,7 @@ const AuthenticatedButtonStatus = ({
   courseMetaData,
   isCourseNotStarted,
   isEnrollNotActive,
+  hasPreReqCourse,
 }) => {
   const { isEnrollmentActive, loading } = useGetEnrollmentStatus(
     courseMetaData?.course_id,
@@ -32,10 +33,12 @@ const AuthenticatedButtonStatus = ({
         variant="primary"
         className="enroll-btn"
         loading={enrollLoading}
-        href={`${getConfig().LEARNING_BASE_URL}/course/${courseMetaData?.course_id}/home`}
+        href={`${getConfig().LEARNING_BASE_URL}/course/${
+          courseMetaData?.course_id
+        }/home`}
         target="_blank"
         rel="noreferrer"
-        disabled={isCourseNotStarted}
+        disabled={isCourseNotStarted || hasPreReqCourse}
       >
         <FormattedMessage
           id="userCourseCard.goToYourCourse.button"
