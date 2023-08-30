@@ -10,12 +10,14 @@ const TabletBottomCard = ({
   calcProgress,
   certificateData,
   isCourseNotStarted,
+  hasPreReqCourse,
 }) => (
   <div className="d-flex flex-column">
     <ProgressStatus
       courseCompleted={courseCompleted}
       calcProgress={calcProgress}
       isCourseNotStarted={isCourseNotStarted}
+      hasPreReqCourse={hasPreReqCourse}
     />
     {certificateData && (
       <Button

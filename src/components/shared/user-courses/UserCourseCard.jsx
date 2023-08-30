@@ -3,32 +3,17 @@
 import { Card, useMediaQuery, useToggle } from '@edx/paragon';
 
 import { getConfig } from '@edx/frontend-platform';
-import { useEffect, useState } from 'react';
 import cardPlaceholder from '../../../assets/place-holders/user-course-placeholder.svg';
 import MoreButtonModal from './user-course-card/MoreButtonModal';
 import TopCardSection from './user-course-card/TopCardSection';
 import BottomCardSection from './user-course-card/BottomCardSection';
+import useUserCourseButtonStatus from '../../../hooks/utils/useUserCourseButtonStatus';
 
 const UserCourseCard = ({ courseInfo }) => {
   const [isOpen, open, close] = useToggle(false);
   const isMobile = useMediaQuery({ maxWidth: '600px' });
-  const [status, setStatus] = useState({});
-
-  useEffect(() => {
-    if (courseInfo) {
-      const currentDate = new Date();
-      const courseStartDate = courseInfo?.course_details?.course_start
-        ? new Date(courseInfo?.course_details?.course_start)
-        : null;
-      const isCourseNotStarted = courseStartDate && currentDate < courseStartDate;
-
-      setStatus({
-        isCourseNotStarted,
-      });
-    }
-  }, [courseInfo]);
-
-  const courseUrl = status?.isCourseNotStarted
+  const { isCourseNotStarted, hasPreReqCourse } = useUserCourseButtonStatus(courseInfo);
+  const courseUrl = (isCourseNotStarted || hasPreReqCourse)
     ? null
     : `${getConfig().LEARNING_BASE_URL}/course/${
       courseInfo?.course_details?.course_id
@@ -61,7 +46,8 @@ const UserCourseCard = ({ courseInfo }) => {
               <TopCardSection courseInfo={courseInfo} openMoreBtnModal={open} />
               <BottomCardSection
                 courseInfo={courseInfo}
-                isCourseNotStarted={status?.isCourseNotStarted}
+                isCourseNotStarted={isCourseNotStarted}
+                hasPreReqCourse={hasPreReqCourse}
               />
             </Card.Section>
           </Card.Body>

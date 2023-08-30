@@ -13,12 +13,11 @@ import ViewCertificateButton from '../share/ViewCertificateButton';
 const TabletBottomCard = React.lazy(() => import('./BottomCardSection/TabletBottomCard'));
 const MobileBottomCard = React.lazy(() => import('./BottomCardSection/MobileBottomCard'));
 
-const BottomCardSection = ({ courseInfo, isCourseNotStarted }) => {
+const BottomCardSection = ({ courseInfo, isCourseNotStarted, hasPreReqCourse }) => {
   const isTablet = useMediaQuery({ minWidth: '601px', maxWidth: '768px' });
   const isMobile = useMediaQuery({ maxWidth: '600px' });
 
   const { certificateData } = useGetCertificate(courseInfo);
-
   const courseCompleted = courseInfo?.progress?.complete_count > 0
     && courseInfo?.progress?.incomplete_count === 0;
 
@@ -42,6 +41,7 @@ const BottomCardSection = ({ courseInfo, isCourseNotStarted }) => {
         courseInfo={courseInfo}
         calcProgress={calcProgress}
         isCourseNotStarted={isCourseNotStarted}
+        hasPreReqCourse={hasPreReqCourse}
       />
     );
   };
@@ -53,6 +53,7 @@ const BottomCardSection = ({ courseInfo, isCourseNotStarted }) => {
         calcProgress={calcProgress}
         certificateData={certificateData}
         isCourseNotStarted={isCourseNotStarted}
+        hasPreReqCourse={hasPreReqCourse}
       />
     );
   }
@@ -64,6 +65,7 @@ const BottomCardSection = ({ courseInfo, isCourseNotStarted }) => {
         certificateData={certificateData}
         courseInfo={courseInfo}
         isCourseNotStarted={isCourseNotStarted}
+        hasPreReqCourse={hasPreReqCourse}
       />
     );
   }
@@ -73,6 +75,7 @@ const BottomCardSection = ({ courseInfo, isCourseNotStarted }) => {
         courseCompleted={courseCompleted}
         calcProgress={calcProgress}
         isCourseNotStarted={isCourseNotStarted}
+        hasPreReqCourse={hasPreReqCourse}
       />
       <div className="ml-3 course-card-btn-wrapper">
         <Button

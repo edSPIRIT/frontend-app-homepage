@@ -5,7 +5,12 @@ import { Icon, ProgressBar } from '@edx/paragon';
 import { CheckCircle, Warning } from '@edx/paragon/icons';
 import React from 'react';
 
-const ProgressStatus = ({ courseCompleted, calcProgress, isCourseNotStarted }) => {
+const ProgressStatus = ({
+  courseCompleted,
+  calcProgress,
+  isCourseNotStarted,
+  hasPreReqCourse,
+}) => {
   if (courseCompleted) {
     return (
       <div className="d-flex align-items-center ">
@@ -27,6 +32,19 @@ const ProgressStatus = ({ courseCompleted, calcProgress, isCourseNotStarted }) =
           <FormattedMessage
             id="courseInfo.starCourseDate.attention"
             defaultMessage="Course coming soon! Stay tuned for the start date"
+          />
+        </span>
+      </div>
+    );
+  }
+  if (hasPreReqCourse) {
+    return (
+      <div className="d-flex align-items-start">
+        <Icon className="mr-1 warning-icon" src={Warning} />
+        <span className="font-sm">
+          <FormattedMessage
+            id="courseInfo.prerequisite.attention"
+            defaultMessage="You must successfully complete the prerequisite course before you begin this course."
           />
         </span>
       </div>

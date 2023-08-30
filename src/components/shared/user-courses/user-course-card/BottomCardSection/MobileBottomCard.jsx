@@ -10,6 +10,7 @@ const MobileBottomCard = ({
   certificateData,
   courseInfo,
   isCourseNotStarted,
+  hasPreReqCourse,
 }) => {
   const buttonStatus = () => {
     if (certificateData) {
@@ -20,6 +21,7 @@ const MobileBottomCard = ({
         courseInfo={courseInfo}
         calcProgress={calcProgress}
         isCourseNotStarted={isCourseNotStarted}
+        hasPreReqCourse={hasPreReqCourse}
       />
     );
   };
@@ -30,6 +32,7 @@ const MobileBottomCard = ({
         courseCompleted={courseCompleted}
         calcProgress={calcProgress}
         isCourseNotStarted={isCourseNotStarted}
+        hasPreReqCourse={hasPreReqCourse}
       />
       {buttonStatus()}
     </div>
