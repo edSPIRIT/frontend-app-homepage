@@ -52,6 +52,9 @@ const InstructorsFilter = ({ intl }) => {
           onChange={(value) => setSearchString(value)}
           onSubmit={(value) => setSearchString(value)}
           placeholder={intl.formatMessage(messages['partners.search.find'])}
+          inputProps={{
+            autoComplete: 'off',
+          }}
         />
         <Form.Group>
           <Form.CheckboxSet

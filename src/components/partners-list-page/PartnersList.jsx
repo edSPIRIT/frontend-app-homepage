@@ -84,6 +84,9 @@ const PartnersList = ({ intl }) => {
             buttonText={intl.formatMessage(messages['search.button.text'])}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
+            inputProps={{
+              autoComplete: 'off',
+            }}
           />
           {partnersSuggestionsResults?.length > 0
             && isFocused

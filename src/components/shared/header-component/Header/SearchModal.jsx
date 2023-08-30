@@ -84,6 +84,9 @@ const SearchModal = ({ intl }) => {
           placeholder={intl.formatMessage(
             messages['header.search.placeholder'],
           )}
+          inputProps={{
+            autoComplete: 'off',
+          }}
         />
       </div>
       {searchSuggestionsResults?.length > 0 && (

@@ -84,6 +84,9 @@ const MobilePartnerFilter = () => {
             onChange={(value) => setSearchString(value)}
             onSubmit={(value) => setSearchString(value)}
             placeholder="Find a ..."
+            inputProps={{
+              autoComplete: 'off',
+            }}
           />
           <div className="d-flex flex-column justify-content-between h-100">
             <Form.Group>

@@ -56,6 +56,9 @@ const DesktopHeader = ({ intl }) => {
           placeholder={intl.formatMessage(
             messages['header.search.placeholder'],
           )}
+          inputProps={{
+            autoComplete: 'off',
+          }}
         />
         {/* <div className="d-flex align-items-center">
             <Button variant="tertiary" size="sm" className="mx-1">

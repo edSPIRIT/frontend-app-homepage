@@ -60,6 +60,9 @@ const SearchBox = ({ intl, searchBoxClass }) => {
         onClear={() => setSearchSuggestionValue('')}
         placeholder={intl.formatMessage(messages['header.search.placeholder'])}
         buttonText={intl.formatMessage(messages['search.button.text'])}
+        inputProps={{
+          autoComplete: 'off',
+        }}
       />
       {searchSuggestionsResults?.length > 0 && isFocused && (
         <div className="search-suggestion-wrapper">
