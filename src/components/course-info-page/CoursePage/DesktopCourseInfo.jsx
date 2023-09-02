@@ -57,6 +57,7 @@ const DesktopCourseInfo = () => {
         <div className="course-content-container d-flex flex-column">
           {courseMetaData?.additional_metadata?.about_overview && (
             <AboutCourse
+              courseVideoUrl={courseMetaData?.additional_metadata?.intro_video}
               aboutCourse={courseMetaData?.additional_metadata?.about_overview}
               loading={loading}
             />

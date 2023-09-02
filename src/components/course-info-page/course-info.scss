@@ -1,3 +1,5 @@
+@import '~video-react/styles/scss/video-react';
+
 .course-info-top-container {
   position: relative;
   @include infinite-background-container($light-200);
@@ -554,5 +556,23 @@
     .share-icon {
       display: none;
     }
+  }
+}
+
+.video-react {
+  background-color: $white !important;
+  .video-react-big-play-button-center {
+    background-color: $brand-500;
+    border-color: $brand-500;
+    width: 56px;
+    height: 44px;
+    margin-left: -0.75em !important;
+  }
+  .video-react-video {
+    border-radius: 8px;
+  }
+  .video-react-control-bar {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
 }
