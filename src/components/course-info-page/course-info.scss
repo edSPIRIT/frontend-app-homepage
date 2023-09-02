@@ -101,6 +101,9 @@
       border-top-right-radius: 0.375rem;
       height: 204px;
     }
+    .pgn__card-logo-cap {
+      object-fit: contain;
+    }
 
     .pgn__card-wrapper-image-cap {
       max-height: unset;

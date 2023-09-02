@@ -94,7 +94,7 @@ const CourseNavItems = ({
             <Link
               to="requirement"
               smooth
-              offset={-120}
+              offset={-40}
               onClick={(e) => setSelectedItem(e.target.innerText)}
             >
               <FormattedMessage
@@ -117,7 +117,7 @@ const CourseNavItems = ({
               <Link
                 to="course-content"
                 smooth
-                offset={-160}
+                offset={-40}
                 onClick={(e) => setSelectedItem(e.target.innerText)}
               >
                 <FormattedMessage
