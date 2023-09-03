@@ -7,7 +7,7 @@ import {
   FormattedMessage,
   FormattedNumber,
 } from '@edx/frontend-platform/i18n';
-import { BigPlayButton, Player } from 'video-react';
+import ReactPlayer from 'react-player';
 import CourseDateInfo from '../share/CourseDateInfo';
 import CourseInfoItems from '../share/CourseInfoItems';
 import CourseInstructorsItem from '../share/CourseInstructorsItem';
@@ -70,11 +70,15 @@ const MobileInfoSection = ({ courseMetaData }) => {
         )}
       </div>
       {isMobile && courseMetaData?.additional_metadata?.intro_video && (
-        <div className="mt-4">
-          <Player src={courseMetaData?.additional_metadata?.intro_video}>
-            <BigPlayButton position="center" />
-          </Player>
-        </div>
+      <div className="mt-4 player-wrapper">
+        <ReactPlayer
+          controls
+          url={courseMetaData?.additional_metadata?.intro_video}
+          style={{ position: 'absolute', top: '0', left: '0' }}
+          width="100%"
+          height="100%"
+        />
+      </div>
       )}
     </div>
   );

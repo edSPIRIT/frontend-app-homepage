@@ -2,7 +2,7 @@
 import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
 import { Skeleton, useMediaQuery } from '@edx/paragon';
 import ShowMoreText from 'react-show-more-text';
-import { Player, BigPlayButton } from 'video-react';
+import ReactPlayer from 'react-player';
 import messages from '../../../../messages';
 
 const AboutCourse = ({
@@ -37,10 +37,14 @@ const AboutCourse = ({
             />
           </ShowMoreText>
           {!isMobile && courseVideoUrl && (
-            <div className="mt-4">
-              <Player src={courseVideoUrl}>
-                <BigPlayButton position="center" />
-              </Player>
+            <div className="mt-4 player-wrapper">
+              <ReactPlayer
+                controls
+                url={courseVideoUrl}
+                style={{ position: 'absolute', top: '0', left: '0' }}
+                width="100%"
+                height="100%"
+              />
             </div>
           )}
         </>
