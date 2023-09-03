@@ -562,8 +562,8 @@
 }
 
 .player-wrapper {
-  position: 'relative';
-  padding-top: '56.25%'; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
   iframe{
     border-radius: 8px;
   }
