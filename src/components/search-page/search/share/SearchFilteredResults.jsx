@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -7,8 +8,9 @@ import {
   injectIntl,
 } from '@edx/frontend-platform/i18n';
 import { Pagination, Skeleton, useMediaQuery } from '@edx/paragon';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useLocation } from 'react-router';
 import CourseCardSkeleton from '../../../shared/skeleton/CourseCardSkeleton';
 import CourseCardNew from '../../../shared/course-card/CourseCardNew';
 import useSearchResults from '../../../../hooks/useSearchResults';
@@ -19,10 +21,31 @@ import messages from '../../../../messages';
 
 const SearchFilteredResults = ({ intl }) => {
   const dispatch = useDispatch();
+  const searchStringValue = useSelector(
+    (state) => state.searchFilters.search_string,
+  );
   const isMobile = useMediaQuery({ maxWidth: '768px' });
-  const [page, setPage] = useState(0);
+  const location = useLocation();
+  const history = useHistory();
+
+  const searchParams = new URLSearchParams(location.search);
+  const pageParam = searchParams.get('page');
+  const [page, setPage] = useState(pageParam ? parseInt(pageParam, 10) : 1);
 
   const { searchResults, searchResultsCount, isLoading } = useSearchResults(page);
+
+  useEffect(() => {
+    const newPageParam = new URLSearchParams(location.search).get('page');
+    const newPage = newPageParam ? parseInt(newPageParam, 10) : 1;
+    if (newPage !== page) {
+      setPage(newPage);
+    }
+  }, [location]);
+
+  useEffect(() => {
+    history.push(`?q=${searchStringValue}&page=${page}`);
+  }, [page]);
+
   return (
     <>
       <div className="pt-4.5 pb-4 result-total-count-wrapper d-flex justify-content-between align-items-center">
@@ -77,8 +100,8 @@ const SearchFilteredResults = ({ intl }) => {
             className="d-flex justify-content-center transform-rtl"
             paginationLabel="pagination navigation"
             pageCount={Math.ceil(searchResultsCount / 12)}
-            onPageSelect={(e) => setPage(e - 1)}
-            currentPage={page + 1}
+            onPageSelect={(e) => setPage(e)}
+            currentPage={page}
             variant={isMobile ? 'reduced' : 'default'}
             buttonLabels={{
               previous: `${intl.formatMessage(
