@@ -37,8 +37,8 @@ const Requirements = ({ courseMetaData, loading }) => {
         <div>
           <h3 className="mb-3">
             <FormattedMessage
-              id="courseInfo.prerequisiteCourses.text"
-              defaultMessage="Prerequisite Courses"
+              id="courseInfo.prerequisiteCourse.text"
+              defaultMessage="Prerequisite Course"
             />
           </h3>
           <div className="attention-wrapper mb-4">
@@ -54,7 +54,7 @@ const Requirements = ({ courseMetaData, loading }) => {
             {loading ? (
               <Skeleton height={24} />
             ) : (
-              <p className="font-sm">
+              <p className="font-sm ml-4">
                 <FormattedMessage
                   id="courseInfo.prerequisiteDesc.text"
                   defaultMessage="This course has a prerequisite that must be successfully

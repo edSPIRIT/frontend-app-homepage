@@ -6,7 +6,7 @@ import {
   injectIntl,
 } from '@edx/frontend-platform/i18n';
 import { Icon } from '@edx/paragon';
-import { Event, WatchFilled } from '@edx/paragon/icons';
+import { Calendar, Event, WatchFilled } from '@edx/paragon/icons';
 import React from 'react';
 import messages from '../../../../messages';
 
@@ -14,7 +14,7 @@ const CourseDateInfo = ({ courseMetaData, intl }) => (
   <>
     {courseMetaData?.additional_metadata?.enrollment_start && (
       <div className="d-flex align-items-start mb-2">
-        <Icon className="card-icon" src={Event} />
+        <Icon className="card-icon" src={Calendar} />
         <p className="color-black">
           <span className="mr-1">
             <FormattedMessage
@@ -35,7 +35,7 @@ const CourseDateInfo = ({ courseMetaData, intl }) => (
     )}
     {courseMetaData?.additional_metadata?.enrollment_end && (
       <div className="d-flex align-items-start mb-2">
-        <Icon className="card-icon" src={Event} />
+        <Icon className="card-icon" src={Calendar} />
         <p className="color-black">
           <span className="mr-1">
             <FormattedMessage

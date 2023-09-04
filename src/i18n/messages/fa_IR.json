@@ -175,6 +175,8 @@
     "courseInfo.courseEndingOn.text": "پایان دوره در",
     "courseInfo.prerequisite.attention": "قبل از شروع این دوره باید دوره پیش نیاز را با موفقیت ﺑﮕﺬﺭﺍنید.",
     "userCourseCard.unrollMessage.text": "شما با موفقیت از این دوره خارج شدید",
-    "courseInfo.prerequisiteFistPart.attention": "شما باید دوره پیش نیاز",
-    "courseInfo.prerequisiteSecondPart.attention": "را قبل از شروع دوره با موفقیت ﺑﮕﺬﺭﺍنید."
+    "courseInfo.prerequisiteFistPart.attention": "شما باید",
+    "courseInfo.prerequisiteSecondPart.attention": "را قبل از شروع دوره با موفقیت ﺑﮕﺬﺭﺍنید.",
+    "courseInfo.prerequisiteMiddlePart.attention": "دوره پیش نیاز",
+    "courseInfo.prerequisiteCourse.text": "دوره پیش نیاز"
 }

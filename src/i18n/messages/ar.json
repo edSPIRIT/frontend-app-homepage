@@ -175,6 +175,8 @@
     "userCourseCard.unrollMessage.text": "لقد تم إلغاء تسجيلك في الدورة بنجاح",
     "IRR": "معدل العائد الداخلي",
     "dashboard.unroll.item": "انبسط",
-    "courseInfo.prerequisiteFistPart.attention": "يجب عليك إكمال الدورة التدريبية المطلوبة بنجاح",
-    "courseInfo.prerequisiteSecondPart.attention": "قبل أن تبدأ هذه الدورة."
+    "courseInfo.prerequisiteFistPart.attention": "يجب عليك إكمال",
+    "courseInfo.prerequisiteSecondPart.attention": "بنجاح قبل أن تبدأ هذه الدورة.",
+    "courseInfo.prerequisiteMiddlePart.attention": "الدورة التدريبية المطلوبة",
+    "courseInfo.prerequisiteCourse.text": "الدورة التدريبية المطلوبة"
 }

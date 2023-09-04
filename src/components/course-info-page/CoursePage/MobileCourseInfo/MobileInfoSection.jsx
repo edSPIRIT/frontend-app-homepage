@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Event, InfoOutline } from '@edx/paragon/icons';
+import { EventAvailable, InfoOutline } from '@edx/paragon/icons';
 import { Icon, useMediaQuery } from '@edx/paragon';
 import {
   FormattedDate,
@@ -49,7 +49,7 @@ const MobileInfoSection = ({ courseMetaData }) => {
         )}
         {courseMetaData?.additional_metadata?.last_modification_date && (
           <p className="d-flex align-items-start mb-2">
-            <Icon className="card-icon" src={Event} />
+            <Icon className="card-icon" src={EventAvailable} />
             <span className="mr-1">
               <FormattedMessage
                 id="courseInfo.lastUpdateOn.text"

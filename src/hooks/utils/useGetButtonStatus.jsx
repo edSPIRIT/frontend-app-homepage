@@ -69,16 +69,16 @@ const useGetButtonStatus = (courseMetaData) => {
           <>
             <FormattedMessage
               id="courseInfo.prerequisiteFistPart.attention"
-              defaultMessage="You must successfully complete the prerequisite course"
+              defaultMessage="You must successfully complete the"
             />
             <Link
               className="px-1 text-gray-700 text-decoration-underline"
               to={`/course/${courseMetaData?.additional_metadata?.pre_req_courses[0]?.course_slug}`}
             >
-              {
-                courseMetaData?.additional_metadata?.pre_req_courses[0]
-                  ?.display_name
-              }
+              <FormattedMessage
+                id="courseInfo.prerequisiteMiddlePart.attention"
+                defaultMessage="prerequisite course"
+              />
             </Link>
             <FormattedMessage
               id="courseInfo.prerequisiteSecondPart.attention"
