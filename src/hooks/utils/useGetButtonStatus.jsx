@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { Warning } from '@edx/paragon/icons';
 import { Icon } from '@edx/paragon';
+import { Link } from 'react-router-dom';
 import useGetEnrollmentStatus from '../useGetEnrollmentStatus';
 import useEnrollClickHandler from '../useEnrollClickHandler';
 
@@ -31,42 +32,68 @@ const useGetButtonStatus = (courseMetaData) => {
       const isEnrollmentNotStarted = courseEnrollStartDate && currentDate < courseEnrollStartDate;
       const isEnrollmentOver = courseEnrollEndDate && currentDate > courseEnrollEndDate;
 
-      let warningComponent;
-      let messageId;
-      let defaultMessage;
+      let warningMessage;
 
       if (isEnrollmentActive && isCourseNotStarted) {
-        messageId = 'courseInfo.starCourseDate.attention';
-        defaultMessage = 'Course coming soon! Stay tuned for the start date';
+        warningMessage = (
+          <FormattedMessage
+            id="courseInfo.starCourseDate.attention"
+            defaultMessage="Course coming soon! Stay tuned for the start date"
+          />
+        );
       } else if (!isEnrollmentActive && isEnrollmentNotStarted) {
-        messageId = 'courseInfo.startEnrollDate.attention';
-        defaultMessage = 'Registration opens soon! Save the date and get ready to sign up';
+        warningMessage = (
+          <FormattedMessage
+            id="courseInfo.startEnrollDate.attention"
+            defaultMessage="Registration opens soon! Save the date and get ready to sign up"
+          />
+        );
       } else if (!isEnrollmentActive && isEnrollmentOver) {
-        messageId = 'courseInfo.endEnrollDate.attention';
-        defaultMessage = 'Registration Closed: Date Passed';
+        warningMessage = (
+          <FormattedMessage
+            id="courseInfo.endEnrollDate.attention"
+            defaultMessage="Registration Closed: Date Passed"
+          />
+        );
       } else if (paid_course?.price > 0 && !availablePaymentData) {
-        messageId = 'courseInfo.ecommerceDeactivated.attention';
-        defaultMessage = 'Purchases are temporarily unavailable. Please try again later';
+        warningMessage = (
+          <FormattedMessage
+            id="courseInfo.ecommerceDeactivated.attention"
+            defaultMessage="Purchases are temporarily unavailable. Please try again later"
+          />
+        );
       } else if (
         courseMetaData?.additional_metadata?.pre_req_courses?.length > 0
       ) {
-        messageId = 'courseInfo.prerequisite.attention';
-        defaultMessage = 'You must successfully complete the prerequisite course before you begin this course.';
-      }
-
-      if (messageId && defaultMessage) {
-        warningComponent = (
-          <div className="d-flex align-items-start">
-            <Icon className="mr-1 warning-icon" src={Warning} />
-            <span className="font-sm">
-              <FormattedMessage
-                id={messageId}
-                defaultMessage={defaultMessage}
-              />
-            </span>
-          </div>
+        warningMessage = (
+          <>
+            <FormattedMessage
+              id="courseInfo.prerequisiteFistPart.attention"
+              defaultMessage="You must successfully complete the prerequisite course"
+            />
+            <Link
+              className="px-1 text-gray-700 text-decoration-underline"
+              to={`/course/${courseMetaData?.additional_metadata?.pre_req_courses[0]?.course_slug}`}
+            >
+              {
+                courseMetaData?.additional_metadata?.pre_req_courses[0]
+                  ?.display_name
+              }
+            </Link>
+            <FormattedMessage
+              id="courseInfo.prerequisiteSecondPart.attention"
+              defaultMessage="before you begin this course."
+            />
+          </>
         );
       }
+
+      const warningComponent = warningMessage && (
+        <div className="d-flex align-items-start">
+          <Icon className="mr-1 warning-icon" src={Warning} />
+          <p className="font-sm">{warningMessage}</p>
+        </div>
+      );
 
       setStatus({
         isCourseNotStarted,

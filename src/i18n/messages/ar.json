@@ -174,5 +174,7 @@
     "courseInfo.ecommerceDeactivated.attention": "المشتريات غير متاحة مؤقتا. الرجاء معاودة المحاولة في وقت لاحق.",
     "userCourseCard.unrollMessage.text": "لقد تم إلغاء تسجيلك في الدورة بنجاح",
     "IRR": "معدل العائد الداخلي",
-    "dashboard.unroll.item": "انبسط"
+    "dashboard.unroll.item": "انبسط",
+    "courseInfo.prerequisiteFistPart.attention": "يجب عليك إكمال الدورة التدريبية المطلوبة بنجاح",
+    "courseInfo.prerequisiteSecondPart.attention": "قبل أن تبدأ هذه الدورة."
 }
