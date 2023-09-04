@@ -11,12 +11,12 @@ export const supportedLanguages = [
     released: true,
   },
   {
-    code: 'fa',
+    code: 'fa-IR',
     name: 'فارسی',
     released: true,
   },
   {
-    code: 'fa-IR',
+    code: 'fa',
     name: 'فارسی',
     released: true,
   },
