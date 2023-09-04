@@ -1,3 +1,4 @@
+import { getConfig } from '@edx/frontend-platform';
 import { useMediaQuery } from '@edx/paragon';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
@@ -14,7 +15,7 @@ const CoursePage = () => {
 
   useEffect(() => {
     if (courseMetaData) {
-      document.title = `${courseMetaData?.additional_metadata?.display_name} | ${process.env.SITE_NAME}`;
+      document.title = `${courseMetaData?.additional_metadata?.display_name} | ${getConfig().SITE_NAME}`;
     }
   }, [courseMetaData]);
   return (

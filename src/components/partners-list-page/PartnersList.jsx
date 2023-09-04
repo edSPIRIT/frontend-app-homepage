@@ -17,6 +17,7 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
+import { getConfig } from '@edx/frontend-platform';
 import PartnersCardGrid from './partners-list/PartnersCardGrid';
 import PartnersCardList from './partners-list/PartnersCardList';
 import TotalPartnersWrapper from './partners-list/TotalPartnersWrapper';
@@ -33,7 +34,7 @@ const PartnersList = ({ intl }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
-    document.title = `Partners | ${process.env.SITE_NAME}`;
+    document.title = `Partners | ${getConfig().SITE_NAME}`;
   }, []);
 
   const {

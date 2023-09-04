@@ -7,6 +7,7 @@ import {
 } from '@edx/frontend-platform/i18n';
 import { useContext, useEffect } from 'react';
 import { AppContext } from '@edx/frontend-platform/react';
+import { getConfig } from '@edx/frontend-platform';
 import UserCourseCard from '../../shared/user-courses/UserCourseCard';
 import AvatarInfo from './avatar-info/AvatarInfo';
 import NotEnrolledCardCourse from './not-enrolled-course-card/NotEnrolledCourseCard';
@@ -28,7 +29,7 @@ const OverviewPage = ({ intl }) => {
   const { authenticatedUser } = useContext(AppContext);
 
   useEffect(() => {
-    document.title = `Dashboard | ${process.env.SITE_NAME}`;
+    document.title = `Dashboard | ${getConfig().SITE_NAME}`;
   }, []);
 
   if (!authenticatedUser) {

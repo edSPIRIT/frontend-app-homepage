@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Pagination, useMediaQuery } from '@edx/paragon';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { AppContext } from '@edx/frontend-platform/react';
+import { getConfig } from '@edx/frontend-platform';
 import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
 import messages from '../../messages';
 import NavHeader from '../shared/header-component/Header/DesktopHeader/NavHeader';
@@ -35,7 +36,7 @@ const EnrollmentList = ({ type, intl }) => {
   }, [type]);
 
   useEffect(() => {
-    document.title = `Dashboard | ${process.env.SITE_NAME}`;
+    document.title = `Dashboard | ${getConfig().SITE_NAME}`;
   }, []);
 
   if (!authenticatedUser) {

@@ -6,6 +6,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { getConfig } from '@edx/frontend-platform';
 import useGetInstructor from '../../hooks/useGetInstructor';
 import CourseCardNew from '../shared/course-card/CourseCardNew';
 import CourseCardSkeleton from '../shared/skeleton/CourseCardSkeleton';
@@ -25,7 +26,7 @@ const Instructor = () => {
 
   useEffect(() => {
     if (InstructorData?.name) {
-      document.title = `${InstructorData?.name} | ${process.env.SITE_NAME}`;
+      document.title = `${InstructorData?.name} | ${getConfig().SITE_NAME}`;
     }
   }, [InstructorData]);
 
