@@ -161,5 +161,18 @@
     "courseInfo.registrationEndingOn.text": "ينتهي التسجيل في",
     "courseInfo.courseStartingOn.text": "الدورة تبدأ بتاريخ",
     "courseInfo.courseEndingOn.text": "تنتهي الدورة بتاريخ",
-    "courseInfo.prerequisite.attention": "يجب عليك إكمال الدورة التدريبية المطلوبة بنجاح قبل أن تبدأ هذه الدورة."
+    "courseInfo.prerequisite.attention": "يجب عليك إكمال الدورة التدريبية المطلوبة بنجاح قبل أن تبدأ هذه الدورة.",
+    "courseInfo.tooltip.transcript": "بيان درجات",
+    "firstTitle.share.toast": "تم نسخ الرابط بنجاح!",
+    "secondTitle.share.toast": "شارك الرابط مع أصدقائك ودعهم يتعمقون في عالم من المحتوى الجذاب!",
+    "usd": "دولار",
+    "irr": "معدل العائد الداخلي",
+    "USD": "دولار",
+    "courseInfo.starCourseDate.attention": "ستبدأ الدورة قريبا! ترقبوا تاريخ البدء",
+    "courseInfo.startEnrollDate.attention": "سيتم فتح التسجيل قريبا! احفظ التاريخ واستعد للتسجيل",
+    "courseInfo.endEnrollDate.attention": "التسجيل مغلق: تم انتهاء تاريخ التسجيل",
+    "courseInfo.ecommerceDeactivated.attention": "المشتريات غير متاحة مؤقتا. الرجاء معاودة المحاولة في وقت لاحق.",
+    "userCourseCard.unrollMessage.text": "لقد تم إلغاء تسجيلك في الدورة بنجاح",
+    "IRR": "معدل العائد الداخلي",
+    "dashboard.unroll.item": "انبسط"
 }
