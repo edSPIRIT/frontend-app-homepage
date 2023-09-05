@@ -302,6 +302,7 @@ p {
   }
   .social-container {
     transform: scaleX(-1);
+    direction: initial;
   }
   .price-symbol-wrapper {
     display: flex;

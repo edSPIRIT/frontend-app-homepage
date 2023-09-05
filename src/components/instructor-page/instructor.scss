@@ -26,7 +26,7 @@
   .instructor-icons-wrapper {
     @extend .d-flex, .justify-content-between;
     align-items: center;
-    max-width: 912px;
+    // max-width: 912px;
     color: $light-500 !important;
     opacity: 0.5;
     font-size: $font-size-base-sm;
