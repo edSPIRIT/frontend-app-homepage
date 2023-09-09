@@ -13,7 +13,7 @@ const useUserCourseButtonStatus = (courseInfo) => {
       const isCourseNotStarted = courseStartDate && currentDate < courseStartDate;
       setStatus({
         isCourseNotStarted,
-        hasPreReqCourse: courseInfo?.has_pre_req_courses,
+        preReqCourse: courseInfo?.pre_req_courses,
       });
     }
   }, [courseInfo]);

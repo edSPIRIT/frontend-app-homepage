@@ -12,8 +12,8 @@ import useUserCourseButtonStatus from '../../../hooks/utils/useUserCourseButtonS
 const UserCourseCard = ({ courseInfo }) => {
   const [isOpen, open, close] = useToggle(false);
   const isMobile = useMediaQuery({ maxWidth: '600px' });
-  const { isCourseNotStarted, hasPreReqCourse } = useUserCourseButtonStatus(courseInfo);
-  const courseUrl = (isCourseNotStarted || hasPreReqCourse)
+  const { isCourseNotStarted, preReqCourse } = useUserCourseButtonStatus(courseInfo);
+  const courseUrl = (isCourseNotStarted || preReqCourse)
     ? null
     : `${getConfig().LEARNING_BASE_URL}/course/${
       courseInfo?.course_details?.course_id
@@ -47,7 +47,7 @@ const UserCourseCard = ({ courseInfo }) => {
               <BottomCardSection
                 courseInfo={courseInfo}
                 isCourseNotStarted={isCourseNotStarted}
-                hasPreReqCourse={hasPreReqCourse}
+                preReqCourse={preReqCourse}
               />
             </Card.Section>
           </Card.Body>

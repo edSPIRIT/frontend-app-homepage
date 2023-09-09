@@ -329,4 +329,7 @@ p {
   text-decoration: underline;
   text-decoration-color:$gray-700 !important;
   text-underline-offset: 5px;
+  &:hover{
+    text-decoration: underline !important;
+  }
 }

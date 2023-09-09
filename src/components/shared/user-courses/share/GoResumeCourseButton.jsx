@@ -8,7 +8,7 @@ const GoResumeCourseButton = ({
   courseInfo,
   isCourseNotStarted,
   calcProgress,
-  hasPreReqCourse,
+  preReqCourse,
 }) => (
   <Button
     className="view-btn view-course-btn"
@@ -16,7 +16,7 @@ const GoResumeCourseButton = ({
     href={`${getConfig().LEARNING_BASE_URL}/course/${
       courseInfo?.course_details?.course_id
     }/home`}
-    disabled={isCourseNotStarted || hasPreReqCourse}
+    disabled={isCourseNotStarted || preReqCourse}
   >
     {calcProgress() > 0 ? (
       <span>
