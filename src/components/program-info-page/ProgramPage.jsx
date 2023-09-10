@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-scroll';
 import Scrollspy from 'react-scrollspy';
 
-import ProgramCourses from './program-page/ProgramCourses';
+import ProgramCourses from './ProgramPage/ProgramCourses';
 import CourseInfoSideBar from '../course-info-page/CoursePage/DesktopCourseInfo/CourseInfoSideBar';
 import CourseInfoTopDesc from '../course-info-page/CoursePage/DesktopCourseInfo/CourseInfoTopDesc';
 import AboutCourse from '../course-info-page/CoursePage/share/AboutCourse';

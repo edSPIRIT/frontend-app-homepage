@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import useGetBanner from '../../../hooks/useGetBanner';
 import Highlighted from './HomePageBanner/Highlighted';
-import SearchBox from '../../shared/search-header/search-header/SearchBox';
+import SearchBox from '../../shared/search-header/SearchHeader/SearchBox';
 import defaultImage from '../../../assets/place-holders/banner-placeholder.svg';
 
 const HomePageBanner = () => {

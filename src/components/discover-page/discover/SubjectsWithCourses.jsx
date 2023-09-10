@@ -5,9 +5,9 @@ import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { ArrowForward } from '@edx/paragon/icons';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
-import CourseCardNew from '../../shared/course-card/CourseCardNew';
-import MobileLoadingSkeleton from './featured-subjects-with-courses/MobileLoadingSkeleton';
-import DesktopLoadingSkeleton from './featured-subjects-with-courses/DesktopLoadingSkeleton';
+import CourseCard from '../../shared/course-card/CourseCard';
+import MobileLoadingSkeleton from './SubjectsWithCourses/MobileLoadingSkeleton';
+import DesktopLoadingSkeleton from './SubjectsWithCourses/DesktopLoadingSkeleton';
 import {
   resetSearchFilters,
   setSearchSubject,
@@ -72,7 +72,7 @@ const SubjectsWithCourses = ({
             ) : (
               <div className="course-container">
                 {subject?.some_of_its_courses?.map((course) => (
-                  <CourseCardNew course={course} key={course.course_slug} />
+                  <CourseCard course={course} key={course.course_slug} />
                 ))}
               </div>
             )}

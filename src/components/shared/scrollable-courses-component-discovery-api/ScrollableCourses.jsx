@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { OverflowScroll } from '@edx/paragon';
-import OverflowScrollContent from './scrollable-courses/OverflowScrollContent';
+import OverflowScrollContent from './ScrollableCourses/OverflowScrollContent';
 
 const ScrollableCourses = ({ courses, loading }) => (
   <div className="scroll-courses-container">

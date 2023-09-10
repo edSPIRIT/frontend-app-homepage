@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useEffect } from 'react';
 import { useLocation } from 'react-router';
-import SearchBox from './search-header/SearchBox';
+import SearchBox from './SearchHeader/SearchBox';
 import { resetSearchFilters } from '../../../redux/slice/searchQuerySlice';
 
 const SearchHeader = () => {

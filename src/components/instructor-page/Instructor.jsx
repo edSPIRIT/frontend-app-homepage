@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getConfig } from '@edx/frontend-platform';
 import useGetInstructor from '../../hooks/useGetInstructor';
-import CourseCardNew from '../shared/course-card/CourseCardNew';
+import CourseCard from '../shared/course-card/CourseCard';
 import CourseCardSkeleton from '../shared/skeleton/CourseCardSkeleton';
 import InstructorHeader from './instructor/InstructorHeader';
 import {
@@ -57,7 +57,7 @@ const Instructor = () => {
                 <CourseCardSkeleton key={i} />
               ))
             : instructorPopularCourses?.map((course) => (
-              <CourseCardNew course={course} key={course.slug} />
+              <CourseCard course={course} key={course.slug} />
             ))}
         </div>
         <div className="d-flex justify-content-center">

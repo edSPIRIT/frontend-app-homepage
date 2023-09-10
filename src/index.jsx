@@ -20,7 +20,7 @@ import appMessages from './i18n';
 
 import './index.scss';
 import Home from './components/home-page/Home';
-import OverviewPage from './components/dashboard/overview-page/OverviewPage';
+import OverviewPage from './components/dashboard/OverviewPage/OverviewPage';
 import Discover from './components/discover-page/Discover';
 import Search from './components/search-page/Search';
 import NotFound from './components/notFount-page/NotFound';

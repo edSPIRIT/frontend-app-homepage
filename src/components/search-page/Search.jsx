@@ -2,8 +2,8 @@ import { useMediaQuery } from '@edx/paragon';
 
 import { useEffect } from 'react';
 import { getConfig } from '@edx/frontend-platform';
-import MobileSearch from './search/MobileSearch';
-import DesktopSearch from './search/DesktopSearch';
+import MobileSearch from './Search/MobileSearch';
+import DesktopSearch from './Search/DesktopSearch';
 
 const Search = () => {
   useEffect(() => {

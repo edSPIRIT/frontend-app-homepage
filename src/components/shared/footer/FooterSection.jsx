@@ -1,16 +1,8 @@
-import { Icon } from '@edx/paragon';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import edLogo from '../../../assets/edspirit-logo.png';
-import mobileFooterLogo from '../../../assets/mobile-footer-logo.svg';
-import mobileEdxLogo from '../../../assets/mobile-edx-logo.svg';
-import edxLogo from '../../../assets/Edx.svg';
 import DefaultLogo from '../../../assets/place-holders/NavLogo-placeholder.svg';
-import { ReactComponent as Linkedin } from '../../../assets/linkedin.svg';
-import { ReactComponent as Facebook } from '../../../assets/facebook.svg';
-import { ReactComponent as Twitter } from '../../../assets/twitter.svg';
-import { ReactComponent as Instagram } from '../../../assets/instagram.svg';
 import useGetFooters from '../../../hooks/useGetFooters';
-import ChooseLanguage from './footer-section/ChooseLanguage';
+import ChooseLanguage from './FooterSection/ChooseLanguage';
+import FooterCopyRight from './FooterSection/FooterCopyRight';
+import FooterSocialIcons from './FooterSection/FooterSocialIcons';
 
 const FooterSection = () => {
   const { footerData } = useGetFooters();
@@ -64,90 +56,11 @@ const FooterSection = () => {
 
           <div className=" footer-col3-wrapper ">
             <ChooseLanguage />
-            <div className="social-container">
-              {footerData?.links?.socials.linkedin && (
-                <a
-                  href={footerData?.links?.socials.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Icon className="social-icon-footer" src={Linkedin} />
-                </a>
-              )}
-              {footerData?.links?.socials.facebook && (
-                <a
-                  href={footerData?.links?.socials.facebook}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Icon className="social-icon-footer" src={Facebook} />
-                </a>
-              )}
-              {footerData?.links?.socials.twitter && (
-                <a
-                  href={footerData?.links?.socials.twitter}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Icon className="social-icon-footer" src={Twitter} />
-                </a>
-              )}
-              {footerData?.links?.socials.instagram && (
-                <a
-                  href={footerData?.links?.socials.instagram}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Icon className="social-icon-footer" src={Instagram} />
-                </a>
-              )}
-            </div>
+            <FooterSocialIcons footerData={footerData} />
           </div>
         </div>
       </div>
-      <div className="footer-copy-right-container ">
-        <div className="footer-copy-right custom-container d-flex justify-content-between align-items-center ">
-          <div className="d-flex align-items-center">
-            <div className="logo-container mr-2">
-              <img
-                className="footer-logo"
-                src={edLogo}
-                alt="footer-logo"
-              />
-              <img
-                className="mobile-footer-logo  h-100"
-                src={mobileFooterLogo}
-                alt="footer-logo"
-              />
-            </div>
-            <p className="footer-desc">
-              <FormattedMessage
-                id="footer.powerdBy.text"
-                defaultMessage="Powered by "
-              />
-              <a className="footer-desc" href="https://edspirit.com/">
-                edSPIRIT
-              </a>
-            </p>
-          </div>
-          <div className="d-flex edx-wrapper">
-            <div className="logo-container mr-2">
-              <img
-                className="mobile-footer-logo  h-100"
-                src={mobileEdxLogo}
-                alt="footer-logo-edx"
-              />
-            </div>
-            <p className="footer-desc d-flex align-items-center">
-              <FormattedMessage
-                id="footer.copyRight.text"
-                defaultMessage="edX and Open edX are trademarks of edX LLC. All Rights Reserved"
-              />
-              <img className="ml-2 desktop-view-edx" src={edxLogo} alt="edx" />
-            </p>
-          </div>
-        </div>
-      </div>
+      <FooterCopyRight />
     </footer>
   );
 };

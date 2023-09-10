@@ -3,7 +3,7 @@ import { Carousel, Icon } from '@edx/paragon';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import CourseCardSkeleton from '../skeleton/CourseCardSkeleton';
-import CourseCardNew from '../course-card/CourseCardNew';
+import CourseCard from '../course-card/CourseCard';
 import useGetSimilarCourses from '../../../hooks/useGetSimilarCourses';
 
 const SimilarCourses = ({
@@ -68,7 +68,7 @@ const SimilarCourses = ({
                 <Carousel.Item key={i}>
                   <div className="course-container mt-4.5">
                     {chunkCourses.map((course) => (
-                      <CourseCardNew
+                      <CourseCard
                         course={course?.data?.course_metadata}
                         key={course?.data?.id}
                       />

@@ -8,11 +8,11 @@ import { getConfig } from '@edx/frontend-platform';
 import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
 import messages from '../../messages';
 import NavHeader from '../shared/header-component/Header/DesktopHeader/NavHeader';
-import NotEnrolledCardCourse from './overview-page/not-enrolled-course-card/NotEnrolledCourseCard';
-import TotalCourseWrapper from './enrollment-list/TotalCourseWrapper';
+import NotEnrolledCardCourse from './OverviewPage/NotEnrolledCardCourse/NotEnrolledCourseCard';
+import TotalCourseWrapper from './EnrollmentList/TotalCourseWrapper';
 import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleton';
 import UserCourseCard from '../shared/user-courses/UserCourseCard';
-import LogInFirst from './overview-page/LogInFirst';
+import LogInFirst from './OverviewPage/LogInFirst';
 
 const EnrollmentList = ({ type, intl }) => {
   const { authenticatedUser } = useContext(AppContext);

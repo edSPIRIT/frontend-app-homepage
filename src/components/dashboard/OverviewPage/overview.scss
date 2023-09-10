@@ -1,0 +1,47 @@
+@import 'components/dashboard/OverviewPage/NotEnrolledCardCourse/not-enrolled-course-card.scss';
+@import 'components/dashboard/OverviewPage/RecommendedPrograms/recommended-programs.scss';
+@import 'components/dashboard/OverviewPage/AvatarInfo/avatar-info.scss';
+
+.overview-container {
+  display: grid;
+  grid-template-areas:
+    'avatar-area avatar-area recommended-program-area'
+    'overview-courses-area overview-courses-area recommended-program-area'
+    'recommended-courses-area recommended-courses-area recommended-courses-area';
+}
+.avatar-wrapper {
+  grid-area: avatar-area;
+}
+.overview-courses-wrapper {
+  grid-area: overview-courses-area;
+  .recent-title {
+    opacity: 0.5;
+    color: $gray-500;
+  }
+}
+.recommended-program-wrapper {
+  grid-area: recommended-program-area;
+}
+.recommended-courses-wrapper {
+  grid-area: recommended-courses-area;
+}
+.recommendationCourse-wrapper {
+  background-color: $light-200;
+}
+.login-wrapper {
+  padding-top: 80px;
+  .btn {
+    text-decoration: underline;
+  }
+  p {
+    direction: initial;
+    display: inline-flex;
+    justify-content: center;
+    align-items:center;
+  }
+}
+@media (max-width: 600px) {
+  .login-wrapper {
+    padding-top: 24px;
+  }
+}

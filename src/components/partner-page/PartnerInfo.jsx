@@ -5,13 +5,13 @@ import React, { useEffect } from 'react';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { getConfig } from '@edx/frontend-platform';
 import useGetPartner from '../../hooks/useGetPartner';
-import PartnerCourses from './partner-info/PartnerCourses';
-import PartnerHeader from './partner-info/PartnerHeader';
-import DeskTopInstructors from './partner-info/DeskTopInstructors';
+import PartnerCourses from './PartnerInfo/PartnerCourses';
+import PartnerHeader from './PartnerInfo/PartnerHeader';
+import DesktopInstructors from './PartnerInfo/DesktopInstructors';
 import messages from '../../messages';
 import usePartnerInstructorsInfinite from '../../hooks/usePartnerInstructorsInfinite';
 
-const MobileInstructors = React.lazy(() => import('./partner-info/MobileInstructors'));
+const MobileInstructors = React.lazy(() => import('./PartnerInfo/MobileInstructors'));
 
 const PartnerInfo = ({ intl }) => {
   const { slug } = useParams();
@@ -67,7 +67,7 @@ const PartnerInfo = ({ intl }) => {
           isFetching={isFetching}
         />
       ) : (
-        <DeskTopInstructors
+        <DesktopInstructors
           partnerInstructors={partnerInstructors}
           loading={partnerInstructorsLoading}
           isFetching={isFetching}

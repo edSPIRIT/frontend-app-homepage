@@ -11,7 +11,7 @@ import {
 } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
 import useGetTopRecentCourses from '../../../hooks/useGetTopRecentCourses';
-import CourseCardNew from '../../shared/course-card/CourseCardNew';
+import CourseCard from '../../shared/course-card/CourseCard';
 import CourseCardSkeleton from '../../shared/skeleton/CourseCardSkeleton';
 import messages from '../../../messages';
 import { resetSearchFilters } from '../../../redux/slice/searchQuerySlice';
@@ -28,7 +28,7 @@ const ExplorerCourses = ({ intl }) => {
   const renderCourseCards = (courses) => (
     <div className="course-container">
       {courses.map((course) => (
-        <CourseCardNew
+        <CourseCard
           course={course?.data?.course_metadata}
           key={course?.data?.id}
         />

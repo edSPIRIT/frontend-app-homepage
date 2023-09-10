@@ -5,7 +5,7 @@ import FeaturedSubjects from './discover/FeaturedSubjects';
 import useSubjectsWithCoursesInfinite from '../../hooks/useSubjectsWithCoursesInfinite';
 import SubjectsWithCourses from './discover/SubjectsWithCourses';
 import useGetFeaturedSubjects from '../../hooks/useGetFeaturedSubjects';
-import FeaturedSubjectsSkeleton from './discover/featured-subjects/FeaturedSubjectsSkeleton';
+import FeaturedSubjectsSkeleton from './discover/FeaturedSubjects/FeaturedSubjectsSkeleton';
 
 const Discover = () => {
   const { featuredSubjects, loading } = useGetFeaturedSubjects();

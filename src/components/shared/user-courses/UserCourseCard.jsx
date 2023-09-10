@@ -4,9 +4,9 @@ import { Card, useMediaQuery, useToggle } from '@edx/paragon';
 
 import { getConfig } from '@edx/frontend-platform';
 import cardPlaceholder from '../../../assets/place-holders/user-course-placeholder.svg';
-import MoreButtonModal from './user-course-card/MoreButtonModal';
-import TopCardSection from './user-course-card/TopCardSection';
-import BottomCardSection from './user-course-card/BottomCardSection';
+import MoreButtonModal from './UserCourseCard/MoreButtonModal';
+import TopCardSection from './UserCourseCard/TopCardSection';
+import BottomCardSection from './UserCourseCard/BottomCardSection';
 import useUserCourseButtonStatus from '../../../hooks/utils/useUserCourseButtonStatus';
 
 const UserCourseCard = ({ courseInfo }) => {
