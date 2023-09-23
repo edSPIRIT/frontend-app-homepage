@@ -37,7 +37,7 @@
   "dependencies": {
     "@edx/brand": "https://github.com/Edspirit/brand-openedx",
     "@edx/frontend-platform": "4.2.0",
-    "@edx/paragon": "20.28.5",
+    "@edx/paragon": "21.2.0",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^0.21.4",
     "axios-cache-adapter": "^2.7.3",
