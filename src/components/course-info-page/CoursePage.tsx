@@ -4,7 +4,7 @@ import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
 import {
   ActionRow, AlertModal, Button, useMediaQuery,
 } from '@edx/paragon';
-import { Warning } from '@edx/paragon/icons';
+import { Info } from '@edx/paragon/icons';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useLocation } from 'react-router-dom';
@@ -24,10 +24,10 @@ const CoursePage = ({ intl }) => {
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const paymentStatus = queryParams.get('payment');
+  const paymentStatus = queryParams.get('payment_status');
 
   useEffect(() => {
-    if (paymentStatus === 'fail') {
+    if (paymentStatus === 'failed') {
       setOpen(true);
     }
   }, [paymentStatus]);
@@ -53,7 +53,7 @@ const CoursePage = ({ intl }) => {
         isOpen={isOpen}
         onClose={() => setOpen(false)}
         variant="danger"
-        icon={Warning}
+        icon={Info}
         footerNode={(
           <ActionRow>
             <Button variant="tertiary" onClick={() => setOpen(false)}>
