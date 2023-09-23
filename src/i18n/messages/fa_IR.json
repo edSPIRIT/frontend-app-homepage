@@ -178,5 +178,8 @@
     "courseInfo.prerequisiteFistPart.attention": "شما باید",
     "courseInfo.prerequisiteSecondPart.attention": "را قبل از شروع دوره با موفقیت ﺑﮕﺬﺭﺍنید.",
     "courseInfo.prerequisiteMiddlePart.attention": "دوره پیش نیاز",
-    "courseInfo.prerequisiteCourse.text": "دوره پیش نیاز"
+    "courseInfo.prerequisiteCourse.text": "دوره پیش نیاز",
+    "courseInfo.dismiss.button": "بستن",
+    "transaction.failed": "تراکنش ناموفق",
+    "courseInfo.unsuccessfulPaymentMessage.text": "پرداخت ناموفق بود"
 }

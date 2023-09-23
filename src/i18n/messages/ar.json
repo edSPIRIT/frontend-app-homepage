@@ -178,5 +178,8 @@
     "courseInfo.prerequisiteFistPart.attention": "يجب عليك إكمال",
     "courseInfo.prerequisiteSecondPart.attention": "بنجاح قبل أن تبدأ هذه الدورة.",
     "courseInfo.prerequisiteMiddlePart.attention": "الدورة التدريبية المطلوبة",
-    "courseInfo.prerequisiteCourse.text": "الدورة التدريبية المطلوبة"
+    "courseInfo.prerequisiteCourse.text": "الدورة التدريبية المطلوبة",
+    "courseInfo.unsuccessfulPaymentMessage.text": "لم تنجح عملية الدفع",
+    "courseInfo.dismiss.button": "رفض",
+    "transaction.failed": "فشل الاجراء"
 }

@@ -4,5 +4,6 @@
     "banner.welcomeText": "Hoş Geldiniz Metin!",
     "homepage.app.welcome": "Hoş geldin",
     "homepage.app.login": "Giriş yapmak",
-    "header.nav.overview": "genel bakış"
+    "header.nav.overview": "genel bakış",
+    "instructor.students.text": "instructor.öğrenciler.metin"
 }

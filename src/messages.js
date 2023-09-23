@@ -117,6 +117,10 @@ const messages = defineMessages({
     id: 'userCourseCard.unrollMessage.text',
     defaultMessage: 'You have successfully unenrolled from the course',
   },
+  'transaction.failed': {
+    id: 'transaction.failed',
+    defaultMessage: 'Transaction failed',
+  },
   recent: {
     id: 'recent.text',
     defaultMessage: 'Recent',
