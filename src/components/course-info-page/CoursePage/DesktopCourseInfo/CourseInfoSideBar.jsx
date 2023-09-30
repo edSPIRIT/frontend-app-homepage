@@ -17,8 +17,13 @@ import CourseInstructorsItem from '../share/CourseInstructorsItem';
 
 const CourseInfoSideBar = ({ courseMetaData, loading }) => {
   const {
-    isCourseNotStarted, isEnrollNotActive, hasPreReqCourse, warningComponent,
+    isCourseNotStarted,
+    isEnrollNotActive,
+    hasPreReqCourse,
+    warningComponent,
   } = useGetButtonStatus(courseMetaData);
+  const coursePrice = courseMetaData?.paid_course?.price || 0;
+  const courseCurrency = courseMetaData?.paid_course?.currency || 'USD';
   return (
     <div className="course-info-side-wrapper">
       {loading ? (
@@ -44,13 +49,22 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
               {courseMetaData?.paid_course?.price > 0 ? (
                 <p className="price-symbol-wrapper">
                   <span className="mr-1">
-                    <FormattedMessage
-                      id={courseMetaData?.paid_course?.currency}
-                      defaultMessage="$"
-                    />
+                    <FormattedMessage id={courseCurrency} defaultMessage="$" />
                   </span>
                   <span className="mr-1">
-                    {courseMetaData?.paid_course?.price_human_numeric}
+                    <FormattedNumber
+                      value={
+                        courseCurrency === 'USD'
+                          ? coursePrice / 100
+                          : coursePrice
+                      }
+                      minimumFractionDigits={
+                        courseMetaData?.paid_course?.currency === 'USD' ? 2 : 0
+                      }
+                      maximumFractionDigits={
+                        courseMetaData?.paid_course?.currency === 'USD' ? 2 : 0
+                      }
+                    />
                   </span>
                 </p>
               ) : (
@@ -74,10 +88,8 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
               />
               <CourseDateInfo courseMetaData={courseMetaData} />
             </div>
-            { warningComponent && (
-            <div className="mt-2.5">
-              {warningComponent}
-            </div>
+            {warningComponent && (
+              <div className="mt-2.5">{warningComponent}</div>
             )}
           </Card.Section>
           <Card.Footer>
