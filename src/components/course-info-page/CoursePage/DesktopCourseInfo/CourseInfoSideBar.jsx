@@ -59,10 +59,10 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
                           : coursePrice
                       }
                       minimumFractionDigits={
-                        courseMetaData?.paid_course?.currency === 'USD' ? 2 : 0
+                        courseCurrency === 'USD' ? 2 : 0
                       }
                       maximumFractionDigits={
-                        courseMetaData?.paid_course?.currency === 'USD' ? 2 : 0
+                        courseCurrency === 'USD' ? 2 : 0
                       }
                     />
                   </span>

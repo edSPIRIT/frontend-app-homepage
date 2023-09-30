@@ -19,6 +19,8 @@ import { determineDirection } from '../../../utils/determineDirection';
 
 const CourseCard = ({ course, intl }) => {
   const isProgram = false;
+  const coursePrice = course?.paid_course?.price || 0;
+  const courseCurrency = course?.paid_course?.currency || 'USD';
   return (
     <Link to={`/course/${course?.course_slug}`}>
       <Card className="cards-wrapper d-flex">
@@ -125,12 +127,18 @@ const CourseCard = ({ course, intl }) => {
             {course?.paid_course?.price > 0 ? (
               <p className="price-title mt-auto price-symbol-wrapper">
                 <span className="mr-1">
-                  <FormattedMessage
-                    id={course?.paid_course?.currency}
-                    defaultMessage="$"
+                  <FormattedMessage id={courseCurrency} defaultMessage="$" />
+                </span>
+                <span className="mr-1">
+                  {' '}
+                  <FormattedNumber
+                    value={
+                      courseCurrency === 'USD' ? coursePrice / 100 : coursePrice
+                    }
+                    minimumFractionDigits={courseCurrency === 'USD' ? 2 : 0}
+                    maximumFractionDigits={courseCurrency === 'USD' ? 2 : 0}
                   />
                 </span>
-                <span className="mr-1">{course?.paid_course?.price_human_numeric}</span>
               </p>
             ) : (
               <span className="price-title mt-auto">
