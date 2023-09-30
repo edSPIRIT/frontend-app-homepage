@@ -16,14 +16,14 @@ const useManageLocale = () => {
     if (activeLangs) {
       const currentLocale = getLocale();
       const newLocale = activeLangs[0]?.code;
-      const url = new URL(getConfig().LMS_BASE_URL).hostname;
-
+      const url = getConfig().BASE_URL.replace('apps', '');
+      console.log('test', `openedx-language-preference=${newLocale}; path=/; domain=${url}`);
       if (
         !document.cookie.includes('openedx-language-preference')
         && currentLocale !== newLocale
       ) {
         try {
-          document.cookie = `openedx-language-preference=${newLocale}; path=/; domain=.${url}`;
+          document.cookie = `openedx-language-preference=${newLocale}; path=/; domain=${url}`;
           window.location.reload();
         } catch (err) {
           console.error(err);
