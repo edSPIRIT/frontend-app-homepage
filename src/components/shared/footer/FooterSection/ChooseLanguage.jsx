@@ -49,11 +49,11 @@ const ChooseLanguage = () => {
 
   const handleClick = (e) => {
     if (!authenticatedUser) {
-      const url = new URL(getConfig().LMS_BASE_URL).hostname;
+      const url = getConfig().BASE_URL.replace('apps', '');
       if (getLocale() !== getLangCode(e.target.innerText)) {
         document.cookie = `openedx-language-preference=${getLangCode(
           e.target.innerText,
-        )}; path=/; domain=.${url}`;
+        )}; path=/; domain=${url}`;
         window.location.reload();
       }
     }
