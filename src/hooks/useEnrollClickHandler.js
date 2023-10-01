@@ -4,6 +4,9 @@ import { AppContext } from '@edx/frontend-platform/react';
 import axios from 'axios';
 import { useContext } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { useDispatch } from 'react-redux';
+import { setActivateAlert } from '../redux/slice/activateAlertSlice';
+import useGetUserProfile from './useGetUserProfile';
 
 const fetchAvailablePayment = async (id) => {
   try {
@@ -40,7 +43,11 @@ const postCourseEnrollment = async (id) => {
   return data;
 };
 const useEnrollClickHandler = (courseMetaData) => {
+  const dispatch = useDispatch();
+
   const { authenticatedUser } = useContext(AppContext);
+  const { userProfile } = useGetUserProfile();
+
   const { data: availablePaymentData, loading } = useQuery(
     ['Transaction', courseMetaData?.course_id],
     () => fetchAvailablePayment(courseMetaData?.course_id),
@@ -68,6 +75,10 @@ const useEnrollClickHandler = (courseMetaData) => {
     },
   });
   const enrollClickHandler = () => {
+    if (!userProfile?.is_active) {
+      dispatch(setActivateAlert(true));
+      return;
+    }
     if (availablePaymentData) {
       refetch();
       return;

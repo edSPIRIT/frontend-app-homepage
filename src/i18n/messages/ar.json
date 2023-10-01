@@ -181,5 +181,7 @@
     "courseInfo.prerequisiteCourse.text": "الدورة التدريبية المطلوبة",
     "courseInfo.unsuccessfulPaymentMessage.text": "لم تنجح عملية الدفع",
     "courseInfo.dismiss.button": "رفض",
-    "transaction.failed": "فشل الاجراء"
+    "transaction.failed": "فشل الاجراء",
+    "inActive.alert.title": "خطأ تفعيل",
+    "courseInfo.inActiveUser.text": "يرجى تفعيل حسابك عبر البريد الإلكتروني للمتابعة."
 }

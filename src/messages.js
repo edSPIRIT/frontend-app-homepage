@@ -121,6 +121,10 @@ const messages = defineMessages({
     id: 'transaction.failed',
     defaultMessage: 'Transaction failed',
   },
+  'inActive.alert.title': {
+    id: 'inActive.alert.title',
+    defaultMessage: 'Activation Error',
+  },
   recent: {
     id: 'recent.text',
     defaultMessage: 'Recent',

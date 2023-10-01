@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import sortPartners from '../slice/partnerSlice';
 import sortSearchSlice from '../slice/sortSearchSlice';
 import searchModal from '../slice/searchModalSlice';
+import activateAlert from '../slice/activateAlertSlice';
 import searchPage from '../slice/searchPageSlice';
 import searchFilters from '../slice/searchQuerySlice';
 import recentPages from '../slice/recentPagesSlice';
@@ -16,6 +17,7 @@ const store = configureStore({
     searchFilters,
     recentPages,
     toast,
+    activateAlert,
   },
 });
 

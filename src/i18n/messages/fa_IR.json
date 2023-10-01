@@ -181,5 +181,7 @@
     "courseInfo.prerequisiteCourse.text": "دوره پیش نیاز",
     "courseInfo.dismiss.button": "بستن",
     "transaction.failed": "تراکنش ناموفق",
-    "courseInfo.unsuccessfulPaymentMessage.text": "پرداخت ناموفق بود"
+    "courseInfo.unsuccessfulPaymentMessage.text": "پرداخت ناموفق بود",
+    "inActive.alert.title": "خطای فعال سازی",
+    "courseInfo.inActiveUser.text": "لطفاً برای ادامه، حساب خود را از طریق ایمیل فعال کنید."
 }
