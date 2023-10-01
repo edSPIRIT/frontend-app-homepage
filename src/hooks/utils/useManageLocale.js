@@ -17,7 +17,6 @@ const useManageLocale = () => {
       const currentLocale = getLocale();
       const newLocale = activeLangs[0]?.code;
       const url = getConfig().BASE_URL.replace('apps', '');
-      console.log('test', `openedx-language-preference=${newLocale}; path=/; domain=${url}`);
       if (
         !document.cookie.includes('openedx-language-preference')
         && currentLocale !== newLocale
