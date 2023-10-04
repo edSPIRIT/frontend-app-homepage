@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import {
-  FormattedDate,
   FormattedMessage,
   injectIntl,
 } from '@edx/frontend-platform/i18n';
@@ -20,8 +21,14 @@ import { setToastMessage } from '../../../../redux/slice/toastSlice';
 import { determineDirection } from '../../../../utils/determineDirection';
 import SharedToastMessage from '../../base-components/SharedToastMessage';
 import messages from '../../../../messages';
+import CourseDateStatus from './TopCardSection/CourseDateStatus';
 
-const TopCardSection = ({ courseInfo, openMoreBtnModal, intl }) => {
+const TopCardSection = ({
+  courseInfo,
+  openMoreBtnModal,
+  certificateData,
+  intl,
+}) => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
@@ -39,11 +46,9 @@ const TopCardSection = ({ courseInfo, openMoreBtnModal, intl }) => {
     },
   });
   const isTablet = useMediaQuery({ maxWidth: '920px' });
-  const courseCompleted = courseInfo?.progress?.complete_count > 0
-    && courseInfo?.progress?.incomplete_count === 0;
 
   return (
-    <div onMouseLeave={() => setIsOpenDropDown(false)}>
+    <div>
       <div className="d-flex justify-content-between align-items-center mb-1 title-wrapper">
         <h3
           style={{
@@ -109,6 +114,27 @@ const TopCardSection = ({ courseInfo, openMoreBtnModal, intl }) => {
               />
               {isOpenDropDown && (
                 <Dropdown.Menu>
+                  {certificateData && (
+                    <Dropdown.Item
+                      href={`${getConfig().LEARNING_BASE_URL}/course/${
+                        courseInfo?.course_details?.course_id
+                      }/home`}
+                    >
+                      <FormattedMessage
+                        id="userCourseCard.resumeCourse.text"
+                        defaultMessage="Resume Course"
+                      />
+                    </Dropdown.Item>
+                  )}
+                  <Dropdown.Item
+                    to={`/course/${courseInfo?.course_metadata?.slug}`}
+                    as={Link}
+                  >
+                    <FormattedMessage
+                      id="userCourseCard.courseInfo.button"
+                      defaultMessage="Course Info"
+                    />
+                  </Dropdown.Item>
                   <Dropdown.Item
                     onClick={(e) => {
                       e.preventDefault();
@@ -141,26 +167,7 @@ const TopCardSection = ({ courseInfo, openMoreBtnModal, intl }) => {
       >
         {courseInfo?.organization?.name}
       </Link>
-      <p className="course-date-title">
-        {!courseCompleted && (
-          <>
-            <span>
-              <FormattedMessage
-                id="userCourseCard.courseStart.text"
-                defaultMessage="Course Start - "
-              />
-            </span>
-            <span>
-              <FormattedDate
-                value={courseInfo?.course_details?.course_start}
-                day="numeric"
-                month="short"
-                year="numeric"
-              />
-            </span>
-          </>
-        )}
-      </p>
+      <CourseDateStatus courseInfo={courseInfo} />
     </div>
   );
 };

@@ -67,8 +67,8 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
           >
             <Icon src={VideoTranscript} className="mr-2 text-gray-500" />
             <FormattedMessage
-              id="dashboard.courseInfo.item"
-              defaultMessage="Course info"
+              id="userCourseCard.courseInfo.button"
+              defaultMessage="Course Info"
             />
           </Link>
           <div

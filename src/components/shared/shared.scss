@@ -284,6 +284,12 @@ p {
     }
   }
 }
+.share-icon {
+  cursor: pointer;
+  color: $gray-500;
+  opacity: 0.5;
+  transform: unset !important;
+}
 //remove scroll-x in modal
 .pgn__modal-body {
   // padding: unset;
@@ -325,11 +331,11 @@ p {
     max-width: 194px;
   }
 }
-.text-decoration-underline{
+.text-decoration-underline {
   text-decoration: underline;
-  text-decoration-color:$gray-700 !important;
+  text-decoration-color: $gray-700 !important;
   text-underline-offset: 5px;
-  &:hover{
+  &:hover {
     text-decoration: underline !important;
   }
 }

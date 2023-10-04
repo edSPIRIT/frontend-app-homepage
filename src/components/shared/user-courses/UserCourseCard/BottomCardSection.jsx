@@ -1,11 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable react/prop-types */
-import { Button, useMediaQuery } from '@edx/paragon';
+import { useMediaQuery } from '@edx/paragon';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import useGetCertificate from '../../../../hooks/useGetCertificate';
 import ProgressStatus from '../share/ProgressStatus';
 import GoResumeCourseButton from '../share/GoResumeCourseButton';
 import ViewCertificateButton from '../share/ViewCertificateButton';
@@ -13,11 +10,12 @@ import ViewCertificateButton from '../share/ViewCertificateButton';
 const TabletBottomCard = React.lazy(() => import('./BottomCardSection/TabletBottomCard'));
 const MobileBottomCard = React.lazy(() => import('./BottomCardSection/MobileBottomCard'));
 
-const BottomCardSection = ({ courseInfo, isCourseNotStarted, preReqCourse }) => {
+const BottomCardSection = ({
+  courseInfo, isCourseNotStarted, preReqCourse, certificateData,
+}) => {
   const isTablet = useMediaQuery({ minWidth: '601px', maxWidth: '768px' });
   const isMobile = useMediaQuery({ maxWidth: '600px' });
 
-  const { certificateData } = useGetCertificate(courseInfo);
   const courseCompleted = courseInfo?.progress?.complete_count > 0
     && courseInfo?.progress?.incomplete_count === 0;
 
@@ -77,20 +75,7 @@ const BottomCardSection = ({ courseInfo, isCourseNotStarted, preReqCourse }) => 
         isCourseNotStarted={isCourseNotStarted}
         preReqCourse={preReqCourse}
       />
-      <div className="ml-3 course-card-btn-wrapper">
-        <Button
-          className="course-info-button view-course-btn mr-2"
-          variant="outline-primary"
-          to={`/course/${courseInfo?.course_metadata?.slug}`}
-          as={Link}
-        >
-          <span>
-            <FormattedMessage
-              id="userCourseCard.courseInfo.button"
-              defaultMessage="Course Info"
-            />
-          </span>
-        </Button>
+      <div className="course-card-btn-wrapper">
         {buttonStatus()}
       </div>
     </div>

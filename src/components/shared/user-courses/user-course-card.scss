@@ -1,15 +1,15 @@
 .user-card-course {
   border-color: $light-400;
   cursor: pointer;
-  &:hover {
-    .icons-wrapper {
-      display: flex !important;
-    }
-    .course-card-btn-wrapper {
-      display: flex;
-      flex-shrink: 0 !important;
-    }
-  }
+  // &:hover {
+  //   .icons-wrapper {
+  //     display: flex !important;
+  //   }
+  //   .course-card-btn-wrapper {
+  //     display: flex;
+  //     flex-shrink: 0 !important;
+  //   }
+  // }
   .pgn__card {
     display: flex;
   }
@@ -65,7 +65,7 @@
   }
   .icons-wrapper {
     height: 28px;
-    display: none !important;
+    // display: none !important;
   }
   .btn {
     font-size: $font-size-base-xl;
@@ -114,15 +114,14 @@
     margin-top: auto;
   }
   .course-card-btn-wrapper {
-    display: none;
+    display: flex;
+    flex-shrink: 0 !important;
+  }
+  .share-icon {
+    opacity: unset;
   }
 }
-.share-icon {
-  cursor: pointer;
-  color: $gray-500;
-  opacity: 0.5;
-  transform: unset !important;
-}
+
 // .dark-background {
 //   background-color: $primary-700;
 //   h3 {
@@ -193,9 +192,9 @@
     .org-title {
       font-size: $font-size-base-sm;
     }
-    .view-course-btn {
-      font-size: $font-size-base-sm;
-    }
+    // .view-course-btn {
+    //   font-size: $font-size-base-sm;
+    // }
     .complete-wrapper {
       flex-direction: column;
       align-items: unset !important;

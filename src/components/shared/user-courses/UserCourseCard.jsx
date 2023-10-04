@@ -8,9 +8,11 @@ import MoreButtonModal from './UserCourseCard/MoreButtonModal';
 import TopCardSection from './UserCourseCard/TopCardSection';
 import BottomCardSection from './UserCourseCard/BottomCardSection';
 import useUserCourseButtonStatus from '../../../hooks/utils/useUserCourseButtonStatus';
+import useGetCertificate from '../../../hooks/useGetCertificate';
 
 const UserCourseCard = ({ courseInfo }) => {
   const [isOpen, open, close] = useToggle(false);
+  const { certificateData } = useGetCertificate(courseInfo);
   const isMobile = useMediaQuery({ maxWidth: '600px' });
   const { isCourseNotStarted, preReqCourse } = useUserCourseButtonStatus(courseInfo);
   const courseUrl = (isCourseNotStarted || preReqCourse)
@@ -43,11 +45,12 @@ const UserCourseCard = ({ courseInfo }) => {
           />
           <Card.Body>
             <Card.Section>
-              <TopCardSection courseInfo={courseInfo} openMoreBtnModal={open} />
+              <TopCardSection courseInfo={courseInfo} openMoreBtnModal={open} certificateData={certificateData} />
               <BottomCardSection
                 courseInfo={courseInfo}
                 isCourseNotStarted={isCourseNotStarted}
                 preReqCourse={preReqCourse}
+                certificateData={certificateData}
               />
             </Card.Section>
           </Card.Body>

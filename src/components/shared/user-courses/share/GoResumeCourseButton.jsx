@@ -11,7 +11,7 @@ const GoResumeCourseButton = ({
   preReqCourse,
 }) => (
   <Button
-    className="view-btn view-course-btn"
+    className="view-btn view-course-btn ml-3"
     variant="primary"
     href={`${getConfig().LEARNING_BASE_URL}/course/${
       courseInfo?.course_details?.course_id

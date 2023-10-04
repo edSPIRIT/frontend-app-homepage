@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import { getConfig } from '@edx/frontend-platform';
 import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
-import { ActionRow, AlertModal, Button, useMediaQuery } from '@edx/paragon';
+import {
+  ActionRow, AlertModal, Button, useMediaQuery,
+} from '@edx/paragon';
 import { Info } from '@edx/paragon/icons';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,9 +15,7 @@ import { setActivateAlert } from '../../redux/slice/activateAlertSlice';
 import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import DesktopCourseInfo from './CoursePage/DesktopCourseInfo';
 
-const MobileCourseInfo = React.lazy(() =>
-  import('./CoursePage/MobileCourseInfo')
-);
+const MobileCourseInfo = React.lazy(() => import('./CoursePage/MobileCourseInfo'));
 
 const CoursePage = ({ intl }) => {
   const dispatch = useDispatch();
@@ -59,7 +59,7 @@ const CoursePage = ({ intl }) => {
         onClose={() => dispatch(setActivateAlert(false))}
         variant="danger"
         icon={Info}
-        footerNode={
+        footerNode={(
           <ActionRow>
             <Button
               variant="tertiary"
@@ -71,7 +71,7 @@ const CoursePage = ({ intl }) => {
               />
             </Button>
           </ActionRow>
-        }
+        )}
       >
         <p>
           <FormattedMessage
@@ -87,7 +87,7 @@ const CoursePage = ({ intl }) => {
         onClose={() => setOpen(false)}
         variant="danger"
         icon={Info}
-        footerNode={
+        footerNode={(
           <ActionRow>
             <Button variant="tertiary" onClick={() => setOpen(false)}>
               <FormattedMessage
@@ -96,7 +96,7 @@ const CoursePage = ({ intl }) => {
               />
             </Button>
           </ActionRow>
-        }
+        )}
       >
         <p>
           <FormattedMessage
