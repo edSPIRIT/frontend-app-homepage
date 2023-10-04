@@ -17,7 +17,7 @@ const useSearchResults = (page = 0) => {
     }&sort=${sortState}`;
     const { data, status } = await getAuthenticatedHttpClient().post(
       url,
-      cleanFilters,
+      cleanFilters
     );
     if (status !== 200) {
       throw new Error('fetch not ok');
@@ -26,7 +26,7 @@ const useSearchResults = (page = 0) => {
   };
   const { data, isLoading } = useQuery(
     ['SearchResults', cleanedFilters, page, sortState],
-    () => fetchSearchResults(cleanedFilters, page),
+    () => fetchSearchResults([], page)
   );
 
   return {

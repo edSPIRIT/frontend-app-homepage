@@ -42,10 +42,11 @@ const queryClient = new QueryClient({
       staleTime: 5 * 60 * 1000,
       // Set cacheTime to 60 minutes
       cacheTime: 60 * 60 * 1000,
-     // Set the retry count for queries here
+      // Set the retry count for queries here
+      retry: 1, // Set the retry count for queries here
     },
     mutations: {
-      retry: 2, // Set the retry count for mutations here
+      retry: 1, // Set the retry count for mutations here
     },
   },
 });
