@@ -29,8 +29,8 @@ const CourseDateStatus = ({ courseInfo }) => {
     if (courseEnd && courseEnd < currentDate) {
       return (
         <CourseDate
-          courseInfo={courseInfo}
-          messageId="userCourseCard.course_end.text"
+          courseDate={courseInfo?.course_details?.course_end}
+          messageId="userCourseCard.expired.text"
           defaultMessage="Access has expired on - "
         />
       );
@@ -39,8 +39,8 @@ const CourseDateStatus = ({ courseInfo }) => {
     if (courseEnd && courseEnd > currentDate) {
       return (
         <CourseDate
-          courseInfo={courseInfo}
-          messageId="userCourseCard.course_end.text"
+          courseDate={courseInfo?.course_details?.course_end}
+          messageId="userCourseCard.willExpired.text"
           defaultMessage="Access will expire on - "
         />
       );
@@ -58,8 +58,8 @@ const CourseDateStatus = ({ courseInfo }) => {
   if (courseStart && courseStart < currentDate) {
     return (
       <CourseDate
-        courseInfo={courseInfo}
-        messageId="userCourseCard.courseStart.text"
+        courseDate={courseInfo?.course_details?.course_start}
+        messageId="userCourseCard.hasCourseStart.text"
         defaultMessage="Course has started on - "
       />
     );
@@ -67,8 +67,8 @@ const CourseDateStatus = ({ courseInfo }) => {
 
   return (
     <CourseDate
-      courseInfo={courseInfo}
-      messageId="userCourseCard.courseStart.text"
+      courseDate={courseInfo?.course_details?.course_start}
+      messageId="userCourseCard.willCourseStart.text"
       defaultMessage="Course will start on - "
     />
   );

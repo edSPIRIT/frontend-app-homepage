@@ -2,17 +2,14 @@
 import { FormattedDate, FormattedMessage } from '@edx/frontend-platform/i18n';
 import React from 'react';
 
-const CourseDate = ({ courseInfo, messageId, defaultMessage }) => (
+const CourseDate = ({ courseDate, messageId, defaultMessage }) => (
   <p className="course-date-title">
     <span>
       <FormattedMessage id={messageId} defaultMessage={defaultMessage} />
     </span>
     <span>
       <FormattedDate
-        value={
-          courseInfo?.course_details?.course_end
-          || courseInfo?.course_details?.course_start
-        }
+        value={courseDate}
         day="numeric"
         month="short"
         year="numeric"

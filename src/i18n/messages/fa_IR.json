@@ -183,5 +183,9 @@
     "transaction.failed": "تراکنش ناموفق",
     "courseInfo.unsuccessfulPaymentMessage.text": "پرداخت ناموفق بود",
     "inActive.alert.title": "خطای فعال سازی",
-    "courseInfo.inActiveUser.text": "لطفاً برای ادامه، حساب خود را از طریق ایمیل فعال کنید."
+    "courseInfo.inActiveUser.text": "لطفاً برای ادامه، حساب خود را از طریق ایمیل فعال کنید.",
+    "userCourseCard.expired.text": "دسترسی منقضی شده است - ",
+    "userCourseCard.willExpired.text": "تاریخ پایان دسترسی - ",
+    "userCourseCard.hasCourseStart.text": "تاریخ شروع دوره - ",
+    "userCourseCard.willCourseStart.text": "شروع دوره در - "
 }
