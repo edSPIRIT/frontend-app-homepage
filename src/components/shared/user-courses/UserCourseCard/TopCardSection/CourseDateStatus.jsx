@@ -31,7 +31,7 @@ const CourseDateStatus = ({ courseInfo }) => {
         <CourseDate
           courseDate={courseInfo?.course_details?.course_end}
           messageId="userCourseCard.expired.text"
-          defaultMessage="Access has expired on - "
+          defaultMessage="Access has expired on "
         />
       );
     }
@@ -41,7 +41,7 @@ const CourseDateStatus = ({ courseInfo }) => {
         <CourseDate
           courseDate={courseInfo?.course_details?.course_end}
           messageId="userCourseCard.willExpired.text"
-          defaultMessage="Access will expire on - "
+          defaultMessage="Access will expire on "
         />
       );
     }
@@ -60,7 +60,7 @@ const CourseDateStatus = ({ courseInfo }) => {
       <CourseDate
         courseDate={courseInfo?.course_details?.course_start}
         messageId="userCourseCard.hasCourseStart.text"
-        defaultMessage="Course has started on - "
+        defaultMessage="Course has started on "
       />
     );
   }
@@ -69,7 +69,7 @@ const CourseDateStatus = ({ courseInfo }) => {
     <CourseDate
       courseDate={courseInfo?.course_details?.course_start}
       messageId="userCourseCard.willCourseStart.text"
-      defaultMessage="Course will start on - "
+      defaultMessage="Course will start on "
     />
   );
 };
