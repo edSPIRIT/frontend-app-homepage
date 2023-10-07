@@ -27,8 +27,7 @@ const useSetGtm = (gtm) => {
     if (typeof window === 'undefined' || typeof document === 'undefined') {
       return;
     }
-
-    if (gtm) {
+    if (gtm?.gtm_id) {
       const gtmScript = createGtmScript(gtm);
       document.head.appendChild(gtmScript);
 
