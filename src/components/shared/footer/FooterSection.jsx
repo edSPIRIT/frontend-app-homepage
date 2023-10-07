@@ -1,3 +1,4 @@
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import DefaultLogo from '../../../assets/place-holders/NavLogo-placeholder.svg';
 import useGetFooters from '../../../hooks/useGetFooters';
 import ChooseLanguage from './FooterSection/ChooseLanguage';
@@ -32,7 +33,10 @@ const FooterSection = () => {
               {footerData?.links?.sections[0]?.section_links?.map((nav) => (
                 <li className="mb-2" key={nav.title}>
                   <a className="custom-link" href={nav.link}>
-                    {nav.title}
+                    <FormattedMessage
+                      id={nav.title}
+                      defaultMessage={nav.title}
+                    />
                   </a>
                 </li>
               ))}
@@ -47,7 +51,10 @@ const FooterSection = () => {
               {footerData?.links?.sections[1]?.section_links?.map((nav) => (
                 <li className="mb-2" key={nav.title}>
                   <a className="custom-link" href={nav.link}>
-                    {nav.title}
+                    <FormattedMessage
+                      id={nav.title}
+                      defaultMessage={nav.title}
+                    />
                   </a>
                 </li>
               ))}

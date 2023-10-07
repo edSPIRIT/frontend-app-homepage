@@ -184,8 +184,14 @@
     "transaction.failed": "فشل الاجراء",
     "inActive.alert.title": "خطأ تفعيل",
     "courseInfo.inActiveUser.text": "يرجى تفعيل حسابك عبر البريد الإلكتروني للمتابعة.",
-    "userCourseCard.expired.text": "انتهت صلاحية الوصول في - ",
-    "userCourseCard.willExpired.text": "ستنتهي صلاحية الوصول في - ",
-    "userCourseCard.hasCourseStart.text": "بدأت الدورة بتاريخ - ",
-    "userCourseCard.willCourseStart.text": "ستبدأ الدورة يوم - "
+    "userCourseCard.expired.text": "انتهت صلاحية الوصول في ",
+    "userCourseCard.willExpired.text": "ستنتهي صلاحية الوصول في ",
+    "userCourseCard.hasCourseStart.text": "بدأت الدورة بتاريخ ",
+    "userCourseCard.willCourseStart.text": "ستبدأ الدورة يوم ",
+    "About": "حول",
+    "Donate": "منح",
+    "Contact": "اتصل",
+    "Terms of Service": "شروط الخدمة",
+    "Honor": "شرف",
+    "Privacy": "الخصوصية"
 }

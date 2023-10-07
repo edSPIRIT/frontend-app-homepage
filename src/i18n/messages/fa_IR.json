@@ -184,8 +184,14 @@
     "courseInfo.unsuccessfulPaymentMessage.text": "پرداخت ناموفق بود",
     "inActive.alert.title": "خطای فعال سازی",
     "courseInfo.inActiveUser.text": "لطفاً برای ادامه، حساب خود را از طریق ایمیل فعال کنید.",
-    "userCourseCard.expired.text": "دسترسی منقضی شده است - ",
-    "userCourseCard.willExpired.text": "تاریخ پایان دسترسی - ",
-    "userCourseCard.hasCourseStart.text": "تاریخ شروع دوره - ",
-    "userCourseCard.willCourseStart.text": "شروع دوره در - "
+    "userCourseCard.expired.text": "دسترسی منقضی شده است در ",
+    "userCourseCard.willExpired.text": "تاریخ پایان دسترسی ",
+    "userCourseCard.hasCourseStart.text": "تاریخ شروع دوره ",
+    "userCourseCard.willCourseStart.text": "شروع دوره در ",
+    "About": "درباره ما",
+    "Contact": "تماس",
+    "Donate": "کمک مالی",
+    "Terms of Service": "شرایط استفاده از خدمات",
+    "Honor": "افتخار",
+    "Privacy": "حریم خصوصی"
 }
