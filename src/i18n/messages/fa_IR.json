@@ -11,7 +11,7 @@
     "viewAllCourses.button": "مشاهده دوره‌ها",
     "header.dropdown.subjects": "موضوع‌ها",
     "header.nav.dashboard": "پیشخوان",
-    "header.nav.discover": "جستجو",
+    "header.nav.discover": "کاوش",
     "header.nav.inProgress": "در حال پیشرفت",
     "header.nav.overview": "نگاه‌کلی",
     "header.search.placeholder": "مایل به دریافت چه آموزشی هستید؟",
@@ -77,7 +77,7 @@
     "courses.text": "{courseCount, plural, one {دوره‌} other {دوره‌}}",
     "learners.text": "{learnerCount, number} {learnerCount, plural, one {یادگیرنده} other {یادگیرنده}}",
     "instructors.text": "مدرسان",
-    "breadcrumb.discover": "جستجو",
+    "breadcrumb.discover": "کاوش",
     "breadcrumb.home": "خانه",
     "courseInfo.tab.about.text": "درباره",
     "courseInfo.tab.whatYouWillLearn.text": "آنچه یاد خواهید گرفت",
@@ -199,5 +199,7 @@
     "courseInfo.registrationHasEnded.text": "پایان ثبت نام در تاریخ",
     "courseInfo.courseHasStarted.text": "آغاز دوره در تاریخ",
     "courseInfo.courseWillStart.text": "آغاز دوره در تاریخ",
-    "courseInfo.registrationWillEnd.text": "پایان ثبت نام در تاریخ"
+    "courseInfo.registrationWillEnd.text": "پایان ثبت نام در تاریخ",
+    "courseInfo.courseHasEnded.text": "پایان دوره در تاریخ",
+    "courseInfo.courseWillEnd.text": "پایان دوره در تاریخ"
 }

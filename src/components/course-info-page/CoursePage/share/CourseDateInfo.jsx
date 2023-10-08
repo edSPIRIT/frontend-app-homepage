@@ -116,12 +116,12 @@ const CourseDateInfo = ({ courseMetaData, intl }) => {
             <span className="mr-1">
               {courseEnd < currentDate ? (
                 <FormattedMessage
-                  id="courseInfo.registrationStartingOn.text"
+                  id="courseInfo.courseHasEnded.text"
                   defaultMessage="Course has ended on"
                 />
               ) : (
                 <FormattedMessage
-                  id="courseInfo.registrationStartingOn.text"
+                  id="courseInfo.courseWillEnd.text"
                   defaultMessage="Course will end on"
                 />
               )}

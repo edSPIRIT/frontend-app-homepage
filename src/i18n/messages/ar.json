@@ -199,5 +199,7 @@
     "courseInfo.registrationHasEnded.text": "انتهى التسجيل بتاريخ",
     "courseInfo.registrationWillEnd.text": "سينتهي التسجيل في",
     "courseInfo.courseHasStarted.text": "بدأت الدورة بتاريخ",
-    "courseInfo.courseWillStart.text": "ستبدأ الدورة يوم"
+    "courseInfo.courseWillStart.text": "ستبدأ الدورة يوم",
+    "courseInfo.courseHasEnded.text": "انتهت الدورة بتاريخ",
+    "courseInfo.courseWillEnd.text": "ستنتهي الدورة بتاريخ"
 }
