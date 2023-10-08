@@ -6,7 +6,7 @@ import React from 'react';
 
 const ViewCertificateButton = ({ certificateData }) => (
   <Button
-    className="view-btn view-course-btn mr-2"
+    className="view-btn view-course-btn"
     onClick={(e) => {
       e.preventDefault();
       window.location.href = `${getConfig().LMS_BASE_URL}${

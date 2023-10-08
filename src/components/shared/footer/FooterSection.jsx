@@ -25,41 +25,45 @@ const FooterSection = () => {
             </div>
           </div>
 
-          <div className=" footer-col1-wrapper">
-            <h5 className="mb-2.5">
-              {footerData?.links?.sections[0]?.section_title}
-            </h5>
-            <ul className="list-unstyled">
-              {footerData?.links?.sections[0]?.section_links?.map((nav) => (
-                <li className="mb-2" key={nav.title}>
-                  <a className="custom-link" href={nav.link}>
-                    <FormattedMessage
-                      id={nav.title}
-                      defaultMessage={nav.title}
-                    />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {footerData?.links?.sections[0]?.section_title && (
+            <div className=" footer-col1-wrapper">
+              <h5 className="mb-2.5">
+                {footerData?.links?.sections[0]?.section_title}
+              </h5>
+              <ul className="list-unstyled">
+                {footerData?.links?.sections[0]?.section_links?.map((nav) => (
+                  <li className="mb-2" key={nav.title}>
+                    <a className="custom-link" href={nav.link}>
+                      <FormattedMessage
+                        id={nav.title}
+                        defaultMessage={nav.title}
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
-          <div className=" footer-col2-wrapper ">
-            <h5 className="mb-2.5">
-              {footerData?.links?.sections[1]?.section_title}
-            </h5>
-            <ul className="list-unstyled">
-              {footerData?.links?.sections[1]?.section_links?.map((nav) => (
-                <li className="mb-2" key={nav.title}>
-                  <a className="custom-link" href={nav.link}>
-                    <FormattedMessage
-                      id={nav.title}
-                      defaultMessage={nav.title}
-                    />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {footerData?.links?.sections[1]?.section_title && (
+            <div className=" footer-col2-wrapper ">
+              <h5 className="mb-2.5">
+                {footerData?.links?.sections[1]?.section_title}
+              </h5>
+              <ul className="list-unstyled">
+                {footerData?.links?.sections[1]?.section_links?.map((nav) => (
+                  <li className="mb-2" key={nav.title}>
+                    <a className="custom-link" href={nav.link}>
+                      <FormattedMessage
+                        id={nav.title}
+                        defaultMessage={nav.title}
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           <div className=" footer-col3-wrapper ">
             <ChooseLanguage />
