@@ -193,5 +193,11 @@
     "Donate": "کمک مالی",
     "Terms of Service": "شرایط استفاده از خدمات",
     "Honor": "افتخار",
-    "Privacy": "حریم خصوصی"
+    "Privacy": "حریم خصوصی",
+    "courseInfo.registrationHasStart.text": "آغاز ثبت نام در تاریخ",
+    "courseInfo.registrationWillStart.text": "آغاز ثبت نام در تاریخ",
+    "courseInfo.registrationHasEnded.text": "پایان ثبت نام در تاریخ",
+    "courseInfo.courseHasStarted.text": "آغاز دوره در تاریخ",
+    "courseInfo.courseWillStart.text": "آغاز دوره در تاریخ",
+    "courseInfo.registrationWillEnd.text": "پایان ثبت نام در تاریخ"
 }

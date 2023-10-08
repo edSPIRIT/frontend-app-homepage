@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { removeEmptyFilters } from '../utils/cleanedFilters';
 
-const useSearchResults = (page = 0) => {
+const useSearchResults = (page = 1) => {
   const filters = useSelector((state) => state.searchFilters);
   const sortState = useSelector((state) => state.sortSearchSlice.value);
   const cleanedFilters = removeEmptyFilters(filters);

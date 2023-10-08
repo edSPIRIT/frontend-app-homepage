@@ -193,5 +193,11 @@
     "Contact": "اتصل",
     "Terms of Service": "شروط الخدمة",
     "Honor": "شرف",
-    "Privacy": "الخصوصية"
+    "Privacy": "الخصوصية",
+    "courseInfo.registrationHasStart.text": "بدأ التسجيل بتاريخ",
+    "courseInfo.registrationWillStart.text": "سيبدأ التسجيل يوم",
+    "courseInfo.registrationHasEnded.text": "انتهى التسجيل بتاريخ",
+    "courseInfo.registrationWillEnd.text": "سينتهي التسجيل في",
+    "courseInfo.courseHasStarted.text": "بدأت الدورة بتاريخ",
+    "courseInfo.courseWillStart.text": "ستبدأ الدورة يوم"
 }
