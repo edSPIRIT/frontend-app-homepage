@@ -1,5 +1,9 @@
 .overview-email-title {
-  @include line-break(1);
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: $font-size-base-xl;
   color: $gray-500;
 }
@@ -27,6 +31,13 @@
     margin-top: 24px;
     .mobile-header {
       margin-bottom: 10px;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .avatar-container {
+    .email-container {
+      max-width: 215px;
     }
   }
 }

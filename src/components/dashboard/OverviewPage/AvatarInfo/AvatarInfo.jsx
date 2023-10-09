@@ -25,7 +25,7 @@ const AvatarInfo = () => {
   return (
     <div className="d-flex align-items-center avatar-container ">
       {renderAvatar()}
-      <div className="d-flex flex-column w-100">
+      <div className="d-flex flex-column email-container">
         <div className="d-flex justify-content-between mb-2">
           <div className="d-flex">
             <h3 className="mr-2">
@@ -38,9 +38,9 @@ const AvatarInfo = () => {
           </div>
           {/* <span>Access expired on 22 Jul 2022</span> */}
         </div>
-        <span className="overview-email-title">
-          {authenticatedUser?.email}{' '}
-        </span>
+        <p className="overview-email-title">
+          {authenticatedUser?.email}
+        </p>
       </div>
     </div>
   );
