@@ -302,6 +302,10 @@ p {
   color: $warning-300 !important;
   opacity: unset;
 }
+.pgn__searchfield-form {
+  background-color: unset !important;
+}
+
 [dir='rtl'] {
   .pgn__icon {
     transform: scaleX(-1);

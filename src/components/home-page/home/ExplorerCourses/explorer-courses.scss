@@ -20,6 +20,11 @@
   margin-bottom: 48px;
   .nav-link {
     border-bottom: 2px solid #e9e6e4;
+    &:focus {
+      &::before {
+        border: unset !important;
+      }
+    }
   }
   .active {
     color: $gray-700 !important;
