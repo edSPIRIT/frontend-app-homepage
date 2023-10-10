@@ -119,7 +119,7 @@ const messages = defineMessages({
   },
   'transaction.failed': {
     id: 'transaction.failed',
-    defaultMessage: 'Transaction failed',
+    defaultMessage: 'Payment Processing Unsuccessful',
   },
   'inActive.alert.title': {
     id: 'inActive.alert.title',

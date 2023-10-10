@@ -179,9 +179,9 @@
     "courseInfo.prerequisiteSecondPart.attention": "بنجاح قبل أن تبدأ هذه الدورة.",
     "courseInfo.prerequisiteMiddlePart.attention": "الدورة التدريبية المطلوبة",
     "courseInfo.prerequisiteCourse.text": "الدورة التدريبية المطلوبة",
-    "courseInfo.unsuccessfulPaymentMessage.text": "لم تنجح عملية الدفع",
+    "courseInfo.unsuccessfulPaymentMessage.text": "يرجى التحقق من تفاصيل الدفع الخاصة بك وحاول مرة أخرى. إذا استمرت المشكلة، فلا تتردد في الاتصال بفريق الدعم لدينا للحصول على المساعدة.",
     "courseInfo.dismiss.button": "رفض",
-    "transaction.failed": "فشل الاجراء",
+    "transaction.failed": "معالجة الدفع غير ناجحة",
     "inActive.alert.title": "خطأ تفعيل",
     "courseInfo.inActiveUser.text": "يرجى تفعيل حسابك عبر البريد الإلكتروني للمتابعة.",
     "userCourseCard.expired.text": "انتهت صلاحية الوصول في ",
@@ -201,5 +201,6 @@
     "courseInfo.courseHasStarted.text": "بدأت الدورة بتاريخ",
     "courseInfo.courseWillStart.text": "ستبدأ الدورة يوم",
     "courseInfo.courseHasEnded.text": "انتهت الدورة بتاريخ",
-    "courseInfo.courseWillEnd.text": "ستنتهي الدورة بتاريخ"
+    "courseInfo.courseWillEnd.text": "ستنتهي الدورة بتاريخ",
+    "courseInfo.RetryPayment.button": "محاولة دفع"
 }

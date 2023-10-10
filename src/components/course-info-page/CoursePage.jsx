@@ -5,19 +5,21 @@ import { ActionRow, AlertModal, Button, useMediaQuery } from '@edx/paragon';
 import { Info } from '@edx/paragon/icons';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import useGetCourseMetaData from '../../hooks/useGetCourseMetaData';
 import messages from '../../messages';
 import { setActivateAlert } from '../../redux/slice/activateAlertSlice';
 import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import DesktopCourseInfo from './CoursePage/DesktopCourseInfo';
+import useEnrollClickHandler from '../../hooks/useEnrollClickHandler';
 
 const MobileCourseInfo = React.lazy(() =>
   import('./CoursePage/MobileCourseInfo')
 );
 
 const CoursePage = ({ intl }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const activateState = useSelector((state) => state.activateAlert.open);
 
@@ -30,6 +32,12 @@ const CoursePage = ({ intl }) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const paymentStatus = queryParams.get('payment_status');
+
+  const {
+    enrollClickHandler,
+    isLoading: enrollLoading,
+    availablePaymentData,
+  } = useEnrollClickHandler(courseMetaData);
 
   useEffect(() => {
     if (paymentStatus === 'failed') {
@@ -89,19 +97,33 @@ const CoursePage = ({ intl }) => {
         icon={Info}
         footerNode={
           <ActionRow>
-            <Button variant='tertiary' onClick={() => setOpen(false)}>
-              <FormattedMessage
-                id='courseInfo.dismiss.button'
-                defaultMessage='Dismiss'
-              />
-            </Button>
+            <ActionRow>
+              <Button
+                variant='tertiary'
+                onClick={() => {
+                  history.push(`/course/${slug}`);
+                  setOpen(false);
+                }}
+              >
+                <FormattedMessage
+                  id='courseInfo.dismiss.button'
+                  defaultMessage='Dismiss'
+                />
+              </Button>
+              <Button variant='danger' onClick={enrollClickHandler}>
+                <FormattedMessage
+                  id='courseInfo.RetryPayment.button'
+                  defaultMessage='Retry Payment'
+                />
+              </Button>
+            </ActionRow>
           </ActionRow>
         }
       >
         <p>
           <FormattedMessage
             id='courseInfo.unsuccessfulPaymentMessage.text'
-            defaultMessage='The payment was unsuccessful'
+            defaultMessage='Please check your payment details and try again. If the issue persists, feel free to contact our support team for assistance.'
           />
         </p>
       </AlertModal>

@@ -181,7 +181,7 @@
     "courseInfo.prerequisiteCourse.text": "دوره پیش نیاز",
     "courseInfo.dismiss.button": "بستن",
     "transaction.failed": "تراکنش ناموفق",
-    "courseInfo.unsuccessfulPaymentMessage.text": "پرداخت ناموفق بود",
+    "courseInfo.unsuccessfulPaymentMessage.text": "لطفاً جزئیات پرداخت خود را بررسی کنید و دوباره امتحان کنید. اگر مشکل همچنان ادامه داشت، برای کمک با تیم پشتیبانی ما تماس بگیرید.",
     "inActive.alert.title": "خطای فعال سازی",
     "courseInfo.inActiveUser.text": "لطفاً برای ادامه، حساب خود را از طریق ایمیل فعال کنید.",
     "userCourseCard.expired.text": "دسترسی منقضی شده است در ",
@@ -201,5 +201,6 @@
     "courseInfo.courseWillStart.text": "آغاز دوره در تاریخ",
     "courseInfo.registrationWillEnd.text": "پایان ثبت نام در تاریخ",
     "courseInfo.courseHasEnded.text": "پایان دوره در تاریخ",
-    "courseInfo.courseWillEnd.text": "پایان دوره در تاریخ"
+    "courseInfo.courseWillEnd.text": "پایان دوره در تاریخ",
+    "courseInfo.RetryPayment.button": "پرداخت را دوباره امتحان کنید"
 }
