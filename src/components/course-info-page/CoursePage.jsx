@@ -13,6 +13,7 @@ import { setActivateAlert } from '../../redux/slice/activateAlertSlice';
 import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import DesktopCourseInfo from './CoursePage/DesktopCourseInfo';
 import useEnrollClickHandler from '../../hooks/useEnrollClickHandler';
+import SuccessEnrollAlert from './CoursePage/SuccessEnrollAlert';
 
 const MobileCourseInfo = React.lazy(() =>
   import('./CoursePage/MobileCourseInfo')
@@ -60,8 +61,10 @@ const CoursePage = ({ intl }) => {
         courseIds={[`${courseMetaData?.course_id}`]}
         loading={loading}
       />
+      <SuccessEnrollAlert courseMetaData={courseMetaData} />
+
       <AlertModal
-        className='failed-alert'
+        className='course-info-alert'
         title={intl.formatMessage(messages['inActive.alert.title'])}
         isOpen={activateState}
         onClose={() => dispatch(setActivateAlert(false))}
@@ -110,7 +113,12 @@ const CoursePage = ({ intl }) => {
                   defaultMessage='Dismiss'
                 />
               </Button>
-              <Button variant='danger' onClick={enrollClickHandler}>
+              <Button
+                variant='danger'
+                disabled={!availablePaymentData}
+                loading={enrollLoading}
+                onClick={enrollClickHandler}
+              >
                 <FormattedMessage
                   id='courseInfo.RetryPayment.button'
                   defaultMessage='Retry Payment'

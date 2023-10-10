@@ -202,5 +202,11 @@
     "courseInfo.courseWillStart.text": "ستبدأ الدورة يوم",
     "courseInfo.courseHasEnded.text": "انتهت الدورة بتاريخ",
     "courseInfo.courseWillEnd.text": "ستنتهي الدورة بتاريخ",
-    "courseInfo.RetryPayment.button": "محاولة دفع"
+    "courseInfo.RetryPayment.button": "محاولة دفع",
+    "courseInfo.startLater.button": "ابدأ لاحقًا",
+    "courseInfo.enrollSuccessAlert.text": "شكرًا لك على التسجيل في {courseName}. أنت في طريقك إلى رحلة تعليمية رائعة.",
+    "cancel.button": "يلغي",
+    "courseInfo.unenrollMessage.text": "عند إلغاء التسجيل، ستتم إزالة الدورات التدريبية الخاصة بك من لوحة التحكم الخاصة بك",
+    "unenroll.alert.title": "إلغاء التسجيل من الدورة",
+    "enrollmentSuccessful.title": "تم التسجيل بنجاح!"
 }

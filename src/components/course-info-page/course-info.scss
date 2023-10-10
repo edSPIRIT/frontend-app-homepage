@@ -568,8 +568,11 @@
     border-radius: 8px;
   }
 }
-.failed-alert {
+.course-info-alert {
   .pgn__modal-header {
     display: flex;
+  }
+  .pgn__icon {
+    transform: unset;
   }
 }

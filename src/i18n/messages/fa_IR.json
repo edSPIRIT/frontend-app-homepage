@@ -202,5 +202,11 @@
     "courseInfo.registrationWillEnd.text": "پایان ثبت نام در تاریخ",
     "courseInfo.courseHasEnded.text": "پایان دوره در تاریخ",
     "courseInfo.courseWillEnd.text": "پایان دوره در تاریخ",
-    "courseInfo.RetryPayment.button": "پرداخت را دوباره امتحان کنید"
+    "courseInfo.RetryPayment.button": "پرداخت را دوباره امتحان کنید",
+    "courseInfo.startLater.button": "بعدا شروع کن",
+    "courseInfo.enrollSuccessAlert.text": "از ثبت نام در دوره {courseName} سپاسگزاریم. شما در راه رسیدن به یک آموزش عالی هستید.",
+    "cancel.button": "بستن",
+    "courseInfo.unenrollMessage.text": "با لغو ثبت نام، دوره های شما از داشبورد شما حذف خواهد شد",
+    "unenroll.alert.title": "لغو ثبت نام از دوره",
+    "enrollmentSuccessful.title": "ثبت نام با موفقیت انجام شد"
 }

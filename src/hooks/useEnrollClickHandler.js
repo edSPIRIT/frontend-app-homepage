@@ -7,6 +7,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { setActivateAlert } from '../redux/slice/activateAlertSlice';
 import useGetUserProfile from './useGetUserProfile';
+import { setSuccessAlertOpen } from '../redux/slice/course/successEnrollmentAlert';
 
 const fetchAvailablePayment = async (id) => {
   try {
@@ -66,6 +67,7 @@ const useEnrollClickHandler = (courseMetaData) => {
   const queryClient = useQueryClient();
   const { mutate, isLoading } = useMutation(postCourseEnrollment, {
     onSuccess: () => {
+      dispatch(setSuccessAlertOpen(true));
       queryClient.invalidateQueries(['enrollmentStatus']);
       queryClient.invalidateQueries(['EnrollmentList']);
       queryClient.invalidateQueries(['OverviewList']);

@@ -1,13 +1,13 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
 import { Icon, ModalLayer } from '@edx/paragon';
 import {
   Close, Delete, Share, VideoTranscript,
 } from '@edx/paragon/icons';
-import PropTypes from 'prop-types';
 import { useMutation, useQueryClient } from 'react-query';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -15,8 +15,11 @@ import { setToastMessage } from '../../../../redux/slice/toastSlice';
 import { ReactComponent as Learning } from '../../../../assets/learning-icon.svg';
 import useGetCertificate from '../../../../hooks/useGetCertificate';
 import SharedToastMessage from '../../base-components/SharedToastMessage';
+import messages from '../../../../messages';
 
-const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
+const MoreButtonModal = ({
+  isOpen, onClose, courseInfo, intl,
+}) => {
   const queryClient = useQueryClient();
   const deleteEnrollCourse = useMutation({
     mutationFn: (courseId) => getAuthenticatedHttpClient().post(
@@ -106,6 +109,13 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
             onClick={(e) => {
               e.preventDefault();
               deleteEnrollCourse.mutate(courseInfo?.course_details?.course_id);
+              dispatch(
+                setToastMessage(
+                  intl.formatMessage(
+                    messages['userCourseCard.unrollMessage.text'],
+                  ),
+                ),
+              );
             }}
           >
             <Icon src={Delete} className="mr-2 text-gray-500" />
@@ -119,11 +129,5 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
     </ModalLayer>
   );
 };
-MoreButtonModal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types, react/require-default-props
-  courseInfo: PropTypes.any,
-};
 
-export default MoreButtonModal;
+export default injectIntl(MoreButtonModal);

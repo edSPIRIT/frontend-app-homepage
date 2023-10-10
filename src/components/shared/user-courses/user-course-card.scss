@@ -1,22 +1,10 @@
 .user-card-course {
   border-color: $light-400;
   cursor: pointer;
-  // &:hover {
-  //   .icons-wrapper {
-  //     display: flex !important;
-  //   }
-  //   .course-card-btn-wrapper {
-  //     display: flex;
-  //     flex-shrink: 0 !important;
-  //   }
-  // }
   .pgn__card {
     display: flex;
   }
   .pgn__card-wrapper-image-cap {
-    // justify-content: center;
-    // align-items: center;
-    // background-color: $light-300;
     border: 1px solid $light-300;
     display: flex;
     flex-shrink: 0;
@@ -37,8 +25,6 @@
   }
   .course-title {
     color: black;
-    // margin-right: 85px;
-    // max-width: 604px;
     margin-right: 20px !important;
     @include line-break(1);
   }
@@ -65,7 +51,6 @@
   }
   .icons-wrapper {
     height: 28px;
-    // display: none !important;
   }
   .btn {
     font-size: $font-size-base-xl;
@@ -79,7 +64,7 @@
   }
   .dropdown-menu {
     min-width: unset;
-    transform: translate(-60px, 46px) !important;
+    // transform: translate(-60px, 46px) !important;
   }
   .dropdown-item {
     padding: 0.375rem 1rem;
@@ -185,16 +170,12 @@
 @media (max-width: 1024px) {
   .user-card-course {
     .course-title {
-      // max-width: 310px;
       @include line-break(1);
       font-size: $font-size-base-xl;
     }
     .org-title {
       font-size: $font-size-base-sm;
     }
-    // .view-course-btn {
-    //   font-size: $font-size-base-sm;
-    // }
     .complete-wrapper {
       flex-direction: column;
       align-items: unset !important;
@@ -208,16 +189,15 @@
 }
 @media (max-width: 768px) {
   .user-card-course {
-    &:hover {
       .icons-wrapper {
-        display: none !important;
+        .share-icon{
+          display: none !important;
+        }
       }
-    }
     .title-wrapper {
       justify-content: space-between;
     }
     .course-title {
-      // max-width: 248px;
       @include line-break(1);
       font-size: $font-size-base-xl;
     }

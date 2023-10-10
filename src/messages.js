@@ -125,6 +125,14 @@ const messages = defineMessages({
     id: 'inActive.alert.title',
     defaultMessage: 'Activation Error',
   },
+  'unenroll.alert.title': {
+    id: 'unenroll.alert.title',
+    defaultMessage: 'Unenroll from course',
+  },
+  'enrollmentSuccessful.title': {
+    id: 'enrollmentSuccessful.title',
+    defaultMessage: 'Enrollment Successful!',
+  },
   recent: {
     id: 'recent.text',
     defaultMessage: 'Recent',

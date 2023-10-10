@@ -1,27 +1,26 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
-import { getConfig } from '@edx/frontend-platform';
-import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import {
-  FormattedMessage,
-  injectIntl,
-} from '@edx/frontend-platform/i18n';
-import {
-  Dropdown, Icon, IconButton, useMediaQuery,
+  ActionRow,
+  AlertModal,
+  Button,
+  Icon,
 } from '@edx/paragon';
-import { Close, MoreVert, Share } from '@edx/paragon/icons';
-import { useState } from 'react';
-import { useMutation, useQueryClient } from 'react-query';
-import { useDispatch } from 'react-redux';
+import { Info, MoreVert } from '@edx/paragon/icons';
+
 import { Link } from 'react-router-dom';
-import { setToastMessage } from '../../../../redux/slice/toastSlice';
+import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
+import { useDispatch } from 'react-redux';
+import { useMutation, useQueryClient } from 'react-query';
+import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
+import { getConfig } from '@edx/frontend-platform';
+import { useState } from 'react';
 import { determineDirection } from '../../../../utils/determineDirection';
-import SharedToastMessage from '../../base-components/SharedToastMessage';
-import messages from '../../../../messages';
 import CourseDateStatus from './TopCardSection/CourseDateStatus';
+import TopIcons from './TopCardSection/TopIcons';
+import messages from '../../../../messages';
+import { setToastMessage } from '../../../../redux/slice/toastSlice';
 
 const TopCardSection = ({
   courseInfo,
@@ -29,9 +28,12 @@ const TopCardSection = ({
   certificateData,
   intl,
 }) => {
-  const [isOpenDropDown, setIsOpenDropDown] = useState(false);
-  const queryClient = useQueryClient();
   const dispatch = useDispatch();
+
+  const queryClient = useQueryClient();
+
+  const [isOpen, setOpen] = useState(false);
+
   const deleteEnrollCourse = useMutation({
     mutationFn: (courseId) => getAuthenticatedHttpClient().post(
       `${getConfig().LMS_BASE_URL}/admin-console/api/openedx/api/unenroll/`,
@@ -45,37 +47,72 @@ const TopCardSection = ({
       queryClient.invalidateQueries(['enrollmentStatus']);
     },
   });
-  const isTablet = useMediaQuery({ maxWidth: '920px' });
+
+  const handleUnenroll = (e) => {
+    e.preventDefault();
+    deleteEnrollCourse.mutate(courseInfo?.course_details?.course_id);
+    dispatch(
+      setToastMessage(
+        intl.formatMessage(messages['userCourseCard.unrollMessage.text']),
+      ),
+    );
+    setOpen(false);
+  };
 
   return (
-    <div>
-      <div className="d-flex justify-content-between align-items-center mb-1 title-wrapper">
-        <h3
-          style={{
-            direction:
-              determineDirection(courseInfo?.course_details?.course_name)
-              === 'rtl'
-                ? 'rtl'
-                : 'ltr',
-          }}
-          className="course-title"
-        >
-          {courseInfo?.course_details?.course_name}
-        </h3>
-        {/* more vertical for mobile view display none in web */}
-        <div
-          className="more-vert-wrapper m-3"
-          onClick={(e) => {
-            e.preventDefault();
-            openMoreBtnModal();
-          }}
-        >
-          <Icon className="" src={MoreVert} />
-        </div>
-        {/* more vertical for tablet view  */}
-        {isTablet ? (
+    <>
+      <AlertModal
+        className="course-info-alert"
+        title={intl.formatMessage(messages['unenroll.alert.title'])}
+        isOpen={isOpen}
+        onClose={() => setOpen(false)}
+        variant="danger"
+        icon={Info}
+        footerNode={(
+          <ActionRow>
+            <ActionRow>
+              <Button
+                variant="tertiary"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                <FormattedMessage id="cancel.button" defaultMessage="Cancel" />
+              </Button>
+              <Button variant="danger" onClick={(e) => handleUnenroll(e)}>
+                <FormattedMessage
+                  id="userCourseCard.unroll.text"
+                  defaultMessage="Unenroll"
+                />
+              </Button>
+            </ActionRow>
+          </ActionRow>
+        )}
+      >
+        <p>
+          <FormattedMessage
+            id="courseInfo.unenrollMessage.text"
+            defaultMessage="When you unenroll, your courses will be removed from your dashboard"
+          />
+        </p>
+      </AlertModal>
+      <div>
+        <div className="d-flex justify-content-between align-items-center mb-1 title-wrapper">
+          <h3
+            style={{
+              direction:
+                determineDirection(courseInfo?.course_details?.course_name)
+                === 'rtl'
+                  ? 'rtl'
+                  : 'ltr',
+            }}
+            className="course-title"
+          >
+            {courseInfo?.course_details?.course_name}
+          </h3>
+          {/* more vertical for mobile view display none in web */}
           <div
-            className="more-vert-tablet-wrapper "
+            className="more-vert-wrapper m-3"
             onClick={(e) => {
               e.preventDefault();
               openMoreBtnModal();
@@ -83,92 +120,22 @@ const TopCardSection = ({
           >
             <Icon className="" src={MoreVert} />
           </div>
-        ) : (
-          <div className="d-flex align-items-center icons-wrapper">
-            <Icon
-              src={Share}
-              className="mr-3 share-icon"
-              onClick={(e) => {
-                e.preventDefault();
-                navigator.clipboard.writeText(
-                  `${getConfig().BASE_URL}/homepage/course/${
-                    courseInfo?.course_metadata?.slug
-                  }`,
-                );
-                dispatch(setToastMessage(<SharedToastMessage />));
-              }}
-            />
-            <Dropdown
-              className="dropdown-icon"
-              onToggle={(isOpenMore) => setIsOpenDropDown(isOpenMore)}
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-            >
-              <Dropdown.Toggle
-                id="dropdown-toggle-with-iconbutton"
-                as={IconButton}
-                src={isOpenDropDown ? Close : MoreVert}
-                iconAs={Icon}
-                variant="primary"
-              />
-              {isOpenDropDown && (
-                <Dropdown.Menu>
-                  {certificateData && (
-                    <Dropdown.Item
-                      href={`${getConfig().LEARNING_BASE_URL}/course/${
-                        courseInfo?.course_details?.course_id
-                      }/home`}
-                    >
-                      <FormattedMessage
-                        id="userCourseCard.resumeCourse.text"
-                        defaultMessage="Resume Course"
-                      />
-                    </Dropdown.Item>
-                  )}
-                  <Dropdown.Item
-                    to={`/course/${courseInfo?.course_metadata?.slug}`}
-                    as={Link}
-                  >
-                    <FormattedMessage
-                      id="userCourseCard.courseInfo.button"
-                      defaultMessage="Course Info"
-                    />
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={(e) => {
-                      e.preventDefault();
-                      deleteEnrollCourse.mutate(
-                        courseInfo?.course_details?.course_id,
-                      );
-                      dispatch(
-                        setToastMessage(
-                          intl.formatMessage(
-                            messages['userCourseCard.unrollMessage.text'],
-                          ),
-                        ),
-                      );
-                    }}
-                  >
-                    <FormattedMessage
-                      id="userCourseCard.unroll.text"
-                      defaultMessage="Unenroll"
-                    />
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              )}
-            </Dropdown>
-          </div>
-        )}
+          <TopIcons
+            certificateData={certificateData}
+            courseInfo={courseInfo}
+            openMoreBtnModal={openMoreBtnModal}
+            setOpen={setOpen}
+          />
+        </div>
+        <Link
+          className="mb-3.5 org-title"
+          to={`/partners/${courseInfo?.organization?.short_name}`}
+        >
+          {courseInfo?.organization?.name}
+        </Link>
+        <CourseDateStatus courseInfo={courseInfo} />
       </div>
-      <Link
-        className="mb-3.5 org-title"
-        to={`/partners/${courseInfo?.organization?.short_name}`}
-      >
-        {courseInfo?.organization?.name}
-      </Link>
-      <CourseDateStatus courseInfo={courseInfo} />
-    </div>
+    </>
   );
 };
 
