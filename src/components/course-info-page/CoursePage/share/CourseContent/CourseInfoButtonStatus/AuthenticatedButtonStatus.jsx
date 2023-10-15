@@ -48,30 +48,35 @@ const AuthenticatedButtonStatus = ({
       </Button>
     );
   }
+  if (courseMetaData?.paid_course?.price > 0 && !hasTrial) {
+    return (
+      <Button
+        variant="brand"
+        className="enroll-btn"
+        onClick={enrollClickHandler}
+        loading={enrollLoading}
+        disabled={!availablePaymentData || isEnrollNotActive}
+      >
+        <FormattedMessage
+          id="courseInfo.purchaseNow.text"
+          defaultMessage="Purchase"
+        />
+      </Button>
+    );
+  }
   return (
     <Button
       variant="brand"
       className="enroll-btn"
       onClick={enrollClickHandler}
       loading={enrollLoading}
-      disabled={
-        courseMetaData?.paid_course?.price > 0 && !hasTrial
-          ? (courseMetaData?.paid_course?.price > 0 && !availablePaymentData)
-            || isEnrollNotActive
-          : isEnrollNotActive
-      }
+      disabled={isEnrollNotActive}
     >
-      {courseMetaData?.paid_course?.price > 0 && !hasTrial ? (
-        <FormattedMessage
-          id="courseInfo.purchaseNow.text"
-          defaultMessage="Purchase"
-        />
-      ) : (
-        <FormattedMessage
-          id="courseInfo.enrollNow.text"
-          defaultMessage="Enroll Now"
-        />
-      )}
+      <FormattedMessage
+        id="courseInfo.enrollNow.text"
+        defaultMessage="Enroll Now"
+        a
+      />
     </Button>
   );
 };

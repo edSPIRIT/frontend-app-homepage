@@ -13,9 +13,9 @@ const useGetButtonStatus = (courseMetaData) => {
     courseMetaData?.course_id,
   );
   const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
-  const { paidCourses } = useGetPaidCourses(courseMetaData);
 
   const [status, setStatus] = useState({});
+  const { paidCourses } = useGetPaidCourses(courseMetaData);
 
   useEffect(() => {
     if (courseMetaData) {
@@ -57,14 +57,8 @@ const useGetButtonStatus = (courseMetaData) => {
             defaultMessage="Registration Closed: Date Passed"
           />
         );
-      } else if (paid_course?.price > 0 && paidCourses?.has_trial === true) {
-        warningMessage = undefined;
-      } else if (
-        paid_course?.price > 0
-        && paidCourses?.has_trial === false
-        && !availablePaymentData
-      ) {
-        warningMessage = (
+      } else if (paid_course?.price > 0 && !availablePaymentData) {
+        warningMessage = paidCourses?.has_trial ? undefined : (
           <FormattedMessage
             id="courseInfo.ecommerceDeactivated.attention"
             defaultMessage="Purchases are temporarily unavailable. Please try again later"
@@ -111,7 +105,12 @@ const useGetButtonStatus = (courseMetaData) => {
         warningComponent,
       });
     }
-  }, [courseMetaData, isEnrollmentActive, availablePaymentData, paidCourses?.has_trial]);
+  }, [
+    courseMetaData,
+    isEnrollmentActive,
+    availablePaymentData,
+    paidCourses?.has_trial,
+  ]);
 
   return status;
 };
