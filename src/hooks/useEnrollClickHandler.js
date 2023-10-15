@@ -39,7 +39,7 @@ const useEnrollClickHandler = (courseMetaData) => {
   const { authenticatedUser } = useContext(AppContext);
   const { userProfile } = useGetUserProfile();
 
-  const { data: availablePaymentData } = useGetPaidCourses(
+  const { paidCourses: availablePaymentData } = useGetPaidCourses(
     courseMetaData?.course_id,
   );
   const { refetch } = useQuery(
