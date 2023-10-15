@@ -11,14 +11,11 @@ import { Link } from 'react-router-dom';
 
 import SharedToastMessage from '../../../base-components/SharedToastMessage';
 import { setToastMessage } from '../../../../../redux/slice/toastSlice';
+import { showUnenrollAlert } from '../../../../../redux/slice/course/unenrollAlert';
 
-const TopIcons = ({
-  certificateData,
-  courseInfo,
-  openMoreBtnModal,
-  setOpen,
-}) => {
+const TopIcons = ({ certificateData, courseInfo, openMoreBtnModal }) => {
   const dispatch = useDispatch();
+
   const isTablet = useMediaQuery({ maxWidth: '768px' });
 
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
@@ -82,7 +79,11 @@ const TopIcons = ({
                 defaultMessage="Course Info"
               />
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => setOpen(true)}>
+            <Dropdown.Item
+              onClick={() => dispatch(
+                showUnenrollAlert(courseInfo?.course_details?.course_id),
+              )}
+            >
               <FormattedMessage
                 id="userCourseCard.unroll.text"
                 defaultMessage="Unenroll"

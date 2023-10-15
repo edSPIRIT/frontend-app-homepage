@@ -7,6 +7,7 @@ import searchPage from '../slice/searchPageSlice';
 import searchFilters from '../slice/searchQuerySlice';
 import recentPages from '../slice/recentPagesSlice';
 import successEnrollmentAlert from '../slice/course/successEnrollmentAlert';
+import unenrollAlert from '../slice/course/unenrollAlert';
 import toast from '../slice/toastSlice';
 
 const store = configureStore({
@@ -20,6 +21,7 @@ const store = configureStore({
     toast,
     activateAlert,
     successEnrollmentAlert,
+    unenrollAlert,
   },
 });
 

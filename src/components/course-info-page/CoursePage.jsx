@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import { getConfig } from '@edx/frontend-platform';
 import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
-import { ActionRow, AlertModal, Button, useMediaQuery } from '@edx/paragon';
+import {
+  ActionRow, AlertModal, Button, useMediaQuery,
+} from '@edx/paragon';
 import { Info } from '@edx/paragon/icons';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,11 +15,9 @@ import { setActivateAlert } from '../../redux/slice/activateAlertSlice';
 import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import DesktopCourseInfo from './CoursePage/DesktopCourseInfo';
 import useEnrollClickHandler from '../../hooks/useEnrollClickHandler';
-import SuccessEnrollAlert from './CoursePage/SuccessEnrollAlert';
+import SuccessEnrollAlert from './CoursePage/share/SuccessEnrollAlert';
 
-const MobileCourseInfo = React.lazy(() =>
-  import('./CoursePage/MobileCourseInfo')
-);
+const MobileCourseInfo = React.lazy(() => import('./CoursePage/MobileCourseInfo'));
 
 const CoursePage = ({ intl }) => {
   const history = useHistory();
@@ -64,74 +64,74 @@ const CoursePage = ({ intl }) => {
       <SuccessEnrollAlert courseMetaData={courseMetaData} />
 
       <AlertModal
-        className='course-info-alert'
+        className="course-info-alert"
         title={intl.formatMessage(messages['inActive.alert.title'])}
         isOpen={activateState}
         onClose={() => dispatch(setActivateAlert(false))}
-        variant='danger'
+        variant="danger"
         icon={Info}
-        footerNode={
+        footerNode={(
           <ActionRow>
             <Button
-              variant='tertiary'
+              variant="tertiary"
               onClick={() => dispatch(setActivateAlert(false))}
             >
               <FormattedMessage
-                id='courseInfo.dismiss.button'
-                defaultMessage='Dismiss'
+                id="courseInfo.dismiss.button"
+                defaultMessage="Dismiss"
               />
             </Button>
           </ActionRow>
-        }
+        )}
       >
         <p>
           <FormattedMessage
-            id='courseInfo.inActiveUser.text'
-            defaultMessage='Please activate your account via email to proceed.'
+            id="courseInfo.inActiveUser.text"
+            defaultMessage="Please activate your account via email to proceed."
           />
         </p>
       </AlertModal>
       <AlertModal
-        className='failed-alert'
+        className="course-info-alert"
         title={intl.formatMessage(messages['transaction.failed'])}
         isOpen={isOpen}
         onClose={() => setOpen(false)}
-        variant='danger'
+        variant="danger"
         icon={Info}
-        footerNode={
+        footerNode={(
           <ActionRow>
             <ActionRow>
               <Button
-                variant='tertiary'
+                variant="tertiary"
                 onClick={() => {
                   history.push(`/course/${slug}`);
                   setOpen(false);
                 }}
               >
                 <FormattedMessage
-                  id='courseInfo.dismiss.button'
-                  defaultMessage='Dismiss'
+                  id="courseInfo.dismiss.button"
+                  defaultMessage="Dismiss"
                 />
               </Button>
               <Button
-                variant='danger'
+                variant="danger"
                 disabled={!availablePaymentData}
                 loading={enrollLoading}
                 onClick={enrollClickHandler}
               >
                 <FormattedMessage
-                  id='courseInfo.RetryPayment.button'
-                  defaultMessage='Retry Payment'
+                  id="courseInfo.RetryPayment.button"
+                  defaultMessage="Retry Payment"
                 />
               </Button>
             </ActionRow>
           </ActionRow>
-        }
+        )}
       >
         <p>
           <FormattedMessage
-            id='courseInfo.unsuccessfulPaymentMessage.text'
-            defaultMessage='Please check your payment details and try again. If the issue persists, feel free to contact our support team for assistance.'
+            id="courseInfo.unsuccessfulPaymentMessage.text"
+            defaultMessage="Please check your payment details and try again. If the issue persists, feel free to contact our support team for assistance."
           />
         </p>
       </AlertModal>

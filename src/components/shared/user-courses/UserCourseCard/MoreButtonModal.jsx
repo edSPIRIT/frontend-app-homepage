@@ -2,38 +2,20 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { getConfig } from '@edx/frontend-platform';
-import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
 import { Icon, ModalLayer } from '@edx/paragon';
 import {
   Close, Delete, Share, VideoTranscript,
 } from '@edx/paragon/icons';
-import { useMutation, useQueryClient } from 'react-query';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setToastMessage } from '../../../../redux/slice/toastSlice';
 import { ReactComponent as Learning } from '../../../../assets/learning-icon.svg';
 import useGetCertificate from '../../../../hooks/useGetCertificate';
 import SharedToastMessage from '../../base-components/SharedToastMessage';
-import messages from '../../../../messages';
+import { showUnenrollAlert } from '../../../../redux/slice/course/unenrollAlert';
 
-const MoreButtonModal = ({
-  isOpen, onClose, courseInfo, intl,
-}) => {
-  const queryClient = useQueryClient();
-  const deleteEnrollCourse = useMutation({
-    mutationFn: (courseId) => getAuthenticatedHttpClient().post(
-      `${getConfig().LMS_BASE_URL}/admin-console/api/openedx/api/unenroll/`,
-      {
-        course_id: courseId,
-      },
-    ),
-    onSuccess: () => {
-      queryClient.invalidateQueries(['OverviewList']);
-      queryClient.invalidateQueries(['EnrollmentList']);
-      queryClient.invalidateQueries(['enrollmentStatus']);
-    },
-  });
+const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
   const dispatch = useDispatch();
   const { certificateData } = useGetCertificate(courseInfo);
 
@@ -106,21 +88,11 @@ const MoreButtonModal = ({
           </div>
           <div
             className="d-flex align-items-center py-2 "
-            onClick={(e) => {
-              e.preventDefault();
-              deleteEnrollCourse.mutate(courseInfo?.course_details?.course_id);
-              dispatch(
-                setToastMessage(
-                  intl.formatMessage(
-                    messages['userCourseCard.unrollMessage.text'],
-                  ),
-                ),
-              );
-            }}
+            onClick={() => dispatch(showUnenrollAlert(courseInfo?.course_details?.course_id))}
           >
             <Icon src={Delete} className="mr-2 text-gray-500" />
             <FormattedMessage
-              id="dashboard.unroll.item"
+              id="userCourseCard.unroll.text"
               defaultMessage="Unenroll"
             />
           </div>

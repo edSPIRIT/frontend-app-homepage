@@ -1,24 +1,14 @@
 import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { AppContext } from '@edx/frontend-platform/react';
-import axios from 'axios';
 import { useContext } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { setActivateAlert } from '../redux/slice/activateAlertSlice';
 import useGetUserProfile from './useGetUserProfile';
 import { setSuccessAlertOpen } from '../redux/slice/course/successEnrollmentAlert';
+import useGetPaidCourses from './useGetPaidCourses';
 
-const fetchAvailablePayment = async (id) => {
-  try {
-    const response = await axios.get(
-      `${getConfig().LMS_BASE_URL}/admin-console/api/paid-courses/${id}`,
-    );
-    return response.data;
-  } catch (err) {
-    console.error(err);
-  }
-};
 const fetchTransaction = async (courseId, username) => {
   const url = `${
     getConfig().LMS_BASE_URL
@@ -49,12 +39,8 @@ const useEnrollClickHandler = (courseMetaData) => {
   const { authenticatedUser } = useContext(AppContext);
   const { userProfile } = useGetUserProfile();
 
-  const { data: availablePaymentData, loading } = useQuery(
-    ['Transaction', courseMetaData?.course_id],
-    () => fetchAvailablePayment(courseMetaData?.course_id),
-    {
-      enabled: courseMetaData?.paid_course?.price > 0,
-    },
+  const { data: availablePaymentData } = useGetPaidCourses(
+    courseMetaData?.course_id,
   );
   const { refetch } = useQuery(
     'Transaction',

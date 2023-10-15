@@ -166,7 +166,11 @@
 .complete-wrapper {
   margin-top: 36px;
 }
-
+.unenroll-icon-wrapper {
+  .pgn__icon {
+    color: $danger-500;
+  }
+}
 @media (max-width: 1024px) {
   .user-card-course {
     .course-title {
@@ -189,11 +193,11 @@
 }
 @media (max-width: 768px) {
   .user-card-course {
-      .icons-wrapper {
-        .share-icon{
-          display: none !important;
-        }
+    .icons-wrapper {
+      .share-icon {
+        display: none !important;
       }
+    }
     .title-wrapper {
       justify-content: space-between;
     }
@@ -221,6 +225,11 @@
 
 @media (max-width: 600px) {
   .user-card-course {
+    .icons-wrapper {
+      .dropdown {
+        display: none !important;
+      }
+    }
     .more-vert-wrapper {
       display: unset;
     }
