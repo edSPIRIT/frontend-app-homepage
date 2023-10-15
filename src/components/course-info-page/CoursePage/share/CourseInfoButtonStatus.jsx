@@ -1,11 +1,8 @@
 /* eslint-disable react/prop-types */
-import { Button } from '@edx/paragon';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useContext } from 'react';
 import { AppContext } from '@edx/frontend-platform/react';
 import AuthenticatedButtonStatus from './CourseContent/CourseInfoButtonStatus/AuthenticatedButtonStatus';
-import handleRedirect from '../../../../utils/handleRedirect';
-import useEnrollClickHandler from '../../../../hooks/useEnrollClickHandler';
+import UnAuthenticatedButtonStatus from './CourseContent/CourseInfoButtonStatus/UnAuthenticatedButtonStatus';
 
 const CourseInfoButtonStatus = ({
   courseMetaData,
@@ -15,33 +12,15 @@ const CourseInfoButtonStatus = ({
   paidCourses,
 }) => {
   const { authenticatedUser } = useContext(AppContext);
-  const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
+
   if (!authenticatedUser) {
     return (
-      <Button
-        variant="brand"
-        className="enroll-btn"
-        onClick={handleRedirect}
-        disabled={
-          courseMetaData?.paid_course?.price > 0
-            ? (courseMetaData?.paid_course?.price > 0
-                && !availablePaymentData)
-              || isEnrollNotActive
-            : isEnrollNotActive
-        }
-      >
-        {courseMetaData?.paid_course?.price > 0 && !paidCourses?.has_trial ? (
-          <FormattedMessage
-            id="courseInfo.purchaseNow.text"
-            defaultMessage="Purchase"
-          />
-        ) : (
-          <FormattedMessage
-            id="courseInfo.enrollNow.text"
-            defaultMessage="Enroll Now"
-          />
-        )}
-      </Button>
+      <UnAuthenticatedButtonStatus
+        courseMetaData={courseMetaData}
+        hasPrice={courseMetaData?.paid_course?.price > 0}
+        hasTrial={paidCourses?.has_trial}
+        isEnrollNotActive={isEnrollNotActive}
+      />
     );
   }
   return (
@@ -50,7 +29,7 @@ const CourseInfoButtonStatus = ({
       isCourseNotStarted={isCourseNotStarted}
       isEnrollNotActive={isEnrollNotActive}
       hasPreReqCourse={hasPreReqCourse}
-      paidCourses={paidCourses}
+      hasTrial={paidCourses?.has_trial}
     />
   );
 };

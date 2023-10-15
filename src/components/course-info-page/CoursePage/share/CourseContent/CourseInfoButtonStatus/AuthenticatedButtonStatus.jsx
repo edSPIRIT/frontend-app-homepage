@@ -11,7 +11,7 @@ const AuthenticatedButtonStatus = ({
   isCourseNotStarted,
   isEnrollNotActive,
   hasPreReqCourse,
-  paidCourses,
+  hasTrial,
 }) => {
   const { isEnrollmentActive, loading } = useGetEnrollmentStatus(
     courseMetaData?.course_id,
@@ -55,13 +55,13 @@ const AuthenticatedButtonStatus = ({
       onClick={enrollClickHandler}
       loading={enrollLoading}
       disabled={
-        courseMetaData?.paid_course?.price > 0 && !paidCourses?.has_trial
+        courseMetaData?.paid_course?.price > 0 && !hasTrial
           ? (courseMetaData?.paid_course?.price > 0 && !availablePaymentData)
             || isEnrollNotActive
           : isEnrollNotActive
       }
     >
-      {courseMetaData?.paid_course?.price > 0 && !paidCourses?.has_trial ? (
+      {courseMetaData?.paid_course?.price > 0 && !hasTrial ? (
         <FormattedMessage
           id="courseInfo.purchaseNow.text"
           defaultMessage="Purchase"

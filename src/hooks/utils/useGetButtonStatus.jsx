@@ -59,6 +59,7 @@ const useGetButtonStatus = (courseMetaData) => {
         );
       } else if (
         paid_course?.price > 0
+        && !paidCourses?.has_trial
         && !availablePaymentData
       ) {
         warningMessage = (
@@ -108,7 +109,12 @@ const useGetButtonStatus = (courseMetaData) => {
         warningComponent,
       });
     }
-  }, [courseMetaData, isEnrollmentActive, availablePaymentData, paidCourses?.has_trial]);
+  }, [
+    courseMetaData,
+    isEnrollmentActive,
+    availablePaymentData,
+    paidCourses?.has_trial,
+  ]);
 
   return status;
 };
