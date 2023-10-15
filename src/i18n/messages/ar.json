@@ -208,5 +208,8 @@
     "cancel.button": "يلغي",
     "courseInfo.unenrollMessage.text": "عند إلغاء التسجيل، ستتم إزالة الدورات التدريبية الخاصة بك من لوحة التحكم الخاصة بك",
     "unenroll.alert.title": "إلغاء التسجيل من الدورة",
-    "enrollmentSuccessful.title": "تم التسجيل بنجاح!"
+    "enrollmentSuccessful.title": "تم التسجيل بنجاح!",
+    "courseInfo.until.text": "حتى",
+    "courseInfo.then.text": "ثم",
+    "courseCard.freeTrial.text": "تجربة مجانية"
 }

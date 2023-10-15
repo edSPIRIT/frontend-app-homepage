@@ -26,7 +26,33 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
   const coursePrice = courseMetaData?.paid_course?.price || 0;
   const courseCurrency = courseMetaData?.paid_course?.currency || 'USD';
   const { paidCourses } = useGetPaidCourses(courseMetaData);
-
+  const priceStatus = () => {
+    if (courseMetaData?.paid_course?.price > 0 && paidCourses?.has_trial) {
+      return (
+        <FormattedMessage
+          id="courseCard.freeTrial.text"
+          defaultMessage="Free Trial"
+        />
+      );
+    }
+    if (courseMetaData?.paid_course?.price > 0 && !paidCourses?.has_trial) {
+      return (
+        <p className="price-symbol-wrapper">
+          <span className="mr-1">
+            <FormattedMessage id={courseCurrency} defaultMessage="$" />
+          </span>
+          <span className="mr-1">
+            <FormattedNumber
+              value={courseCurrency === 'USD' ? coursePrice / 100 : coursePrice}
+              minimumFractionDigits={courseCurrency === 'USD' ? 2 : 0}
+              maximumFractionDigits={courseCurrency === 'USD' ? 2 : 0}
+            />
+          </span>
+        </p>
+      );
+    }
+    return <FormattedMessage id="courseCard.free.text" defaultMessage="Free" />;
+  };
   return (
     <div className="course-info-side-wrapper">
       {loading ? (
@@ -49,37 +75,41 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
           />
           <div className="mt-4.5 px-4">
             <h2 className="mb-1">
-              {courseMetaData?.paid_course?.price > 0 ? (
-                <p className="price-symbol-wrapper">
+              {priceStatus()}
+            </h2>
+            {paidCourses?.has_trial ? (
+              <p className="d-flex">
+                <span className="mr-1">
+                  <FormattedMessage
+                    id="courseInfo.until.text"
+                    defaultMessage="Until"
+                  />
+                </span>
+                <FormattedDate
+                  value={paidCourses?.trial_end}
+                  day="numeric"
+                  month="short"
+                  year="numeric"
+                />
+                <span className="ml-1">
+                  <FormattedMessage
+                    id="courseInfo.then.text"
+                    defaultMessage="then"
+                  />
+                </span>
+                <span className="price-symbol-wrapper ml-1">
                   <span className="mr-1">
                     <FormattedMessage id={courseCurrency} defaultMessage="$" />
                   </span>
                   <span className="mr-1">
                     <FormattedNumber
-                      value={
-                        courseCurrency === 'USD'
-                          ? coursePrice / 100
-                          : coursePrice
-                      }
+                      value={courseCurrency === 'USD' ? coursePrice / 100 : coursePrice}
                       minimumFractionDigits={courseCurrency === 'USD' ? 2 : 0}
                       maximumFractionDigits={courseCurrency === 'USD' ? 2 : 0}
                     />
                   </span>
-                </p>
-              ) : (
-                <FormattedMessage
-                  id="courseCard.free.text"
-                  defaultMessage="Free"
-                />
-              )}
-            </h2>
-            {paidCourses?.has_trial ? (
-              <FormattedDate
-                value={paidCourses?.trial_end}
-                day="numeric"
-                month="short"
-                year="numeric"
-              />
+                </span>
+              </p>
             ) : (
               <span className="text-gray-500 font-sm">
                 <FormattedMessage

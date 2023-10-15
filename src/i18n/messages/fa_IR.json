@@ -208,5 +208,8 @@
     "cancel.button": "بستن",
     "courseInfo.unenrollMessage.text": "با لغو ثبت نام، دوره های شما از داشبورد شما حذف خواهد شد",
     "unenroll.alert.title": "لغو ثبت نام از دوره",
-    "enrollmentSuccessful.title": "ثبت نام با موفقیت انجام شد"
+    "enrollmentSuccessful.title": "ثبت نام با موفقیت انجام شد",
+    "courseInfo.until.text": "تا",
+    "courseInfo.then.text": "سپس",
+    "courseCard.freeTrial.text": "امکان استفاده رایگان"
 }
