@@ -57,9 +57,11 @@ const useGetButtonStatus = (courseMetaData) => {
             defaultMessage="Registration Closed: Date Passed"
           />
         );
+      } else if (paid_course?.price > 0 && paidCourses?.has_trial === true) {
+        warningMessage = undefined;
       } else if (
         paid_course?.price > 0
-        && !paidCourses?.has_trial
+        && paidCourses?.has_trial === false
         && !availablePaymentData
       ) {
         warningMessage = (
@@ -109,12 +111,7 @@ const useGetButtonStatus = (courseMetaData) => {
         warningComponent,
       });
     }
-  }, [
-    courseMetaData,
-    isEnrollmentActive,
-    availablePaymentData,
-    paidCourses?.has_trial,
-  ]);
+  }, [courseMetaData, isEnrollmentActive, availablePaymentData, paidCourses?.has_trial]);
 
   return status;
 };
