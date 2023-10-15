@@ -14,6 +14,7 @@ import CourseSideBarSkeleton from './CourseInfoSideBar/CourseSideBarSkeleton';
 import useGetButtonStatus from '../../../../hooks/utils/useGetButtonStatus';
 import CourseDateInfo from '../share/CourseDateInfo';
 import CourseInstructorsItem from '../share/CourseInstructorsItem';
+import useGetPaidCourses from '../../../../hooks/useGetPaidCourses';
 
 const CourseInfoSideBar = ({ courseMetaData, loading }) => {
   const {
@@ -24,6 +25,8 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
   } = useGetButtonStatus(courseMetaData);
   const coursePrice = courseMetaData?.paid_course?.price || 0;
   const courseCurrency = courseMetaData?.paid_course?.currency || 'USD';
+  const { paidCourses } = useGetPaidCourses(courseMetaData);
+
   return (
     <div className="course-info-side-wrapper">
       {loading ? (
@@ -58,12 +61,8 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
                           ? coursePrice / 100
                           : coursePrice
                       }
-                      minimumFractionDigits={
-                        courseCurrency === 'USD' ? 2 : 0
-                      }
-                      maximumFractionDigits={
-                        courseCurrency === 'USD' ? 2 : 0
-                      }
+                      minimumFractionDigits={courseCurrency === 'USD' ? 2 : 0}
+                      maximumFractionDigits={courseCurrency === 'USD' ? 2 : 0}
                     />
                   </span>
                 </p>
@@ -74,12 +73,21 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
                 />
               )}
             </h2>
-            <span className="text-gray-500 font-sm">
-              <FormattedMessage
-                id="courseInfo.lifetimeAccess.text"
-                defaultMessage="Lifetime access"
+            {paidCourses?.has_trial ? (
+              <FormattedDate
+                value={paidCourses?.trial_end}
+                day="numeric"
+                month="short"
+                year="numeric"
               />
-            </span>
+            ) : (
+              <span className="text-gray-500 font-sm">
+                <FormattedMessage
+                  id="courseInfo.lifetimeAccess.text"
+                  defaultMessage="Lifetime access"
+                />
+              </span>
+            )}
           </div>
           <Card.Section>
             <div className="d-flex flex-column  font-sm">
@@ -99,6 +107,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
                 isCourseNotStarted={isCourseNotStarted}
                 isEnrollNotActive={isEnrollNotActive}
                 hasPreReqCourse={hasPreReqCourse}
+                paidCourses={paidCourses}
               />
               {courseMetaData?.additional_metadata?.total_enrollments && (
                 <p className="mt-3">

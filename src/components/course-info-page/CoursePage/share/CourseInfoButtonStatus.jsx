@@ -12,6 +12,7 @@ const CourseInfoButtonStatus = ({
   isCourseNotStarted,
   isEnrollNotActive,
   hasPreReqCourse,
+  paidCourses,
 }) => {
   const { authenticatedUser } = useContext(AppContext);
   const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
@@ -29,7 +30,7 @@ const CourseInfoButtonStatus = ({
             : isEnrollNotActive
         }
       >
-        {courseMetaData?.paid_course?.price > 0 ? (
+        {courseMetaData?.paid_course?.price > 0 && !paidCourses?.has_trial ? (
           <FormattedMessage
             id="courseInfo.purchaseNow.text"
             defaultMessage="Purchase"
@@ -49,6 +50,7 @@ const CourseInfoButtonStatus = ({
       isCourseNotStarted={isCourseNotStarted}
       isEnrollNotActive={isEnrollNotActive}
       hasPreReqCourse={hasPreReqCourse}
+      paidCourses={paidCourses}
     />
   );
 };

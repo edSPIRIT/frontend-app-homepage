@@ -11,6 +11,7 @@ const AuthenticatedButtonStatus = ({
   isCourseNotStarted,
   isEnrollNotActive,
   hasPreReqCourse,
+  paidCourses,
 }) => {
   const { isEnrollmentActive, loading } = useGetEnrollmentStatus(
     courseMetaData?.course_id,
@@ -60,7 +61,7 @@ const AuthenticatedButtonStatus = ({
           : isEnrollNotActive
       }
     >
-      {courseMetaData?.paid_course?.price > 0 ? (
+      {courseMetaData?.paid_course?.price > 0 && !paidCourses?.has_trial ? (
         <FormattedMessage
           id="courseInfo.purchaseNow.text"
           defaultMessage="Purchase"

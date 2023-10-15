@@ -6,12 +6,14 @@ import { Icon } from '@edx/paragon';
 import { Link } from 'react-router-dom';
 import useGetEnrollmentStatus from '../useGetEnrollmentStatus';
 import useEnrollClickHandler from '../useEnrollClickHandler';
+import useGetPaidCourses from '../useGetPaidCourses';
 
 const useGetButtonStatus = (courseMetaData) => {
   const { isEnrollmentActive } = useGetEnrollmentStatus(
     courseMetaData?.course_id,
   );
   const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
+  const { paidCourses } = useGetPaidCourses(courseMetaData);
 
   const [status, setStatus] = useState({});
 
@@ -55,7 +57,11 @@ const useGetButtonStatus = (courseMetaData) => {
             defaultMessage="Registration Closed: Date Passed"
           />
         );
-      } else if (paid_course?.price > 0 && !availablePaymentData) {
+      } else if (
+        paid_course?.price > 0
+        && !paidCourses?.has_trial
+        && !availablePaymentData
+      ) {
         warningMessage = (
           <FormattedMessage
             id="courseInfo.ecommerceDeactivated.attention"
@@ -103,7 +109,7 @@ const useGetButtonStatus = (courseMetaData) => {
         warningComponent,
       });
     }
-  }, [courseMetaData, isEnrollmentActive, availablePaymentData]);
+  }, [courseMetaData, isEnrollmentActive, availablePaymentData, paidCourses?.has_trial]);
 
   return status;
 };
