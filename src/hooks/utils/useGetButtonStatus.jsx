@@ -35,7 +35,13 @@ const useGetButtonStatus = (courseMetaData) => {
       const isEnrollmentOver = courseEnrollEndDate && currentDate > courseEnrollEndDate;
 
       let warningMessage;
-
+      console.log(
+        'availablePaymentData',
+        paid_course?.price,
+        availablePaymentData,
+        paid_course?.price > 0 && !availablePaymentData,
+        paidCourses?.has_trial,
+      );
       if (isEnrollmentActive && isCourseNotStarted) {
         warningMessage = (
           <FormattedMessage
