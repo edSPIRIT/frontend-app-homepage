@@ -6,10 +6,12 @@ import { MoreVert } from '@edx/paragon/icons';
 
 import { Link } from 'react-router-dom';
 import { injectIntl } from '@edx/frontend-platform/i18n';
+import React from 'react';
 import { determineDirection } from '../../../../utils/determineDirection';
 import CourseDateStatus from './TopCardSection/CourseDateStatus';
 import TopIcons from './TopCardSection/TopIcons';
-import UnenrollAlert from './TopCardSection/UnenrollAlert';
+
+const UnenrollAlert = React.lazy(() => import('./TopCardSection/UnenrollAlert'));
 
 const TopCardSection = ({ courseInfo, openMoreBtnModal, certificateData }) => (
   <>

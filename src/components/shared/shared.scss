@@ -102,6 +102,12 @@ p {
 .color-black {
   color: black;
 }
+.color-danger-500 {
+  color: $danger-500;
+}
+.color-danger-900 {
+  color: $danger-900;
+}
 .font-sm {
   font-size: $font-size-base-sm;
 }
