@@ -10,6 +10,9 @@ const DesktopSuccessEnrollAlert = ({
   courseMetaData,
   closeAlert,
   successEnrollAlertState,
+  warningComponent,
+  isCourseNotStarted,
+  hasPreReqCourse,
   intl,
 }) => (
   <AlertModal
@@ -19,9 +22,14 @@ const DesktopSuccessEnrollAlert = ({
     variant="success"
     title={intl.formatMessage(messages['enrollmentSuccessful.title'])}
     icon={CheckCircle}
-    footerNode={
-      <AlertButtons courseMetaData={courseMetaData} closeAlert={closeAlert} />
-    }
+    footerNode={(
+      <AlertButtons
+        courseMetaData={courseMetaData}
+        closeAlert={closeAlert}
+        isCourseNotStarted={isCourseNotStarted}
+        hasPreReqCourse={hasPreReqCourse}
+      />
+    )}
   >
     <FormattedMessage
       id="courseInfo.enrollSuccessAlert.text"
@@ -30,6 +38,7 @@ const DesktopSuccessEnrollAlert = ({
         courseName: courseMetaData?.additional_metadata?.display_name,
       }}
     />
+    {warningComponent && <div className="mt-2.5">{warningComponent}</div>}
   </AlertModal>
 );
 

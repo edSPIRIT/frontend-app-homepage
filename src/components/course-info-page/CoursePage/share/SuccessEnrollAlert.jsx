@@ -5,6 +5,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSuccessAlertOpen } from '../../../../redux/slice/course/successEnrollmentAlert';
 import DesktopSuccessEnrollAlert from './SuccessEnrollAlert/DesktopSuccessEnrollAlert';
+import useGetButtonStatus from '../../../../hooks/utils/useGetButtonStatus';
 
 const BottomSheetSuccessEnroll = React.lazy(() => import('./SuccessEnrollAlert/BottomSheetSuccessEnroll'));
 
@@ -17,7 +18,7 @@ const SuccessEnrollAlert = ({ courseMetaData }) => {
     (state) => state.successEnrollmentAlert.open,
   );
   const closeAlert = () => dispatch(setSuccessAlertOpen(false));
-
+  const { isCourseNotStarted, hasPreReqCourse, warningComponent } = useGetButtonStatus(courseMetaData);
   return (
     <>
       {isMobile ? (
@@ -25,12 +26,18 @@ const SuccessEnrollAlert = ({ courseMetaData }) => {
           courseMetaData={courseMetaData}
           closeAlert={closeAlert}
           successEnrollAlertState={successEnrollAlertState}
+          warningComponent={warningComponent}
+          isCourseNotStarted={isCourseNotStarted}
+          hasPreReqCourse={hasPreReqCourse}
         />
       ) : (
         <DesktopSuccessEnrollAlert
           courseMetaData={courseMetaData}
           closeAlert={closeAlert}
           successEnrollAlertState={successEnrollAlertState}
+          warningComponent={warningComponent}
+          isCourseNotStarted={isCourseNotStarted}
+          hasPreReqCourse={hasPreReqCourse}
         />
       )}
     </>

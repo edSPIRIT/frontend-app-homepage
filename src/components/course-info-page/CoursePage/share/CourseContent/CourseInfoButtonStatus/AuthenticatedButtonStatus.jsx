@@ -55,7 +55,7 @@ const AuthenticatedButtonStatus = ({
       onClick={enrollClickHandler}
       loading={enrollLoading}
       disabled={
-        courseMetaData?.paid_course?.price > 0
+        courseMetaData?.paid_course?.price > 0 && !paidCourses?.has_trial
           ? (courseMetaData?.paid_course?.price > 0 && !availablePaymentData)
             || isEnrollNotActive
           : isEnrollNotActive

@@ -10,6 +10,9 @@ const BottomSheetSuccessEnroll = ({
   courseMetaData,
   closeAlert,
   successEnrollAlertState,
+  warningComponent,
+  isCourseNotStarted,
+  hasPreReqCourse,
   intl,
 }) => (
   <ModalLayer isOpen={successEnrollAlertState} onClose={closeAlert}>
@@ -26,8 +29,15 @@ const BottomSheetSuccessEnroll = ({
             courseName: courseMetaData?.additional_metadata?.display_name,
           }}
         />
+        {warningComponent && <div className="mt-2.5">{warningComponent}</div>}
       </p>
-      <AlertButtons courseMetaData={courseMetaData} closeAlert={closeAlert} />
+
+      <AlertButtons
+        courseMetaData={courseMetaData}
+        closeAlert={closeAlert}
+        isCourseNotStarted={isCourseNotStarted}
+        hasPreReqCourse={hasPreReqCourse}
+      />
     </div>
   </ModalLayer>
 );
