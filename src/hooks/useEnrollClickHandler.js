@@ -27,6 +27,7 @@ const postCourseEnrollment = async (id) => {
   const url = `${getConfig().LMS_BASE_URL}/api/enrollment/v1/enrollment`;
   const { data, status } = await getAuthenticatedHttpClient().post(url, {
     course_details: { course_id: id },
+    is_active: true,
   });
   if (status !== 200) {
     throw new Error('fetch not ok');
