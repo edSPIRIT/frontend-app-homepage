@@ -65,7 +65,8 @@ const useEnrollClickHandler = (courseMetaData) => {
       dispatch(setActivateAlert(true));
       return;
     }
-    if (availablePaymentData) {
+    // when course has trial shouldn't go to payment
+    if (availablePaymentData && !availablePaymentData?.has_trial) {
       refetch();
       return;
     }
