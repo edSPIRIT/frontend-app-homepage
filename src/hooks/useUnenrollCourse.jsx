@@ -4,6 +4,7 @@ import { getConfig } from '@edx/frontend-platform';
 import { useDispatch } from 'react-redux';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { setToastMessage } from '../redux/slice/toastSlice';
+import { hideUnenrollAlert } from '../redux/slice/course/unenrollAlert';
 
 export const useUnenrollCourse = (courseId) => {
   const queryClient = useQueryClient();
@@ -34,6 +35,7 @@ export const useUnenrollCourse = (courseId) => {
         />,
       ),
     );
+    dispatch(hideUnenrollAlert());
   };
 
   return { handleUnenroll, deleteEnrollCourse };
