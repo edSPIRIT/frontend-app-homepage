@@ -42,7 +42,7 @@ const TopCardSection = ({ courseMetaData }) => {
     <div className="mt-4.5 px-4">
       <h2 className="mb-1">{priceStatus()}</h2>
       {paidCourses?.has_trial ? (
-        <p className="d-flex flex-wrap">
+        <p className="d-flex flex-wrap font-sm">
           <span className="mr-1">
             <FormattedMessage
               id="courseInfo.until.text"
