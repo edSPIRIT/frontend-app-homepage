@@ -82,13 +82,13 @@
   }
   .view-btn {
     padding: 8px 12px;
-    // height: 44px;
     background-color: $primary-500;
     color: $white;
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 160px;
   }
   .course-info-button {
     border: 1px solid $light-400;

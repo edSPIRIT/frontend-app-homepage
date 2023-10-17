@@ -15,7 +15,7 @@ const UserCourseCard = ({ courseInfo }) => {
   const { certificateData } = useGetCertificate(courseInfo);
   const isMobile = useMediaQuery({ maxWidth: '600px' });
   const { isCourseNotStarted, preReqCourse } = useUserCourseButtonStatus(courseInfo);
-  const courseUrl = (isCourseNotStarted || preReqCourse)
+  const courseUrl = isCourseNotStarted || preReqCourse
     ? null
     : `${getConfig().LEARNING_BASE_URL}/course/${
       courseInfo?.course_details?.course_id
@@ -45,7 +45,11 @@ const UserCourseCard = ({ courseInfo }) => {
           />
           <Card.Body>
             <Card.Section>
-              <TopCardSection courseInfo={courseInfo} openMoreBtnModal={open} certificateData={certificateData} />
+              <TopCardSection
+                courseInfo={courseInfo}
+                openMoreBtnModal={open}
+                certificateData={certificateData}
+              />
               <BottomCardSection
                 courseInfo={courseInfo}
                 isCourseNotStarted={isCourseNotStarted}

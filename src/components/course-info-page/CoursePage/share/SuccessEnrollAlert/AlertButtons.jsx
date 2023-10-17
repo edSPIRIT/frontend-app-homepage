@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import { getConfig } from '@edx/frontend-platform';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { ActionRow, Button } from '@edx/paragon';
 import React from 'react';
+import GoResumeCourseButton from '../../../../shared/user-courses/share/GoResumeCourseButton';
 
 const AlertButtons = ({
   courseMetaData, closeAlert, isCourseNotStarted, hasPreReqCourse,
@@ -14,20 +14,12 @@ const AlertButtons = ({
         defaultMessage="Start Later"
       />
     </Button>
-    <Button
+    <GoResumeCourseButton
+      courseId={courseMetaData?.course_id}
+      isCourseNotStarted={isCourseNotStarted}
+      hasPreReqCourse={hasPreReqCourse}
       variant="success"
-      href={`${getConfig().LEARNING_BASE_URL}/course/${courseMetaData?.course_id
-      }/home`}
-      target="_blank"
-      rel="noreferrer"
-      onClick={closeAlert}
-      disabled={isCourseNotStarted || hasPreReqCourse}
-    >
-      <FormattedMessage
-        id="userCourseCard.goToYourCourse.button"
-        defaultMessage="Go To Your Course"
-      />
-    </Button>
+    />
   </ActionRow>
 );
 

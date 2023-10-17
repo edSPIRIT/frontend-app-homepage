@@ -5,6 +5,7 @@ import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { getConfig } from '@edx/frontend-platform';
 import useEnrollClickHandler from '../../../../../../hooks/useEnrollClickHandler';
 import useGetEnrollmentStatus from '../../../../../../hooks/useGetEnrollmentStatus';
+import GoResumeCourseButton from '../../../../../shared/user-courses/share/GoResumeCourseButton';
 
 const AuthenticatedButtonStatus = ({
   courseMetaData,
@@ -30,22 +31,11 @@ const AuthenticatedButtonStatus = ({
   }
   if (isEnrollmentActive) {
     return (
-      <Button
-        variant="primary"
-        className="enroll-btn"
-        loading={enrollLoading}
-        href={`${getConfig().LEARNING_BASE_URL}/course/${
-          courseMetaData?.course_id
-        }/home`}
-        target="_blank"
-        rel="noreferrer"
-        disabled={isCourseNotStarted || hasPreReqCourse}
-      >
-        <FormattedMessage
-          id="userCourseCard.goToYourCourse.button"
-          defaultMessage="Go To Your Course"
-        />
-      </Button>
+      <GoResumeCourseButton
+        courseId={courseMetaData?.course_id}
+        isCourseNotStarted={isCourseNotStarted}
+        hasPreReqCourse={hasPreReqCourse}
+      />
     );
   }
   if (courseMetaData?.paid_course?.price > 0 && !hasTrial) {

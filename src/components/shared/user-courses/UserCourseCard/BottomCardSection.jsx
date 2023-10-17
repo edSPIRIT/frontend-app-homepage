@@ -36,10 +36,9 @@ const BottomCardSection = ({
     }
     return (
       <GoResumeCourseButton
-        courseInfo={courseInfo}
-        calcProgress={calcProgress}
+        courseId={courseInfo?.course_details?.course_id}
         isCourseNotStarted={isCourseNotStarted}
-        preReqCourse={preReqCourse}
+        hasPreReqCourse={preReqCourse}
       />
     );
   };

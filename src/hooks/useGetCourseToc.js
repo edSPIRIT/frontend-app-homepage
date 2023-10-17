@@ -2,31 +2,31 @@ import { getConfig } from '@edx/frontend-platform';
 import { useQuery } from 'react-query';
 
 const useGetCourseToc = (courseId) => {
-  const initialCourseToc = {
-    toc: {
-      name: null,
-      lms_url: null,
-      sections: [
-        {
-          name: null,
-          lms_url: null,
-          subsections: [
-            {
-              name: null,
-              lms_url: null,
-              units: [
-                {
-                  name: null,
-                  lms_url: null,
-                  type: null,
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  };
+  // const initialCourseToc = {
+  //   toc: {
+  //     name: null,
+  //     lms_url: null,
+  //     sections: [
+  //       {
+  //         name: null,
+  //         lms_url: null,
+  //         subsections: [
+  //           {
+  //             name: null,
+  //             lms_url: null,
+  //             units: [
+  //               {
+  //                 name: null,
+  //                 lms_url: null,
+  //                 type: null,
+  //               },
+  //             ],
+  //           },
+  //         ],
+  //       },
+  //     ],
+  //   },
+  // };
   const fetchCourseToc = async ({ queryKey }) => {
     const id = queryKey[1];
     const apiRes = await fetch(
