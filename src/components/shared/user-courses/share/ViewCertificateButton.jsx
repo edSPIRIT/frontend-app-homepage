@@ -4,13 +4,13 @@ import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { Button } from '@edx/paragon';
 import React from 'react';
 
-const ViewCertificateButton = ({ certificateData }) => (
+const ViewCertificateButton = ({ certUrl }) => (
   <Button
     className="view-btn view-course-btn"
     onClick={(e) => {
       e.preventDefault();
       window.location.href = `${getConfig().LMS_BASE_URL}${
-        certificateData?.download_url
+        certUrl
       }`;
     }}
   >

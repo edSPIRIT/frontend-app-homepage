@@ -8,7 +8,7 @@ import ProgressStatus from '../../share/ProgressStatus';
 const TabletBottomCard = ({
   courseCompleted,
   calcProgress,
-  certificateData,
+  certUrl,
   isCourseNotStarted,
   preReqCourse,
 }) => (
@@ -19,13 +19,12 @@ const TabletBottomCard = ({
       isCourseNotStarted={isCourseNotStarted}
       preReqCourse={preReqCourse}
     />
-    {certificateData && (
+    {certUrl && (
       <Button
         className="view-course-btn"
         onClick={(e) => {
           e.preventDefault();
-          window.location.href = `${getConfig().LMS_BASE_URL}${certificateData?.download_url
-          }`;
+          window.location.href = `${getConfig().LMS_BASE_URL}${certUrl}`;
         }}
       >
         <FormattedMessage

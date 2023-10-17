@@ -8,11 +8,13 @@ import MoreButtonModal from './UserCourseCard/MoreButtonModal';
 import TopCardSection from './UserCourseCard/TopCardSection';
 import BottomCardSection from './UserCourseCard/BottomCardSection';
 import useUserCourseButtonStatus from '../../../hooks/utils/useUserCourseButtonStatus';
-import useGetCertificate from '../../../hooks/useGetCertificate';
+import useCourseOutline from '../../../hooks/useCourseOutline';
 
 const UserCourseCard = ({ courseInfo }) => {
   const [isOpen, open, close] = useToggle(false);
-  const { certificateData } = useGetCertificate(courseInfo);
+  const { certUrl } = useCourseOutline(
+    courseInfo?.course_details?.course_id,
+  );
   const isMobile = useMediaQuery({ maxWidth: '600px' });
   const { isCourseNotStarted, preReqCourse } = useUserCourseButtonStatus(courseInfo);
   const courseUrl = isCourseNotStarted || preReqCourse
@@ -20,12 +22,14 @@ const UserCourseCard = ({ courseInfo }) => {
     : `${getConfig().LEARNING_BASE_URL}/course/${
       courseInfo?.course_details?.course_id
     }/home`;
+
   return (
     <>
       <MoreButtonModal
         isOpen={isOpen}
         onClose={close}
         courseInfo={courseInfo}
+        certUrl={certUrl}
       />
       <a href={courseUrl} className="user-card-course">
         <Card
@@ -48,13 +52,13 @@ const UserCourseCard = ({ courseInfo }) => {
               <TopCardSection
                 courseInfo={courseInfo}
                 openMoreBtnModal={open}
-                certificateData={certificateData}
+                certUrl={certUrl}
               />
               <BottomCardSection
                 courseInfo={courseInfo}
                 isCourseNotStarted={isCourseNotStarted}
                 preReqCourse={preReqCourse}
-                certificateData={certificateData}
+                certUrl={certUrl}
               />
             </Card.Section>
           </Card.Body>

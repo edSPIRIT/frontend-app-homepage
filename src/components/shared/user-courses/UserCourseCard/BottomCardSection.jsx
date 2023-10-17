@@ -11,7 +11,7 @@ const TabletBottomCard = React.lazy(() => import('./BottomCardSection/TabletBott
 const MobileBottomCard = React.lazy(() => import('./BottomCardSection/MobileBottomCard'));
 
 const BottomCardSection = ({
-  courseInfo, isCourseNotStarted, preReqCourse, certificateData,
+  courseInfo, isCourseNotStarted, preReqCourse, certUrl,
 }) => {
   const isTablet = useMediaQuery({ minWidth: '601px', maxWidth: '768px' });
   const isMobile = useMediaQuery({ maxWidth: '600px' });
@@ -31,8 +31,8 @@ const BottomCardSection = ({
   };
 
   const buttonStatus = () => {
-    if (certificateData) {
-      return <ViewCertificateButton certificateData={certificateData} />;
+    if (certUrl) {
+      return <ViewCertificateButton certUrl={certUrl} />;
     }
     return (
       <GoResumeCourseButton
@@ -48,7 +48,7 @@ const BottomCardSection = ({
       <TabletBottomCard
         courseCompleted={courseCompleted}
         calcProgress={calcProgress}
-        certificateData={certificateData}
+        certUrl={certUrl}
         isCourseNotStarted={isCourseNotStarted}
         preReqCourse={preReqCourse}
       />
@@ -59,7 +59,7 @@ const BottomCardSection = ({
       <MobileBottomCard
         courseCompleted={courseCompleted}
         calcProgress={calcProgress}
-        certificateData={certificateData}
+        certUrl={certUrl}
         courseInfo={courseInfo}
         isCourseNotStarted={isCourseNotStarted}
         preReqCourse={preReqCourse}

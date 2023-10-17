@@ -23,6 +23,7 @@ const useCourseOutline = (courseId) => {
   return {
     resumeCourseUrl: data?.resume_course?.url,
     hasVisitedCourse: data?.resume_course?.has_visited_course,
+    certUrl: data?.cert_data?.cert_web_view_url,
     loading: isLoading,
   };
 };

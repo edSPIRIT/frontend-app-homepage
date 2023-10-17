@@ -11,13 +11,13 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setToastMessage } from '../../../../redux/slice/toastSlice';
 import { ReactComponent as Learning } from '../../../../assets/learning-icon.svg';
-import useGetCertificate from '../../../../hooks/useGetCertificate';
 import SharedToastMessage from '../../base-components/SharedToastMessage';
 import { showUnenrollAlert } from '../../../../redux/slice/course/unenrollAlert';
 
-const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
+const MoreButtonModal = ({
+  isOpen, onClose, courseInfo, certUrl,
+}) => {
   const dispatch = useDispatch();
-  const { certificateData } = useGetCertificate(courseInfo);
 
   return (
     <ModalLayer isOpen={isOpen} onClose={onClose}>
@@ -30,7 +30,7 @@ const MoreButtonModal = ({ isOpen, onClose, courseInfo }) => {
           <Icon src={Close} className=" share-icon" onClick={onClose} />
         </div>
         <div className="d-flex flex-column mx-4 color-black">
-          {certificateData && (
+          {certUrl && (
             <a
               className="d-flex align-items-center py-2 color-black"
               href={`${getConfig().LEARNING_BASE_URL}/course/${

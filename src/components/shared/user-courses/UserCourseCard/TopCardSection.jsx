@@ -13,7 +13,7 @@ import TopIcons from './TopCardSection/TopIcons';
 
 const UnenrollAlert = React.lazy(() => import('./TopCardSection/UnenrollAlert'));
 
-const TopCardSection = ({ courseInfo, openMoreBtnModal, certificateData }) => (
+const TopCardSection = ({ courseInfo, openMoreBtnModal, certUrl }) => (
   <>
     <UnenrollAlert courseId={courseInfo?.course_details?.course_id} />
     <div>
@@ -41,7 +41,7 @@ const TopCardSection = ({ courseInfo, openMoreBtnModal, certificateData }) => (
           <Icon className="" src={MoreVert} />
         </div>
         <TopIcons
-          certificateData={certificateData}
+          certUrl={certUrl}
           courseInfo={courseInfo}
           openMoreBtnModal={openMoreBtnModal}
         />

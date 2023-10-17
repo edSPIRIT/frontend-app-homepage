@@ -13,7 +13,7 @@ import SharedToastMessage from '../../../base-components/SharedToastMessage';
 import { setToastMessage } from '../../../../../redux/slice/toastSlice';
 import { showUnenrollAlert } from '../../../../../redux/slice/course/unenrollAlert';
 
-const TopIcons = ({ certificateData, courseInfo, openMoreBtnModal }) => {
+const TopIcons = ({ certUrl, courseInfo, openMoreBtnModal }) => {
   const dispatch = useDispatch();
 
   const isTablet = useMediaQuery({ maxWidth: '768px' });
@@ -58,7 +58,7 @@ const TopIcons = ({ certificateData, courseInfo, openMoreBtnModal }) => {
         />
         {isOpenDropDown && (
           <Dropdown.Menu>
-            {certificateData && (
+            {certUrl && (
               <Dropdown.Item
                 href={`${getConfig().LEARNING_BASE_URL}/course/${
                   courseInfo?.course_details?.course_id

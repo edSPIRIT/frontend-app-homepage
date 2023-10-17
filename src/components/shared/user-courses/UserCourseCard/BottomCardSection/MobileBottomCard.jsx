@@ -7,14 +7,14 @@ import GoResumeCourseButton from '../../share/GoResumeCourseButton';
 const MobileBottomCard = ({
   courseCompleted,
   calcProgress,
-  certificateData,
+  certUrl,
   courseInfo,
   isCourseNotStarted,
   preReqCourse,
 }) => {
   const buttonStatus = () => {
-    if (certificateData) {
-      return <ViewCertificateButton certificateData={certificateData} />;
+    if (certUrl) {
+      return <ViewCertificateButton certUrl={certUrl} />;
     }
     return (
       <GoResumeCourseButton
