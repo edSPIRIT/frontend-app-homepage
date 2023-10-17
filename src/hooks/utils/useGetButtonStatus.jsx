@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import useGetEnrollmentStatus from '../useGetEnrollmentStatus';
 import useEnrollClickHandler from '../useEnrollClickHandler';
 import useGetPaidCourses from '../useGetPaidCourses';
+import useCheckPrerequisiteStatus from '../useCheckPrerequisiteStatus';
 
 const useGetButtonStatus = (courseMetaData) => {
   const { isEnrollmentActive } = useGetEnrollmentStatus(
@@ -16,7 +17,9 @@ const useGetButtonStatus = (courseMetaData) => {
 
   const [status, setStatus] = useState({});
   const { paidCourses } = useGetPaidCourses(courseMetaData);
-
+  const { isCompletePreReq } = useCheckPrerequisiteStatus(
+    courseMetaData?.course_slug,
+  );
   useEffect(() => {
     if (courseMetaData) {
       const { additional_metadata: metadata, paid_course } = courseMetaData;
@@ -35,6 +38,12 @@ const useGetButtonStatus = (courseMetaData) => {
       const isEnrollmentOver = courseEnrollEndDate && currentDate > courseEnrollEndDate;
 
       let warningMessage;
+
+      // check whether user has completed the pre req course or not
+      const hasPreReqCourse = () => (courseMetaData?.additional_metadata?.pre_req_courses?.length > 0
+        ? isCompletePreReq === false
+        : false);
+
       if (isEnrollmentActive && isCourseNotStarted) {
         warningMessage = (
           <FormattedMessage
@@ -63,9 +72,7 @@ const useGetButtonStatus = (courseMetaData) => {
             defaultMessage="Purchases are temporarily unavailable. Please try again later"
           />
         );
-      } else if (
-        courseMetaData?.additional_metadata?.pre_req_courses?.length > 0
-      ) {
+      } else if (hasPreReqCourse()) {
         warningMessage = (
           <>
             <FormattedMessage
@@ -99,8 +106,7 @@ const useGetButtonStatus = (courseMetaData) => {
       setStatus({
         isCourseNotStarted,
         isEnrollNotActive: isEnrollmentNotStarted || isEnrollmentOver,
-        hasPreReqCourse:
-          courseMetaData?.additional_metadata?.pre_req_courses?.length > 0,
+        hasPreReqCourse: hasPreReqCourse(),
         warningComponent,
       });
     }
@@ -109,6 +115,7 @@ const useGetButtonStatus = (courseMetaData) => {
     isEnrollmentActive,
     availablePaymentData,
     paidCourses?.has_trial,
+    isCompletePreReq,
   ]);
 
   return status;
