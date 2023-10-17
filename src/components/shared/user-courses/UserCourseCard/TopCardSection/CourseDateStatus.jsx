@@ -2,22 +2,17 @@
 /* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable react/prop-types */
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { Skeleton } from '@edx/paragon';
 import CourseDate from './CourseDateStatus/CourseDate';
+import useCourseOutline from '../../../../../hooks/useCourseOutline';
 
 const CourseDateStatus = ({ courseInfo }) => {
+  const { hasVisitedCourse, loading } = useCourseOutline(
+    courseInfo?.course_details?.course_id,
+  );
+
   const currentDate = new Date();
 
-  const calcProgress = () => {
-    const { complete_count, incomplete_count } = courseInfo?.progress;
-
-    if (complete_count === 0) {
-      return 0;
-    }
-
-    const progress = (complete_count / (complete_count + incomplete_count)) * 100;
-    return Math.round(progress);
-  };
-  const hasVisited = calcProgress();
   const courseEnd = courseInfo?.course_details?.course_end
     ? new Date(courseInfo?.course_details?.course_end)
     : null;
@@ -25,7 +20,15 @@ const CourseDateStatus = ({ courseInfo }) => {
     ? new Date(courseInfo?.course_details?.course_start)
     : null;
 
-  if (hasVisited > 0) {
+  if (loading) {
+    return (
+      <p className="course-date-title">
+        <Skeleton width={150} height={24} />
+      </p>
+    );
+  }
+
+  if (hasVisitedCourse) {
     if (courseEnd && courseEnd < currentDate) {
       return (
         <CourseDate
