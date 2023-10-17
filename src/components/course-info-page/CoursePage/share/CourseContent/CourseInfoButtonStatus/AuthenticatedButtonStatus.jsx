@@ -2,7 +2,6 @@
 import React from 'react';
 import { Button, Spinner } from '@edx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import { getConfig } from '@edx/frontend-platform';
 import useEnrollClickHandler from '../../../../../../hooks/useEnrollClickHandler';
 import useGetEnrollmentStatus from '../../../../../../hooks/useGetEnrollmentStatus';
 import GoResumeCourseButton from '../../../../../shared/user-courses/share/GoResumeCourseButton';
