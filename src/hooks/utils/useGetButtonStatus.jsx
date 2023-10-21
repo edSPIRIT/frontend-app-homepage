@@ -17,8 +17,11 @@ const useGetButtonStatus = (courseMetaData) => {
 
   const [status, setStatus] = useState({});
   const { paidCourses } = useGetPaidCourses(courseMetaData);
+
+  // check if user has done pre req course or not
   const { isCompletePreReq } = useCheckPrerequisiteStatus(
     courseMetaData?.course_slug,
+    courseMetaData?.additional_metadata?.pre_req_courses,
   );
   useEffect(() => {
     if (courseMetaData) {

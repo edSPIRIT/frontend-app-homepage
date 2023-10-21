@@ -2,7 +2,7 @@ import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { useQuery } from 'react-query';
 
-const useCheckPrerequisiteStatus = (courseSlug) => {
+const useCheckPrerequisiteStatus = (courseSlug, preReqCourse) => {
   const fetchPreReqCourseStatus = async ({ queryKey }) => {
     const slug = queryKey[1];
 
@@ -20,7 +20,7 @@ const useCheckPrerequisiteStatus = (courseSlug) => {
     ['PreReqCourseStatus', courseSlug],
     fetchPreReqCourseStatus,
     {
-      enabled: !!courseSlug,
+      enabled: !!courseSlug && preReqCourse?.length > 0,
     },
   );
   return {

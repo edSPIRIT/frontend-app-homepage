@@ -6,6 +6,7 @@ const useUserCourseButtonStatus = (courseInfo) => {
   const [status, setStatus] = useState({});
   const { isCompletePreReq } = useCheckPrerequisiteStatus(
     courseInfo?.course_metadata?.slug,
+    courseInfo?.pre_req_courses,
   );
   useEffect(() => {
     if (courseInfo) {
