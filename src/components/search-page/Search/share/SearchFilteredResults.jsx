@@ -18,6 +18,7 @@ import noResult from '../../../../assets/noResult.svg';
 import SearchSortWrapper from './SearchFilteredResults/SearchSortWrapper';
 import { addPage } from '../../../../redux/slice/recentPagesSlice';
 import messages from '../../../../messages';
+import { setSearchString } from '../../../../redux/slice/searchQuerySlice';
 
 const SearchFilteredResults = ({ intl }) => {
   const dispatch = useDispatch();
@@ -30,10 +31,16 @@ const SearchFilteredResults = ({ intl }) => {
 
   const searchParams = new URLSearchParams(location.search);
   const pageParam = searchParams.get('page');
+  const queryString = searchParams.get('q');
   const [page, setPage] = useState(pageParam ? parseInt(pageParam, 10) : 1);
 
   const { searchResults, searchResultsCount, isLoading } = useSearchResults(page);
-
+  // When the user copies the link and it contains a search query
+  useEffect(() => {
+    if (queryString) {
+      dispatch(setSearchString(queryString));
+    }
+  }, []);
   useEffect(() => {
     const newPageParam = new URLSearchParams(location.search).get('page');
     const newPage = newPageParam ? parseInt(newPageParam, 10) : 1;
@@ -43,7 +50,9 @@ const SearchFilteredResults = ({ intl }) => {
   }, [location]);
 
   useEffect(() => {
-    history.push(`?q=${searchStringValue}&page=${page}`);
+    if (searchStringValue) {
+      history.push(`?q=${searchStringValue}&page=${page}`);
+    }
   }, [page]);
 
   return (
