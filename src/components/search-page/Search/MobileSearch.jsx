@@ -14,12 +14,14 @@ import {
   intlShape,
 } from '@edx/frontend-platform/i18n';
 import { useSelector } from 'react-redux';
+import React from 'react';
 import messages from '../../../messages';
-import FilterModal from './MobileSearch/FilterModal';
 import SearchFilteredResults from './share/SearchFilteredResults';
 import { removeEmptyFilters } from '../../../utils/cleanedFilters';
 import useSearchResults from '../../../hooks/useSearchResults';
-import SortModal from './MobileSearch/SortModal';
+
+const FilterModal = React.lazy(() => import('./MobileSearch/FilterModal'));
+const SortModal = React.lazy(() => import('./MobileSearch/SortModal'));
 
 const MobileSearch = ({ intl }) => {
   const searchQueryValue = useSelector((state) => state.searchFilters);
@@ -33,8 +35,10 @@ const MobileSearch = ({ intl }) => {
 
   return (
     <>
-      <FilterModal isOpenFilter={isOpenFilter} closeFilter={closeFilter} />
-      <SortModal isOpen={isOpen} close={close} />
+      {isOpenFilter && (
+        <FilterModal isOpenFilter={isOpenFilter} closeFilter={closeFilter} />
+      )}
+      {isOpen && <SortModal isOpen={isOpen} close={close} />}
 
       <div className="mobile-search-container">
         <div className="d-flex px-4.5 py-3 align-items-center back-btn-wrapper">

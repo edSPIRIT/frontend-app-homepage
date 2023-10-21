@@ -2,23 +2,21 @@
 /* eslint-disable react/prop-types */
 import { useMediaQuery } from '@edx/paragon';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setSuccessAlertOpen } from '../../../../redux/slice/course/successEnrollmentAlert';
 import DesktopSuccessEnrollAlert from './SuccessEnrollAlert/DesktopSuccessEnrollAlert';
 import useGetButtonStatus from '../../../../hooks/utils/useGetButtonStatus';
 
 const BottomSheetSuccessEnroll = React.lazy(() => import('./SuccessEnrollAlert/BottomSheetSuccessEnroll'));
 
-const SuccessEnrollAlert = ({ courseMetaData }) => {
+const SuccessEnrollAlert = ({ courseMetaData, successEnrollAlertState }) => {
   const dispatch = useDispatch();
 
   const isMobile = useMediaQuery({ maxWidth: '768px' });
 
-  const successEnrollAlertState = useSelector(
-    (state) => state.successEnrollmentAlert.open,
-  );
   const closeAlert = () => dispatch(setSuccessAlertOpen(false));
   const { isCourseNotStarted, hasPreReqCourse, warningComponent } = useGetButtonStatus(courseMetaData);
+  console.log('trrrrrrrr');
   return (
     <>
       {isMobile ? (

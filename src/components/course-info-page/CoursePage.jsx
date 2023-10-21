@@ -1,30 +1,29 @@
 /* eslint-disable react/prop-types */
 import { getConfig } from '@edx/frontend-platform';
-import { FormattedMessage, injectIntl } from '@edx/frontend-platform/i18n';
-import {
-  ActionRow, AlertModal, Button, useMediaQuery,
-} from '@edx/paragon';
-import { Info } from '@edx/paragon/icons';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useMediaQuery } from '@edx/paragon';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation, useParams } from 'react-router';
 import useGetCourseMetaData from '../../hooks/useGetCourseMetaData';
-import messages from '../../messages';
-import { setActivateAlert } from '../../redux/slice/activateAlertSlice';
 import SimilarCourses from '../shared/similar-courses/SimilarCourses';
 import DesktopCourseInfo from './CoursePage/DesktopCourseInfo';
 
 const MobileCourseInfo = React.lazy(() => import('./CoursePage/MobileCourseInfo'));
 const FailedPaymentAlert = React.lazy(() => import('./CoursePage/FailedPaymentAlert'));
 const SuccessEnrollAlert = React.lazy(() => import('./CoursePage/share/SuccessEnrollAlert'));
+const InactiveEmailAlert = React.lazy(() => import('./CoursePage/InactiveEmailAlert'));
 
-const CoursePage = ({ intl }) => {
-  const dispatch = useDispatch();
+const CoursePage = () => {
   const activateState = useSelector((state) => state.activateAlert.open);
 
   const { slug } = useParams();
   const { courseMetaData, loading } = useGetCourseMetaData(slug);
   const isMobile = useMediaQuery({ maxWidth: '768px' });
+  const [isOpenFailedAlert, setOpenFailedAlert] = useState(false);
+
+  const successEnrollAlertState = useSelector(
+    (state) => state.successEnrollmentAlert.open,
+  );
 
   useEffect(() => {
     if (courseMetaData) {
@@ -33,6 +32,16 @@ const CoursePage = ({ intl }) => {
       } | ${getConfig().SITE_NAME}`;
     }
   }, [courseMetaData]);
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const paymentStatus = queryParams.get('payment_status');
+  useEffect(() => {
+    if (paymentStatus === 'failed') {
+      setOpenFailedAlert(true);
+    }
+  }, [paymentStatus]);
+
   return (
     <>
       {isMobile ? <MobileCourseInfo /> : <DesktopCourseInfo />}
@@ -41,39 +50,22 @@ const CoursePage = ({ intl }) => {
         courseIds={[`${courseMetaData?.course_id}`]}
         loading={loading}
       />
-      <SuccessEnrollAlert courseMetaData={courseMetaData} />
-      <FailedPaymentAlert courseMetaData={courseMetaData} />
-
-      <AlertModal
-        className="course-info-alert"
-        title={intl.formatMessage(messages['inActive.alert.title'])}
-        isOpen={activateState}
-        onClose={() => dispatch(setActivateAlert(false))}
-        variant="danger"
-        icon={Info}
-        footerNode={(
-          <ActionRow>
-            <Button
-              variant="tertiary"
-              onClick={() => dispatch(setActivateAlert(false))}
-            >
-              <FormattedMessage
-                id="courseInfo.dismiss.button"
-                defaultMessage="Dismiss"
-              />
-            </Button>
-          </ActionRow>
-        )}
-      >
-        <p>
-          <FormattedMessage
-            id="courseInfo.inActiveUser.text"
-            defaultMessage="Please activate your account via email to proceed."
-          />
-        </p>
-      </AlertModal>
+      {successEnrollAlertState && (
+        <SuccessEnrollAlert
+          courseMetaData={courseMetaData}
+          successEnrollAlertState={successEnrollAlertState}
+        />
+      )}
+      {isOpenFailedAlert && (
+        <FailedPaymentAlert
+          isOpenFailedAlert={isOpenFailedAlert}
+          setOpenFailedAlert={setOpenFailedAlert}
+          courseMetaData={courseMetaData}
+        />
+      )}
+      {activateState && <InactiveEmailAlert activateState={activateState} />}
     </>
   );
 };
 
-export default injectIntl(CoursePage);
+export default CoursePage;

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import {
@@ -26,10 +27,9 @@ import {
 } from '../../../../redux/slice/recentPagesSlice';
 import logoPlaceholder from '../../../../assets/place-holders/org-place-holder.svg';
 
-const SearchModal = ({ intl }) => {
+const SearchModal = ({ isOpenSearchModal, intl }) => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const isOpenSearchModal = useSelector((state) => state.searchModal.open);
   const [searchSuggestionValue, setSearchSuggestionValue] = useState('');
   const { searchSuggestionsResults } = useSearchSuggestions(
     searchSuggestionValue,
