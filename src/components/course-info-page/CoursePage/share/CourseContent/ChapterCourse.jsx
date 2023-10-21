@@ -1,17 +1,47 @@
+/* eslint-disable react/prop-types */
 import {
+  Button,
   Collapsible, Icon, IconButton, Skeleton,
 } from '@edx/paragon';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {
   Minus, Plus, PlayCircle, Article,
 } from '@edx/paragon/icons';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { AppContext } from '@edx/frontend-platform/react';
+import useGetButtonStatus from '../../../../../hooks/utils/useGetButtonStatus';
+import handleRedirect from '../../../../../utils/handleRedirect';
+import useGetEnrollmentStatus from '../../../../../hooks/useGetEnrollmentStatus';
 
-const ChapterCourse = ({ section, loading, sectionCount }) => {
+const ChapterCourse = ({
+  section, loading, sectionCount, courseMetaData,
+}) => {
   const [open, setOpen] = useState(!(sectionCount > 1));
+  const {
+    isCourseNotStarted,
+    hasPreReqCourse,
+  } = useGetButtonStatus(courseMetaData);
+  const { authenticatedUser } = useContext(AppContext);
+  const { isEnrollmentActive, loading: isEnrollmentActiveLoading } = useGetEnrollmentStatus(
+    courseMetaData?.course_id,
+  );
 
+  const handleRedirectToLearning = (url) => {
+    if (isEnrollmentActiveLoading) {
+      return null;
+    }
+    if (!authenticatedUser) {
+      handleRedirect();
+    }
+    if (isEnrollmentActive) {
+      if (!hasPreReqCourse && !isCourseNotStarted) {
+        window.location.href = url;
+      }
+    }
+    return null;
+  };
   return (
     <div className="d-flex flex-column mb-3">
       <div className="d-flex align-items-center mb-3">
@@ -46,15 +76,15 @@ const ChapterCourse = ({ section, loading, sectionCount }) => {
             )}
           />
         ) : (
-          section.subsections.map((subsection) => (
+          section?.subsections.map((subsection) => (
             <Collapsible
-              key={subsection.lms_url}
+              key={subsection?.lms_url}
               className="mb-1"
               title={(
                 <p className="d-flex justify-content-between w-100 subsection-wrapper">
-                  <span>{subsection.name}</span>{' '}
+                  <span>{subsection?.name}</span>{' '}
                   <p className="count-title">
-                    <span>{subsection.units.length}</span>{' '}
+                    <span>{subsection?.units?.length}</span>{' '}
                     <span>
                       <FormattedMessage
                         id="courseInfo.lectures.text"
@@ -65,14 +95,20 @@ const ChapterCourse = ({ section, loading, sectionCount }) => {
                 </p>
               )}
             >
-              {subsection.units.map((unit) => (
-                <div key={unit.lms_url} className="d-flex">
+              {subsection?.units?.map((unit) => (
+                <Button
+                  key={unit?.lms_url}
+                  className="d-flex unit-btn"
+                  onClick={() => handleRedirectToLearning(unit?.lms_url)}
+                  variant="tertiary"
+                  // disabled={warningComponent}
+                >
                   <Icon
-                    src={unit.type === 'video' ? PlayCircle : Article}
+                    src={unit?.type === 'video' ? PlayCircle : Article}
                     className="mr-1.5"
                   />
-                  <span>{unit.name}</span>
-                </div>
+                  <span>{unit?.name}</span>
+                </Button>
               ))}
             </Collapsible>
           ))

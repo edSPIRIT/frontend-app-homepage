@@ -63,7 +63,7 @@ const MobileCourseInfo = () => {
           )}
           {sections?.length > 0 && (
             <CourseContent
-              courseId={courseMetaData?.course_id}
+              courseMetaData={courseMetaData}
               loading={loading}
             />
           )}

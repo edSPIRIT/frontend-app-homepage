@@ -3,15 +3,9 @@ import { Breadcrumb } from '@edx/paragon';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { useDispatch } from 'react-redux';
 import messages from '../../../../messages';
-import {
-  resetSearchFilters,
-  setSearchSubject,
-} from '../../../../redux/slice/searchQuerySlice';
 
 const CourseInfoBreadcrumb = ({ courseMetaData, intl }) => {
-  const dispatch = useDispatch();
   const breadcrumbLinks = [
     {
       label: `${intl.formatMessage(messages['breadcrumb.home'])}`,
@@ -22,17 +16,7 @@ const CourseInfoBreadcrumb = ({ courseMetaData, intl }) => {
       to: '/Discover',
     },
   ];
-  const handleSubjectOnclick = () => {
-    dispatch(resetSearchFilters());
-    dispatch(setSearchSubject([courseMetaData.subject[0].title]));
-  };
-  if (courseMetaData?.subject?.length && courseMetaData.subject[0]?.title) {
-    breadcrumbLinks.push({
-      label: `${courseMetaData.subject[0].title}`,
-      to: '/search',
-      onClick: handleSubjectOnclick,
-    });
-  }
+
   return (
     <div className="course-info-breadcrumb  py-4.5">
       <div className="custom-container">

@@ -54,7 +54,6 @@ const CourseCard = ({ course, intl }) => {
           <Link
             to={`/partners/${course?.partner?.organization?.short_name}`}
             className="institution-title font-sm"
-            href="#institution"
           >
             <p className="institution-title font-sm">
               {course?.partner?.organization?.name}

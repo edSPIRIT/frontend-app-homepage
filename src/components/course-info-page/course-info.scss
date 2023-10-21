@@ -301,17 +301,25 @@
         font-weight: 500;
         padding: 1rem;
       }
-
       .collapsible-body {
         font-size: $font-size-base-std;
         flex-direction: column;
         padding: 1rem;
         gap: 1rem;
         display: flex;
-
         .pgn__icon {
           color: $gray-500;
           opacity: 0.5;
+        }
+      }
+      .unit-btn {
+        width: fit-content;
+        padding: unset;
+        &:hover {
+          background-color: unset;
+        }
+        &::before {
+          border: unset;
         }
       }
     }
