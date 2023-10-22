@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { AppContext } from '@edx/frontend-platform/react';
 import useGetButtonStatus from '../../../../../hooks/utils/useGetButtonStatus';
-import handleRedirect from '../../../../../utils/handleRedirect';
 import useGetEnrollmentStatus from '../../../../../hooks/useGetEnrollmentStatus';
 
 const ChapterCourse = ({
@@ -23,19 +22,18 @@ const ChapterCourse = ({
   const { isEnrollmentActive, loading: isEnrollmentActiveLoading } = useGetEnrollmentStatus(courseMetaData?.course_id);
 
   const handleRedirectToLearning = (url) => {
-    if (isEnrollmentActiveLoading) {
+    if (isEnrollmentActiveLoading || !authenticatedUser) {
       return null;
     }
-    if (!authenticatedUser) {
-      handleRedirect();
+
+    if (isEnrollmentActive && !hasPreReqCourse && !isCourseNotStarted) {
+      window.location.href = url;
+      return null;
     }
-    if (isEnrollmentActive) {
-      if (!hasPreReqCourse && !isCourseNotStarted) {
-        window.location.href = url;
-      }
-    }
+
     return null;
   };
+
   return (
     <div className="d-flex flex-column mb-3">
       <div className="d-flex align-items-center mb-3">
@@ -93,7 +91,7 @@ const ChapterCourse = ({
                 <Button
                   key={unit?.lms_url}
                   className={classNames('d-flex unit-btn', {
-                    'remove-pointer': warningComponent,
+                    'remove-pointer': warningComponent || !isEnrollmentActive,
                   })}
                   onClick={() => handleRedirectToLearning(unit?.lms_url)}
                   variant="tertiary"
