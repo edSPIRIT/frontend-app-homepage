@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import {
-  Button,
-  Collapsible, Icon, IconButton, Skeleton,
+  Button, Collapsible, Icon, IconButton, Skeleton,
 } from '@edx/paragon';
 import { useContext, useState } from 'react';
 import {
@@ -19,14 +18,9 @@ const ChapterCourse = ({
   section, loading, sectionCount, courseMetaData,
 }) => {
   const [open, setOpen] = useState(!(sectionCount > 1));
-  const {
-    isCourseNotStarted,
-    hasPreReqCourse,
-  } = useGetButtonStatus(courseMetaData);
+  const { isCourseNotStarted, hasPreReqCourse, warningComponent } = useGetButtonStatus(courseMetaData);
   const { authenticatedUser } = useContext(AppContext);
-  const { isEnrollmentActive, loading: isEnrollmentActiveLoading } = useGetEnrollmentStatus(
-    courseMetaData?.course_id,
-  );
+  const { isEnrollmentActive, loading: isEnrollmentActiveLoading } = useGetEnrollmentStatus(courseMetaData?.course_id);
 
   const handleRedirectToLearning = (url) => {
     if (isEnrollmentActiveLoading) {
@@ -98,7 +92,9 @@ const ChapterCourse = ({
               {subsection?.units?.map((unit) => (
                 <Button
                   key={unit?.lms_url}
-                  className="d-flex unit-btn"
+                  className={classNames('d-flex unit-btn', {
+                    'remove-pointer': warningComponent,
+                  })}
                   onClick={() => handleRedirectToLearning(unit?.lms_url)}
                   variant="tertiary"
                   // disabled={warningComponent}
