@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, lazy, useMemo } from 'react';
 import { Toast } from '@edx/paragon';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import Header from '../header-component/Header';
-import FooterSection from '../footer/FooterSection';
 import { setToastMessage } from '../../../redux/slice/toastSlice';
 import useManageLocale from '../../../hooks/utils/useManageLocale';
 import Loading from '../loading/Loading';
@@ -13,8 +12,10 @@ import useUpdateBodyClassName from '../../../hooks/utils/useUpdateBodyClassName'
 import useSetGtm from '../../../hooks/utils/useSetGtm';
 import useGetConfig from '../../../hooks/useGetConfig';
 
+const FooterSection = lazy(() => import('../footer/FooterSection'));
+
 const Layout = ({ children }) => {
-  const [hasPriceWrapper, setHasPriceWrapper] = useState(false);
+  // const [hasPriceWrapper, setHasPriceWrapper] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch();
   const message = useSelector((state) => state.toast.message);
@@ -24,11 +25,15 @@ const Layout = ({ children }) => {
 
   useUpdateBodyClassName();
 
+  const hasPriceWrapper = useMemo(
+    () => location.pathname.includes('/course'),
+    [location],
+  );
   const isProfileRoute = location.pathname === '/profile';
 
-  useEffect(() => {
-    setHasPriceWrapper(location.pathname.includes('/course'));
-  }, [location]);
+  // useEffect(() => {
+  //   setHasPriceWrapper(location.pathname.includes('/course'));
+  // }, [location]);
 
   if (isLoading) {
     return <Loading />;
@@ -48,7 +53,9 @@ const Layout = ({ children }) => {
         }`}
       >
         <Helmet>
-          {favicon && <link rel="shortcut icon" href={favicon} type="image/x-icon" />}
+          {favicon && (
+            <link rel="shortcut icon" href={favicon} type="image/x-icon" />
+          )}
           {platformName && <title>{`edSPIRIT App | ${platformName}`}</title>}
         </Helmet>
         <Header />
