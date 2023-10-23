@@ -1,7 +1,7 @@
 import {
   Button, Tab, Tabs, useMediaQuery,
 } from '@edx/paragon';
-import { useState } from 'react';
+import { lazy, useState } from 'react';
 import { ArrowForward } from '@edx/paragon/icons';
 import { useHistory } from 'react-router';
 import {
@@ -15,8 +15,13 @@ import CourseCard from '../../shared/course-card/CourseCard';
 import CourseCardSkeleton from '../../shared/skeleton/CourseCardSkeleton';
 import messages from '../../../messages';
 import { resetSearchFilters } from '../../../redux/slice/searchQuerySlice';
-import EmptyStateCourses from './ExplorerCourses/EmptyStateCourses';
-import ScrollableCourses from '../../shared/scrollable-courses-component-discovery-api/ScrollableCourses';
+
+const ScrollableCourses = lazy(() => import(
+  '../../shared/scrollable-courses-component-discovery-api/ScrollableCourses'
+));
+const EmptyStateCourses = lazy(() => import(
+  './ExplorerCourses/EmptyStateCourses'
+));
 
 const ExplorerCourses = ({ intl }) => {
   const [key, setKey] = useState('top-courses');
