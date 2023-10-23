@@ -16,24 +16,26 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 // import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { Provider } from 'react-redux';
+import { lazy } from 'react';
 import appMessages from './i18n';
 
 import './index.scss';
 import Home from './components/home-page/Home';
-import OverviewPage from './components/dashboard/OverviewPage/OverviewPage';
-import Discover from './components/discover-page/Discover';
-import Search from './components/search-page/Search';
-import NotFound from './components/notFount-page/NotFound';
-import PartnersList from './components/partners-list-page/PartnersList';
-import CoursePage from './components/course-info-page/CoursePage';
-import ProgramPage from './components/program-info-page/ProgramPage';
 import ScrollToTop from './ScroollToTop';
-import Instructor from './components/instructor-page/Instructor';
-import PartnerInfo from './components/partner-page/PartnerInfo';
 import store from './redux/store/store';
 import Layout from './components/shared/layout-wrapper/Layout';
 import EnrollmentList from './components/dashboard/EnrollmentList';
 import MobileProfile from './components/shared/header-component/Header/MobileHeader/MobileProfile';
+
+const OverviewPage = lazy(() => import('./components/dashboard/OverviewPage/OverviewPage'));
+const Discover = lazy(() => import('./components/discover-page/Discover'));
+const Search = lazy(() => import('./components/search-page/Search'));
+const NotFound = lazy(() => import('./components/notFount-page/NotFound'));
+const PartnersList = lazy(() => import('./components/partners-list-page/PartnersList'));
+const CoursePage = lazy(() => import('./components/course-info-page/CoursePage'));
+const ProgramPage = lazy(() => import('./components/program-info-page/ProgramPage'));
+const Instructor = lazy(() => import('./components/instructor-page/Instructor'));
+const PartnerInfo = lazy(() => import('./components/partner-page/PartnerInfo'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
