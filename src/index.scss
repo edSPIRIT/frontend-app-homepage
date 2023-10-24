@@ -1,4 +1,4 @@
-@import '@edx/brand/paragon/fonts.scss';
+// @import '@edx/brand/paragon/fonts.scss';
 @import '@edx/brand/paragon/variables.scss';
 @import '@edx/paragon/scss/core/core.scss';
 @import '@edx/brand/paragon/overrides.scss';
@@ -23,7 +23,89 @@
 @import 'components/course-info-page/course-info.scss';
 @import 'components/program-info-page/ProgramPage.scss';
 
-
 body {
   overflow-x: hidden;
+}
+
+// Add any font imports or definitions here
+
+@font-face {
+  font-family: 'IRANSans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: normal;
+  src: local('IRANSans Regular'),
+    url('../public/fonts/IRANSans/woff2/IRANSansWeb.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IRANSans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: local('IRANSans Medium'),
+    url('../public/fonts/IRANSans/woff2/IRANSansWeb_Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IRANSans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: bold;
+  src: local('IRANSans Bold'),
+    url('../public/fonts/IRANSans/woff2/IRANSansWeb_Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: NotoSansArabic;
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: local('Noto Sans Arabic Regular'),
+    url('../public/fonts/NotoSansArabic/NotoSansArabic-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: NotoSansArabic;
+  font-style: normal;
+  font-display: swap;
+  font-weight: normal;
+  src: local('Noto Sans Arabic Medium'),
+    url('../public/fonts/NotoSansArabic/NotoSansArabic-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: NotoSansArabic;
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: local('Noto Sans Arabic Bold'),
+    url('../public/fonts/NotoSansArabic/NotoSansArabic-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: normal;
+  src: local('Inter Regular'),
+    url('../public/fonts/Inter/ttf/Inter-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: local('Inter Medium'),
+    url('../public/fonts/Inter/ttf/Inter-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: bold;
+  src: local('Inter Bold'),
+    url('../public/fonts/Inter/ttf/Inter-Bold.ttf') format('truetype');
 }
