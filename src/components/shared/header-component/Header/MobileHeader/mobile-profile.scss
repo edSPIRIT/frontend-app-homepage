@@ -4,7 +4,7 @@
   width: 100%;
   .email-title {
     font-size: $font-size-base-sm;
-    font-weight: 700;
+    font-weight: bold;
     margin-right: auto;
     @include line-break(1);
   }
@@ -16,7 +16,7 @@
 }
 .profile-nav-items{
     .nav-link{
-        font-weight: normal;
+        font-weight: bold;
         padding: 8px 0px;
     }
 }

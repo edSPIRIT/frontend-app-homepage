@@ -5,7 +5,7 @@
     line-height: 1;
     width: auto;
     font-size: 3.75rem;
-    font-weight: 700;
+    font-weight: bold;
     color: $white;
   }
   .search-header-withSearch {
@@ -14,7 +14,7 @@
   .search-value {
     line-height: 1;
     font-size: 3.75rem;
-    font-weight: 700;
+    font-weight: bold;
     color: $white;
   }
   .trending-title {
@@ -54,7 +54,7 @@
     .span {
       color: $info-500;
       font-size: $font-size-base-sm;
-      font-weight: 700;
+      font-weight: bold;
     }
     border-radius: 4px;
     padding: 0.875rem 1rem;

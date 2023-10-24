@@ -30,7 +30,7 @@
 .recommendation-title {
    @include line-break(1);
   font-size: $font-size-base-sm;
-  font-weight: 700;
+  font-weight: bold;
   color: $black;
 }
 
