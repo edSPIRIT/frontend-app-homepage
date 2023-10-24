@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { Suspense, lazy, useMemo } from 'react';
+import React, { Suspense, useMemo } from 'react';
 import { Toast } from '@edx/paragon';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,8 +11,7 @@ import Loading from '../loading/Loading';
 import useUpdateBodyClassName from '../../../hooks/utils/useUpdateBodyClassName';
 import useSetGtm from '../../../hooks/utils/useSetGtm';
 import useGetConfig from '../../../hooks/useGetConfig';
-
-const FooterSection = lazy(() => import('../footer/FooterSection'));
+import FooterSection from '../footer/FooterSection';
 
 const Layout = ({ children }) => {
   // const [hasPriceWrapper, setHasPriceWrapper] = useState(false);
