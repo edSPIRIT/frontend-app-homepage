@@ -36,6 +36,7 @@ const CourseCard = ({ course, intl }) => {
           logoAlt="partner-logo"
           fallbackSrc={coverPlaceholder}
           fallbackLogoSrc={logoPlaceholder}
+          imageLoadingType="lazy"
         />
         <div className="mt-4.5 px-4">
           <h4

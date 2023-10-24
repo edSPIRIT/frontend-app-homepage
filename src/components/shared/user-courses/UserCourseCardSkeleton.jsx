@@ -9,7 +9,7 @@ const UserCourseCardSkeleton = () => {
       className="mb-4 user-card-course"
       orientation={isMobile ? 'vertical' : 'horizontal'}
     >
-      <Card.ImageCap src="" srcAlt="Card image" />
+      <Card.ImageCap src="" srcAlt="Card image" imageLoadingType="lazy" />
       <Card.Body>
         <Card.Section>
           <Skeleton width="70%" height={28} className="" />

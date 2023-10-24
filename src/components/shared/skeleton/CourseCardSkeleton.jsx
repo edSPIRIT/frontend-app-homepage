@@ -12,6 +12,7 @@ const CourseCardSkeleton = () => (
       srcAlt="course-header"
       logoAlt="partner-logo"
       fallbackSrc={coverPlaceholder}
+      imageLoadingType="lazy"
     />
     <div className="skeleton-logo" />
     <div className="p-4">

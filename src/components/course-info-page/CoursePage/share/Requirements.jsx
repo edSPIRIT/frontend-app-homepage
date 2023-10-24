@@ -103,6 +103,7 @@ const Requirements = ({ courseMetaData, loading }) => {
                         alt="logo"
                         fallbackSrc={coverPlaceholder}
                         fallbackLogoSrc={logoPlaceholder}
+                        imageLoadingType="lazy"
                       />
                       <div className="my-4.5 px-4">
                         <h4 className="mb-1 course-title">

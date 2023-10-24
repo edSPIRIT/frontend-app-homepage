@@ -12,7 +12,7 @@ const ProgramCard = ({ info }) => {
   return (
     <Link to={`/program/${slug}`}>
       <Card>
-        <Card.ImageCap src={cover} logoSrc={logo} variant="top" alt="" />
+        <Card.ImageCap src={cover} logoSrc={logo} variant="top" alt="" imageLoadingType="lazy" />
         <div className="mt-4.5 px-4 d-flex flex-column">
           <h3 className="program-title">{title}</h3>
           <a className="program-link mb-3 font-sm" href="#institution">

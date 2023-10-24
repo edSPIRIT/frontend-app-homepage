@@ -12,7 +12,11 @@ const NotEnrolledCardCourse = ({ title, description }) => {
   return (
     <div className="not-enrolled-wrapper mt-6">
       <Card orientation={isSmall ? 'vertical' : 'horizontal'}>
-        <Card.ImageCap src={cardImageCap} srcAlt="Card image" />
+        <Card.ImageCap
+          src={cardImageCap}
+          srcAlt="Card image"
+          imageLoadingType="lazy"
+        />
         <Card.Body>
           <Card.Section>
             <div className="d-flex align-items-center explorer-wrapper w-100">

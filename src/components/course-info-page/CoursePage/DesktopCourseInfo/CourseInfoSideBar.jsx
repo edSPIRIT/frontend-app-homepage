@@ -45,6 +45,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
             fallbackLogoSrc={logoPlaceholder}
             variant="top"
             alt="course-cover"
+            imageLoadingType="lazy"
           />
           <TopCardSection
             courseMetaData={courseMetaData}

@@ -70,9 +70,10 @@ footer {
     grid-column: 22/27;
     grid-row: 1/2;
   }
-  .lang-dropdown{
-    .dropdown-menu{
+  .lang-dropdown {
+    .dropdown-menu {
       width: auto;
+      min-width: 128px;
     }
   }
 }
@@ -114,6 +115,11 @@ footer {
       img {
         object-fit: contain;
       }
+    }
+  }
+  .lang-dropdown {
+    .dropdown-menu {
+      width: 100%;
     }
   }
 }

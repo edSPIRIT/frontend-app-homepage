@@ -46,6 +46,7 @@ const UserCourseCard = ({ courseInfo }) => {
             }
             srcAlt="Card image"
             fallbackSrc={cardPlaceholder}
+            imageLoadingType="lazy"
           />
           <Card.Body>
             <Card.Section>

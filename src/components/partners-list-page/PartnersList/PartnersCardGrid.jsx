@@ -14,7 +14,7 @@ const PartnersCardGrid = ({ partnersData, loading }) => (
         .map((item, i) => (
           // eslint-disable-next-line react/no-array-index-key
           <Card key={i}>
-            <Card.ImageCap src="" srcAlt="Card image" />
+            <Card.ImageCap src="" srcAlt="Card image" imageLoadingType="lazy" />
             <Card.Section>
               <Skeleton width={206} height={24} />
               <div className="d-flex mt-3">
@@ -33,6 +33,7 @@ const PartnersCardGrid = ({ partnersData, loading }) => (
             <Card.ImageCap
               src={partner.organization.logo ?? logoPlaceholder}
               srcAlt="Card image"
+              imageLoadingType="lazy"
             />
             <Card.Section>
               <span className="font-weight-bold partner-grid-name">
