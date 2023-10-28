@@ -29,10 +29,10 @@ LELEMENTS=${#LANGS[@]}
 
 for (( i=0;i<$LELEMENTS;i++)); do
   echo Updating \"Home Page\" translation. Language: \"${LANGS[${i}]}\" :
-  echo https://weblate.avidcloud.io/api/translations/$PROJECT_NAME/$RESOURCE/${LANGS[${i}]}/file/
+  echo https://translate.avidcloud.io/api/translations/$PROJECT_NAME/$RESOURCE/${LANGS[${i}]}/file/
   curl -X GET \
     -H "Authorization: Token $TOKEN" \
-    https://weblate.avidcloud.io/api/translations/$PROJECT_NAME/$RESOURCE/${LANGS[${i}]}/file/ \
+    https://translate.avidcloud.io/api/translations/$PROJECT_NAME/$RESOURCE/${LANGS[${i}]}/file/ \
     -o ${LANGFOLDER}/${LANGS[${i}]}.json
   echo ""
 done
