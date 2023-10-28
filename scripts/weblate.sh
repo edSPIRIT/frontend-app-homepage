@@ -12,7 +12,7 @@ fi
 
 if [ -z "$1" ] || [[ ! "$1" =~ ^--languages= ]]; then
 echo "Error: --languages argument is required."
-echo "Usage: $0 --languages=fa,ar,es_419"
+echo "Usage: $0 --languages=fa_IR,ar,es_419,tr"
 exit 1
 fi
 
