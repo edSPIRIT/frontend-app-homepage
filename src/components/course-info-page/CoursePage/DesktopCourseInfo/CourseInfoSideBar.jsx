@@ -14,7 +14,6 @@ import CourseSideBarSkeleton from './CourseInfoSideBar/CourseSideBarSkeleton';
 import useGetButtonStatus from '../../../../hooks/utils/useGetButtonStatus';
 import CourseDateInfo from '../share/CourseDateInfo';
 import CourseInstructorsItem from '../share/CourseInstructorsItem';
-import useGetPaidCourses from '../../../../hooks/useGetPaidCourses';
 import TopCardSection from './CourseInfoSideBar/TopCardSection';
 
 const CourseInfoSideBar = ({ courseMetaData, loading }) => {
@@ -24,11 +23,10 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
     hasPreReqCourse,
     warningComponent,
   } = useGetButtonStatus(courseMetaData);
-  const { paidCourses, loading: paidCoursesLoading } = useGetPaidCourses(courseMetaData);
 
   return (
     <div className="course-info-side-wrapper">
-      {loading || paidCoursesLoading ? (
+      {loading ? (
         <CourseSideBarSkeleton />
       ) : (
         <Card className="cards-info-wrapper ">
@@ -47,10 +45,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
             alt="course-cover"
             // imageLoadingType="lazy"
           />
-          <TopCardSection
-            courseMetaData={courseMetaData}
-            paidCourses={paidCourses}
-          />
+          <TopCardSection courseMetaData={courseMetaData} />
           <Card.Section>
             <div className="d-flex flex-column  font-sm">
               <CourseInstructorsItem
@@ -69,7 +64,6 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
                 isCourseNotStarted={isCourseNotStarted}
                 isEnrollNotActive={isEnrollNotActive}
                 hasPreReqCourse={hasPreReqCourse}
-                paidCourses={paidCourses}
               />
               {courseMetaData?.additional_metadata?.total_enrollments && (
                 <p className="mt-3">

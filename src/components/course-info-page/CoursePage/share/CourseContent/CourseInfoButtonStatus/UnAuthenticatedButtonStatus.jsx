@@ -5,15 +5,13 @@ import React from 'react';
 import handleRedirect from '../../../../../../utils/handleRedirect';
 import useEnrollClickHandler from '../../../../../../hooks/useEnrollClickHandler';
 
-const UnAuthenticatedButtonStatus = ({
-  courseMetaData,
-  hasPrice,
-  hasTrial,
-  isEnrollNotActive,
-}) => {
+const UnAuthenticatedButtonStatus = ({ courseMetaData, isEnrollNotActive }) => {
   const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
 
-  if (hasPrice && !hasTrial) {
+  if (
+    courseMetaData?.paid_course?.price > 0
+    && !courseMetaData?.paid_course?.has_trial
+  ) {
     return (
       <Button
         variant="brand"

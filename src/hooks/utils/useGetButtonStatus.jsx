@@ -6,7 +6,6 @@ import { Icon } from '@edx/paragon';
 import { Link } from 'react-router-dom';
 import useGetEnrollmentStatus from '../useGetEnrollmentStatus';
 import useEnrollClickHandler from '../useEnrollClickHandler';
-import useGetPaidCourses from '../useGetPaidCourses';
 import useCheckPrerequisiteStatus from '../useCheckPrerequisiteStatus';
 
 const useGetButtonStatus = (courseMetaData) => {
@@ -16,7 +15,6 @@ const useGetButtonStatus = (courseMetaData) => {
   const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
 
   const [status, setStatus] = useState({});
-  const { paidCourses } = useGetPaidCourses(courseMetaData);
 
   // check if user has done pre req course or not
   const { isCompletePreReq } = useCheckPrerequisiteStatus(
@@ -69,7 +67,7 @@ const useGetButtonStatus = (courseMetaData) => {
           />
         );
       } else if (paid_course?.price > 0 && !availablePaymentData) {
-        warningMessage = paidCourses?.has_trial ? undefined : (
+        warningMessage = paid_course?.has_trial ? undefined : (
           <FormattedMessage
             id="courseInfo.ecommerceDeactivated.attention"
             defaultMessage="Purchases are temporarily unavailable. Please try again later"
@@ -117,7 +115,6 @@ const useGetButtonStatus = (courseMetaData) => {
     courseMetaData,
     isEnrollmentActive,
     availablePaymentData,
-    paidCourses?.has_trial,
     isCompletePreReq,
   ]);
 

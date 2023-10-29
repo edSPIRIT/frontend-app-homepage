@@ -9,7 +9,6 @@ const CourseInfoButtonStatus = ({
   isCourseNotStarted,
   isEnrollNotActive,
   hasPreReqCourse,
-  paidCourses,
 }) => {
   const { authenticatedUser } = useContext(AppContext);
 
@@ -17,8 +16,6 @@ const CourseInfoButtonStatus = ({
     return (
       <UnAuthenticatedButtonStatus
         courseMetaData={courseMetaData}
-        hasPrice={courseMetaData?.paid_course?.price > 0}
-        hasTrial={paidCourses?.has_trial}
         isEnrollNotActive={isEnrollNotActive}
       />
     );
@@ -29,7 +26,6 @@ const CourseInfoButtonStatus = ({
       isCourseNotStarted={isCourseNotStarted}
       isEnrollNotActive={isEnrollNotActive}
       hasPreReqCourse={hasPreReqCourse}
-      hasTrial={paidCourses?.has_trial}
     />
   );
 };

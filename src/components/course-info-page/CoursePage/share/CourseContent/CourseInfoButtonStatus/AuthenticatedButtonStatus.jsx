@@ -11,7 +11,6 @@ const AuthenticatedButtonStatus = ({
   isCourseNotStarted,
   isEnrollNotActive,
   hasPreReqCourse,
-  hasTrial,
 }) => {
   const { isEnrollmentActive, loading } = useGetEnrollmentStatus(
     courseMetaData?.course_id,
@@ -37,7 +36,7 @@ const AuthenticatedButtonStatus = ({
       />
     );
   }
-  if (courseMetaData?.paid_course?.price > 0 && !hasTrial) {
+  if (courseMetaData?.paid_course?.price > 0 && !courseMetaData?.paid_course?.has_trial) {
     return (
       <Button
         variant="brand"
