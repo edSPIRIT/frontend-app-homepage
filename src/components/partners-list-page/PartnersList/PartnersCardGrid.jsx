@@ -33,7 +33,7 @@ const PartnersCardGrid = ({ partnersData, loading }) => (
             <Card.ImageCap
               src={partner.organization.logo ?? logoPlaceholder}
               srcAlt="Card image"
-              imageLoadingType="lazy"
+              // imageLoadingType="lazy"
             />
             <Card.Section>
               <span className="font-weight-bold partner-grid-name">

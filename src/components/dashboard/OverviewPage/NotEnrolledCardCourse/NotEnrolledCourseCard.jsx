@@ -15,7 +15,7 @@ const NotEnrolledCardCourse = ({ title, description }) => {
         <Card.ImageCap
           src={cardImageCap}
           srcAlt="Card image"
-          imageLoadingType="lazy"
+          // imageLoadingType="lazy"
         />
         <Card.Body>
           <Card.Section>
