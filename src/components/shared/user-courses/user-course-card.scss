@@ -12,9 +12,9 @@
     height: 216px;
     max-width: unset;
     min-width: unset;
-  }
-  .pgn__card-image-cap {
-    width: 100%;
+    .pgn__card-image-cap {
+      width: 100% !important;
+    }
   }
 
   .pgn__card-section {
