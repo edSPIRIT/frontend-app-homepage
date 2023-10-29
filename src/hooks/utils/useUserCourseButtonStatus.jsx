@@ -15,12 +15,20 @@ const useUserCourseButtonStatus = (courseInfo) => {
         ? new Date(courseInfo?.course_details?.course_start)
         : null;
       const isCourseNotStarted = courseStartDate && currentDate < courseStartDate;
+      let preReqCourse;
+      if (courseInfo?.pre_req_courses) {
+        if (isCompletePreReq) {
+          preReqCourse = false;
+        } else {
+          preReqCourse = courseInfo?.pre_req_courses;
+        }
+      } else {
+        preReqCourse = false;
+      }
       setStatus({
         isCourseNotStarted,
         // check whether user has completed the pre req course or not
-        preReqCourse: courseInfo?.pre_req_courses
-          ? isCompletePreReq === false
-          : false,
+        preReqCourse,
       });
     }
   }, [courseInfo, isCompletePreReq]);
