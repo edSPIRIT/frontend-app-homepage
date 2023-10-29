@@ -40,6 +40,7 @@ const HomePagePartners = () => {
             <img
               src={partner?.organization.logo ?? logoPlaceholder}
               alt="partner-logo"
+              loading="lazy"
             />
           </Link>
         ))}

@@ -20,11 +20,10 @@ const useGetConfig = () => {
         !!getConfig().LMS_BASE_URL && !!getConfig().AC_INSTANCE_CONFIG_API_URL,
     },
   );
-
   return {
     headerLogo: data?.logo,
     hasBilling: data?.has_billing,
-    favicon: data?.favicons || faviconPlaceholder,
+    favicon: data?.favicon ?? faviconPlaceholder,
     platformName: data?.platform_name,
     gtm: data?.gtm,
     loading: isLoading,
