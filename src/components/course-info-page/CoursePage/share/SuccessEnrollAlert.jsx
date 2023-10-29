@@ -16,7 +16,6 @@ const SuccessEnrollAlert = ({ courseMetaData, successEnrollAlertState }) => {
 
   const closeAlert = () => dispatch(setSuccessAlertOpen(false));
   const { isCourseNotStarted, hasPreReqCourse, warningComponent } = useGetButtonStatus(courseMetaData);
-  console.log('trrrrrrrr');
   return (
     <>
       {isMobile ? (
