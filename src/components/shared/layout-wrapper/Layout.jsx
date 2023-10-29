@@ -14,12 +14,16 @@ import useGetConfig from '../../../hooks/useGetConfig';
 import FooterSection from '../footer/FooterSection';
 
 const Layout = ({ children }) => {
-  // const [hasPriceWrapper, setHasPriceWrapper] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch();
   const message = useSelector((state) => state.toast.message);
   const isLoading = useManageLocale();
-  const { gtm, favicon, platformName } = useGetConfig();
+  const {
+    gtm,
+    favicon,
+    platformName,
+    loading: getConfigLoading,
+  } = useGetConfig();
   useSetGtm(gtm);
 
   useUpdateBodyClassName();
@@ -29,10 +33,6 @@ const Layout = ({ children }) => {
     [location],
   );
   const isProfileRoute = location.pathname === '/profile';
-
-  // useEffect(() => {
-  //   setHasPriceWrapper(location.pathname.includes('/course'));
-  // }, [location]);
 
   if (isLoading) {
     return <Loading />;
@@ -51,12 +51,12 @@ const Layout = ({ children }) => {
           hasPriceWrapper ? 'has-price-wrapper' : ''
         }`}
       >
-        <Helmet>
-          {favicon && (
+        {!getConfigLoading && (
+          <Helmet>
             <link rel="shortcut icon" href={favicon} type="image/x-icon" />
-          )}
-          {platformName && <title>{`edSPIRIT App | ${platformName}`}</title>}
-        </Helmet>
+            {platformName && <title>{`edSPIRIT App | ${platformName}`}</title>}
+          </Helmet>
+        )}
         <Header />
         <main className="main-container">{children}</main>
         {!isProfileRoute && <FooterSection />}
