@@ -16,10 +16,12 @@ const CardMiddleSection = ({ course, intl }) => {
   const priceStatus = () => {
     if (coursePrice > 0 && course?.paid_course?.has_trial) {
       return (
-        <FormattedMessage
-          id="courseCard.freeTrial.text"
-          defaultMessage="Free Trial"
-        />
+        <span className="price-title mt-auto">
+          <FormattedMessage
+            id="courseCard.freeTrial.text"
+            defaultMessage="Free Trial"
+          />
+        </span>
       );
     }
     if (coursePrice > 0 && !course?.paid_course?.has_trial) {
