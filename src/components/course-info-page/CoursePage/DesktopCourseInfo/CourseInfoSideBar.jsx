@@ -14,7 +14,8 @@ import CourseSideBarSkeleton from './CourseInfoSideBar/CourseSideBarSkeleton';
 import useGetButtonStatus from '../../../../hooks/utils/useGetButtonStatus';
 import CourseDateInfo from '../share/CourseDateInfo';
 import CourseInstructorsItem from '../share/CourseInstructorsItem';
-import TopCardSection from './CourseInfoSideBar/TopCardSection';
+import PriceStatus from '../share/PriceStatus';
+import CourseAccessTime from '../share/CourseAccessTime';
 
 const CourseInfoSideBar = ({ courseMetaData, loading }) => {
   const {
@@ -45,7 +46,12 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
             alt="course-cover"
             // imageLoadingType="lazy"
           />
-          <TopCardSection courseMetaData={courseMetaData} />
+          <div className="mt-4.5 px-4">
+            <h2 className="mb-1">
+              <PriceStatus courseMetaData={courseMetaData} />
+            </h2>
+            <CourseAccessTime courseMetaData={courseMetaData} />
+          </div>
           <Card.Section>
             <div className="d-flex flex-column  font-sm">
               <CourseInstructorsItem
