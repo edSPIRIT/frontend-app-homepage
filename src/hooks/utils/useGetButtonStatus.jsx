@@ -66,7 +66,7 @@ const useGetButtonStatus = (courseMetaData) => {
             defaultMessage="Registration Closed: Date Passed"
           />
         );
-      } else if (paid_course?.price > 0 && !availablePaymentData) {
+      } else if (paid_course?.active && !availablePaymentData) {
         warningMessage = paid_course?.has_trial ? undefined : (
           <FormattedMessage
             id="courseInfo.ecommerceDeactivated.attention"

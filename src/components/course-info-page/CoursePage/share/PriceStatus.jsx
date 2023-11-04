@@ -6,7 +6,7 @@ const PriceStatus = ({ courseMetaData }) => {
   const coursePrice = courseMetaData?.paid_course?.price || 0;
   const courseCurrency = courseMetaData?.paid_course?.currency || 'USD';
   const hasTrial = courseMetaData?.paid_course?.has_trial;
-  if (coursePrice > 0 && hasTrial) {
+  if (courseMetaData?.paid_course?.active && hasTrial) {
     return (
       <FormattedMessage
         id="courseCard.freeTrial.text"
@@ -14,7 +14,7 @@ const PriceStatus = ({ courseMetaData }) => {
       />
     );
   }
-  if (coursePrice > 0 && !hasTrial) {
+  if (courseMetaData?.paid_course?.active && !hasTrial) {
     return (
       <p className="price-symbol-wrapper">
         <span className="mr-1">

@@ -20,7 +20,7 @@ const useGetPaidCourses = (courseMetaData) => {
     ['PaidCourse', courseMetaData?.course_id],
     fetchPaidCourses,
     {
-      enabled: courseMetaData?.paid_course?.price > 0,
+      enabled: courseMetaData?.paid_course?.active,
       onError: (e) => {
         console.error(e);
       },

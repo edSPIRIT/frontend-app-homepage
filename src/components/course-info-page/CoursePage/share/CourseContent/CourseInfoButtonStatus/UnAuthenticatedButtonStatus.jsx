@@ -9,7 +9,7 @@ const UnAuthenticatedButtonStatus = ({ courseMetaData, isEnrollNotActive }) => {
   const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
 
   if (
-    courseMetaData?.paid_course?.price > 0
+    courseMetaData?.paid_course?.active
     && !courseMetaData?.paid_course?.has_trial
   ) {
     return (

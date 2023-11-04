@@ -36,7 +36,10 @@ const AuthenticatedButtonStatus = ({
       />
     );
   }
-  if (courseMetaData?.paid_course?.price > 0 && !courseMetaData?.paid_course?.has_trial) {
+  if (
+    courseMetaData?.paid_course?.active
+    && !courseMetaData?.paid_course?.has_trial
+  ) {
     return (
       <Button
         variant="brand"
