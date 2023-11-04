@@ -52,7 +52,9 @@
       border-color: $light;
     }
   }
-
+  .features-wrapper {
+    gap: 8px;
+  }
   .price-title {
     color: $gray-500;
     padding: 6px 0;

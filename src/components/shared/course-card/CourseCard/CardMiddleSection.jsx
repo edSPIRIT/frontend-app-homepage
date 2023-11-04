@@ -14,24 +14,24 @@ import PriceStatus from '../../../course-info-page/CoursePage/share/PriceStatus'
 const CardMiddleSection = ({ course, intl }) => (
   <div className="d-flex p-4 flex-column justify-content-between flex-grow-1">
     <div className="d-flex flex-column font-sm flex-grow-1">
-      <div className="mb-3">
+      <div className="mb-3 d-flex flex-column features-wrapper">
         {course?.instructors.length > 0 && (
-        <div className="d-flex flex-row align-items-center mb-2">
-          <Icon className="card-icon" src={Person} />
-          <p className="program-instructors-wrapper">
-            {course?.instructors?.map((ins) => (
-              <Link
-                key={ins.slug}
-                className="instructor-title"
-                to={`/instructor/${ins.slug}`}
-              >
-                {ins.name}
-              </Link>
-            ))}
-          </p>
-        </div>
+          <div className="d-flex flex-row align-items-center">
+            <Icon className="card-icon" src={Person} />
+            <p className="program-instructors-wrapper">
+              {course?.instructors?.map((ins) => (
+                <Link
+                  key={ins.slug}
+                  className="instructor-title"
+                  to={`/instructor/${ins.slug}`}
+                >
+                  {ins.name}
+                </Link>
+              ))}
+            </p>
+          </div>
         )}
-        <div className="d-flex flex-row align-items-center mb-2">
+        <div className="d-flex flex-row align-items-center">
           <Icon className="card-icon" src={BookOpen} />
           <p className="color-black">
             <FormattedMessage
@@ -44,33 +44,37 @@ const CardMiddleSection = ({ course, intl }) => (
           </p>
         </div>
         {course?.total_weeks_of_effort > 0 && (
-        <div className="d-flex flex-row align-items-center">
-          <Icon className="card-icon" src={WatchFilled} />
-          <p className="color-black">
-            <span className="mr-1">
-              <FormattedMessage
-                id="courseCard.weeks.text"
-                defaultMessage="{weekCount, number} {weekCount, plural, one {Week} other {Weeks}}"
-                values={{
-                  weekCount: course?.total_weeks_of_effort,
-                }}
-              />
-            </span>
-            {course?.hours_effort_per_week_min
-              && course?.hours_effort_per_week_max && (
-                <span className="text-gray-700">
-                  (
-                  <FormattedNumber value={course?.hours_effort_per_week_min} />
-                  -
-                  <FormattedNumber
-                    value={course?.hours_effort_per_week_max}
-                  />{' '}
-                  {intl.formatMessage(messages['courseCard.hoursPerWeek.text'])}
-                  )
-                </span>
-            )}
-          </p>
-        </div>
+          <div className="d-flex flex-row align-items-center">
+            <Icon className="card-icon" src={WatchFilled} />
+            <p className="color-black">
+              <span className="mr-1">
+                <FormattedMessage
+                  id="courseCard.weeks.text"
+                  defaultMessage="{weekCount, number} {weekCount, plural, one {Week} other {Weeks}}"
+                  values={{
+                    weekCount: course?.total_weeks_of_effort,
+                  }}
+                />
+              </span>
+              {course?.hours_effort_per_week_min
+                && course?.hours_effort_per_week_max && (
+                  <span className="text-gray-700">
+                    (
+                    <FormattedNumber
+                      value={course?.hours_effort_per_week_min}
+                    />
+                    -
+                    <FormattedNumber
+                      value={course?.hours_effort_per_week_max}
+                    />{' '}
+                    {intl.formatMessage(
+                      messages['courseCard.hoursPerWeek.text'],
+                    )}
+                    )
+                  </span>
+              )}
+            </p>
+          </div>
         )}
       </div>
       <span className="price-title mt-auto">
