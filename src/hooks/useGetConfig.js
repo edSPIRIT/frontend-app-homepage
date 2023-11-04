@@ -20,7 +20,7 @@ const useGetConfig = () => {
         !!getConfig().LMS_BASE_URL && !!getConfig().AC_INSTANCE_CONFIG_API_URL,
     },
   );
-  const faviconVersion = '2'; // Update this version number when the favicon updates
+  const faviconVersion = Date.now(); // Update this version number when the favicon updates
   const favicon = data?.favicon
     ? `${data.favicon}?v=${faviconVersion}`
     : faviconPlaceholder;
