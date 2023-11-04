@@ -14,7 +14,8 @@ import PriceStatus from '../../../course-info-page/CoursePage/share/PriceStatus'
 const CardMiddleSection = ({ course, intl }) => (
   <div className="d-flex p-4 flex-column justify-content-between flex-grow-1">
     <div className="d-flex flex-column font-sm flex-grow-1">
-      {course?.instructors.length > 0 && (
+      <div className="mb-3">
+        {course?.instructors.length > 0 && (
         <div className="d-flex flex-row align-items-center mb-2">
           <Icon className="card-icon" src={Person} />
           <p className="program-instructors-wrapper">
@@ -29,21 +30,21 @@ const CardMiddleSection = ({ course, intl }) => (
             ))}
           </p>
         </div>
-      )}
-      <div className="d-flex flex-row align-items-center mb-2">
-        <Icon className="card-icon" src={BookOpen} />
-        <p className="color-black">
-          <FormattedMessage
-            id="courseCard.lessons.text"
-            defaultMessage="{lessonCount, number} {lessonCount, plural, one {Lesson} other {Lessons}}"
-            values={{
-              lessonCount: course?.additional_metadata?.units_count,
-            }}
-          />
-        </p>
-      </div>
-      {course?.total_weeks_of_effort > 0 && (
-        <div className="d-flex flex-row align-items-center mb-3">
+        )}
+        <div className="d-flex flex-row align-items-center mb-2">
+          <Icon className="card-icon" src={BookOpen} />
+          <p className="color-black">
+            <FormattedMessage
+              id="courseCard.lessons.text"
+              defaultMessage="{lessonCount, number} {lessonCount, plural, one {Lesson} other {Lessons}}"
+              values={{
+                lessonCount: course?.additional_metadata?.units_count,
+              }}
+            />
+          </p>
+        </div>
+        {course?.total_weeks_of_effort > 0 && (
+        <div className="d-flex flex-row align-items-center">
           <Icon className="card-icon" src={WatchFilled} />
           <p className="color-black">
             <span className="mr-1">
@@ -70,8 +71,11 @@ const CardMiddleSection = ({ course, intl }) => (
             )}
           </p>
         </div>
-      )}
-      <PriceStatus courseMetaData={course} />
+        )}
+      </div>
+      <span className="price-title mt-auto">
+        <PriceStatus courseMetaData={course} />
+      </span>
     </div>
     <div className="btn-card-container mt-3">
       <Button variant="primary" className="learn-btn">
