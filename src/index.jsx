@@ -13,7 +13,6 @@ import ReactDOM from 'react-dom';
 
 import { Route, Switch } from 'react-router';
 import { QueryClient, QueryClientProvider } from 'react-query';
-// import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { Provider } from 'react-redux';
 import { lazy } from 'react';
@@ -67,9 +66,7 @@ subscribe(APP_READY, () => {
                 <MobileProfile />
               </Route>
               <Route exact path="/overview">
-                {/* <ProtectedRoute> */}
                 <OverviewPage />
-                {/* </ProtectedRoute> */}
               </Route>
               <Route exact path="/discover">
                 <Discover />
@@ -106,7 +103,6 @@ subscribe(APP_READY, () => {
               </Route>
             </Switch>
           </Layout>
-          {/* <ReactQueryDevtools initialIsOpen={false} position="bottom-right" /> */}
         </QueryClientProvider>
       </Provider>
     </AppProvider>,
@@ -124,8 +120,6 @@ subscribe(APP_INIT_ERROR, (error) => {
 
 initialize({
   messages: [appMessages],
-  // requireAuthenticatedUser: true,
-  // hydrateAuthenticatedUser: true,
   handlers: {
     config: () => {
       mergeConfig(
