@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
-import { FormattedMessage, FormattedNumber } from '@edx/frontend-platform/i18n';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import React from 'react';
 
 const PriceStatus = ({ courseMetaData }) => {
-  const coursePrice = courseMetaData?.paid_course?.price || 0;
   const courseCurrency = courseMetaData?.paid_course?.currency || 'USD';
   const hasTrial = courseMetaData?.paid_course?.has_trial;
   if (courseMetaData?.paid_course?.active && hasTrial) {
@@ -21,11 +20,7 @@ const PriceStatus = ({ courseMetaData }) => {
           <FormattedMessage id={courseCurrency} defaultMessage="$" />
         </span>
         <span className="mr-1">
-          <FormattedNumber
-            value={courseCurrency === 'USD' ? coursePrice / 100 : coursePrice}
-            minimumFractionDigits={courseCurrency === 'USD' ? 2 : 0}
-            maximumFractionDigits={courseCurrency === 'USD' ? 2 : 0}
-          />
+          {courseMetaData?.paid_course?.price_human_numeric}
         </span>
       </p>
     );
