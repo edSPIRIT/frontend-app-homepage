@@ -21,6 +21,7 @@ import ProfileDropdown from './DesktopHeader/ProfileDropdown';
 import useGetConfig from '../../../../hooks/useGetConfig';
 import DropdownNavHeader from './DesktopHeader/DropdownNavHeader';
 
+const disablePublicAccountCreation = getConfig().ALLOW_PUBLIC_ACCOUNT_CREATION === false;
 const DesktopHeader = ({ intl }) => {
   const history = useHistory();
   const { authenticatedUser } = useContext(AppContext);
@@ -41,10 +42,7 @@ const DesktopHeader = ({ intl }) => {
             <Skeleton height={32} width={112} className="mb-1" />
           ) : (
             <Link to="/">
-              <img
-                src={headerLogo ?? DefaultLogo}
-                alt="edspirit-logo"
-              />
+              <img src={headerLogo ?? DefaultLogo} alt="edspirit-logo" />
             </Link>
           )}
         </div>
@@ -54,10 +52,10 @@ const DesktopHeader = ({ intl }) => {
         <SearchField
           onSubmit={handleSubmitSearch}
           placeholder={intl.formatMessage(
-            messages['header.search.placeholder'],
+            messages["header.search.placeholder"]
           )}
           inputProps={{
-            autoComplete: 'off',
+            autoComplete: "off",
           }}
         />
         {/* <div className="d-flex align-items-center">
@@ -78,16 +76,18 @@ const DesktopHeader = ({ intl }) => {
               >
                 <FormattedMessage id="header.signIn" defaultMessage="Sign In" />
               </Button>
-              <Button
-                variant="primary"
-                size="sm"
-                href={`${getConfig().LMS_BASE_URL}/register`}
-              >
-                <FormattedMessage
-                  id="header.register"
-                  defaultMessage="Register"
-                />
-              </Button>
+              {!disablePublicAccountCreation && (
+                <Button
+                  variant="primary"
+                  size="sm"
+                  href={`${getConfig().LMS_BASE_URL}/register`}
+                >
+                  <FormattedMessage
+                    id="header.register"
+                    defaultMessage="Register"
+                  />
+                </Button>
+              )}
             </>
           )}
         </div>
