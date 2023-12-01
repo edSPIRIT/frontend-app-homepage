@@ -65,7 +65,12 @@ const ProgressStatus = ({
     );
   }
 
-  return <ProgressBar now={calcProgress()} label={`${calcProgress()}%`} />;
+  return (
+    <div className="progress-bar-wrapper">
+      <ProgressBar now={calcProgress()} />
+      <div className="progress-bar-label">{`${calcProgress()}%`}</div>
+    </div>
+  );
 };
 
 export default ProgressStatus;
