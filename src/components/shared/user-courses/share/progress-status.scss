@@ -1,0 +1,14 @@
+.progress-bar-wrapper {
+    position: relative;
+    width: 280px;
+
+    .progress-bar-label {
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: .75rem;
+        margin-left: 8px;
+        margin-top: 0;
+        color: $progress-bar-lable-color;
+    }
+}
