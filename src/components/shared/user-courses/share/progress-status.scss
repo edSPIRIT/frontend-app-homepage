@@ -1,5 +1,3 @@
-$progress-bar-color: #000;
-
 .progress-bar-wrapper {
     position: relative;
     width: 280px;
@@ -10,8 +8,7 @@ $progress-bar-color: #000;
         top: 0;
         font-size: .75rem;
         margin-left: 8px;
-        color: #000;
+        margin-top: 0;
+        color: $progress-bar-lable-color;
     }
 }
-
-@import '~@edx/paragon/scss/core/core.scss';
