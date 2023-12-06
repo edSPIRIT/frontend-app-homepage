@@ -21,8 +21,8 @@ import ProfileDropdown from './DesktopHeader/ProfileDropdown';
 import useGetConfig from '../../../../hooks/useGetConfig';
 import DropdownNavHeader from './DesktopHeader/DropdownNavHeader';
 
-const disablePublicAccountCreation = getConfig().ALLOW_PUBLIC_ACCOUNT_CREATION === false;
 const DesktopHeader = ({ intl }) => {
+  const allowPublicAccountCreation = getConfig().ALLOW_PUBLIC_ACCOUNT_CREATION ?? true;
   const history = useHistory();
   const { authenticatedUser } = useContext(AppContext);
   const { headerLogo, loading } = useGetConfig();
@@ -52,10 +52,10 @@ const DesktopHeader = ({ intl }) => {
         <SearchField
           onSubmit={handleSubmitSearch}
           placeholder={intl.formatMessage(
-            messages["header.search.placeholder"]
+            messages['header.search.placeholder'],
           )}
           inputProps={{
-            autoComplete: "off",
+            autoComplete: 'off',
           }}
         />
         {/* <div className="d-flex align-items-center">
@@ -76,7 +76,7 @@ const DesktopHeader = ({ intl }) => {
               >
                 <FormattedMessage id="header.signIn" defaultMessage="Sign In" />
               </Button>
-              {disablePublicAccountCreation && (
+              {allowPublicAccountCreation && (
                 <Button
                   variant="primary"
                   size="sm"
