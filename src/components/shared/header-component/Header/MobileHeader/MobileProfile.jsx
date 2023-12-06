@@ -11,8 +11,8 @@ import handleRedirect, {
   handleLogout,
 } from '../../../../../utils/handleRedirect';
 
-const disablePublicAccountCreation = getConfig().ALLOW_PUBLIC_ACCOUNT_CREATION === false;
 const MobileProfile = () => {
+  const allowPublicAccountCreation = getConfig().ALLOW_PUBLIC_ACCOUNT_CREATION ?? true;
   const { authenticatedUser } = useContext(AppContext);
   const { hasBilling } = useGetConfig();
   const baseUrl = new URL(getConfig().LMS_BASE_URL).hostname;
@@ -41,7 +41,7 @@ const MobileProfile = () => {
             >
               <FormattedMessage id="header.signIn" defaultMessage="Sign In" />
             </Button>
-            {disablePublicAccountCreation && (
+            {allowPublicAccountCreation && (
               <Button
                 variant="primary"
                 size="sm"
