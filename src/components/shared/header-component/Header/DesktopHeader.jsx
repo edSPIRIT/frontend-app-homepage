@@ -25,7 +25,7 @@ const DesktopHeader = ({ intl }) => {
   const allowPublicAccountCreation = getConfig().ALLOW_PUBLIC_ACCOUNT_CREATION ?? true;
   const history = useHistory();
   const { authenticatedUser } = useContext(AppContext);
-  const { headerLogo, loading } = useGetConfig();
+  const { headerLogo, loading, useTPAOnly } = useGetConfig();
   const dispatch = useDispatch();
 
   const handleSubmitSearch = (value) => {
@@ -76,7 +76,7 @@ const DesktopHeader = ({ intl }) => {
               >
                 <FormattedMessage id="header.signIn" defaultMessage="Sign In" />
               </Button>
-              {allowPublicAccountCreation && (
+              {!useTPAOnly && (
                 <Button
                   variant="primary"
                   size="sm"

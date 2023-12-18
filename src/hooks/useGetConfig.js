@@ -30,6 +30,7 @@ const useGetConfig = () => {
     favicon,
     platformName: data?.platform_name,
     gtm: data?.gtm,
+    useTPAOnly: data?.use_tpa_only,
     loading: isLoading,
     isError,
   };
