@@ -20,18 +20,14 @@ import {
 } from '../../../../redux/slice/searchQuerySlice';
 import ProfileDropdown from './DesktopHeader/ProfileDropdown';
 import useGetConfig from '../../../../hooks/useGetConfig';
-import useGetTPAURL from "../../../../hooks/useGetTPAURL";
 import DropdownNavHeader from './DesktopHeader/DropdownNavHeader';
 
 const DesktopHeader = ({ intl }) => {
   const allowPublicAccountCreation = getConfig().ALLOW_PUBLIC_ACCOUNT_CREATION ?? true;
   const history = useHistory();
   const { authenticatedUser } = useContext(AppContext);
-  const { headerLogo, loading, useTPAOnly } = useGetConfig();
-  let TPAURL;
-  if (useTPAOnly) {
-    TPAURL = useGetTPAURL();
-  }
+  const { headerLogo, loading, useTPAOnly, TPAQueryparam } = useGetConfig();
+
   const dispatch = useDispatch();
 
   const handleSubmitSearch = (value) => {
@@ -79,7 +75,9 @@ const DesktopHeader = ({ intl }) => {
                 className="mx-1"
                 size="sm"
                 onClick={() =>
-                  useTPAOnly ? handleTPARedirect(TPAURL) : handleRedirect()
+                  useTPAOnly
+                    ? handleTPARedirect(TPAQueryparam)
+                    : handleRedirect()
                 }
               >
                 <FormattedMessage id="header.signIn" defaultMessage="Sign In" />

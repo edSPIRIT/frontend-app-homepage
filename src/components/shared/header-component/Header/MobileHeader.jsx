@@ -22,7 +22,7 @@ import useGetConfig from '../../../../hooks/useGetConfig';
 
 const MobileHeader = () => {
   // const isNavbarVisible = useHideNavbarOnScroll();
-  const { headerLogo, loading } = useGetConfig();
+  const { headerLogo, loading, useTPAOnly, TPAQueryparam } = useGetConfig();
   const [ActiveLink, setActiveLink] = useState(null);
   const location = useLocation();
   const dispatch = useDispatch();
