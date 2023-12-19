@@ -23,10 +23,9 @@ import useGetConfig from '../../../../hooks/useGetConfig';
 import DropdownNavHeader from './DesktopHeader/DropdownNavHeader';
 
 const DesktopHeader = ({ intl }) => {
-  const allowPublicAccountCreation = getConfig().ALLOW_PUBLIC_ACCOUNT_CREATION ?? true;
   const history = useHistory();
   const { authenticatedUser } = useContext(AppContext);
-  const { headerLogo, loading, useTPAOnly, TPAQueryparam } = useGetConfig();
+  const { headerLogo, loading, isTPAOnly, TPAQueryparam } = useGetConfig();
 
   const dispatch = useDispatch();
 
@@ -75,14 +74,14 @@ const DesktopHeader = ({ intl }) => {
                 className="mx-1"
                 size="sm"
                 onClick={() =>
-                  useTPAOnly
+                  isTPAOnly
                     ? handleTPARedirect(TPAQueryparam)
                     : handleRedirect()
                 }
               >
                 <FormattedMessage id="header.signIn" defaultMessage="Sign In" />
               </Button>
-              {!useTPAOnly && (
+              {!isTPAOnly && (
                 <Button
                   variant="primary"
                   size="sm"

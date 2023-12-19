@@ -7,12 +7,12 @@ const handleTPARedirect = (TPAQueryparam) => {
   const loginUrl = `${getConfig().LOGIN_URL}`;
 
   // Set the URL parameters for the redirect back to your home page after login
-  const redirectParams = `&next=${encodeURIComponent(
+  const redirectParams = `next=${encodeURIComponent(
     document.referrer
   )}&origin=${window.location.origin}`;
 
   // Redirect the user to the login page with the redirect parameters
-  window.location.href = `${loginUrl}&${TPAQueryparam}&${redirectParams}`;
+  window.location.href = `${loginUrl}${TPAQueryparam}&${redirectParams}`;
 };
 export default handleTPARedirect;
 
