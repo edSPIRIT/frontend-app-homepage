@@ -3,7 +3,7 @@ import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { Button } from '@edx/paragon';
 import React from 'react';
 import handleRedirect from '../../../../../../utils/handleRedirect';
-import handleTPARedirect from "../../../../utils/handleTPARedirect";
+import handleTPARedirect from "../../../../../../utils/handleTPARedirect";
 import useEnrollClickHandler from '../../../../../../hooks/useEnrollClickHandler';
 import useGetConfig from "../../../../../../hooks/useGetConfig";
 
