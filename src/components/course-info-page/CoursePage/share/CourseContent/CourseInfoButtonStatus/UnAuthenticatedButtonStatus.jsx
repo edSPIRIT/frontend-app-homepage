@@ -8,10 +8,9 @@ import useEnrollClickHandler from '../../../../../../hooks/useEnrollClickHandler
 import useGetConfig from "../../../../../../hooks/useGetConfig";
 
 
-const { isTPAOnly, TPAQueryparam } = useGetConfig();
-
 const UnAuthenticatedButtonStatus = ({ courseMetaData, isEnrollNotActive }) => {
   const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
+  const { isTPAOnly, TPAQueryparam } = useGetConfig();
 
   if (
     courseMetaData?.paid_course?.active
