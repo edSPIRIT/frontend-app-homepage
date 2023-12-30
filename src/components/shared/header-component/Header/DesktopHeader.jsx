@@ -13,7 +13,7 @@ import NavHeader from './DesktopHeader/NavHeader';
 import DefaultLogo from '../../../../assets/place-holders/NavLogo-placeholder.svg';
 import messages from '../../../../messages';
 import handleRedirect from '../../../../utils/handleRedirect';
-import handleTPARedirect from "../../../../utils/handleTPARedirect";
+import handleTPARedirect from '../../../../utils/handleTPARedirect';
 import {
   resetSearchFilters,
   setSearchString,
@@ -25,7 +25,9 @@ import DropdownNavHeader from './DesktopHeader/DropdownNavHeader';
 const DesktopHeader = ({ intl }) => {
   const history = useHistory();
   const { authenticatedUser } = useContext(AppContext);
-  const { headerLogo, loading, isTPAOnly, TPAQueryparam } = useGetConfig();
+  const {
+    headerLogo, loading, isTPAOnly, TPAQueryparam,
+  } = useGetConfig();
 
   const dispatch = useDispatch();
 
@@ -53,10 +55,10 @@ const DesktopHeader = ({ intl }) => {
         <SearchField
           onSubmit={handleSubmitSearch}
           placeholder={intl.formatMessage(
-            messages["header.search.placeholder"]
+            messages['header.search.placeholder']
           )}
           inputProps={{
-            autoComplete: "off",
+            autoComplete: 'off',
           }}
         />
         {/* <div className="d-flex align-items-center">
@@ -73,11 +75,9 @@ const DesktopHeader = ({ intl }) => {
                 variant="tertiary"
                 className="mx-1"
                 size="sm"
-                onClick={() =>
-                  isTPAOnly
-                    ? handleTPARedirect(TPAQueryparam)
-                    : handleRedirect()
-                }
+                onClick={() => (isTPAOnly
+                  ? handleTPARedirect(TPAQueryparam)
+                  : handleRedirect())}
               >
                 <FormattedMessage id="header.signIn" defaultMessage="Sign In" />
               </Button>
