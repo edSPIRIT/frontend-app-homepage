@@ -10,12 +10,14 @@ import useGetConfig from '../../../../../hooks/useGetConfig';
 import handleRedirect, {
   handleLogout,
 } from '../../../../../utils/handleRedirect';
+import handleTPARedirect from "../../../../utils/handleTPARedirect";
 
 const MobileProfile = () => {
   const allowPublicAccountCreation = getConfig().ALLOW_PUBLIC_ACCOUNT_CREATION ?? true;
   const { authenticatedUser } = useContext(AppContext);
   const { hasBilling } = useGetConfig();
   const baseUrl = new URL(getConfig().LMS_BASE_URL).hostname;
+  const { isTPAOnly, TPAQueryparam } = useGetConfig();
 
   return (
     <div>
@@ -37,7 +39,9 @@ const MobileProfile = () => {
               variant="tertiary"
               className="mr-3.5"
               size="sm"
-              onClick={handleRedirect}
+              onClick={() =>
+                isTPAOnly ? handleTPARedirect(TPAQueryparam) : handleRedirect()
+              }
             >
               <FormattedMessage id="header.signIn" defaultMessage="Sign In" />
             </Button>
