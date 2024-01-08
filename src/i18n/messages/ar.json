@@ -167,7 +167,6 @@
     "secondTitle.share.toast": "شارك الرابط مع أصدقائك ودعهم يتعمقون في عالم من المحتوى الجذاب!",
     "usd": "دولار",
     "irr": "معدل العائد الداخلي",
-    "irt": "معدل العائد الداخلي",
     "USD": "دولار",
     "courseInfo.starCourseDate.attention": "ستبدأ الدورة قريبا! ترقبوا تاريخ البدء",
     "courseInfo.startEnrollDate.attention": "سيتم فتح التسجيل قريبا! احفظ التاريخ واستعد للتسجيل",
@@ -175,7 +174,6 @@
     "courseInfo.ecommerceDeactivated.attention": "المشتريات غير متاحة مؤقتا. الرجاء معاودة المحاولة في وقت لاحق.",
     "userCourseCard.unrollMessage.text": "لقد تم إلغاء تسجيلك في الدورة بنجاح",
     "IRR": "معدل العائد الداخلي",
-    "IRT": "معدل العائد الداخلي",
     "dashboard.unroll.item": "انبسط",
     "courseInfo.prerequisiteFistPart.attention": "يجب عليك إكمال",
     "courseInfo.prerequisiteSecondPart.attention": "بنجاح قبل أن تبدأ هذه الدورة.",
@@ -214,5 +212,6 @@
     "courseInfo.until.text": "حتى",
     "courseInfo.then.text": "ثم",
     "courseCard.freeTrial.text": "تجربة مجانية",
-    "EGP": "ج.م"
+    "IRT": "IRT",
+    "EGP": "EGP"
 }
