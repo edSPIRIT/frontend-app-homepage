@@ -213,5 +213,7 @@
     "courseInfo.then.text": "سپس",
     "courseCard.freeTrial.text": "امکان استفاده رایگان",
     "staticpages.loading": "...در حال بارگزاری",
-    "staticpages.errorAtFetch": "خطا در واکشی اطلاعات"
+    "staticpages.errorAtFetch": "خطا در واکشی اطلاعات",
+    "IRT": "تومان",
+    "EGP": "پوند"
 }
