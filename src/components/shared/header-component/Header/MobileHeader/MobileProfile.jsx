@@ -10,7 +10,7 @@ import useGetConfig from '../../../../../hooks/useGetConfig';
 import handleRedirect, {
   handleLogout,
 } from '../../../../../utils/handleRedirect';
-import handleTPARedirect from "../../../../utils/handleTPARedirect";
+import handleTPARedirect from "../../../../../utils/handleTPARedirect";
 
 const MobileProfile = () => {
   const allowPublicAccountCreation = getConfig().ALLOW_PUBLIC_ACCOUNT_CREATION ?? true;
