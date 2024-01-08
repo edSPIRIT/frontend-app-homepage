@@ -161,7 +161,6 @@
     "secondTitle.share.toast": "لینک را با دوستان خود به اشتراک بگذارید و به آنها اجازه دهید در دنیایی از محتوای جذاب شیرجه بزنند!",
     "usd": "دلار",
     "IRR": "ریال",
-    "IRT":"تومان",
     "irr": "ریال",
     "USD": "دلار",
     "courseInfo.registrationEndDate.text": "تاریخ پایان ثبت نام",
@@ -213,5 +212,6 @@
     "courseInfo.until.text": "تا",
     "courseInfo.then.text": "سپس",
     "courseCard.freeTrial.text": "امکان استفاده رایگان",
-    "EGP": "پوند"
+    "staticpages.loading": "...در حال بارگزاری",
+    "staticpages.errorAtFetch": "خطا در واکشی اطلاعات"
 }

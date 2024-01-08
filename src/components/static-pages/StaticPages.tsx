@@ -1,4 +1,4 @@
-import React from 'react';
+import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useParams } from 'react-router';
 import useGetStaticPagesData from '../../hooks/useGetStaticPagesData';
 
@@ -6,7 +6,14 @@ const StaticPages = () => {
   const { page } = useParams();
   const { data: staticPageData, isError, isLoading } = useGetStaticPagesData(page);
 
-  const content = isLoading ? <div className="loading">Loading...</div> : (
+  const content = isLoading ? (
+    <div className="loading">
+      <FormattedMessage
+        id="staticpages.loading"
+        defaultMessage="Loading..."
+      />
+    </div>
+  ) : (
     <>
       <div className="title">
         <h2>{staticPageData?.name}</h2>
@@ -17,7 +24,14 @@ const StaticPages = () => {
 
   return (
     <section className="static-pages-container">
-      {isError ? <div className="error-box">Error occured while fetching data</div> : content}
+      {isError ? (
+        <div className="error-box">
+          <FormattedMessage
+            id="staticpages.errorAtFetch"
+            defaultMessage="Error occured while fetching data"
+          />
+        </div>
+      ) : content}
     </section>
   );
 };
