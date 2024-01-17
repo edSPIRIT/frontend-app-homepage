@@ -4,6 +4,7 @@
     "jsx": "react-jsx",
     "module": "ES2022",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": false,
