@@ -15,7 +15,6 @@ const useGetPartner = (partner) => {
       );
       return apiRes.data;
     } catch (err) {
-      console.error(err);
       if (err.response.status === 404) {
         history.push('/404');
       }

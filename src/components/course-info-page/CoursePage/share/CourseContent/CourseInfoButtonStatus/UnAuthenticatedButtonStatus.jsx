@@ -3,10 +3,9 @@ import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { Button } from '@edx/paragon';
 import React from 'react';
 import handleRedirect from '../../../../../../utils/handleRedirect';
-import handleTPARedirect from "../../../../../../utils/handleTPARedirect";
+import handleTPARedirect from '../../../../../../utils/handleTPARedirect';
 import useEnrollClickHandler from '../../../../../../hooks/useEnrollClickHandler';
-import useGetConfig from "../../../../../../hooks/useGetConfig";
-
+import useGetConfig from '../../../../../../hooks/useGetConfig';
 
 const UnAuthenticatedButtonStatus = ({ courseMetaData, isEnrollNotActive }) => {
   const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
@@ -20,9 +19,7 @@ const UnAuthenticatedButtonStatus = ({ courseMetaData, isEnrollNotActive }) => {
       <Button
         variant="brand"
         className="enroll-btn"
-        onClick={() =>
-          isTPAOnly ? handleTPARedirect(TPAQueryparam) : handleRedirect()
-        }
+        onClick={() => (isTPAOnly ? handleTPARedirect(TPAQueryparam) : handleRedirect())}
         disabled={!availablePaymentData || isEnrollNotActive}
       >
         <FormattedMessage
@@ -36,9 +33,7 @@ const UnAuthenticatedButtonStatus = ({ courseMetaData, isEnrollNotActive }) => {
     <Button
       variant="brand"
       className="enroll-btn"
-      onClick={() =>
-        isTPAOnly ? handleTPARedirect(TPAQueryparam) : handleRedirect()
-      }
+      onClick={() => (isTPAOnly ? handleTPARedirect(TPAQueryparam) : handleRedirect())}
       disabled={isEnrollNotActive}
     >
       <FormattedMessage
