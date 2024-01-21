@@ -20,7 +20,7 @@ import appMessages from './i18n';
 
 import './index.scss';
 import Home from './components/home-page/Home';
-import ScrollToTop from './ScroollToTop';
+import ScrollToTop from './ScrollToTop';
 import store from './redux/store/store';
 import Layout from './components/shared/layout-wrapper/Layout';
 import EnrollmentList from './components/dashboard/EnrollmentList';
