@@ -52,7 +52,7 @@
 }
 .scroll-courses-container {
   .scroll-wrapper {
-    display: grid;
+    display: grid !important;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     .pgn__card {

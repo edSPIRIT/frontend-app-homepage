@@ -15,15 +15,17 @@ const useGetSubjects = () => {
 
     return apiRes.json();
   };
-  const fetchAllfetchSubjects = async () => {
+  const fetchAllFetchSubjects = async () => {
     let allResults = [];
     let pageNum = 1;
     let courseCounter = 0;
+    // eslint-disable-next-line no-constant-condition
     while (true) {
-      const { results, next, course_counter } = await fetchSubjects(pageNum);
+      // eslint-disable-next-line no-await-in-loop
+      const { results, next, course_counter: courseCount } = await fetchSubjects(pageNum);
       allResults = allResults.concat(results);
       if (pageNum === 1) {
-        courseCounter = course_counter;
+        courseCounter = courseCount;
       }
       if (!next) {
         break;
@@ -34,7 +36,7 @@ const useGetSubjects = () => {
     return { results: allResults, courseCounter };
   };
 
-  const { data, isLoading } = useQuery('allSubjects', fetchAllfetchSubjects);
+  const { data, isLoading } = useQuery('allSubjects', fetchAllFetchSubjects);
 
   return {
     subjects: data?.results,

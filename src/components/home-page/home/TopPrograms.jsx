@@ -1,6 +1,6 @@
 import { Button, Skeleton } from '@edx/paragon';
 import { useState } from 'react';
-import { TOP_PROGRAM } from '../../../constants';
+import { TOP_PROGRAM } from '../../../utils/constants';
 import ProgramCard from '../../shared/program-card/ProgramCard';
 
 const TopPrograms = () => {
