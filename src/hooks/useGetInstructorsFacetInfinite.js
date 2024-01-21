@@ -30,6 +30,7 @@ const useGetInstructorsFacetInfinite = (searchString, inView) => {
       });
       return apiRes.data;
     } catch (err) {
+      console.error(err); // eslint-disable-line no-console
       return null; // Or handle error as appropriate for your use case
     }
   };
