@@ -55,7 +55,7 @@ const DesktopHeader = ({ intl }) => {
         <SearchField
           onSubmit={handleSubmitSearch}
           placeholder={intl.formatMessage(
-            messages['header.search.placeholder']
+            messages['header.search.placeholder'],
           )}
           inputProps={{
             autoComplete: 'off',

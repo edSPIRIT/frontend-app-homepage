@@ -20,15 +20,18 @@ const useGetInstructorsFacetInfinite = (searchString, inView) => {
     };
   }, [searchString]);
   const fetchInstructors = async ({ pageParam = 1 }) => {
+    const { LMS_BASE_URL } = getConfig();
     try {
-      const apiRes = await axios.get(
-        `${
-          getConfig().LMS_BASE_URL
-        }/admin-console/api/instructor-list/?page=${pageParam}&search_query=${debouncedSearchValue}`,
-      );
+      const apiRes = await axios.get(`${LMS_BASE_URL}/admin-console/api/instructor-list`, {
+        params: {
+          page: pageParam,
+          search_query: debouncedSearchValue,
+        },
+      });
       return apiRes.data;
     } catch (err) {
-      console.error(err);
+      console.error(err); // eslint-disable-line no-console
+      return null; // Or handle error as appropriate for your use case
     }
   };
 

@@ -4,7 +4,7 @@ import { useMediaQuery } from '@edx/paragon';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DesktopUnenrollAlert from './UnenrollAlert/DesktopUnenrollAlert';
-import useUnenrollCourse from '../../../../../hooks/useUnenrollCourse';
+import { useUnenrollCourse } from '../../../../../hooks/useUnenrollCourse';
 import { hideUnenrollAlert } from '../../../../../redux/slice/course/unenrollAlert';
 
 const BottomSheetUnenrollAlert = React.lazy(() => import('./UnenrollAlert/BottomSheetUnenrollAlert'));

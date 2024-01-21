@@ -11,7 +11,6 @@ const useGetPaidCourses = (courseMetaData) => {
       );
       return apiRes.data;
     } catch (err) {
-      console.error(err);
       return null;
     }
   };
@@ -21,9 +20,6 @@ const useGetPaidCourses = (courseMetaData) => {
     fetchPaidCourses,
     {
       enabled: courseMetaData?.paid_course?.active,
-      onError: (e) => {
-        console.error(e);
-      },
     },
   );
 

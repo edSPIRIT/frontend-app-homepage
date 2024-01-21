@@ -12,7 +12,6 @@ const useGetInstructorPopularCourses = (instructor) => {
       );
       return response.data;
     } catch (error) {
-      console.error(error);
       return null;
     }
   };

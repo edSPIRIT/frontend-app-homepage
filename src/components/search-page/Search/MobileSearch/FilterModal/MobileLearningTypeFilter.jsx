@@ -17,18 +17,9 @@ const MobileLearningTypeFilter = () => {
   const [isOpen, open, close] = useToggle(false);
   const language = useSelector((state) => state.searchFilters.language_codes);
   //   const dispatch = useDispatch();
-  const [languageValues, {
-    add, remove, clear, set,
-  }] = useCheckboxSetValues(
+  const [{ clear, set }] = useCheckboxSetValues(
     [],
   );
-  const handleChange = (e) => {
-    if (e.target.checked) {
-      add(e.target.value);
-    } else {
-      remove(e.target.value);
-    }
-  };
   useEffect(() => {
     clear();
     if (language.length > 0) {

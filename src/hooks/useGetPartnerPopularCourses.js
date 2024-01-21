@@ -12,7 +12,6 @@ const useGetPartnerPopularCourses = (partner) => {
       );
       return response.data;
     } catch (error) {
-      console.error(error);
       return null;
     }
   };
