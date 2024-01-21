@@ -12,11 +12,11 @@ import UserCourseCard from '../../shared/user-courses/UserCourseCard';
 import AvatarInfo from './AvatarInfo/AvatarInfo';
 import NotEnrolledCardCourse from './NotEnrolledCardCourse/NotEnrolledCourseCard';
 import UserCourseCardSkeleton from '../../shared/user-courses/UserCourseCardSkeleton';
-// import SimilarCourses from '../../shared/similar-courses/SimilarCourses';
 import NavHeader from '../../shared/header-component/Header/DesktopHeader/NavHeader';
 import messages from '../../../messages';
 import useGetOverviewList from '../../../hooks/useGetOverviewList';
 import LogInFirst from './LogInFirst';
+import AccountActivationAlert from '../../shared/activate-account-component/AccountActivationAlert';
 
 const OverviewPage = ({ intl }) => {
   const {
@@ -40,6 +40,7 @@ const OverviewPage = ({ intl }) => {
       {isMobile && <NavHeader />}
       <div className="d-flex flex-column">
         <div className="custom-container">
+          <AccountActivationAlert />
           <AvatarInfo />
           {loading ? (
             <>
@@ -74,17 +75,7 @@ const OverviewPage = ({ intl }) => {
               ))}
             </div>
           )}
-          {/* <div className="recommended-program-wrapper">
-                <RecommendedPrograms />
-              </div> */}
         </div>
-        {/* {userCourseTitles && (
-          <SimilarCourses
-            courseTitles={userCourseTitles}
-            courseIds={userCourseIds}
-            loading={loading}
-          />
-        )} */}
       </div>
     </>
   );
