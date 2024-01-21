@@ -21,9 +21,13 @@ const useGetInstructorsFacetInfinite = (searchString, inView) => {
   }, [searchString]);
   const fetchInstructors = async ({ pageParam = 1 }) => {
     const { LMS_BASE_URL } = getConfig();
-    const url = `${LMS_BASE_URL}/admin-console/api/instructor-list/?page=${pageParam}&search_query=${debouncedSearchValue}`;
     try {
-      const apiRes = await axios.get(url);
+      const apiRes = await axios.get(`${LMS_BASE_URL}/admin-console/api/instructor-list`, {
+        params: {
+          page: pageParam,
+          search_query: debouncedSearchValue,
+        },
+      });
       return apiRes.data;
     } catch (err) {
       return null; // Or handle error as appropriate for your use case
