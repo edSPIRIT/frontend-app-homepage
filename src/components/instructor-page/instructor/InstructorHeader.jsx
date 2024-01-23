@@ -93,7 +93,7 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                   <p className="mb-2">{InstructorData?.bio}</p>
                 </ShowMoreText>
                 <div className="instructor-icons-wrapper pt-4 mt-auto">
-                  <div className="d-flex ">
+                  <div className="instructor-specs">
                     <div className="d-flex mr-4.5 align-items-center">
                       <Icon src={Groups} className="mr-2" />
                       <FormattedMessage
@@ -149,7 +149,7 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <Icon src={Globe} className="social-icon-footer" />
+                        <Icon className="social-icon-footer" src={Globe} />
                       </a>
                     )}
                   </div>

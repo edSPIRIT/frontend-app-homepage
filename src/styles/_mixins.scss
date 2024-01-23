@@ -1,10 +1,13 @@
 @mixin flex($flexDirection: row, $justifyContent: center, $alignItem: center) {
   display: flex;
-  display: -webkit-flex;
+  display: -webkit-box;
+
   flex-direction: $flexDirection;
   -webkit-flex-direction: $flexDirection;
+
   align-items: $alignItem;
   -webkit-align-items: $alignItem;
+  
   justify-content: $justifyContent;
   -webkit-justify-content: $justifyContent;
 }

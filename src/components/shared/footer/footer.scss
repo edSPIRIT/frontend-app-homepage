@@ -25,18 +25,18 @@ footer {
 }
 .social-container {
   @extend .d-flex;
+  @include flex();
   gap: 5px;
-  align-items: center;
   .pgn__icon {
-    height: unset;
-    width: unset;
+    width: auto;
+    height: auto;
+    max-width: 24px;
+    max-height: 24px;
   }
   .social-icon-footer {
     cursor: pointer;
     color: $light-500;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex();
   }
 }
 .footer-copy-right-container {
