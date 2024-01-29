@@ -22,7 +22,8 @@ const useGetInstructorsFacetInfinite = (searchString, inView) => {
   const fetchInstructors = async ({ pageParam = 1 }) => {
     const { LMS_BASE_URL } = getConfig();
     try {
-      const apiRes = await axios.get(`${LMS_BASE_URL}/admin-console/api/instructor-list`, {
+      const apiRes = await axios.get('/admin-console/api/instructor-list/', {
+        baseURL: LMS_BASE_URL,
         params: {
           page: pageParam,
           search_query: debouncedSearchValue,
