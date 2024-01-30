@@ -11,10 +11,6 @@ import {
   intlShape,
 } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
-// import { ReactComponent as Linkedin } from '../../../assets/linkedin.svg';
-// import { ReactComponent as Facebook } from '../../../assets/facebook.svg';
-// import { ReactComponent as Globe } from '../../../assets/language-filled.svg';
-// import { ReactComponent as Twitter } from '../../../assets/twitter.svg';
 import userAvatar from '../../../assets/place-holders/user-placeholder.svg';
 import InstructorSkeleton from './InstructorSkeleton';
 import messages from '../../../messages';
