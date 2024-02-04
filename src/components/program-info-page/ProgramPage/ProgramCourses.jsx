@@ -1,17 +1,8 @@
-const ProgramCourses = () => {
-  const chunkedArray = [];
-  // const chunkSize = () => {
-  //   for (let i = 0; i < SIMILAR_COURSES.length; i += 3) {
-  //     chunkedArray.push(SIMILAR_COURSES.slice(i, i + 3));
-  //   }
-  // };
-  // chunkSize();
-
-  return (
-    <section className=" program-courses-wrapper pt-3" id="courses">
-      {/* <h3>Courses</h3>
+const ProgramCourses = () => (
+  <section className=" program-courses-wrapper pt-3" id="courses">
+    {/* <h3>Courses</h3>
       <span>It includes the following 5 courses</span> */}
-      {/* <Carousel
+    {/* <Carousel
         interval={null}
         indicators={false}
         nextIcon={
@@ -32,8 +23,7 @@ const ProgramCourses = () => {
           </Carousel.Item>
         ))}
       </Carousel> */}
-    </section>
-  );
-};
+  </section>
+);
 
 export default ProgramCourses;

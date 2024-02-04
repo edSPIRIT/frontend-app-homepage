@@ -11,15 +11,15 @@ import {
   intlShape,
 } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
-import { ReactComponent as Linkedin } from '../../../assets/linkedin.svg';
-import { ReactComponent as Facebook } from '../../../assets/facebook.svg';
-import { ReactComponent as Globe } from '../../../assets/language-filled.svg';
-import { ReactComponent as Twitter } from '../../../assets/twitter.svg';
 import userAvatar from '../../../assets/place-holders/user-placeholder.svg';
 import InstructorSkeleton from './InstructorSkeleton';
 import messages from '../../../messages';
 import { setToastMessage } from '../../../redux/slice/toastSlice';
 import SharedToastMessage from '../../shared/base-components/SharedToastMessage';
+import SvgLinkedIn from '../../../assets/LinkedIn';
+import SvgFacebook from '../../../assets/Facebook';
+import SvgGlobe from '../../../assets/Globe';
+import SvgX from '../../../assets/X';
 
 const InstructorHeader = ({ InstructorData, loading, intl }) => {
   const history = useHistory();
@@ -93,7 +93,7 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                   <p className="mb-2">{InstructorData?.bio}</p>
                 </ShowMoreText>
                 <div className="instructor-icons-wrapper pt-4 mt-auto">
-                  <div className="d-flex ">
+                  <div className="instructor-specs">
                     <div className="d-flex mr-4.5 align-items-center">
                       <Icon src={Groups} className="mr-2" />
                       <FormattedMessage
@@ -122,7 +122,7 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <Icon className="social-icon-footer" src={Twitter} />
+                        <Icon className="social-icon-footer" src={SvgX} />
                       </a>
                     )}
                     {InstructorData?.linkedin && (
@@ -131,7 +131,7 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <Icon className="social-icon-footer" src={Linkedin} />
+                        <Icon className="social-icon-footer" src={SvgLinkedIn} />
                       </a>
                     )}
                     {InstructorData?.facebook && (
@@ -140,7 +140,7 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <Icon className="social-icon-footer" src={Facebook} />
+                        <Icon className="social-icon-footer" src={SvgFacebook} />
                       </a>
                     )}
                     {InstructorData?.website && (
@@ -149,7 +149,7 @@ const InstructorHeader = ({ InstructorData, loading, intl }) => {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <Icon src={Globe} className="social-icon-footer" />
+                        <Icon className="social-icon-footer" src={SvgGlobe} />
                       </a>
                     )}
                   </div>

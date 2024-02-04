@@ -19,9 +19,6 @@ const useGetActiveLangs = () => {
     data, isLoading, isError, error,
   } = useQuery('ActiveLangs', fetchActiveLangs, {
     retry: 1,
-    onError: (err) => {
-      console.error('An error occurred:', err);
-    },
   });
 
   return {

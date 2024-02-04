@@ -25,7 +25,6 @@ const useManageLocale = () => {
           document.cookie = `openedx-language-preference=${newLocale}; path=/; domain=${url}`;
           window.location.reload();
         } catch (err) {
-          console.error(err);
           setIsLoading(false);
         }
       } else {

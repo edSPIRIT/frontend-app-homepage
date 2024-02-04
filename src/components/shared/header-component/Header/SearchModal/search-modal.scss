@@ -1,10 +1,12 @@
 //invisible header in search modal in responsive
-.pgn__modal-header {
-  display: none;
-}
-.pgn__modal-close-container {
-  display: none;
-}
+// This code is commented out because it removed the heading part
+// Might be used in other places, later
+// .pgn__modal-header {
+//   display: none;
+// }
+// .pgn__modal-close-container {
+//   display: none;
+// }
 //remove scroll-x in modal
 .pgn__modal-body {
   // padding: unset;

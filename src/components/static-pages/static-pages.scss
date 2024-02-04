@@ -1,0 +1,32 @@
+.static-pages-container{
+    @include flex(column);
+        width: 100%;
+        .title {
+            padding: 16px;
+        }
+    
+        .error-box{
+            margin: 16px;
+            margin-top: 68px;
+            padding: 8px;
+            background-color: $warning-900;
+            color:$white;
+            border-radius: 8px;
+            border-color: $black;
+            border-width: 1px;
+        }
+    
+        .loading{
+            margin: 16px;
+            margin-top: 68px;
+            padding: 8px;
+            background-color: $light-600;
+            border-radius: 8px;
+            border-color: $black;
+            border-width: 1px;
+        }
+        .content {
+            padding: 24px;
+            width: 100%;
+        }
+}

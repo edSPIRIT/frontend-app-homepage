@@ -56,9 +56,6 @@ const useEnrollClickHandler = (courseMetaData) => {
       queryClient.invalidateQueries(['EnrollmentList']);
       queryClient.invalidateQueries(['OverviewList']);
     },
-    onError: () => {
-      alert('there was an error');
-    },
   });
   const enrollClickHandler = () => {
     if (!userProfile?.is_active) {

@@ -8,8 +8,10 @@ import React from 'react';
 
 const CourseAccessTime = ({ courseMetaData }) => {
   const coursePrice = courseMetaData?.paid_course?.price || 0;
-  const courseCurrency = courseMetaData?.paid_course?.currency || 'USD';
   const hasTrial = courseMetaData?.paid_course?.has_trial;
+  let courseCurrency = courseMetaData?.paid_course?.currency || 'USD';
+  // check if courseCurrency is Rials
+  courseCurrency = courseCurrency === 'IRR' ? 'IRT' : courseCurrency;
   return hasTrial ? (
     <p className="d-flex flex-wrap font-sm">
       <span className="mr-1">

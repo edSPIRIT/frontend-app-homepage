@@ -3,7 +3,7 @@ import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import React from 'react';
 
 const PriceStatus = ({ courseMetaData }) => {
-  const courseCurrency = courseMetaData?.paid_course?.currency || 'USD';
+  const courseCurrency = courseMetaData?.paid_course?.currency ?? 'USD';
   const hasTrial = courseMetaData?.paid_course?.has_trial;
   if (courseMetaData?.paid_course?.active && hasTrial) {
     return (
@@ -17,7 +17,7 @@ const PriceStatus = ({ courseMetaData }) => {
     return (
       <p className="price-symbol-wrapper">
         <span className="mr-1">
-          <FormattedMessage id={courseCurrency} defaultMessage="$" />
+          <FormattedMessage id={courseCurrency === 'IRR' ? 'IRT' : courseCurrency} defaultMessage="$" />
         </span>
         <span className="mr-1">
           {courseMetaData?.paid_course?.price_human_numeric}

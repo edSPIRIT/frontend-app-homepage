@@ -13,6 +13,7 @@ import TotalCourseWrapper from './EnrollmentList/TotalCourseWrapper';
 import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleton';
 import UserCourseCard from '../shared/user-courses/UserCourseCard';
 import LogInFirst from './OverviewPage/LogInFirst';
+import AccountActivationAlert from '../shared/activate-account-component/AccountActivationAlert';
 
 const EnrollmentList = ({ type, intl }) => {
   const { authenticatedUser } = useContext(AppContext);
@@ -46,6 +47,7 @@ const EnrollmentList = ({ type, intl }) => {
     <>
       {isMobile && <NavHeader />}
       <div className="d-flex custom-container py-5 flex-column">
+        <AccountActivationAlert />
         {loading ? (
           Array(4)
             .fill(1)

@@ -20,11 +20,12 @@ import appMessages from './i18n';
 
 import './index.scss';
 import Home from './components/home-page/Home';
-import ScrollToTop from './ScroollToTop';
+import ScrollToTop from './ScrollToTop';
 import store from './redux/store/store';
 import Layout from './components/shared/layout-wrapper/Layout';
 import EnrollmentList from './components/dashboard/EnrollmentList';
 import MobileProfile from './components/shared/header-component/Header/MobileHeader/MobileProfile';
+import StaticPages from './components/static-pages/StaticPages';
 
 const OverviewPage = lazy(() => import('./components/dashboard/OverviewPage/OverviewPage'));
 const Discover = lazy(() => import('./components/discover-page/Discover'));
@@ -94,6 +95,9 @@ subscribe(APP_READY, () => {
               </Route>
               <Route exact path="/instructor/:slug">
                 <Instructor />
+              </Route>
+              <Route exact path="/staticpages/:page">
+                <StaticPages />
               </Route>
               <Route exact path="/">
                 <Home />

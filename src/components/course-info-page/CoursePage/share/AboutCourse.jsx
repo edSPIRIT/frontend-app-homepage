@@ -59,6 +59,7 @@ const AboutCourse = ({
           >
             <div
               className="mb-2"
+              // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{ __html: aboutCourse }}
             />
           </div>
