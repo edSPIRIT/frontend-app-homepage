@@ -26,16 +26,9 @@ footer {
 .social-container {
   @extend .d-flex;
   @include flex();
-  
-  & * {
-    margin: auto;
-    @include flex();
-  }
 
   gap: 5px;
   .pgn__icon {
-    width: auto;
-    height: auto;
     max-width: 24px;
     max-height: 24px;
   }
