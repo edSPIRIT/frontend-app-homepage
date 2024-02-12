@@ -7,7 +7,6 @@ import handleTPARedirect from '../../../../../../utils/handleTPARedirect';
 import useEnrollClickHandler from '../../../../../../hooks/useEnrollClickHandler';
 import useGetConfig from '../../../../../../hooks/useGetConfig';
 
-
 const UnAuthenticatedButtonStatus = ({ courseMetaData, isEnrollNotActive }) => {
   const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
   const { isTPAOnly, TPAQueryparam } = useGetConfig();
