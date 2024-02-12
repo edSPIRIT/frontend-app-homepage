@@ -38,7 +38,7 @@ const OverviewPage = ({ intl }) => {
   return (
     <>
       {isMobile && <NavHeader />}
-      <div className="d-flex flex-column">
+      <div className="d-flex flex-column py-5">
         <div className="custom-container">
           <AccountActivationAlert />
           <AvatarInfo />
