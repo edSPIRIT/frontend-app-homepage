@@ -6,7 +6,6 @@ import { useHistory, useParams } from 'react-router-dom';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getConfig } from '@edx/frontend-platform';
 import useGetInstructor from '../../hooks/useGetInstructor';
 import CourseCard from '../shared/course-card/CourseCard';
 import CourseCardSkeleton from '../shared/skeleton/CourseCardSkeleton';
@@ -16,6 +15,7 @@ import {
   setSearchInstructors,
 } from '../../redux/slice/searchQuerySlice';
 import useGetInstructorPopularCourses from '../../hooks/useGetInstructorPopularCourses';
+import useGetConfig from '../../hooks/useGetConfig';
 
 const Instructor = () => {
   const { slug } = useParams();
@@ -23,10 +23,10 @@ const Instructor = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { instructorPopularCourses, loading: instructorPopularCoursesLoading } = useGetInstructorPopularCourses(slug);
-
+  const { platformName } = useGetConfig();
   useEffect(() => {
     if (InstructorData?.name) {
-      document.title = `${InstructorData?.name} | ${getConfig().SITE_NAME}`;
+      document.title = `${InstructorData?.name} | ${platformName}`;
     }
   }, [InstructorData]);
 

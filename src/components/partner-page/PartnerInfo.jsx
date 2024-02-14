@@ -3,17 +3,18 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { ArrowBack } from '@edx/paragon/icons';
 import React, { useEffect } from 'react';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { getConfig } from '@edx/frontend-platform';
 import useGetPartner from '../../hooks/useGetPartner';
 import PartnerCourses from './PartnerInfo/PartnerCourses';
 import PartnerHeader from './PartnerInfo/PartnerHeader';
 import DesktopInstructors from './PartnerInfo/DesktopInstructors';
 import messages from '../../messages';
 import usePartnerInstructorsInfinite from '../../hooks/usePartnerInstructorsInfinite';
+import useGetConfig from '../../hooks/useGetConfig';
 
 const MobileInstructors = React.lazy(() => import('./PartnerInfo/MobileInstructors'));
 
 const PartnerInfo = ({ intl }) => {
+  const { platformName } = useGetConfig();
   const { slug } = useParams();
   const { partnerData, loading } = useGetPartner(slug);
   const history = useHistory();
@@ -26,9 +27,9 @@ const PartnerInfo = ({ intl }) => {
 
   useEffect(() => {
     if (partnerData?.organization?.name) {
-      document.title = `${partnerData.organization.name} | ${getConfig().SITE_NAME}`;
+      document.title = `${partnerData.organization.name} | ${platformName}`;
     }
-  }, [partnerData]);
+  }, [partnerData, platformName]);
 
   return (
     <section>

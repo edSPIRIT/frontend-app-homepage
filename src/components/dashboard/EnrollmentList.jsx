@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from 'react';
 import { Pagination, useMediaQuery } from '@edx/paragon';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { AppContext } from '@edx/frontend-platform/react';
-import { getConfig } from '@edx/frontend-platform';
 import useGetEnrollmentList from '../../hooks/useGetEnrollmentList';
 import messages from '../../messages';
 import NavHeader from '../shared/header-component/Header/DesktopHeader/NavHeader';
@@ -14,6 +13,7 @@ import UserCourseCardSkeleton from '../shared/user-courses/UserCourseCardSkeleto
 import UserCourseCard from '../shared/user-courses/UserCourseCard';
 import LogInFirst from './OverviewPage/LogInFirst';
 import AccountActivationAlert from '../shared/activate-account-component/AccountActivationAlert';
+import useGetConfig from '../../hooks/useGetConfig';
 
 const EnrollmentList = ({ type, intl }) => {
   const { authenticatedUser } = useContext(AppContext);
@@ -35,10 +35,10 @@ const EnrollmentList = ({ type, intl }) => {
   useEffect(() => {
     setPage(1);
   }, [type]);
-
+  const { platformName } = useGetConfig();
   useEffect(() => {
-    document.title = `Dashboard | ${getConfig().SITE_NAME}`;
-  }, []);
+    document.title = `Dashboard | ${platformName}`;
+  }, [platformName]);
 
   if (!authenticatedUser) {
     return <LogInFirst />;
