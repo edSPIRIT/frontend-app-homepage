@@ -7,7 +7,6 @@ import {
 } from '@edx/frontend-platform/i18n';
 import { useContext, useEffect } from 'react';
 import { AppContext } from '@edx/frontend-platform/react';
-import { getConfig } from '@edx/frontend-platform';
 import UserCourseCard from '../../shared/user-courses/UserCourseCard';
 import AvatarInfo from './AvatarInfo/AvatarInfo';
 import NotEnrolledCardCourse from './NotEnrolledCardCourse/NotEnrolledCourseCard';
@@ -17,6 +16,7 @@ import messages from '../../../messages';
 import useGetOverviewList from '../../../hooks/useGetOverviewList';
 import LogInFirst from './LogInFirst';
 import AccountActivationAlert from '../../shared/activate-account-component/AccountActivationAlert';
+import useGetConfig from '../../../hooks/useGetConfig';
 
 const OverviewPage = ({ intl }) => {
   const {
@@ -27,10 +27,10 @@ const OverviewPage = ({ intl }) => {
 
   const isMobile = useMediaQuery({ maxWidth: '768px' });
   const { authenticatedUser } = useContext(AppContext);
-
+  const { platformName } = useGetConfig();
   useEffect(() => {
-    document.title = `Dashboard | ${getConfig().SITE_NAME}`;
-  }, []);
+    document.title = `Dashboard | ${platformName}`;
+  }, [platformName]);
 
   if (!authenticatedUser) {
     return <LogInFirst />;

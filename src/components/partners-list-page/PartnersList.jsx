@@ -9,7 +9,6 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
-import { getConfig } from '@edx/frontend-platform';
 import PartnersCardGrid from './PartnersList/PartnersCardGrid';
 import PartnersCardList from './PartnersList/PartnersCardList';
 import TotalPartnersWrapper from './PartnersList/TotalPartnersWrapper';
@@ -17,8 +16,10 @@ import messages from '../../messages';
 import useGetPartners from '../../hooks/useGetPartners';
 import useGetPartnersSuggestions from '../../hooks/useGetPartnersSuggestions';
 import PartnersHeader from './PartnersList/PartnersHeader';
+import useGetConfig from '../../hooks/useGetConfig';
 
 const PartnersList = ({ intl }) => {
+  const { platformName } = useGetConfig();
   const [view, setView] = useState('grid');
   const [page, setPage] = useState(1);
   const [searchString, setSearchString] = useState('');
@@ -26,8 +27,8 @@ const PartnersList = ({ intl }) => {
   const { partnersSuggestionsResults } = useGetPartnersSuggestions(suggestionQuery);
 
   useEffect(() => {
-    document.title = `Partners | ${getConfig().SITE_NAME}`;
-  }, []);
+    document.title = `Partners | ${platformName}`;
+  }, [platformName]);
 
   const {
     count,

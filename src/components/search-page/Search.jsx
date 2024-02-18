@@ -1,14 +1,16 @@
 import { useMediaQuery } from '@edx/paragon';
 
 import { useEffect } from 'react';
-import { getConfig } from '@edx/frontend-platform';
 import MobileSearch from './Search/MobileSearch';
 import DesktopSearch from './Search/DesktopSearch';
+import useGetConfig from '../../hooks/useGetConfig';
 
 const Search = () => {
+  const { platformName } = useGetConfig();
+
   useEffect(() => {
-    document.title = `Search | ${getConfig().SITE_NAME}`;
-  }, []);
+    document.title = `Search | ${platformName}`;
+  }, [platformName]);
   const isMobile = useMediaQuery({ maxWidth: '768px' });
   const SearchComponent = isMobile ? MobileSearch : DesktopSearch;
   return <SearchComponent />;

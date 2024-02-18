@@ -1,5 +1,4 @@
 import { useEffect, useContext, useState } from 'react';
-import { getConfig } from '@edx/frontend-platform';
 import { ActionRow, AlertModal, Button } from '@edx/paragon';
 import { AppContext } from '@edx/frontend-platform/react';
 import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
@@ -9,22 +8,24 @@ import HomePageBanner from './home/HomePageBanner';
 import ExplorerCourses from './home/ExplorerCourses';
 import useGetUserProfile from '../../hooks/useGetUserProfile';
 import sendAccountActivationEmail from '../../utils/sendActivateEmail';
+import useGetConfig from '../../hooks/useGetConfig';
 
 const Home = ({ intl }) => {
+  const { platformName } = useGetConfig();
   useEffect(() => {
-    document.title = `Homepage | ${getConfig().SITE_NAME}`;
-  }, []);
+    document.title = `Homepage | ${platformName}`;
+  }, [platformName]);
 
   const { authenticatedUser } = useContext(AppContext);
   const { userProfile, loading: userProfileLoading } = useGetUserProfile();
   const [showAlertModal, setShowAlertModal] = useState(false);
 
   useEffect(() => {
-    document.title = `Dashboard | ${getConfig().SITE_NAME}`;
+    document.title = `Dashboard | ${platformName}`;
     if (!userProfileLoading && !userProfile?.is_active && !sessionStorage.getItem('showActivateModal')) {
       setShowAlertModal(true);
     }
-  }, [userProfileLoading, userProfile?.is_active]);
+  }, [userProfileLoading, userProfile?.is_active, platformName]);
 
   const handleCloseNotActivatedModal = () => {
     sessionStorage.setItem('showActivateModal', 'false');
