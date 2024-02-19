@@ -8,7 +8,7 @@ else
     TOKEN="$WEBLATE_TOKEN"
 fi
 
-supported_languages=("fa_IR" "ar" "es_419" "tr" "es" "hr" "fr" "fr_CA" "de" "it" "pt" "pt_PT" "ro" "sv" "tr")  # Define the list of supported languages here
+supported_languages=("fa_IR" "ar" "es_419" "tr" "es" "hr" "fr" "fr_CA" "de" "it" "pt" "pt_PT" "ro" "sv")  # Define the list of supported languages here
 
 if [ -z "$1" ] || [[ ! "$1" =~ ^--languages=(all|$(
     IFS=\|; echo "${supported_languages[*]}"
@@ -25,7 +25,9 @@ RESOURCE="home-page"
 
 declare -A CODE_MAP
 CODE_MAP["es"]="es_ES"
-CODE_MAP["en"]="en_US"
+CODE_MAP["de"]="de_DE"
+CODE_MAP["it"]="it_IT"
+CODE_MAP["tr"]="tr_TR"
 
 # Extract selected languages from arguments
 LANGS_ARG=${1#--languages=}
@@ -55,11 +57,18 @@ fi
 echo "Languages to process: ${SELECTED_LANGS[@]}"
 
 for lang in "${SELECTED_LANGS[@]}"; do
-    FILE_NAME="${CODE_MAP[$lang]:-$lang}.json"
     echo "Updating \"Home Page\" translation. Language: \"$lang\":"
     echo "https://translate.avidcloud.io/api/translations/$PROJECT_NAME/$RESOURCE/$lang/file/"
-  
-    curl -X GET -H "Authorization: Token $TOKEN" "https://translate.avidcloud.io/api/translations/$PROJECT_NAME/$RESOURCE/$lang/file/" -o "${LANGFOLDER}/${FILE_NAME}"
-  
-    echo ""
+
+    # Download the translation file based on the language code
+    curl -X GET -H "Authorization: Token $TOKEN" "https://translate.avidcloud.io/api/translations/$PROJECT_NAME/$RESOURCE/$lang/file/" -o "${LANGFOLDER}/${lang}.json"
+
+    # Check if the language has a mapped value in CODE_MAP
+    if [[ -n "${CODE_MAP[$lang]}" ]]; then
+        # If mapped value exists, create an additional file with the mapped value as the filename
+        echo "Creating file with mapped value: ${CODE_MAP[$lang]}.json"
+        cp "${LANGFOLDER}/${lang}.json" "${LANGFOLDER}/${CODE_MAP[$lang]}.json"
+    fi
+
+    echo "Pulling language \"$lang\" Done."
 done
