@@ -28,10 +28,11 @@ const FooterCopyRight = () => {
             <img className="footer-logo" src={replaceFooterBranding ? logoUrl : edLogo} alt="footer-logo" />
             <img
               className="mobile-footer-logo h-100"
-              src={mobileFooterLogo}
+              src={replaceFooterBranding ? logoUrl : mobileFooterLogo}
               alt="footer-logo"
             />
           </div>
+          {!replaceFooterBranding && (
           <p className="footer-desc">
             <FormattedMessage
               id="footer.powerdBy.text"
@@ -41,6 +42,7 @@ const FooterCopyRight = () => {
               edSPIRIT
             </a>
           </p>
+          )}
         </div>
         {!removeEdxFooter && (
         <div className="d-flex edx-wrapper">
