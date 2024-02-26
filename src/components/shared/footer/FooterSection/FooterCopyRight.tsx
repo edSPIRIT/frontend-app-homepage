@@ -3,6 +3,7 @@ import edLogo from '../../../../assets/edspirit-logo.png';
 import mobileFooterLogo from '../../../../assets/mobile-footer-logo.svg';
 import mobileEdxLogo from '../../../../assets/mobile-edx-logo.svg';
 import edxLogo from '../../../../assets/Edx.svg';
+import useGetConfig from '../../../../hooks/useGetConfig';
 
 import useGetDynamicFeatures from '../../../../hooks/useGetDynamicFeatures';
 
@@ -12,6 +13,9 @@ const FooterCopyRight = () => {
   let logoUrl: string = '';
 
   const { isLoading, isError, data } = useGetDynamicFeatures();
+  const {
+    platformName,
+  } = useGetConfig();
 
   if (!isLoading && !isError) {
     ({
@@ -32,17 +36,24 @@ const FooterCopyRight = () => {
               alt="footer-logo"
             />
           </div>
-          {!replaceFooterBranding && (
           <p className="footer-desc">
-            <FormattedMessage
-              id="footer.powerdBy.text"
-              defaultMessage="Powered by "
-            />
-            <a className="footer-desc" href="https://edspirit.com/">
-              edSPIRIT
-            </a>
+            {!replaceFooterBranding ? (
+              <>
+                <FormattedMessage
+                  id="footer.powerdBy.text"
+                  defaultMessage="Powered by "
+                />
+                <a className="footer-desc" href="https://edspirit.com/">
+                  edSPIRIT
+                </a>
+              </>
+            ) : (
+              <FormattedMessage
+                id="footer.copyright.text"
+                defaultMessage={`© Copyright ${new Date().getFullYear()} ${platformName}`}
+              />
+            )}
           </p>
-          )}
         </div>
         {!removeEdxFooter && (
         <div className="d-flex edx-wrapper">

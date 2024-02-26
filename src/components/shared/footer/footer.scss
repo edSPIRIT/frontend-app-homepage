@@ -175,6 +175,7 @@ footer {
     .mobile-footer-logo {
       display: flex;
       width: 100%;
+      filter: grayscale(100%);
     }
     .desktop-view-edx {
       display: none;
