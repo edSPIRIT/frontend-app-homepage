@@ -7,7 +7,7 @@ import {
 import React from 'react';
 
 const CourseAccessTime = ({ courseMetaData }) => {
-  const coursePrice = courseMetaData?.paid_course?.price || 0;
+  const coursePrice = courseMetaData?.paid_course?.price_human_numeric || 0;
   const hasTrial = courseMetaData?.paid_course?.has_trial;
   let courseCurrency = courseMetaData?.paid_course?.currency || 'USD';
   // check if courseCurrency is Rials
@@ -36,9 +36,7 @@ const CourseAccessTime = ({ courseMetaData }) => {
             </span>
             <span className="mr-1">
               <FormattedNumber
-                value={
-                  courseCurrency === 'USD' ? coursePrice / 100 : coursePrice
-                }
+                value={coursePrice}
                 minimumFractionDigits={courseCurrency === 'USD' ? 2 : 0}
                 maximumFractionDigits={courseCurrency === 'USD' ? 2 : 0}
               />
