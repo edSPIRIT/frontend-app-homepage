@@ -2,7 +2,6 @@
 import {
   FormattedDate,
   FormattedMessage,
-  FormattedNumber,
 } from '@edx/frontend-platform/i18n';
 import React from 'react';
 
@@ -25,7 +24,7 @@ const CourseAccessTime = ({ courseMetaData }) => {
           year="numeric"
         />
       </span>
-      {courseMetaData?.paid_course?.show_price_on_trial ? (
+      {!courseMetaData?.paid_course?.show_price_on_trial ? (
         <>
           <span className="ml-1">
             <FormattedMessage id="courseInfo.then.text" defaultMessage="then" />
@@ -35,11 +34,7 @@ const CourseAccessTime = ({ courseMetaData }) => {
               <FormattedMessage id={courseCurrency} defaultMessage="$" />
             </span>
             <span className="mr-1">
-              <FormattedNumber
-                value={coursePrice}
-                minimumFractionDigits={courseCurrency === 'USD' ? 2 : 0}
-                maximumFractionDigits={courseCurrency === 'USD' ? 2 : 0}
-              />
+              {coursePrice}
             </span>
           </span>
         </>
