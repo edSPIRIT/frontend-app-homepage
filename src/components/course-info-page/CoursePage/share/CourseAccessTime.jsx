@@ -24,7 +24,7 @@ const CourseAccessTime = ({ courseMetaData }) => {
           year="numeric"
         />
       </span>
-      {!courseMetaData?.paid_course?.show_price_on_trial ? (
+      {courseMetaData?.paid_course?.show_price_on_trial ? (
         <>
           <span className="ml-1">
             <FormattedMessage id="courseInfo.then.text" defaultMessage="then" />
