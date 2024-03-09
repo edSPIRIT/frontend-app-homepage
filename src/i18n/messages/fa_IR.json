@@ -215,5 +215,6 @@
     "staticpages.loading": "...در حال بارگزاری",
     "staticpages.errorAtFetch": "خطا در واکشی اطلاعات",
     "IRT": "تومان",
-    "EGP": "پوند"
+    "EGP": "پوند",
+    "search.noResult.text": "نتوانستیم نتیجه دقیقی پیدا کنیم"
 }
