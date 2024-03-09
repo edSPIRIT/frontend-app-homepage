@@ -213,5 +213,6 @@
     "courseInfo.then.text": "ثم",
     "courseCard.freeTrial.text": "تجربة مجانية",
     "IRT": "IRT",
-    "EGP": "EGP"
+    "EGP": "EGP",
+    "search.noResult.text": "لم نستطع الحصول على تطابق تام"
 }
