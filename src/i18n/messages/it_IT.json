@@ -1,6 +1,6 @@
 {
     "partners.snapShut.courses.text": "{courseCount, plurale, one {Course} other {Courses}}",
-    "partners.snapShut.learners.text": "{learnerCount, plurale, one {Lerner} other {Learners}}",
+    "partners.snapShut.learners.text": "{learnerCount, plurale, one {Learner} other {Learners}}",
     "courses.text": "{courseCount, plurale, one {Course} other {Courses}}",
     "learners.text": "{learnerCount, number} {learnerCount, plural, one {Lerner} other {Learners}}",
     "courseInfo.prerequisiteDesc.text": "Questo corso ha un prerequisito che deve essere superato con successo\ncompletato prima di iscriverti.",

@@ -1,6 +1,6 @@
 {
     "partners.snapShut.courses.text": "{courseCount, plural, um {Curso} outro {Cursos}}",
-    "partners.snapShut.learners.text": "{learnerCount, plural, um {Lerner} outro {Aprendentes}}",
+    "partners.snapShut.learners.text": "{learnerCount, plural, um {Aluno} outro {Aprendentes}}",
     "partners.snapShut.enrollments.text": "inscrições em cursos edX",
     "total.text": "Total:",
     "recent.text": "Recente",

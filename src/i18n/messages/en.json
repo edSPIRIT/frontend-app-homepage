@@ -63,7 +63,7 @@
     "partners.search.placeholder": "Who are you looking for?",
     "partners.breadcrumb.ourPartners": "Our-Partners",
     "partners.snapShut.courses.text": "{courseCount, plural, one {Course} other {Courses}}",
-    "partners.snapShut.learners.text": "{learnerCount, plural, one {Lerner} other {Learners}}",
+    "partners.snapShut.learners.text": "{learnerCount, plural, one {Learner} other {Learners}}",
     "partners.snapShut.enrollments.text": "enrollments across edX courses",
     "total.text": "Total:",
     "recent.text": "Recent",
@@ -222,5 +222,7 @@
     "overview.activateYourAccount.resendEmail": "Resend Activation Email",
     "overview.activateYourAccount.heading": "Activate Your Account",
     "overview.activateYourAccount.body": "To unlock the full potential of your account and access all features, please click on the activation link sent to your email and activate your account now.",
-    "overview.activateYourAccount.didNotGetEmail": "Didn't get the email? {resendActivationEmail}"
+    "overview.activateYourAccount.didNotGetEmail": "Didn't get the email? {resendActivationEmail}",
+    "no_exact_matches": "We Couldn't find any exact matches",
+    "search.noResult.text": "We couldn't find any exact matches"
 }
