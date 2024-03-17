@@ -7,7 +7,7 @@ const useGetPaidCourses = (courseMetaData) => {
     const id = queryKey[1];
     try {
       const apiRes = await axios.get(
-        `${getConfig().LMS_BASE_URL}/admin-console/api/paid-courses/${id}`,
+        `${getConfig().LMS_BASE_URL}/admin-console/api/paid-courses/${id}/`,
       );
       return apiRes.data;
     } catch (err) {
