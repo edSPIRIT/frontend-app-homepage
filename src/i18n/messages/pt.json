@@ -222,5 +222,6 @@
     "home.activateYourAccount.title": "Reenviar Email de Ativação",
     "home.activateYourAccount.close": "Fechar",
     "home.activateYourAccount.text": "Bem-vindo! Para desbloquear todo o potencial da sua conta e acessar todos os recursos, clique no link de ativação enviado para o seu email e ative sua conta agora.",
-    "courseInfo.registrationHasStart.text": "As inscrições começaram em"
+    "courseInfo.registrationHasStart.text": "As inscrições começaram em",
+    "EUR": "Euro"
 }

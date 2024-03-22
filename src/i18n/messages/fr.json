@@ -222,5 +222,6 @@
     "overview.activateYourAccount.resendEmail": "Renvoyer l'email d'activation",
     "overview.activateYourAccount.heading": "Activez votre compte",
     "overview.activateYourAccount.body": "Pour libérer tout le potentiel de votre compte et accéder à toutes les fonctionnalités, veuillez cliquer sur le lien d'activation envoyé à votre e-mail et activer votre compte maintenant.",
-    "overview.activateYourAccount.didNotGetEmail": "Vous n'avez pas reçu l'e-mail ? {Renvoyer l'email d'activation}"
+    "overview.activateYourAccount.didNotGetEmail": "Vous n'avez pas reçu l'e-mail ? {Renvoyer l'email d'activation}",
+    "EUR": "Euro"
 }

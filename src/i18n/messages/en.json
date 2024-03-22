@@ -45,7 +45,7 @@
     "userCourseCard.viewCourse.text": "View Course",
     "userCourseCard.resumeCourse.text": "Resume Course",
     "userCourseCard.courseStart.text": "Course Start - ",
-    "userCourseCard.unroll.text": "Unroll",
+    "userCourseCard.unroll.text": "Unenroll",
     "overview.recentActivity.text": "Recent Activity",
     "completed.notEnroll.description": "You are not enrolled in any courses yet.",
     "overview.notEnroll.description": "You are not enrolled in any courses yet.",
@@ -136,7 +136,7 @@
     "discover.featuredSubjects.text": "Featured subjects",
     "dashboard.courseInfo.item": "Course Info",
     "dashboard.share.item": "Share",
-    "dashboard.unroll.item": "Unroll",
+    "dashboard.unroll.item": "Unenroll",
     "header.nav.home": "Home",
     "overView.please.text": "Please",
     "overView.logIn.text": "log in",
@@ -223,6 +223,7 @@
     "overview.activateYourAccount.heading": "Activate Your Account",
     "overview.activateYourAccount.body": "To unlock the full potential of your account and access all features, please click on the activation link sent to your email and activate your account now.",
     "overview.activateYourAccount.didNotGetEmail": "Didn't get the email? {resendActivationEmail}",
-    "no_exact_matches": "We Couldn't find any exact matches",
-    "search.noResult.text": "We couldn't find any exact matches"
+    "no_exact_matches": "We couldn't find any exact matches",
+    "search.noResult.text": "We couldn't find any exact matches",
+    "EUR": "Euro"
 }
