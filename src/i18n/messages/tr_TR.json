@@ -211,5 +211,6 @@
     "courseInfo.enrollSuccessAlert.text": "{courseName} kursuna kaydolduğunuz için teşekkür ederiz. Harika bir öğrenme yolculuğuna başlıyorsunuz.",
     "courseInfo.unenrollMessage.text": "Kaydınızı iptal ettiğinizde, kurslarınız panonuzdan kaldırılacaktır",
     "courseInfo.until.text": "Kadar",
-    "courseInfo.then.text": "sonra"
+    "courseInfo.then.text": "sonra",
+    "EUR": "Euro"
 }

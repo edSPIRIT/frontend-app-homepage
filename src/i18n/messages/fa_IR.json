@@ -216,5 +216,14 @@
     "staticpages.errorAtFetch": "خطا در واکشی اطلاعات",
     "IRT": "تومان",
     "EGP": "پوند",
-    "search.noResult.text": "نتوانستیم نتیجه دقیقی پیدا کنیم"
+    "search.noResult.text": "نتوانستیم نتیجه دقیقی پیدا کنیم",
+    "overview.activateYourAccount.resendEmail": "دوباره فرستادن لینک فعال کردن حساب",
+    "home.activateYourAccount.title": "حساب خود را فعال کنید",
+    "home.activateYourAccount.close": "متوجه شدم",
+    "home.activateYourAccount.text": "خوش آمدید!برای دسترسی به همه امکانات ، لطفا روی لینک فعال شدن حساب که برای شما ایمیل شده است کلیک کنید .",
+    "overview.activateYourAccount.heading": "حساب خود را فعال کنید",
+    "overview.activateYourAccount.body": "برای دسترسی به همه امکانات ، لطفا روی لینک فعال کردن حساب کاربری خود که برای شما ایمیل شده است کلیک کنید",
+    "overview.activateYourAccount.didNotGetEmail": "ایمیل را دریافت نکردید؟{resendActivationEmail}",
+    "no_exact_matches": "نتوانستیم مطابقت دقیقی پیدا کنیم",
+    "EUR": "یورو"
 }

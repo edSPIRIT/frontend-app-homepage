@@ -222,5 +222,6 @@
     "courseInfo.purchaseNow.text": "Acquista ora",
     "courseInfo.enrollNow.text": "Iscriviti ora",
     "courseInfo.selfPaced.text": "A tuo ritmo",
-    "courseInfo.verifiedCertificate.text": "Certificato verificato"
+    "courseInfo.verifiedCertificate.text": "Certificato verificato",
+    "EUR": "euro"
 }
