@@ -8,7 +8,7 @@ import React from 'react';
 const CourseAccessTime = ({ courseMetaData }) => {
   const coursePrice = courseMetaData?.paid_course?.price_human_numeric || 0;
   const hasTrial = courseMetaData?.paid_course?.has_trial;
-  let courseCurrency = courseMetaData?.paid_course?.currency || '$';
+  let courseCurrency = courseMetaData?.paid_course?.currency || 'USD';
   // check if courseCurrency is Rials
   courseCurrency = courseCurrency === 'IRR' ? 'IRT' : courseCurrency;
   return hasTrial ? (
@@ -31,7 +31,7 @@ const CourseAccessTime = ({ courseMetaData }) => {
           </span>
           <span className="price-symbol-wrapper ml-1">
             <span className="mr-1">
-              <FormattedMessage id={courseCurrency} />
+              <FormattedMessage id={courseCurrency} defaultMessage="$" />
             </span>
             <span className="mr-1">
               {coursePrice}
