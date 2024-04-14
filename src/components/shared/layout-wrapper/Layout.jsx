@@ -39,6 +39,19 @@ const Layout = ({ children }) => {
   if (isLoading) {
     return <Loading />;
   }
+
+  const handleClientStateChange = (favicn) => {
+    // Remove existing favicon links
+    const existingFavicons = document.querySelectorAll('link[rel="icon"]');
+    existingFavicons.forEach(link => link.parentNode.removeChild(link));
+
+    // Add the new favicon link
+    const link = document.createElement('link');
+    link.rel = 'icon';
+    link.href = favicn; // Assuming newState.link.href contains the new favicon URL
+    document.head.appendChild(link);
+  };
+
   return (
     <Suspense fallback={<Loading />}>
       <Toast
@@ -53,7 +66,7 @@ const Layout = ({ children }) => {
         }`}
       >
         {!getConfigLoading && (
-          <Helmet>
+          <Helmet onChangeClientState={() => handleClientStateChange(favicon)}>
             {/* <link rel="shortcut icon" href={favicon} type="image/x-icon" /> */}
             {/* <link rel="apple-touch-icon" href={favicon} sizes="32x32" /> */}
             <link
