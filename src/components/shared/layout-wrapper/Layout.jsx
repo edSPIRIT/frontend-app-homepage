@@ -55,8 +55,8 @@ const Layout = ({ children }) => {
       >
         {!getConfigLoading && (
           <Helmet>
-            <link rel="shortcut icon" href={favicon} type="image/x-icon" />
-            <link rel="apple-touch-icon" href={favicon} sizes="32x32" />
+            {/* <link rel="shortcut icon" href={favicon} type="image/x-icon" /> */}
+            {/* <link rel="apple-touch-icon" href={favicon} sizes="32x32" /> */}
             {platformName && <title>{`${platformName}`}</title>}
           </Helmet>
         )}
