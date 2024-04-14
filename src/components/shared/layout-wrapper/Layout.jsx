@@ -49,14 +49,22 @@ const Layout = ({ children }) => {
         {message}
       </Toast>
       <div
-        className={`layout-container ${
-          hasPriceWrapper ? 'has-price-wrapper' : ''
+        className={`layout-container ${hasPriceWrapper ? 'has-price-wrapper' : ''
         }`}
       >
         {!getConfigLoading && (
           <Helmet>
             {/* <link rel="shortcut icon" href={favicon} type="image/x-icon" /> */}
             {/* <link rel="apple-touch-icon" href={favicon} sizes="32x32" /> */}
+            <link
+              rel="shortcut icon"
+              href="https://edx-orgs-test.s3.eu-central-1.amazonaws.com/namak/admin_console/images/Favicon.ico?40"
+              type="image/x-icon"
+            />
+            <link
+              rel="apple-touch-icon"
+              href="https://edx-orgs-test.s3.eu-central-1.amazonaws.com/namak/admin_console/images/Favicon.ico?40"
+            />
             {platformName && <title>{`${platformName}`}</title>}
           </Helmet>
         )}
