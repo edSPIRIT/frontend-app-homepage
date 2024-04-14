@@ -30,17 +30,6 @@ const Layout = ({ children }) => {
 
   console.log('>>>>favicon', favicon);
 
-  // const removeOldFavicon = () => {
-  //   const oldFavicon = document.querySelector("link[rel*='icon']");
-  //   if (oldFavicon) {
-  //     oldFavicon.parentNode.removeChild(oldFavicon);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   removeOldFavicon();
-  // }, []);
-
   const hasPriceWrapper = useMemo(
     () => location.pathname.includes('/course'),
     [location],
@@ -66,8 +55,8 @@ const Layout = ({ children }) => {
       >
         {!getConfigLoading && (
           <Helmet>
-            <link rel="shortcut icon" href={favicon} type="image/x-icon" sizes="16x16" />
-            <link rel="apple-touch-icon" href={`${favicon}?${new Date().getTime()}`} type="image/x-icon" sizes="16x16" />
+            <link rel="shortcut icon" href={favicon} type="image/x-icon" />
+            <link rel="apple-touch-icon" href={favicon} sizes="32x32" />
             {platformName && <title>{`${platformName}`}</title>}
           </Helmet>
         )}
