@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { Suspense, useEffect, useMemo } from 'react';
+import React, { Suspense, useEffect, useMemo, useRef } from 'react';
 import { Toast } from '@edx/paragon';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
 
   console.log('>>>>favicon', favicon);
 
-  useEffect(() => {
+  function updateFavicon(rel) {
     // Remove existing favicon link
     const existingFavicon = document.querySelector("link[rel*='icon']");
     if (existingFavicon) {
@@ -39,11 +39,27 @@ const Layout = ({ children }) => {
 
     // Add new favicon link
     const link = document.createElement('link');
-    link.rel = 'apple-touch-icon';
+    link.rel = rel;
     link.type = 'image/x-icon';
-    link.href = 'https://edx-orgs-test.s3.eu-central-1.amazonaws.com/namak/admin_console/images/Favicon.ico?40';
+    // link.href = 'https://edx-orgs-test.s3.eu-central-1.amazonaws.com/namak/admin_console/images/Favicon.ico?v=12';
+    link.href = 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_favicon.png';
     document.getElementsByTagName('head')[0].appendChild(link);
-  }, [favicon]);
+  }
+
+  const scrollTimeoutId = useRef();
+
+  useEffect(() => {
+    scrollTimeoutId.current = setTimeout(() => {
+      updateFavicon('apple-touch-icon');
+      updateFavicon('shortcut icon');
+      updateFavicon('icon');
+    }, 1000);
+    return () => {
+      if (scrollTimeoutId.current !== null) {
+        clearTimeout(scrollTimeoutId.current);
+      }
+    };
+  }, []);
 
   const hasPriceWrapper = useMemo(
     () => location.pathname.includes('/course'),
@@ -54,18 +70,6 @@ const Layout = ({ children }) => {
   if (isLoading) {
     return <Loading />;
   }
-
-  // const handleClientStateChange = (favicn) => {
-  //   // Remove existing favicon links
-  //   const existingFavicons = document.querySelectorAll('link[rel="icon"]');
-  //   existingFavicons.forEach(link => link.parentNode.removeChild(link));
-
-  //   // Add the new favicon link
-  //   const link = document.createElement('link');
-  //   link.rel = 'icon';
-  //   link.href = favicn; // Assuming newState.link.href contains the new favicon URL
-  //   document.head.appendChild(link);
-  // };
 
   return (
     <Suspense fallback={<Loading />}>
@@ -83,16 +87,7 @@ const Layout = ({ children }) => {
         {!getConfigLoading && (
           <Helmet>
             {/* <link rel="shortcut icon" href={favicon} type="image/x-icon" /> */}
-            {/* <link rel="apple-touch-icon" href={favicon} sizes="32x32" /> */}
-            {/* <link
-              rel="shortcut icon"
-              href="https://edx-orgs-test.s3.eu-central-1.amazonaws.com/namak/admin_console/images/Favicon.ico?40"
-              type="image/x-icon"
-            />
-            <link
-              rel="apple-touch-icon"
-              href="https://edx-orgs-test.s3.eu-central-1.amazonaws.com/namak/admin_console/images/Favicon.ico?40"
-            /> */}
+            {/* <link rel="apple-touch-icon" href={favicon} /> */}
             {platformName && <title>{`${platformName}`}</title>}
           </Helmet>
         )}
