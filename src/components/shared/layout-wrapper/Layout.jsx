@@ -41,9 +41,9 @@ const Layout = ({ children }) => {
     const link = document.createElement('link');
     link.rel = 'apple-touch-icon';
     link.type = 'image/x-icon';
-    link.href = favicon;
+    link.href = 'https://edx-orgs-test.s3.eu-central-1.amazonaws.com/namak/admin_console/images/Favicon.ico?40';
     document.getElementsByTagName('head')[0].appendChild(link);
-  }, [favicon]);
+  }, []);
 
   const hasPriceWrapper = useMemo(
     () => location.pathname.includes('/course'),
