@@ -4,8 +4,43 @@
     <title><%= process.env.SITE_NAME %></title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" href="https://edx-orgs-test.s3.eu-central-1.amazonaws.com/namak/admin_console/images/Favicon.ico?40" />
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- <script>
+      // Your JavaScript code here
+      async function getFaviconUrl(url) {
+        try {
+          const response = await fetch(url);
+          console.log(">>>response", response);
+          const html = await response.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const faviconLink = doc.querySelector("link[rel*='icon']");
+          return faviconLink ? faviconLink.href : null;
+        } catch (error) {
+            console.error('Error fetching favicon:', error);
+            return null;
+        }
+      }
+
+      function applyFavicon(faviconUrl) {
+        console.log(">>>>faviconnnn", faviconUrl);
+        if (faviconUrl) {
+          const link = document.createElement('link');
+          link.rel = 'icon';
+          link.href = faviconUrl;
+          document.head.appendChild(link);
+        } else {
+            console.log('No favicon found');
+        }
+      }
+
+      // Example usage
+      const targetUrl = 'http://localhost:2010/admin-console/api/instance-config';
+      getFaviconUrl(targetUrl);
+    </script> -->
   </body>
 </html>
