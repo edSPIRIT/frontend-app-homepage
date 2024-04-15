@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
-import React, { Suspense, useEffect, useMemo, useRef } from 'react';
+import React, {
+  Suspense, useEffect, useMemo, useRef,
+} from 'react';
 import { Toast } from '@edx/paragon';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
