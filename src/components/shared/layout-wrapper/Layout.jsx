@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
     link.type = 'image/x-icon';
     link.href = 'https://edx-orgs-test.s3.eu-central-1.amazonaws.com/namak/admin_console/images/Favicon.ico?40';
     document.getElementsByTagName('head')[0].appendChild(link);
-  }, []);
+  }, [favicon]);
 
   const hasPriceWrapper = useMemo(
     () => location.pathname.includes('/course'),
