@@ -39,7 +39,8 @@ const Layout = ({ children }) => {
 
     // Add new favicon link
     const link = document.createElement('link');
-    link.rel = 'icon';
+    link.rel = 'apple-touch-icon';
+    link.type = 'image/x-icon';
     link.href = favicon;
     document.getElementsByTagName('head')[0].appendChild(link);
   }, [favicon]);
@@ -81,8 +82,8 @@ const Layout = ({ children }) => {
       >
         {!getConfigLoading && (
           <Helmet>
-            <link rel="shortcut icon" href={favicon} type="image/x-icon" />
-            <link rel="apple-touch-icon" href={favicon} sizes="32x32" />
+            {/* <link rel="shortcut icon" href={favicon} type="image/x-icon" /> */}
+            {/* <link rel="apple-touch-icon" href={favicon} sizes="32x32" /> */}
             {/* <link
               rel="shortcut icon"
               href="https://edx-orgs-test.s3.eu-central-1.amazonaws.com/namak/admin_console/images/Favicon.ico?40"
