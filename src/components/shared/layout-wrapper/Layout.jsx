@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, {
-  Suspense, useEffect, useMemo, useRef,
+  Suspense, useMemo,
 } from 'react';
 import { Toast } from '@edx/paragon';
 import { useLocation } from 'react-router-dom';
@@ -30,39 +30,6 @@ const Layout = ({ children }) => {
 
   useUpdateBodyClassName();
 
-  console.log('>>>>favicon', favicon);
-
-  function updateFavicon(rel) {
-    // Remove existing favicon link
-    const existingFavicon = document.querySelector("link[rel*='icon']");
-    if (existingFavicon) {
-      existingFavicon.parentNode.removeChild(existingFavicon);
-    }
-
-    // Add new favicon link
-    const link = document.createElement('link');
-    link.rel = rel;
-    link.type = 'image/x-icon';
-    // link.href = 'https://edx-orgs-test.s3.eu-central-1.amazonaws.com/namak/admin_console/images/Favicon.ico?v=12';
-    link.href = 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_favicon.png';
-    document.getElementsByTagName('head')[0].appendChild(link);
-  }
-
-  const scrollTimeoutId = useRef();
-
-  useEffect(() => {
-    scrollTimeoutId.current = setTimeout(() => {
-      updateFavicon('apple-touch-icon');
-      updateFavicon('shortcut icon');
-      updateFavicon('icon');
-    }, 1000);
-    return () => {
-      if (scrollTimeoutId.current !== null) {
-        clearTimeout(scrollTimeoutId.current);
-      }
-    };
-  }, []);
-
   const hasPriceWrapper = useMemo(
     () => location.pathname.includes('/course'),
     [location],
@@ -88,8 +55,7 @@ const Layout = ({ children }) => {
       >
         {!getConfigLoading && (
           <Helmet>
-            {/* <link rel="shortcut icon" href={favicon} type="image/x-icon" /> */}
-            {/* <link rel="apple-touch-icon" href={favicon} /> */}
+            <link rel="shortcut icon" href={favicon} type="image/x-icon" />
             {platformName && <title>{`${platformName}`}</title>}
           </Helmet>
         )}
