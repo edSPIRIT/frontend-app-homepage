@@ -215,5 +215,6 @@
     "IRT": "IRT",
     "EGP": "EGP",
     "search.noResult.text": "لم نستطع الحصول على تطابق تام",
-    "EUR": "اليورو"
+    "EUR": "اليورو",
+    "courseInfo.invitation.attention": "يتم التسجيل في هذه الدورة عن طريق الدعوة فقط."
 }

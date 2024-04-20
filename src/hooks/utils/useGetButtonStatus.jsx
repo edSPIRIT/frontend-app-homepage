@@ -39,7 +39,7 @@ const useGetButtonStatus = (courseMetaData) => {
       const isEnrollmentOver = courseEnrollEndDate && currentDate > courseEnrollEndDate;
 
       let warningMessage;
-
+      const isActiveInvitation = metadata.invitation_only;
       // check whether user has completed the pre req course or not
       const hasPreReqCourse = () => (courseMetaData?.additional_metadata?.pre_req_courses?.length > 0
         ? isCompletePreReq === false
@@ -95,8 +95,14 @@ const useGetButtonStatus = (courseMetaData) => {
             />
           </>
         );
+      } else if (isActiveInvitation) {
+        warningMessage = (
+          <FormattedMessage
+            id="courseInfo.invitation.attention"
+            defaultMessage="Enrollment in this course is by invitation only."
+          />
+        );
       }
-
       const warningComponent = warningMessage && (
         <div className="d-flex align-items-start">
           <Icon className="mr-1 warning-icon" src={Warning} />
@@ -106,7 +112,7 @@ const useGetButtonStatus = (courseMetaData) => {
 
       setStatus({
         isCourseNotStarted,
-        isEnrollNotActive: isEnrollmentNotStarted || isEnrollmentOver,
+        isEnrollNotActive: isEnrollmentNotStarted || isEnrollmentOver || isActiveInvitation,
         hasPreReqCourse: hasPreReqCourse(),
         warningComponent,
       });
