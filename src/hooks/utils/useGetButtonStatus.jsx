@@ -95,7 +95,7 @@ const useGetButtonStatus = (courseMetaData) => {
             />
           </>
         );
-      } else if (isActiveInvitation) {
+      } else if (isActiveInvitation && !paid_course?.active) {
         warningMessage = (
           <FormattedMessage
             id="courseInfo.invitation.attention"
