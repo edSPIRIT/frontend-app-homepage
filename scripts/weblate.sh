@@ -8,7 +8,7 @@ else
     TOKEN="$WEBLATE_TOKEN"
 fi
 
-supported_languages=("fa_IR" "ar" "en" "es_419" "tr" "es" "hr" "fr" "fr_CA" "de" "it" "pt" "pt_PT" "ro" "sv")  # Define the list of supported languages here
+supported_languages=("fa_IR" "ar" "en" "es_419" "tr" "es" "hr" "fr" "fr_CA" "de" "it" "pt" "pt_PT" "ro" "sv" "zh_HK")  # Define the list of supported languages here
 
 if [ -z "$1" ] || [[ ! "$1" =~ ^--languages=(all|$(
     IFS=\|; echo "${supported_languages[*]}"
