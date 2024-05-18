@@ -100,6 +100,11 @@ export const supportedLanguages = [
     name: '中文 (简体)',
     released: true,
   },
+  {
+    code: 'zh-hk',
+    name: '中文 (香港)',
+    released: true,
+  },
 ];
 
 export const getLangCode = (langName) => supportedLanguages.find((lang) => lang.name === langName)?.code;
