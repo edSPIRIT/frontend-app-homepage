@@ -225,5 +225,6 @@
     "overview.activateYourAccount.didNotGetEmail": "Didn't get the email? {resendActivationEmail}",
     "no_exact_matches": "We couldn't find any exact matches",
     "search.noResult.text": "We couldn't find any exact matches",
-    "EUR": "Euro"
+    "EUR": "Euro",
+    "courseInfo.invitation.attention": "Enrollment in this course is by invitation only."
 }
