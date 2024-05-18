@@ -6,6 +6,7 @@ import caMessages from './messages/ca.json';
 import es419Messages from './messages/es_419.json';
 import frMessages from './messages/fr.json';
 import zhcnMessages from './messages/zh_CN.json';
+import zhhkMessages from './messages/zh_HK.json';
 import heMessages from './messages/he.json';
 import idMessages from './messages/id.json';
 import kokrMessages from './messages/ko_kr.json';
@@ -32,6 +33,7 @@ const messages = {
   'es-419': es419Messages,
   fr: frMessages,
   'zh-cn': zhcnMessages,
+  'zh-hk': zhhkMessages,
   ca: caMessages,
   he: heMessages,
   id: idMessages,
