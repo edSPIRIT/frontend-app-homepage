@@ -113,7 +113,8 @@ const useGetButtonStatus = (courseMetaData) => {
 
       setStatus({
         isCourseNotStarted,
-        isEnrollNotActive: isEnrollmentNotStarted || isEnrollmentOver || isActiveInvitation,
+        isEnrollNotActive: isEnrollmentNotStarted || isEnrollmentOver
+          || (isActiveInvitation && !(paid_course?.active && paid_course?.has_trial)),
         hasPreReqCourse: hasPreReqCourse(),
         warningComponent,
       });
