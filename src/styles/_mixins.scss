@@ -47,6 +47,7 @@
     text-transform: capitalize;
     background-color: $brand !important;
     border-radius: 4px !important;
+    flex-shrink: 0;
   }
   .form-control {
     font-size: $font-size-base-sm;
