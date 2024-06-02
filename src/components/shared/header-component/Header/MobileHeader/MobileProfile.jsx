@@ -69,7 +69,11 @@ const MobileProfile = () => {
           </Nav.Item>
           {hasBilling && (
             <Nav.Item>
-              <Nav.Link href={`https://billing.${getConfig().MARKETING_SITE_BASE_URL}`}>
+              <Nav.Link href={`https://billing.${getConfig().MARKETING_SITE_BASE_URL.replace(
+                'https://',
+                '',
+              )}`}
+              >
                 <FormattedMessage
                   id="header.dropdownOption.orderHistory"
                   defaultMessage="Order History"

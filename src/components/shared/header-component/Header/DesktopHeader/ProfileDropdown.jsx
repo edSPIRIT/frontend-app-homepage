@@ -59,7 +59,10 @@ const ProfileDropdown = () => {
         </Dropdown.Item>
         {hasBilling && (
           <Dropdown.Item
-            href={`https://billing.${getConfig().MARKETING_SITE_BASE_URL}`}
+            href={`https://billing.${getConfig().MARKETING_SITE_BASE_URL.replace(
+              'https://',
+              '',
+            )}`}
           >
             <FormattedMessage
               id="header.dropdownOption.orderHistory"
