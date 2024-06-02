@@ -15,7 +15,6 @@ import handleTPARedirect from '../../../../../utils/handleTPARedirect';
 const MobileProfile = () => {
   const { authenticatedUser } = useContext(AppContext);
   const { hasBilling } = useGetConfig();
-  const baseUrl = new URL(getConfig().LMS_BASE_URL).hostname;
   const { isTPAOnly, TPAQueryparam } = useGetConfig();
 
   return (
@@ -70,7 +69,7 @@ const MobileProfile = () => {
           </Nav.Item>
           {hasBilling && (
             <Nav.Item>
-              <Nav.Link href={`https://billing.${baseUrl}`}>
+              <Nav.Link href={`https://billing.${getConfig().MARKETING_SITE_BASE_URL}`}>
                 <FormattedMessage
                   id="header.dropdownOption.orderHistory"
                   defaultMessage="Order History"
