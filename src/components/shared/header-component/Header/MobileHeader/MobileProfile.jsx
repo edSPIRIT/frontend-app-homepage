@@ -16,6 +16,7 @@ const MobileProfile = () => {
   const { authenticatedUser } = useContext(AppContext);
   const { hasBilling } = useGetConfig();
   const { isTPAOnly, TPAQueryparam } = useGetConfig();
+  const disablePublicAccountCreation = getConfig().ALLOW_PUBLIC_ACCOUNT_CREATION === false;
 
   return (
     <div>
@@ -41,7 +42,7 @@ const MobileProfile = () => {
             >
               <FormattedMessage id="header.signIn" defaultMessage="Sign In" />
             </Button>
-            {!isTPAOnly && (
+            {(disablePublicAccountCreation || !isTPAOnly) && (
               <Button
                 variant="primary"
                 size="sm"
