@@ -28,6 +28,7 @@ const DesktopHeader = ({ intl }) => {
   const {
     headerLogo, loading, isTPAOnly, TPAQueryparam,
   } = useGetConfig();
+  const disablePublicAccountCreation = getConfig().ALLOW_PUBLIC_ACCOUNT_CREATION === false;
 
   const dispatch = useDispatch();
 
@@ -81,7 +82,7 @@ const DesktopHeader = ({ intl }) => {
               >
                 <FormattedMessage id="header.signIn" defaultMessage="Sign In" />
               </Button>
-              {!isTPAOnly && (
+              {(disablePublicAccountCreation || !isTPAOnly) && (
                 <Button
                   variant="primary"
                   size="sm"
