@@ -42,7 +42,7 @@ const MobileProfile = () => {
             >
               <FormattedMessage id="header.signIn" defaultMessage="Sign In" />
             </Button>
-            {(disablePublicAccountCreation || !isTPAOnly) && (
+            {(!disablePublicAccountCreation || !isTPAOnly) && (
               <Button
                 variant="primary"
                 size="sm"
