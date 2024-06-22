@@ -226,5 +226,6 @@
     "overview.activateYourAccount.didNotGetEmail": "ایمیل را دریافت نکردید؟{resendActivationEmail}",
     "no_exact_matches": "نتوانستیم مطابقت دقیقی پیدا کنیم",
     "EUR": "یورو",
-    "courseInfo.invitation.attention": "ثبت نام در این دوره فقط از طریق دعوتنامه می باشد."
+    "courseInfo.invitation.attention": "ثبت نام در این دوره فقط از طریق دعوتنامه می باشد.",
+    "search.Apply.button": "اعمال کردن"
 }
