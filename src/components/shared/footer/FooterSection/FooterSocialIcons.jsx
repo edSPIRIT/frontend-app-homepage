@@ -26,9 +26,9 @@ const FooterSocialIcons = ({ footerData }) => (
         <Icon className="social-icon-footer" src={Facebook} />
       </a>
     )}
-    {footerData?.links?.socials.twitter && (
+    {footerData?.links?.socials.x && (
       <a
-        href={footerData?.links?.socials.twitter}
+        href={footerData?.links?.socials.x}
         target="_blank"
         rel="noreferrer"
       >
