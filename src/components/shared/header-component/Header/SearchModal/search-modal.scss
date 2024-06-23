@@ -16,6 +16,15 @@
   }
 }
 .search-modal {
+
+  .pgn__modal-header {
+    display: none;
+  }
+  
+  .pgn__modal-close-container{
+    display: none;
+  }
+
   h4 {
     color: $gray-500;
     opacity: 0.5;
