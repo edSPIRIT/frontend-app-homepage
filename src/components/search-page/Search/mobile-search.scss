@@ -11,6 +11,15 @@
 }
 
 .filter-modal {
+
+  .pgn__modal-header {
+    display: none;
+  }
+  
+  .pgn__modal-close-container{
+    display: none;
+  }
+
   .pgn__modal-body {
     padding: unset;
     .pgn__modal-body-content {
