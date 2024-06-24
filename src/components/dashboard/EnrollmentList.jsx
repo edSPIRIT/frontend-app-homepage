@@ -36,9 +36,14 @@ const EnrollmentList = ({ type, intl }) => {
     setPage(1);
   }, [type]);
   const { platformName } = useGetConfig();
+
   useEffect(() => {
-    document.title = `Dashboard | ${platformName}`;
-  }, [platformName]);
+    if (type === 'in-progress') {
+      document.title = `${intl.formatMessage(messages['header.nav.inProgress'])} | ${platformName}`;
+    } else {
+      document.title = `${intl.formatMessage(messages['header.nav.completed'])} | ${platformName}`;
+    }
+  }, [intl, platformName, type]);
 
   if (!authenticatedUser) {
     return <LogInFirst />;

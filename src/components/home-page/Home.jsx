@@ -9,19 +9,20 @@ import ExplorerCourses from './home/ExplorerCourses';
 import useGetUserProfile from '../../hooks/useGetUserProfile';
 import sendAccountActivationEmail from '../../utils/sendActivateEmail';
 import useGetConfig from '../../hooks/useGetConfig';
+import messages from '../../messages';
 
 const Home = ({ intl }) => {
   const { platformName } = useGetConfig();
+
   useEffect(() => {
-    document.title = `Homepage | ${platformName}`;
-  }, [platformName]);
+    document.title = `${intl.formatMessage(messages['header.nav.home'])} | ${platformName}`;
+  }, [intl, platformName]);
 
   const { authenticatedUser } = useContext(AppContext);
   const { userProfile, loading: userProfileLoading } = useGetUserProfile();
   const [showAlertModal, setShowAlertModal] = useState(false);
 
   useEffect(() => {
-    document.title = `Dashboard | ${platformName}`;
     if (!userProfileLoading && !userProfile?.is_active && !sessionStorage.getItem('showActivateModal')) {
       setShowAlertModal(true);
     }

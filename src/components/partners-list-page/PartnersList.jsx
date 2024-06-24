@@ -27,8 +27,8 @@ const PartnersList = ({ intl }) => {
   const { partnersSuggestionsResults } = useGetPartnersSuggestions(suggestionQuery);
 
   useEffect(() => {
-    document.title = `Partners | ${platformName}`;
-  }, [platformName]);
+    document.title = `${intl.formatMessage(messages['partners.breadcrumb.ourPartners'])} | ${platformName}`;
+  }, [intl, platformName]);
 
   const {
     count,

@@ -28,9 +28,10 @@ const OverviewPage = ({ intl }) => {
   const isMobile = useMediaQuery({ maxWidth: '768px' });
   const { authenticatedUser } = useContext(AppContext);
   const { platformName } = useGetConfig();
+
   useEffect(() => {
-    document.title = `Dashboard | ${platformName}`;
-  }, [platformName]);
+    document.title = `${intl.formatMessage(messages['header.nav.dashboard'])} | ${platformName}`;
+  }, [intl, platformName]);
 
   if (!authenticatedUser) {
     return <LogInFirst />;
