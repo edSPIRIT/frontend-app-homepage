@@ -133,6 +133,26 @@ const messages = defineMessages({
     id: 'enrollmentSuccessful.title',
     defaultMessage: 'Enrollment Successful!',
   },
+  'header.nav.dashboard': {
+    id: 'header.nav.dashboard',
+    defaultMessage: 'Dashboard',
+  },
+  'header.nav.inProgress': {
+    id: 'header.nav.inProgress',
+    defaultMessage: 'In-Progress',
+  },
+  'header.nav.completed': {
+    id: 'header.nav.completed',
+    defaultMessage: 'Completed',
+  },
+  'header.nav.discover': {
+    id: 'header.nav.discover',
+    defaultMessage: 'Discover',
+  },
+  'header.nav.home': {
+    id: 'header.nav.home',
+    defaultMessage: 'Home',
+  },
   recent: {
     id: 'recent.text',
     defaultMessage: 'Recent',

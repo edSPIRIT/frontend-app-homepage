@@ -12,7 +12,9 @@ const Search = ({ intl }) => {
   const { platformName } = useGetConfig();
 
   useEffect(() => {
-    document.title = `${intl.formatMessage(messages['search.button.text'])} | ${platformName}`;
+    if (intl && platformName) {
+      document.title = `${intl.formatMessage(messages['search.button.text'])} | ${platformName}`;
+    }
   }, [intl, platformName]);
 
   const isMobile = useMediaQuery({ maxWidth: '768px' });

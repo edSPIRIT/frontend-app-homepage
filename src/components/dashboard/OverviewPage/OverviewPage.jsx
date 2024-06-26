@@ -30,7 +30,9 @@ const OverviewPage = ({ intl }) => {
   const { platformName } = useGetConfig();
 
   useEffect(() => {
-    document.title = `${intl.formatMessage(messages['header.nav.dashboard'])} | ${platformName}`;
+    if (intl && platformName) {
+      document.title = `${intl.formatMessage(messages['header.nav.dashboard'])} | ${platformName}`;
+    }
   }, [intl, platformName]);
 
   if (!authenticatedUser) {

@@ -37,7 +37,7 @@ const CourseContainer = ({ courseType }) => {
         </div>
       );
     }
-    if (courses.length === 0) {
+    if (courses?.length === 0) {
       return <EmptyStateCourses />;
     }
     if (isMobile) {

@@ -15,7 +15,9 @@ const Home = ({ intl }) => {
   const { platformName } = useGetConfig();
 
   useEffect(() => {
-    document.title = `${intl.formatMessage(messages['header.nav.home'])} | ${platformName}`;
+    if (intl && platformName) {
+      document.title = `${intl.formatMessage(messages['header.nav.home'])} | ${platformName}`;
+    }
   }, [intl, platformName]);
 
   const { authenticatedUser } = useContext(AppContext);

@@ -20,7 +20,9 @@ const Discover = ({ intl }) => {
   const { platformName } = useGetConfig();
 
   useEffect(() => {
-    document.title = `${intl.formatMessage(messages['header.nav.discover'])} | ${platformName}`;
+    if (intl && platformName) {
+      document.title = `${intl.formatMessage(messages['header.nav.discover'])} | ${platformName}`;
+    }
   }, [intl, platformName]);
 
   return (

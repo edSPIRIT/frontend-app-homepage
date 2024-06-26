@@ -38,10 +38,12 @@ const EnrollmentList = ({ type, intl }) => {
   const { platformName } = useGetConfig();
 
   useEffect(() => {
-    if (type === 'in-progress') {
-      document.title = `${intl.formatMessage(messages['header.nav.inProgress'])} | ${platformName}`;
-    } else {
-      document.title = `${intl.formatMessage(messages['header.nav.completed'])} | ${platformName}`;
+    if (intl && platformName) {
+      if (type === 'in-progress') {
+        document.title = `${intl.formatMessage(messages['header.nav.inProgress'])} | ${platformName}`;
+      } else {
+        document.title = `${intl.formatMessage(messages['header.nav.completed'])} | ${platformName}`;
+      }
     }
   }, [intl, platformName, type]);
 
