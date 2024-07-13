@@ -64,7 +64,7 @@
     "Privacy": "Privacidade",
     "courseInfo.registrationWillStart.text": "As inscrições começarão em",
     "courseInfo.registrationHasEnded.text": "As inscrições terminaram em",
-    "courseInfo.registrationWillEnd.text": "As inscrições terminaram em",
+    "courseInfo.registrationWillEnd.text": "As inscrições terminarão em",
     "courseInfo.courseHasStarted.text": "O curso começou em",
     "cancel.button": "Cancelar",
     "overview.activateYourAccount.resendEmail": "Reenviar Email de Ativação",
@@ -219,9 +219,13 @@
     "staticpages.errorAtFetch": "Ocorreu um erro ao buscar os dados",
     "IRT": "IRT",
     "EGP": "EGP",
-    "home.activateYourAccount.title": "Reenviar Email de Ativação",
+    "home.activateYourAccount.title": "Ative sua conta",
     "home.activateYourAccount.close": "Fechar",
     "home.activateYourAccount.text": "Bem-vindo! Para desbloquear todo o potencial da sua conta e acessar todos os recursos, clique no link de ativação enviado para o seu email e ative sua conta agora.",
     "courseInfo.registrationHasStart.text": "As inscrições começaram em",
-    "EUR": "Euro"
+    "EUR": "Euro",
+    "search.noResult.text": "Não foi possível encontrar correspondências exatas",
+    "no_exact_matches": "Não foi possível encontrar correspondências exatas",
+    "courseInfo.invitation.attention": "A inscrição neste curso é apenas por convite.",
+    "search.Apply.button": "Aplicar"
 }

@@ -18,12 +18,12 @@
     "header.signIn": "登入",
     "header.dropdownOption.signOut": "登出",
     "header.dropdownOption.orderHistory": "訂單歷史",
-    "header.dropdownOption.dashboard": "儀表板",
+    "header.dropdownOption.dashboard": "控制面板",
     "header.dropdownOption.profile": "個人資料",
     "totalCourse.text": "總課程數：",
     "viewAllCourses.button": "查看所有課程",
     "header.dropdown.subjects": "科目",
-    "header.nav.dashboard": "儀表板",
+    "header.nav.dashboard": "控制面板",
     "header.nav.discover": "發現",
     "header.nav.inProgress": "進行中",
     "header.search.placeholder": "你想學什麼？",
@@ -64,7 +64,7 @@
     "inProgress.notEnroll.description": "進行中的課程將顯示在這裡。",
     "completed.notEnroll.title": "你已完成的課程將顯示在這裡。",
     "inProgress.notEnroll.title": "獲得證書 提升職業生涯",
-    "homePage.tab.topCourses": "頂級課程",
+    "homePage.tab.topCourses": "精選課程",
     "homePage.tab.recentlyAdded": "最近新增",
     "popularCourses.secondPartTitle.text": "課程",
     "popularCourses.firstPartTitle.text": "熱門",
@@ -226,6 +226,5 @@
     "overview.activateYourAccount.resendEmail": "重發激活郵件",
     "overview.activateYourAccount.heading": "激活您的帳戶",
     "overview.activateYourAccount.body": "為了解鎖您帳戶的全部潛力並訪問所有功能，請點擊發送到您郵箱的激活鏈接現在就激活您的帳戶。",
-    "overview.activateYourAccount.didNotGetEmail": "沒收到郵件？{resendActivationEmail}",
-    "search.Apply.button": "應用"
+    "overview.activateYourAccount.didNotGetEmail": "沒收到郵件？{resendActivationEmail}"
 }

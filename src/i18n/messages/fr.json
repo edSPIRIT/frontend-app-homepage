@@ -27,7 +27,7 @@
     "header.nav.dashboard": "Tableau de bord",
     "header.nav.discover": "Découvrir",
     "header.nav.inProgress": "En cours",
-    "header.search.placeholder": "Que souhaitez-vous apprendre?",
+    "header.search.placeholder": "Que souhaitez-vous apprendre ?",
     "header.dropdownOption.account": "Compte",
     "header.nav.completed": "Terminé",
     "popularSubjects.viewAllSubjects.button": "Voir tous les sujets",
@@ -217,13 +217,15 @@
     "staticpages.errorAtFetch": "Une erreur s'est produite lors de la récupération des données",
     "home.activateYourAccount.close": "Fermer",
     "IRT": "IRT",
-    "home.activateYourAccount.text": "Accueillir! Pour libérer tout le potentiel de votre compte et accéder à toutes les fonctionnalités, veuillez cliquer sur le lien d'activation envoyé à votre e-mail et activer votre compte maintenant.",
+    "home.activateYourAccount.text": "Accueillir ! Pour libérer tout le potentiel de votre compte et accéder à toutes les fonctionnalités, veuillez cliquer sur le lien d'activation envoyé à votre e-mail et activer votre compte maintenant.",
     "EGP": "EGP",
     "overview.activateYourAccount.resendEmail": "Renvoyer l'email d'activation",
     "overview.activateYourAccount.heading": "Activez votre compte",
     "overview.activateYourAccount.body": "Pour libérer tout le potentiel de votre compte et accéder à toutes les fonctionnalités, veuillez cliquer sur le lien d'activation envoyé à votre e-mail et activer votre compte maintenant.",
     "overview.activateYourAccount.didNotGetEmail": "Vous n'avez pas reçu l'e-mail ? {Renvoyer l'email d'activation}",
     "EUR": "Euro",
-    "search.Apply.button": "Appliquer"
-
+    "search.Apply.button": "Appliquer",
+    "search.noResult.text": "Nous n'avons trouvé aucune correspondance exacte",
+    "no_exact_matches": "Nous n'avons trouvé aucune correspondance exacte",
+    "courseInfo.invitation.attention": "L'inscription à ce cours se fait uniquement sur invitation."
 }
