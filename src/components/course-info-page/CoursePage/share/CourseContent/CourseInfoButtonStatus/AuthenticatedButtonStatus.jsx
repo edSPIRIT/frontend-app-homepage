@@ -2,9 +2,11 @@
 import React from 'react';
 import { Button, Spinner } from '@edx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { useDispatch } from 'react-redux';
 import useEnrollClickHandler from '../../../../../../hooks/useEnrollClickHandler';
 import useGetEnrollmentStatus from '../../../../../../hooks/useGetEnrollmentStatus';
 import GoResumeCourseButton from '../../../../../shared/user-courses/share/GoResumeCourseButton';
+import { setActivatePurchaseAlert } from '../../../../../../redux/slice/activatePurchaseAlertSlice';
 
 const AuthenticatedButtonStatus = ({
   courseMetaData,
@@ -12,6 +14,8 @@ const AuthenticatedButtonStatus = ({
   isEnrollNotActive,
   hasPreReqCourse,
 }) => {
+  const dispatch = useDispatch();
+
   const { isEnrollmentActive, loading } = useGetEnrollmentStatus(
     courseMetaData?.course_id,
   );
@@ -44,7 +48,8 @@ const AuthenticatedButtonStatus = ({
       <Button
         variant="brand"
         className="enroll-btn"
-        onClick={enrollClickHandler}
+        // onClick={enrollClickHandler}
+        onClick={() => dispatch(setActivatePurchaseAlert(true))}
         loading={enrollLoading}
         disabled={!availablePaymentData || isEnrollNotActive}
       >

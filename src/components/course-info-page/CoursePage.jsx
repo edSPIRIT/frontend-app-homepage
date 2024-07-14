@@ -12,9 +12,11 @@ const MobileCourseInfo = React.lazy(() => import('./CoursePage/MobileCourseInfo'
 const FailedPaymentAlert = React.lazy(() => import('./CoursePage/FailedPaymentAlert'));
 const SuccessEnrollAlert = React.lazy(() => import('./CoursePage/share/SuccessEnrollAlert'));
 const InactiveEmailAlert = React.lazy(() => import('./CoursePage/InactiveEmailAlert'));
+const DisablePurchaseAlert = React.lazy(() => import('./CoursePage/DisablePurchaseAlert'));
 
 const CoursePage = () => {
   const activateState = useSelector((state) => state.activateAlert.open);
+  const activatePurchaseState = useSelector((state) => state.activatePurchaseAlert.open);
 
   const { slug } = useParams();
   const { courseMetaData, loading } = useGetCourseMetaData(slug);
@@ -64,6 +66,7 @@ const CoursePage = () => {
         />
       )}
       {activateState && <InactiveEmailAlert activateState={activateState} />}
+      {activatePurchaseState && <DisablePurchaseAlert activateState={activatePurchaseState} />}
     </>
   );
 };

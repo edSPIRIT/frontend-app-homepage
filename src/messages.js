@@ -153,6 +153,10 @@ const messages = defineMessages({
     id: 'header.nav.home',
     defaultMessage: 'Home',
   },
+  'inActivePurchase.alert.title': {
+    id: 'inActivePurchase.alert.title',
+    defaultMessage: 'Temporary Purchase Unavailability',
+  },
   recent: {
     id: 'recent.text',
     defaultMessage: 'Recent',

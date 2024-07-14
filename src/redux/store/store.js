@@ -3,6 +3,7 @@ import sortPartners from '../slice/partnerSlice';
 import sortSearchSlice from '../slice/sortSearchSlice';
 import searchModal from '../slice/searchModalSlice';
 import activateAlert from '../slice/activateAlertSlice';
+import activatePurchaseAlert from '../slice/activatePurchaseAlertSlice';
 import searchPage from '../slice/searchPageSlice';
 import searchFilters from '../slice/searchQuerySlice';
 import recentPages from '../slice/recentPagesSlice';
@@ -20,6 +21,7 @@ const store = configureStore({
     recentPages,
     toast,
     activateAlert,
+    activatePurchaseAlert,
     successEnrollmentAlert,
     unenrollAlert,
   },

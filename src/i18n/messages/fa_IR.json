@@ -227,5 +227,7 @@
     "no_exact_matches": "نتوانستیم مطابقت دقیقی پیدا کنیم",
     "EUR": "یورو",
     "courseInfo.invitation.attention": "ثبت نام در این دوره فقط از طریق دعوتنامه می باشد.",
-    "search.Apply.button": "اعمال کردن"
+    "search.Apply.button": "اعمال کردن",
+    "inActivePurchase.alert.title":"عدم امکان خرید",
+    "courseInfo.inActivePurchase.text":"به دلیل به روز رسانی ارائه خدمات درگاه پرداخت امکان پذیر نمی باشد. لطفا برای دریافت  خدمات و خرید با بخش پشتیبانی تماس بگیرید.از همراهی شما سپاسگزاریم."
 }
