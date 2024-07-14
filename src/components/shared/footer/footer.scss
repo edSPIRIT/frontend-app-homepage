@@ -66,6 +66,9 @@ footer {
     grid-row: 1/2;
   }
   .footer-col3-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     grid-column: 22/27;
     grid-row: 1/2;
   }
