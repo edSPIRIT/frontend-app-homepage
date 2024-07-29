@@ -4,10 +4,17 @@ import useGetFooters from '../../../hooks/useGetFooters';
 import ChooseLanguage from './FooterSection/ChooseLanguage';
 import FooterCopyRight from './FooterSection/FooterCopyRight';
 import FooterSocialIcons from './FooterSection/FooterSocialIcons';
+import { determineDirection } from '../../../utils/determineDirection';
 
 const FooterSection = () => {
   const { footerData } = useGetFooters();
+  const description = footerData?.description ?? '';
+  const firstChar = description.charAt(0);
+  const isRTL = determineDirection(firstChar) === 'rtl';
 
+  const directionStyle = {
+    direction: isRTL ? 'rtl' : 'ltr',
+  };
   return (
     <footer>
       <div className="custom-container mb-4 pt-5">
@@ -21,7 +28,9 @@ const FooterSection = () => {
                   alt="footer-logo"
                 />
               </div>
-              <p>{footerData?.description}</p>
+              <p style={directionStyle}>
+                {description}
+              </p>
             </div>
           </div>
 
