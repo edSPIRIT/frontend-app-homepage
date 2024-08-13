@@ -50,7 +50,7 @@ const SearchFilteredResults = ({ intl }) => {
   }, [location]);
 
   useEffect(() => {
-    history.push(`?q=${searchStringValue}&page=${page}`);
+    history.replace(`?q=${searchStringValue}&page=${page}`);
   }, [page]);
 
   return (

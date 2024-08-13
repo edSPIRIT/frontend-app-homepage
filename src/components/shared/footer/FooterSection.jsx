@@ -34,7 +34,7 @@ const FooterSection = () => {
             </div>
           </div>
 
-          {footerData?.links?.sections[0]?.section_title && (
+          {footerData?.links?.sections?.[0]?.section_title && (
             <div className=" footer-col1-wrapper">
               <h5 className="mb-2.5">
                 {footerData?.links?.sections[0]?.section_title}
@@ -54,7 +54,7 @@ const FooterSection = () => {
             </div>
           )}
 
-          {footerData?.links?.sections[1]?.section_title && (
+          {footerData?.links?.sections?.[1]?.section_title && (
             <div className=" footer-col2-wrapper ">
               <h5 className="mb-2.5">
                 {footerData?.links?.sections[1]?.section_title}
