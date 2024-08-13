@@ -8,16 +8,16 @@ import { ReactComponent as Instagram } from '../../../../assets/instagram.svg';
 
 const FooterSocialIcons = ({ footerData }) => (
   <div className="social-container">
-    {footerData?.links?.socials.linkedin && (
+    {footerData?.links?.socials?.linkedin && (
       <a
-        href={footerData?.links?.socials.linkedin}
+        href={footerData?.links.socials.linkedin}
         target="_blank"
         rel="noreferrer"
       >
         <Icon className="social-icon-footer" src={Linkedin} />
       </a>
     )}
-    {footerData?.links?.socials.facebook && (
+    {footerData?.links?.socials?.facebook && (
       <a
         href={footerData?.links?.socials.facebook}
         target="_blank"
@@ -26,16 +26,16 @@ const FooterSocialIcons = ({ footerData }) => (
         <Icon className="social-icon-footer" src={Facebook} />
       </a>
     )}
-    {footerData?.links?.socials.x && (
+    {footerData?.links?.socials?.x && (
       <a
-        href={footerData?.links?.socials.x}
+        href={footerData?.links.socials.x}
         target="_blank"
         rel="noreferrer"
       >
         <Icon className="social-icon-footer" src={Twitter} />
       </a>
     )}
-    {footerData?.links?.socials.instagram && (
+    {footerData?.links?.socials?.instagram && (
       <a
         href={footerData?.links?.socials.instagram}
         target="_blank"
