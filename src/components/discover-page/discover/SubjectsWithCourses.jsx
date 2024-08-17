@@ -40,6 +40,7 @@ const SubjectsWithCourses = ({
           <div key={subject.slug}>
             <div className="d-flex justify-content-between pb-4 pt-5">
               <h2>{capitalizeFirstLetter(subject.title)}</h2>
+              { subject?.some_of_its_courses?.length > 4 && (
               <Button
                 variant="outline-primary"
                 iconAfter={ArrowForward}
@@ -48,6 +49,7 @@ const SubjectsWithCourses = ({
               >
                 <FormattedMessage id="viewAll.text" defaultMessage="View All" />
               </Button>
+              )}
             </div>
 
             {isMobile ? (
@@ -56,6 +58,7 @@ const SubjectsWithCourses = ({
                   courses={subject?.some_of_its_courses}
                   loading={loading}
                 />
+                { subject?.some_of_its_courses?.length > 1 && (
                 <div className="d-flex justify-content-center pt-4">
                   <Button
                     className="view-all-courses-btn "
@@ -68,6 +71,7 @@ const SubjectsWithCourses = ({
                     />
                   </Button>
                 </div>
+                )}
               </div>
             ) : (
               <div className="course-container">
