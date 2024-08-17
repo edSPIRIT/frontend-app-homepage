@@ -14,13 +14,15 @@ const AboutCourse = ({
   const [show, setShow] = useState(false);
   const contentRef = useRef(null);
   useEffect(() => {
-    if (contentRef.current) {
+    if (contentRef.current && !loading) {
       const height = contentRef.current.offsetHeight;
-      if (height > 99) {
+      if (height > 449) {
         setShow(true);
+      } else {
+        setShow(false);
       }
     }
-  }, [aboutCourse]);
+  }, [aboutCourse, loading]);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -51,7 +53,7 @@ const AboutCourse = ({
             })}
             ref={contentRef}
             style={{
-              maxHeight: isOpen ? 'none' : '100px',
+              maxHeight: isOpen ? 'none' : '450px',
               overflow: 'hidden',
               background:
                 'linear-gradient(to bottom, #ffffff 0%, transparent 100%)',
