@@ -80,7 +80,10 @@ const DropdownNavHeader = () => {
                 variant="outline-primary"
                 iconAfter={ArrowForward}
                 className="mb-2 mb-sm-0"
-                onClick={() => history.push('/search')}
+                onClick={() => {
+                  dispatch(resetSearchFilters());
+                  history.push('/search');
+                }}
               >
                 <FormattedMessage
                   id="viewAllCourses.button"
