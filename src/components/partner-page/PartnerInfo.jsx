@@ -54,7 +54,7 @@ const PartnerInfo = ({ intl }) => {
               },
             ]}
             linkAs={Link}
-            activeLabel={slug}
+            activeLabel={partnerData?.organization?.name}
           />
         </div>
       </div>
