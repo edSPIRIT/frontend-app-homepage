@@ -1,7 +1,7 @@
 import { Icon, Image, Skeleton } from '@edx/paragon';
 import { ArrowForward } from '@edx/paragon/icons';
 import { Link } from 'react-router-dom';
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, getLocale } from '@edx/frontend-platform/i18n';
 import useGetBanner from '../../../hooks/useGetBanner';
 import Highlighted from './HomePageBanner/Highlighted';
 import SearchBox from '../../shared/search-header/SearchHeader/SearchBox';
@@ -9,6 +9,7 @@ import defaultImage from '../../../assets/place-holders/banner-placeholder.svg';
 
 const HomePageBanner = () => {
   const { bannerData, isLoading } = useGetBanner();
+  const currentLang = getLocale();
 
   const renderTitle = () => {
     if (isLoading) {
@@ -17,8 +18,8 @@ const HomePageBanner = () => {
 
     return bannerData?.title ? (
       <Highlighted
-        text={bannerData.title}
-        highlight={bannerData.highlight_word}
+        text={bannerData.title[currentLang]}
+        highlight={bannerData.highlight_word[currentLang]}
       />
     ) : (
       <FormattedMessage
@@ -38,7 +39,7 @@ const HomePageBanner = () => {
 
     return (
       <p className="banner-desc">
-        {bannerData?.description || (
+        {bannerData?.description[currentLang] || (
           <FormattedMessage
             id="banner.welcomeDesc"
             defaultMessage="Welcome message will be appeared here!"

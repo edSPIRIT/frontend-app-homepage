@@ -6,38 +6,38 @@ import { ReactComponent as Facebook } from '../../../../assets/facebook.svg';
 import { ReactComponent as Twitter } from '../../../../assets/twitter.svg';
 import { ReactComponent as Instagram } from '../../../../assets/instagram.svg';
 
-const FooterSocialIcons = ({ footerData }) => (
+const FooterSocialIcons = ({ footerSocialData }) => (
   <div className="social-container">
-    {footerData?.links?.socials?.linkedin && (
+    {footerSocialData?.linkedin && (
       <a
-        href={footerData?.links.socials.linkedin}
+        href={footerSocialData.linkedin}
         target="_blank"
         rel="noreferrer"
       >
         <Icon className="social-icon-footer" src={Linkedin} />
       </a>
     )}
-    {footerData?.links?.socials?.facebook && (
+    {footerSocialData?.facebook && (
       <a
-        href={footerData?.links?.socials.facebook}
+        href={footerSocialData.facebook}
         target="_blank"
         rel="noreferrer"
       >
         <Icon className="social-icon-footer" src={Facebook} />
       </a>
     )}
-    {footerData?.links?.socials?.x && (
+    {footerSocialData?.x && (
       <a
-        href={footerData?.links.socials.x}
+        href={footerSocialData.x}
         target="_blank"
         rel="noreferrer"
       >
         <Icon className="social-icon-footer" src={Twitter} />
       </a>
     )}
-    {footerData?.links?.socials?.instagram && (
+    {footerSocialData?.instagram && (
       <a
-        href={footerData?.links?.socials.instagram}
+        href={footerSocialData.instagram}
         target="_blank"
         rel="noreferrer"
       >
