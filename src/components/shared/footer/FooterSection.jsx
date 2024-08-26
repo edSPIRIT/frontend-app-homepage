@@ -10,7 +10,7 @@ const FooterSection = () => {
   const { footerData } = useGetFooters();
   const currentLang = getLocale();
 
-  const description = footerData?.description[currentLang] ?? '';
+  const description = footerData?.description?.[currentLang] ?? '';
   const firstChar = description.charAt(0);
   const isRTL = determineDirection(firstChar) === 'rtl';
 
@@ -36,13 +36,13 @@ const FooterSection = () => {
             </div>
           </div>
 
-          {footerData?.links[currentLang]?.sections?.[0]?.section_title && (
+          {footerData?.links?.[currentLang]?.sections?.[0]?.section_title && (
             <div className=" footer-col1-wrapper">
               <h5 className="mb-2.5">
-                {footerData?.links[currentLang]?.sections[0]?.section_title}
+                {footerData?.links?.[currentLang]?.sections[0]?.section_title}
               </h5>
               <ul className="list-unstyled">
-                {footerData?.links[currentLang]?.sections[0]?.section_links?.map((nav) => (
+                {footerData?.links?.[currentLang]?.sections[0]?.section_links?.map((nav) => (
                   <li className="mb-2" key={nav.title}>
                     <a className="custom-link" href={nav.link}>
                       <FormattedMessage
@@ -56,13 +56,13 @@ const FooterSection = () => {
             </div>
           )}
 
-          {footerData?.links[currentLang]?.sections?.[1]?.section_title && (
+          {footerData?.links?.[currentLang]?.sections?.[1]?.section_title && (
             <div className=" footer-col2-wrapper ">
               <h5 className="mb-2.5">
-                {footerData?.links[currentLang]?.sections[1]?.section_title}
+                {footerData?.links?.[currentLang]?.sections[1]?.section_title}
               </h5>
               <ul className="list-unstyled">
-                {footerData?.links[currentLang]?.sections[1]?.section_links?.map((nav) => (
+                {footerData?.links?.[currentLang]?.sections[1]?.section_links?.map((nav) => (
                   <li className="mb-2" key={nav.title}>
                     <a className="custom-link" href={nav.link}>
                       <FormattedMessage
@@ -78,7 +78,7 @@ const FooterSection = () => {
 
           <div className=" footer-col3-wrapper ">
             <ChooseLanguage />
-            <FooterSocialIcons footerSocialData={footerData?.links[currentLang]?.socials} />
+            <FooterSocialIcons footerSocialData={footerData?.links?.[currentLang]?.socials} />
           </div>
         </div>
       </div>
