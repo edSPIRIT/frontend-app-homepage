@@ -18,8 +18,8 @@ const HomePageBanner = () => {
 
     return bannerData?.title ? (
       <Highlighted
-        text={bannerData.title[currentLang]}
-        highlight={bannerData.highlight_word[currentLang]}
+        text={bannerData.title?.[currentLang]}
+        highlight={bannerData.highlight_word?.[currentLang]}
       />
     ) : (
       <FormattedMessage
@@ -39,7 +39,7 @@ const HomePageBanner = () => {
 
     return (
       <p className="banner-desc">
-        {bannerData?.description[currentLang] || (
+        {bannerData?.description?.[currentLang] || (
           <FormattedMessage
             id="banner.welcomeDesc"
             defaultMessage="Welcome message will be appeared here!"
