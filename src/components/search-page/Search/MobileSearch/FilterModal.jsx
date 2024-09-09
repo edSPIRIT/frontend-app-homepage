@@ -54,7 +54,7 @@ const FilterModal = ({ isOpenFilter, closeFilter }) => {
         {/* <MobileAvailabilityFilter />
         <MobileLearningTypeFilter /> */}
       </div>
-      <div className="p-4 mt-auto">
+      <div className="p-4 mt-auto position-sticky bottom-0 bg-white">
         <Button variant="brand" className="w-100" onClick={() => closeFilter()}>
           <FormattedMessage id="search.Apply.button" defaultMessage="Apply" />
         </Button>

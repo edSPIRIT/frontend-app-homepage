@@ -93,7 +93,7 @@ const MobileAvailabilityFilter = () => {
                 </Menu>
               </Form.CheckboxSet>
             </Form.Group>
-            <div className="p-4">
+            <div className="p-4 position-sticky bottom-0 bg-white">
               <Button
                 variant="brand"
                 className="w-100"
