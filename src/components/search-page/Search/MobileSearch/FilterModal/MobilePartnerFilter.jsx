@@ -134,7 +134,7 @@ const MobilePartnerFilter = () => {
                 </Menu>
               </Form.CheckboxSet>
             </Form.Group>
-            <div className="p-4 position-sticky bottom-0 bg-white">
+            <div className="p-4 sticky-bottom">
               <Button
                 variant="brand"
                 className="w-100"
