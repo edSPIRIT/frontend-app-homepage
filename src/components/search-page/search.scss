@@ -95,6 +95,7 @@
             .pgn__form-checkbox-input {
               border-color: $brand-500;
               box-shadow: unset;
+              flex-shrink: 0;
             }
           }
         }

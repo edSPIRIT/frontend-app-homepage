@@ -47,6 +47,7 @@ const PartnerCourses = () => {
             <CourseCard course={course} key={course.slug} />
           ))}
       </div>
+      { partnerPopularCourses?.length > 4 && (
       <div className="d-flex justify-content-center">
         <Button
           className="view-all-courses-btn"
@@ -63,6 +64,7 @@ const PartnerCourses = () => {
           />
         </Button>
       </div>
+      )}
     </div>
   );
 };

@@ -60,30 +60,32 @@ const Instructor = () => {
               <CourseCard course={course} key={course.slug} />
             ))}
         </div>
-        <div className="d-flex justify-content-center">
-          {loading ? (
-            <Skeleton
-              width={276}
-              height={44}
-              className="view-all-courses-btn"
-            />
-          ) : (
-            <Button
-              className="view-all-courses-btn"
-              iconAfter={ArrowForward}
-              onClick={() => {
-                dispatch(resetSearchFilters());
-                dispatch(setSearchInstructors([InstructorData?.name]));
-                history.push('/search');
-              }}
-            >
-              <FormattedMessage
-                id="viewAllCourses.button"
-                defaultMessage="View All Courses"
+        {instructorPopularCourses?.length > 4 && (
+          <div className="d-flex justify-content-center">
+            {loading ? (
+              <Skeleton
+                width={276}
+                height={44}
+                className="view-all-courses-btn"
               />
-            </Button>
-          )}
-        </div>
+            ) : (
+              <Button
+                className="view-all-courses-btn"
+                iconAfter={ArrowForward}
+                onClick={() => {
+                  dispatch(resetSearchFilters());
+                  dispatch(setSearchInstructors([InstructorData?.name]));
+                  history.push('/search');
+                }}
+              >
+                <FormattedMessage
+                  id="viewAllCourses.button"
+                  defaultMessage="View All Courses"
+                />
+              </Button>
+            )}
+          </div>
+        )}
       </div>
     </>
   );
