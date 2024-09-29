@@ -16,10 +16,10 @@ const HomePageBanner = () => {
       return <Skeleton />;
     }
 
-    return bannerData?.title ? (
+    return bannerData?.title?.[currentLang] ? (
       <Highlighted
         text={bannerData.title?.[currentLang]}
-        highlight={bannerData.highlight_word?.[currentLang]}
+        highlight={bannerData?.highlight_word?.[currentLang]}
       />
     ) : (
       <FormattedMessage
