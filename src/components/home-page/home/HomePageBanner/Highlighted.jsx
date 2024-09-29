@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
 
 const Highlighted = ({ text, highlight }) => {
-  if (!highlight.trim()) {
+  // Check if highlight is null, undefined, or an empty string
+  if (!highlight || !highlight.trim()) {
     return <span>{text}</span>;
   }
   const regex = new RegExp(`(${escapeRegExp(highlight)})`, 'gi');
