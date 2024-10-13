@@ -42,7 +42,7 @@ const CourseCard = ({ course }) => (
           className="institution-title font-sm"
         >
           <p className="institution-title font-sm">
-            {course?.partner?.organization?.name}
+            {course?.additional_metadata?.org_display_name}
           </p>
         </Link>
       </div>

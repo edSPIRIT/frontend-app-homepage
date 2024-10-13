@@ -50,7 +50,7 @@ const TopCardSection = ({ courseInfo, openMoreBtnModal, certUrl }) => (
         className="mb-3.5 org-title"
         to={`/partners/${courseInfo?.organization?.short_name}`}
       >
-        {courseInfo?.organization?.name}
+        {courseInfo?.course_details?.org_display_name}
       </Link>
       <CourseDateStatus courseInfo={courseInfo} />
     </div>

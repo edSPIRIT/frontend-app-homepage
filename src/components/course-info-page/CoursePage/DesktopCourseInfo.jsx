@@ -45,7 +45,7 @@ const DesktopCourseInfo = () => {
             to={`/partners/${courseMetaData?.partner?.organization?.short_name}`}
             className="course-institution"
           >
-            {courseMetaData?.partner?.organization?.name}
+            {courseMetaData?.additional_metadata?.org_display_name}
           </RouterLink>
         </div>
         <CourseNavItems
