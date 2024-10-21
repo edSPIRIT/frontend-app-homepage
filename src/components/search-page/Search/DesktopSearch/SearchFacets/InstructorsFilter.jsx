@@ -88,7 +88,7 @@ const InstructorsFilter = ({ intl }) => {
                   className="d-flex justify-content-between align-items-center item-wrapper"
                   key={item.slug}
                 >
-                  <MenuItem as={Form.Checkbox} value={item.name}>
+                  <MenuItem as={Form.Checkbox} value={item.slug}>
                     {item.name}
                   </MenuItem>
                   <span className="mr-3">

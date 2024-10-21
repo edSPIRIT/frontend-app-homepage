@@ -2,6 +2,7 @@ import { Button } from '@edx/paragon';
 import { CloseSmall } from '@edx/paragon/icons';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import SubjectFilter from './SearchFacets/SubjectFilter';
 import PartnerFilter from './SearchFacets/PartnerFilter';
 import InstructorsFilter from './SearchFacets/InstructorsFilter';
@@ -15,11 +16,20 @@ import {
   setSearchSubject,
 } from '../../../../redux/slice/searchQuerySlice';
 import { getLangName } from '../../../../utils/transcriptLang';
+import useGetInstructorsFacetInfinite from '../../../../hooks/useGetInstructorsFacetInfinite';
 
 const SearchFacets = () => {
   const filters = useSelector((state) => state.searchFilters);
   const dispatch = useDispatch();
+  const { instructorsFilterItems } = useGetInstructorsFacetInfinite('', true);
 
+  // Create a map of slug to name for quick lookup
+  const instructorSlugToName = React.useMemo(() => instructorsFilterItems.reduce((acc, instructor) => {
+    acc[instructor.slug] = instructor.name;
+    return acc;
+  }, {}), [instructorsFilterItems]);
+
+  console.log(filters);
   return (
     <div className="bg-light-300">
       <div className="d-flex align-items-center custom-container facets-wrapper py-4">
@@ -129,22 +139,22 @@ const SearchFacets = () => {
             </Button>
           ))}
         {filters.instructors.length > 0
-          && filters.instructors.map((badge) => (
+          && filters.instructors.map((slug) => (
             <Button
               variant="outline-light"
               size="sm"
               iconAfter={CloseSmall}
               className="badge-btn mr-2"
-              key={badge}
+              key={slug}
               onClick={() => dispatch(
                 setSearchInstructors(
                   filters.instructors.filter(
-                    (instructor) => instructor !== badge,
+                    (instructor) => instructor !== slug,
                   ),
                 ),
               )}
             >
-              {badge}
+              {instructorSlugToName[slug] || slug}
             </Button>
           ))}
         {filters.language_codes.length > 0
