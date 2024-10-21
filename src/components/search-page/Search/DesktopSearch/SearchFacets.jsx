@@ -29,7 +29,6 @@ const SearchFacets = () => {
     return acc;
   }, {}), [instructorsFilterItems]);
 
-  console.log(filters);
   return (
     <div className="bg-light-300">
       <div className="d-flex align-items-center custom-container facets-wrapper py-4">
