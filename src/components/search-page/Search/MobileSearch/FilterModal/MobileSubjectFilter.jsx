@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import {
@@ -14,11 +15,12 @@ import {
 } from '@edx/paragon';
 import { ArrowBack, ArrowForwardIos } from '@edx/paragon/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormattedMessage, FormattedNumber } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, FormattedNumber, injectIntl } from '@edx/frontend-platform/i18n';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { setSearchSubject } from '../../../../../redux/slice/searchQuerySlice';
 import useSubjectsFacetInfinite from '../../../../../hooks/useSubjectsFacetInfinite';
+import messages from '../../../../../messages';
 
 const MobileSubjectFilter = () => {
   const { ref, inView } = useInView();
@@ -86,7 +88,7 @@ const MobileSubjectFilter = () => {
           <SearchField
             onChange={(value) => setSearchString(value)}
             onSubmit={(value) => setSearchString(value)}
-            placeholder="Find a ..."
+            placeholder={intl.formatMessage(messages['partners.search.find'])}
             inputProps={{
               autoComplete: 'off',
             }}
@@ -174,4 +176,4 @@ const MobileSubjectFilter = () => {
   );
 };
 
-export default MobileSubjectFilter;
+export default injectIntl(MobileSubjectFilter);

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import {
@@ -14,13 +15,14 @@ import {
 } from '@edx/paragon';
 import { ArrowBack, ArrowForwardIos } from '@edx/paragon/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormattedMessage, FormattedNumber } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, FormattedNumber, injectIntl } from '@edx/frontend-platform/i18n';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { setSearchPartners } from '../../../../../redux/slice/searchQuerySlice';
 import useGetPartnersFacetInfinite from '../../../../../hooks/useGetPartnersFacetInfinite';
+import messages from '../../../../../messages';
 
-const MobilePartnerFilter = () => {
+const MobilePartnerFilter = ({ intl }) => {
   const [isOpen, open, close] = useToggle(false);
   const partners = useSelector((state) => state.searchFilters.partners);
   const dispatch = useDispatch();
@@ -83,7 +85,7 @@ const MobilePartnerFilter = () => {
           <SearchField
             onChange={(value) => setSearchString(value)}
             onSubmit={(value) => setSearchString(value)}
-            placeholder="Find a ..."
+            placeholder={intl.formatMessage(messages['partners.search.find'])}
             inputProps={{
               autoComplete: 'off',
             }}
@@ -171,4 +173,4 @@ const MobilePartnerFilter = () => {
   );
 };
 
-export default MobilePartnerFilter;
+export default injectIntl(MobilePartnerFilter);
