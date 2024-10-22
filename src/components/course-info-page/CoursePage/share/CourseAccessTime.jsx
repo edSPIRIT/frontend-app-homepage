@@ -2,11 +2,11 @@
 import {
   FormattedDate,
   FormattedMessage,
+  FormattedNumber,
 } from '@edx/frontend-platform/i18n';
 import React from 'react';
 
 const CourseAccessTime = ({ courseMetaData }) => {
-  const coursePrice = courseMetaData?.paid_course?.price_human_numeric || 0;
   const hasTrial = courseMetaData?.paid_course?.has_trial;
   let courseCurrency = courseMetaData?.paid_course?.currency || 'USD';
   // check if courseCurrency is Rials
@@ -34,7 +34,9 @@ const CourseAccessTime = ({ courseMetaData }) => {
               <FormattedMessage id={courseCurrency} defaultMessage="$" />
             </span>
             <span className="mr-1">
-              {coursePrice}
+              <FormattedNumber
+                value={courseMetaData?.paid_course?.price}
+              />
             </span>
           </span>
         </>

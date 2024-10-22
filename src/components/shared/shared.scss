@@ -351,3 +351,14 @@ p {
     text-decoration: underline !important;
   }
 }
+
+.box-widget-icon{
+  width: 52px !important;
+  height: 52px !important;
+  .widget-icon {
+    margin-right: 25px !important;
+    width: 52px !important;
+    height: 52px !important;
+    margin-top: 10px !important;
+  }
+}

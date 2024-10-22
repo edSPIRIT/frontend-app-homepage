@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, FormattedNumber } from '@edx/frontend-platform/i18n';
 import React from 'react';
 
 const PriceStatus = ({ courseMetaData }) => {
@@ -20,7 +20,9 @@ const PriceStatus = ({ courseMetaData }) => {
           <FormattedMessage id={courseCurrency === 'IRR' ? 'IRT' : courseCurrency} defaultMessage="$" />
         </span>
         <span className="mr-1">
-          {courseMetaData?.paid_course?.price_human_numeric}
+          <FormattedNumber
+            value={courseMetaData?.paid_course?.price}
+          />
         </span>
       </p>
     );
