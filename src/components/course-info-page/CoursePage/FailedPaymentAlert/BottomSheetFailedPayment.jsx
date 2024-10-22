@@ -20,11 +20,8 @@ const BottomSheetFailedPayment = ({
       </div>
       <p className="pb-4">
         <FormattedMessage
-          id="courseInfo.enrollSuccessAlert.text"
-          defaultMessage="Thank you for enrolling in {courseName}. You're on your way to a great learning journey."
-          values={{
-            courseName: courseMetaData?.additional_metadata?.display_name,
-          }}
+          id="courseInfo.unsuccessfulPaymentMessage.text"
+          defaultMessage="Please check your payment details and try again. If the issue persists, feel free to contact our support team for assistance."
         />
       </p>
       <FailedPaymentAlertButtons

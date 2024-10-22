@@ -90,7 +90,7 @@ const ChapterCourse = ({
               {subsection?.units?.map((unit) => (
                 <Button
                   key={unit?.lms_url}
-                  className={classNames('d-flex unit-btn', {
+                  className={classNames('d-flex unit-btn transform-rtl', {
                     'remove-pointer': warningComponent || !isEnrollmentActive,
                   })}
                   onClick={() => handleRedirectToLearning(unit?.lms_url)}
