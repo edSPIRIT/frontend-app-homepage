@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -22,7 +23,7 @@ import { setSearchSubject } from '../../../../../redux/slice/searchQuerySlice';
 import useSubjectsFacetInfinite from '../../../../../hooks/useSubjectsFacetInfinite';
 import messages from '../../../../../messages';
 
-const MobileSubjectFilter = () => {
+const MobileSubjectFilter = ({ intl }) => {
   const { ref, inView } = useInView();
   const [isOpen, open, close] = useToggle(false);
   const subjects = useSelector((state) => state.searchFilters.subjects);

@@ -60,12 +60,12 @@ const MobileSearch = ({ intl }) => {
             (<FormattedNumber value={searchResultsCount} />)
           </p>
         </div>
-        <div className="font-sm mobile-filter-sort-wrapper">
+        <div className="font-sm mobile-filter-sort-wrapper d-flex align-items-center">
           <div
-            className="d-flex align-items-center justify-content-center py-2 my-2"
+            className="d-flex align-items-center justify-content-center py-2 my-2 flex-basis-50"
             onClick={openFilter}
           >
-            <Icon className="text-light-500" src={FilterList} />
+            <Icon className="text-light-500 mr-1" src={FilterList} />
             <FormattedMessage id="filters.text" defaultMessage="Filters" />
             {Object.keys(cleanedFilters).length > 0 && (
               <span className="text-brand-500 font-weight-bold ml-1">
@@ -74,10 +74,19 @@ const MobileSearch = ({ intl }) => {
             )}
           </div>
           <div
-            className="d-flex align-items-center justify-content-center py-2 my-2"
+            className="vertical-separator"
+            style={{
+              width: '1px',
+              height: '24px',
+              backgroundColor: '#e0e0e0',
+              margin: '0 8px',
+            }}
+          />
+          <div
+            className="d-flex align-items-center justify-content-center py-2 my-2 flex-basis-50"
             onClick={open}
           >
-            <Icon className="text-light-500" src={Sort} />
+            <Icon className="text-light-500 mr-1" src={Sort} />
             <FormattedMessage id="sortBy.text" defaultMessage="Sort by:" />
             <span className="text-primary-500 font-weight-bold ml-1">
               {sortState === ''
