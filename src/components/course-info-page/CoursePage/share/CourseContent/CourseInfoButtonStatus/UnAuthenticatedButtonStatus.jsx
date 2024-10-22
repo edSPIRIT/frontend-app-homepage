@@ -7,7 +7,7 @@ import handleTPARedirect from '../../../../../../utils/handleTPARedirect';
 import useEnrollClickHandler from '../../../../../../hooks/useEnrollClickHandler';
 import useGetConfig from '../../../../../../hooks/useGetConfig';
 
-const UnAuthenticatedButtonStatus = ({ courseMetaData, isEnrollNotActive }) => {
+const UnAuthenticatedButtonStatus = ({ courseMetaData, isEnrollNotActive, isEnrollmentFull }) => {
   const { availablePaymentData } = useEnrollClickHandler(courseMetaData);
   const { isTPAOnly, TPAQueryparam } = useGetConfig();
 
@@ -20,7 +20,7 @@ const UnAuthenticatedButtonStatus = ({ courseMetaData, isEnrollNotActive }) => {
         variant="brand"
         className="enroll-btn"
         onClick={() => (isTPAOnly ? handleTPARedirect(TPAQueryparam) : handleRedirect())}
-        disabled={!availablePaymentData || isEnrollNotActive}
+        disabled={!availablePaymentData || isEnrollNotActive || isEnrollmentFull}
       >
         <FormattedMessage
           id="courseInfo.purchaseNow.text"
@@ -34,7 +34,7 @@ const UnAuthenticatedButtonStatus = ({ courseMetaData, isEnrollNotActive }) => {
       variant="brand"
       className="enroll-btn"
       onClick={() => (isTPAOnly ? handleTPARedirect(TPAQueryparam) : handleRedirect())}
-      disabled={isEnrollNotActive}
+      disabled={isEnrollNotActive || isEnrollmentFull}
     >
       <FormattedMessage
         id="courseInfo.enrollNow.text"

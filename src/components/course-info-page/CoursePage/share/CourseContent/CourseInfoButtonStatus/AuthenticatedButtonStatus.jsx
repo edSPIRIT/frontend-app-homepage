@@ -11,6 +11,7 @@ const AuthenticatedButtonStatus = ({
   isCourseNotStarted,
   isEnrollNotActive,
   hasPreReqCourse,
+  isEnrollmentFull,
 }) => {
   const { isEnrollmentActive, loading } = useGetEnrollmentStatus(
     courseMetaData?.course_id,
@@ -48,7 +49,7 @@ const AuthenticatedButtonStatus = ({
         // when purchase is unavailable this modal should active
         // onClick={() => dispatch(setActivatePurchaseAlert(true))}
         loading={enrollLoading}
-        disabled={!availablePaymentData || isEnrollNotActive}
+        disabled={!availablePaymentData || isEnrollNotActive || isEnrollmentFull}
       >
         <FormattedMessage
           id="courseInfo.purchaseNow.text"
@@ -63,7 +64,7 @@ const AuthenticatedButtonStatus = ({
       className="enroll-btn"
       onClick={enrollClickHandler}
       loading={enrollLoading}
-      disabled={isEnrollNotActive}
+      disabled={isEnrollNotActive || isEnrollmentFull}
     >
       <FormattedMessage
         id="courseInfo.enrollNow.text"

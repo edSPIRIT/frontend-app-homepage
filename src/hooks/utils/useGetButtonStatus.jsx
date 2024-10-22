@@ -45,7 +45,19 @@ const useGetButtonStatus = (courseMetaData) => {
         ? isCompletePreReq === false
         : false);
 
-      if (isEnrollmentActive && isCourseNotStarted) {
+      // New code to check for maximum enrollment
+      const maxEnrollments = metadata?.max_enrollments;
+      const totalEnrollments = metadata?.total_enrollments;
+      const isEnrollmentFull = maxEnrollments !== null && totalEnrollments >= maxEnrollments;
+
+      if (isEnrollmentFull && !isEnrollmentActive) {
+        warningMessage = (
+          <FormattedMessage
+            id="courseInfo.maxEnrollment.attention"
+            defaultMessage="This course has reached its maximum enrollment capacity. You cannot enroll at this time."
+          />
+        );
+      } else if (isEnrollmentActive && isCourseNotStarted) {
         warningMessage = (
           <FormattedMessage
             id="courseInfo.starCourseDate.attention"
@@ -113,10 +125,11 @@ const useGetButtonStatus = (courseMetaData) => {
 
       setStatus({
         isCourseNotStarted,
-        isEnrollNotActive: isEnrollmentNotStarted || isEnrollmentOver
-          || (isActiveInvitation && !paid_course?.active),
+        isEnrollNotActive: (isEnrollmentNotStarted || isEnrollmentOver
+          || (isActiveInvitation && !paid_course?.active) || (isEnrollmentFull && !isEnrollmentActive)),
         hasPreReqCourse: hasPreReqCourse(),
         warningComponent,
+        isEnrollmentFull: isEnrollmentFull && !isEnrollmentActive,
       });
     }
   }, [

@@ -11,6 +11,7 @@ const MobilePriceWrapper = ({ courseMetaData }) => {
     isEnrollNotActive,
     hasPreReqCourse,
     warningComponent,
+    isEnrollmentFull,
   } = useGetButtonStatus(courseMetaData);
 
   return (
@@ -29,6 +30,8 @@ const MobilePriceWrapper = ({ courseMetaData }) => {
             isCourseNotStarted={isCourseNotStarted}
             isEnrollNotActive={isEnrollNotActive}
             hasPreReqCourse={hasPreReqCourse}
+            isEnrollmentFull={isEnrollmentFull}
+
           />
         </div>
       </div>

@@ -23,6 +23,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
     isEnrollNotActive,
     hasPreReqCourse,
     warningComponent,
+    isEnrollmentFull,
   } = useGetButtonStatus(courseMetaData);
 
   return (
@@ -70,6 +71,7 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
                 isCourseNotStarted={isCourseNotStarted}
                 isEnrollNotActive={isEnrollNotActive}
                 hasPreReqCourse={hasPreReqCourse}
+                isEnrollmentFull={isEnrollmentFull}
               />
               {courseMetaData?.additional_metadata?.total_enrollments && (
                 <p className="mt-3">
