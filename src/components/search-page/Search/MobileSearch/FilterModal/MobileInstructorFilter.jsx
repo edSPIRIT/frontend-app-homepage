@@ -119,7 +119,7 @@ const MobileInstructorFilter = ({ intl }) => {
                     >
                       <MenuItem
                         as={Form.Checkbox}
-                        value={item.name}
+                        value={item.slug}
                         className="pl-2"
                       >
                         {item.name}
