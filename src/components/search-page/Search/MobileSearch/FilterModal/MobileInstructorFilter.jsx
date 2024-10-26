@@ -40,6 +40,11 @@ const MobileInstructorFilter = ({ intl }) => {
   const [searchString, setSearchString] = useState('');
   const { instructorsFilterItems, loading, isFetching } = useGetInstructorsFacetInfinite(searchString, inView);
 
+  // Filter out duplicate instructor names
+  const uniqueInstructors = instructorsFilterItems?.filter(
+    (item, index, self) => index === self.findIndex((t) => t.name === item.name),
+  );
+
   const handleChange = (e) => {
     if (e.target.checked) {
       add(e.target.value);
@@ -104,7 +109,7 @@ const MobileInstructorFilter = ({ intl }) => {
                 value={instructorValues}
               >
                 <Menu>
-                  {instructorsFilterItems?.length === 0 && searchString && (
+                  {uniqueInstructors?.length === 0 && searchString && (
                     <span className="text-gray-500 no-result">
                       <FormattedMessage
                         id="search.noResult.text"
@@ -112,7 +117,7 @@ const MobileInstructorFilter = ({ intl }) => {
                       />
                     </span>
                   )}
-                  {instructorsFilterItems?.map((item) => (
+                  {uniqueInstructors?.map((item) => (
                     <div
                       className="d-flex justify-content-between align-items-center item-wrapper"
                       key={item.slug}
@@ -120,7 +125,7 @@ const MobileInstructorFilter = ({ intl }) => {
                       <MenuItem
                         as={Form.Checkbox}
                         value={item.slug}
-                        className="pl-2"
+                        className="pl-2 truncate-mobile-text"
                       >
                         {item.name}
                       </MenuItem>

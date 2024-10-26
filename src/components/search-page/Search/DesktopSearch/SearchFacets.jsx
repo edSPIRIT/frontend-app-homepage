@@ -2,7 +2,6 @@ import { Button } from '@edx/paragon';
 import { CloseSmall } from '@edx/paragon/icons';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import { useDispatch, useSelector } from 'react-redux';
-import React from 'react';
 import SubjectFilter from './SearchFacets/SubjectFilter';
 import PartnerFilter from './SearchFacets/PartnerFilter';
 import InstructorsFilter from './SearchFacets/InstructorsFilter';
@@ -16,18 +15,10 @@ import {
   setSearchSubject,
 } from '../../../../redux/slice/searchQuerySlice';
 import { getLangName } from '../../../../utils/transcriptLang';
-import useGetInstructorsFacetInfinite from '../../../../hooks/useGetInstructorsFacetInfinite';
 
 const SearchFacets = () => {
   const filters = useSelector((state) => state.searchFilters);
   const dispatch = useDispatch();
-  const { instructorsFilterItems } = useGetInstructorsFacetInfinite('', true);
-
-  // Create a map of slug to name for quick lookup
-  const instructorSlugToName = React.useMemo(() => instructorsFilterItems.reduce((acc, instructor) => {
-    acc[instructor.slug] = instructor.name;
-    return acc;
-  }, {}), [instructorsFilterItems]);
 
   return (
     <div className="bg-light-300">
@@ -138,22 +129,22 @@ const SearchFacets = () => {
             </Button>
           ))}
         {filters.instructors.length > 0
-          && filters.instructors.map((slug) => (
+          && filters.instructors.map((badge) => (
             <Button
               variant="outline-light"
               size="sm"
               iconAfter={CloseSmall}
               className="badge-btn mr-2"
-              key={slug}
+              key={badge}
               onClick={() => dispatch(
                 setSearchInstructors(
                   filters.instructors.filter(
-                    (instructor) => instructor !== slug,
+                    (instructor) => instructor !== badge,
                   ),
                 ),
               )}
             >
-              {instructorSlugToName[slug] || slug}
+              {badge}
             </Button>
           ))}
         {filters.language_codes.length > 0

@@ -26,6 +26,12 @@ const InstructorsFilter = ({ intl }) => {
   const dispatch = useDispatch();
   const [searchString, setSearchString] = useState('');
   const { instructorsFilterItems, loading, isFetching } = useGetInstructorsFacetInfinite(searchString, inView);
+
+  // Filter out duplicate instructor names
+  const uniqueInstructors = instructorsFilterItems?.filter(
+    (item, index, self) => index === self.findIndex((t) => t.name === item.name),
+  );
+
   return (
     <Dropdown autoClose="outside" className="facet-btn  mr-3" key="subject">
       <Dropdown.Toggle
@@ -83,12 +89,12 @@ const InstructorsFilter = ({ intl }) => {
                   />
                 </span>
               )}
-              {instructorsFilterItems?.map((item) => (
+              {uniqueInstructors?.map((item) => (
                 <div
                   className="d-flex justify-content-between align-items-center item-wrapper"
                   key={item.slug}
                 >
-                  <MenuItem as={Form.Checkbox} value={item.slug}>
+                  <MenuItem className="truncate-text" as={Form.Checkbox} value={item.name}>
                     {item.name}
                   </MenuItem>
                   <span className="mr-3">

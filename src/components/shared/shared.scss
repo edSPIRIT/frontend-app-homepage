@@ -362,3 +362,14 @@ p {
     margin-top: 10px !important;
   }
 }
+.truncate-text,
+.truncate-mobile-text {
+  width: unset !important;
+  label span {
+    white-space: unset !important;
+    text-align: start !important;
+  }
+}
+.truncate-text {
+  min-width: 288px !important;
+}

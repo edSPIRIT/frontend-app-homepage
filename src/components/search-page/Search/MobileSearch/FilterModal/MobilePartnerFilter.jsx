@@ -34,6 +34,11 @@ const MobilePartnerFilter = ({ intl }) => {
   const { ref, inView } = useInView();
   const { partnersFilterItems, loading, isFetching } = useGetPartnersFacetInfinite(searchString, inView);
 
+  // Filter out duplicate partner names
+  const uniquePartners = partnersFilterItems?.filter(
+    (item, index, self) => index === self.findIndex((t) => t.organization.name === item.organization.name),
+  );
+
   const handleChange = (e) => {
     if (e.target.checked) {
       add(e.target.value);
@@ -98,7 +103,7 @@ const MobilePartnerFilter = ({ intl }) => {
                 value={partnerValues}
               >
                 <Menu>
-                  {partnersFilterItems?.length === 0 && searchString && (
+                  {uniquePartners?.length === 0 && searchString && (
                     <span className="text-gray-500 no-result">
                       <FormattedMessage
                         id="search.noResult.text"
@@ -106,7 +111,7 @@ const MobilePartnerFilter = ({ intl }) => {
                       />
                     </span>
                   )}
-                  {partnersFilterItems?.map((item) => (
+                  {uniquePartners?.map((item) => (
                     <div
                       className="d-flex justify-content-between align-items-center item-wrapper"
                       key={item.organization.id}
