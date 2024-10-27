@@ -33,7 +33,7 @@ const AvailabilityFilter = () => (
                 className="d-flex justify-content-between align-items-center item-wrapper"
                 key={item.id}
               >
-                <MenuItem as={Form.Checkbox} value={item.title}>
+                <MenuItem className="truncate-text" as={Form.Checkbox} value={item.title}>
                   {item.title}
                 </MenuItem>
                 <span className="mr-3">{item.count}</span>

@@ -91,7 +91,7 @@ const PartnerFilter = ({ intl }) => {
                   className="d-flex justify-content-between align-items-center item-wrapper"
                   key={item.organization.id}
                 >
-                  <MenuItem as={Form.Checkbox} value={item.organization.name}>
+                  <MenuItem className="truncate-text" as={Form.Checkbox} value={item.organization.name}>
                     {item.organization.name}
                   </MenuItem>
                   <span className="mr-3">

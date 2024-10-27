@@ -66,7 +66,7 @@ const LanguageFilter = () => {
                   className="d-flex justify-content-between align-items-center item-wrapper"
                   key={item.code}
                 >
-                  <MenuItem as={Form.Checkbox} value={item.name}>
+                  <MenuItem className="truncate-text" as={Form.Checkbox} value={item.name}>
                     {item.name}
                   </MenuItem>
                   <span className="mr-3">

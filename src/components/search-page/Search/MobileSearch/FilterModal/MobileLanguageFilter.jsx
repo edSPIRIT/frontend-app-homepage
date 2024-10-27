@@ -94,7 +94,7 @@ const MobileLanguageFilter = () => {
                       <MenuItem
                         as={Form.Checkbox}
                         value={item.name}
-                        className="pl-2"
+                        className="pl-2 truncate-mobile-text"
                       >
                         {item.name}
                       </MenuItem>

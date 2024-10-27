@@ -117,7 +117,7 @@ const MobilePartnerFilter = ({ intl }) => {
                       key={item.organization.id}
                     >
                       <MenuItem
-                        className="pl-2"
+                        className="pl-2 truncate-mobile-text"
                         as={Form.Checkbox}
                         value={item.organization.name}
                       >
