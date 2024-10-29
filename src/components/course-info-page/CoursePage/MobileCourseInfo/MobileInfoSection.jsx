@@ -25,26 +25,24 @@ const MobileInfoSection = ({ courseMetaData }) => {
 
         <CourseDateInfo courseMetaData={courseMetaData} />
 
-        {courseMetaData?.additional_metadata?.total_enrollments && (
+        {courseMetaData?.additional_metadata?.total_enrollments !== undefined && (
           <div className="d-flex align-items-start mb-2">
             <Icon className="card-icon" src={InfoOutline} />
-            {courseMetaData?.additional_metadata?.total_enrollments && (
-              <p>
-                <span className="mr-1">
-                  <FormattedNumber
-                    value={
-                      courseMetaData?.additional_metadata?.total_enrollments
-                    }
-                  />
-                </span>
-                <span className="font-sm">
-                  <FormattedMessage
-                    id="courseInfo.alreadyEnrolled.text"
-                    defaultMessage="already enrolled!"
-                  />
-                </span>{' '}
-              </p>
-            )}
+            <p>
+              <span className="mr-1">
+                <FormattedNumber
+                  value={
+                    courseMetaData?.additional_metadata?.total_enrollments ?? 0
+                  }
+                />
+              </span>
+              <span className="font-sm">
+                <FormattedMessage
+                  id="courseInfo.alreadyEnrolled.text"
+                  defaultMessage="already enrolled!"
+                />
+              </span>
+            </p>
           </div>
         )}
         {courseMetaData?.additional_metadata?.last_modification_date && (

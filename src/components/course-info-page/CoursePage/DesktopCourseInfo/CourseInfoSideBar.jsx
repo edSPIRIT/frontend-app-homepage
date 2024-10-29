@@ -73,23 +73,21 @@ const CourseInfoSideBar = ({ courseMetaData, loading }) => {
                 hasPreReqCourse={hasPreReqCourse}
                 isEnrollmentFull={isEnrollmentFull}
               />
-              {courseMetaData?.additional_metadata?.total_enrollments && (
-                <p className="mt-3">
-                  <span className="mr-1">
-                    <FormattedNumber
-                      value={
-                        courseMetaData?.additional_metadata?.total_enrollments
-                      }
-                    />
-                  </span>
-                  <span className="font-sm">
-                    <FormattedMessage
-                      id="courseInfo.alreadyEnrolled.text"
-                      defaultMessage="already enrolled!"
-                    />
-                  </span>{' '}
-                </p>
-              )}
+              <p className="mt-3">
+                <span className="mr-1">
+                  <FormattedNumber
+                    value={
+                      courseMetaData?.additional_metadata?.total_enrollments ?? 0
+                    }
+                  />
+                </span>
+                <span className="font-sm">
+                  <FormattedMessage
+                    id="courseInfo.alreadyEnrolled.text"
+                    defaultMessage="already enrolled!"
+                  />
+                </span>
+              </p>
             </div>
           </Card.Footer>
         </Card>
