@@ -18,7 +18,24 @@ const useGetPopularSubjects = () => {
     return apiRes.json();
   };
 
-  const { data, isLoading } = useQuery('Subjects', fetchSubjects);
+  const processResults = (results) => {
+    let limit;
+    if (results.length > 10) {
+      limit = 10;
+    } else if (results.length >= 5) {
+      limit = 5;
+    } else {
+      limit = results.length;
+    }
+    return results.slice(0, limit);
+  };
+
+  const { data, isLoading } = useQuery('Subjects', fetchSubjects, {
+    select: (responseData) => ({
+      ...responseData,
+      results: processResults(responseData.results),
+    }),
+  });
 
   // useEffect(() => {
   //   const processResults = (results) => {
