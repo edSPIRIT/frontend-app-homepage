@@ -33,7 +33,12 @@ detect_changed_source_translations:
 	git diff --exit-code $(i18n)
 
 # Pulls translations from Transifex.
-pull_translations:
+pull_weblate_translations:
 	# export WEBLATE_TOKEN environment variable in your terminal
 	chmod +x ./scripts/weblate.sh
 	./scripts/weblate.sh --languages=$(supported_langs)
+
+pull_translations:
+	echo "This command will be used by Atlas to pull translations."
+	echo "We use a private weblate for our translations."
+	echo "Use make pull_weblate_translations"
