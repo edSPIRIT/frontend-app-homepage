@@ -1,10 +1,16 @@
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import { Skeleton } from '@edx/paragon';
+import { Button, Skeleton } from '@edx/paragon';
+import { ArrowForward } from '@edx/paragon/icons';
+import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
 import useGetPopularSubjects from '../../../hooks/useGetPopularSubjects';
 import PopularSubjects from './PopularSubjectsWrapper/PopularSubjects';
+import { resetSearchFilters } from '../../../redux/slice/searchQuerySlice';
 
 const PopularSubjectsWrapper = () => {
   const { popularSubjects, loading } = useGetPopularSubjects();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   if (loading) {
     return (
@@ -48,6 +54,21 @@ const PopularSubjectsWrapper = () => {
         </div>
 
         <PopularSubjects popularSubjects={popularSubjects} />
+        <div className="d-flex justify-content-center">
+          <Button
+            className="view-all-courses-btn mt-5"
+            iconAfter={ArrowForward}
+            onClick={() => {
+              dispatch(resetSearchFilters());
+              history.push('/discover');
+            }}
+          >
+            <FormattedMessage
+              id="popularSubjects.viewAllSubjects.button"
+              defaultMessage="View All Subjects"
+            />
+          </Button>
+        </div>
       </div>
     </section>
   ) : null;

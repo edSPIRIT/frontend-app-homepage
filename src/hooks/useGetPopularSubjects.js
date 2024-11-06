@@ -20,7 +20,7 @@ const useGetPopularSubjects = () => {
 
   const processResults = (results) => {
     let limit;
-    if (results.length > 10) {
+    if (results.length >= 10) {
       limit = 10;
     } else if (results.length >= 5) {
       limit = 5;
