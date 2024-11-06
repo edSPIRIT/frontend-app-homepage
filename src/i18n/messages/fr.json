@@ -227,5 +227,6 @@
     "search.Apply.button": "Appliquer",
     "search.noResult.text": "Nous n'avons trouvé aucune correspondance exacte",
     "no_exact_matches": "Nous n'avons trouvé aucune correspondance exacte",
-    "courseInfo.invitation.attention": "L'inscription à ce cours se fait uniquement sur invitation."
+    "courseInfo.invitation.attention": "L'inscription à ce cours se fait uniquement sur invitation.",
+    "AED": "AED"
 }

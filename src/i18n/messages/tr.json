@@ -227,5 +227,6 @@
     "overview.activateYourAccount.heading": "Hesabınızı Etkinleştirin",
     "overview.activateYourAccount.body": "Hesabınızın tüm potansiyelini ortaya çıkarmak ve tüm özelliklere erişmek için lütfen e-postanıza gönderilen aktivasyon bağlantısına tıklayın ve hesabınızı şimdi etkinleştirin.",
     "overview.activateYourAccount.didNotGetEmail": "E-postayı almadınız mı? {Aktivasyon mailini yeniden gönder}",
-    "search.Apply.button": "Uygula"
+    "search.Apply.button": "Uygula",
+    "AED": "AED"
 }

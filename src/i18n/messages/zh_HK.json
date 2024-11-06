@@ -226,5 +226,7 @@
     "overview.activateYourAccount.resendEmail": "重發激活郵件",
     "overview.activateYourAccount.heading": "激活您的帳戶",
     "overview.activateYourAccount.body": "為了解鎖您帳戶的全部潛力並訪問所有功能，請點擊發送到您郵箱的激活鏈接現在就激活您的帳戶。",
-    "overview.activateYourAccount.didNotGetEmail": "沒收到郵件？{resendActivationEmail}"
+    "overview.activateYourAccount.didNotGetEmail": "沒收到郵件？{resendActivationEmail}",
+    "AED": "AED",
+    "search.Apply.button": "申請"
 }

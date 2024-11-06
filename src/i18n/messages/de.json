@@ -227,5 +227,6 @@
     "search.noResult.text": "Wir konnten keine genauen Übereinstimmungen finden",
     "no_exact_matches": "Wir konnten keine genauen Übereinstimmungen finden",
     "courseInfo.invitation.attention": "Die Anmeldung zu diesem Kurs erfolgt nur auf Einladung.",
-    "search.Apply.button": "Anwenden"
+    "search.Apply.button": "Anwenden",
+    "AED": "AED"
 }

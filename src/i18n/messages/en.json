@@ -17,7 +17,7 @@
     "header.search.placeholder": "What do you want to learn?",
     "header.dropdownOption.account": "Account",
     "header.nav.completed": "Completed",
-    "popularSubjects.viewAllSubjects.button": "View all subjects",
+    "popularSubjects.viewAllSubjects.button": "View All Subjects",
     "popularSubjects.secondPartTitle.text": "Subjects",
     "popularSubjects.firstPartTitle.text": "Popular",
     "banner.exploreNewCourses.text": "Explore New Courses",
@@ -228,5 +228,6 @@
     "EUR": "Euro",
     "courseInfo.invitation.attention": "Enrollment in this course is by invitation only.",
     "search.Apply.button": "Apply",
-    "AED": "AED"
+    "AED": "AED",
+    "courseInfo.maxEnrollment.attention": "This course has reached its maximum enrollment capacity. You cannot enroll at this time."
 }

@@ -227,5 +227,6 @@
     "search.noResult.text": "No pudimos encontrar coincidencias exactas",
     "no_exact_matches": "No pudimos encontrar coincidencias exactas",
     "courseInfo.invitation.attention": "La inscripción a este curso es únicamente por invitación.",
-    "search.Apply.button": "Aplicar"
+    "search.Apply.button": "Aplicar",
+    "AED": "AED"
 }
