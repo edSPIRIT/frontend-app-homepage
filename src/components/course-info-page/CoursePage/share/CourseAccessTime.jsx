@@ -9,6 +9,9 @@ import React from 'react';
 const CourseAccessTime = ({ courseMetaData }) => {
   const hasTrial = courseMetaData?.paid_course?.has_trial;
   let courseCurrency = courseMetaData?.paid_course?.currency || 'USD';
+  const coursePrice = courseMetaData?.paid_course?.price
+    ? courseMetaData.paid_course.price / (courseCurrency === 'IRR' ? 10 : 1)
+    : 0;
   // check if courseCurrency is Rials
   courseCurrency = courseCurrency === 'IRR' ? 'IRT' : courseCurrency;
   return hasTrial ? (
@@ -35,7 +38,7 @@ const CourseAccessTime = ({ courseMetaData }) => {
             </span>
             <span className="mr-1">
               <FormattedNumber
-                value={courseMetaData?.paid_course?.price}
+                value={coursePrice}
               />
             </span>
           </span>
