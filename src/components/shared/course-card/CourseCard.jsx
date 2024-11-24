@@ -42,7 +42,9 @@ const CourseCard = ({ course }) => (
           className="institution-title font-sm"
         >
           <p className="institution-title font-sm">
-            {course?.additional_metadata?.org_display_name}
+            {/* Todo: Here we have to show the org_display_name from additional_metadata in course */}
+            {/* But due to a bug in backend, we'll show the original partner name */}
+            {course?.partner?.organization?.name}
           </p>
         </Link>
       </div>
