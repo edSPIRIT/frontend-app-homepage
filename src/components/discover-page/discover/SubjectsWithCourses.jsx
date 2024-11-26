@@ -40,7 +40,7 @@ const SubjectsWithCourses = ({
           <div key={subject.slug}>
             <div className="d-flex justify-content-between pb-4 pt-5">
               <h2>{capitalizeFirstLetter(subject.title)}</h2>
-              { subject?.some_of_its_courses?.length > 4 && (
+              { subject?.some_of_its_courses?.length === 4 && (
               <Button
                 variant="outline-primary"
                 iconAfter={ArrowForward}
