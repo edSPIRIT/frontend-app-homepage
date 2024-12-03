@@ -33,8 +33,9 @@ const MobileCourseInfo = () => {
           to={`/partners/${courseMetaData?.partner?.organization?.short_name}`}
           className="course-institution"
         >
-          {courseMetaData?.additional_metadata?.org_display_name}
-
+          {/* Todo: Here we have to show the org_display_name from additional_metadata in course */}
+          {/* But due to a bug in backend, we'll show the original partner name */}
+          {courseMetaData?.partner?.organization?.name}
         </Link>
         <MobileInfoSection
           courseMetaData={courseMetaData}
