@@ -6,7 +6,7 @@ const PriceStatus = ({ courseMetaData }) => {
   const courseCurrency = courseMetaData?.paid_course?.currency || 'USD';
   const hasTrial = courseMetaData?.paid_course?.has_trial;
   const coursePrice = courseMetaData?.paid_course?.price
-    ? courseMetaData.paid_course.price / (courseCurrency === 'IRR' ? 10 : 1)
+    ? courseMetaData.paid_course.price / (courseCurrency === 'IRR' ? 10 : 100)
     : 0;
 
   if (courseMetaData?.paid_course?.active && hasTrial) {
