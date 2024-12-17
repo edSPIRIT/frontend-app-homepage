@@ -20,12 +20,18 @@ const useGetConfig = () => {
         !!getConfig().LMS_BASE_URL && !!getConfig().AC_INSTANCE_CONFIG_API_URL,
     },
   );
-  const faviconVersion = Date.now(); // Update this version number when the favicon updates
+
+  const currentVersion = Date.now(); // This creates a unique timestamp
+  const faviconVersion = currentVersion;
   const favicon = data?.favicon
     ? `${data.favicon}?v=${faviconVersion}`
     : faviconPlaceholder;
+
+  // Add version parameter to headerLogo as well
+  const headerLogo = data?.logo ? `${data.logo}?v=${currentVersion}` : null;
+
   return {
-    headerLogo: data?.logo,
+    headerLogo,
     hasBilling: data?.has_billing,
     favicon,
     platformName: data?.platform_name,
