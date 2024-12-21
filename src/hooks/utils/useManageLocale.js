@@ -17,6 +17,17 @@ const useManageLocale = () => {
       const currentLocale = getLocale();
       const newLocale = activeLangs[0]?.code;
       const url = getConfig().BASE_URL.replace('apps', '');
+
+      const langCookie = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('openedx-language-preference='));
+
+      if (langCookie && langCookie.split('=')[1] === 'fa-IR') {
+        document.cookie = `openedx-language-preference=fa; path=/; domain=${url}`;
+        window.location.reload();
+        return;
+      }
+
       if (
         !document.cookie.includes('openedx-language-preference')
         && currentLocale !== newLocale
