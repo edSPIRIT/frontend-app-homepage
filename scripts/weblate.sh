@@ -28,6 +28,7 @@ CODE_MAP["es"]="es_ES"
 CODE_MAP["de"]="de_DE"
 CODE_MAP["it"]="it_IT"
 CODE_MAP["tr"]="tr_TR"
+CODE_MAP["fa_IR"]="fa"
 
 # Extract selected languages from arguments
 LANGS_ARG=${1#--languages=}
