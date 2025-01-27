@@ -1,8 +1,8 @@
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
 import edLogo from '../../../../assets/edspirit-logo.png';
-import mobileFooterLogo from '../../../../assets/mobile-footer-logo.svg';
-import mobileEdxLogo from '../../../../assets/mobile-edx-logo.svg';
 import edxLogo from '../../../../assets/Edx.svg';
+import mobileEdxLogo from '../../../../assets/mobile-edx-logo.svg';
+import mobileFooterLogo from '../../../../assets/mobile-footer-logo.svg';
 import useGetConfig from '../../../../hooks/useGetConfig';
 
 import useGetDynamicFeatures from '../../../../hooks/useGetDynamicFeatures';
@@ -13,9 +13,7 @@ const FooterCopyRight = () => {
   let logoUrl: string = '';
 
   const { isLoading, isError, data } = useGetDynamicFeatures();
-  const {
-    platformName,
-  } = useGetConfig();
+  const { platformName } = useGetConfig();
 
   if (!isLoading && !isError) {
     ({
@@ -29,7 +27,11 @@ const FooterCopyRight = () => {
       <div className="footer-copy-right custom-container d-flex justify-content-between align-items-center ">
         <div className="d-flex align-items-center">
           <div className="logo-container mr-2">
-            <img className="footer-logo" src={replaceFooterBranding ? logoUrl : edLogo} alt="footer-logo" />
+            <img
+              className="footer-logo"
+              src={replaceFooterBranding ? logoUrl : edLogo}
+              alt="footer-logo"
+            />
             <img
               className="mobile-footer-logo h-100"
               src={replaceFooterBranding ? logoUrl : mobileFooterLogo}
@@ -50,28 +52,32 @@ const FooterCopyRight = () => {
             ) : (
               <FormattedMessage
                 id="footer.copyright.text"
-                defaultMessage={`© Copyright ${new Date().getFullYear()} ${platformName}`}
+                defaultMessage="© Copyright {year} {platformName}"
+                values={{
+                  year: new Date().getFullYear(),
+                  platformName,
+                }}
               />
             )}
           </p>
         </div>
         {!removeEdxFooter && (
-        <div className="d-flex edx-wrapper">
-          <div className="logo-container mr-2">
-            <img
-              className="mobile-footer-logo  h-100"
-              src={mobileEdxLogo}
-              alt="footer-logo-edx"
-            />
+          <div className="d-flex edx-wrapper">
+            <div className="logo-container mr-2">
+              <img
+                className="mobile-footer-logo  h-100"
+                src={mobileEdxLogo}
+                alt="footer-logo-edx"
+              />
+            </div>
+            <p className="footer-desc d-flex align-items-center">
+              <FormattedMessage
+                id="footer.copyRight.text"
+                defaultMessage="edX and Open edX are trademarks of edX LLC. All Rights Reserved"
+              />
+              <img className="ml-2 desktop-view-edx" src={edxLogo} alt="edx" />
+            </p>
           </div>
-          <p className="footer-desc d-flex align-items-center">
-            <FormattedMessage
-              id="footer.copyRight.text"
-              defaultMessage="edX and Open edX are trademarks of edX LLC. All Rights Reserved"
-            />
-            <img className="ml-2 desktop-view-edx" src={edxLogo} alt="edx" />
-          </p>
-        </div>
         )}
       </div>
     </div>
